@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview1709;
-using LeetCode.QuestionBank.Question1775;
+using LeetCode.QuestionBank.Question1780;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0053_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -20,7 +20,7 @@ namespace LeetCode
         {
             Random random = new Random();
             
-            Test1775 test = new();
+            Test1780 test = new();
             test.Test();
             //test.TestDivergentTraverse();
 
@@ -36,6 +36,8 @@ namespace LeetCode
             //Console.WriteLine(Utils.GetRandomString("()", 1234));
             //Console.WriteLine(Utils.GenerateRandomIntArray(100, 1, 10000));
             //Utils.PrintArray(Utils.ShuffleArray(Enumerable.Range(0, 10).ToArray()));
+
+            //Console.WriteLine(int.MaxValue);
 
             //Stack<int> stack = new Stack<int>();
             //stack.Push(10);
