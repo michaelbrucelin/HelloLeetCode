@@ -71,7 +71,7 @@ class Solution {
 }
 ```
 
-```Python3
+```Python
 class Solution:
     def preorderTraversal(self, root: TreeNode) -> List[int]:
         res = list()
@@ -90,7 +90,7 @@ class Solution:
         return res
 ```
 
-```Golang
+```Go
 func preorderTraversal(root *TreeNode) (vals []int) {
     stack := []*TreeNode{}
     node := root

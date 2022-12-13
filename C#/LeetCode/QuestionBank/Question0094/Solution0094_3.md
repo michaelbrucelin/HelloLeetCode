@@ -25,7 +25,6 @@ public:
         return res;
     }
 };
-
 ```
 
 ```Java
@@ -45,7 +44,6 @@ class Solution {
         inorder(root.right, res);
     }
 }
-
 ```
 
 ```JavaScript
@@ -62,24 +60,22 @@ var inorderTraversal = function(root) {
     inorder(root);
     return res;
 };
-
 ```
 
-```Golang
+```Go
 func inorderTraversal(root *TreeNode) (res []int) {
-var inorder func(node *TreeNode)
-inorder = func(node *TreeNode) {
-if node == nil {
-return
+    var inorder func(node *TreeNode)
+    inorder = func(node *TreeNode) {
+        if node == nil {
+            return
+        }
+        inorder(node.Left)
+        res = append(res, node.Val)
+        inorder(node.Right)
+    }
+    inorder(root)
+    return
 }
-inorder(node.Left)
-res = append(res, node.Val)
-inorder(node.Right)
-}
-inorder(root)
-return
-}
-
 ```
 
 ```C
@@ -98,11 +94,9 @@ int* inorderTraversal(struct TreeNode* root, int* returnSize) {
     inorder(root, res, returnSize);
     return res;
 }
-
 ```
 
 **复杂度分析**
 
 -   时间复杂度：O(n)，其中 n 为二叉树节点的个数。二叉树的遍历中每个节点会被访问一次且只会被访问一次。
-
 -   空间复杂度：O(n)。空间复杂度取决于递归的栈深度，而栈深度在二叉树为一条链的情况下会达到 O(n) 的级别。

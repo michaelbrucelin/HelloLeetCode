@@ -26,7 +26,6 @@ public:
         return res;
     }
 };
-
 ```
 
 ```Java
@@ -46,10 +45,9 @@ class Solution {
         res.add(root.val);
     }
 }
-
 ```
 
-```Python3
+```Python
 class Solution:
     def postorderTraversal(self, root: TreeNode) -> List[int]:
         def postorder(root: TreeNode):
@@ -62,10 +60,9 @@ class Solution:
         res = list()
         postorder(root)
         return res
-
 ```
 
-```Golang
+```Go
 func postorderTraversal(root *TreeNode) (res []int) {
     var postorder func(*TreeNode)
     postorder = func(node *TreeNode) {
@@ -79,7 +76,6 @@ func postorderTraversal(root *TreeNode) (res []int) {
     postorder(root)
     return
 }
-
 ```
 
 ```C
@@ -98,11 +94,9 @@ int *postorderTraversal(struct TreeNode *root, int *returnSize) {
     postorder(root, res, returnSize);
     return res;
 }
-
 ```
 
 **复杂度分析**
 
 -   时间复杂度：O(n)，其中 n 是二叉搜索树的节点数。每一个节点恰好被遍历一次。
-
 -   空间复杂度：O(n)，为递归过程中栈的开销，平均情况下为 O(log⁡n)，最坏情况下树呈现链状，为 O(n)。
