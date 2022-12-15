@@ -20,11 +20,11 @@ namespace LeetCode.QuestionBank.Question0144
 
         private void dfs(TreeNode node, List<int> buffer)
         {
-            if (node == null) return;
+            // if (node == null) return;  // null不会进来
 
             buffer.Add(node.val);
-            dfs(node.left, buffer);
-            dfs(node.right, buffer);
+            if (node.left != null) dfs(node.left, buffer);
+            if (node.right != null) dfs(node.right, buffer);
         }
     }
 }
