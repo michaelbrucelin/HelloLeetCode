@@ -6,23 +6,25 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0145
 {
-    public class Solution0145 : Interface0145
+    public class Solution0145_3 : Interface0145
     {
-        /// <summary>
-        /// 递归
-        /// </summary>
-        /// <param name="root"></param>
-        /// <returns></returns>
         public IList<int> PostorderTraversal(TreeNode root)
         {
             List<int> result = new List<int>();
             if (root == null) return result;
 
-            result.AddRange(PostorderTraversal(root.left));
-            result.AddRange(PostorderTraversal(root.right));
-            result.Add(root.val);
+            dfs(root, result);
 
             return result;
+        }
+
+        private void dfs(TreeNode node, List<int> buffer)
+        {
+            if (node == null) return;
+
+            dfs(node.left, buffer);
+            dfs(node.right, buffer);
+            buffer.Add(node.val);
         }
     }
 }

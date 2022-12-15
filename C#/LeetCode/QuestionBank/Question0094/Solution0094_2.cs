@@ -10,35 +10,37 @@ namespace LeetCode.QuestionBank.Question0094
     {
         /// <summary>
         /// 迭代
-        /// 根节点入栈 --> 左节点入栈 --> ... 到达最左侧的叶子结点
-        /// 出栈一个节点，并输出该节点，然后将该节点的右节点作为新的根节点，重复步骤1
+        /// 1. 将指针指向根节点
+        /// 2. 指针有左孩子，指针入栈，指针指向其左孩子，直至指针无左孩子
+        /// 3. 指针无左孩子，输出指针
+        ///     3.1. 指针有右孩子，指针指向其右孩子，回到2
+        ///     3.2. 指针无右孩子，指针指向栈顶并输出栈顶（弹栈）
+        ///         3.2.1. 指针无右孩子，回到3.2，直至指针有右孩子
+        ///         3.2.2. 指针有右孩子，指针指向其右孩子，回到2
+        /// 4. 指针无左孩子、无右孩子，且栈空，遍历结束
         /// </summary>
         /// <param name="root"></param>
         /// <returns></returns>
         public IList<int> InorderTraversal(TreeNode root)
         {
-            if (root == null) return new List<int>();
-
             List<int> result = new List<int>();
-            Stack<TreeNode> buffer = new Stack<TreeNode>();
-            TreeNode node = root;
-            while (node != null)
+            if (root == null) return result;
+
+            Stack<TreeNode> stack = new Stack<TreeNode>();
+            TreeNode ptr = root;
+            while (ptr != null)
             {
-                if (node.left != null) { buffer.Push(node); node = node.left; }
+                while (ptr.left != null) { stack.Push(ptr); ptr = ptr.left; }
+                result.Add(ptr.val);
+                if (ptr.right != null) ptr = ptr.right;
                 else
                 {
-                    result.Add(node.val);
-                    if (node.right != null) node = node.right;
-                    else
+                    while (ptr.right == null && stack.Count > 0)
                     {
-                        node = null;
-                        while (buffer.Count > 0)
-                        {
-                            TreeNode node1 = buffer.Pop();
-                            result.Add(node1.val);
-                            if (node1.right != null) { node = node1.right; break; }
-                        }
+                        ptr = stack.Pop();
+                        result.Add(ptr.val);
                     }
+                    if (ptr.right != null) ptr = ptr.right; else break;
                 }
             }
 

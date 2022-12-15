@@ -6,21 +6,25 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0144
 {
-    /// <summary>
-    /// 递归
-    /// </summary>
-    public class Solution0144 : Interface0144
+    public class Solution0144_3 : Interface0144
     {
         public IList<int> PreorderTraversal(TreeNode root)
         {
             List<int> result = new List<int>();
             if (root == null) return result;
 
-            result.Add(root.val);
-            if (root.left != null) result.AddRange(PreorderTraversal(root.left));
-            if (root.right != null) result.AddRange(PreorderTraversal(root.right));
+            dfs(root, result);
 
             return result;
+        }
+
+        private void dfs(TreeNode node, List<int> buffer)
+        {
+            if (node == null) return;
+
+            buffer.Add(node.val);
+            dfs(node.left, buffer);
+            dfs(node.right, buffer);
         }
     }
 }
