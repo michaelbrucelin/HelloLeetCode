@@ -20,9 +20,8 @@ namespace LeetCode.QuestionBank.Question0107
             Stack<List<int>> result = new Stack<List<int>>();
             Queue<TreeNode> buffer = new Queue<TreeNode>();
             buffer.Enqueue(root);
-            while (buffer.Count > 0)
+            int cnt; while ((cnt = buffer.Count) > 0)
             {
-                int cnt = buffer.Count;
                 List<int> list = new List<int>();
                 for (int i = 0; i < cnt; i++)
                 {

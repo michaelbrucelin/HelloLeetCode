@@ -15,9 +15,8 @@ namespace LeetCode.QuestionBank.Question0107
         /// <returns></returns>
         public IList<IList<int>> LevelOrderBottom(TreeNode root)
         {
-            if (root == null) return new List<IList<int>>();
-
             List<IList<int>> result = new List<IList<int>>();
+            if (root == null) return result;
 
             DFS(root, 0, result);
             result.Reverse();
