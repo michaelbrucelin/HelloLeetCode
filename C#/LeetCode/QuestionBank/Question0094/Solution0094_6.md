@@ -18,7 +18,7 @@
 
 使用这种方法实现的中序遍历如下：
 
-```kotlin
+```python
 class Solution:
     def inorderTraversal(self, root: TreeNode) -> List[int]:
         WHITE, GRAY = 0, 1

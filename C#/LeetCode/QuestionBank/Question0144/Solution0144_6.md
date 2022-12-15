@@ -1,6 +1,6 @@
 #### [颜色标记法-一种通用且简明的树遍历方法](https://leetcode.cn/problems/binary-tree-inorder-traversal/solutions/25220/yan-se-biao-ji-fa-yi-chong-tong-yong-qie-jian-ming/)
 
-官方题解中介绍了三种方法来完成树的中序遍历，包括：
+官方题解中介绍了三种方法来完成树的前序遍历，包括：
 -   递归
 -   借助栈的迭代方法
 -   莫里斯遍历
@@ -13,12 +13,12 @@
 
 其核心思想如下：
 -   使用颜色标记节点的状态，新节点为白色，已访问的节点为灰色。
--   如果遇到的节点为白色，则将其标记为灰色，然后将其右子节点、自身、左子节点依次入栈。
+-   如果遇到的节点为白色，则将其标记为灰色，然后将其右子节点、左子节点、自身依次入栈。
 -   如果遇到的节点为灰色，则将节点的值输出。
 
-使用这种方法实现的中序遍历如下：
+使用这种方法实现的前序遍历如下：
 
-```kotlin
+```python
 class Solution:
     def inorderTraversal(self, root: TreeNode) -> List[int]:
         WHITE, GRAY = 0, 1
@@ -36,4 +36,4 @@ class Solution:
         return res
 ```
 
-如要实现前序、后序遍历，只需要调整左右子节点的入栈顺序即可。
+如要实现中序、后序遍历，只需要调整左右子节点的入栈顺序即可。
