@@ -23,6 +23,8 @@
     <Folder Include="QuestionBank\Question0195\" />
     <Folder Include="QuestionBank\Question0595\" />
     <Folder Include="QuestionBank\Question0627\" />
+    <Folder Include="QuestionBank\Question1971\新文件夹1\" />
+    <Folder Include="QuestionBank\Question1971\新文件夹\" />
   </ItemGroup>
 
 </Project>
