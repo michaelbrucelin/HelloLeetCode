@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview1709;
-using LeetCode.QuestionBank.Question1799;
+using LeetCode.QuestionBank.Question1759;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0053_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -20,7 +20,7 @@ namespace LeetCode
         {
             Random random = new Random();
 
-            Test1799 test = new();
+            Test1759 test = new();
             test.Test();
             //test.TestDivergentTraverse();
 
@@ -34,11 +34,15 @@ namespace LeetCode
 
             //Console.WriteLine(Utils.GenerateRandomStringArray(50, 1, 100, Utils.GenStrChars.lower));
             //Console.WriteLine(Utils.GetRandomString("()", 1234));
-            //Console.WriteLine(Utils.GetRandomString(Utils.GenStrChars.lower, 100));
+            //Console.WriteLine(Utils.GetRandomString(Utils.GenStrChars.lower, 1000));
             //Console.WriteLine(Utils.GenerateRandomIntArray(100, 1, 10000));
             //Utils.PrintArray(Utils.ShuffleArray(Enumerable.Range(0, 10).ToArray()));
 
-            //Console.WriteLine(int.MaxValue);
+            //const int MOD = 1000000007;
+            //long x = 1147483647;  // int x = 1147483647;  溢出
+            //Console.WriteLine(x * x % MOD);
+
+            //Console.WriteLine(int.MaxValue);  // 2147483647
             //Console.WriteLine("abcdefg".IndexOf("de", 4));
             //foreach (int i in Enumerable.Range(19968, 100)) Console.Write(Convert.ToChar(i));
 
