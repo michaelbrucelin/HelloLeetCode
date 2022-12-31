@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview1709;
-using LeetCode.QuestionBank.Question0855;
+using LeetCode.QuestionBank.Question1703;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0053_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -11,6 +11,8 @@ using System.Text.RegularExpressions;
 using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading;
+using System.IO;
+using System.Reflection;
 
 namespace LeetCode
 {
@@ -20,7 +22,7 @@ namespace LeetCode
         {
             Random random = new Random();
 
-            Test0855 test = new();
+            Test1703 test = new();
             test.Test();
             //test.TestDivergentTraverse();
 
@@ -31,6 +33,9 @@ namespace LeetCode
             //Console.WriteLine($"{++id,2}: In {stopwatch.Elapsed}, {(result == answer) + ",",-6} result: {result}, answer: {answer}");
             //Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
             //Console.WriteLine($"{++id,2}: In {stopwatch.Elapsed}, {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+
+            //string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @"QuestionBank\Question1971\TestCases\TestCase1971_04.txt");
 
             //Console.WriteLine(Utils.GenerateRandomStringArray(50, 1, 100, Utils.GenStrChars.lower));
             //Console.WriteLine(Utils.GetRandomString("()", 1234));
