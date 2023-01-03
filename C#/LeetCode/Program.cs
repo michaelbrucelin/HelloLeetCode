@@ -23,7 +23,7 @@ namespace LeetCode
             Random random = new Random();
 
             Test1801 test = new();
-            test.Test();
+            //test.Test();
             //test.TestDivergentTraverse();
 
             //Utils0754 utils = new Utils0754();
