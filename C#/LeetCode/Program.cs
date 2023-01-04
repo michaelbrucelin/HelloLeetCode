@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview1709;
-using LeetCode.QuestionBank.Question0202;
+using LeetCode.QuestionBank.Question1802;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0053_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -22,8 +22,8 @@ namespace LeetCode
         {
             Random random = new Random();
 
-            //Test0202 test = new();
-            //test.Test();
+            Test1802 test = new();
+            test.Test();
             //test.TestDivergentTraverse();
 
             //Utils0754 utils = new Utils0754();
@@ -43,6 +43,14 @@ namespace LeetCode
             //Console.WriteLine(Utils.GetRandomString(Utils.GenStrChars.lower, 1000));
             //Console.WriteLine(Utils.GenerateRandomIntArray(100, 1, 10000));
             //Utils.PrintArray(Utils.ShuffleArray(Enumerable.Range(0, 10).ToArray()));
+
+            {
+                //int n = 8257285, index = 4828516, maxSum = 850015631;
+                ////Console.WriteLine((n - index) * (n - index) + (index + 1) * (index + 1));
+                ////Console.WriteLine((maxSum + (((n - index) * (n - index) + (index + 1) * (index + 1) - n - 1) >> 1)) / n);
+                //Console.WriteLine((maxSum + ((1L * (n - index) * (n - index) + 1L * (index + 1) * (index + 1) - n - 1) >> 1)) / n);
+                //Console.WriteLine((int)((maxSum + ((1L * (n - index) * (n - index) + 1L * (index + 1) * (index + 1) - n - 1) >> 1)) / n));
+            }
 
             //const int MOD = 1000000007;
             //long x = 1147483647;  // int x = 1147483647;  溢出
