@@ -10,7 +10,7 @@ SELECT product_id, 'store3', store3 FROM Products WHERE store3 IS NOT NULL
 SELECT a.product_id, b.store
        , CASE b.store WHEN 'store1' THEN a.store1 WHEN 'store2' THEN a.store2 WHEN 'store3' THEN a.store3 END AS price
 FROM Products AS a
-CROSS JOIN (SELECT store FROM (VALUES('store1'),('store2'),('store3')) AS stores(store)) AS b
+CROSS JOIN (VALUES('store1'),('store2'),('store3')) AS b(store)
 )
 SELECT * FROM cte WHERE price IS NOT NULL
 
