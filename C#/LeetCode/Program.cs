@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview1709;
-using LeetCode.QuestionBank.Question2180;
+using LeetCode.QuestionBank.Question0160;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0053_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -22,11 +22,11 @@ namespace LeetCode
         {
             Random random = new Random();
 
-            Test2180 test = new();
-            //test.Test();
+            Test0160 test = new();
+            test.Test();
             //test.TestDivergentTraverse();
             //test.Look4Rules();
-            test.VerifyRules();
+            //test.VerifyRules();
 
             //Utils0754 utils = new Utils0754();
             //utils.GetReachNumbers();
@@ -52,6 +52,20 @@ namespace LeetCode
                 ////Console.WriteLine((maxSum + (((n - index) * (n - index) + (index + 1) * (index + 1) - n - 1) >> 1)) / n);
                 //Console.WriteLine((maxSum + ((1L * (n - index) * (n - index) + 1L * (index + 1) * (index + 1) - n - 1) >> 1)) / n);
                 //Console.WriteLine((int)((maxSum + ((1L * (n - index) * (n - index) + 1L * (index + 1) * (index + 1) - n - 1) >> 1)) / n));
+            }
+
+            {
+                //Dictionary<int, int> dic = new Dictionary<int, int>();
+                //dic.Add(1, 1);
+                //dic.Add(100, 100);
+                //dic.Add(2, 2);
+                //foreach (var kv in dic) Console.WriteLine(kv.Key);
+
+                //SortedDictionary<int, int> sdic = new SortedDictionary<int, int>();
+                //sdic.Add(1, 1);
+                //sdic.Add(100, 100);
+                //sdic.Add(2, 2);
+                //foreach (var kv in sdic) Console.WriteLine(kv.Key);
             }
 
             //const int MOD = 1000000007;
