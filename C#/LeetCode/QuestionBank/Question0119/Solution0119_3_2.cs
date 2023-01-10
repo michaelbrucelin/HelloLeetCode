@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0119
 {
-    public class Solution0119_3 : Interface0119
+    public class Solution0119_3_2 : Interface0119
     {
         /// <summary>
         /// 数学
@@ -18,28 +18,30 @@ namespace LeetCode.QuestionBank.Question0119
             if (rowIndex == 0) return new int[] { 1 };
 
             int[] result = new int[rowIndex + 1]; result[0] = 1; result[rowIndex] = 1;
-            for (int i = 1; i <= (rowIndex >> 1); i++) result[i] = nCr(rowIndex, i);
+            for (int i = 1; i <= (rowIndex >> 1); i++) result[i] = (int)nCr(rowIndex, i);
             for (int i = 1; i <= (rowIndex >> 1); i++) result[rowIndex - i] = result[i];
 
             return result;
         }
 
-        /// <summary>
-        /// 会溢出
-        /// </summary>
-        /// <param name="n"></param>
-        /// <param name="r"></param>
-        /// <returns></returns>
-        //private int nCr(int n, int r)
-        //{
-        //    long result = 1;
-        //    for (int i = 0; i < r; i++) result *= n - i;
-        //    for (int i = 1; i <= r; i++) result /= i;
+        private long nCr(int n, int r)
+        {
+            if (n < 29 || (n == 29 && r < 15))
+                return nCr_Fast(n, r);
+            else
+                return nCr_Slow(n, r);
+        }
 
-        //    return (int)result;
-        //}
+        private long nCr_Fast(int n, int r)
+        {
+            long result = 1;
+            for (int i = 0; i < r; i++) result *= n - i;
+            for (int i = 1; i <= r; i++) result /= i;
 
-        private int nCr(int n, int r)
+            return (int)result;
+        }
+
+        private long nCr_Slow(int n, int r)
         {
             int[] multip = new int[r];
             for (int i = 0; i < r; i++) multip[i] = n - i;
@@ -62,7 +64,7 @@ namespace LeetCode.QuestionBank.Question0119
                 if (div != 1) divide.Enqueue(div);
             }
 
-            int result = 1;
+            long result = 1;
             for (int i = 0; i < r; i++) result *= multip[i];
 
             return result;
