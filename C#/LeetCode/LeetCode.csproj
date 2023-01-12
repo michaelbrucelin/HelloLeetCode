@@ -24,6 +24,7 @@
     <Folder Include="QuestionBank\Question0595\" />
     <Folder Include="QuestionBank\Question0627\" />
     <Folder Include="QuestionBank\Question1803\TestCases\" />
+    <Folder Include="QuestionBank\Question1807\新文件夹\" />
     <Folder Include="QuestionBank\Question1971\新文件夹1\" />
     <Folder Include="QuestionBank\Question1971\新文件夹\" />
   </ItemGroup>

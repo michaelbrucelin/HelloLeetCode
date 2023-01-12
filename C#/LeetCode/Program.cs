@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview1709;
-using LeetCode.QuestionBank.Question0260;
+using LeetCode.QuestionBank.Question0168;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0053_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -22,7 +22,7 @@ namespace LeetCode
         {
             Random random = new Random();
 
-            Test0260 test = new();
+            Test0168 test = new();
             test.Test();
             //test.TestDivergentTraverse();
             //test.Look4Rules();
@@ -35,6 +35,16 @@ namespace LeetCode
             //Console.WriteLine($"{++id,2}: In {stopwatch.Elapsed}, {(result == answer) + ",",-6} result: {result}, answer: {answer}");
             //Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
             //Console.WriteLine($"{++id,2}: In {stopwatch.Elapsed}, {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+
+            //const int MOD = 1000000007;
+            //string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @"QuestionBank\Question1971\TestCases\TestCase1971_04.txt");
+
+            //Console.WriteLine(Utils.GenerateRandomStringArray(50, 1, 100, Utils.GenStrChars.lower));
+            //Console.WriteLine(Utils.GetRandomString("()", 1234));
+            //Console.WriteLine(Utils.GetRandomString(Utils.GenStrChars.lower, 1000));
+            //Console.WriteLine(Utils.GenerateRandomIntArray(100, 1, 10000));
+            //Utils.PrintArray(Utils.ShuffleArray(Enumerable.Range(0, 10).ToArray()));
 
             {
                 //Console.WriteLine(Convert.ToString(-1, 2));
@@ -49,16 +59,6 @@ namespace LeetCode
                 //Console.WriteLine(Convert.ToString((-2 >> 2), 2));
                 //Console.WriteLine(Convert.ToString(((-2 >> 2) & 1), 2));
             }
-
-            //const int MOD = 1000000007;
-            //string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @"QuestionBank\Question1971\TestCases\TestCase1971_04.txt");
-
-            //Console.WriteLine(Utils.GenerateRandomStringArray(50, 1, 100, Utils.GenStrChars.lower));
-            //Console.WriteLine(Utils.GetRandomString("()", 1234));
-            //Console.WriteLine(Utils.GetRandomString(Utils.GenStrChars.lower, 1000));
-            //Console.WriteLine(Utils.GenerateRandomIntArray(100, 1, 10000));
-            //Utils.PrintArray(Utils.ShuffleArray(Enumerable.Range(0, 10).ToArray()));
 
             {
                 //int n = 8257285, index = 4828516, maxSum = 850015631;
