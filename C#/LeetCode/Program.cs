@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview1709;
-using LeetCode.QuestionBank.Question2047;
+using LeetCode.QuestionBank.Question0205;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0053_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -22,7 +22,7 @@ namespace LeetCode
         {
             Random random = new Random();
 
-            Test2047 test = new();
+            Test0205 test = new();
             test.Test();
             //test.TestDivergentTraverse();
             //test.Look4Rules();
@@ -48,7 +48,7 @@ namespace LeetCode
             //Console.WriteLine(Utils.GenerateRandomStringArray(50, 1, 100, Utils.GenStrChars.lower));
             //Console.WriteLine(Utils.GetRandomString("()", 1234));
             //Console.WriteLine(Utils.GetRandomString(Utils.GenStrChars.lower, 1000));
-            //Console.WriteLine(Utils.GenerateRandomIntArray(32, 1, 10000));
+            //Console.WriteLine(Utils.GenerateRandomIntArray(100, 1, 10000));
             //Utils.PrintArray(Utils.ShuffleArray(Enumerable.Range(0, 10).ToArray()));
 
             {
@@ -173,8 +173,15 @@ namespace LeetCode
             //list.Add(2, 2);  // 报错
             //Console.WriteLine($"{list.Values[0]}, {list.Values[1]}, {list.Values[2]}, {list.Values[3]}, {list.Values[4]}");
 
-            //bool[] arr = new bool[10];  // 默认值是false
-            //Console.WriteLine(arr[8]);
+            {
+                //bool[] arr = new bool[10];  // 默认值是false
+                //Console.WriteLine(arr[8]);
+
+                //char[] arr = new char[10];    // 默认值是0
+                //Console.WriteLine(arr[8]);
+                //Console.WriteLine((int)arr[8]);
+                //Console.WriteLine(arr[8] == null);  // 没有意义的比较，int永远不为null
+            }
 
             //(int a, int b)[] tuples = new (int, int)[10];
             //Console.WriteLine($"a={tuples[0].a}, b={tuples[0].b}");  // 值元组有默认值，默认值为0
