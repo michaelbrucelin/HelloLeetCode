@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview1709;
-using LeetCode.QuestionBank.Question0205;
+using LeetCode.QuestionBank.Question1825;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0053_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -22,7 +22,7 @@ namespace LeetCode
         {
             Random random = new Random();
 
-            Test0205 test = new();
+            Test1825 test = new();
             test.Test();
             //test.TestDivergentTraverse();
             //test.Look4Rules();
@@ -85,6 +85,19 @@ namespace LeetCode
                 //sdic.Add(100, 100);
                 //sdic.Add(2, 2);
                 //foreach (var kv in sdic) Console.WriteLine(kv.Key);
+            }
+
+            {
+                // List.Remove()只Remove掉第一个匹配的值，如果列表中不存在匹配的值，也不会异常
+                //List<int> list = new List<int>();
+                //list.AddRange(Enumerable.Range(0, 10));
+                //Utils.PrintArray(list);                  // [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+                //list.AddRange(Enumerable.Range(5, 10));
+                //Utils.PrintArray(list);                  // [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                //list.Remove(7);
+                //Utils.PrintArray(list);                  // [ 0, 1, 2, 3, 4, 5, 6, 8, 9, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                //list.Remove(100);
+                //Utils.PrintArray(list);
             }
 
             //const int MOD = 1000000007;

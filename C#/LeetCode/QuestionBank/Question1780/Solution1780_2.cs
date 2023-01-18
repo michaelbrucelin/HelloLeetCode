@@ -10,7 +10,6 @@ namespace LeetCode.QuestionBank.Question1780
     {
         public bool CheckPowersOfThree(int n)
         {
-            int remainder;
             while (n > 0)
             {
                 var info = Math.DivRem(n, 3);
