@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -44,6 +46,32 @@ namespace LeetCode.QuestionBank.Question1825
 
             // 3. 
             id = 0; Console.WriteLine();
+            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @"QuestionBank\Question1825\TestCases\TestCase1825_3_data2.txt");
+            string[] data = File.ReadAllText(path).Split(',').Select(s => s.Trim(new char[] { '[', ']' })).ToArray();
+            int m = Convert.ToInt32(data[0]), k = Convert.ToInt32(data[1]);
+            Interface1825 solution2 = new MKAverage_2(m, k);
+            Interface1825 solution3 = new MKAverage_3(m, k);
+            int error_cnt = 0;
+            for (int i = 2; i < 88888; i++)
+            {
+                string s = data[i];
+                if (s.Length == 0)
+                {
+                    answer = solution2.CalculateMKAverage();
+                    result = solution3.CalculateMKAverage();
+                    if (result != answer) error_cnt++;
+                }
+                else
+                {
+                    int val = Convert.ToInt32(s);
+                    solution2.AddElement(val);
+                    solution3.AddElement(val);
+                }
+            }
+            Console.WriteLine($"一共有{error_cnt}处错误。");
+            solution2.ShowInfo();
+            solution3.ShowInfo();
         }
     }
 }

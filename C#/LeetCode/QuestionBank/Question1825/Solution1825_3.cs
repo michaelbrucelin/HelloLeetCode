@@ -10,9 +10,6 @@ namespace LeetCode.QuestionBank.Question1825
     {
     }
 
-    /// <summary>
-    /// 写的不对（测试用例3结果不对），没找出来哪里错了，有点恶心，不找了
-    /// </summary>
     public class MKAverage_3 : Interface1825
     {
         public MKAverage_3(int m, int k)
@@ -47,13 +44,13 @@ namespace LeetCode.QuestionBank.Question1825
                         int _num = s2.First().Key, _cnt = s2.First().Value;
                         if (_cnt <= k - cnt1)
                         {
-                            s1.Add(_num, _cnt); cnt1 += _cnt;
                             s2.Remove(_num); cnt2 -= _cnt; sum -= _num * _cnt;
+                            s1.Add(_num, _cnt); cnt1 += _cnt;
                         }
                         else
                         {
-                            s1.Add(_num, k - cnt1); cnt1 = k;
                             s2[_num] -= k - cnt1; cnt2 -= k - cnt1; sum -= _num * (k - cnt1);
+                            s1.Add(_num, k - cnt1); cnt1 = k;
                         }
                     }
                     while (cnt3 < k)  // 将s2中后k个元素移到s3中
@@ -61,13 +58,13 @@ namespace LeetCode.QuestionBank.Question1825
                         int _num = s2.Last().Key, _cnt = s2.Last().Value;
                         if (_cnt <= k - cnt3)
                         {
-                            s3.Add(_num, _cnt); cnt3 += _cnt;
                             s2.Remove(_num); cnt2 -= _cnt; sum -= _num * _cnt;
+                            s3.Add(_num, _cnt); cnt3 += _cnt;
                         }
                         else
                         {
-                            s3.Add(_num, k - cnt3); cnt3 = k;
                             s2[_num] -= k - cnt3; cnt2 -= k - cnt3; sum -= _num * (k - cnt3);
+                            s3.Add(_num, k - cnt3); cnt3 = k;
                         }
                     }
                 }
@@ -108,15 +105,10 @@ namespace LeetCode.QuestionBank.Question1825
                 else if (s1.ContainsKey(num_rm))
                 {
                     RemoveNum(s1, num_rm, ref cnt1);
-                    int _num;
-                    if (cnt2 > cnt)
+                    int _num = s2.First().Key; MoveNum(s2, s1, _num, ref cnt2, ref cnt1); sum -= _num;  // 将s2中最大的元素移到s1中
+                    if (cnt3 > k)
                     {
-                        _num = s2.First().Key; MoveNum(s2, s1, _num, ref cnt2, ref cnt1); sum -= _num;
-                    }
-                    else  // cnt3 > k
-                    {
-                        _num = s3.First().Key; MoveNum(s3, s2, _num, ref cnt3, ref cnt2); sum += _num;
-                        _num = s2.First().Key; MoveNum(s2, s1, _num, ref cnt2, ref cnt1); sum -= _num;
+                        _num = s3.First().Key; MoveNum(s3, s2, _num, ref cnt3, ref cnt2); sum += _num;  // 将s3中最大的元素移到s2中
                     }
                 }
                 else if (s2.ContainsKey(num_rm))
@@ -125,25 +117,20 @@ namespace LeetCode.QuestionBank.Question1825
                     int _num;
                     if (cnt1 > k)
                     {
-                        _num = s1.Last().Key; MoveNum(s1, s2, _num, ref cnt1, ref cnt2); sum += _num;
+                        _num = s1.Last().Key; MoveNum(s1, s2, _num, ref cnt1, ref cnt2); sum += _num;   // 将s1中最大的元素移到s2中
                     }
                     else  // cnt3 > k
                     {
-                        _num = s3.First().Key; MoveNum(s3, s2, _num, ref cnt3, ref cnt2); sum += _num;
+                        _num = s3.First().Key; MoveNum(s3, s2, _num, ref cnt3, ref cnt2); sum += _num;  // 将s3中最大的元素移到s2中
                     }
                 }
                 else  // s3.ContainsKey(_num)
                 {
                     RemoveNum(s3, num_rm, ref cnt3);
-                    int _num;
-                    if (cnt2 > cnt)
+                    int _num = s2.Last().Key; MoveNum(s2, s3, _num, ref cnt2, ref cnt3); sum -= _num;   // 将s2中最大的元素移到s3中
+                    if (cnt1 > k)
                     {
-                        _num = s2.Last().Key; MoveNum(s2, s3, _num, ref cnt2, ref cnt3); sum -= _num;
-                    }
-                    else  // cnt1 > k
-                    {
-                        _num = s1.Last().Key; MoveNum(s1, s2, _num, ref cnt1, ref cnt2); sum += _num;
-                        _num = s2.Last().Key; MoveNum(s2, s3, _num, ref cnt2, ref cnt3); sum -= _num;
+                        _num = s1.Last().Key; MoveNum(s1, s2, _num, ref cnt1, ref cnt2); sum += _num;   // 将s1中最大的元素移到s2中
                     }
                 }
                 #endregion
