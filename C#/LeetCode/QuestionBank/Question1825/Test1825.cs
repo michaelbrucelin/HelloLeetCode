@@ -41,6 +41,9 @@ namespace LeetCode.QuestionBank.Question1825
             solution.AddElement(3);
             solution.AddElement(4);
             answer = 3; result = solution.CalculateMKAverage(); Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            // 3. 
+            id = 0; Console.WriteLine();
         }
     }
 }
