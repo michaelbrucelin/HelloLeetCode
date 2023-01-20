@@ -34,8 +34,8 @@
 **提示：**
 
 -   `1 <= nums1.length <= nums2.length <= 1000`
--   `0 <= nums1[i], nums2[i] <= 104`
+-   `0 <= nums1[i], nums2[i] <= 10^4`
 -   `nums1`和`nums2`中所有整数 **互不相同**
 -   `nums1` 中的所有整数同样出现在 `nums2` 中
 
-**进阶：**你可以设计一个时间复杂度为 `O(nums1.length + nums2.length)` 的解决方案吗？
+**进阶：** 你可以设计一个时间复杂度为 `O(nums1.length + nums2.length)` 的解决方案吗？
