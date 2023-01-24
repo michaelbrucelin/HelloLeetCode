@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview1709;
-using LeetCode.QuestionBank.Question1817;
+using LeetCode.QuestionBank.Question2303;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0053_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -22,7 +22,7 @@ namespace LeetCode
         {
             Random random = new Random();
 
-            Test1817 test = new();
+            Test2303 test = new();
             test.Test();
             //test.TestDivergentTraverse();
             //test.Look4Rules();
@@ -101,9 +101,9 @@ namespace LeetCode
             }
 
             {
-                List<int> list = Enumerable.Range(0, 100).ToList();
-                Console.WriteLine(list[^1]);
-                Console.WriteLine(list[^10]);
+                //List<int> list = Enumerable.Range(0, 100).ToList();
+                //Console.WriteLine(list[^1]);
+                //Console.WriteLine(list[^10]);
             }
 
             //const int MOD = 1000000007;
