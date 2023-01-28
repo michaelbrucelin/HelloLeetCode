@@ -14,7 +14,7 @@ namespace LeetCode.QuestionBank.Question2309
             for (int i = 0; i < s.Length; i++) set.Add(s[i]);
 
             for (int i = 25; i >= 0; i--)
-                if (set.Contains((char)(65 + i)) && set.Contains((char)(97 + i))) return ((char)(65 + i)).ToString();
+                if (set.Contains((char)('A' + i)) && set.Contains((char)('a' + i))) return ((char)('A' + i)).ToString();
 
             return string.Empty;
         }

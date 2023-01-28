@@ -48,7 +48,7 @@ class Solution {
 }
 ```
 
-```c#
+```csharp
 public class Solution {
     public string GreatestLetter(string s) {
         int lower = 0, upper = 0;

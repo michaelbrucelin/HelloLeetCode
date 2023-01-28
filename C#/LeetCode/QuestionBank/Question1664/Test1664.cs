@@ -10,7 +10,7 @@ namespace LeetCode.QuestionBank.Question1664
     {
         public void Test()
         {
-            Interface1664 solution = new Solution1664_3_1();
+            Interface1664 solution = new Solution1664_3();
             Func<int[], int> func = solution.WaysToMakeFair;
             int[] nums;
             int result, answer;
