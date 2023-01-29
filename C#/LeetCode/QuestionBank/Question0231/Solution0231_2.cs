@@ -22,7 +22,7 @@ namespace LeetCode.QuestionBank.Question0231
             return ((1 << 30) % n) == 0;
         }
 
-        private const int BIG2POW = 1073741824;
+        private const int BIG2POW = 1 << 30;
         public bool IsPowerOfTwo2(int n)
         {
             if (n <= 0) return false;
