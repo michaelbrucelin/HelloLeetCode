@@ -23,7 +23,7 @@ namespace LeetCode
             //Random random = new Random();
 
             Test0705 test = new();
-            test.Test();
+            //test.Test();
             //test.TestDivergentTraverse();
             //test.Look4Rules();
             //test.VerifyRules();
@@ -104,6 +104,23 @@ namespace LeetCode
                 //List<int> list = Enumerable.Range(0, 100).ToList();
                 //Console.WriteLine(list[^1]);
                 //Console.WriteLine(list[^10]);
+            }
+
+            {
+                //// SelectMany
+                //string[][] strs = new string[][] {
+                //    new string[] { "A1" },
+                //    new string[] { "B1", "B2" },
+                //    new string[] { "C1", "C2", "C3" }
+                //};
+                //var flat1 = strs.SelectMany(arr => arr);
+                //Console.WriteLine("break point1");
+
+                ////var flat2 = strs.Select((row, rid) => new { rid, row })
+                ////                .SelectMany(item => item.row.Select((val, cid) => (val, cid)), (item, element) => new { element.val, item.rid, element.cid });
+                //var flat2 = strs.Select((row, rid) => (row, rid))
+                //                .SelectMany(item => item.row.Select((val, cid) => (val, cid)), (item, element) => (element.val, item.rid, element.cid));
+                //Console.WriteLine("break point2");
             }
 
             //const int MOD = 1000000007;
