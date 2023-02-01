@@ -1,10 +1,10 @@
-#### [](https://leetcode.cn/problems/check-array-formation-through-concatenation/solution/neng-fou-lian-jie-xing-cheng-shu-zu-by-l-rnkn//#方法一：哈希表)方法一：哈希表
+#### [方法一：哈希表](https://leetcode.cn/problems/check-array-formation-through-concatenation/solutions/1836918/neng-fou-lian-jie-xing-cheng-shu-zu-by-l-rnkn/)
 
-因为数组 arr 每个整数互不相同，且 pieces 的整数也互不相同，所以我们可以通过 arr 固定 pieces 的放置。使用哈希表 index 记录 pieces 各个数组的**首元素**与数组下标的对应关系。
+因为数组 $arr$ 每个整数互不相同，且 $pieces$ 的整数也互不相同，所以我们可以通过 $arr$ 固定 $pieces$ 的放置。使用哈希表 $index$ 记录 $pieces$ 各个数组的**首元素**与数组下标的对应关系。
 
-我们不断地将 pieces 中的数组与数组 arr 相对应，对于当前遍历的元素 arr[i]，如果它不存在于哈希表中，说明我们无法将 pieces 与数组 arr 相对应，直接返回 false；否则我们找到对应的数组 pieces[j]，然后将它与 arr[i] 及之后的整数进行比较（在比较过程中，如果判断相等不成立，直接返回 false），判断都相等后，将 i 相应地向后移。全部 pieces 都匹配成功后，返回 true。
+我们不断地将 $pieces$ 中的数组与数组 $arr$ 相对应，对于当前遍历的元素 $arr[i]$，如果它不存在于哈希表中，说明我们无法将 $pieces$ 与数组 $arr$ 相对应，直接返回 $false$；否则我们找到对应的数组 $pieces[j]$，然后将它与 $arr[i]$ 及之后的整数进行比较（在比较过程中，如果判断相等不成立，直接返回 $false$），判断都相等后，将 $i$ 相应地向后移。全部 $pieces$ 都匹配成功后，返回 $true$。
 
-```Python
+```python
 class Solution:
     def canFormArray(self, arr: List[int], pieces: List[List[int]]) -> bool:
         index = {p[0]: i for i, p in enumerate(pieces)}
@@ -17,10 +17,9 @@ class Solution:
                 return False
             i += len(p)
         return True
-
 ```
 
-```C++
+```cpp
 class Solution {
 public:
     bool canFormArray(vector<int> &arr, vector<vector<int>> &pieces) {
@@ -42,10 +41,9 @@ public:
         return true;
     }
 };
-
 ```
 
-```Java
+```java
 class Solution {
     public boolean canFormArray(int[] arr, int[][] pieces) {
         int n = arr.length, m = pieces.length;
@@ -68,10 +66,9 @@ class Solution {
         return true;
     }
 }
-
 ```
 
-```C#
+```csharp
 public class Solution {
     public bool CanFormArray(int[] arr, int[][] pieces) {
         int n = arr.Length, m = pieces.Length;
@@ -94,10 +91,9 @@ public class Solution {
         return true;
     }
 }
-
 ```
 
-```C
+```c
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 
 typedef struct {
@@ -173,10 +169,9 @@ bool canFormArray(int* arr, int arrSize, int** pieces, int piecesSize, int* piec
     hashFree(&index);
     return true;
 }
-
 ```
 
-```JavaScript
+```javascript
 var canFormArray = function(arr, pieces) {
     const n = arr.length, m = pieces.length;
     const index = new Map();
@@ -197,10 +192,9 @@ var canFormArray = function(arr, pieces) {
     }
     return true;
 };
-
 ```
 
-```Go
+```go
 func canFormArray(arr []int, pieces [][]int) bool {
     index := make(map[int]int, len(pieces))
     for i, p := range pieces {
@@ -220,10 +214,9 @@ func canFormArray(arr []int, pieces [][]int) bool {
     }
     return true
 }
-
 ```
 
 **复杂度分析**
 
--   时间复杂度：O(n)，其中 n 是数组 arr 的长度。
--   空间复杂度：O(n)。保存哈希表需要 O(n) 的空间。
+-   时间复杂度：$O(n)$，其中 $n$ 是数组 $arr$ 的长度。
+-   空间复杂度：$O(n)$。保存哈希表需要 $O(n)$ 的空间。

@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview1709;
-using LeetCode.QuestionBank.Question0705;
+using LeetCode.QuestionBank.Question2432;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0053_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -22,8 +22,8 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test0705 test = new();
-            //test.Test();
+            Test2432 test = new();
+            test.Test();
             //test.TestDivergentTraverse();
             //test.Look4Rules();
             //test.VerifyRules();
@@ -121,6 +121,12 @@ namespace LeetCode
                 //var flat2 = strs.Select((row, rid) => (row, rid))
                 //                .SelectMany(item => item.row.Select((val, cid) => (val, cid)), (item, element) => (element.val, item.rid, element.cid));
                 //Console.WriteLine("break point2");
+            }
+
+            {
+                // char数组的默认值  '\0'
+                //char[] chars = new char[16];
+                //if (chars[0] == '\0') Console.WriteLine("yes");
             }
 
             //const int MOD = 1000000007;
