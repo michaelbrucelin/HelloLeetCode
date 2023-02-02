@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview1709;
-using LeetCode.QuestionBank.Question2432;
+using LeetCode.QuestionBank.Question1129;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0053_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -22,7 +22,7 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test2432 test = new();
+            Test1129 test = new();
             test.Test();
             //test.TestDivergentTraverse();
             //test.Look4Rules();
@@ -39,6 +39,8 @@ namespace LeetCode
             //const int MOD = 1000000007;
             //string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @"QuestionBank\Question1971\TestCases\TestCase1971_04.txt");
+            //string raw = "[[0,1],[1,2]]";
+            //Console.WriteLine(UtilsLeetCode.TestCase2CSharpDeclare(raw, UtilsLeetCode.TestCaseType.array_2d));
             //const int M1 = 0x55555555;  // 01010101010101010101010101010101
             //const int M2 = 0x33333333;  // 00110011001100110011001100110011
             //const int M4 = 0x0f0f0f0f;  // 00001111000011110000111100001111
@@ -50,6 +52,10 @@ namespace LeetCode
             //Console.WriteLine(Utils.GetRandomString(Utils.GenStrChars.lower, 1000));
             //Console.WriteLine(Utils.GenerateRandomIntArray(100, 1, 10));
             //Utils.PrintArray(Utils.ShuffleArray(Enumerable.Range(0, 10).ToArray()));
+
+            {
+                //Console.WriteLine("abcdefg"[1..^1]);
+            }
 
             {
                 //Console.WriteLine(Convert.ToString(-1, 2));
