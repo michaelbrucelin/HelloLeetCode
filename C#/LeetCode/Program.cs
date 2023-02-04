@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview1709;
-using LeetCode.QuestionBank.Question1129;
+using LeetCode.QuestionBank.Question0338;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0053_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -22,14 +22,14 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test1129 test = new();
-            test.Test();
+            //Test0338 test = new();
+            //test.Test();
             //test.TestDivergentTraverse();
             //test.Look4Rules();
             //test.VerifyRules();
 
-            //Utils0231 utils = new ();
-            //utils.Print2Power();
+            Utils0338 utils = new ();
+            utils.View(100);
 
             //Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
             //Console.WriteLine($"{++id,2}: In {stopwatch.Elapsed}, {(result == answer) + ",",-6} result: {result}, answer: {answer}");
@@ -55,6 +55,8 @@ namespace LeetCode
 
             {
                 //Console.WriteLine("abcdefg"[1..^1]);
+                //string[] strs = new string[10];      // 默认值是null
+                //Console.WriteLine(strs[1] == null);
             }
 
             {
