@@ -18,8 +18,7 @@ namespace LeetCode.QuestionBank.Question1475
                 {
                     if (prices[j] <= prices[i])
                     {
-                        result[i] -= prices[j];
-                        break;
+                        result[i] -= prices[j]; break;
                     }
                 }
             }
