@@ -1,5 +1,5 @@
-﻿using LeetCode.Interview.Interview1709;
-using LeetCode.QuestionBank.Question0392;
+﻿using LeetCode.Interview.Interview0103;
+using LeetCode.QuestionBank.Question1876;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0053_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -22,7 +22,7 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test0392 test = new();
+            Test0103 test = new();
             test.Test();
             //test.TestDivergentTraverse();
             //test.Look4Rules();
@@ -52,6 +52,24 @@ namespace LeetCode
             //Console.WriteLine(Utils.GetRandomString(Utils.GenStrChars.lower, 1000));
             //Console.WriteLine(Utils.GenerateRandomIntArray(100, 1, 10));
             //Utils.PrintArray(Utils.ShuffleArray(Enumerable.Range(0, 10).ToArray()));
+
+            {
+                //Dictionary<int, int> dic = new Dictionary<int, int>();
+                //for (int i = 0; i < 10; i++) dic.Add(i, i);
+                //Console.WriteLine(dic.Count);
+                //foreach (int key in dic.Keys) Console.WriteLine(key);
+                //foreach (int key in dic.Keys) if ((key & 1) != 0) dic.Remove(key);  // 字典可以正确地在foreach中被移除
+                //Console.WriteLine(dic.Count);
+                //foreach (int key in dic.Keys) Console.WriteLine(key);
+
+                //List<int> list = new List<int>();
+                //for (int i = 0; i < 10; i++) list.Add(i);
+                //Console.WriteLine(list.Count);
+                //foreach (int key in list) Console.WriteLine(key);
+                //foreach (int key in list) if ((key & 1) != 0) list.Remove(key);     // 列表在foreach中不可以被移除，会异常
+                //Console.WriteLine(list.Count);
+                //foreach (int key in list) Console.WriteLine(key);
+            }
 
             {
                 //Console.WriteLine("abcdefg"[1..^1]);
