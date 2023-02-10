@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview0103;
-using LeetCode.QuestionBank.Question1223;
+using LeetCode.QuestionBank.Question0415;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0053_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -22,7 +22,7 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test1223 test = new();
+            Test0415 test = new();
             test.Test();
             //test.TestDivergentTraverse();
             //test.Look4Rules();
@@ -52,6 +52,13 @@ namespace LeetCode
             //Console.WriteLine(Utils.GetRandomString(Utils.GenStrChars.lower, 1000));
             //Console.WriteLine(Utils.GenerateRandomIntArray(100, 1, 10));
             //Utils.PrintArray(Utils.ShuffleArray(Enumerable.Range(0, 10).ToArray()));
+
+            {
+                //Console.WriteLine(int.MaxValue);    // 2147483647            10位
+                //Console.WriteLine(uint.MaxValue);   // 4294967295            10位
+                //Console.WriteLine(long.MaxValue);   // 9223372036854775807   19位
+                //Console.WriteLine(ulong.MaxValue);  // 18446744073709551615  20位
+            }
 
             {
                 //Dictionary<int, int> dic = new Dictionary<int, int>();
