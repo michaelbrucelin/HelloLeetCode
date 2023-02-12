@@ -18,7 +18,7 @@ namespace LeetCode.QuestionBank.Question2515
         public int ClosetTarget(string[] words, string target, int startIndex)
         {
             if (words[startIndex] == target) return 0;
-            int id, len = words.Length, times = words.Length >> 1;
+            int len = words.Length, times = words.Length >> 1;
             for (int i = 1; i <= times; i++)
             {
                 if (words[(startIndex + i) % len] == target || words[(startIndex + len - i) % len] == target) return i;

@@ -20,28 +20,36 @@ namespace LeetCode.QuestionBank.Question0415
         /// <returns></returns>
         public string AddStrings(string num1, string num2)
         {
-            StringBuilder result = new StringBuilder();
-            long l1, l2, carry = 0;
+            StringBuilder sb = new StringBuilder();
+            long l1, l2, carry = 0; string add;
             int left1 = num1.Length - 18, left2 = num2.Length - 18;
             while (left1 > -18 && left2 > -18)
             {
-                l1 = long.Parse(left1 >= 0 ? num1.Substring(left1, 18) : num1.Substring(0, left1 + 17));
-                l2 = long.Parse(left2 >= 0 ? num2.Substring(left2, 18) : num2.Substring(0, left2 + 17));
-                result.Insert(0, ((l1 + l2 + carry) % MOD).ToString());
+                l1 = long.Parse(left1 >= 0 ? num1.Substring(left1, 18) : num1.Substring(0, left1 + 18));
+                l2 = long.Parse(left2 >= 0 ? num2.Substring(left2, 18) : num2.Substring(0, left2 + 18));
+                add = ((l1 + l2 + carry) % MOD).ToString(); sb.Insert(0, add);
+                if (add.Length < 18) sb.Insert(0, new string('0', 18 - add.Length));
                 carry = (l1 + l2 + carry) / MOD;
                 left1 -= 18; left2 -= 18;
             }
             if (left2 > -18) { num1 = num2; left1 = left2; }
             while (left1 > -18)
             {
-                l1 = long.Parse(left1 >= 0 ? num1.Substring(left1, 18) : num1.Substring(0, left1 + 17));
-                result.Insert(0, ((l1 + carry) % MOD).ToString());
+                l1 = long.Parse(left1 >= 0 ? num1.Substring(left1, 18) : num1.Substring(0, left1 + 18));
+                add = ((l1 + carry) % MOD).ToString(); sb.Insert(0, add);
+                if (add.Length < 18) sb.Insert(0, new string('0', 18 - add.Length));
                 carry = (l1 + carry) / MOD;
                 left1 -= 18;
             }
-            if (carry > 0) result.Insert(0, carry.ToString());
 
-            return result.ToString();
+            string result = sb.ToString();
+            if (carry > 0)
+                return $"{carry}{result}";
+            else
+            {
+                result = result.TrimStart('0');
+                return result == "" ? "0" : result;
+            }
         }
     }
 }

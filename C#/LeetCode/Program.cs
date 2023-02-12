@@ -28,8 +28,8 @@ namespace LeetCode
             //test.Look4Rules();
             //test.VerifyRules();
 
-            //Utils0342 utils = new();
-            //utils.Print4Power();
+            //Utils1138 utils = new();
+            //utils.Dial();
 
             //Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
             //Console.WriteLine($"{++id,2}: In {stopwatch.Elapsed}, {(result == answer) + ",",-6} result: {result}, answer: {answer}");

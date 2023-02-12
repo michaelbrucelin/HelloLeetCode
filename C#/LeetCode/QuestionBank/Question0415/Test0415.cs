@@ -36,7 +36,24 @@ namespace LeetCode.QuestionBank.Question0415
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
 
             // 5. 
-            num1 = "11111111111111111111111111111111"; num2 = "999999999999999999999999999999"; answer = "10";
+            num1 = "11111111111111111111111111111111"; num2 = "999999999999999999999999999999"; answer = "12111111111111111111111111111110";
+            result = solution.AddStrings(num1, num2);
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            // 6. 
+            num1 = "0"; num2 = "0"; answer = "0";
+            result = solution.AddStrings(num1, num2);
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            // 7. 
+            num1 = "1"; num2 = "999999999999999999"; answer = "1000000000000000000";
+            result = solution.AddStrings(num1, num2);
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            // 8. 
+            num1 = "541982060092168498451651518198198811908139417398912951912143650537206598519205603455602369504575450387573146280";
+            num2 = "2051051984893020654984520306549848916006549848916502309848949802089489489032009849815020984891339487";
+            answer = "541982060094219550436544538853183332214689266314919501761060152847055548321295092944634379354390471372464485767";
             result = solution.AddStrings(num1, num2);
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
         }
