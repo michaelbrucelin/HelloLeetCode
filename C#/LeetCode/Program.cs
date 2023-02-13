@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview0103;
-using LeetCode.QuestionBank.Question0415;
+using LeetCode.QuestionBank.Question1234;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0053_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -22,7 +22,7 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test0415 test = new();
+            Test1234 test = new();
             test.Test();
             //test.TestDivergentTraverse();
             //test.Look4Rules();
@@ -37,8 +37,10 @@ namespace LeetCode
             //Console.WriteLine($"{++id,2}: In {stopwatch.Elapsed}, {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
 
             //const int MOD = 1000000007;
+            //string question = "1234", testcase = "08";
             //string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @"QuestionBank\Question1971\TestCases\TestCase1971_04.txt");
+            //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"QuestionBank\Question{question}\TestCases\TestCase{question}_{testcase}.txt");
+            //arg = File.ReadAllText(path);
             //string raw = "[[0,1],[1,2]]";
             //Console.WriteLine(UtilsLeetCode.TestCase2CSharpDeclare(raw, UtilsLeetCode.TestCaseType.array_2d));
             //const int M1 = 0x55555555;  // 01010101010101010101010101010101
@@ -48,7 +50,7 @@ namespace LeetCode
             //const int MX = 0x0000ffff;  // 00000000000000001111111111111111
 
             //Console.WriteLine(Utils.GenerateRandomStringArray(50, 1, 100, Utils.GenStrChars.lower));
-            //Console.WriteLine(Utils.GetRandomString("()", 1234));
+            //Console.WriteLine(Utils.GetRandomString("QWER", 10000));
             //Console.WriteLine(Utils.GetRandomString(Utils.GenStrChars.lower, 1000));
             //Console.WriteLine(Utils.GenerateRandomIntArray(100, 1, 10));
             //Utils.PrintArray(Utils.ShuffleArray(Enumerable.Range(0, 10).ToArray()));
@@ -58,6 +60,13 @@ namespace LeetCode
                 //Console.WriteLine(uint.MaxValue);   // 4294967295            10位
                 //Console.WriteLine(long.MaxValue);   // 9223372036854775807   19位
                 //Console.WriteLine(ulong.MaxValue);  // 18446744073709551615  20位
+            }
+
+            {
+                //Console.WriteLine($"Q: {('Q' >> 1) & 3}");
+                //Console.WriteLine($"W: {('W' >> 1) & 3}");
+                //Console.WriteLine($"E: {('E' >> 1) & 3}");
+                //Console.WriteLine($"R: {('R' >> 1) & 3}");
             }
 
             {
