@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview0103;
-using LeetCode.QuestionBank.Question1234;
+using LeetCode.QuestionBank.Question1124;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0053_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -22,7 +22,7 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test1234 test = new();
+            Test1124 test = new();
             test.Test();
             //test.TestDivergentTraverse();
             //test.Look4Rules();
@@ -52,7 +52,7 @@ namespace LeetCode
             //Console.WriteLine(Utils.GenerateRandomStringArray(50, 1, 100, Utils.GenStrChars.lower));
             //Console.WriteLine(Utils.GetRandomString("QWER", 10000));
             //Console.WriteLine(Utils.GetRandomString(Utils.GenStrChars.lower, 1000));
-            //Console.WriteLine(Utils.GenerateRandomIntArray(100, 1, 10));
+            //Console.WriteLine(Utils.GenerateRandomIntArray(10000, 0, 16));
             //Utils.PrintArray(Utils.ShuffleArray(Enumerable.Range(0, 10).ToArray()));
 
             {
@@ -88,8 +88,8 @@ namespace LeetCode
             }
 
             {
-                //Console.WriteLine("abcdefg"[1..^1]);
-                //string[] strs = new string[10];      // 默认值是null
+                //Console.WriteLine("abcdefg"[1..^1]);  // bcdef
+                //string[] strs = new string[10];       // 默认值是null
                 //Console.WriteLine(strs[1] == null);
             }
 
