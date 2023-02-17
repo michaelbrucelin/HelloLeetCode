@@ -181,16 +181,43 @@ namespace LeetCode.Utilses
         {
             if (list == null) return "null";
             if (list.Count == 0) return "[ ]";
-            if (list.Count == 1) return $"[ {ArrayToString<T>(list[0])} ]";
+            if (list.Count == 1) return $"[ {ArrayToString(list[0])} ]";
 
             StringBuilder sb = new StringBuilder();
 
             sb.Append("[ ");
-            sb.Append($"{ArrayToString<T>(list[0])}, "); if (multiline) sb.Append(Environment.NewLine);
+            sb.Append($"{ArrayToString(list[0])}, "); if (multiline) sb.Append(Environment.NewLine);
             for (int i = 1; i < list.Count - 1; i++)
-            { if (multiline) sb.Append("  "); sb.Append($"{ArrayToString<T>(list[i])}, "); if (multiline) sb.Append(Environment.NewLine); }
-            if (multiline) sb.Append("  "); sb.Append($"{ArrayToString<T>(list[list.Count - 1])}");
+            { if (multiline) sb.Append("  "); sb.Append($"{ArrayToString(list[i])}, "); if (multiline) sb.Append(Environment.NewLine); }
+            if (multiline) sb.Append("  "); sb.Append($"{ArrayToString(list[list.Count - 1])}");
             sb.Append(" ]");
+
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// 将二维数组转为字符串
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="arr"></param>
+        /// <returns></returns>
+        public static string ArrayToString<T>(T[,] arr, bool multiline)
+        {
+            if (arr == null) return "null";
+            if (arr.Length == 0) return "[ ]";
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("[ ");
+            for (int row = 0; row < arr.GetLength(0) - 1; row++)
+            {
+                if (multiline) sb.Append("  "); sb.Append("[ ");
+                for (int col = 0; col < arr.GetLength(1) - 1; col++) sb.Append($"{arr[row, col]}, "); sb.Append(arr[row, arr.GetLength(1) - 1]);
+                sb.Append(" ],"); if (multiline) sb.Append(Environment.NewLine);
+            }
+            if (multiline) sb.Append("  "); sb.Append("[ ");
+            for (int col = 0; col < arr.GetLength(1) - 1; col++) sb.Append($"{arr[arr.GetLength(0) - 1, col]}, "); sb.Append(arr[arr.GetLength(0) - 1, arr.GetLength(1) - 1]);
+            sb.Append(" ] ]");
 
             return sb.ToString();
         }
@@ -207,6 +234,20 @@ namespace LeetCode.Utilses
                 array[i] = random.Next(min, max + 1);
 
             return ArrayToString(array);
+        }
+
+        /// <summary>
+        /// 生成随机测试用例，二维整数数组
+        /// </summary>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public static string GenerateRandomIntArray(int row, int col, int min, int max, bool multiline)
+        {
+            int[,] array = new int[row, col];
+            for (int i = 0; i < row; i++) for (int j = 0; j < col; j++)
+                    array[i, j] = random.Next(min, max + 1);
+
+            return ArrayToString(array, multiline);
         }
 
         /// <summary>
