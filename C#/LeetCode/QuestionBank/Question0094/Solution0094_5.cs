@@ -10,7 +10,28 @@ namespace LeetCode.QuestionBank.Question0094
     {
         public IList<int> InorderTraversal(TreeNode root)
         {
-            throw new NotImplementedException();
+            List<int> result = new List<int>();
+            if (root == null) return result;
+
+            TreeNode ptr = root, pre;
+            while (ptr != null)
+            {
+                if (ptr.left == null) { result.Add(ptr.val); ptr = ptr.right; }
+                else
+                {
+                    pre = ptr.left; while (pre.right != null && pre.right != ptr) pre = pre.right;
+                    if (pre.right == null)
+                    {
+                        pre.right = ptr; ptr = ptr.left;
+                    }
+                    else
+                    {
+                        pre.right = null; result.Add(ptr.val); ptr = ptr.right;
+                    }
+                }
+            }
+
+            return result;
         }
     }
 }
