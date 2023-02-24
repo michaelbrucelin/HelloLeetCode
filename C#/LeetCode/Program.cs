@@ -1,7 +1,7 @@
 ﻿using LeetCode.Interview.Interview0103;
 using LeetCode.QuestionBank.Question1238;
 using LeetCode.LCP.LCP0030;
-using LeetCode.剑指_Offer.剑指_Offer_0053_1;
+using LeetCode.剑指_Offer.剑指_Offer_0062;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
 using System;
 using System.Collections.Generic;
@@ -22,7 +22,7 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test1238 test = new();
+            Test0062 test = new();
             test.Test();
             //test.TestDivergentTraverse();
             //test.Look4Rules();
@@ -68,6 +68,17 @@ namespace LeetCode
                 //Console.WriteLine($"W: {('W' >> 1) & 3}");
                 //Console.WriteLine($"E: {('E' >> 1) & 3}");
                 //Console.WriteLine($"R: {('R' >> 1) & 3}");
+            }
+
+            {
+                // LinkedList不是环形链表
+                //LinkedList<int> list = new LinkedList<int>();
+                //for (int i = 0; i < 8; i++) list.AddLast(i);
+                //var ptr = list.First;
+                //for (int i = 0; i < 18; i++)
+                //{
+                //    Console.WriteLine(ptr.Value); ptr = ptr.Next;
+                //}
             }
 
             {
