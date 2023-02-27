@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview0103;
-using LeetCode.QuestionBank.Question1255;
+using LeetCode.QuestionBank.Question0844;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0062;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -22,8 +22,8 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test1255 test = new();
-            test.Test();
+            Test0844 test = new();
+            //test.Test();
             //test.TestDivergentTraverse();
             //test.Look4Rules();
             //test.VerifyRules();
@@ -52,7 +52,7 @@ namespace LeetCode
             //Console.WriteLine(Utils.GenerateRandomStringArray(50, 1, 100, Utils.GenStrChars.lower));
             //Console.WriteLine(Utils.GetRandomString("QWER", 10000));
             //Console.WriteLine(Utils.GetRandomString(Utils.GenStrChars.lower, 1000));
-            //Console.WriteLine(Utils.GenerateRandomIntArray(10001, 0, 100));
+            Console.WriteLine(Utils.GenerateRandomIntArray(10000, 0, 10000));
             //Console.WriteLine(Utils.GenerateRandomIntArray(100, 100, 0, 1, true));
             //Utils.PrintArray(Utils.ShuffleArray(Enumerable.Range(0, 10).ToArray()));
 
@@ -79,6 +79,13 @@ namespace LeetCode
                 //{
                 //    Console.WriteLine(ptr.Value); ptr = ptr.Next;
                 //}
+            }
+
+            {
+                //StringBuilder sb = new StringBuilder();
+                //sb.Append("abc");
+                //sb.Append("xyz");
+                //Console.WriteLine($"sb.length: {sb.Length}");  // 6
             }
 
             {
