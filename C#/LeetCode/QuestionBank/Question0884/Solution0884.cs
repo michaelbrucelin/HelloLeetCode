@@ -63,6 +63,32 @@ namespace LeetCode.QuestionBank.Question0884
         }
 
         /// <summary>
+        /// 与UncommonFromSentences()逻辑一样，使用代码手段，精简代码
+        /// </summary>
+        /// <param name="s1"></param>
+        /// <param name="s2"></param>
+        /// <returns></returns>
+        public string[] UncommonFromSentences2_1(string s1, string s2)
+        {
+            Dictionary<string, int> dic = new Dictionary<string, int>();
+            (int left, int len, string str)[] args = new (int left, int len, string str)[] { (0, s1.Length, s1), (0, s2.Length, s2) };
+            for (int i = 0; i < args.Length; i++)
+            {
+                int left = args[i].left, len = args[i].len, right; string str = args[i].str;
+                while (left < len)
+                {
+                    right = left + 1;
+                    while (right < len && str[right] != ' ') right++;
+                    string _str = str.Substring(left, right - left);
+                    if (dic.ContainsKey(_str)) dic[_str]++; else dic.Add(_str, 1);
+                    left = right + 1;
+                }
+            }
+
+            return dic.Where(kv => kv.Value == 1).Select(kv => kv.Key).ToArray();
+        }
+
+        /// <summary>
         /// 与UncommonFromSentences()逻辑一样，将字符串截取换成StringBuilder
         /// </summary>
         /// <param name="s1"></param>
@@ -118,6 +144,33 @@ namespace LeetCode.QuestionBank.Question0884
             {
                 left = 0; len = s2.Length; str = s2; repeat = false;
                 goto Repeat;
+            }
+
+            return dic.Where(kv => kv.Value == 1).Select(kv => kv.Key).ToArray();
+        }
+
+        /// <summary>
+        /// 与UncommonFromSentences3()逻辑一样，使用代码手段，精简代码
+        /// </summary>
+        /// <param name="s1"></param>
+        /// <param name="s2"></param>
+        /// <returns></returns>
+        public string[] UncommonFromSentences4_1(string s1, string s2)
+        {
+            Dictionary<string, int> dic = new Dictionary<string, int>();
+            StringBuilder sb = new StringBuilder();
+            (int left, int len, string str)[] args = new (int left, int len, string str)[] { (0, s1.Length, s1), (0, s2.Length, s2) };
+            for (int i = 0; i < args.Length; i++)
+            {
+                int left = args[i].left, len = args[i].len, right; string str = args[i].str;
+                while (left < len)
+                {
+                    right = left; sb.Clear();
+                    while (right < len && str[right] != ' ') sb.Append(str[right++]);
+                    string _str = sb.ToString();
+                    if (dic.ContainsKey(_str)) dic[_str]++; else dic.Add(_str, 1);
+                    left = right + 1;
+                }
             }
 
             return dic.Where(kv => kv.Value == 1).Select(kv => kv.Key).ToArray();
