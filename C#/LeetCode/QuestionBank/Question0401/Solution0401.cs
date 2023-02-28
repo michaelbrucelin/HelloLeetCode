@@ -12,7 +12,7 @@ namespace LeetCode.QuestionBank.Question0401
         private static readonly List<int> MI = new List<int>() { 1, 2, 4, 8, 16, 32 };
 
         /// <summary>
-        /// 组合
+        /// 组合，回溯
         /// 小时是由1, 2, 4, 8这4个数字中的几个组合而来，4次背包
         /// 分钟是由1, 2, 4, 8, 16, 32这6个数字中的几个组合而来，6次背包
         /// 简化
