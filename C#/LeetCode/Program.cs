@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview0103;
-using LeetCode.QuestionBank.Question0401;
+using LeetCode.QuestionBank.Question0405;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0062;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -23,7 +23,7 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test0401 test = new();
+            Test0405 test = new();
             test.Test();
             //test.TestDivergentTraverse();
             //test.Look4Rules();
@@ -58,6 +58,10 @@ namespace LeetCode
             //Utils.PrintArray(Utils.ShuffleArray(Enumerable.Range(0, 10).ToArray()));
 
             {
+                Console.WriteLine(Convert.ToString(1, 2));   // 1
+                Console.WriteLine(Convert.ToString((-1), 2));  // 11111111111111111111111111111111
+                Console.WriteLine(Convert.ToString((-1) >> 4, 2));  // 11111111111111111111111111111111
+
                 //Enumerable.Range(0, 16).MyForEach(i => Console.WriteLine($"{i:D2}"));  // 00 01 ... 15
 
                 //Console.WriteLine(int.MaxValue);    // 2147483647            10位
