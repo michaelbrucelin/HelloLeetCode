@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview0103;
-using LeetCode.QuestionBank.Question0844;
+using LeetCode.QuestionBank.Question0401;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0062;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading;
 using System.IO;
 using System.Reflection;
+using System.Threading.Channels;
 
 namespace LeetCode
 {
@@ -22,13 +23,13 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test0844 test = new();
-            //test.Test();
+            Test0401 test = new();
+            test.Test();
             //test.TestDivergentTraverse();
             //test.Look4Rules();
             //test.VerifyRules();
 
-            //Utils1238 utils = new();
+            //Utils0401 utils = new();
             //utils.Dial();
 
             //Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
@@ -52,11 +53,13 @@ namespace LeetCode
             //Console.WriteLine(Utils.GenerateRandomStringArray(50, 1, 100, Utils.GenStrChars.lower));
             //Console.WriteLine(Utils.GetRandomString("QWER", 10000));
             //Console.WriteLine(Utils.GetRandomString(Utils.GenStrChars.lower, 1000));
-            Console.WriteLine(Utils.GenerateRandomIntArray(10000, 0, 10000));
+            //Console.WriteLine(Utils.GenerateRandomIntArray(10000, 0, 10000));
             //Console.WriteLine(Utils.GenerateRandomIntArray(100, 100, 0, 1, true));
             //Utils.PrintArray(Utils.ShuffleArray(Enumerable.Range(0, 10).ToArray()));
 
             {
+                //Enumerable.Range(0, 16).MyForEach(i => Console.WriteLine($"{i:D2}"));  // 00 01 ... 15
+
                 //Console.WriteLine(int.MaxValue);    // 2147483647            10位
                 //Console.WriteLine(uint.MaxValue);   // 4294967295            10位
                 //Console.WriteLine(long.MaxValue);   // 9223372036854775807   19位
