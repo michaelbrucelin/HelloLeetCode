@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview0103;
-using LeetCode.QuestionBank.Question0405;
+using LeetCode.QuestionBank.Question2373;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0062;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -23,7 +23,7 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test0405 test = new();
+            Test2373 test = new();
             test.Test();
             //test.TestDivergentTraverse();
             //test.Look4Rules();
@@ -36,6 +36,8 @@ namespace LeetCode
             //Console.WriteLine($"{++id,2}: In {stopwatch.Elapsed}, {(result == answer) + ",",-6} result: {result}, answer: {answer}");
             //Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
             //Console.WriteLine($"{++id,2}: In {stopwatch.Elapsed}, {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            //Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ArrayToString(result, false)}, answer: {Utils.ArrayToString(answer, false)}");
+            //Console.WriteLine($"{++id,2}: In {stopwatch.Elapsed}, {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ArrayToString(result, false)}, answer: {Utils.ArrayToString(answer, false)}");
 
             //const int MOD = 1000000007;
             //string question = "1234", testcase = "08";
@@ -58,9 +60,9 @@ namespace LeetCode
             //Utils.PrintArray(Utils.ShuffleArray(Enumerable.Range(0, 10).ToArray()));
 
             {
-                Console.WriteLine(Convert.ToString(1, 2));   // 1
-                Console.WriteLine(Convert.ToString((-1), 2));  // 11111111111111111111111111111111
-                Console.WriteLine(Convert.ToString((-1) >> 4, 2));  // 11111111111111111111111111111111
+                //Console.WriteLine(Convert.ToString(1, 2));   // 1
+                //Console.WriteLine(Convert.ToString((-1), 2));  // 11111111111111111111111111111111
+                //Console.WriteLine(Convert.ToString((-1) >> 4, 2));  // 11111111111111111111111111111111
 
                 //Enumerable.Range(0, 16).MyForEach(i => Console.WriteLine($"{i:D2}"));  // 00 01 ... 15
 

@@ -75,7 +75,7 @@ namespace LeetCode.Utilses
 
         /// <summary>
         /// 比较两个二维数组是否相等
-        /// TODO：方法是错误的，需要改
+        /// TODO：忽略顺序的那部分没有完成，主要是没有想清楚怎么忽略顺序
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list1"></param>
@@ -87,27 +87,16 @@ namespace LeetCode.Utilses
 
             if (ignoreOrder)
             {
-                for (int i = 0; i < list1.Count; i++)
-                {
-                    list1[i] = list1[i].OrderBy(t => t).ToList();
-                    list2[i] = list2[i].OrderBy(t => t).ToList();
-                }
+                //for (int i = 0; i < list1.Count; i++)
+                //{
+                //    list1[i] = list1[i].OrderBy(t => t).ToList();
+                //    list2[i] = list2[i].OrderBy(t => t).ToList();
+                //}
             }
 
-            bool[] mask = new bool[list2.Count];
             for (int i = 0; i < list1.Count; i++)
             {
-                bool flag = true;
-                for (int j = 0; j < list2.Count; j++)
-                {
-                    if (!mask[j] && list1[i].Count == list2[j].Count)
-                    {
-                        for (int k = 0; k > list1[i].Count; k++)
-                            if (list1[i][k].CompareTo(list2[j][k]) != 0) { flag = false; break; }
-                        mask[j] = true;
-                    }
-                }
-                if (!flag) return false;
+                if (!Enumerable.SequenceEqual(list1[i], list2[i])) return false;
             }
 
             return true;
