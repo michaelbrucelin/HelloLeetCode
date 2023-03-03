@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview0502;
-using LeetCode.QuestionBank.Question2373;
+using LeetCode.QuestionBank.Question0953;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0062;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -23,7 +23,7 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test0502 test = new();
+            Test0953 test = new();
             test.Test();
             //test.TestDivergentTraverse();
             //test.Look4Rules();
@@ -77,6 +77,11 @@ namespace LeetCode
                 //Console.WriteLine($"W: {('W' >> 1) & 3}");
                 //Console.WriteLine($"E: {('E' >> 1) & 3}");
                 //Console.WriteLine($"R: {('R' >> 1) & 3}");
+            }
+
+            {
+                //Console.WriteLine(int.Parse("03"));        // 3，不异常
+                //Console.WriteLine(Convert.ToInt32("03"));  // 3，不异常
             }
 
             {
