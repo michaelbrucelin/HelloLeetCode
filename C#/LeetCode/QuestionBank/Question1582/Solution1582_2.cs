@@ -18,9 +18,7 @@ namespace LeetCode.QuestionBank.Question1582
             int result = 0;
 
             bool[] colmask = new bool[mat[0].Length];
-            for (int i = 0; i < mat.Length; i++)
-            {
-                for (int j = 0; j < mat[0].Length; j++)
+            for (int i = 0; i < mat.Length; i++) for (int j = 0; j < mat[0].Length; j++)
                 {
                     if (colmask[j]) continue;
                     if (mat[i][j] == 1)  // 无论这个值验证是否通过，都直接下一行，因为这一行后面的值如果是1，也会因为一行两个1而验证失败
@@ -33,7 +31,6 @@ namespace LeetCode.QuestionBank.Question1582
                         break;
                     }
                 }
-            }
 
             return result;
         }
