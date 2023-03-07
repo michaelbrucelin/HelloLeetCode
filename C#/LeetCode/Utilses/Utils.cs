@@ -317,6 +317,26 @@ namespace LeetCode.Utilses
             return new string(str.OrderBy(i => random.Next()).ToArray());
         }
 
+        /// <summary>
+        /// 使用指定的分隔字符将字符串分割为字符串数组，与string.Split()不同的是，这里保留分隔符作为数组独立的项
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="delims"></param>
+        /// <returns></returns>
+        public static IEnumerable<string> SplitAndKeep(string s, char[] delims)
+        {
+            int start = 0, index;
+
+            while ((index = s.IndexOfAny(delims, start)) != -1)
+            {
+                if (index - start > 0) yield return s.Substring(start, index - start);
+                yield return s.Substring(index, 1);
+                start = index + 1;
+            }
+
+            if (start < s.Length) yield return s.Substring(start);
+        }
+
         ///// <summary>
         ///// Question0025里面有写，稍后统一
         ///// </summary>

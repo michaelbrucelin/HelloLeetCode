@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview0502;
-using LeetCode.QuestionBank.Question2062;
+using LeetCode.QuestionBank.Question1096;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0062;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -23,7 +23,7 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test2062 test = new();
+            Test1096 test = new();
             test.Test();
             //test.TestDivergentTraverse();
             //test.Look4Rules();
@@ -77,6 +77,26 @@ namespace LeetCode
                 //Console.WriteLine($"W: {('W' >> 1) & 3}");
                 //Console.WriteLine($"E: {('E' >> 1) & 3}");
                 //Console.WriteLine($"R: {('R' >> 1) & 3}");
+            }
+
+            {
+                // 将字符串拆分为数组，同时保留拆分符号
+                //string str = "{a,b}{c,{d,e}{f,g}}";
+                //string[] strs;
+                //int id = 0;
+                //Console.WriteLine($"======== {++id} ========");
+                //strs = Regex.Split(str, @","); for (int i = 0; i < strs.Length; i++) Console.WriteLine($"{i}\t{strs[i]}");
+                //Console.WriteLine($"======== {++id} ========");
+                //strs = Regex.Split(str, @"(,)"); for (int i = 0; i < strs.Length; i++) Console.WriteLine($"{i}\t{strs[i]}");
+                //Console.WriteLine($"======== {++id} ========");
+                //strs = Regex.Split(str, @",{}"); for (int i = 0; i < strs.Length; i++) Console.WriteLine($"{i}\t{strs[i]}");
+                //Console.WriteLine($"======== {++id} ========");
+                //strs = Regex.Split(str, @"([,{}])"); for (int i = 0; i < strs.Length; i++) Console.WriteLine($"{i}\t{strs[i]}");
+                //Console.WriteLine($"======== {++id} ========");
+                //strs = Regex.Split(str, @"(?=>[,{}])"); for (int i = 0; i < strs.Length; i++) Console.WriteLine($"{i}\t{strs[i]}");
+                //Console.WriteLine($"======== {++id} ========");
+                //strs = Utils.SplitAndKeep(str, new char[] { ',', '{', '}' }).ToArray();
+                //for (int i = 0; i < strs.Length; i++) Console.WriteLine($"{i}\t{strs[i]}");
             }
 
             {
