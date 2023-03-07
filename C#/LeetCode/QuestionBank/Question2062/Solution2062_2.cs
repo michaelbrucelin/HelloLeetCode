@@ -24,19 +24,17 @@ namespace LeetCode.QuestionBank.Question2062
             {
                 _r = map.ContainsKey(word[i]) ? map[word[i]] : 0;
                 for (int j = 0; j < 6; j++)
-                {
                     pre[j, i + 1] = pre[j, i] + (j != _r ? 0 : 1);
-                }
             }
 
             for (int i = 0; i < len - 4; i++) for (int j = i + 4; j < len; j++)
                 {
-                    if (pre[0, j + 1] - pre[0, i] == 0
-                        && pre[1, j + 1] - pre[1, i] > 0
-                        && pre[2, j + 1] - pre[2, i] > 0
-                        && pre[3, j + 1] - pre[3, i] > 0
-                        && pre[4, j + 1] - pre[4, i] > 0
-                        && pre[5, j + 1] - pre[5, i] > 0) result++;
+                    if (pre[0, j + 1] - pre[0, i] > 0) break;
+                    if (pre[1, j + 1] - pre[1, i] > 0 &&
+                        pre[2, j + 1] - pre[2, i] > 0 &&
+                        pre[3, j + 1] - pre[3, i] > 0 &&
+                        pre[4, j + 1] - pre[4, i] > 0 &&
+                        pre[5, j + 1] - pre[5, i] > 0) result++;
                 }
 
             return result;

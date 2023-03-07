@@ -52,8 +52,8 @@ namespace LeetCode.QuestionBank.Question2062
                 for (int j = i; j < len; j++)
                 {
                     if (!set.Contains(word[j])) break;
-                    set.Add(word[j]);
-                    if (set.Count == 5) result++;
+                    buffer.Add(word[j]);
+                    if (buffer.Count == 5) result++;
                 }
             }
 
