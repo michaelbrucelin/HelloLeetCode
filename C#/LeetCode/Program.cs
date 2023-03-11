@@ -1,5 +1,5 @@
-﻿using LeetCode.Interview.Interview0502;
-using LeetCode.QuestionBank.Question1590;
+﻿using LeetCode.Interview.Interview1705;
+using LeetCode.QuestionBank.Question0605;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0058_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -23,7 +23,7 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test1590 test = new();
+            Test0605 test = new();
             test.Test();
             //test.TestDivergentTraverse();
             //test.Look4Rules();
