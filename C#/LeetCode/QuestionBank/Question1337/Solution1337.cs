@@ -45,8 +45,7 @@ namespace LeetCode.QuestionBank.Question1337
 
             for (int i = 0; i < mat.Length; i++)
             {
-                int j = 0; for (; j < mat[i].Length && mat[i][j] != 0; j++) ;
-                topk.Enqueue(i, (j, i));
+                topk.Enqueue(i, (BinarySearch(mat[i]), i));
                 if (topk.Count > k) topk.Dequeue();
             }
 
@@ -68,8 +67,8 @@ namespace LeetCode.QuestionBank.Question1337
 
             for (int i = 0; i < mat.Length; i++)
             {
-                int j = 0; for (; j < mat[i].Length && mat[i][j] != 0; j++) ;
-                topk.Enqueue(i, -((j << 7) + i));
+                int cnt = BinarySearch(mat[i]);
+                topk.Enqueue(i, -((cnt << 7) + i));
                 if (topk.Count > k) topk.Dequeue();
             }
 
