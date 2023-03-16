@@ -34,12 +34,22 @@ namespace LeetCode.QuestionBank.Question2418
             for (int i = 0; i < len; i++) ids[i] = i;
             Array.Sort(ids, (id1, id2) => heights[id2] - heights[id1]);
 
+            int _i = -1; string _s = null;
             for (int i = 0; i < len; i++)
             {
-                if (ids[i] != i)
+                if (ids[i] == i) continue;
+                if (ids[i] == _i)
                 {
-                    string _s = names[i]; names[i] = names[ids[i]]; names[ids[i]] = _s;
-                    int _i = ids[i]; ids[i] = i; ids[_i] = _i;
+                    names[i] = _s; _i = -1;
+                }
+                else
+                {
+                    if (_i == -1) { _i = i; _s = names[i]; }
+                    int j = i, _j; do
+                    {
+                        names[j] = names[ids[j]]; _j = ids[j]; ids[j] = j; j = _j;
+                    } while (ids[j] != _i);
+                    names[j] = _s; ids[j] = j; _i = -1;
                 }
             }
 
