@@ -20,5 +20,14 @@ namespace LeetCode.QuestionBank.Question1672
 
             return result;
         }
+
+        public int MaximumWealth2(int[][] accounts)
+        {
+            int result = 0;
+            for (int i = 0, sum = 0; i < accounts.Length; result = Math.Max(result, sum), sum = 0, i++)
+                for (int j = 0; j < accounts[i].Length; j++) sum += accounts[i][j];
+
+            return result;
+        }
     }
 }
