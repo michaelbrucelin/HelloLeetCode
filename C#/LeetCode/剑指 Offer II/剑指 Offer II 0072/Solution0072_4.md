@@ -1,4 +1,4 @@
-﻿#### [方法三：牛顿迭代](https://leetcode.cn/problems/sqrtx/solutions/238553/x-de-ping-fang-gen-by-leetcode-solution/)
+﻿#### [方法三：牛顿迭代](https://leetcode.cn/problems/jJ0w9p/solutions/1398892/qiu-ping-fang-gen-by-leetcode-solution-ybnw/)
 
 **思路**
 
@@ -12,7 +12,7 @@ $$y = f(x) = x^2 - C$$
 
 牛顿迭代法的本质是借助泰勒级数，从初始值开始快速向零点逼近。我们任取一个 $x_0$ 作为初始值，在每一步的迭代中，我们找到函数图像上的点 $(x_i, f(x_i))$，过该点作一条斜率为该点导数 $f'(x_i)$ 的直线，与横轴的交点记为 $x_{i+1}$。$x_{i+1}$ 相较于 $x_i$ 而言距离零点更近。在经过多次迭代后，我们就可以得到一个距离零点非常接近的交点。下图给出了从 $x_0$ 开始迭代两次，得到 $x_1$ 和 $x_2$ 的过程。
 
-![](./assets/img/Solution0069_4_01.png)
+![](./assets/img/Solution0072_4_01.png)
 
 **算法**
 
@@ -24,7 +24,7 @@ $$\begin{aligned} y_l &= 2x_i(x - x_i) + x_i^2 - C \\ &= 2x_ix - (x_i^2 + C) \en
 
 与横轴的交点为方程 $2x_ix - (x_i^2 + C) = 0$ 的解，即为新的迭代结果 $x_{i+1}$：
 
-$$x_{i+1} = \dfrac{1}{2}\left(x_i + \dfrac{C}{x_i}\right)$$
+$$x_{i+1} = \frac{1}{2}\left(x_i + \frac{C}{x_i}\right)$$
 
 在进行 $k$ 次迭代后，$x_k$ 的值与真实的零点 $\sqrt{C}$ 足够接近，即可作为答案。
 
