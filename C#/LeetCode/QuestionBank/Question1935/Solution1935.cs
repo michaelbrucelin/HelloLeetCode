@@ -10,7 +10,7 @@ namespace LeetCode.QuestionBank.Question1935
     {
         /// <summary>
         /// 双指针
-        /// 使用类似于C的朴素方式去解
+        /// 使用类似于C的朴素方式去解，题目保证了没有多余的空格，所以空格就相当于“Enter”键，即遇到空格就验证一次
         /// </summary>
         /// <param name="text"></param>
         /// <param name="brokenLetters"></param>
@@ -20,10 +20,20 @@ namespace LeetCode.QuestionBank.Question1935
             bool[] set = new bool[27];  // set[0]不使用
             for (int i = 0; i < brokenLetters.Length; i++) set[brokenLetters[i] & 31] = true;
 
-            int result = 0, ptr_l = 0, ptr_r, len = text.Length;
-            while (ptr_l < len)
+            int result = 0, ptr = -1, len = text.Length;
+            bool flag = true;
+            while (++ptr < len)
             {
+                if (text[ptr] != ' ')
+                {
+                    if (set[text[ptr] & 31]) flag = false;
+                }
+                else
+                {
+                    if (flag) result++; else flag = true;
+                }
             }
+            if (flag) result++;
 
             return result;
         }
