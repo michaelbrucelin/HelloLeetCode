@@ -11,7 +11,7 @@ namespace LeetCode.QuestionBank.Question1630
     {
         public void Test()
         {
-            Interface1630 solution = new Solution1630_2();
+            Interface1630 solution = new Solution1630_3();
             int[] nums; int[] l, r;
             IList<bool> result, answer;
             int id = 0;
