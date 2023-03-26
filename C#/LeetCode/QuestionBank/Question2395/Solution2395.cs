@@ -19,18 +19,5 @@ namespace LeetCode.QuestionBank.Question2395
 
             return false;
         }
-
-        public bool FindSubarrays2(int[] nums)
-        {
-            int len = nums.Length;
-            return Enumerable.Range(1, len - 1)
-                             .Select(i => nums[i] + nums[i - 1])
-                             .Distinct().Count() < len - 1;
-        }
-
-        public bool FindSubarrays3(int[] nums)
-        {
-            return nums.Skip(1).Select((i, id) => i + nums[id]).Distinct().Count() < nums.Length - 1;
-        }
     }
 }
