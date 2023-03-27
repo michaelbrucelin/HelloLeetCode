@@ -10,7 +10,7 @@ namespace LeetCode.QuestionBank.Question1638
     {
         public void Test()
         {
-            Interface1638 solution = new Solution1638_2();
+            Interface1638 solution = new Solution1638_3();
             string s, t;
             int result, answer;
             int id = 0;
