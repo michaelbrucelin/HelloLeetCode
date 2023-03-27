@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview1617;
-using LeetCode.QuestionBank.Question0653;
+using LeetCode.QuestionBank.Question1638;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0058_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -23,7 +23,7 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test0653 test = new();
+            Test1638 test = new();
             test.Test();
             //test.TestDivergentTraverse();
             //test.Look4Rules();
@@ -52,7 +52,7 @@ namespace LeetCode
             //const int M8 = 0x00ff00ff;  // 00000000111111110000000011111111
             //const int MX = 0x0000ffff;  // 00000000000000001111111111111111
 
-            //Console.WriteLine(Utils.GenerateRandomStringArray(50, 1, 100, Utils.GenStrChars.lower));
+            //Console.WriteLine(Utils.GenerateRandomStringArray(4, 100, 100, Utils.GenStrChars.lower));
             //Console.WriteLine(Utils.GetRandomString("ab", 100000));
             //Console.WriteLine(Utils.GetRandomString(Utils.GenStrChars.lower, 1000));
             //Console.WriteLine(Utils.GenerateRandomIntArray(10000, 0, 10000));
