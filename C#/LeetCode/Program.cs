@@ -55,7 +55,7 @@ namespace LeetCode
             //Console.WriteLine(Utils.GenerateRandomStringArray(4, 8, 16, "abcd"));
             //Console.WriteLine(Utils.GetRandomString("ab", 100000));
             //Console.WriteLine(Utils.GetRandomString(Utils.GenStrChars.lower, 1000));
-            Console.WriteLine(Utils.GenerateRandomIntArray(10000, 1, 10000));
+            //Console.WriteLine(Utils.GenerateRandomIntArray(10000, 1, 10000));
             //Console.WriteLine(Utils.GenerateRandomIntArray(100, 100, 0, 1, true));
             //Utils.PrintArray(Utils.ShuffleArray(Enumerable.Range(0, 10).ToArray()));
 
