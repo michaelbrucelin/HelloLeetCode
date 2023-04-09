@@ -10,11 +10,15 @@ namespace LeetCode.QuestionBank.Question2399
     {
         public bool CheckDistances(string s, int[] distance)
         {
-            int[] buffer = new int[26]; for (int i = 0; i < 26; i++) buffer[i] = -1;
+            int[] buffer = new int[26];
+            Array.Fill(buffer, -1);  // for (int i = 0; i < 26; i++) buffer[i] = -1;
             for (int i = 0; i < s.Length; i++)
             {
                 int id = s[i] - 'a';
-                if (buffer[id] == -1) buffer[id] = i;
+                if (buffer[id] == -1)
+                {
+                    buffer[id] = i;
+                }
                 else
                 {
                     if (i - buffer[id] - 1 != distance[id]) return false;
