@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview1617;
-using LeetCode.QuestionBank.Question1147;
+using LeetCode.QuestionBank.Question1023;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0058_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -23,7 +23,7 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test1147 test = new();
+            Test1023 test = new();
             test.Test();
             //test.TestDivergentTraverse();
             //test.Look4Rules();
@@ -106,6 +106,11 @@ namespace LeetCode
                 //Console.WriteLine($"10 % 4 = {Math.DivRem(10, 4).Quotient},{Math.DivRem(10, 4).Remainder}");
                 //Console.WriteLine($"10 %-4 = {10 % -4}");
                 //Console.WriteLine($"10 %-4 = {Math.DivRem(10, -4).Quotient},{Math.DivRem(10, -4).Remainder}");
+            }
+
+            {
+                //string pattern = "FooBar";
+                //Console.WriteLine($"[a-z]*{string.Join("[a-z]*", pattern.Select(c => c))}[a-z]*");
             }
 
             {
