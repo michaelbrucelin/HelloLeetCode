@@ -13,7 +13,7 @@ namespace LeetCode.QuestionBank.Question1971
     {
         public void Test()
         {
-            Interface1971 solution = new Solution1971_2();
+            Interface1971 solution = new Solution1971_3_2();
             int n; int[][] edges; int source, destination;
             bool result, answer;
             int id = 0;
@@ -41,6 +41,23 @@ namespace LeetCode.QuestionBank.Question1971
             string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @"QuestionBank\Question1971\TestCases\TestCase1971_04.txt");
             // Console.WriteLine(path);
+            using (StreamReader reader = new StreamReader(path))
+            {
+                foreach (string line in reader.MyLines())
+                {
+                    string[] strs = line.Substring(1, line.Length - 2).Split(',');
+                    _edges.Add(new int[] { Convert.ToInt32(strs[0]), Convert.ToInt32(strs[1]) });
+                }
+            }
+            edges = _edges.ToArray();
+            n = 50; source = 40; destination = 3; answer = true;
+            result = solution.ValidPath(n, edges, source, destination);
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            // 5. 
+            _edges = new List<int[]>();
+            path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @"QuestionBank\Question1971\TestCases\TestCase1971_05.txt");
             using (StreamReader reader = new StreamReader(path))
             {
                 foreach (string line in reader.MyLines())

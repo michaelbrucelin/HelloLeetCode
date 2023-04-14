@@ -8,17 +8,17 @@ CLRS（算法导论）第21章。
 举个不恰当的例子：
 
 A创建了一个公益组织，起初只有他自己一个人，后面B、C、D、...相继加入。一开始是组织所有人都要审核，后面人数太多了很麻烦，于是大家提议说，我们都相信A，把A作为老大吧。于是后面A就代表了组织。
-![](./assets/img/Solution1971_6_01.png)
+![](./assets/img/Solution1971_oth_01.png)
 
 后来，Z也同样的创建了一个组织，Y、X、…相继加入。同理Z也成为组织的代表。
-![](./assets/img/Solution1971_6_02.png)
+![](./assets/img/Solution1971_oth_02.png)
 
 那问大家一个问题，现在X和B有关系吗？
 
 -   没有的，他们现在处于不同的组织，A和Z没有关系。
 
 后来大家一看，我们组织和他们组织做的事情都一样，那我们一起做不是效率会更高吗？因为A那边组织人数比较多，所以Z这个组织所有人都同意认A做老大。
-![](./assets/img/Solution1971_6_03.png)
+![](./assets/img/Solution1971_oth_03.png)
 
 那还是问大家这个问题，现在X和B有关系吗？
 
@@ -58,7 +58,7 @@ public int findSet(int x) {
 ```
 
 UNION(x, y)可能有点抽象，我们画个图看看。 那么假如，F跟B说，我们两组织一起吧（此时F不知道包含B集合的代表是谁），B说那简单，你找你们老大H，我找我们老大A，他们两OK就行了！
-![](./assets/img/Solution1971_6_04.png)
+![](./assets/img/Solution1971_oth_04.png)
 
 ```cpp
 public void union(int x, int y) {
@@ -69,7 +69,7 @@ public void union(int x, int y) {
 ```
 
 UNION也可以继续一步优化，当两颗树深度不同时，深度小的接到深度比较深的。因为这样不会使得深度加深。这一步也叫路径优化
-![](./assets/img/Solution1971_6_05.png)
+![](./assets/img/Solution1971_oth_05.png)
 
 （大家想一下画一下就懂了）
 
@@ -103,7 +103,7 @@ public void union(int x, int y) {
 
 #### 路径压缩
 
-回过头我们再看一下函数FIND-SET，我们要找C的根节点，C先找到B，B再找到A。这样如果这个链路一长，是不是很耗时？ 那其实我们可以优化直接把C指向A。这一步也叫做路径压缩。（只有在该结点被查找的时候才会压缩） ![](./assets/img/Solution1971_6_06.png)
+回过头我们再看一下函数FIND-SET，我们要找C的根节点，C先找到B，B再找到A。这样如果这个链路一长，是不是很耗时？ 那其实我们可以优化直接把C指向A。这一步也叫做路径压缩。（只有在该结点被查找的时候才会压缩） ![](./assets/img/Solution1971_oth_06.png)
 
 ```cpp
     /**

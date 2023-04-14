@@ -11,7 +11,7 @@ namespace LeetCode.QuestionBank.Question1971
     {
         /// <summary>
         /// DFS
-        /// 提交会内存溢出，参考测试用例4
+        /// 提交会内存溢出，参考测试用例5
         /// </summary>
         /// <param name="n"></param>
         /// <param name="edges"></param>
