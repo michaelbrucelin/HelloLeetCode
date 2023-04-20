@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview1617;
-using LeetCode.QuestionBank.Question1043;
+using LeetCode.QuestionBank.Question1187;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0058_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -23,7 +23,7 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test1043 test = new();
+            Test1187 test = new();
             test.Test();
             //test.TestDivergentTraverse();
             //test.Look4Rules();
@@ -71,36 +71,6 @@ namespace LeetCode
                 //Console.WriteLine(long.MaxValue);   // 9223372036854775807   19位
                 //Console.WriteLine(ulong.MaxValue);  // 18446744073709551615  20位
             }
-        }
-
-        private static List<(int type, string pattern)> PatternSplit(string pattern)
-        {
-            List<(int type, string pattern)> patterns = new List<(int, string)>();
-            List<char> buffer = new List<char>();
-            for (int i = 0; i < pattern.Length; i++)
-            {
-                switch (pattern[i])
-                {
-                    case '.':
-                        if (buffer.Count > 0) { patterns.Add((1, new string(buffer.ToArray()))); buffer = new List<char>(); }
-                        if (i + 1 < pattern.Length && pattern[i + 1] == '*') { patterns.Add((4, ".*")); i++; }
-                        else patterns.Add((3, "."));
-                        break;
-                    case '*':
-                        if (buffer.Count == 0) throw new Exception("Invalid Input.");  // 题目不允许 * 前面没有其他字符
-                        string item = $"{buffer.Last()}*";
-                        buffer.RemoveAt(buffer.Count - 1);
-                        if (buffer.Count > 0) { patterns.Add((1, new string(buffer.ToArray()))); buffer = new List<char>(); }
-                        patterns.Add((2, item));
-                        break;
-                    default:  // 小写字母
-                        buffer.Add(pattern[i]);
-                        break;
-                }
-            }
-            if (buffer.Count > 0) patterns.Add((1, new string(buffer.ToArray())));
-
-            return patterns;
         }
     }
 }
