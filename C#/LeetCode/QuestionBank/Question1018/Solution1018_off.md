@@ -1,22 +1,22 @@
 ﻿#### [方法一：遍历](https://leetcode.cn/problems/binary-prefix-divisible-by-5/solutions/558959/ke-bei-5-zheng-chu-de-er-jin-zhi-qian-zh-asih/)
 
-令 $num_i$ 为数组 $nums$ 从下标 $0$ 到下标 $i$ 的前缀表示的二进制数，则有 $num_0=nums[0]$。当 $i>0$ 时，有 numi=numi−1×2+nums[i]num_i=num_{i-1} \times 2+nums[i]numi\=numi−1×2+nums[i]。令 $n$ 为数组 $nums$ 的长度，则对于 0≤i<n0 \le i<n0≤i<n，可以依次计算每个 $num_i$ 的值。对于每个 $num_i$ 的值，判断其是否可以被 555 整除，即可得到答案。
+令 $num_i$ 为数组 $nums$ 从下标 $0$ 到下标 $i$ 的前缀表示的二进制数，则有 $num_0=nums[0]$。当 $i>0$ 时，有 $num_i=num_{i-1} \times 2+nums[i]$。令 $n$ 为数组 $nums$ 的长度，则对于 $0 \le i< n$，可以依次计算每个 $num_i$ 的值。对于每个 $num_i$ 的值，判断其是否可以被 $5$ 整除，即可得到答案。
 
 考虑到数组 $nums$ 可能很长，如果每次都保留 $num_i$ 的值，则可能导致溢出。由于只需要知道每个 $num_i$ 是否可以被 $5$ 整除，因此在计算过程中只需要保留余数即可。
 
-令 $remain_i$ 表示计算到下标 $i$ 时的除以 $5$ 的余数，则有 $remain_0=nums[0]$（显然 $nums[0]$ 一定小于 $5$），当 $i>0$ 时，有 remaini=(remaini−1×2+nums[i]) mod 5remain_i=(remain_{i-1} \times 2+nums[i])\bmod 5remaini\=(remaini−1×2+nums[i])mod5，判断每个 $remain_i$ 是否为 000 即可。由于 $remain_i$ 一定小于 555，因此不会溢出。
+令 $remain_i$ 表示计算到下标 $i$ 时的除以 $5$ 的余数，则有 $remain_0=nums[0]$（显然 $nums[0]$ 一定小于 $5$），当 $i>0$ 时，有 $remain_i=(remain_{i-1} \times 2+nums[i])\bmod 5$，判断每个 $remain_i$ 是否为 $0$ 即可。由于 $remain_i$ 一定小于 $5$，因此不会溢出。
 
 如何证明判断 $remain_i$ 是否为 $0$ 可以得到正确的结果？可以通过数学归纳法证明。
 
-当 $i=0$ 时，由于 num0=nums[0]<5num_0=nums[0]<5num0\=nums[0]<5，因此 $remain_0=num_0$，$remain_0=num_0 \bmod 5$ 成立。
+当 $i=0$ 时，由于 $num_0=nums[0]<5$，因此 $remain_0=num_0$，$remain_0=num_0 \bmod 5$ 成立。
 
-当 $i>0$ 时，假设 remaini−1=numi−1 mod 5remain_{i-1}=num_{i-1}\bmod 5remaini−1\=numi−1mod5 成立，考虑 $num_i \bmod 5$ 和 $remain_i$ 的值：
+当 $i>0$ 时，假设 $remain_{i-1}=num_{i-1}\bmod 5$ 成立，考虑 $num_i \bmod 5$ 和 $remain_i$ 的值：
 
-numi mod 5=(numi−1×2+nums[i]) mod 5=(numi−1×2) mod 5+nums[i] mod 5remaini=(remaini−1×2+nums[i]) mod 5=(numi−1 mod 5×2+nums[i]) mod 5=(numi−1 mod 5×2) mod 5+nums[i] mod 5=(numi−1×2) mod 5+nums[i] mod 5 \begin{aligned} num_i\bmod 5=&(num_{i-1} \times 2+nums[i])\bmod 5 \\\\ =&(num_{i-1} \times 2)\bmod 5+nums[i]\bmod 5 \\\\ \\\\ remain_i=&(remain_{i-1} \times 2+nums[i])\bmod 5 \\\\ =&(num_{i-1}\bmod 5 \times 2+nums[i])\bmod 5 \\\\ =&(num_{i-1}\bmod 5 \times 2)\bmod 5+nums[i]\bmod 5 \\\\ =&(num_{i-1} \times 2)\bmod 5+nums[i]\bmod 5 \\end{aligned} numimod5\=\=remaini\=\=\=\=(numi−1×2+nums[i])mod5(numi−1×2)mod5+nums[i]mod5(remaini−1×2+nums[i])mod5(numi−1mod5×2+nums[i])mod5(numi−1mod5×2)mod5+nums[i]mod5(numi−1×2)mod5+nums[i]mod5
+$$\begin{aligned} num_i \bmod 5=&(num_{i-1} \times 2+nums[i]) \bmod 5 \\ =&(num_{i-1} \times 2) \bmod 5+nums[i]\bmod 5 \\ \\ remain_i=&(remain_{i-1} \times 2+nums[i]) \bmod 5 \\ =&(num_{i-1} \bmod 5 \times 2+nums[i]) \bmod 5 \\ =&(num_{i-1} \bmod 5 \times 2) \bmod 5+nums[i] \bmod 5 \\ =&(num_{i-1} \times 2) \bmod 5+nums[i] \bmod 5 \end{aligned}$$
 
-因此有 remaini=numi mod 5remain_i=num_i\bmod 5remaini\=numimod5 成立。
+因此有 $remain_i=num_i \bmod 5$ 成立。
 
-由此可得，对任意 0≤i<n0 \le i<n0≤i<n，都有 remaini=numi mod 5remain_i=num_i\bmod 5remaini\=numimod5，因此计算 $remain_i$ 即可得到正确的结果。
+由此可得，对任意 $0 \le i < n$，都有 $remain_i=num_i \bmod 5$，因此计算 $remain_i$ 即可得到正确的结果。
 
 ```java
 class Solution {

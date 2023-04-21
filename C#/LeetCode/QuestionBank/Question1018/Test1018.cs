@@ -11,7 +11,7 @@ namespace LeetCode.QuestionBank.Question1018
     {
         public void Test()
         {
-            Interface1018 solution = new Solution1018_2();
+            Interface1018 solution = new Solution1018_oth();
             int[] nums;
             IList<bool> result, answer;
             int id = 0;
