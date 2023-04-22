@@ -4,7 +4,7 @@
 
 给你一个整数数组 `nums`，返回 `nums` 中最长等差子序列的**长度**。
 
-回想一下，`nums` 的子序列是一个列表 `nums[i<sub>1</sub>], nums[i<sub>2</sub>], ..., nums[i<sub>k</sub>]` ，且 `0 <= i<sub>1</sub> < i<sub>2</sub> < ... < i<sub>k</sub> <= nums.length - 1`。并且如果 `seq[i+1] - seq[i]`( `0 <= i < seq.length - 1`) 的值都相同，那么序列 `seq` 是等差的。
+回想一下，`nums` 的子序列是一个列表 `nums[i_1], nums[i_2], ..., nums[i_k]` ，且 `0 <= i_1 < i_2 < ... < i_k <= nums.length - 1`。并且如果 `seq[i+1] - seq[i]`( `0 <= i < seq.length - 1`) 的值都相同，那么序列 `seq` 是等差的。
 
 **示例 1：**
 
