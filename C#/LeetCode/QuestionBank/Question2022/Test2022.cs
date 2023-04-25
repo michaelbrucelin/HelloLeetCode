@@ -42,7 +42,7 @@ namespace LeetCode.QuestionBank.Question2022
 
             // 5. 
             original = new int[] { 1, 1, 1, 1 }; m = 4; n = 1;
-            answer = new int[0][];
+            answer = new int[4][] { new int[] { 1 }, new int[] { 1 }, new int[] { 1 }, new int[] { 1 } };
             result = solution.Construct2DArray(original, m, n);
             Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ArrayToString(result, false)}, answer: {Utils.ArrayToString(answer, false)}");
         }

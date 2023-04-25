@@ -17,7 +17,7 @@ namespace LeetCode.QuestionBank.Question2022
             for (int i = 0; i < m; i++)
             {
                 result[i] = new int[n];
-                for (int j = 0, start = m * i; j < n; j++)
+                for (int j = 0, start = n * i; j < n; j++)
                     result[i][j] = original[start + j];
             }
 
