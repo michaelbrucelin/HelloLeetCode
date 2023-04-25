@@ -15,5 +15,13 @@ namespace LeetCode.QuestionBank.Question2418
                           .Select(t => names[t.id])
                           .ToArray();
         }
+
+        public string[] SortPeople2(string[] names, int[] heights)
+        {
+            return names.Zip(heights, (name, height) => (name, height))
+                        .OrderByDescending(t => t.height)
+                        .Select(t => t.name)
+                        .ToArray();
+        }
     }
 }

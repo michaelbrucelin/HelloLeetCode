@@ -8,7 +8,7 @@ namespace LeetCode.QuestionBank.Question2418
 {
     public class Solution2418 : Interface2418
     {
-        public string[] SortPeople2(string[] names, int[] heights)
+        public string[] SortPeople(string[] names, int[] heights)
         {
             int len = names.Length;
             int[] ids = new int[len];
@@ -27,7 +27,7 @@ namespace LeetCode.QuestionBank.Question2418
         /// <param name="names"></param>
         /// <param name="heights"></param>
         /// <returns></returns>
-        public string[] SortPeople(string[] names, int[] heights)
+        public string[] SortPeople2(string[] names, int[] heights)
         {
             int len = names.Length;
             int[] ids = new int[len];
