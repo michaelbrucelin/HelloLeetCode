@@ -2,7 +2,7 @@
 
 **思路**
 
-用一个数组 $stack$ 来模拟栈，编号为 $index$ 的栈的顶部 $stackTop$ 在数组中的下标 $pos$ 可以通过公式来表示：pos=index×capacity+stackTop\\textit{pos} = \\textit{index} \\times \\textit{capacity} + \\textit{stackTop}pos\=index×capacity+stackTop。用一个有序集合 $poppedPos$ 来保存被方法 $popAtStack$ 删除的位置。用数组 $top$ 记录每个栈的栈顶元素在栈中的位置，比如 top\[1\]=2\\textit{top}\[1\] = 2top\[1\]\=2 就表示，编号为 111 的栈，栈顶元素在栈中的下标为 222（从 000 开始计数，capacity>2\\textit{capacity} > 2capacity\>2），即在这个栈中，它上面没有元素，它下面还有两个元素。
+用一个数组 $stack$ 来模拟栈，编号为 $index$ 的栈的顶部 $stackTop$ 在数组中的下标 $pos$ 可以通过公式来表示：$pos = index \times capacity + stackTop$。用一个有序集合 $poppedPos$ 来保存被方法 $popAtStack$ 删除的位置。用数组 $top$ 记录每个栈的栈顶元素在栈中的位置，比如 $top[1] = 2$ 就表示，编号为 $1$ 的栈，栈顶元素在栈中的下标为 $2$（从 $0$ 开始计数，$capacity > 2$），即在这个栈中，它上面没有元素，它下面还有两个元素。
 
 执行 $push$ 时，先考虑 $poppedPos$ 中的位置，如果非空，则找出最小的位置，把元素 $push$ 到这个位置。如果为空，则往 $stack$ 后追加，然后更新 $top$。
 
