@@ -22,11 +22,10 @@ linkedList.addAtIndex(1,2);   //链表变为1-> 2-> 3
 linkedList.get(1);            //返回2
 linkedList.deleteAtIndex(1);  //现在链表是1-> 3
 linkedList.get(1);            //返回3
-
 ```
 
 **提示：**
 
--   所有`val`值都在 `[1, 1000]` 之内。
--   操作次数将在  `[1, 1000]` 之内。
+-   `0 <= index, val <= 1000`
 -   请不要使用内置的 LinkedList 库。
+-   `get`, `addAtHead`, `addAtTail`, `addAtIndex` 和 `deleteAtIndex` 的操作次数不超过 `2000`。

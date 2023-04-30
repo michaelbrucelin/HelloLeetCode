@@ -29,4 +29,12 @@
     <Folder Include="QuestionBank\Question1971\新文件夹\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="D:\我的代码\github\HelloLeetCode\C#\LeetCode\QuestionBank\Question1617\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="D:\我的代码\github\HelloLeetCode\C#\LeetCode\QuestionBank\Question1617\.editorconfig" />
+  </ItemGroup>
+
 </Project>

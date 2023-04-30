@@ -1,12 +1,12 @@
-#### 方法一：模拟
+#### [方法一：模拟](https://leetcode.cn/problems/special-positions-in-a-binary-matrix/solutions/1796614/er-jin-zhi-ju-zhen-zhong-de-te-shu-wei-z-kan4/)
 
 **思路与算法**
 
-题目给定了一个大小为 m×n 的矩阵 mat，并满足矩阵中的任意元素为 1 或者 0。现在给出**特殊位置**的定义：如果 mat[i][j]\=1,i∈[0,m),j∈[0,n))，并且第 i 行和第 j 列的其他元素均为 0，则位置 (i,j) 为**特殊位置**。那么我们枚举每一个位置，然后按照特殊位置的定义来判断该位置是否满足要求，又因为矩阵中的每一个元素只能为 1 或者 0，所以我们可以预处理出每一行和列的和来快速的得到每一行和列中的 1 的个数。
+题目给定了一个大小为 $m \times n$ 的矩阵 $mat$，并满足矩阵中的任意元素为 $1$ 或者 $0$。现在给出**特殊位置**的定义：如果 $mat[i][j] = 1, i \in [0,m),j \in [0, n)$，并且第 $i$ 行和第 $j$ 列的其他元素均为 $0$，则位置 $(i,j)$ 为**特殊位置**。那么我们枚举每一个位置，然后按照特殊位置的定义来判断该位置是否满足要求，又因为矩阵中的每一个元素只能为 $1$ 或者 $0$，所以我们可以预处理出每一行和列的和来快速的得到每一行和列中的 $1$ 的个数。
 
 **代码**
 
-```Python3
+```python
 class Solution:
     def numSpecial(self, mat: List[List[int]]) -> int:
         rows_sum = [sum(row) for row in mat]
@@ -17,10 +17,9 @@ class Solution:
                 if x == 1 and rows_sum[i] == 1 and cols_sum[j] == 1:
                     res += 1
         return res
-
 ```
 
-```Java
+```java
 class Solution {
     public int numSpecial(int[][] mat) {
         int m = mat.length, n = mat[0].length;
@@ -43,10 +42,9 @@ class Solution {
         return res;
     }
 }
-
 ```
 
-```C#
+```csharp
 public class Solution {
     public int NumSpecial(int[][] mat) {
         int m = mat.Length, n = mat[0].Length;
@@ -69,10 +67,9 @@ public class Solution {
         return res;
     }
 }
-
 ```
 
-```C++
+```cpp
 class Solution {
 public:
     int numSpecial(vector<vector<int>>& mat) {
@@ -96,10 +93,9 @@ public:
         return res;
     }
 };
-
 ```
 
-```C
+```c
 int numSpecial(int** mat, int matSize, int* matColSize) {
     int m = matSize, n = matColSize[0];
     int *rowsSum = (int *)malloc(sizeof(int) * m);
@@ -124,10 +120,9 @@ int numSpecial(int** mat, int matSize, int* matColSize) {
     free(colsSum);
     return res;
 }
-
 ```
 
-```JavaScript
+```javascript
 var numSpecial = function(mat) {
     const m = mat.length, n = mat[0].length;
     const rowsSum = new Array(m).fill(0);
@@ -148,10 +143,9 @@ var numSpecial = function(mat) {
     }
     return res;
 };
-
 ```
 
-```Golang
+```go
 func numSpecial(mat [][]int) (ans int) {
     rowsSum := make([]int, len(mat))
     colsSum := make([]int, len(mat[0]))
@@ -170,10 +164,9 @@ func numSpecial(mat [][]int) (ans int) {
     }
     return
 }
-
 ```
 
 **复杂度分析**
 
--   时间复杂度：O(m×n)，其中 m 为矩阵 mat 的行数，nnn 为矩阵 mat 的列数。
--   空间复杂度：O(m+n)，主要为预处理每一行和列的空间开销。
+-   时间复杂度：$O(m \times n)$，其中 $m$ 为矩阵 $mat$ 的行数，$n$ 为矩阵 $mat$ 的列数。
+-   空间复杂度：$O(m + n)$，主要为预处理每一行和列的空间开销。

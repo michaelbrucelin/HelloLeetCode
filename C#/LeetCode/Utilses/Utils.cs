@@ -75,7 +75,7 @@ namespace LeetCode.Utilses
 
         /// <summary>
         /// 比较两个二维数组是否相等
-        /// TODO：方法是错误的，需要改
+        /// TODO：忽略顺序的那部分没有完成，主要是没有想清楚怎么忽略顺序
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list1"></param>
@@ -87,27 +87,16 @@ namespace LeetCode.Utilses
 
             if (ignoreOrder)
             {
-                for (int i = 0; i < list1.Count; i++)
-                {
-                    list1[i] = list1[i].OrderBy(t => t).ToList();
-                    list2[i] = list2[i].OrderBy(t => t).ToList();
-                }
+                //for (int i = 0; i < list1.Count; i++)
+                //{
+                //    list1[i] = list1[i].OrderBy(t => t).ToList();
+                //    list2[i] = list2[i].OrderBy(t => t).ToList();
+                //}
             }
 
-            bool[] mask = new bool[list2.Count];
             for (int i = 0; i < list1.Count; i++)
             {
-                bool flag = true;
-                for (int j = 0; j < list2.Count; j++)
-                {
-                    if (!mask[j] && list1[i].Count == list2[j].Count)
-                    {
-                        for (int k = 0; k > list1[i].Count; k++)
-                            if (list1[i][k].CompareTo(list2[j][k]) != 0) { flag = false; break; }
-                        mask[j] = true;
-                    }
-                }
-                if (!flag) return false;
+                if (!Enumerable.SequenceEqual(list1[i], list2[i])) return false;
             }
 
             return true;
@@ -181,16 +170,43 @@ namespace LeetCode.Utilses
         {
             if (list == null) return "null";
             if (list.Count == 0) return "[ ]";
-            if (list.Count == 1) return $"[ {ArrayToString<T>(list[0])} ]";
+            if (list.Count == 1) return $"[ {ArrayToString(list[0])} ]";
 
             StringBuilder sb = new StringBuilder();
 
             sb.Append("[ ");
-            sb.Append($"{ArrayToString<T>(list[0])}, "); if (multiline) sb.Append(Environment.NewLine);
+            sb.Append($"{ArrayToString(list[0])}, "); if (multiline) sb.Append(Environment.NewLine);
             for (int i = 1; i < list.Count - 1; i++)
-            { if (multiline) sb.Append("  "); sb.Append($"{ArrayToString<T>(list[i])}, "); if (multiline) sb.Append(Environment.NewLine); }
-            if (multiline) sb.Append("  "); sb.Append($"{ArrayToString<T>(list[list.Count - 1])}");
+            { if (multiline) sb.Append("  "); sb.Append($"{ArrayToString(list[i])}, "); if (multiline) sb.Append(Environment.NewLine); }
+            if (multiline) sb.Append("  "); sb.Append($"{ArrayToString(list[list.Count - 1])}");
             sb.Append(" ]");
+
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// 将二维数组转为字符串
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="arr"></param>
+        /// <returns></returns>
+        public static string ArrayToString<T>(T[,] arr, bool multiline)
+        {
+            if (arr == null) return "null";
+            if (arr.Length == 0) return "[ ]";
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("[ ");
+            for (int row = 0; row < arr.GetLength(0) - 1; row++)
+            {
+                if (multiline) sb.Append("  "); sb.Append("[ ");
+                for (int col = 0; col < arr.GetLength(1) - 1; col++) sb.Append($"{arr[row, col]}, "); sb.Append(arr[row, arr.GetLength(1) - 1]);
+                sb.Append(" ],"); if (multiline) sb.Append(Environment.NewLine);
+            }
+            if (multiline) sb.Append("  "); sb.Append("[ ");
+            for (int col = 0; col < arr.GetLength(1) - 1; col++) sb.Append($"{arr[arr.GetLength(0) - 1, col]}, "); sb.Append(arr[arr.GetLength(0) - 1, arr.GetLength(1) - 1]);
+            sb.Append(" ] ]");
 
             return sb.ToString();
         }
@@ -207,6 +223,20 @@ namespace LeetCode.Utilses
                 array[i] = random.Next(min, max + 1);
 
             return ArrayToString(array);
+        }
+
+        /// <summary>
+        /// 生成随机测试用例，二维整数数组
+        /// </summary>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public static string GenerateRandomIntArray(int row, int col, int min, int max, bool multiline)
+        {
+            int[,] array = new int[row, col];
+            for (int i = 0; i < row; i++) for (int j = 0; j < col; j++)
+                    array[i, j] = random.Next(min, max + 1);
+
+            return ArrayToString(array, multiline);
         }
 
         /// <summary>
@@ -285,6 +315,26 @@ namespace LeetCode.Utilses
         public static string ShuffleString(string str)
         {
             return new string(str.OrderBy(i => random.Next()).ToArray());
+        }
+
+        /// <summary>
+        /// 使用指定的分隔字符将字符串分割为字符串数组，与string.Split()不同的是，这里保留分隔符作为数组独立的项
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="delims"></param>
+        /// <returns></returns>
+        public static IEnumerable<string> SplitAndKeep(string s, char[] delims)
+        {
+            int start = 0, index;
+
+            while ((index = s.IndexOfAny(delims, start)) != -1)
+            {
+                if (index - start > 0) yield return s.Substring(start, index - start);
+                yield return s.Substring(index, 1);
+                start = index + 1;
+            }
+
+            if (start < s.Length) yield return s.Substring(start);
         }
 
         ///// <summary>

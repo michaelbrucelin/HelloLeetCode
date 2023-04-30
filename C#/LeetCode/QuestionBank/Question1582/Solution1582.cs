@@ -17,8 +17,7 @@ namespace LeetCode.QuestionBank.Question1582
         {
             int result = 0;
 
-            for (int i = 0; i < mat.Length; i++)
-                for (int j = 0; j < mat[0].Length; j++)
+            for (int i = 0; i < mat.Length; i++) for (int j = 0; j < mat[0].Length; j++)
                     if (mat[i][j] == 1 && Verify(mat, i, j)) result++;
 
             return result;

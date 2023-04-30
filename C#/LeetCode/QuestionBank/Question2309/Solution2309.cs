@@ -17,7 +17,7 @@ namespace LeetCode.QuestionBank.Question2309
                 if (char.IsLower(s[i])) lower[s[i] - 'a'] = true; else upper[s[i] - 'A'] = true;
 
             for (int i = 25; i >= 0; i--)
-                if (lower[i] && upper[i]) return ((char)(65 + i)).ToString();
+                if (lower[i] && upper[i]) return ((char)('A' + i)).ToString();
 
             return string.Empty;
         }
@@ -34,7 +34,7 @@ namespace LeetCode.QuestionBank.Question2309
                 if (char.IsLower(s[i])) mask[s[i] - 'a'] |= 1; else mask[s[i] - 'A'] |= 2;
 
             for (int i = 25; i >= 0; i--)
-                if (mask[i] == 3) return ((char)(65 + i)).ToString();
+                if (mask[i] == 3) return ((char)('A' + i)).ToString();
 
             return string.Empty;
         }

@@ -8,14 +8,17 @@ namespace LeetCode.QuestionBank.Question2331
 {
     public class Solution2331 : Interface2331
     {
+        /// <summary>
+        /// 递归
+        /// </summary>
+        /// <param name="root"></param>
+        /// <returns></returns>
         public bool EvaluateTree(TreeNode root)
         {
             if (root.val < 2) return root.val == 1;
 
-            if (root.val == 2)
-                return EvaluateTree(root.left) || EvaluateTree(root.right);
-            else
-                return EvaluateTree(root.left) && EvaluateTree(root.right);
+            return root.val == 2 ? EvaluateTree(root.left) || EvaluateTree(root.right)
+                                 : EvaluateTree(root.left) && EvaluateTree(root.right);
         }
     }
 }

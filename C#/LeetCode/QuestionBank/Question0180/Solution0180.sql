@@ -1,7 +1,15 @@
 ;WITH c0 AS(
-SELECT id, num,
-       ROW_NUMBER() OVER(ORDER BY id)*
-       (CASE WHEN num <> LAG(num, 1, '') OVER(ORDER BY id) THEN 1 ELSE 0 END) AS color_id
+SELECT Id, Num, ROW_NUMBER() OVER(ORDER BY Id) - ROW_NUMBER() OVER(PARTITION BY Num ORDER BY Id) as color_gid
+FROM Logs
+)
+SELECT DISTINCT Num AS ConsecutiveNums 
+FROM c0
+GROUP BY Num, color_gid
+HAVING COUNT(Id) >= 3
+
+-- OR
+;WITH c0 AS(
+SELECT id, num, (CASE WHEN num <> LAG(num, 1, '') OVER(ORDER BY id) THEN 1 ELSE 0 END) AS color_id
 FROM Logs
 ), c1 AS(
 SELECT id, num, color_id, SUM(color_id) OVER(ORDER BY id) AS color_gid
