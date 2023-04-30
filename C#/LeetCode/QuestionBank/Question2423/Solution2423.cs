@@ -23,10 +23,11 @@ namespace LeetCode.QuestionBank.Question2423
             {
                 if (map.ContainsKey(i)) map[i]++; else map.Add(i, 1);
             }
-            if (map.Count == 1 || map.Count > 2) return false;
+            if (map.Count > 2) return false;
+            if (map.Count == 1) return map.First().Key == 1;
 
-            return (map.First().Value == 1 && map.First().Key - map.Last().Key == 1) ||
-                   (map.Last().Value == 1 && map.Last().Key - map.First().Key == 1) ? true : false;
+            return (map.First().Value == 1 && ((map.First().Key == 1) || map.First().Key - map.Last().Key == 1)) ||
+                   (map.Last().Value == 1 && ((map.Last().Key == 1) || map.Last().Key - map.First().Key == 1)) ? true : false;
         }
     }
 }
