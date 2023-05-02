@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1376
 {
-    public class Solution1376 : Interface1376
+    public class Solution1376_2 : Interface1376
     {
         /// <summary>
-        /// DFS
+        /// BFS
         /// 1. 将manager数组转为树，然后BFS解决
         /// 2. 树是特殊的图，转为图更为简单，这里使用邻接表表示图
         /// </summary>
@@ -30,22 +30,32 @@ namespace LeetCode.QuestionBank.Question1376
                 }
             }
 
-            return dfs(headID, arc, informTime);
-        }
+            int result = 0;
+            Queue<(int id, int time)> queue = new Queue<(int id, int time)>(); queue.Enqueue((headID, informTime[headID]));
+            int cnt; while ((cnt = queue.Count) > 0)
+            {
+                for (int i = 0; i < cnt; i++)
+                {
+                    var info = queue.Dequeue();
+                    if (arc[info.id] == null)
+                    {
+                        result = Math.Max(result, info.time);
+                    }
+                    else
+                    {
+                        for (int j = 0; j < arc[info.id].Count; j++)
+                        {
+                            queue.Enqueue((arc[info.id][j], info.time + informTime[arc[info.id][j]]));
+                        }
+                    }
+                }
+            }
 
-        private int dfs(int headID, List<int>[] arc, int[] informTime)
-        {
-            if (arc[headID] == null) return 0;
-
-            int time = 0;
-            for (int i = 0; i < arc[headID].Count; i++)
-                time = Math.Max(time, dfs(arc[headID][i], arc, informTime));
-
-            return informTime[headID] + time;
+            return result;
         }
 
         /// <summary>
-        /// DFS
+        /// BFS
         /// 与NumOfMinutes()一样，这里使用邻接矩阵
         /// 逻辑没问题，但是提交会内存溢出，参考测试用例05，这里也体现了用邻接矩阵表示图的弊端，没有使用稀疏矩阵继续尝试
         /// </summary>
@@ -62,16 +72,26 @@ namespace LeetCode.QuestionBank.Question1376
                 if (manager[i] != -1) arc[manager[i], i] = 1;
             }
 
-            return dfs2(n, headID, arc, informTime);
-        }
+            int result = 0;
+            Queue<(int id, int time)> queue = new Queue<(int id, int time)>(); queue.Enqueue((headID, informTime[headID]));
+            int cnt; while ((cnt = queue.Count) > 0)
+            {
+                for (int i = 0; i < cnt; i++)
+                {
+                    var info = queue.Dequeue(); bool flag = true;
+                    for (int j = 0; j < n; j++)
+                    {
+                        if (arc[info.id, j] == 1)
+                        {
+                            queue.Enqueue((j, info.time + informTime[j]));
+                            flag = false;
+                        }
+                    }
+                    if (flag) result = Math.Max(result, info.time);
+                }
+            }
 
-        private int dfs2(int n, int headID, int[,] arc, int[] informTime)
-        {
-            int time = 0;
-            for (int i = 0; i < n; i++)
-                if (arc[headID, i] == 1) time = Math.Max(time, dfs2(n, i, arc, informTime));
-
-            return informTime[headID] + time;
+            return result;
         }
     }
 }
