@@ -43,7 +43,10 @@ namespace LeetCode.QuestionBank.Question1003
         /// 与IsValid()一样，这里将StringBuilder改为List
         /// 从后向前删除"abc"，这样理论上删除单个字符整体移动的次数更少
         ///     不排除从前面删除，.NetCore有优化，直接改List的地址
-        /// 未完成
+        ///     有限状态机：遇到'c'，状态为1
+        ///                 遇到'b'，原先状态是1，状态改为2，否则状态为0
+        ///                 遇到'a'，原先状态是2，状态改为3，否则状态为0
+        ///                 每当状态达到3，原地连续删除3个字符
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
@@ -55,18 +58,64 @@ namespace LeetCode.QuestionBank.Question1003
             if (freq[1] != freq[2] || freq[2] != freq[3] || freq[3] != freq[1]) return false;
 
             List<char> chars = s.ToList();
-            throw new NotImplementedException();
+            bool flag = true;
+            while (flag)
+            {
+                flag = false; int state = 0;
+                for (int i = chars.Count - 1; i >= 0; i--)
+                {
+                    switch (chars[i])
+                    {
+                        case 'c': state = 1; break;
+                        case 'b': state = state == 1 ? 2 : 0; break;
+                        case 'a': state = state == 2 ? 3 : 0; break;
+                    }
+                    if (state == 3)
+                    {
+                        chars.RemoveAt(i); chars.RemoveAt(i); chars.RemoveAt(i);
+                        flag = true;
+                    }
+                }
+            }
+
+            return chars.Count == 0;
         }
 
         /// <summary>
-        /// 与IsValid()一样，这里将StringBuilder改为链表
-        /// 未完成
+        /// 与IsValid2()一样，这里将List改为链表
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
         public bool IsValid3(string s)
         {
-            throw new NotImplementedException();
+            LinkedList<char> chars = new LinkedList<char>(s);
+            chars.AddFirst('x');
+
+            bool flag = true; LinkedListNode<char> ptr; int state;
+            while (flag)
+            {
+                flag = false; ptr = chars.First; state = 0;
+                while (ptr.Next != null)
+                {
+                    ptr = ptr.Next;
+                    switch (ptr.Value)
+                    {
+                        case 'a': state = 1; break;
+                        case 'b': state = state == 1 ? 2 : 0; break;
+                        case 'c': state = state == 2 ? 3 : 0; break;
+                    }
+                    if (state == 3)
+                    {
+                        // 移除3个元素
+                        // ptr.Previous.Previous.Previous.Next = ptr.Next;      // 不允许这样操作，Next    属性是只读的
+                        // ptr.Next.Previous = ptr.Previous.Previous.Previous;  // 不允许这样操作，Previous属性是只读的
+                        chars.Remove(ptr.Previous.Previous); chars.Remove(ptr.Previous); chars.Remove(ptr);
+                        flag = true;
+                    }
+                }
+            }
+
+            return chars.First.Next == null;
         }
     }
 }
