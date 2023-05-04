@@ -1,18 +1,18 @@
-﻿#### [方法一：二分查找](https://leetcode.cn/problems/maximum-fruits-harvested-after-at-most-k-steps/solutions/2254268/zhai-shui-guo-by-leetcode-solution-4j9v/)
+#### [方法一：二分查找](https://leetcode.cn/problems/maximum-fruits-harvested-after-at-most-k-steps/solutions/2254268/zhai-shui-guo-by-leetcode-solution-4j9v/)
 
 **思路与算法**
 
-由于题目中的水果位置已经是升序排列，假设此时我们知道在 xxx 轴上的移动区间为 \[left,right\]\[\\textit{left}, \\textit{right}\]\[left,right\]，则可利用二分查找很快计算出区间 \[left,right\]\[\\textit{left}, \\textit{right}\]\[left,right\] 范围内摘掉水果的数目。题目的关键则转变为求从起点移动 kkk 步而实际在 xxx 轴上移动的最大区间范围。当然在实际移动过程中肯定优先遵循「贪心」原则，因为这样每个位置的水果只能摘取一次，因此尽可能的移动更远，实际移动方法如下：
+由于题目中的水果位置已经是升序排列，假设此时我们知道在 $x$ 轴上的移动区间为 [left,right][left, right][left,right]，则可利用二分查找很快计算出区间 [left,right][left, right][left,right] 范围内摘掉水果的数目。题目的关键则转变为求从起点移动 $k$ 步而实际在 $x$ 轴上移动的最大区间范围。当然在实际移动过程中肯定优先遵循「贪心」原则，因为这样每个位置的水果只能摘取一次，因此尽可能的移动更远，实际移动方法如下：
 
--   要么一直往一个方向移动 kkk 步；要么先往一个方向移动 xxx 步，然后再反方向移动 k−xk - xk−x 步；
--   实际当 x=0x = 0x\=0 时，则一直往一个方向移动 kkk 步；
+-   要么一直往一个方向移动 $k$ 步；要么先往一个方向移动 $x$ 步，然后再反方向移动 $k - x$ 步；
+-   实际当 x=0x = 0x\=0 时，则一直往一个方向移动 $k$ 步；
 
-根据以上分析，由于有左右两个方向，我们通过不断枚举 xxx，此时 x∈\[0,k2\]x \\in\[0, \\frac{k}{2}\]x∈\[0,2k\]，即可求出其移动的区间。假设我们从起点 startPos\\textit{startPos}startPos 出发，实际有以下两种情况：
+根据以上分析，由于有左右两个方向，我们通过不断枚举 $x$，此时 x∈[0,k2]x \in[0, \frac{k}{2}]x∈[0,2k]，即可求出其移动的区间。假设我们从起点 startPosstartPosstartPos 出发，实际有以下两种情况：
 
--   先往左移动 xxx 步，然后向右移动 k−xk - xk−x 步，此时的移动区间范围 \[startPos−x,startPos+k−2x\]\[\\textit{startPos} - x, \\textit{startPos} + k - 2x\]\[startPos−x,startPos+k−2x\]；
--   先往右移动 xxx 步，然后向右移动 k−xk - xk−x 步，此时的移动区间范围 \[startPos+2x−k,startPos+x\]\[\\textit{startPos} + 2x - k,\\textit{startPos} + x\]\[startPos+2x−k,startPos+x\]；
+-   先往左移动 $x$ 步，然后向右移动 $k - x$ 步，此时的移动区间范围 [startPos-x,startPos+k-2x][startPos - x, startPos + k - 2x][startPos-x,startPos+k-2x]；
+-   先往右移动 $x$ 步，然后向右移动 $k - x$ 步，此时的移动区间范围 [startPos+2x-k,startPos+x][startPos + 2x - k,startPos + x][startPos+2x-k,startPos+x]；
 
-假设已知道当前采摘人员在 xxx 轴上的移动区间范围，则我们利用二分查找即可在 O(log⁡n)O(\\log n)O(logn) 时间复杂度内找到区间中包含的水果的数量，实际可以用前缀和进行预处理即可。
+假设已知道当前采摘人员在 $x$ 轴上的移动区间范围，则我们利用二分查找即可在 O(log⁡n)O(\log n)O(logn) 时间复杂度内找到区间中包含的水果的数量，实际可以用前缀和进行预处理即可。
 
 **代码**
 
@@ -293,37 +293,37 @@ const upperBound = (arr, left, right, val) => {
 
 **复杂度分析**
 
--   时间复杂度：O(n+klog⁡n)O(n + k \\log n)O(n+klogn)，其中 nnn 表示数组的长度，kkk 表示给定的整数 kkk。计算数组的前缀和需要的时间为 O(n)O(n)O(n)，每次查询区间中的水果数量时需要的时间为 O(log⁡n)O(\\log n)O(logn)，一共最多有 kkk 次查询，因此总的时间复杂度即为 n+klog⁡nn + k \\log nn+klogn。
--   空间复杂度：O(n)O(n)O(n)，其中 nnn 表示数组的长度。计算并存储数组的前缀和，需要的空间为 O(n)O(n)O(n)。
+-   时间复杂度：O(n+klog⁡n)O(n + k \log n)O(n+klogn)，其中 $n$ 表示数组的长度，$k$ 表示给定的整数 $k$。计算数组的前缀和需要的时间为 $O(n)$，每次查询区间中的水果数量时需要的时间为 O(log⁡n)O(\log n)O(logn)，一共最多有 $k$ 次查询，因此总的时间复杂度即为 n+klog⁡nn + k \log nn+klogn。
+-   空间复杂度：$O(n)$，其中 $n$ 表示数组的长度。计算并存储数组的前缀和，需要的空间为 $O(n)$。
 
 #### [方法二：滑动窗口](https://leetcode.cn/problems/maximum-fruits-harvested-after-at-most-k-steps/solutions/2254268/zhai-shui-guo-by-leetcode-solution-4j9v/)
 
 **思路与算法**
 
-我们可以换个思路来思考该问题，假设已知区间 \[left,right\]\[\\textit{left},\\textit{right}\]\[left,right\]，现在从起点 startPos\\textit{startPos}startPos 出发，至少需要走多少步才能遍历该区间，实际我们可以看到分为以下三种情况：
+我们可以换个思路来思考该问题，假设已知区间 [left,right][left,right][left,right]，现在从起点 startPosstartPosstartPos 出发，至少需要走多少步才能遍历该区间，实际我们可以看到分为以下三种情况：
 
--   当 startPos>right\\textit{startPos} > \\textit{right}startPos\>right 时，即区间在 startPos\\textit{startPos}startPos 的左边，此时应该从起点开始一直向左移动，直到 left\\textit{left}left 为止，此时至少需要移动 startPos−left\\textit{startPos} -\\textit{left}startPos−left 步；
--   当 startPos<left\\textit{startPos} < \\textit{left}startPos<left 时，即区间在 startPos\\textit{startPos}startPos 的右边，此时应该从起点开始一直向右移动，直到 right\\textit{right}right 为止，此时至少需要移动 right−startPos\\textit{right} -\\textit{startPos}right−startPos 步；
--   当 left≤startPos≤right\\textit{left} \\le \\textit{startPos} \\le \\textit{right}left≤startPos≤right 时，即 startPos\\textit{startPos}startPos 刚好在区间范围内，此时有两种选择：
-    -   从起点开始一直向左移动，直到 left\\textit{left}left 为止，然后再向右移动到 right\\textit{right}right，此时需要移动 startPos−left+right−left\\textit{startPos} - \\textit{left} + \\textit{right} - \\textit{left}startPos−left+right−left 步；
-    -   从起点开始一直向右移动，直到 right\\textit{right}right 为止，然后再向左移动到 left\\textit{left}left，此时最少需要移动 right−startPos+right−left\\textit{right} - \\textit{startPos} + \\textit{right} - \\textit{left}right−startPos+right−left 步；
-    -   根据两种情形，最少需要移动 right−left+min⁡(∣right−startPos∣,∣startPos−left∣)\\textit{right} - \\textit{left} + \\min(|\\textit{right} - \\textit{startPos}|,|\\textit{startPos} - \\textit{left}|)right−left+min(∣right−startPos∣,∣startPos−left∣) 步;
--   当然上述所有的情形都可以合并为一个计算公式，即实际最少需要移动 right−left+min⁡(∣right−startPos∣,∣startPos−left∣)\\textit{right} - \\textit{left} + \\min(|\\textit{right} - \\textit{startPos}|,|\\textit{startPos} - \\textit{left}|)right−left+min(∣right−startPos∣,∣startPos−left∣) 步，才能覆盖区间 \[left,right\]\[\\textit{left},\\textit{right}\]\[left,right\]，如下图所示： ![1](https://assets.leetcode-cn.com/solution-static/2106/2106_1.png)
+-   当 startPos>rightstartPos > rightstartPos\>right 时，即区间在 startPosstartPosstartPos 的左边，此时应该从起点开始一直向左移动，直到 leftleftleft 为止，此时至少需要移动 startPos-leftstartPos -leftstartPos-left 步；
+-   当 startPos<leftstartPos < leftstartPos<left 时，即区间在 startPosstartPosstartPos 的右边，此时应该从起点开始一直向右移动，直到 rightrightright 为止，此时至少需要移动 right-startPosright -startPosright-startPos 步；
+-   当 left≤startPos≤rightleft \le startPos \le rightleft≤startPos≤right 时，即 startPosstartPosstartPos 刚好在区间范围内，此时有两种选择：
+    -   从起点开始一直向左移动，直到 leftleftleft 为止，然后再向右移动到 rightrightright，此时需要移动 startPos-left+right-leftstartPos - left + right - leftstartPos-left+right-left 步；
+    -   从起点开始一直向右移动，直到 rightrightright 为止，然后再向左移动到 leftleftleft，此时最少需要移动 right-startPos+right-leftright - startPos + right - leftright-startPos+right-left 步；
+    -   根据两种情形，最少需要移动 right-left+min⁡(∣right-startPos∣,∣startPos-left∣)right - left + \\min(|right - startPos|,|startPos - left|)right-left+min(∣right-startPos∣,∣startPos-left∣) 步;
+-   当然上述所有的情形都可以合并为一个计算公式，即实际最少需要移动 right-left+min⁡(∣right-startPos∣,∣startPos-left∣)right - left + \\min(|right - startPos|,|startPos - left|)right-left+min(∣right-startPos∣,∣startPos-left∣) 步，才能覆盖区间 [left,right][left,right][left,right]，如下图所示： ![](./assets/img/Solution2106_off_2_01.png)
 
-我们设函数 step(left,right)\\text{step}(\\textit{left},\\textit{right})step(left,right) 表示从起点 startPos\\textit{startPos}startPos 出发可以覆盖区间 \[left,right\]\[\\textit{left},\\textit{right}\]\[left,right\] 的最少移动步数，此时 step(left,right)=right−left+min⁡(∣right−startPos∣,∣startPos−left∣)\\text{step}(\\textit{left},\\textit{right}) = \\textit{right} - \\textit{left} + \\min(|\\textit{right} - \\textit{startPos}|,|\\textit{startPos} - \\textit{left}|)step(left,right)\=right−left+min(∣right−startPos∣,∣startPos−left∣)。当固定 right\\textit{right}right 时，此时减少 left\\textit{left}left，可以观察到:
+我们设函数 step(left,right)step(left,right)step(left,right) 表示从起点 startPosstartPosstartPos 出发可以覆盖区间 [left,right][left,right][left,right] 的最少移动步数，此时 step(left,right)=right-left+min⁡(∣right-startPos∣,∣startPos-left∣)step(left,right) = right - left + \\min(|right - startPos|,|startPos - left|)step(left,right)\=right-left+min(∣right-startPos∣,∣startPos-left∣)。当固定 rightrightright 时，此时减少 leftleftleft，可以观察到:
 
--   当 left<startPos\\textit{left} < \\textit{startPos}left<startPos 时，step(left−1,right)<step(left,right)\\text{step}(\\textit{left} - 1,\\textit{right}) < \\text{step}(\\textit{left},\\textit{right})step(left−1,right)<step(left,right);
--   当 left≥startPos\\textit{left} \\ge \\textit{startPos}left≥startPos 时，step(left−1,right)=step(left,right)\\text{step}(\\textit{left} - 1,\\textit{right}) = \\text{step}(\\textit{left},\\textit{right})step(left−1,right)\=step(left,right);
+-   当 left<startPosleft < startPosleft<startPos 时，step(left-1,right)<step(left,right)step(left - 1,right) < step(left,right)step(left-1,right)<step(left,right);
+-   当 left≥startPosleft \\ge startPosleft≥startPos 时，step(left-1,right)=step(left,right)step(left - 1,right) = step(left,right)step(left-1,right)\=step(left,right);
 
 综上可以得到结论：
 
-step(left−1,right)≤step(left,right) \\text{step}(\\textit{left} - 1,\\textit{right}) \\le \\text{step}(\\textit{left},\\textit{right}) step(left−1,right)≤step(left,right)
+step(left-1,right)≤step(left,right) step(left - 1,right) \le step(left,right) step(left-1,right)≤step(left,right)
 
-即随着 left\\textit{left}left 的减小，step(left,right)\\text{step}(\\textit{left},\\textit{right})step(left,right) 可能会减小，但一定不会继续增大，利用这个特性我们即可利用滑动窗口来遍历所有符合要求的最大区间，然后找到区间内的覆盖水果的最大值即可，实际计算过程如下:
+即随着 leftleftleft 的减小，step(left,right)step(left,right)step(left,right) 可能会减小，但一定不会继续增大，利用这个特性我们即可利用滑动窗口来遍历所有符合要求的最大区间，然后找到区间内的覆盖水果的最大值即可，实际计算过程如下:
 
--   初始时 left=0,right=0\\textit{left} = 0, \\textit{right} = 0left\=0,right\=0，每次 right\\textit{right}right 向右移动一步；
--   计算当前区间 \[left,right\]\[\\textit{left},\\textit{right}\]\[left,right\] 需要的移动步数 step\\textit{step}step，假设 step>k\\textit{step} > kstep\>k，则我们移动左起点 left\\textit{left}left，直达满足 step<k,left≤right\\textit{step} < k,\\textit{left} \\le \\textit{right}step<k,left≤right，即可求出移动步数小于等于 kkk 且以 right\\textit{right}right 为终点的最长区间，计算出改区间覆盖的水果数目即可；
--   依次按照上述方式移动直到 right\\textit{right}right 移动到终点为止。
+-   初始时 left=0,right=0left = 0, right = 0left\=0,right\=0，每次 rightrightright 向右移动一步；
+-   计算当前区间 [left,right][left,right][left,right] 需要的移动步数 step\\textit{step}step，假设 step>k\\textit{step} > kstep\>k，则我们移动左起点 leftleftleft，直达满足 step<k,left≤right\\textit{step} < k,left \le rightstep<k,left≤right，即可求出移动步数小于等于 $k$ 且以 rightrightright 为终点的最长区间，计算出改区间覆盖的水果数目即可；
+-   依次按照上述方式移动直到 rightrightright 移动到终点为止。
 
 **代码**
 
@@ -574,5 +574,5 @@ func abs(x int) int {
 
 **复杂度分析**
 
--   时间复杂度：O(n)O(n)O(n)，其中 nnn 表示数组的长度。每次固定窗口的右侧，然后尝试移动左侧窗口，右侧端点最多移动 nnn 次，左侧端点最多移动 nnn 次，因此时间复杂度为 O(2n)=O(n)O(2n) = O(n)O(2n)\=O(n)。
--   空间复杂度：O(1)O(1)O(1)。
+-   时间复杂度：$O(n)$，其中 $n$ 表示数组的长度。每次固定窗口的右侧，然后尝试移动左侧窗口，右侧端点最多移动 $n$ 次，左侧端点最多移动 $n$ 次，因此时间复杂度为 $O(2n) = O(n)$。
+-   空间复杂度：$O(1)$。
