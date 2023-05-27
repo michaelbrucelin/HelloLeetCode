@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -69,6 +70,39 @@ namespace LeetCode.Utilses
 
             for (int i = 0; i < list1.Count; i++)
                 if (list1[i].CompareTo(list2[i]) != 0) return false;
+
+            return true;
+        }
+
+        /// <summary>
+        /// 比较两个一维数组是否相等，浮点型，指定精度
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list1"></param>
+        /// <param name="list2"></param>
+        /// <returns></returns>
+        public static bool CompareArray<T>(IList<T> list1, IList<T> list2, T precision, bool ignoreOrder = false) where T : INumber<T>
+        {
+            if (list1.Count != list2.Count) return false;
+
+            if (ignoreOrder)
+            {
+                list1 = list1.OrderBy(t => t).ToList();
+                list2 = list2.OrderBy(t => t).ToList();
+            }
+
+            for (int i = 0; i < list1.Count; i++)
+            {// if (list1[i].CompareTo(list2[i]) != 0) return false;
+                if (list1[i] == list2[i]) continue;
+                else if (list1[i] > list2[i])
+                {
+                    if (list1[i] - list2[i] > precision) return false;
+                }
+                else  // if (list1[i] < list2[i])
+                {
+                    if (list2[i] - list1[i] > precision) return false;
+                }
+            }
 
             return true;
         }
