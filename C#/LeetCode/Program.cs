@@ -41,6 +41,7 @@ namespace LeetCode
             //Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ArrayToString(result, false)}, answer: {Utils.ArrayToString(answer, false)}");
             //Console.WriteLine($"{++id,2}: In {sw.Elapsed}, {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ArrayToString(result, false)}, answer: {Utils.ArrayToString(answer, false)}");
 
+            //哑节点(dummy node)，也被称为哨兵节点
             //const int MOD = 1000000007;
             //string question = "1234", testcase = "08";
             //string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
