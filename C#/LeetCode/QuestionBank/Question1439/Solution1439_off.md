@@ -1,28 +1,28 @@
 #### [前言](https://leetcode.cn/problems/find-the-kth-smallest-sum-of-a-matrix-with-sorted-rows/solutions/2285440/you-xu-ju-zhen-zhong-de-di-k-ge-zui-xiao-urla/)
 
-本题是[「373. 查找和最小的 K 对数字」](https://leetcode.cn/problems/find-k-pairs-with-smallest-sums/description/)的进阶版本。当 m=2m = 2m\=2 时，有如下两种可行的做法：
+本题是[「373. 查找和最小的 K 对数字」](https://leetcode.cn/problems/find-k-pairs-with-smallest-sums/description/)的进阶版本。当 $m = 2$ 时，有如下两种可行的做法：
 
 -   使用小根堆（优先队列）；
 -   使用二分查找 + 双指针。
 
-对于本题而言，我们可以首先求出第 000 行和第 111 行的前 kkk 个最小数组和，将该结果与第 222 行再求出前 kkk 个最小数组和，再将该结果与第 333 行再求出前 kkk 个最小数组和，以此类推。当使用完最后一行后，就可以得到整个矩阵的前 kkk 个最小数组和，也就得到了第 kkk 个最小数组和。
+对于本题而言，我们可以首先求出第 $0$ 行和第 $1$ 行的前 $k$ 个最小数组和，将该结果与第 $2$ 行再求出前 $k$ 个最小数组和，再将该结果与第 $3$ 行再求出前 $k$ 个最小数组和，以此类推。当使用完最后一行后，就可以得到整个矩阵的前 $k$ 个最小数组和，也就得到了第 $k$ 个最小数组和。
 
-> 在求解的过程中，如果数组和的数量不够 kkk 个，就求出所有可能的数组和。
+> 在求解的过程中，如果数组和的数量不够 $k$ 个，就求出所有可能的数组和。
 
-这样做的时间复杂度为 O(m×F(k,n))O(m \times F(k, n))O(m×F(k,n))，其中 F(k,n)F(k, n)F(k,n) 表示当两个数组的长度分别是 kkk 和 nnn 时，求出前 kkk 个最小数组和的时间复杂度。下面的题解部分只会讲解 m=2m = 2m\=2 时的做法，读者也可以直接参考[「373. 查找和最小的 K 对数字」的官方题解](https://leetcode.cn/problems/find-k-pairs-with-smallest-sums/solutions/1208350/cha-zhao-he-zui-xiao-de-kdui-shu-zi-by-l-z526/)。为了叙述方便，记这两行分别为 fff 和 ggg，长度分别为 $l_f$ 和 $l_g$。
+这样做的时间复杂度为 $O(m \times F(k, n))$，其中 $F(k, n)$ 表示当两个数组的长度分别是 $k$ 和 $n$ 时，求出前 $k$ 个最小数组和的时间复杂度。下面的题解部分只会讲解 $m = 2$ 时的做法，读者也可以直接参考[「373. 查找和最小的 K 对数字」的官方题解](https://leetcode.cn/problems/find-k-pairs-with-smallest-sums/solutions/1208350/cha-zhao-he-zui-xiao-de-kdui-shu-zi-by-l-z526/)。为了叙述方便，记这两行分别为 $f$ 和 $g$，长度分别为 $l_f$ 和 $l_g$。
 
 #### [方法一：小根堆](https://leetcode.cn/problems/find-the-kth-smallest-sum-of-a-matrix-with-sorted-rows/solutions/2285440/you-xu-ju-zhen-zhong-de-di-k-ge-zui-xiao-urla/)
 
 **思路与算法**
 
-我们可以将两个数组 fff 和 ggg 求解前 kkk 个最小数组和的问题转换成类似「归并排序」的问题：
+我们可以将两个数组 $f$ 和 $g$ 求解前 $k$ 个最小数组和的问题转换成类似「归并排序」的问题：
 
--   我们构造 $l_g$ 个序列，第 iii 个序列包含了 f[0]+g[i],f[1]+g[i],⋯ ,f[lf-1]+g[i]f[0] + g[i], f[1] + g[i], \cdots, f[l_f - 1] + g[i]f[0]+g[i],f[1]+g[i],⋯,f[lf-1]+g[i]。由于 fff 是非递减的，因此这个这个序列也是非递减的；
--   所有序列的并集恰好就是所有的 lf×lgl_f \times l_glf×lg 个数组和。要想求出前 kkk 个最小数组和，我们就可以使用小根堆。初始时，我们将所有的 $l_g$ 个序列的**首项**放入堆中，随后进行 kkk 次操作，每次操作我们从堆顶取出当前的最小值，再将它后面的那一项（如果有）放回堆中。这样一来，第 j (j≥1)j~(j \\geq 1)j (j≥1) 次操作时我们得到的就是第 jjj 个最小数组和。
+-   我们构造 $l_g$ 个序列，第 $i$ 个序列包含了 $f[0] + g[i], f[1] + g[i], \cdots, f[l_f - 1] + g[i]$。由于 $f$ 是非递减的，因此这个这个序列也是非递减的；
+-   所有序列的并集恰好就是所有的 $l_f \times l_g$ 个数组和。要想求出前 $k$ 个最小数组和，我们就可以使用小根堆。初始时，我们将所有的 $l_g$ 个序列的**首项**放入堆中，随后进行 $k$ 次操作，每次操作我们从堆顶取出当前的最小值，再将它后面的那一项（如果有）放回堆中。这样一来，第 $j~(j \geq 1)$ 次操作时我们得到的就是第 $j$ 个最小数组和。
 
 **细节**
 
-上述做法的时间复杂度为 O(lg+klog⁡lg)O(l_g + k \log l_g)O(lg+kloglg)，与 $l_f$ 无关。在实际的代码编写中，我们可以交换 fff 和 ggg 使得 $l_g$ 一定小于等于 $l_f$。
+上述做法的时间复杂度为 $O(l_g + k \log l_g)$，与 $l_f$ 无关。在实际的代码编写中，我们可以交换 $f$ 和 $g$ 使得 $l_g$ 一定小于等于 $l_f$。
 
 **代码**
 
@@ -283,30 +283,30 @@ class MinHeap {
 **复杂度分析**
 
 -   时间复杂度：O(m×(min⁡(k,n)+klog⁡min⁡(k,n)))O(m \times (\\min(k, n) + k \log \\min(k, n)))O(m×(min(k,n)+klogmin(k,n)))。
--   空间复杂度：O(k)O(k)O(k)，即为小根堆需要使用的空间 O(min⁡(k,n))O(\\min(k, n))O(min(k,n)) 以及存储前 kkk 个最小数组和需要使用的空间 O(k)O(k)O(k)。
+-   空间复杂度：$O(k)$，即为小根堆需要使用的空间 O(min⁡(k,n))O(\\min(k, n))O(min(k,n)) 以及存储前 $k$ 个最小数组和需要使用的空间 $O(k)$。
 
 #### [方法二：二分查找 + 双指针](https://leetcode.cn/problems/find-the-kth-smallest-sum-of-a-matrix-with-sorted-rows/solutions/2285440/you-xu-ju-zhen-zhong-de-di-k-ge-zui-xiao-urla/)
 
 **思路与算法**
 
-我们也可以通过二分查找的方法确定第 kkk 个最小的数组和 thres\\textit{thres}thres，再遍历找出前 kkk 个最小的数组和。
+我们也可以通过二分查找的方法确定第 $k$ 个最小的数组和 thres\\textit{thres}thres，再遍历找出前 $k$ 个最小的数组和。
 
-二分查找的下界为数组 fff 和 ggg 的首元素之和，上界为尾元素之和。在二分查找的过程中，对于当前二分的值 mid\\textit{mid}mid，我们需要统计小于等于 mid\\textit{mid}mid 的二元组个数，如果其小于 kkk，我们需要调整下界；否则，我们需要调整上界。
+二分查找的下界为数组 $f$ 和 $g$ 的首元素之和，上界为尾元素之和。在二分查找的过程中，对于当前二分的值 mid\\textit{mid}mid，我们需要统计小于等于 mid\\textit{mid}mid 的二元组个数，如果其小于 $k$，我们需要调整下界；否则，我们需要调整上界。
 
-那么如何进行统计呢？由于 fff 和 ggg 都是非递减的，我们就可以通过双指针的方法来得到二元组的个数。具体地，初始时指针 lptr\\textit{lptr}lptr 指向 fff 的首元素，表示固定选择 fff 中的对应元素；另一个指针 rptr\\textit{rptr}rptr 指向 ggg 的尾元素。显然，如果 f[lptr]+g[rptr]≤midf[\\textit{lptr}] + g[\\textit{rptr}] \\leq \\textit{mid}f[lptr]+g[rptr]≤mid，那么所以在 rptr\\textit{rptr}rptr 之前的元素也是满足要求的，因此 rptr\\textit{rptr}rptr 表示：当 lptr\\textit{lptr}lptr 固定时，满足要求的二元组的范围，并且满足要求的二元组个数是 rptr+1\\textit{rptr} + 1rptr+1，即 g[0],g[1],⋯ ,g[rptr]g[0], g[1], \cdots, g[\\textit{rptr}]g[0],g[1],⋯,g[rptr]。
+那么如何进行统计呢？由于 $f$ 和 $g$ 都是非递减的，我们就可以通过双指针的方法来得到二元组的个数。具体地，初始时指针 lptr\\textit{lptr}lptr 指向 $f$ 的首元素，表示固定选择 $f$ 中的对应元素；另一个指针 rptr\\textit{rptr}rptr 指向 $g$ 的尾元素。显然，如果 f[lptr]+g[rptr]≤midf[\\textit{lptr}] + g[\\textit{rptr}] \\leq \\textit{mid}f[lptr]+g[rptr]≤mid，那么所以在 rptr\\textit{rptr}rptr 之前的元素也是满足要求的，因此 rptr\\textit{rptr}rptr 表示：当 lptr\\textit{lptr}lptr 固定时，满足要求的二元组的范围，并且满足要求的二元组个数是 rptr+1\\textit{rptr} + 1rptr+1，即 g[0],g[1],⋯ ,g[rptr]g[0], g[1], \cdots, g[\\textit{rptr}]g[0],g[1],⋯,g[rptr]。
 
-当我们将 lptr\\textit{lptr}lptr 向右移动一个位置后，对应的 f[lptr]f[\\textit{lptr}]f[lptr] 不会变小，因此 rptr\\textit{rptr}rptr 的范围也要继续缩减：我们需要不断向左移动 rptr\\textit{rptr}rptr，直到 f[lptr]+g[rptr]≤midf[\\textit{lptr}] + g[\\textit{rptr}] \\leq \\textit{mid}f[lptr]+g[rptr]≤mid 重新满足，或者 rptr\\textit{rptr}rptr 移出了边界。这样一来，在 lptr\\textit{lptr}lptr 向右移动的过程中，我们就可以计算出每个 f[lptr]f[\\textit{lptr}]f[lptr] 固定时，满足要求的二元组个数，累加即可得到 fff 和 ggg 中满足要求的二元组个数。
+当我们将 lptr\\textit{lptr}lptr 向右移动一个位置后，对应的 f[lptr]f[\\textit{lptr}]f[lptr] 不会变小，因此 rptr\\textit{rptr}rptr 的范围也要继续缩减：我们需要不断向左移动 rptr\\textit{rptr}rptr，直到 f[lptr]+g[rptr]≤midf[\\textit{lptr}] + g[\\textit{rptr}] \\leq \\textit{mid}f[lptr]+g[rptr]≤mid 重新满足，或者 rptr\\textit{rptr}rptr 移出了边界。这样一来，在 lptr\\textit{lptr}lptr 向右移动的过程中，我们就可以计算出每个 f[lptr]f[\\textit{lptr}]f[lptr] 固定时，满足要求的二元组个数，累加即可得到 $f$ 和 $g$ 中满足要求的二元组个数。
 
 **细节**
 
-如果 lf×lg<kl_f \times l_g < klf×lg<k，我们需要将 kkk 减少至 lf×lgl_f \times l_glf×lg，因为二元组的数量并没有 kkk 个。
+如果 lf×lg<kl_f \times l_g < klf×lg<k，我们需要将 $k$ 减少至 lf×lgl_f \times l_glf×lg，因为二元组的数量并没有 $k$ 个。
 
-当二分查找完成并得到 thres\\textit{thres}thres 后，我们可以使用二重循环遍历数组 fff 和 ggg，找出所有和小于等于 thres\\textit{thres}thres 的二元组。需要注意的是：
+当二分查找完成并得到 thres\\textit{thres}thres 后，我们可以使用二重循环遍历数组 $f$ 和 $g$，找出所有和小于等于 thres\\textit{thres}thres 的二元组。需要注意的是：
 
 -   时间复杂度为 O(lf×lg)O(l_f \times l_g)O(lf×lg)，较高；
--   和小于等于 thres\\textit{thres}thres 的二元组数量可能会大于 kkk，因为有若干个和恰好等于 thres\\textit{thres}thres 的二元组。
+-   和小于等于 thres\\textit{thres}thres 的二元组数量可能会大于 $k$，因为有若干个和恰好等于 thres\\textit{thres}thres 的二元组。
 
-为了解决上面的这些问题，我们可以对二重循环遍历进行优化：当内层遍历 ggg 的循环已经不满足要求时，可以直接退出，因为后续 ggg 中的元素只会更大。并且在遍历的过程中，我们的判断条件改为「和小于 thres\\textit{thres}thres」而不是「和小于等于 thres\\textit{thres}thres」，这样二重循环最多只会添加 kkk 个二元组，时间复杂度减少至 O(k)O(k)O(k)。在这之后，如果答案的长度没有到 kkk，我们再补上对应数量的 thres\\textit{thres}thres 即可。
+为了解决上面的这些问题，我们可以对二重循环遍历进行优化：当内层遍历 $g$ 的循环已经不满足要求时，可以直接退出，因为后续 $g$ 中的元素只会更大。并且在遍历的过程中，我们的判断条件改为「和小于 thres\\textit{thres}thres」而不是「和小于等于 thres\\textit{thres}thres」，这样二重循环最多只会添加 $k$ 个二元组，时间复杂度减少至 $O(k)$。在这之后，如果答案的长度没有到 $k$，我们再补上对应数量的 thres\\textit{thres}thres 即可。
 
 在得到二元组的过程中，它们不是有序被加入答案的，因此最后需要进行一次排序。
 
@@ -633,9 +633,9 @@ const merge = (f, g, k) => {
 
 **复杂度分析**
 
--   时间复杂度：O(m×(klog⁡k+n)×log⁡C)O(m \times (k \log k + n) \times \log C)O(m×(klogk+n)×logC)。在一次二分查找的过程中：
-    -   双指针部分需要的时间为 O(k+n)O(k + n)O(k+n)；
-    -   二重循环遍历需要的时间为 O(k)O(k)O(k)；
-    -   排序需要的时间为 O(klog⁡k)O(k \log k)O(klogk)。
-    它们的和为 O(klog⁡k+n)O(k \log k + n)O(klogk+n)。二分查找需要 O(log⁡C)O(\log C)O(logC) 次，其中 CCC 是和的上界与下界之差，它的范围不会超过 5000⋅m5000 \\cdot m5000⋅m。
--   空间复杂度：O(k)O(k)O(k)，即为存储前 kkk 个最小数组和需要使用的空间 O(k)O(k)O(k)。
+-   时间复杂度：$O(m \times (k \log k + n) \times \log C)$。在一次二分查找的过程中：
+    -   双指针部分需要的时间为 $O(k + n)$；
+    -   二重循环遍历需要的时间为 $O(k)$；
+    -   排序需要的时间为 $O(k \log k)$。
+    它们的和为 $O(k \log k + n)$。二分查找需要 $O(\log C)$ 次，其中 $C$ 是和的上界与下界之差，它的范围不会超过 $5000 \cdot m$。
+-   空间复杂度：$O(k)$，即为存储前 $k$ 个最小数组和需要使用的空间 $O(k)$。
