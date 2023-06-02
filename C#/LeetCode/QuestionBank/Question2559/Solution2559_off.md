@@ -1,4 +1,4 @@
-﻿#### [方法一：前缀和](https://leetcode.cn/problems/count-vowel-strings-in-ranges/solutions/2289469/tong-ji-fan-wei-nei-de-yuan-yin-zi-fu-ch-5k8q/)
+#### [方法一：前缀和](https://leetcode.cn/problems/count-vowel-strings-in-ranges/solutions/2289469/tong-ji-fan-wei-nei-de-yuan-yin-zi-fu-ch-5k8q/)
 
 为方便表述，以下将以元音开头和结尾的字符串称为「元音字符串」。
 
