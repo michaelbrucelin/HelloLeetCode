@@ -1,19 +1,9 @@
-﻿using LeetCode.Interview.Interview1617;
+﻿using LeetCode.Interview.Interview1605;
 using LeetCode.QuestionBank.Question2460;
 using LeetCode.LCP.LCP0033;
 using LeetCode.剑指_Offer.剑指_Offer_0058_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
-using System;
-using System.Collections.Generic;
 using LeetCode.Utilses;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Runtime.Intrinsics.X86;
-using System.Text;
-using System.Threading;
-using System.IO;
-using System.Reflection;
-using System.Threading.Channels;
 
 namespace LeetCode
 {
@@ -23,7 +13,7 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test2460 test = new();
+            Test1605 test = new();
             test.Test();
             //test.TestDivergentTraverse();
             //test.Look4Rules();
