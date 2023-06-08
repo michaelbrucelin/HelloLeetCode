@@ -35,6 +35,6 @@
 
 **提示：**
 
--   `1 <= n == reward1.length == reward2.length <= 10<sup>5</sup>`
+-   `1 <= n == reward1.length == reward2.length <= 10^5`
 -   `1 <= reward1[i], reward2[i] <= 1000`
 -   `0 <= k <= n`
