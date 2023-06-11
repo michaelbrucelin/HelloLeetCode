@@ -51,7 +51,7 @@ namespace LeetCode.QuestionBank.Question1255
             if (flag)
             {
                 string _key = string.Join(';', _letters.OrderBy(kv => kv.Key).Select(kv => $"{kv.Key}:{kv.Value}"));
-                int point, _point;
+                int _point;   // int point, _point;
                 if (buffer.ContainsKey((id + 1, _key))) _point = buffer[(id + 1, _key)];
                 else
                 {

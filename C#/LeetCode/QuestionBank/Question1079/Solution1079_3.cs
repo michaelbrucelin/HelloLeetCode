@@ -69,7 +69,7 @@ namespace LeetCode.QuestionBank.Question1079
             int[] freq = new int[26]; for (int i = 0; i < len; i++) freq[chars[i] - 'A']++;
 
             int result = factorial[len];
-            for (int i = 0, _len; i < 26; i++) result /= factorial[freq[i]];
+            for (int i = 0; i < 26; i++) result /= factorial[freq[i]];
 
             return result;
         }

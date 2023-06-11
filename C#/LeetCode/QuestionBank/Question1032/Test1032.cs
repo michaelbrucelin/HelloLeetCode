@@ -11,7 +11,7 @@ namespace LeetCode.QuestionBank.Question1032
         public void Test()
         {
             Interface1032 solution;
-            string[] words; char letter; char[] letters;
+            string[] words; char[] letters;
             bool result, answer; bool[] answers;
             int id = 0;
 

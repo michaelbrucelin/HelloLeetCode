@@ -36,7 +36,7 @@ namespace LeetCode.QuestionBank.Question2144
             int result = 0, state = 2;
             for (int i = 0; i < cost.Length; i++)
             {
-                state = state switch { 2 => 0, 0 => 1, 1 => 2 };
+                state = state switch { 2 => 0, 0 => 1, 1 => 2, _ => -1 };
                 if (state != 2) result += cost[i];
             }
 

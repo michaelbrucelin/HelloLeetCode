@@ -69,7 +69,7 @@ namespace LeetCode.剑指_Offer.剑指_Offer_0062
         {
             Queue<int> queue = new Queue<int>(); for (int i = 0; i < n; i++) queue.Enqueue(i);
 
-            for (int cnt = n, ptr = 0, step; cnt > 1; cnt--)
+            for (int cnt = n, step; cnt > 1; cnt--)
             {
                 step = (m - 1) % cnt + 1;
                 for (int i = 0; i < step - 1; i++) queue.Enqueue(queue.Dequeue());

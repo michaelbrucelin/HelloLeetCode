@@ -30,7 +30,7 @@ namespace LeetCode.QuestionBank.Question1653
         /// <returns></returns>
         public int MinimumDeletions(string s)
         {
-            int cnta = 0, cntb = 0, len = s.Length;
+            int cnta = 0, len = s.Length;  // cntb = 0
             for (int i = 0; i < len; i++) cnta += 'b' - s[i];  // if (s[i] == 'a') cnta++;
 
             int result = Math.Min(cnta, len - cnta);

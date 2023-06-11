@@ -13,8 +13,8 @@ namespace LeetCode.Interview.Interview0402
         {
             Interface0402 solution = new Solution0402();
             int[] nums;
-            TreeNode result, answer;
-            int id = 0;
+            // TreeNode result, answer;
+            // int id = 0;
 
             // 1. 
             nums = new int[] { -10, -3, 0, 5, 9 };

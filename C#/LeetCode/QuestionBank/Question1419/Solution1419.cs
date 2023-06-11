@@ -40,7 +40,7 @@ namespace LeetCode.QuestionBank.Question1419
                     {
                         croak.Remove(i, 1);
                         if (state == 'a') flag = true;
-                        state = state switch { 'k' => 'a', 'a' => 'o', 'o' => 'r', 'r' => 'c', 'c' => 'k' };
+                        state = state switch { 'k' => 'a', 'a' => 'o', 'o' => 'r', 'r' => 'c', 'c' => 'k', _ => '\0' };
                     }
                 }
                 if (!flag || state != 'k') return -1;
@@ -74,7 +74,7 @@ namespace LeetCode.QuestionBank.Question1419
                     {
                         mask[i] = false;
                         if (state == 'a') flag = true;
-                        state = state switch { 'c' => 'r', 'r' => 'o', 'o' => 'a', 'a' => 'k', 'k' => 'c' };
+                        state = state switch { 'c' => 'r', 'r' => 'o', 'o' => 'a', 'a' => 'k', 'k' => 'c', _ => '\0' };
                     }
                 }
                 if (!flag || state != 'c') return -1;
@@ -112,7 +112,7 @@ namespace LeetCode.QuestionBank.Question1419
                     {
                         mask[i] = false; cnt--;
                         if (state == 'a') flag = true;
-                        state = state switch { 'c' => 'r', 'r' => 'o', 'o' => 'a', 'a' => 'k', 'k' => 'c' };
+                        state = state switch { 'c' => 'r', 'r' => 'o', 'o' => 'a', 'a' => 'k', 'k' => 'c', _ => '\0' };
                     }
                 }
                 if (!flag || state != 'c') return -1;

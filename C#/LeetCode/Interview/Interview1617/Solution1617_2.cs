@@ -23,7 +23,7 @@ namespace LeetCode.Interview.Interview1617
         /// <returns></returns>
         public int MaxSubArray(int[] nums)
         {
-            List<int> list = new List<int>(), _list;
+            List<int> list = new List<int>();
             int ptr = -1, len = nums.Length, sign = 1, sum = 0;
             while (++ptr < len)
             {
