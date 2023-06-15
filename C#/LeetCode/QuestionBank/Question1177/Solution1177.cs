@@ -63,11 +63,8 @@ namespace LeetCode.QuestionBank.Question1177
         {
             int len_s = s.Length, len_q = queries.Length;
             int[] pre = new int[len_s + 1];  // 0: 偶数, 1: 奇数
-            for (int i = 0, id; i < len_s; i++)
-            {
-                id = s[i] - 'a';
-                pre[i + 1] = ((pre[i] >> id) & 1) == 0 ? pre[i] | (1 << id) : pre[i] & (~(1 << id));
-            }
+            for (int i = 0; i < len_s; i++)
+                pre[i + 1] = pre[i] ^ (1 << (s[i] - 'a'));
 
             bool[] result = new bool[len_q];
             int left, right, k, odd;
