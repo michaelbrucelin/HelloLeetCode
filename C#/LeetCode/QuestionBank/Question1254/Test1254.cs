@@ -10,7 +10,7 @@ namespace LeetCode.QuestionBank.Question1254
     {
         public void Test()
         {
-            Interface1254 solution = new Solution1254();
+            Interface1254 solution = new Solution1254_2();
             int[][] grid;
             int result, answer;
             int id = 0;
