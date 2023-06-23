@@ -1,4 +1,4 @@
-﻿#### [2496\. 数组中字符串的最大值](https://leetcode.cn/problems/maximum-value-of-a-string-in-an-array/)
+#### [2496\. 数组中字符串的最大值](https://leetcode.cn/problems/maximum-value-of-a-string-in-an-array/)
 
 难度：简单
 
