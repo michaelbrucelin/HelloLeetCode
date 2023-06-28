@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace LeetCode.Utilses
 {
@@ -21,8 +26,99 @@ namespace LeetCode.Utilses
                 default:
                     break;
             }
-
             return declare;
+        }
+
+        public enum QuestionType
+        {
+            [Display(Name = "Interview")]
+            Interview,
+            [Display(Name = "LCP")]
+            LCP,
+            [Display(Name = "QuestionBank")]
+            QuestionBank,
+            [Display(Name = "剑指 Offer")]
+            剑指Offer,
+            [Display(Name = "剑指 Offer II")]
+            剑指Offer_II
+        };
+
+        /// <summary>
+        /// 格式化使用chrome插件复制出来的markdown
+        /// 由于复制出来的markdown中的LaTeX公式都是"3份"，所以这里进行批量的替换
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="question"></param>
+        /// <param name="file"></param>
+        public static void FmtMarkDown(QuestionType type, string question, string file)
+        {
+            string dir = type switch
+            {
+                QuestionType.Interview => @$"Interview\Interview{question}",
+                QuestionType.LCP => @$"LCP\LCP{question}",
+                QuestionType.QuestionBank => @$"QuestionBank\Question{question}",
+                QuestionType.剑指Offer => @$"剑指 Offer\剑指 Offer {question}",
+                QuestionType.剑指Offer_II => @$"剑指 Offer II\剑指 Offer II {question}",
+                _ => throw new Exception("logic error")
+            };
+            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"{dir}\Solution{question}_{file}.md");
+            string context = File.ReadAllText(path);
+
+            Dictionary<string, string> map = new Dictionary<string, string>()
+            {
+                { @"\[", "[" }, { @"\]", "]" }, { "−", "-" },
+                { "<sup>", "^" }, { "</sup>", "" }, { "<sub>", "_" }, { "</sub>", "" },
+                { " 161616 ", " $16$ " }, { " 161616，", " $16$，" }, { " 161616。", " $16$。" },
+                { " 323232 ", " $32$ " }, { " 323232，", " $32$，" }, { " 323232。", " $32$。" },
+                { " 646464 ", " $64$ " }, { " 646464，", " $64$，" }, { " 646464。", " $64$。" },
+                { @"\\times", @"\times" }, { @"\\max", @"\max" }, { @"\\min", @"\min" }, { @"\\log", @"\log" }, { @"\\And", @"\And" }, { @"\\and", @"\and" },
+                { @"\\mathcal", @"\mathcal" },
+                { @"y&x=yy \And x = yy&x\=y", @"$y \And x = y$" }
+            };
+            foreach (var kv in map) context = context.Replace(kv.Key, kv.Value);
+
+            HashSet<string> set = new HashSet<string>()
+            {
+                "arr", "nums", "dp", "mask", "key", "keys", "value", "values", "sup", "sub", "next", "nxt",
+                "dp[0]", "dp[1]", "dp[2]", "dp[mask]", "values[mask]",
+                "nums[i]", "nums[j]", "nums[k]", "nums[m]", "nums[n]"
+            };
+            foreach (string str in set)
+            {
+                context = context.Replace($@"\\textit{{{str}}}", str);
+                context = context.Replace($"{str}{str}{str}", $"${str}$");
+            }
+
+            for (int i = 'a'; i <= 'z'; i++)
+            {
+                char c = (char)i; context = context.Replace($"{c}{c}{c}", $"${c}$");
+                c = (char)(i & (~32)); context = context.Replace($"{c}{c}{c}", $"${c}$");
+            }
+
+            for (int i = '0'; i <= '9'; i++)
+            {
+                char c = (char)i;
+                context = context.Replace($" {c}{c}{c} ", $" ${c}$ ").Replace($" {c}{c}{c}，", $" ${c}$，").Replace($" {c}{c}{c}。", $" ${c}$。");
+                context = context.Replace($" -{c}-{c}-{c} ", $" $-{c}$ ").Replace($" -{c}-{c}-{c}，", $" $-{c}$，").Replace($" -{c}-{c}-{c}。", $" $-{c}$。");
+            }
+
+            set = new HashSet<string>() { "m", "n", "i", "j", "k" };
+            foreach (string s in set)
+            {
+                context = context.Replace($"2{s}2^{s}2{s}", $"$2^{{{s}}}$").Replace($"2{s}-12^{s} - 12{s}-1", $"$2^{{{s}}} - 1$");
+
+                context = context.Replace($"O({s})O({s})O({s})", $"$O({{{s}}})$");                                        // O(n)
+                context = context.Replace(@$"O({s})\\mathcal{{O}}({s})O({s})", @$"$\mathcal{{O}}({{{s}}})$");
+                context = context.Replace($"O(2{s})O(2^{s})O(2{s})", $"$O(2^{{{s}}})$");                                  // O(2^n)
+                context = context.Replace(@$"O(2{s})\\mathcal{{O}}(2^{s})O(2{s})", @$"$\mathcal{{O}}(2^{{{s}}})$");
+                context = context.Replace($"O(3{s})O(3^{s})O(3{s})", $"$O(3^{{{s}}})$");                                  // O(3^n)
+                context = context.Replace(@$"O(3{s})\\mathcal{{O}}(3^{s})O(3{s})", @$"$\mathcal{{O}}(3^{{{s}}})$");
+                context = context.Replace(@$"O({s}×2{s})O({s}\times 2^{s})O({s}×2{s})", $"$O({s}\\times 2^{{{s}}})$");  // O(n\times 2^n)
+                context = context.Replace(@$"O({s}×2{s})O({s}\times 2^{s})O({s}×2{s})", $"$O({s}\\times 2^{{{s}}})$");
+            }
+
+            File.WriteAllText(path, context, Encoding.UTF8);
         }
     }
 }
