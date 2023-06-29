@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
@@ -72,15 +72,18 @@ namespace LeetCode.Utilses
                 { " 161616 ", " $16$ " }, { " 161616，", " $16$，" }, { " 161616。", " $16$。" },
                 { " 323232 ", " $32$ " }, { " 323232，", " $32$，" }, { " 323232。", " $32$。" },
                 { " 646464 ", " $64$ " }, { " 646464，", " $64$，" }, { " 646464。", " $64$。" },
-                { @"\\times", @"\times" }, { @"\\max", @"\max" }, { @"\\min", @"\min" }, { @"\\log", @"\log" }, { @"\\And", @"\And" }, { @"\\and", @"\and" },
-                { @"\\mathcal", @"\mathcal" },
+                { @"\\times", @"\times" }, { @"\\max", @"\max" }, { @"\\min", @"\min" }, { @"\\neq", @"\neq" }, { @"\\log", @"\log" }, { @"\\And", @"\And" }, { @"\\and", @"\and" },
+                { @"\\mathcal", @"\mathcal" }, { @"\\{", @"\{" }, { @"\\}", @"\}" },
                 { @"y&x=yy \And x = yy&x\=y", @"$y \And x = y$" }
             };
             foreach (var kv in map) context = context.Replace(kv.Key, kv.Value);
 
             HashSet<string> set = new HashSet<string>()
             {
-                "arr", "nums", "dp", "mask", "key", "keys", "value", "values", "sup", "sub", "next", "nxt",
+                "arr", "nums", "dp", "mask", "key", "keys", "value", "values",
+                "column", "col", "colsum", "row", "rowsum", "sum", "count", "cnt", "one", "two", "three",
+                "upper", "lower", "result", "res", "answer", "ans",
+                "sup", "sub", "next", "nxt",
                 "dp[0]", "dp[1]", "dp[2]", "dp[mask]", "values[mask]",
                 "nums[i]", "nums[j]", "nums[k]", "nums[m]", "nums[n]"
             };
@@ -99,11 +102,11 @@ namespace LeetCode.Utilses
             for (int i = '0'; i <= '9'; i++)
             {
                 char c = (char)i;
-                context = context.Replace($" {c}{c}{c} ", $" ${c}$ ").Replace($" {c}{c}{c}，", $" ${c}$，").Replace($" {c}{c}{c}。", $" ${c}$。");
-                context = context.Replace($" -{c}-{c}-{c} ", $" $-{c}$ ").Replace($" -{c}-{c}-{c}，", $" $-{c}$，").Replace($" -{c}-{c}-{c}。", $" $-{c}$。");
+                context = context.Replace($" {c}{c}{c} ", $" ${c}$ ").Replace($" {c}{c}{c}：", $" ${c}$：").Replace($" {c}{c}{c}，", $" ${c}$，").Replace($" {c}{c}{c}。", $" ${c}$。");
+                context = context.Replace($" -{c}-{c}-{c} ", $" $-{c}$ ").Replace($" -{c}-{c}-{c}：", $" $-{c}$：").Replace($" -{c}-{c}-{c}，", $" $-{c}$，").Replace($" -{c}-{c}-{c}。", $" $-{c}$。");
             }
 
-            set = new HashSet<string>() { "m", "n", "i", "j", "k" };
+            set = new HashSet<string>() { "1", "m", "n", "i", "j", "k" };
             foreach (string s in set)
             {
                 context = context.Replace($"2{s}2^{s}2{s}", $"$2^{{{s}}}$").Replace($"2{s}-12^{s} - 12{s}-1", $"$2^{{{s}}} - 1$");
