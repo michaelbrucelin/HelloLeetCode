@@ -8,25 +8,20 @@ namespace LeetCode.QuestionBank.Question0001
 {
     public class Solution0001 : Interface0001
     {
+        /// <summary>
+        /// 暴力枚举
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
         public int[] TwoSum(int[] nums, int target)
         {
-            int[] result = new int[2];
-
-            Dictionary<int, int> dic = new Dictionary<int, int>();
-            for (int i = 0; i < nums.Length; i++)
-            {
-                if (dic.ContainsKey(target - nums[i]))
+            for (int i = 0; i < nums.Length; i++) for (int j = i + 1; j < nums.Length; j++)
                 {
-                    result[0] = dic[target - nums[i]];
-                    result[1] = i;
-                    break;
+                    if (nums[i] + nums[j] == target) return new int[] { i, j };
                 }
 
-                if (!dic.ContainsKey(target - nums[i]))
-                    dic.Add(nums[i], i);
-            }
-
-            return result;
+            throw new Exception("logic error.");
         }
     }
 }
