@@ -1,4 +1,4 @@
-﻿#### [2\. 两数相加](https://leetcode.cn/problems/add-two-numbers/)
+#### [2\. 两数相加](https://leetcode.cn/problems/add-two-numbers/)
 
 难度：中等
 

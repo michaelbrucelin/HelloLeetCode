@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview1619;
-using LeetCode.QuestionBank.Question1078;
+using LeetCode.QuestionBank.Question0445;
 using LeetCode.LCP.LCP0041;
 using LeetCode.剑指_Offer.剑指_Offer_0058_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -14,7 +14,7 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test1078 test = new();
+            Test0445 test = new();
             test.Test();
             //UtilsLeetCode.FmtMarkDown(UtilsLeetCode.QuestionType.QuestionBank, "1253", "off");
             //test.TestDivergentTraverse();
@@ -22,8 +22,6 @@ namespace LeetCode
             //test.VerifyRules();
             //Utils2427 utils = new();
             //utils.Dial(1000);
-
-
 
             //标量值
             //Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
