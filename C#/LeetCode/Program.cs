@@ -68,6 +68,9 @@ namespace LeetCode
                 //Console.WriteLine(uint.MaxValue);   // 4294967295            10位
                 //Console.WriteLine(long.MaxValue);   // 9223372036854775807   19位
                 //Console.WriteLine(ulong.MaxValue);  // 18446744073709551615  20位
+
+                //int[][] arr = new int[rcnt][];
+                //for (int i = 0; i < rcnt; i++) arr[i] = new int[ccnt];
             }
         }
     }
