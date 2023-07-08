@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Reflection;
 using System.Runtime.Intrinsics.Arm;
 using System.Text;
@@ -27,6 +29,28 @@ namespace LeetCode.Utilses
                     break;
             }
             return declare;
+        }
+
+        /// <summary>
+        /// 将以字符串形式给出的数字数组转成数字数组
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="raw"></param>
+        /// <returns></returns>
+        public static T[] Str2NumArray<T>(string raw) where T : INumber<T>
+        {
+            return raw[1..^1].Split(',').Select(s => T.Parse(s, CultureInfo.InvariantCulture.NumberFormat)).ToArray();
+        }
+
+        /// <summary>
+        /// 将以字符串形式给出的二维数字数组转成二维数字数组
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="raw"></param>
+        /// <returns></returns>
+        public static T[][] Str2NumArray_2d<T>(string raw) where T : INumber<T>
+        {
+            return raw[2..^2].Split("],[").Select(str => str.Split(',').Select(s => T.Parse(s, CultureInfo.InvariantCulture.NumberFormat)).ToArray()).ToArray();
         }
 
         public enum QuestionType
