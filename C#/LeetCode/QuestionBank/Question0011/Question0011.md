@@ -1,4 +1,4 @@
-﻿#### [11\. 盛最多水的容器](https://leetcode.cn/problems/container-with-most-water/)
+#### [11\. 盛最多水的容器](https://leetcode.cn/problems/container-with-most-water/)
 
 难度：中等
 
@@ -8,7 +8,7 @@
 
 返回容器可以储存的最大水量。
 
-**说明：**你不能倾斜容器。
+**说明：** 你不能倾斜容器。
 
 **示例 1：**
 

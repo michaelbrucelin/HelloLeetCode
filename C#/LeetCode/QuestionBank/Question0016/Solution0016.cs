@@ -18,11 +18,11 @@ namespace LeetCode.QuestionBank.Question0016
         {
             if (nums.Length == 3) return nums.Sum();
 
-            int result = nums[0] + nums[1] + nums[2];
+            int result = nums[0] + nums[1] + nums[2], len = nums.Length, threeSum;
             if (result == target) return result;
-            for (int i = 0; i < nums.Length - 2; i++) for (int j = i + 1; j < nums.Length - 1; j++) for (int k = j + 1; k < nums.Length; k++)
+            for (int i = 0; i < len - 2; i++) for (int j = i + 1; j < len - 1; j++) for (int k = j + 1; k < len; k++)
                     {
-                        int threeSum = nums[i] + nums[j] + nums[k];
+                        threeSum = nums[i] + nums[j] + nums[k];
                         if (Math.Abs(threeSum - target) < Math.Abs(result - target))
                         {
                             result = threeSum;

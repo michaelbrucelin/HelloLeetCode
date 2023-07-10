@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0015
 {
-    public class Solution0015_3 : Interface0015
+    public class Solution0015_off : Interface0015
     {
         /// <summary>
         /// 排序 + 双指针

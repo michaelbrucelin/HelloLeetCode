@@ -18,7 +18,8 @@ namespace LeetCode.QuestionBank.Question0015
             HashSet<(int, int, int)> buffer = new HashSet<(int, int, int)>();
 
             Array.Sort(nums);
-            for (int i = 0; i < nums.Length; i++) for (int j = i + 1; j < nums.Length; j++) for (int k = j + 1; k < nums.Length; k++)
+            int len = nums.Length;
+            for (int i = 0; i < len; i++) for (int j = i + 1; j < len; j++) for (int k = j + 1; k < len; k++)
                     {
                         int v = nums[i] + nums[j] + nums[k];
                         if (v < 0) continue;

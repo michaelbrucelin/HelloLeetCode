@@ -19,14 +19,15 @@ namespace LeetCode.QuestionBank.Question0015
             HashSet<(int, int)> buffer = new HashSet<(int, int)>();
 
             Array.Sort(nums);
-            for (int i = 0; i < nums.Length - 2; i++)
+            int len = nums.Length;
+            for (int i = 0; i < len - 2; i++)
             {
                 if (nums[i] > 0) break;
-                for (int j = i + 1; j < nums.Length - 1; j++)
+                for (int j = i + 1; j < len - 1; j++)
                 {
                     if (buffer.Contains((nums[i], nums[j]))) continue;
                     if (nums[i] + nums[j] > 0) break;
-                    if (BinarySearch(nums, j + 1, nums.Length - 1, -nums[i] - nums[j]))
+                    if (BinarySearch(nums, j + 1, len - 1, -nums[i] - nums[j]))
                         buffer.Add((nums[i], nums[j]));
                 }
             }
