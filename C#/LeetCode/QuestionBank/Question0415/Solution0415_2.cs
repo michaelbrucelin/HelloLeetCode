@@ -11,8 +11,8 @@ namespace LeetCode.QuestionBank.Question0415
         private const long MOD = 1000000000000000000;
 
         /// <summary>
+        /// 分段转为long
         /// 将两个字符串从右向左每18位截取一次，然后转为long相加
-        /// 
         /// 第k次，截取字符串的(n-18*k， n-18*(k-1)-1)，即(n-18*k, 18)
         /// </summary>
         /// <param name="num1"></param>
