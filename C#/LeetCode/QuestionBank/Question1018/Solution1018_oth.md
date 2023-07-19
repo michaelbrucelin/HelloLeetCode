@@ -1,9 +1,9 @@
-#### [ÓĞÏŞ×´Ì¬»ú](https://leetcode.cn/problems/binary-prefix-divisible-by-5/solutions/559804/you-xian-zhuang-tai-ji-by-nonsensersunny-glkk/)
+### [æœ‰é™çŠ¶æ€æœº](https://leetcode.cn/problems/binary-prefix-divisible-by-5/solutions/559804/you-xian-zhuang-tai-ji-by-nonsensersunny-glkk/)
 
-×´Ì¬¶ÔÓ¦(mod 5)£¬¼ıÍ·±íÊ¾×´Ì¬×ªÒÆ£¬×ªÒÆº¯ÊıÊÇ`(µ±Ç°×´Ì¬*2+¶ş½øÖÆÊıÄ©Î»)%5`¡£
+çŠ¶æ€å¯¹åº”(mod 5)ï¼Œç®­å¤´è¡¨ç¤ºçŠ¶æ€è½¬ç§»ï¼Œè½¬ç§»å‡½æ•°æ˜¯`(å½“å‰çŠ¶æ€*2+äºŒè¿›åˆ¶æ•°æœ«ä½)%5`ã€‚
 ![](./assets/img/Solution1018_oth.png)
 
-#### ´úÂë
+#### ä»£ç 
 
 ```rust
 impl Solution {

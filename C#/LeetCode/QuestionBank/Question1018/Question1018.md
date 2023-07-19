@@ -1,4 +1,4 @@
-﻿#### [1018\. 可被 5 整除的二进制前缀](https://leetcode.cn/problems/binary-prefix-divisible-by-5/)
+#### [1018\. 可被 5 整除的二进制前缀](https://leetcode.cn/problems/binary-prefix-divisible-by-5/)
 
 难度：简单
 
