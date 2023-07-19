@@ -1,4 +1,6 @@
-﻿#### [方法一：两次遍历](https://leetcode.cn/problems/shortest-distance-to-a-character/solutions/1429810/zi-fu-de-zui-duan-ju-chi-by-leetcode-sol-2t49/)
+### [字符的最短距离](https://leetcode.cn/problems/shortest-distance-to-a-character/solutions/1429810/zi-fu-de-zui-duan-ju-chi-by-leetcode-sol-2t49/)
+
+#### 方法一：两次遍历
 
 问题可以转换成，对 $s$ 的每个下标 $i$，求
 

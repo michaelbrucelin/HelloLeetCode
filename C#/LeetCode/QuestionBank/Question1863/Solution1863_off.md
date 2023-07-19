@@ -1,4 +1,6 @@
-#### [方法一：递归法枚举子集](https://leetcode.cn/problems/sum-of-all-subset-xor-totals/solutions/784306/sum-of-all-subset-xor-totals-by-leetcode-o5aa/)
+### [Sum of All Subset XOR Totals](https://leetcode.cn/problems/sum-of-all-subset-xor-totals/solutions/784306/sum-of-all-subset-xor-totals-by-leetcode-o5aa/)
+
+#### 方法一：递归法枚举子集
 
 **思路与算法**
 
@@ -68,7 +70,7 @@ class Solution:
     第 $idx$ 层的递归函数共有 $2^{idx}$ 个，总计共会调用 $\sum_{i = 0}^n 2^i = 2^{n+1} - 1$ 次递归函数。而每个递归函数的时间复杂度均为 $O(1)$。
 -   空间复杂度：$O(n)$，即为递归时的栈空间开销。
 
-#### [方法二：迭代法枚举子集](https://leetcode.cn/problems/sum-of-all-subset-xor-totals/solutions/784306/sum-of-all-subset-xor-totals-by-leetcode-o5aa/)
+#### 方法二：迭代法枚举子集
 
 **提示 $1$**
 
@@ -127,7 +129,7 @@ class Solution:
 -   时间复杂度：$O(n2^n)$，其中 $n$ 为 $nums$ 的长度。我们遍历了 $nums$ 的 $2^n$ 个子集，每个子集需要 $O(n)$ 的时间计算异或总和。
 -   空间复杂度：$O(1)$。
 
-#### [方法三：按位考虑 + 二项式展开](https://leetcode.cn/problems/sum-of-all-subset-xor-totals/solutions/784306/sum-of-all-subset-xor-totals-by-leetcode-o5aa/)
+#### 方法三：按位考虑 + 二项式展开
 
 **提示 $1$**
 
