@@ -11,7 +11,7 @@ namespace LeetCode.QuestionBank.Question1893
     {
         public void Test()
         {
-            Interface1893 solution = new Solution1893_3();
+            Interface1893 solution = new Solution1893_4();
             int[][] ranges; int left, right;
             bool result, answer;
             int id = 0;

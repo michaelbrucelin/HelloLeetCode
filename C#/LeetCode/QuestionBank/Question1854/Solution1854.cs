@@ -8,6 +8,11 @@ namespace LeetCode.QuestionBank.Question1854
 {
     public class Solution1854 : Interface1854
     {
+        /// <summary>
+        /// 模拟
+        /// </summary>
+        /// <param name="logs"></param>
+        /// <returns></returns>
         public int MaximumPopulation(int[][] logs)
         {
             int[] freq = new int[100];
