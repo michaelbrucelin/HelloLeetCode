@@ -30,6 +30,11 @@ namespace LeetCode.QuestionBank.Question0141
             return false;
         }
 
+        /// <summary>
+        /// 快慢指针，添加哑点简化代码
+        /// </summary>
+        /// <param name="head"></param>
+        /// <returns></returns>
         public bool HasCycle2(ListNode head)
         {
             ListNode dummy = new ListNode(-1) { next = head };
