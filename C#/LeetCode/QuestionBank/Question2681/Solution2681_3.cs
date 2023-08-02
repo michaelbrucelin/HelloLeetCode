@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question2681
 {
-    public class Solution2681_2 : Interface2681
+    public class Solution2681_3 : Interface2681
     {
         /// <summary>
-        /// 排序 + 排列组合
-        /// 具体见Solution2681_2.md
-        /// 
-        /// 逻辑没问题，提交依然超时，慢就慢在初始化N上面
+        /// 与SumOfPower()逻辑一样，递推的计算N
         /// </summary>
         /// <param name="nums"></param>
         /// <returns></returns>
@@ -27,10 +24,9 @@ namespace LeetCode.QuestionBank.Question2681
             }
 
             int N = 0;
-            for (int i = 0, num; i < len; i++)
+            for (int i = 0; i < len; i++)
             {
-                num = nums[i]; for (int j = 0; j < len - i - 1; j++) num = (num << 1) % MOD;
-                N = (N + num) % MOD;
+                N = ((N << 1) % MOD + nums[i]) % MOD;
             }
             for (int i = len - 1, num; i > 0; i--)
             {
@@ -42,7 +38,7 @@ namespace LeetCode.QuestionBank.Question2681
         }
 
         /// <summary>
-        /// 与SumOfPower()逻辑一样，优化初始化N
+        /// 与SumOfPower()逻辑一样，既然N可以从前向后遍历递推计算，结果也是一样的
         /// </summary>
         /// <param name="nums"></param>
         /// <returns></returns>
@@ -50,22 +46,13 @@ namespace LeetCode.QuestionBank.Question2681
         {
             const int MOD = 1000000007;
             Array.Sort(nums);
-            long result = 0; int len = nums.Length;
+            long result = 0; int N = 0, len = nums.Length;
             for (int i = 0, num; i < len; i++)
             {
-                num = nums[i]; result = (result + ((long)num) * num % MOD * num % MOD) % MOD;
-            }
-
-            long N = 0, _num; int W = 32;
-            for (int i = 0, j; i < len; i++)
-            {
-                _num = nums[i]; for (j = len - i - 1; j > W; j -= W) _num = (_num << W) % MOD; _num = (_num << j) % MOD;
-                N = (N + _num) % MOD;
-            }
-            for (int i = len - 1, num; i > 0; i--)
-            {
-                num = nums[i]; N -= num; while (N < 0 || (N & 1) != 0) N += MOD; N >>= 1;
+                num = nums[i];
+                result = (result + ((long)num) * num % MOD * num % MOD) % MOD;
                 result = (result + ((long)num) * num % MOD * N % MOD) % MOD;
+                N = ((N << 1) % MOD + num) % MOD;
             }
 
             return (int)result;
