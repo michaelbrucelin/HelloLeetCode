@@ -11,7 +11,7 @@ namespace LeetCode.QuestionBank.Question0980
         private static readonly int[] dirs = new int[] { -1, 0, 1, 0, -1 };
 
         /// <summary>
-        /// DFS，有返回值
+        /// 回溯，DFS，有返回值
         /// 逻辑与Solution0980_3一样，只是由无返回值（指针）的DFS改为了有返回值的DFS
         /// </summary>
         /// <param name="grid"></param>

@@ -11,7 +11,7 @@ namespace LeetCode.QuestionBank.Question0980
         private static readonly int[] dirs = new int[] { -1, 0, 1, 0, -1 };
 
         /// <summary>
-        /// DFS，无返回值
+        /// 回溯，DFS，无返回值
         /// 看了官解才发现不复制数组这么简单，还是没理解透回溯，这里再实现一下
         /// </summary>
         /// <param name="grid"></param>
