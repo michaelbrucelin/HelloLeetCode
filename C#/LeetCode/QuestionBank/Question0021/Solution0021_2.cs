@@ -14,7 +14,6 @@ namespace LeetCode.QuestionBank.Question0021
         /// <param name="list1"></param>
         /// <param name="list2"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public ListNode MergeTwoLists(ListNode list1, ListNode list2)
         {
             if (list1 == null) return list2;

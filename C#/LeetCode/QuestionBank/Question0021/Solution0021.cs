@@ -8,12 +8,17 @@ namespace LeetCode.QuestionBank.Question0021
 {
     public class Solution0021 : Interface0021
     {
+        /// <summary>
+        /// 迭代
+        /// </summary>
+        /// <param name="list1"></param>
+        /// <param name="list2"></param>
+        /// <returns></returns>
         public ListNode MergeTwoLists(ListNode list1, ListNode list2)
         {
             if (list1 == null && list2 == null) return null;
-
-            ListNode header = new ListNode();
-            ListNode ptr = header, ptr1 = list1, ptr2 = list2;
+            ListNode dummy = new ListNode();
+            ListNode ptr = dummy, ptr1 = list1, ptr2 = list2;
 
             while (ptr1 != null && ptr2 != null)
             {
@@ -26,20 +31,9 @@ namespace LeetCode.QuestionBank.Question0021
                     ptr.next = ptr2; ptr = ptr.next; ptr2 = ptr2.next;
                 }
             }
-
-            //while (ptr1 != null)
-            //{
-            //    ptr.next = ptr1; ptr = ptr.next; ptr1 = ptr1.next;
-            //}
-            //while (ptr2 != null)
-            //{
-            //    ptr.next = ptr2; ptr = ptr.next; ptr2 = ptr2.next;
-            //}
-
-            // 脑残了，直接拼接上去就可以了
             ptr.next = ptr1 == null ? ptr2 : ptr1;
 
-            return header.next;
+            return dummy.next;
         }
     }
 }
