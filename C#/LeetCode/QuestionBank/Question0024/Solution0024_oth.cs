@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0024
 {
-    public class Solution0024_4 : Interface0024
+    public class Solution0024_oth : Interface0024
     {
         public ListNode SwapPairs(ListNode head)
         {
             if (head == null || head.next == null) return head;
 
-            ListNode header = new ListNode();
-            ListNode ptr1 = header, ptr2 = head;
+            ListNode dummy = new ListNode();
+            ListNode ptr1 = dummy, ptr2 = head;
 
             Stack<ListNode> stack = new Stack<ListNode>();
             while (ptr2 != null && ptr2.next != null)
@@ -25,7 +25,7 @@ namespace LeetCode.QuestionBank.Question0024
             }
             ptr1.next = ptr2;
 
-            return header.next;
+            return dummy.next;
         }
     }
 }

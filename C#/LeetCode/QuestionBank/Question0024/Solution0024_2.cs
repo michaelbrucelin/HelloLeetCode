@@ -8,15 +8,20 @@ namespace LeetCode.QuestionBank.Question0024
 {
     public class Solution0024_2 : Interface0024
     {
+        /// <summary>
+        /// 递归
+        /// </summary>
+        /// <param name="head"></param>
+        /// <returns></returns>
         public ListNode SwapPairs(ListNode head)
         {
             if (head == null || head.next == null) return head;
 
-            ListNode head_new = head.next;
-            head.next = SwapPairs(head_new.next);
-            head_new.next = head;
+            ListNode head_next = head.next;
+            head.next = SwapPairs(head_next.next);
+            head_next.next = head;
 
-            return head_new;
+            return head_next;
         }
     }
 }

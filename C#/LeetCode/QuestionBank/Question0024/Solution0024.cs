@@ -8,12 +8,17 @@ namespace LeetCode.QuestionBank.Question0024
 {
     public class Solution0024 : Interface0024
     {
+        /// <summary>
+        /// 迭代
+        /// </summary>
+        /// <param name="head"></param>
+        /// <returns></returns>
         public ListNode SwapPairs(ListNode head)
         {
             if (head == null || head.next == null) return head;
 
-            ListNode header = new ListNode(); header.next = head;
-            ListNode ptrPerv = header;
+            ListNode dummy = new ListNode(); dummy.next = head;
+            ListNode ptrPerv = dummy;
             ListNode ptrA = ptrPerv.next;
             ListNode ptrB = ptrA.next;
             while (true)
@@ -27,7 +32,7 @@ namespace LeetCode.QuestionBank.Question0024
                 else break;
             }
 
-            return header.next;
+            return dummy.next;
         }
     }
 }
