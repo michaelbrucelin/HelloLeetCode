@@ -21,9 +21,9 @@ namespace LeetCode.QuestionBank.Question0344
 
         private void Swap2(char[] s, int i, int j)
         {
-            s[i] = (char)((int)s[i] ^ (int)s[j]);
-            s[j] = (char)((int)s[i] ^ (int)s[j]);
-            s[i] = (char)((int)s[i] ^ (int)s[j]);
+            s[i] = (char)(s[i] ^ s[j]);
+            s[j] = (char)(s[i] ^ s[j]);
+            s[i] = (char)(s[i] ^ s[j]);
         }
     }
 }
