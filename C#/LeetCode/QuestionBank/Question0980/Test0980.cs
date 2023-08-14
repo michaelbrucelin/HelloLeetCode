@@ -11,7 +11,7 @@ namespace LeetCode.QuestionBank.Question0980
     {
         public void Test()
         {
-            Interface0980 solution = new Solution0980_4();
+            Interface0980 solution = new Solution0980_5();
             int[][] grid;
             int result, answer;
             int id = 0;
