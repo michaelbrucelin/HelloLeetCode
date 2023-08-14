@@ -8,21 +8,21 @@ namespace LeetCode.QuestionBank.Question0023
 {
     public class Solution0023_3 : Interface0023
     {
+        /// <summary>
+        /// 两两合并
+        /// </summary>
+        /// <param name="lists"></param>
+        /// <returns></returns>
         public ListNode MergeKLists(ListNode[] lists)
         {
             if (lists.Length == 0) return null;
             if (lists.Length == 1) return lists[0];
 
-            return MergeKLists(lists, 0, lists.Count() - 1);
-        }
+            ListNode header = Merge2Lists(lists[0], lists[1]);
+            for (int i = 2; i < lists.Length; i++)
+                header = Merge2Lists(header, lists[i]);
 
-        private ListNode MergeKLists(ListNode[] lists, int left, int right)
-        {
-            if (left == right) return lists[left];
-            if (left > right) return null;
-
-            int mid = left + (right - left) / 2;
-            return Merge2Lists(MergeKLists(lists, left, mid), MergeKLists(lists, mid + 1, right));
+            return header;
         }
 
         private ListNode Merge2Lists(ListNode l1, ListNode l2)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0088
 {
-    public class Solution0088_5 : Interface0088
+    public class Solution0088_4 : Interface0088
     {
         /// <summary>
         /// 从后向前遍历

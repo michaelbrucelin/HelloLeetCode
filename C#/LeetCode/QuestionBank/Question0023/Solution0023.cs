@@ -21,8 +21,8 @@ namespace LeetCode.QuestionBank.Question0023
             if (list.Count == 0) return null;
             if (list.Count == 1) return list[0];
 
-            ListNode header = new ListNode();
-            ListNode pointer = header;
+            ListNode dummy = new ListNode();
+            ListNode pointer = dummy;
             while (list.Count > 0)
             {
                 pointer.next = list[0];
@@ -40,7 +40,7 @@ namespace LeetCode.QuestionBank.Question0023
                 }
             }
 
-            return header.next;
+            return dummy.next;
         }
 
         private void Swap(IList<ListNode> list, int i, int j)
