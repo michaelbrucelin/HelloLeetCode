@@ -25,7 +25,7 @@ namespace LeetCode.QuestionBank.Question2605
             int min1 = -1, min2 = -1;
             for (int i = 1; i < 10; i++) if (freq1[i] == 1) { min1 = i; break; }
             for (int i = 1; i < 10; i++) if (freq2[i] == 1) { min2 = i; break; }
-            return min1 <= min2 ? min1 * 10 + min2 : min1 + min2 * 10;
+            return min1 < min2 ? min1 * 10 + min2 : min1 + min2 * 10;
         }
     }
 }
