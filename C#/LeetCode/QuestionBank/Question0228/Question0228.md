@@ -1,4 +1,4 @@
-﻿#### [228\. 汇总区间](https://leetcode.cn/problems/summary-ranges/)
+### [228\. 汇总区间](https://leetcode.cn/problems/summary-ranges/)
 
 难度：简单
 
