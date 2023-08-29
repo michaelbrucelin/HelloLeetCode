@@ -53,6 +53,61 @@ namespace LeetCode.Utilses
             return raw[2..^2].Split("],[").Select(str => str.Split(',').Select(s => T.Parse(s, CultureInfo.InvariantCulture.NumberFormat)).ToArray()).ToArray();
         }
 
+        /// <summary>
+        /// 本想写一个通用的，目前不可用，Utils0501中有可用的方法
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="raw"></param>
+        /// <returns></returns>
+        public static T Str2TreeNode<T>(string raw) where T : TreeNode_base
+        {
+            int?[] vals = raw[1..^1].Split(',').Select(s => (int?)(s == "null" ? null : int.Parse(s, CultureInfo.InvariantCulture.NumberFormat))).ToArray();
+            if (vals.Length == 0 || vals[0] == null) return null;
+
+            T root = (T)Activator.CreateInstance(typeof(T), (int)vals[0], null, null);
+            Queue<T> queue = new Queue<T>(); queue.Enqueue(root);
+            int ptr = 1, len = vals.Length;
+            while (queue.Count > 0 && ptr < len)
+            {
+                T node = queue.Dequeue();
+                if (node == null)
+                {
+                    // ptr += 2;
+                }
+                else
+                {
+                    if (ptr < len)
+                    {
+                        if (vals[ptr] == null)
+                        {
+                            queue.Enqueue(null);
+                        }
+                        else
+                        {
+                            T left = (T)Activator.CreateInstance(typeof(T), (int)vals[ptr], null, null);
+                            node.left = left; queue.Enqueue(left);
+                        }
+                        ptr++;
+                    }
+                    if (ptr < len)
+                    {
+                        if (vals[ptr] == null)
+                        {
+                            queue.Enqueue(null);
+                        }
+                        else
+                        {
+                            T right = (T)Activator.CreateInstance(typeof(T), (int)vals[ptr], null, null);
+                            node.right = right; queue.Enqueue(right);
+                        }
+                        ptr++;
+                    }
+                }
+            }
+
+            return root;
+        }
+
         public enum QuestionType
         {
             [Display(Name = "Interview")]
