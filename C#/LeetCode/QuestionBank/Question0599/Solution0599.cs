@@ -20,21 +20,17 @@ namespace LeetCode.QuestionBank.Question0599
             List<string> result = new List<string>();
             int len1 = list1.Length, len2 = list2.Length;
             bool found = false;
-            for (int border = 1; border < len1 + len2 - 1; border++)
+            for (int sum = 0; sum < len1 + len2 - 1; sum++)
             {
-                for (int i = 0; i < border; i++) for (int j = 0; j < border - i; j++)
+                for (int i = 0; i <= sum && i < len1; i++)
+                {
+                    if (sum - i < len2 && list1[i] == list2[sum - i])
                     {
-                        if (list1[i] == list2[j]) { result.Add(list1[i]); found = true; }
+                        result.Add(list1[i]); found = true;
                     }
+                }
                 if (found) break;
             }
-
-            /*
-             list1 =
-["Shogun","Tapioca Express","Burger King","KFC"]
-list2 =
-["KNN","KFC","Burger King","Tapioca Express","Shogun"]
-             */
 
             return result.ToArray();
         }
