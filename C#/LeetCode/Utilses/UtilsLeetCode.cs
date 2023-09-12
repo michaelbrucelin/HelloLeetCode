@@ -39,6 +39,9 @@ namespace LeetCode.Utilses
         /// <returns></returns>
         public static T[] Str2NumArray<T>(string raw) where T : INumber<T>
         {
+            raw = raw.Replace(" ", "");
+            if (raw.Length == 0) return new T[] { };
+
             return raw[1..^1].Split(',').Select(s => T.Parse(s, CultureInfo.InvariantCulture.NumberFormat)).ToArray();
         }
 
@@ -50,6 +53,9 @@ namespace LeetCode.Utilses
         /// <returns></returns>
         public static T[][] Str2NumArray_2d<T>(string raw) where T : INumber<T>
         {
+            raw = raw.Replace(" ", "");
+            if (raw.Length == 0) return new T[][] { };
+
             return raw[2..^2].Split("],[").Select(str => str.Split(',').Select(s => T.Parse(s, CultureInfo.InvariantCulture.NumberFormat)).ToArray()).ToArray();
         }
 
