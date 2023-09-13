@@ -29,7 +29,7 @@ namespace LeetCode.QuestionBank.Question2596
 
             Console.WriteLine($"Found Path: {found}");
             Console.WriteLine("Last Try:");
-            Utils.Dump<int>(board, 0,true);
+            Utils.Dump<int>(board, (n * n).ToString().Length, true);
         }
 
         private bool backtracking(int[,] board, int n, int x, int y, int step)
