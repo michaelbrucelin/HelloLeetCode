@@ -37,5 +37,34 @@ namespace LeetCode.QuestionBank.Question2596
 
             return step == len * len;
         }
+
+        /// <summary>
+        /// 模拟
+        /// 与CheckValidGrid()一样，由Utils2596知，n = 3 或 4 时，无解
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <returns></returns>
+        public bool CheckValidGrid2(int[][] grid)
+        {
+            if (grid[0][0] != 0 || grid.Length <= 4) return false;
+
+            int px = 0, py = 0, _px, _py, step = 0, len = grid.Length;
+            while (true)
+            {
+                step++;
+                foreach (var dir in dirs)
+                {
+                    _px = px + dir.x; _py = py + dir.y;
+                    if (_px >= 0 && _px < len && _py >= 0 && _py < len && grid[_px][_py] == step)
+                    {
+                        px = _px; py = _py; goto Continue;
+                    }
+                }
+                break;
+                Continue:;
+            }
+
+            return step == len * len;
+        }
     }
 }

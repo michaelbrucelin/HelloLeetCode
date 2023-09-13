@@ -27,7 +27,7 @@ namespace LeetCode.QuestionBank.Question2596
             int[,] board = new int[n, n];
             bool found = backtracking(board, n, 0, 0, 0);
 
-            Console.WriteLine($"Found Path: {found}");
+            Console.WriteLine($"n = {n}, Found Path: {found}");
             Console.WriteLine("Last Try:");
             Utils.Dump<int>(board, (n * n).ToString().Length, true);
         }
@@ -40,6 +40,7 @@ namespace LeetCode.QuestionBank.Question2596
             foreach (var dir in dirs)
             {
                 _x = x + dir.x; _y = y + dir.y;
+                if (_x == 0 && _y == 0) continue;  // 起点为0，不能回到起点
                 if (_x >= 0 && _x < n && _y >= 0 && _y < n && board[_x, _y] == 0)
                 {
                     board[_x, _y] = step;
