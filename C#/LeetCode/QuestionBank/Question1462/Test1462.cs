@@ -18,27 +18,27 @@ namespace LeetCode.QuestionBank.Question1462
 
             // 1.
             numCourses = 2;
-            prerequisites = UtilsLeetCode.Str2NumArray_2d<int>("[[1,0]]");
-            queries = UtilsLeetCode.Str2NumArray_2d<int>("[[0,1],[1,0]]");
+            prerequisites = Utils.Str2NumArray_2d<int>("[[1,0]]");
+            queries = Utils.Str2NumArray_2d<int>("[[0,1],[1,0]]");
             answer = new List<bool>() { false, true };
             result = solution.CheckIfPrerequisite(numCourses, prerequisites, queries);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 2. 
             numCourses = 2;
-            prerequisites = UtilsLeetCode.Str2NumArray_2d<int>("");
-            queries = UtilsLeetCode.Str2NumArray_2d<int>("[[1,0],[0,1]]");
+            prerequisites = Utils.Str2NumArray_2d<int>("");
+            queries = Utils.Str2NumArray_2d<int>("[[1,0],[0,1]]");
             answer = new List<bool>() { false, false };
             result = solution.CheckIfPrerequisite(numCourses, prerequisites, queries);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 3. 
             numCourses = 3;
-            prerequisites = UtilsLeetCode.Str2NumArray_2d<int>("[[1,2],[1,0],[2,0]]");
-            queries = UtilsLeetCode.Str2NumArray_2d<int>("[[1,0],[1,2]]");
+            prerequisites = Utils.Str2NumArray_2d<int>("[[1,2],[1,0],[2,0]]");
+            queries = Utils.Str2NumArray_2d<int>("[[1,0],[1,2]]");
             answer = new List<bool>() { true, true };
             result = solution.CheckIfPrerequisite(numCourses, prerequisites, queries);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
         }
     }
 }

@@ -20,31 +20,31 @@ namespace LeetCode.QuestionBank.Question2022
             original = new int[] { 1, 2, 3, 4 }; m = 2; n = 2;
             answer = new int[][] { new int[] { 1, 2 }, new int[] { 3, 4 } };
             result = solution.Construct2DArray(original, m, n);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ArrayToString(result, false)}, answer: {Utils.ArrayToString(answer, false)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ToString(result, false)}, answer: {Utils.ToString(answer, false)}");
 
             // 2. 
             original = new int[] { 1, 2, 3 }; m = 1; n = 3;
             answer = new int[][] { new int[] { 1, 2, 3 } };
             result = solution.Construct2DArray(original, m, n);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ArrayToString(result, false)}, answer: {Utils.ArrayToString(answer, false)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ToString(result, false)}, answer: {Utils.ToString(answer, false)}");
 
             // 3. 
             original = new int[] { 1, 2 }; m = 1; n = 1;
             answer = new int[0][];
             result = solution.Construct2DArray(original, m, n);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ArrayToString(result, false)}, answer: {Utils.ArrayToString(answer, false)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ToString(result, false)}, answer: {Utils.ToString(answer, false)}");
 
             // 4. 
             original = new int[] { 3 }; m = 1; n = 2;
             answer = new int[0][];
             result = solution.Construct2DArray(original, m, n);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ArrayToString(result, false)}, answer: {Utils.ArrayToString(answer, false)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ToString(result, false)}, answer: {Utils.ToString(answer, false)}");
 
             // 5. 
             original = new int[] { 1, 1, 1, 1 }; m = 4; n = 1;
             answer = new int[4][] { new int[] { 1 }, new int[] { 1 }, new int[] { 1 }, new int[] { 1 } };
             result = solution.Construct2DArray(original, m, n);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ArrayToString(result, false)}, answer: {Utils.ArrayToString(answer, false)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ToString(result, false)}, answer: {Utils.ToString(answer, false)}");
         }
     }
 }

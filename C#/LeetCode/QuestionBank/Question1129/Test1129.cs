@@ -20,31 +20,31 @@ namespace LeetCode.QuestionBank.Question1129
             n = 3; redEdges = new int[][] { new int[] { 0, 1 }, new int[] { 1, 2 } }; blueEdges = new int[][] { };
             answer = new int[] { 0, 1, -1 };
             result = solution.ShortestAlternatingPaths(n, redEdges, blueEdges);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 2. 
             n = 3; redEdges = new int[][] { new int[] { 0, 1 } }; blueEdges = new int[][] { new int[] { 2, 1 } };
             answer = new int[] { 0, 1, -1 };
             result = solution.ShortestAlternatingPaths(n, redEdges, blueEdges);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 3. 
             n = 3; redEdges = new int[][] { new int[] { 1, 0 } }; blueEdges = new int[][] { new int[] { 2, 1 } };
             answer = new int[] { 0, -1, -1 };
             result = solution.ShortestAlternatingPaths(n, redEdges, blueEdges);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 4. 
             n = 3; redEdges = new int[][] { new int[] { 0, 1 } }; ; blueEdges = new int[][] { new int[] { 1, 2 } }; ;
             answer = new int[] { 0, 1, 2 };
             result = solution.ShortestAlternatingPaths(n, redEdges, blueEdges);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 5. 
             n = 3; redEdges = new int[][] { new int[] { 0, 1 }, new int[] { 0, 2 } }; blueEdges = new int[][] { new int[] { 1, 0 } };
             answer = new int[] { 0, 1, 1 };
             result = solution.ShortestAlternatingPaths(n, redEdges, blueEdges);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
         }
     }
 }

@@ -20,47 +20,47 @@ namespace LeetCode.QuestionBank.Question1096
             // 1. 
             expression = "{a,b}{c,{d,e}}"; answer = new List<string>() { "ac", "ad", "ae", "bc", "bd", "be" };
             result = solution.BraceExpansionII(expression);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 2. 
             expression = "{{a,z},a{b,c},{ab,z}}"; answer = new List<string>() { "a", "ab", "ac", "z" };
             result = solution.BraceExpansionII(expression);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 3. 
             expression = "a"; answer = new List<string>() { "a" };
             result = solution.BraceExpansionII(expression);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 4. 
             expression = "{a,b,c}"; answer = new List<string>() { "a", "b", "c" };
             result = solution.BraceExpansionII(expression);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 5. 
             expression = "{{a,b},{b,c}}"; answer = new List<string>() { "a", "b", "c" };
             result = solution.BraceExpansionII(expression);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 6. 
             expression = "{a,b}{c,d}"; answer = new List<string>() { "ac", "ad", "bc", "bd" };
             result = solution.BraceExpansionII(expression);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 7. 
             expression = "a{b,c,d}"; answer = new List<string>() { "ab", "ac", "ad" };
             result = solution.BraceExpansionII(expression);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 8. 
             expression = "a{b,c}{d,e}f{g,h}"; answer = new List<string>() { "abdfg", "abdfh", "abefg", "abefh", "acdfg", "acdfh", "acefg", "acefh" };
             result = solution.BraceExpansionII(expression);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 9. 
             expression = "{a,b}{c,{d,e}{f,g}}"; answer = new List<string>() { "ac", "adf", "adg", "aef", "aeg", "bc", "bdf", "bdg", "bef", "beg" };
             result = solution.BraceExpansionII(expression);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
         }
     }
 }

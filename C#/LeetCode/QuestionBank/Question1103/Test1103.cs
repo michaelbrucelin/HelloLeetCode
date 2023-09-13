@@ -20,19 +20,19 @@ namespace LeetCode.QuestionBank.Question1103
             candies = 7; num_people = 4;
             answer = new int[] { 1, 2, 3, 1 };
             result = solution.DistributeCandies(candies, num_people);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 2. 
             candies = 10; num_people = 3;
             answer = new int[] { 5, 2, 3 };
             result = solution.DistributeCandies(candies, num_people);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 3. 
             candies = 60; num_people = 4;
             answer = new int[] { 15, 18, 15, 12 };
             result = solution.DistributeCandies(candies, num_people);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
         }
     }
 }

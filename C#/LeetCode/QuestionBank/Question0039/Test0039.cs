@@ -20,25 +20,25 @@ namespace LeetCode.QuestionBank.Question0039
             candidates = new int[] { 2, 3, 6, 7 }; target = 7;
             answer = new List<IList<int>>() { new List<int>() { 2, 2, 3 }, new List<int>() { 7 } };
             result = solution.CombinationSum(candidates, target);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result, false)}, answer: {Utils.ArrayToString(answer, false)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result, false)}, answer: {Utils.ToString(answer, false)}");
 
             // 2. 
             candidates = new int[] { 2, 3, 5 }; target = 8;
             answer = new List<IList<int>>() { new List<int>() { 2, 2, 2, 2 }, new List<int>() { 2, 3, 3 }, new List<int>() { 3, 5 } };
             result = solution.CombinationSum(candidates, target);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result, false)}, answer: {Utils.ArrayToString(answer, false)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result, false)}, answer: {Utils.ToString(answer, false)}");
 
             // 3. 
             candidates = new int[] { 2 }; target = 1;
             answer = new List<IList<int>>();
             result = solution.CombinationSum(candidates, target);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result, false)}, answer: {Utils.ArrayToString(answer, false)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result, false)}, answer: {Utils.ToString(answer, false)}");
 
             // 4. 
             candidates = new int[] { 4, 2, 8 }; target = 8;
             answer = new List<IList<int>>() { new List<int>() { 4, 4 }, new List<int>() { 4, 2, 2 }, new List<int>() { 2, 2, 2, 2 }, new List<int>() { 8 } };
             result = solution.CombinationSum(candidates, target);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result, false)}, answer: {Utils.ArrayToString(answer, false)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result, false)}, answer: {Utils.ToString(answer, false)}");
         }
     }
 }

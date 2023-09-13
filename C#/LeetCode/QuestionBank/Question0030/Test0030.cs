@@ -20,19 +20,19 @@ namespace LeetCode.QuestionBank.Question0030
             s = "barfoothefoobarman"; words = new string[] { "foo", "bar" };
             answer = new List<int>() { 0, 9 };
             result = solution.FindSubstring(s, words);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 2.
             s = "wordgoodgoodgoodbestword"; words = new string[] { "word", "good", "best", "word" };
             answer = new List<int>();
             result = solution.FindSubstring(s, words);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 3.
             s = "barfoofoobarthefoobarman"; words = new string[] { "bar", "foo", "the" };
             answer = new List<int>() { 6, 9, 12 };
             result = solution.FindSubstring(s, words);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
         }
     }
 }

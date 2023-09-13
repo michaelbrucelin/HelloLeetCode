@@ -19,17 +19,17 @@ namespace LeetCode.QuestionBank.Question2341
             // 1. 
             nums = new int[] { 1, 3, 2, 1, 3, 2, 2 }; answer = new int[] { 3, 1 };
             result = solution.NumberOfPairs(nums);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 2. 
             nums = new int[] { 1, 1 }; answer = new int[] { 1, 0 };
             result = solution.NumberOfPairs(nums);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 3. 
             nums = new int[] { 0 }; answer = new int[] { 0, 1 };
             result = solution.NumberOfPairs(nums);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
         }
     }
 }

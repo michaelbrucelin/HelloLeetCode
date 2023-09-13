@@ -20,19 +20,19 @@ namespace LeetCode.QuestionBank.Question1018
             nums = new int[] { 0, 1, 1 };
             answer = new bool[] { true, false, false };
             result = solution.PrefixesDivBy5(nums);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 2. 
             nums = new int[] { 1, 1, 1 };
             answer = new bool[] { false, false, false };
             result = solution.PrefixesDivBy5(nums);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 3. 
             nums = new int[] { 0, 1, 1, 1, 1, 1 };
             answer = new bool[] { true, false, false, false, true, false };
             result = solution.PrefixesDivBy5(nums);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
         }
     }
 }

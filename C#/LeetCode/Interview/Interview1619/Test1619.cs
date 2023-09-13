@@ -20,7 +20,7 @@ namespace LeetCode.Interview.Interview1619
             land = new int[][] { new int[] { 0, 2, 1, 0 }, new int[] { 0, 1, 0, 1 }, new int[] { 1, 1, 0, 1 }, new int[] { 0, 1, 0, 1 } };
             answer = new int[] { 1, 2, 4 };
             result = solution.PondSizes(land);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 2. 
             land = new int[][] {
@@ -45,7 +45,7 @@ namespace LeetCode.Interview.Interview1619
             };
             answer = new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 4, 6, 6, 8 };
             result = solution.PondSizes(land);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
         }
     }
 }

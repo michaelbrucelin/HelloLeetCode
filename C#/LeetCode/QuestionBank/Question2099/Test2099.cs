@@ -20,19 +20,19 @@ namespace LeetCode.QuestionBank.Question2099
             nums = new int[] { 2, 1, 3, 3 }; k = 2;
             answer = new int[] { 3, 3 };
             result = solution.MaxSubsequence(nums, k);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 2. 
             nums = new int[] { -1, -2, 3, 4 }; k = 3;
             answer = new int[] { -1, 3, 4 };
             result = solution.MaxSubsequence(nums, k);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 3. 
             nums = new int[] { 3, 4, 3, 3 }; k = 2;
             answer = new int[] { 3, 4 };
             result = solution.MaxSubsequence(nums, k);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
         }
     }
 }

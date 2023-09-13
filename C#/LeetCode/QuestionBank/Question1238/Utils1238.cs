@@ -22,7 +22,7 @@ namespace LeetCode.QuestionBank.Question1238
                     buffer[len + j] = buffer[len - j - 1] | len;
                 }
 
-                Console.WriteLine(Utils.ArrayToString(buffer));
+                Console.WriteLine(Utils.ToString(buffer));
                 seed = buffer;
             }
         }

@@ -19,22 +19,22 @@ namespace LeetCode.QuestionBank.Question0989
             // 1. 
             num = new int[] { 1, 2, 0, 0 }; k = 34; answer = new int[] { 1, 2, 3, 4 };
             result = solution.AddToArrayForm(num, k);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 2. 
             num = new int[] { 2, 7, 4 }; k = 181; answer = new int[] { 4, 5, 5 };
             result = solution.AddToArrayForm(num, k);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 3. 
             num = new int[] { 2, 1, 5 }; k = 806; answer = new int[] { 1, 0, 2, 1 };
             result = solution.AddToArrayForm(num, k);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 4. 
             num = new int[] { 1 }; k = 9; answer = new int[] { 1, 0 };
             result = solution.AddToArrayForm(num, k);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
         }
     }
 }

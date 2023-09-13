@@ -17,13 +17,13 @@ namespace LeetCode.QuestionBank.Question1499
             int id = 0;
 
             // 1. 
-            points = UtilsLeetCode.Str2NumArray_2d<int>("[[1,3],[2,0],[5,10],[6,-10]]");
+            points = Utils.Str2NumArray_2d<int>("[[1,3],[2,0],[5,10],[6,-10]]");
             k = 1; answer = 4;
             result = solution.FindMaxValueOfEquation(points, k);
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
 
             // 2. 
-            points = UtilsLeetCode.Str2NumArray_2d<int>("[[0,0],[3,0],[9,2]]");
+            points = Utils.Str2NumArray_2d<int>("[[0,0],[3,0],[9,2]]");
             k = 3; answer = 3;
             result = solution.FindMaxValueOfEquation(points, k);
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");

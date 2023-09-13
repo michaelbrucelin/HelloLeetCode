@@ -21,7 +21,7 @@ namespace LeetCode.QuestionBank.Question1125
             people = new List<IList<string>> { new List<string>() { "java" }, new List<string>() { "nodejs" }, new List<string>() { "nodejs", "reactjs" } };
             answer = new int[] { 0, 2 };
             result = solution.SmallestSufficientTeam(req_skills, people);
-            Console.WriteLine($"{++id,2}: {IsCorrect(req_skills, people, result) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {IsCorrect(req_skills, people, result) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 2. 
             req_skills = new string[] { "algorithms", "math", "java", "reactjs", "csharp", "aws" };
@@ -35,7 +35,7 @@ namespace LeetCode.QuestionBank.Question1125
             };
             answer = new int[] { 1, 2 };
             result = solution.SmallestSufficientTeam(req_skills, people);
-            Console.WriteLine($"{++id,2}: {IsCorrect(req_skills, people, result) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {IsCorrect(req_skills, people, result) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 3. 
             req_skills = new string[] { "gvp", "jgpzzicdvgxlfix", "kqcrfwerywbwi", "jzukdzrfgvdbrunw", "k" };
@@ -50,7 +50,7 @@ namespace LeetCode.QuestionBank.Question1125
             };
             answer = new int[] { 5, 8, 9 };
             result = solution.SmallestSufficientTeam(req_skills, people);
-            Console.WriteLine($"{++id,2}: {IsCorrect(req_skills, people, result) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {IsCorrect(req_skills, people, result) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
         }
 
         private bool IsCorrect(string[] req_skills, IList<IList<string>> people, int[] select)

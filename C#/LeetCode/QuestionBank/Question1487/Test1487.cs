@@ -20,55 +20,55 @@ namespace LeetCode.QuestionBank.Question1487
             names = new string[] { "pes", "fifa", "gta", "pes(2019)" };
             answer = new string[] { "pes", "fifa", "gta", "pes(2019)" };
             result = solution.GetFolderNames(names);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 2. 
             names = new string[] { "gta", "gta(1)", "gta", "avalon" };
             answer = new string[] { "gta", "gta(1)", "gta(2)", "avalon" };
             result = solution.GetFolderNames(names);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 3. 
             names = new string[] { "onepiece", "onepiece(1)", "onepiece(2)", "onepiece(3)", "onepiece" };
             answer = new string[] { "onepiece", "onepiece(1)", "onepiece(2)", "onepiece(3)", "onepiece(4)" };
             result = solution.GetFolderNames(names);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 4. 
             names = new string[] { "wano", "wano", "wano", "wano" };
             answer = new string[] { "wano", "wano(1)", "wano(2)", "wano(3)" };
             result = solution.GetFolderNames(names);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 5. 
             names = new string[] { "kaido", "kaido(1)", "kaido", "kaido(1)" };
             answer = new string[] { "kaido", "kaido(1)", "kaido(2)", "kaido(1)(1)" };
             result = solution.GetFolderNames(names);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 6. 
             names = new string[] { "gta", "gta(3)", "gta", "avalon" };
             answer = new string[] { "gta", "gta(3)", "gta(1)", "avalon" };
             result = solution.GetFolderNames(names);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 7. 
             names = new string[] { "gta", "gta(03)", "gta", "avalon" };
             answer = new string[] { "gta", "gta(03)", "gta(1)", "avalon" };
             result = solution.GetFolderNames(names);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 8. 
             names = new string[] { "gta", "gta(1)", "gta(1)", "gta", "avalon" };
             answer = new string[] { "gta", "gta(1)", "gta(1)(1)", "gta(2)", "avalon" };
             result = solution.GetFolderNames(names);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 9. 
             names = new string[] { "kaido", "kaido(1)", "kaido", "kaido(1)", "kaido(2)" };
             answer = new string[] { "kaido", "kaido(1)", "kaido(2)", "kaido(1)(1)", "kaido(2)(1)" };
             result = solution.GetFolderNames(names);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
         }
     }
 }

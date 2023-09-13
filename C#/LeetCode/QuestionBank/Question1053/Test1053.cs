@@ -19,27 +19,27 @@ namespace LeetCode.QuestionBank.Question1053
             // 1. 
             arr = new int[] { 3, 2, 1 }; answer = new int[] { 3, 1, 2 };
             result = solution.PrevPermOpt1(arr);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 2. 
             arr = new int[] { 1, 1, 5 }; answer = new int[] { 1, 1, 5 };
             result = solution.PrevPermOpt1(arr);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 3. 
             arr = new int[] { 1, 9, 4, 6, 7 }; answer = new int[] { 1, 7, 4, 6, 9 };
             result = solution.PrevPermOpt1(arr);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 4. 
             arr = new int[] { 3, 1, 1, 3 }; answer = new int[] { 1, 3, 1, 3 };
             result = solution.PrevPermOpt1(arr);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 5. 
             arr = new int[] { 1, 9, 4, 4, 6, 7 }; answer = new int[] { 1, 7, 4, 4, 6, 9 };
             result = solution.PrevPermOpt1(arr);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
         }
     }
 }

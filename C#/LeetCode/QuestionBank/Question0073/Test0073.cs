@@ -17,16 +17,16 @@ namespace LeetCode.QuestionBank.Question0073
             int id = 0;
 
             // 1. 
-            matrix = UtilsLeetCode.Str2NumArray_2d<int>("[[1,1,1],[1,0,1],[1,1,1]]");
-            answer = UtilsLeetCode.Str2NumArray_2d<int>("[[1,0,1],[0,0,0],[1,0,1]]");
+            matrix = Utils.Str2NumArray_2d<int>("[[1,1,1],[1,0,1],[1,1,1]]");
+            answer = Utils.Str2NumArray_2d<int>("[[1,0,1],[0,0,0],[1,0,1]]");
             solution.SetZeroes(matrix); result = matrix;
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ArrayToString(result, false)}, answer: {Utils.ArrayToString(answer, false)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ToString(result, false)}, answer: {Utils.ToString(answer, false)}");
 
             // 2. 
-            matrix = UtilsLeetCode.Str2NumArray_2d<int>("[[0,1,2,0],[3,4,5,2],[1,3,1,5]]");
-            answer = UtilsLeetCode.Str2NumArray_2d<int>("[[0,0,0,0],[0,4,5,0],[0,3,1,0]]");
+            matrix = Utils.Str2NumArray_2d<int>("[[0,1,2,0],[3,4,5,2],[1,3,1,5]]");
+            answer = Utils.Str2NumArray_2d<int>("[[0,0,0,0],[0,4,5,0],[0,3,1,0]]");
             solution.SetZeroes(matrix); result = matrix;
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ArrayToString(result, false)}, answer: {Utils.ArrayToString(answer, false)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ToString(result, false)}, answer: {Utils.ToString(answer, false)}");
         }
     }
 }

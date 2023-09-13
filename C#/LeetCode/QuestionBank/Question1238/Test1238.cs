@@ -20,13 +20,13 @@ namespace LeetCode.QuestionBank.Question1238
             n = 2; start = 3;
             answer = new List<int>() { 3, 2, 0, 1 };
             result = solution.CircularPermutation(n, start);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 2. 
             n = 3; start = 2;
             answer = new List<int>() { 2, 6, 7, 5, 4, 0, 1, 3 };
             result = solution.CircularPermutation(n, start);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
         }
     }
 }

@@ -21,12 +21,12 @@ namespace LeetCode.QuestionBank.Question0448
             // 1. 
             nums = new int[] { 4, 3, 2, 7, 8, 2, 3, 1 }; answer = new int[] { 5, 6 };
             result = solution.FindDisappearedNumbers(nums);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 2. 
             nums = new int[] { 1, 1 }; answer = new int[] { 2 };
             result = solution.FindDisappearedNumbers(nums);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 3. 
             string question = "0448", testcase = "03";

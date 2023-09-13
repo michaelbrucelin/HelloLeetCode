@@ -17,19 +17,19 @@ namespace LeetCode.QuestionBank.Question0980
             int id = 0;
 
             // 1. 
-            grid = UtilsLeetCode.Str2NumArray_2d<int>("[[1,0,0,0],[0,0,0,0],[0,0,2,-1]]");
+            grid = Utils.Str2NumArray_2d<int>("[[1,0,0,0],[0,0,0,0],[0,0,2,-1]]");
             answer = 2;
             result = solution.UniquePathsIII(grid);
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
 
             // 2. 
-            grid = UtilsLeetCode.Str2NumArray_2d<int>("[[1,0,0,0],[0,0,0,0],[0,0,0,2]]");
+            grid = Utils.Str2NumArray_2d<int>("[[1,0,0,0],[0,0,0,0],[0,0,0,2]]");
             answer = 4;
             result = solution.UniquePathsIII(grid);
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
 
             // 3. 
-            grid = UtilsLeetCode.Str2NumArray_2d<int>("[[0,1],[2,0]]");
+            grid = Utils.Str2NumArray_2d<int>("[[0,1],[2,0]]");
             answer = 0;
             result = solution.UniquePathsIII(grid);
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");

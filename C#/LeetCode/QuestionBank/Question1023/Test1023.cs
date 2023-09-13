@@ -20,25 +20,25 @@ namespace LeetCode.QuestionBank.Question1023
             queries = new string[] { "FooBar", "FooBarTest", "FootBall", "FrameBuffer", "ForceFeedBack" }; pattern = "FB";
             answer = new bool[] { true, false, true, true, false };
             result = solution.CamelMatch(queries, pattern);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 2. 
             queries = new string[] { "FooBar", "FooBarTest", "FootBall", "FrameBuffer", "ForceFeedBack" }; pattern = "FoBa";
             answer = new bool[] { true, false, true, false, false };
             result = solution.CamelMatch(queries, pattern);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 3. 
             queries = new string[] { "FooBar", "FooBarTest", "FootBall", "FrameBuffer", "ForceFeedBack" }; pattern = "FoBaT";
             answer = new bool[] { false, true, false, false, false };
             result = solution.CamelMatch(queries, pattern);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 4. 
             queries = new string[] { "FooBar", "aFooBar", "FooBarTest", "FootBall", "FrameBuffer", "ForceFeedBack" }; pattern = "FBr";
             answer = new bool[] { true, true, false, false, true, false };
             result = solution.CamelMatch(queries, pattern);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
         }
     }
 }

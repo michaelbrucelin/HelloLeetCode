@@ -34,7 +34,7 @@ namespace LeetCode.QuestionBank.Question2208
             string question = "2208", testcase = "03";
             string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"QuestionBank\Question{question}\TestCases\TestCase{question}_{testcase}.txt");
-            nums = UtilsLeetCode.Str2NumArray<int>(File.ReadAllText(path));
+            nums = Utils.Str2NumArray<int>(File.ReadAllText(path));
             answer = 1435;
             result = solution.HalveArray(nums);
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");

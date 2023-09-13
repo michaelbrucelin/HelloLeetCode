@@ -17,16 +17,16 @@ namespace LeetCode.QuestionBank.Question0566
             int id = 0;
 
             // 1. 
-            mat = UtilsLeetCode.Str2NumArray_2d<int>("[[1,2],[3,4]]"); r = 1; c = 4;
-            answer = UtilsLeetCode.Str2NumArray_2d<int>("[[1,2,3,4]]");
+            mat = Utils.Str2NumArray_2d<int>("[[1,2],[3,4]]"); r = 1; c = 4;
+            answer = Utils.Str2NumArray_2d<int>("[[1,2,3,4]]");
             result = solution.MatrixReshape(mat, r, c);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ArrayToString(result, false)}, answer: {Utils.ArrayToString(answer, false)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ToString(result, false)}, answer: {Utils.ToString(answer, false)}");
 
             // 2. 
-            mat = UtilsLeetCode.Str2NumArray_2d<int>("[[1,2],[3,4]]"); r = 2; c = 4;
-            answer = UtilsLeetCode.Str2NumArray_2d<int>("[[1,2],[3,4]]");
+            mat = Utils.Str2NumArray_2d<int>("[[1,2],[3,4]]"); r = 2; c = 4;
+            answer = Utils.Str2NumArray_2d<int>("[[1,2],[3,4]]");
             result = solution.MatrixReshape(mat, r, c);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ArrayToString(result, false)}, answer: {Utils.ArrayToString(answer, false)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ToString(result, false)}, answer: {Utils.ToString(answer, false)}");
         }
     }
 }

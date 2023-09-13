@@ -20,19 +20,19 @@ namespace LeetCode.QuestionBank.Question1389
             nums = new int[] { 0, 1, 2, 3, 4 }; index = new int[] { 0, 1, 2, 2, 1 };
             answer = new int[] { 0, 4, 1, 3, 2 };
             result = solution.CreateTargetArray(nums, index);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 2. 
             nums = new int[] { 1, 2, 3, 4, 0 }; index = new int[] { 0, 1, 2, 3, 0 };
             answer = new int[] { 0, 1, 2, 3, 4 };
             result = solution.CreateTargetArray(nums, index);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 3. 
             nums = new int[] { 1 }; index = new int[] { 0 };
             answer = new int[] { 1 };
             result = solution.CreateTargetArray(nums, index);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
         }
     }
 }

@@ -22,13 +22,13 @@ namespace LeetCode.QuestionBank.Question1170
             queries = new string[] { "cbd" }; words = new string[] { "zaaaz" };
             answer = new int[] { 1 };
             result = solution.NumSmallerByFrequency(queries, words);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 2. 
             queries = new string[] { "bbb", "cc" }; words = new string[] { "a", "aa", "aaa", "aaaa" };
             answer = new int[] { 1, 2 };
             result = solution.NumSmallerByFrequency(queries, words);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 3. 
             string question = "1170", testcase = "03", path, _path;
@@ -40,7 +40,7 @@ namespace LeetCode.QuestionBank.Question1170
             _path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"QuestionBank\Question{question}\TestCases\TestCase{question}_{testcase}_answer.txt");
             answer = File.ReadAllText(_path)[1..^1].Split(',').Select(int.Parse).ToArray();
             result = solution.NumSmallerByFrequency(queries, words);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
         }
     }
 }

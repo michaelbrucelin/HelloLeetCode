@@ -20,20 +20,20 @@ namespace LeetCode.QuestionBank.Question1078
             text = "alice is a good girl she is a good student"; first = "a"; second = "good";
             answer = new string[] { "girl", "student" };
             result = solution.FindOcurrences(text, first, second);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 2. 
             text = "we will we will rock you"; first = "we"; second = "will";
             answer = new string[] { "we", "rock" };
             result = solution.FindOcurrences(text, first, second);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
 
             // 3. 
             text = "we we we we we we we we"; first = "we"; second = "we";
             answer = new string[] { "we", "we", "we", "we", "we", "we" };
             result = solution.FindOcurrences(text, first, second);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
         }
     }
 }

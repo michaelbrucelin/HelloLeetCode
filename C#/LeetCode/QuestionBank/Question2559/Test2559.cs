@@ -21,14 +21,14 @@ namespace LeetCode.QuestionBank.Question2559
             queries = new int[][] { new int[] { 0, 2 }, new int[] { 1, 4 }, new int[] { 1, 1 } };
             answer = new int[] { 2, 3, 0 };
             result = solution.VowelStrings(words, queries);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 2. 
             words = new string[] { "a", "e", "i" };
             queries = new int[][] { new int[] { 0, 2 }, new int[] { 0, 1 }, new int[] { 2, 2 } };
             answer = new int[] { 3, 2, 1 };
             result = solution.VowelStrings(words, queries);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
         }
     }
 }

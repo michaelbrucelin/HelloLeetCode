@@ -20,20 +20,20 @@ namespace LeetCode.QuestionBank.Question1817
             logs = new int[][] { new int[] { 0, 5 }, new int[] { 1, 2 }, new int[] { 0, 2 }, new int[] { 0, 5 }, new int[] { 1, 3 } };
             k = 5; answer = new int[] { 0, 2, 0, 0, 0 };
             result = solution.FindingUsersActiveMinutes(logs, k);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 2. 
             logs = new int[][] { new int[] { 1, 1 }, new int[] { 2, 2 }, new int[] { 2, 3 } };
             k = 4; answer = new int[] { 1, 1, 0, 0 };
             result = solution.FindingUsersActiveMinutes(logs, k);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 3. 
             // [[283268890,14532],[283268891,14530],[283268889,14530],[283268892,14530],[283268890,14531]]
             logs = new int[][] { new int[] { 283268890, 14532 }, new int[] { 283268891, 14530 }, new int[] { 283268889, 14530 }, new int[] { 283268892, 14530 }, new int[] { 283268890, 14531 } };
             k = 2; answer = new int[] { 3, 1 };
             result = solution.FindingUsersActiveMinutes(logs, k);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
         }
     }
 }

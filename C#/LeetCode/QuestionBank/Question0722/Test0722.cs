@@ -20,19 +20,19 @@ namespace LeetCode.QuestionBank.Question0722
             source = new string[] { "/*Test program */", "int main()", "{ ", "  // variable declaration ", "int a, b, c;", "/* This is a test", "   multiline  ", "   comment for ", "   testing */", "a = b + c;", "}" };
             answer = new List<string>() { "int main()", "{ ", "  ", "int a, b, c;", "a = b + c;", "}" };
             result = solution.RemoveComments(source);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 2. 
             source = new string[] { "a/*comment", "line", "more_comment*/b" };
             answer = new List<string>() { "ab" };
             result = solution.RemoveComments(source);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 3. 
             source = new string[] { "void func(int k) {", "// this function does nothing /*", "   k = k*2/4;", "   k = k/2;*/", "}" };
             answer = new List<string>() { "void func(int k) {", "   k = k*2/4;", "   k = k/2;*/", "}" };
             result = solution.RemoveComments(source);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
         }
     }
 }

@@ -21,21 +21,21 @@ namespace LeetCode.QuestionBank.Question1253
             flag = false;
             result = solution.ReconstructMatrix(upper, lower, colsum);
             flag = flag ? result.Count == 0 : result[0].Sum() == upper && result[1].Sum() == lower && Utils.CompareArray(result[0].Zip(result[1], (i, j) => i + j).ToArray(), colsum);
-            Console.WriteLine($"{++id,2}: {flag + ",",-6} result: {Utils.ArrayToString(result, false)}");
+            Console.WriteLine($"{++id,2}: {flag + ",",-6} result: {Utils.ToString(result, false)}");
 
             // 2. 
             upper = 2; lower = 3; colsum = new int[] { 2, 2, 1, 1 };
             flag = true;
             result = solution.ReconstructMatrix(upper, lower, colsum);
             flag = flag ? result.Count == 0 : result[0].Sum() == upper && result[1].Sum() == lower && Utils.CompareArray(result[0].Zip(result[1], (i, j) => i + j).ToArray(), colsum);
-            Console.WriteLine($"{++id,2}: {flag + ",",-6} result: {Utils.ArrayToString(result, false)}");
+            Console.WriteLine($"{++id,2}: {flag + ",",-6} result: {Utils.ToString(result, false)}");
 
             // 3. 
             upper = 5; lower = 5; colsum = new int[] { 2, 1, 2, 0, 1, 0, 1, 2, 0, 1 };
             flag = false;
             result = solution.ReconstructMatrix(upper, lower, colsum);
             flag = flag ? result.Count == 0 : result[0].Sum() == upper && result[1].Sum() == lower && Utils.CompareArray(result[0].Zip(result[1], (i, j) => i + j).ToArray(), colsum);
-            Console.WriteLine($"{++id,2}: {flag + ",",-6} result: {Utils.ArrayToString(result, false)}");
+            Console.WriteLine($"{++id,2}: {flag + ",",-6} result: {Utils.ToString(result, false)}");
         }
     }
 }

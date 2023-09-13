@@ -19,26 +19,26 @@ namespace LeetCode.QuestionBank.Question1851
             int id = 0;
 
             // 1. 
-            intervals = UtilsLeetCode.Str2NumArray_2d<int>("[[1,4],[2,4],[3,6],[4,4]]");
+            intervals = Utils.Str2NumArray_2d<int>("[[1,4],[2,4],[3,6],[4,4]]");
             queries = new int[] { 2, 3, 4, 5 };
             answer = new int[] { 3, 3, 1, 4 };
             result = solution.MinInterval(intervals, queries);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 2. 
-            intervals = UtilsLeetCode.Str2NumArray_2d<int>("[[2,3],[2,5],[1,8],[20,25]]");
+            intervals = Utils.Str2NumArray_2d<int>("[[2,3],[2,5],[1,8],[20,25]]");
             queries = new int[] { 2, 19, 5, 22 };
             answer = new int[] { 2, -1, 4, 6 };
             result = solution.MinInterval(intervals, queries);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             // 3. 
             string question = "1851", testcase = "03";
             string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             path = Directory.GetParent(path).Parent.Parent.FullName;
-            intervals = UtilsLeetCode.Str2NumArray_2d<int>(File.ReadAllText(Path.Combine(path, @$"QuestionBank\Question{question}\TestCases\TestCase{question}_{testcase}_intervals.txt")));
-            queries = UtilsLeetCode.Str2NumArray<int>(File.ReadAllText(Path.Combine(path, @$"QuestionBank\Question{question}\TestCases\TestCase{question}_{testcase}_queries.txt")));
-            answer = UtilsLeetCode.Str2NumArray<int>(File.ReadAllText(Path.Combine(path, @$"QuestionBank\Question{question}\TestCases\TestCase{question}_{testcase}_answer.txt")));
+            intervals = Utils.Str2NumArray_2d<int>(File.ReadAllText(Path.Combine(path, @$"QuestionBank\Question{question}\TestCases\TestCase{question}_{testcase}_intervals.txt")));
+            queries = Utils.Str2NumArray<int>(File.ReadAllText(Path.Combine(path, @$"QuestionBank\Question{question}\TestCases\TestCase{question}_{testcase}_queries.txt")));
+            answer = Utils.Str2NumArray<int>(File.ReadAllText(Path.Combine(path, @$"QuestionBank\Question{question}\TestCases\TestCase{question}_{testcase}_answer.txt")));
             result = solution.MinInterval(intervals, queries);
             Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: [ ... ... ], answer: [ ... ... ]");
         }
