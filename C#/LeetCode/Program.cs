@@ -16,15 +16,14 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            //Test1462 test = new();
+            //Test2596 test = new();
             //test.Test();
             //UtilsLeetCode.FmtMarkDown(UtilsLeetCode.QuestionType.QuestionBank, "1253", "off");
             //test.TestDivergentTraverse();
             //test.Look4Rules();
             //test.VerifyRules();
             Utils2596 utils = new();
-            //utils.Dial(1000);
-            utils.FindPath(3);
+            utils.Dial();
 
             //标量值
             //Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");

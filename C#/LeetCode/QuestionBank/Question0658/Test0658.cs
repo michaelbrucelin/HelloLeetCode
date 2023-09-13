@@ -15,13 +15,13 @@ namespace LeetCode.QuestionBank.Question0658
             IList<int> result;
 
             result = solution.FindClosestElements(new int[] { 1, 2, 3, 4, 5 }, 4, 3);
-            Utils.PrintArray(result);
+            Utils.Dump(result);
 
             result = solution.FindClosestElements(new int[] { 1, 2, 3, 4, 5 }, 4, -1);
-            Utils.PrintArray(result);
+            Utils.Dump(result);
 
             result = solution.FindClosestElements(new int[] { 0, 0, 0, 1, 3, 5, 6, 7, 8, 8 }, 2, 2);
-            Utils.PrintArray(result);
+            Utils.Dump(result);
         }
     }
 }

@@ -43,7 +43,7 @@ namespace LeetCode.QuestionBank.Question0754
                 }
                 set = buffer;
             }
-            Utils.PrintArray(set.OrderBy(i => i).ToList());
+            Utils.Dump(set.OrderBy(i => i).ToList());
         }
     }
 }

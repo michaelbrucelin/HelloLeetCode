@@ -135,26 +135,6 @@ namespace LeetCode.Utilses
         }
 
         /// <summary>
-        /// 输出一维数组
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="list"></param>
-        public static void PrintArray<T>(IList<T> list)
-        {
-            Console.WriteLine(ToString(list));
-        }
-
-        /// <summary>
-        /// 输出二维数组
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="list"></param>
-        public static void PrintArray<T>(IList<IList<T>> list, bool multiline)
-        {
-            Console.WriteLine(ToString(list, multiline));
-        }
-
-        /// <summary>
         /// 比较两个一维数组是否相等
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -254,44 +234,54 @@ namespace LeetCode.Utilses
             ObjectDumper.Write(element, depth, log);
         }
 
-        public static void Dump<T>(IEnumerable<T> list)
+        public static void Dump<T>(IEnumerable<T> list, int width = 0)
         {
-            Console.WriteLine(ToString<T>(list));
+            Console.WriteLine(ToString<T>(list), width);
         }
 
-        public static void Dump<T>(IEnumerable<T> list, int start, int len)
+        public static void Dump<T>(IEnumerable<T> list, int start, int len, int width = 0)
         {
-            Console.WriteLine(ToString(list, start, len));
+            Console.WriteLine(ToString(list, start, len, width));
         }
 
-        public static void Dump<T>(IList<T> list)
+        public static void Dump<T>(IList<T> list, int width = 0)
         {
-            Console.WriteLine(ToString(list));
+            Console.WriteLine(ToString(list), width);
         }
 
-        public static void Dump<T>(IList<T> list, int start, int len)
+        public static void Dump<T>(IList<T> list, int start, int len, int width = 0)
         {
-            Console.WriteLine(ToString(list, start, len));
+            Console.WriteLine(ToString(list, start, len, width));
         }
 
-        public static void Dump<T>(IList<IList<T>> list, bool multiline)
+        public static void Dump<T>(IList<IList<T>> list, bool multiline = true)
         {
-            Console.WriteLine(ToString(list, multiline));
+            Dump<T>(list, 0, multiline);
         }
 
-        public static void Dump<T>(T[,] arr, bool multiline)
+        public static void Dump<T>(IList<IList<T>> list, int width, bool multiline = true)
         {
-            Console.WriteLine(ToString(arr, multiline));
+            Console.WriteLine(ToString(list, width, multiline));
         }
 
-        public static string ToString<T>(IEnumerable<T> list)
+        public static void Dump<T>(T[,] arr, bool multiline = true)
         {
-            return ToString<T>(new List<T>(list));
+            Dump(arr, 0, multiline);
         }
 
-        public static string ToString<T>(IEnumerable<T> list, int start, int len)
+        public static void Dump<T>(T[,] arr, int width, bool multiline = true)
         {
-            return ToString<T>(new List<T>(list), start, len);
+            Console.WriteLine(ToString(arr, width, multiline));
+        }
+
+        public static string ToString<T>(IEnumerable<T> list, int width = 0)
+        {
+            return ToString<T>(new List<T>(list), width);
+        }
+
+        public static string ToString<T>(IEnumerable<T> list, int start, int len, int width = 0)
+        {
+            return ToString<T>(new List<T>(list), start, len, width);
         }
 
         /// <summary>
@@ -300,7 +290,7 @@ namespace LeetCode.Utilses
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static string ToString<T>(IList<T> list)
+        public static string ToString<T>(IList<T> list, int width = 0)
         {
             if (list == null) return "null";
             if (list.Count == 0) return "[ ]";
@@ -309,9 +299,9 @@ namespace LeetCode.Utilses
             StringBuilder sb = new StringBuilder();
 
             sb.Append("[ ");
-            sb.Append(list[0].ToString());
+            sb.Append(list[0].ToString().PadLeft(width, ' '));
             for (int i = 1; i < list.Count; i++)
-                sb.Append($", {list[i]}");
+                sb.Append($", {list[i].ToString().PadLeft(width, ' ')}");
             sb.Append(" ]");
 
             return sb.ToString();
@@ -325,18 +315,18 @@ namespace LeetCode.Utilses
         /// <param name="start"></param>
         /// <param name="len"></param>
         /// <returns></returns>
-        public static string ToString<T>(IList<T> list, int start, int len)
+        public static string ToString<T>(IList<T> list, int start, int len, int width = 0)
         {
             if (list == null) return "null";
             if (len == 0) return "[ ]";
-            if (len == 1) return $"[ {list[start]} ]";
+            if (len == 1) return $"[ {list[start].ToString().PadLeft(width, ' ')} ]";
 
             StringBuilder sb = new StringBuilder();
 
             sb.Append("[ ");
-            sb.Append(list[start].ToString());
+            sb.Append(list[start].ToString().PadLeft(width, ' '));
             for (int i = start + 1; i < len; i++)
-                sb.Append($", {list[i]}");
+                sb.Append($", {list[i].ToString().PadLeft(width, ' ')}");
             sb.Append(" ]");
 
             return sb.ToString();
@@ -348,7 +338,18 @@ namespace LeetCode.Utilses
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static string ToString<T>(IList<IList<T>> list, bool multiline)
+        public static string ToString<T>(IList<IList<T>> list, bool multiline = true)
+        {
+            return ToString<T>(list, multiline);
+        }
+
+        /// <summary>
+        /// 将二维数组转为字符串
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static string ToString<T>(IList<IList<T>> list, int width, bool multiline = true)
         {
             if (list == null) return "null";
             if (list.Count == 0) return "[ ]";
@@ -357,10 +358,10 @@ namespace LeetCode.Utilses
             StringBuilder sb = new StringBuilder();
 
             sb.Append("[ ");
-            sb.Append($"{ToString(list[0])}, "); if (multiline) sb.Append(Environment.NewLine);
+            sb.Append($"{ToString(list[0], width)}, "); if (multiline) sb.Append(Environment.NewLine);
             for (int i = 1; i < list.Count - 1; i++)
-            { if (multiline) sb.Append("  "); sb.Append($"{ToString(list[i])}, "); if (multiline) sb.Append(Environment.NewLine); }
-            if (multiline) sb.Append("  "); sb.Append($"{ToString(list[list.Count - 1])}");
+            { if (multiline) sb.Append("  "); sb.Append($"{ToString(list[i], width)}, "); if (multiline) sb.Append(Environment.NewLine); }
+            if (multiline) sb.Append("  "); sb.Append($"{ToString(list[list.Count - 1], width)}");
             sb.Append(" ]");
 
             return sb.ToString();
@@ -372,23 +373,35 @@ namespace LeetCode.Utilses
         /// <typeparam name="T"></typeparam>
         /// <param name="arr"></param>
         /// <returns></returns>
-        public static string ToString<T>(T[,] arr, bool multiline)
+        public static string ToString<T>(T[,] arr, bool multiline = true)
+        {
+            return ToString(arr, multiline);
+        }
+
+        /// <summary>
+        /// 将二维数组转为字符串
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="arr"></param>
+        /// <returns></returns>
+        public static string ToString<T>(T[,] arr, int width, bool multiline = true)
         {
             if (arr == null) return "null";
             if (arr.Length == 0) return "[ ]";
 
             StringBuilder sb = new StringBuilder();
 
-            sb.Append("[ ");
+            sb.Append("[");
             for (int row = 0; row < arr.GetLength(0) - 1; row++)
             {
                 if (multiline) sb.Append("  "); sb.Append("[ ");
-                for (int col = 0; col < arr.GetLength(1) - 1; col++) sb.Append($"{arr[row, col]}, "); sb.Append(arr[row, arr.GetLength(1) - 1]);
+                for (int col = 0; col < arr.GetLength(1) - 1; col++) sb.Append($"{arr[row, col].ToString().PadLeft(width, ' ')}, "); sb.Append(arr[row, arr.GetLength(1) - 1].ToString().PadLeft(width, ' '));
                 sb.Append(" ],"); if (multiline) sb.Append(Environment.NewLine);
             }
             if (multiline) sb.Append("  "); sb.Append("[ ");
-            for (int col = 0; col < arr.GetLength(1) - 1; col++) sb.Append($"{arr[arr.GetLength(0) - 1, col]}, "); sb.Append(arr[arr.GetLength(0) - 1, arr.GetLength(1) - 1]);
+            for (int col = 0; col < arr.GetLength(1) - 1; col++) sb.Append($"{arr[arr.GetLength(0) - 1, col].ToString().PadLeft(width, ' ')}, "); sb.Append(arr[arr.GetLength(0) - 1, arr.GetLength(1) - 1].ToString().PadLeft(width, ' '));
             sb.Append(" ] ]");
+            sb.Remove(1, 1);
 
             return sb.ToString();
         }
@@ -418,7 +431,7 @@ namespace LeetCode.Utilses
             for (int i = 0; i < row; i++) for (int j = 0; j < col; j++)
                     array[i, j] = random.Next(min, max + 1);
 
-            return ToString(array, multiline);
+            return ToString(array, 0, multiline);
         }
 
         /// <summary>

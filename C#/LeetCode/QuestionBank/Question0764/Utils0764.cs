@@ -16,7 +16,7 @@ namespace LeetCode.QuestionBank.Question0764
         public void ExtendTraverse(int n)
         {
             int[][] grid = Enumerable.Range(0, n).Select(i => Enumerable.Range(n * i, n).ToArray()).ToArray();
-            Utils.PrintArray(grid, true);
+            Utils.Dump(grid, true);
 
             for (int c = ((n - 1) >> 1); c >= 0; c--)  // 从外向内数第几圈
             {

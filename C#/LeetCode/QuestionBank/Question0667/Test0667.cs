@@ -19,17 +19,17 @@ namespace LeetCode.QuestionBank.Question0667
             // 1. 
             n = 3; k = 1; nums = solution.ConstructArray(n, k);
             Console.Write($"{++id,2}, {Verify(nums) == k}, ");
-            Utils.PrintArray(nums);
+            Utils.Dump(nums);
 
             // 2. 
             n = 3; k = 2; nums = solution.ConstructArray(n, k);
             Console.Write($"{++id,2}, {Verify(nums) == k}, ");
-            Utils.PrintArray(nums);
+            Utils.Dump(nums);
 
             // 3. 
             n = 32; k = 16; nums = solution.ConstructArray(n, k);
             Console.Write($"{++id,2}, {Verify(nums) == k}, ");
-            Utils.PrintArray(nums);
+            Utils.Dump(nums);
         }
 
         private int Verify(int[] nums)

@@ -21,7 +21,7 @@ namespace LeetCode.QuestionBank.Question1470
             Solution1470_3 solution = new Solution1470_3();
             solution.Shuffle(nums, 4);
 
-            Utils.PrintArray(nums);
+            Utils.Dump(nums);
         }
     }
 }

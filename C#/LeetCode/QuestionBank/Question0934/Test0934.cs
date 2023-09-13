@@ -51,9 +51,9 @@ namespace LeetCode.QuestionBank.Question0934
             for (r = 0; r < grid.Length; r++) for (c = 0; c < grid[r].Length; c++) if (grid[r][c] == 1) goto End1;
             End1:
             action(grid, mask, island, r, c);
-            Utils.PrintArray(grid, true);
-            Utils.PrintArray(mask, true);
-            Utils.PrintArray(new List<(int, int)>(island));
+            Utils.Dump(grid, true);
+            Utils.Dump(mask, true);
+            Utils.Dump(new List<(int, int)>(island));
 
             // 2.
             grid = new int[][] { new int[] { 0, 1, 0 }, new int[] { 0, 0, 0 }, new int[] { 0, 0, 1 } };
@@ -62,9 +62,9 @@ namespace LeetCode.QuestionBank.Question0934
             for (r = 0; r < grid.Length; r++) for (c = 0; c < grid[r].Length; c++) if (grid[r][c] == 1) goto End2;
             End2:
             action(grid, mask, island, r, c);
-            Utils.PrintArray(grid, true);
-            Utils.PrintArray(mask, true);
-            Utils.PrintArray(new List<(int, int)>(island));
+            Utils.Dump(grid, true);
+            Utils.Dump(mask, true);
+            Utils.Dump(new List<(int, int)>(island));
 
             // 3.
             grid = new int[][] { new int[] { 1, 1, 1, 1, 1 }, new int[] { 1, 0, 0, 0, 1 }, new int[] { 1, 0, 1, 0, 1 }, new int[] { 1, 0, 0, 0, 1 }, new int[] { 1, 1, 1, 1, 1 } };
@@ -73,9 +73,9 @@ namespace LeetCode.QuestionBank.Question0934
             for (r = 0; r < grid.Length; r++) for (c = 0; c < grid[r].Length; c++) if (grid[r][c] == 1) goto End3;
             End3:
             action(grid, mask, island, r, c);
-            Utils.PrintArray(grid, true);
-            Utils.PrintArray(mask, true);
-            Utils.PrintArray(new List<(int, int)>(island));
+            Utils.Dump(grid, true);
+            Utils.Dump(mask, true);
+            Utils.Dump(new List<(int, int)>(island));
         }
     }
 }
