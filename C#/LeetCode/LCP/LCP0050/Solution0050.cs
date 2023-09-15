@@ -10,9 +10,9 @@ namespace LeetCode.LCP.LCP0050
     {
         public int GiveGem(int[] gem, int[][] operations)
         {
-            for (int i = 0; i < operations.Length; i++)
+            for (int i = 0, give; i < operations.Length; i++)
             {
-                int give = gem[operations[i][0]] >> 1;
+                give = gem[operations[i][0]] >> 1;
                 gem[operations[i][0]] -= give;
                 gem[operations[i][1]] += give;
             }

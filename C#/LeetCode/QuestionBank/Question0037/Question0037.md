@@ -1,4 +1,4 @@
-﻿#### [37\. 解数独](https://leetcode.cn/problems/sudoku-solver/)
+﻿### [37\. 解数独](https://leetcode.cn/problems/sudoku-solver/)
 
 难度：困难
 
