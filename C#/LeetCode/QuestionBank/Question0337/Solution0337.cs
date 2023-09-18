@@ -13,6 +13,7 @@ namespace LeetCode.QuestionBank.Question0337
         /// 一个节点，只有选择与不选择两种可能，选与不选
         ///     选，  结果是当前节点的值与4个（至多4个）孙子节点结果的和
         ///     不选，结果是2个（至多2个）子节点结果的和
+        /// 这里面每个节点会被父结点调用一次，也会被爷爷节点调用一次，所以记忆化搜索是有意义的
         /// </summary>
         /// <param name="root"></param>
         /// <returns></returns>
