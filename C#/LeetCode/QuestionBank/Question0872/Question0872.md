@@ -1,4 +1,4 @@
-#### [872\. 叶子相似的树](https://leetcode.cn/problems/leaf-similar-trees/)
+### [872\. 叶子相似的树](https://leetcode.cn/problems/leaf-similar-trees/)
 
 难度：简单
 
