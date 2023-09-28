@@ -384,7 +384,7 @@ namespace LeetCode.Utilses
         /// <typeparam name="T"></typeparam>
         /// <param name="arr"></param>
         /// <returns></returns>
-        public static string ToString<T>(T[,] arr, int width, bool multiline = true)
+        public static string ToString<T>(T[,] arr, int widthSy, bool multiline = true)
         {
             if (arr == null) return "null";
             if (arr.Length == 0) return "[ ]";
