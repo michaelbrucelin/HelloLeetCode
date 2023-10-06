@@ -21,8 +21,18 @@ namespace LeetCode.QuestionBank.Question0714
         /// <returns></returns>
         public int MaxProfit(int[] prices, int fee)
         {
-            int result = 0;
+            if (prices.Length == 1) return 0;
+            if (prices.Length == 2) return prices[1] > prices[0] ? prices[1] - prices[0] : 0;
 
+            int result = 0;
+            int p1 = 0, p2 = 1, len = prices.Length;
+            while (p2 < len)
+            {
+                if (prices[p2] < prices[p2 - 1])
+                { 
+                
+                }
+            }
 
             return result;
         }
