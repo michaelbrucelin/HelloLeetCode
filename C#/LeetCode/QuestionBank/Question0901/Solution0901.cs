@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0901
 {
+    public class Solution0901
+    {
+    }
+
     public class StockSpanner : Interface0901
     {
         public StockSpanner()

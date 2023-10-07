@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0901
 {
+    public class Solution0901_2
+    {
+    }
+
+    /// <summary>
+    /// 单调栈
+    /// </summary>
     public class StockSpanner_2 : Interface0901
     {
         public StockSpanner_2()
@@ -20,11 +27,11 @@ namespace LeetCode.QuestionBank.Question0901
         {
             if (stack.Count == 0) { stack.Push((price, 1)); return 1; }
 
-            int temp = 1;
-            while (stack.Count > 0 && price >= stack.Peek().price) { temp += stack.Pop().weight; }
-            stack.Push((price, temp));
+            int result = 1;
+            while (stack.Count > 0 && price >= stack.Peek().price) { result += stack.Pop().weight; }
+            stack.Push((price, result));
 
-            return temp;
+            return result;
         }
     }
 }

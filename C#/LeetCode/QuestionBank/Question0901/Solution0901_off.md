@@ -1,12 +1,14 @@
-﻿#### [](https://leetcode.cn/problems/online-stock-span/solution/gu-piao-jie-ge-kua-du-by-leetcode-soluti-5cm7//#方法一：单调栈)方法一：单调栈
+### [股票价格跨度](https://leetcode.cn/problems/online-stock-span/solutions/1906765/gu-piao-jie-ge-kua-du-by-leetcode-soluti-5cm7/)
+
+#### 方法一：单调栈
 
 **思路**
 
-调用 next 时，输入是新的一天的股票价格，需要返回包含此日在内的，往前数最多有连续多少日的股票价格是小于等于今日股票价格的。如果把每日的 price 当成数组不同下标的值，即需要求出每个值与上一个更大元素之间的下标之差。这种题目可以用单调栈求解，具体原理可以参考「[496\. 下一个更大元素 I 的官方题解的方法二](https://leetcode.cn/problems/next-greater-element-i/solution/xia-yi-ge-geng-da-yuan-su-i-by-leetcode-bfcoj/)」。此题的具体解法上，栈的元素可以是股票价格的下标（即天数）和股票价格的二元数对，并且在栈中先插入一个最大值作为天数为 −1 天的价格，来保证栈不会为空。调用 next 时，先将栈中价格小于等于此时 price 的元素都弹出，直到遇到一个大于 price 的值，并将 price 入栈，计算下标差返回。
+调用 $next$ 时，输入是新的一天的股票价格，需要返回包含此日在内的，往前数最多有连续多少日的股票价格是小于等于今日股票价格的。如果把每日的 $price$ 当成数组不同下标的值，即需要求出每个值与上一个更大元素之间的下标之差。这种题目可以用单调栈求解，具体原理可以参考「[496\. 下一个更大元素 I 的官方题解的方法二](https://leetcode.cn/problems/next-greater-element-i/solution/xia-yi-ge-geng-da-yuan-su-i-by-leetcode-bfcoj/)」。此题的具体解法上，栈的元素可以是股票价格的下标（即天数）和股票价格的二元数对，并且在栈中先插入一个最大值作为天数为 $-1$ 天的价格，来保证栈不会为空。调用 $next$ 时，先将栈中价格小于等于此时 $price$ 的元素都弹出，直到遇到一个大于 $price$ 的值，并将 $price$ 入栈，计算下标差返回。
 
 **代码**
 
-```Python
+```python
 class StockSpanner:
     def __init__(self):
         self.stack = [(-1, inf)]
@@ -20,7 +22,7 @@ class StockSpanner:
         return self.idx - self.stack[-2][0]
 ```
 
-```Java
+```java
 class StockSpanner {
     Deque<int[]> stack;
     int idx;
@@ -43,7 +45,7 @@ class StockSpanner {
 }
 ```
 
-```C#
+```csharp
 public class StockSpanner {
     Stack<Tuple<int, int>> stack;
     int idx;
@@ -66,7 +68,7 @@ public class StockSpanner {
 }
 ```
 
-```C++
+```cpp
 class StockSpanner {
 public:
     StockSpanner() {
@@ -90,7 +92,7 @@ private:
 };
 ```
 
-```C
+```c
 typedef struct Node {
     int first;
     int second;
@@ -141,7 +143,7 @@ void stockSpannerFree(StockSpanner* obj) {
 }
 ```
 
-```JavaScript
+```javascript
 var StockSpanner = function() {
     this.stack = [];
     this.stack.push([-1, Number.MAX_VALUE]);
@@ -159,7 +161,7 @@ StockSpanner.prototype.next = function(price) {
 };
 ```
 
-```Go
+```go
 type StockSpanner struct {
     stack [][2]int
     idx   int
@@ -181,5 +183,5 @@ func (s *StockSpanner) Next(price int) int {
 
 **复杂度分析**
 
--   时间复杂度：O(n)，其中 n 为调用 next 函数的次数，每个 price 值最多都会入栈出栈各 1 次。    
--   空间复杂度：O(n)，栈中最多有 n 个元素。
+-   时间复杂度：$O(n)$，其中 $n$ 为调用 $next$ 函数的次数，每个 $price$ 值最多都会入栈出栈各 $1$ 次。
+-   空间复杂度：$O(n)$，栈中最多有 $n$ 个元素。
