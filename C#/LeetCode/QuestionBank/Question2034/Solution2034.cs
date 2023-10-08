@@ -12,8 +12,8 @@ namespace LeetCode.QuestionBank.Question2034
 
     /// <summary>
     /// 双字典
-    /// Dictionary<int, int>                 key 时间戳 value 价格
-    /// SortedDictionary<int, HashSet<int>>  key 价格   value 时间戳
+    /// Dictionary<int, int>        key 时间戳 value 价格
+    /// SortedDictionary<int, int>  key 价格   value 该价格的数量
     /// 
     /// 超出时间限制了，没想明白为什么会TLE
     /// </summary>
@@ -22,12 +22,12 @@ namespace LeetCode.QuestionBank.Question2034
         public StockPrice()
         {
             t2p = new Dictionary<int, int>();
-            p2t = new SortedDictionary<int, HashSet<int>>();
+            p2t = new SortedDictionary<int, int>();
             cur_time = -1;
         }
 
         private Dictionary<int, int> t2p;
-        private SortedDictionary<int, HashSet<int>> p2t;
+        private SortedDictionary<int, int> p2t;
         private int cur_time;
 
         public int Current()
@@ -53,13 +53,13 @@ namespace LeetCode.QuestionBank.Question2034
             {
                 int _price = t2p[timestamp];
                 t2p[timestamp] = price;
-                if (p2t.ContainsKey(price)) p2t[price].Add(timestamp); else p2t.Add(price, new HashSet<int>() { timestamp });
-                if (p2t[_price].Count != 1) p2t[_price].Remove(timestamp); else p2t.Remove(_price);
+                if (p2t.ContainsKey(price)) p2t[price]++; else p2t.Add(price, 1);
+                if (p2t[_price] != 1) p2t[_price]--; else p2t.Remove(_price);
             }
             else                             // insert
             {
                 t2p.Add(timestamp, price);
-                if (p2t.ContainsKey(price)) p2t[price].Add(timestamp); else p2t.Add(price, new HashSet<int>() { timestamp });
+                if (p2t.ContainsKey(price)) p2t[price]++; else p2t.Add(price, 1);
             }
         }
     }
