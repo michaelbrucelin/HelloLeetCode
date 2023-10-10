@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview1619;
-using LeetCode.QuestionBank.Question1993;
+using LeetCode.QuestionBank.Question2731;
 using LeetCode.LCP.LCP0041;
 using LeetCode.剑指_Offer.剑指_Offer_0058_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -16,7 +16,7 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test1993 test = new();
+            Test2731 test = new();
             test.Test();
             //UtilsLeetCode.FmtMarkDown(UtilsLeetCode.QuestionType.QuestionBank, "1253", "off");
             //test.TestDivergentTraverse();
@@ -38,7 +38,7 @@ namespace LeetCode
             //Console.WriteLine($"{++id,2}: In {sw.Elapsed}, {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ArrayToString(result, false)}, answer: {Utils.ArrayToString(answer, false)}");
 
             //哑节点(dummy node)，也被称为哨兵节点
-            //const int MOD = 1000000007;
+            //const int MOD = 1000000007;  // 10^9 + 7
             //string question = "1234", testcase = "08";
             //string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"QuestionBank\Question{question}\TestCases\TestCase{question}");
