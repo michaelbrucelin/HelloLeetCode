@@ -22,6 +22,10 @@ namespace LeetCode.QuestionBank.Question1488
         ///             如果List为空，无解
         ///     不下雨
         ///         将这一天的id加到List中
+        /// 这里面的List，在移除元素时，时间复杂度为O(n)，如果使用HashSet，又无法使用二分查找，，如果C#中有Java中的TreeSet就好了
+        /// 据说下面的方案.Net Core中时O(logN)的，不确定
+        /// floor   for SortedSet<long>: sortedSet.GetViewBetween(long.MinValue, num).Max
+        /// ceiling for SortedSet<long>: sortedSet.GetViewBetween(num, long.MaxValue).Min
         /// </summary>
         /// <param name="rains"></param>
         /// <returns></returns>
