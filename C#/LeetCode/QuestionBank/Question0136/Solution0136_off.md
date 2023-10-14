@@ -21,9 +21,9 @@
 ![](./assets/img/Solution0136_2_03.png)
 
 假设数组中有 $2m+1$ 个数，其中有 $m$ 个数各出现两次，一个数出现一次。令 $a_{1}$、$a_{2}$、$\ldots$、$a_{m}$ 为出现两次的 $m$ 个数，$a_{m+1}$ 为出现一次的数。根据性质 3，数组中的全部元素的异或运算结果总是可以写成如下形式：
-$(a_{1} \oplus a_{1}) \oplus (a_{2} \oplus a_{2}) \oplus \cdots \oplus (a_{m} \oplus a_{m}) \oplus a_{m+1}$
+$$(a_{1} \oplus a_{1}) \oplus (a_{2} \oplus a_{2}) \oplus \cdots \oplus (a_{m} \oplus a_{m}) \oplus a_{m+1}$$
 根据性质 2 和性质 1，上式可化简和计算得到如下结果：
-$0 \oplus 0 \oplus \cdots \oplus 0 \oplus a_{m+1}=a_{m+1}$
+$$0 \oplus 0 \oplus \cdots \oplus 0 \oplus a_{m+1}=a_{m+1}$$
 
 因此，数组中的全部元素的异或运算结果即为数组中只出现一次的数字。
 
