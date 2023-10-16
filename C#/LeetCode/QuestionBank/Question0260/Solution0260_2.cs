@@ -35,10 +35,19 @@ namespace LeetCode.QuestionBank.Question0260
         public int[] SingleNumber2(int[] nums)
         {
             return nums.GroupBy(i => i)
-                            .Select(group => new { i = group.Key, cnt = group.Count() })
-                            .Where(group => group.cnt == 1)
-                            .Select(group => group.i)
-                            .ToArray();
+                       .Select(group => new { i = group.Key, cnt = group.Count() })
+                       .Where(group => group.cnt == 1)
+                       .Select(group => group.i)
+                       .ToArray();
+        }
+
+        public int[] SingleNumber3(int[] nums)
+        {
+            HashSet<int> result = new HashSet<int>();
+            for (int i = 0; i < nums.Length; i++)
+                if (result.Contains(nums[i])) result.Remove(nums[i]); else result.Add(nums[i]);
+
+            return result.ToArray();
         }
     }
 }
