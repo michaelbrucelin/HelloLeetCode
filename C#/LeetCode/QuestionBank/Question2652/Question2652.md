@@ -1,4 +1,4 @@
-#### [2652\. 倍数求和](https://leetcode.cn/problems/sum-multiples/)
+### [2652\. 倍数求和](https://leetcode.cn/problems/sum-multiples/)
 
 难度：简单
 
