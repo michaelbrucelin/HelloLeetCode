@@ -274,6 +274,11 @@ namespace LeetCode.Utilses
             Console.WriteLine(ToString(arr, width, multiline));
         }
 
+        public static void Dump<TKey, TValue>(Dictionary<TKey, TValue> dic)
+        {
+            Console.WriteLine(ToString<TKey, TValue>(dic));
+        }
+
         public static string ToString<T>(IEnumerable<T> list, int width = 0)
         {
             return ToString<T>(new List<T>(list), width);
@@ -404,6 +409,19 @@ namespace LeetCode.Utilses
             sb.Remove(1, 1);
 
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// 将字典转为字符串
+        /// </summary>
+        /// <typeparam name="TKey"></typeparam>
+        /// <typeparam name="TValue"></typeparam>
+        /// <param name="dic"></param>
+        /// <returns></returns>
+        public static string ToString<TKey, TValue>(Dictionary<TKey, TValue> dic)
+        {
+            if (dic == null) return "";
+            return $"{{{string.Join(',', dic.Select(kv => $"{{{kv.Key},{kv.Value}}}"))}}}";
         }
 
         /// <summary>
