@@ -24,5 +24,16 @@ namespace LeetCode.QuestionBank.Question1128
             foreach (int cnt in freq) result += (cnt * (cnt - 1)) >> 1;
             return result;
         }
+
+        public int NumEquivDominoPairs2(int[][] dominoes)
+        {
+            int[] freq = new int[256];
+            foreach (var arr in dominoes)
+                if (arr[0] <= arr[1]) freq[(arr[0] << 4) | arr[1]]++; else freq[(arr[1] << 4) | arr[0]]++;
+
+            int result = 0;
+            foreach (int cnt in freq) result += (cnt * (cnt - 1)) >> 1;
+            return result;
+        }
     }
 }
