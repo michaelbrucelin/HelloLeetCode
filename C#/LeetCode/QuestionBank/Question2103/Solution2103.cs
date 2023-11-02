@@ -12,35 +12,34 @@ namespace LeetCode.QuestionBank.Question2103
 
         public int CountPoints(string rings)
         {
-            if (rings.Length < 6)
-                return 0;
+            if (rings.Length < 6) return 0;
 
             Dictionary<char, int> buffer = new Dictionary<char, int>();
-            for (int i = 0; (i << 1) + 1 < rings.Length; i++)
+            char key; for (int i = 0; i < rings.Length - 1; i += 2)
             {
-                if (buffer.ContainsKey(rings[(i << 1) + 1]))
-                    buffer[rings[(i << 1) + 1]] |= bin[rings[(i << 1)]];
+                key = rings[i + 1];
+                if (buffer.ContainsKey(key))
+                    buffer[key] |= bin[rings[i]];
                 else
-                    buffer[rings[(i << 1) + 1]] = bin[rings[(i << 1)]];
+                    buffer.Add(key, bin[rings[i]]);
             }
 
             int result = 0;
-            foreach (int value in buffer.Values)
-                if (value == 7)
-                    result++;
+            foreach (int value in buffer.Values) if (value == 7) result++;
 
             return result;
         }
 
         public int CountPoints2(string rings)
         {
-            if (rings.Length < 6)
-                return 0;
+            if (rings.Length < 6) return 0;
+
+            int[] buffer = new int[10];
+            for (int i = 0; i < rings.Length - 1; i += 2)
+                buffer[rings[i + 1] & 15] |= bin[rings[i]];
 
             int result = 0;
-            for (int i = 0; i < 10; i++)
-                if (rings.Contains($"R{i}") && rings.Contains($"G{i}") && rings.Contains($"B{i}"))
-                    result++;
+            for (int i = 0; i < 10; i++) if (buffer[i] == 7) result++;
 
             return result;
         }

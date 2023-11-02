@@ -1,4 +1,4 @@
-﻿#### [2103\. 环和杆](https://leetcode.cn/problems/rings-and-rods/)
+### [2103\. 环和杆](https://leetcode.cn/problems/rings-and-rods/)
 
 难度：简单
 
