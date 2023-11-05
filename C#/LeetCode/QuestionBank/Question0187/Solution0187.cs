@@ -8,6 +8,11 @@ namespace LeetCode.QuestionBank.Question0187
 {
     public class Solution0187 : Interface0187
     {
+        /// <summary>
+        /// 哈希表
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         public IList<string> FindRepeatedDnaSequences(string s)
         {
             HashSet<string> result = new HashSet<string>();
@@ -24,22 +29,26 @@ namespace LeetCode.QuestionBank.Question0187
             return result.ToList();
         }
 
+        /// <summary>
+        /// 字典
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         public IList<string> FindRepeatedDnaSequences2(string s)
         {
-            if (s.Length <= 10)
-                return new List<string>();
+            if (s.Length <= 10) return new List<string>();
 
-            Dictionary<string, int> temp0 = new Dictionary<string, int>();
+            Dictionary<string, int> map = new Dictionary<string, int>();
             for (int i = 0; i <= s.Length - 10; i++)
             {
                 string s_item = s.Substring(i, 10);
-                if (temp0.Keys.Contains(s_item))
-                    temp0[s_item]++;
+                if (map.Keys.Contains(s_item))
+                    map[s_item]++;
                 else
-                    temp0.Add(s_item, 1);
+                    map.Add(s_item, 1);
             }
 
-            return temp0.Where(w => w.Value > 1).Select(i => i.Key).ToList();
+            return map.Where(w => w.Value > 1).Select(i => i.Key).ToList();
         }
     }
 }

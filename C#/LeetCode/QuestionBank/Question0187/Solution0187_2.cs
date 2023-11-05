@@ -18,16 +18,13 @@ namespace LeetCode.QuestionBank.Question0187
             HashSet<string> result = new HashSet<string>();
             HashSet<int> temp = new HashSet<int>();
             int x = 0;
-            for (int i = 0; i < L; i++)
-            {
-                x = (x << 2) | bin[s[i]];
-            }
+            for (int i = 0; i < L; i++) x = (x << 2) | bin[s[i]];
             temp.Add(x);
 
+            int mask = (1 << 20) - 1;
             for (int i = 1; i <= s.Length - L; i++)
             {
-                x = ((x << 2) | bin[s[i + L - 1]]) & ((1 << 20) - 1);
-
+                x = ((x << 2) | bin[s[i + L - 1]]) & mask;
                 if (temp.Contains(x))
                     result.Add(s.Substring(i, L));
                 else

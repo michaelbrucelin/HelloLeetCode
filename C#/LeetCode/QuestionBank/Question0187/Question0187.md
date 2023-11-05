@@ -1,4 +1,4 @@
-﻿#### [187\. 重复的DNA序列](https://leetcode.cn/problems/repeated-dna-sequences/)
+﻿### [187\. 重复的DNA序列](https://leetcode.cn/problems/repeated-dna-sequences/)
 
 难度：中等
 
