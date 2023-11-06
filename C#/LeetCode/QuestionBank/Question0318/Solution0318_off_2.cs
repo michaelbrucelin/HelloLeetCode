@@ -6,20 +6,27 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0318
 {
-    public class Solution0318_2 : Interface0318
+    public class Solution0318_off_2 : Interface0318
     {
         private const int alletter = (1 << 26) - 1;
 
         public int MaxProduct(string[] words)
         {
-            int len = words.Length;
-            int[] masks = new int[len];
-            for (int i = 0; i < len; i++) masks[i] = GetKeyCode(words[i]);
+            Dictionary<int, int> buffer = new Dictionary<int, int>();
+            for (int i = 0; i < words.Length; i++)
+            {
+                int mask = GetKeyCode(words[i]);
+                if (mask == alletter) continue;
+                if (buffer.ContainsKey(mask))
+                    buffer[mask] = Math.Max(buffer[mask], words[i].Length);
+                else
+                    buffer.Add(mask, words[i].Length);
+            }
 
             int result = 0;
-            for (int i = 0; i < len; i++) for (int j = 0; j < len; j++)
+            foreach (var info1 in buffer) foreach (var info2 in buffer)
                 {
-                    if ((masks[i] & masks[j]) == 0) result = Math.Max(result, words[i].Length * words[j].Length);
+                    if ((info1.Key & info2.Key) == 0) result = Math.Max(result, info1.Value * info2.Value);
                 }
 
             return result;
