@@ -1,4 +1,4 @@
-#### [1217\. 玩筹码](https://leetcode.cn/problems/minimum-cost-to-move-chips-to-the-same-position/)
+### [1217\. 玩筹码](https://leetcode.cn/problems/minimum-cost-to-move-chips-to-the-same-position/)
 
 难度：简单
 

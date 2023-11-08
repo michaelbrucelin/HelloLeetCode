@@ -1,4 +1,4 @@
-#### [2609\. 最长平衡子字符串](https://leetcode.cn/problems/find-the-longest-balanced-substring-of-a-binary-string/)
+### [2609\. 最长平衡子字符串](https://leetcode.cn/problems/find-the-longest-balanced-substring-of-a-binary-string/)
 
 难度：简单
 

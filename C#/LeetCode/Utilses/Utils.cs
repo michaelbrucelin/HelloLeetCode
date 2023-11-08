@@ -345,7 +345,20 @@ namespace LeetCode.Utilses
         /// <returns></returns>
         public static string ToString<T>(IList<IList<T>> list, bool multiline = true)
         {
-            return ToString<T>(list, multiline);
+            if (list == null) return "null";
+            if (list.Count == 0) return "[ ]";
+            if (list.Count == 1) return $"[ {ToString(list[0])} ]";
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("[ ");
+            sb.Append($"{ToString(list[0])}, "); if (multiline) sb.Append(Environment.NewLine);
+            for (int i = 1; i < list.Count - 1; i++)
+            { if (multiline) sb.Append("  "); sb.Append($"{ToString(list[i])}, "); if (multiline) sb.Append(Environment.NewLine); }
+            if (multiline) sb.Append("  "); sb.Append($"{ToString(list[list.Count - 1])}");
+            sb.Append(" ]");
+
+            return sb.ToString();
         }
 
         /// <summary>

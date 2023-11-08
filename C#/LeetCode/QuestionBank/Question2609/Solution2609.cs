@@ -12,7 +12,7 @@ namespace LeetCode.QuestionBank.Question2609
         {
             int result = 0, cnt0, cnt1, ptr = 0, len = s.Length;
             while (ptr < len && s[ptr] == '1') ptr++;
-            while (ptr < len)
+            while (ptr < len && len - ptr + 1 > result)
             {
                 cnt0 = cnt1 = 0;
                 while (ptr < len && s[ptr] == '0') { cnt0++; ptr++; }
