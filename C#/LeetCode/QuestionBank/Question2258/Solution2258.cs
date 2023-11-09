@@ -16,17 +16,20 @@ namespace LeetCode.QuestionBank.Question2258
         /// 1. n秒后人可到达的位置与火势可达的范围都可以通过BFS来实现
         ///     如果产生交集，算火的范围，不算人的范围
         ///     如果人可以先到达安全屋，有解，如果火先达到安全屋，无解
-        /// 2. 先火势BFS，看看火需要多久会到达安全屋，假设火势需要x秒到达安全屋
-        ///     如果x=1，无解，即解为-1
+        /// 2. 先人BFS，看看人需要多久可以到达安全屋，假设人需要x秒到达安全屋
+        /// 3. 再火势BFS，看看火需要多久会到达安全屋，假设火势需要y秒到达安全屋
+        ///     如果y<x，无解，即解为-1
         ///     如果不可到达安全屋，人可以在任意时间出发，即解为10^9
-        /// 3. 在wait in [0, x-1]之间，使用二分法检验人在原地等待wait秒后是否可以到达安全屋
+        /// 4. 在wait in [x, y]之间，使用二分法检验人在原地等待wait秒后是否可以到达安全屋
         /// </summary>
         /// <param name="grid"></param>
         /// <returns></returns>
         public int MaximumMinutes(int[][] grid)
         {
-            int high = FireTime(grid);             // 计算火势时间，二分法的上限
-            if (high == -1) return 1000000000; else if (high == 1) return -1;
+            int low = SoloTime(grid, 0);           // 计算人的时间
+            if (low == -1) return -1;
+            int high = SoloTime(grid, 1);          // 计算火势时间
+            if (high == -1) return 1000000000; else if (high < low) return -1;
 
             int result = -1, rcnt = grid.Length, ccnt = grid[0].Length;
             int[,] visited = new int[rcnt, ccnt];  // 记录火势蔓延的范围
@@ -36,7 +39,7 @@ namespace LeetCode.QuestionBank.Question2258
                     if (grid[r][c] == 0) visited[r, c] = -1;
                 }
 
-            int low = 0, mid;
+            high -= low; low = 0; int mid;
             while (low <= high)
             {
                 mid = low + ((high - low) >> 1);
@@ -54,19 +57,27 @@ namespace LeetCode.QuestionBank.Question2258
         }
 
         /// <summary>
-        /// 计算火势多久会到达安全屋
+        /// 计算人或火势多久会到达安全屋
         /// </summary>
         /// <param name="grid"></param>
+        /// <param name="flag">0, 人; 1, 火</param>
         /// <returns></returns>
-        private int FireTime(int[][] grid)
+        private int SoloTime(int[][] grid, int flag)
         {
             int steps = 0, rcnt = grid.Length, ccnt = grid[0].Length;
             bool[,] visited = new bool[rcnt, ccnt];
             Queue<(int r, int c)> queue = new Queue<(int r, int c)>();
-            for (int r = 0; r < rcnt; r++) for (int c = 0; c < ccnt; c++)
-                {
-                    if (grid[r][c] == 1) queue.Enqueue((r, c));
-                }
+            if (flag == 0)
+            {
+                queue.Enqueue((0, 0));
+            }
+            else
+            {
+                for (int r = 0; r < rcnt; r++) for (int c = 0; c < ccnt; c++)
+                    {
+                        if (grid[r][c] == 1) queue.Enqueue((r, c));
+                    }
+            }
 
             (int r, int c) pos;
             int cnt; while ((cnt = queue.Count) > 0)
