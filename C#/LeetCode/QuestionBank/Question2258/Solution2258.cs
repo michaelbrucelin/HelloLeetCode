@@ -117,9 +117,9 @@ namespace LeetCode.QuestionBank.Question2258
                     for (int j = 0; j < 4; j++)
                     {
                         _r = pos.r + dir[j]; _c = pos.c + dir[j + 1];
-                        if (_r >= 0 && _r < rcnt && _c >= 0 && _c < ccnt && grid[_r][_c] == 0)
+                        if (_r >= 0 && _r < rcnt && _c >= 0 && _c < ccnt && grid[_r][_c] == 0 && visited_fire[_r, _c] != wait)
                         {
-                            if (visited_fire[_r, _c] != wait) { queue_fire.Enqueue((_r, _c)); visited_fire[_r, _c] = wait; }
+                            queue_fire.Enqueue((_r, _c)); visited_fire[_r, _c] = wait;
                         }
                     }
                 }
@@ -127,7 +127,7 @@ namespace LeetCode.QuestionBank.Question2258
 
             // 火与人一起BFS
             Queue<(int r, int c)> queue_man = new Queue<(int r, int c)>(); queue_man.Enqueue((0, 0));
-            bool[,] visited_man = new bool[rcnt, ccnt]; visited_man[0, 0] = true;
+            bool[,] visited_man = new bool[rcnt, ccnt];
             bool flag = false;  // 标记安全屋已经着火，因为如果人与火同时到达安全屋可以认为是安全的
             while (true)
             {
@@ -139,23 +139,23 @@ namespace LeetCode.QuestionBank.Question2258
                     {
                         _r = pos.r + dir[j]; _c = pos.c + dir[j + 1];
                         if (_r == rcnt - 1 && _c == ccnt - 1) flag = true;
-                        if (_r >= 0 && _r < rcnt && _c >= 0 && _c < ccnt && grid[_r][_c] == 0)
+                        if (_r >= 0 && _r < rcnt && _c >= 0 && _c < ccnt && grid[_r][_c] == 0 && visited_fire[_r, _c] != wait)
                         {
-                            if (visited_fire[_r, _c] != wait) { queue_fire.Enqueue((_r, _c)); visited_fire[_r, _c] = wait; }
+                            queue_fire.Enqueue((_r, _c)); visited_fire[_r, _c] = wait;
                         }
                     }
                 }
                 // 人前进一次
                 cnt = queue_man.Count; for (int i = 0, _r, _c; i < cnt; i++)
                 {
-                    pos = queue_man.Dequeue();
+                    pos = queue_man.Dequeue(); visited_man[pos.r, pos.c] = true;
                     for (int j = 0; j < 4; j++)
                     {
                         _r = pos.r + dir[j]; _c = pos.c + dir[j + 1];
                         if (_r == rcnt - 1 && _c == ccnt - 1) return true;
-                        if (_r >= 0 && _r < rcnt && _c >= 0 && _c < ccnt && grid[_r][_c] == 0)
+                        if (_r >= 0 && _r < rcnt && _c >= 0 && _c < ccnt && grid[_r][_c] == 0 && visited_fire[_r, _c] != wait && !visited_man[_r, _c])
                         {
-                            if (visited_fire[_r, _c] != wait && !visited_man[_r, _c]) { queue_man.Enqueue((_r, _c)); visited_man[_r, _c] = true; }
+                            queue_man.Enqueue((_r, _c));
                         }
                     }
                 }
