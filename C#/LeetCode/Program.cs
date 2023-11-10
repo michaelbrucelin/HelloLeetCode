@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview1619;
-using LeetCode.QuestionBank.Question2258;
+using LeetCode.QuestionBank.Question2300;
 using LeetCode.LCP.LCP0041;
 using LeetCode.剑指_Offer.剑指_Offer_0058_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -16,9 +16,9 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test2258 test = new();
+            Test2300 test = new();
             test.Test();
-            //UtilsLeetCode.FmtMarkDown(UtilsLeetCode.QuestionType.QuestionBank, "1253", "off");
+            //Utils.FmtMarkDown(Utils.QuestionType.QuestionBank, "1253", "off");
             //test.TestDivergentTraverse();
             //test.Look4Rules();
             //test.VerifyRules();
@@ -43,10 +43,10 @@ namespace LeetCode
             //string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"QuestionBank\Question{question}\TestCases\TestCase{question}");
             //arg = File.ReadAllText($"{path}_{testcase}_arg.txt");
-            //arg = UtilsLeetCode.Str2NumArray<int>(File.ReadAllText($"{path}_{testcase}_arg.txt"));
-            //arg = UtilsLeetCode.Str2NumArray_2d<int>(File.ReadAllText($"{path}_{testcase}_arg.txt"));
+            //arg = Utils.Str2NumArray<int>(File.ReadAllText($"{path}_{testcase}_arg.txt"));
+            //arg = Utils.Str2NumArray_2d<int>(File.ReadAllText($"{path}_{testcase}_arg.txt"));
             //string raw = "[[0,1],[1,2]]";
-            //Console.WriteLine(UtilsLeetCode.TestCase2CSharpDeclare(raw, UtilsLeetCode.TestCaseType.array_2d));
+            //Console.WriteLine(Utils.TestCase2CSharpDeclare(raw, Utils.TestCaseType.array_2d));
             //const int M1 = 0x55555555;  // 01010101010101010101010101010101
             //const int M2 = 0x33333333;  // 00110011001100110011001100110011
             //const int M4 = 0x0f0f0f0f;  // 00001111000011110000111100001111
