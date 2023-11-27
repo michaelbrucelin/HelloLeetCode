@@ -1,4 +1,4 @@
-﻿#### [907\. 子数组的最小值之和](https://leetcode.cn/problems/sum-of-subarray-minimums/)
+﻿### [907\. 子数组的最小值之和](https://leetcode.cn/problems/sum-of-subarray-minimums/)
 
 难度：中等
 
@@ -25,5 +25,5 @@
 
 **提示：**
 
--   `1 <= arr.length <= 3 * 10<sup>4</sup>`
--   `1 <= arr[i] <= 3 * 10<sup>4</sup>`
+-   `1 <= arr.length <= 3 * 10^4`
+-   `1 <= arr[i] <= 3 * 10^4`
