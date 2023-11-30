@@ -1,4 +1,4 @@
-#### [1534\. 统计好三元组](https://leetcode.cn/problems/count-good-triplets/)
+### [1534\. 统计好三元组](https://leetcode.cn/problems/count-good-triplets/)
 
 难度：简单
 
