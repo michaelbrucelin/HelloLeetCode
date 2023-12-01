@@ -25,14 +25,14 @@ namespace LeetCode.QuestionBank.Question0907
             Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
 
             // 2.
-            arr = new int[] { 1, 2, 3, 4 };
-            answer = 20;
+            arr = new int[] { 11, 81, 94, 43, 3 };
+            answer = 444;
             result = solution.SumSubarrayMins(arr);
             Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
 
             // 3.
-            arr = new int[] { 11, 81, 94, 43, 3 };
-            answer = 444;
+            arr = new int[] { 1, 2, 3, 4 };
+            answer = 20;
             result = solution.SumSubarrayMins(arr);
             Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
 
