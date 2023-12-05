@@ -11,7 +11,7 @@ namespace LeetCode.QuestionBank.Question2477
     {
         public void Test()
         {
-            Interface2477 solution = new Solution2477_err();
+            Interface2477 solution = new Solution2477();
             int[][] roads; int seats;
             long result, answer;
             int id = 0;
@@ -37,6 +37,12 @@ namespace LeetCode.QuestionBank.Question2477
             // 4. 
             roads = Utils.Str2NumArray_2d<int>("[[0,1],[0,2],[1,3],[1,4]]"); seats = 5;
             answer = 4;
+            result = solution.MinimumFuelCost(roads, seats);
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            // 5. 
+            roads = Utils.Str2NumArray_2d<int>("[[0,1],[1,2]]"); seats = 3;
+            answer = 2;
             result = solution.MinimumFuelCost(roads, seats);
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
         }
