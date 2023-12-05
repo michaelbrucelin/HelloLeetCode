@@ -11,7 +11,7 @@ namespace LeetCode.QuestionBank.Question2699
     {
         public void Test()
         {
-            Interface2699 solution = new Solution2699_error();
+            Interface2699 solution = new Solution2699_err();
             int n; int[][] edges; int source, destination, target;
             int[][] result, answer;
             int id = 0;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1080
 {
-    public class Solution1080_error : Interface1080
+    public class Solution1080_err : Interface1080
     {
         /// <summary>
         /// 递归

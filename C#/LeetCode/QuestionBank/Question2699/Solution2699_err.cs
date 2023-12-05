@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question2699
 {
-    public class Solution2699_error : Interface2699
+    public class Solution2699_err : Interface2699
     {
         /// <summary>
         /// 迪杰斯特拉

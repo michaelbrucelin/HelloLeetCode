@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1494
 {
-    public class Solution1494_error : Interface1494
+    public class Solution1494_err : Interface1494
     {
         /// <summary>
         /// 暴力贪心

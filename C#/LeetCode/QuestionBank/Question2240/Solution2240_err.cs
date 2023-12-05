@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question2240
 {
-    public class Solution2240_error : Interface2240
+    public class Solution2240_err : Interface2240
     {
         /// <summary>
         /// 数学

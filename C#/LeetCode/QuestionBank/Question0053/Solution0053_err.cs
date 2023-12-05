@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0053
 {
-    public class Solution0053_error : Interface0053
+    public class Solution0053_err : Interface0053
     {
         /// <summary>
         /// DP

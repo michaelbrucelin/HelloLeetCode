@@ -10,7 +10,7 @@ namespace LeetCode.QuestionBank.Question2240
     {
         public void Test()
         {
-            Interface2240 solution = new Solution2240_error();
+            Interface2240 solution = new Solution2240_err();
             int total, cost1, cost2;
             long result, answer;
             int id = 0;

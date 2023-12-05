@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1238
 {
-    public class Solution1238_Error : Interface1238
+    public class Solution1238_err : Interface1238
     {
         /// <summary>
         /// 数学，找规律
