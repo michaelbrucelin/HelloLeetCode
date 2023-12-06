@@ -33,15 +33,6 @@ namespace LeetCode.QuestionBank.Question2646
             answer = 1;
             result = solution.MinimumTotalPrice(n, edges, price, trips);
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
-
-            // 3. 
-            //n =;
-            //edges = Utils.Str2NumArray_2d<int>("");
-            //price = new int[] { };
-            //trips = Utils.Str2NumArray_2d<int>("");
-            //answer = ;
-            //result = solution.MinimumTotalPrice(n, edges, price, trips);
-            //Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
         }
     }
 }
