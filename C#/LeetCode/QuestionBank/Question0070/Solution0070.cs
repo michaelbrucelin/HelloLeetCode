@@ -41,9 +41,7 @@ namespace LeetCode.QuestionBank.Question0070
             int n1 = 1, n2 = 2, n3 = 3;
             for (int i = 2; i < n; i++)
             {
-                n3 = n2 + n1;
-                n1 = n2;
-                n2 = n3;
+                n3 = n2 + n1; n1 = n2; n2 = n3;
             }
 
             return n3;
