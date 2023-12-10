@@ -1,4 +1,4 @@
-﻿#### [70\. 爬楼梯](https://leetcode.cn/problems/climbing-stairs/)
+﻿### [70\. 爬楼梯](https://leetcode.cn/problems/climbing-stairs/)
 
 难度：简单
 
