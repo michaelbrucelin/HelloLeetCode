@@ -76,7 +76,9 @@ namespace LeetCode.Utilses
             raw = raw.Replace(" ", "");
             if (raw.Length == 0) return new T[][] { };
 
-            return raw[2..^2].Split("],[").Select(str => str.Split(',').Select(s => T.Parse(s, CultureInfo.InvariantCulture.NumberFormat)).ToArray()).ToArray();
+            return raw[2..^2].Split("],[")
+                             .Select(str => str.Length == 0 ? new T[] { } : str.Split(',').Select(s => T.Parse(s, CultureInfo.InvariantCulture.NumberFormat)).ToArray())
+                             .ToArray();
         }
 
         /// <summary>
