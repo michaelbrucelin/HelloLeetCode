@@ -17,11 +17,12 @@ namespace LeetCode.QuestionBank.Question0746
         /// <returns></returns>
         public int MinCostClimbingStairs(int[] cost)
         {
-            int[] dp = new int[cost.Length + 1]; dp[0] = 0; dp[1] = 0;
-            for (int i = 2; i < dp.Length; i++)
-                dp[i] = Math.Min(dp[i - 1] + cost[i - 1], dp[i - 2] + cost[i - 2]);
+            int len = cost.Length;
+            int[] dp = new int[len + 1];
+            for (int i = 2; i <= len; i++)
+                dp[i] = Math.Min(dp[i - 2] + cost[i - 2], dp[i - 1] + cost[i - 1]);
 
-            return dp[dp.Length - 1];
+            return dp[len];
         }
 
         /// <summary>
