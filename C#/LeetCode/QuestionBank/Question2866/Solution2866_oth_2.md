@@ -27,7 +27,6 @@
 这道题是要去构造一个高度数组 `hegihts` ，其中每个位置 `i` 的值不能超过限定的最大高度 `maxHeights[i]`。并且构造出来的 `heights` 必须满足先增后减的形式。
 
 ![](./assets/img/Solution2866_oth_2_01.png)
-![image.png](https://pic.leetcode.cn/1703091514-LKTkJp-image.png)
 
 本来，我们要得到最大高度和，根据贪心的策略，每个位置都去放置最大高度得到的高度一定最高。而现在加入了山脉数组的限定，那么只有山脉数组中的峰值一定是最大值，其他位置不一定。
 
@@ -40,7 +39,6 @@
 - 如果 `maxHeights[j] > maxHeights[i]`，那么这些位置的值最大只能取 `maxHeight[i]`。
 
 ![](./assets/img/Solution2866_oth_2_02.png)
-![image.png](https://pic.leetcode.cn/1703097032-idHOVS-image.png)
 
 ##### 单调栈
 
@@ -52,7 +50,6 @@
 这其实就是一个单调栈的思想，从栈底到栈顶元素单调递增。我们通过单调栈可以实现什么呢？
 
 ![](./assets/img/Solution2866_oth_2_03.png)
-![image.png](https://pic.leetcode.cn/1703095944-DyVMsl-image.png)
 
 通过上图我们可以发现，单调栈内存储的每个元素（为 `maxHeights` 数组的下标）其实定义了**一段区间：设栈内元素`i`，其前一个元素为`j`，则定义了 `(j,i]` 这段区间的高度值为 `maxHeights[i]`**。
 
@@ -67,7 +64,6 @@
 我们可以定义 `preSum[i]` 表示以 `maxHeights[i]` 为峰值时 `[0, i]` 的高度和。每一次对栈内元素的加入与弹出，其实都是在**加入一段区间和或者是删除一段区间和**。因此我们可以随着站内元素的改变而改变区间和的值，从而得到前缀高度和。
 
 ![](./assets/img/Solution2866_oth_2_04.png)
-![image.png](https://pic.leetcode.cn/1703094671-wOgXud-image.png)
 
 即每一次弹出元素，我们都要将当前前缀和 减去 弹出元素对应的高度值所覆盖的区间的高度和；  
 每一次加入元素，都要将当前前缀和 累加 压入元素对应的高度值所覆盖的区间的高度和。
@@ -77,7 +73,6 @@
 同理可得，我们可以逆序遍历，完成对每个位置 `i` 作为峰值时 的右半部分 `[i, n)` 的高度值的获取。
 
 ![](./assets/img/Solution2866_oth_2_05.png)
-![image.png](https://pic.leetcode.cn/1703095889-tqGUxd-image.png)
 
 定义 `sufSum[i]` 表示以 `maxHeights[i]` 为峰值时 `[i, n)` 的高度和。
 
@@ -100,7 +95,6 @@
 这个时候就会出现栈为空的情况。空栈的含义是到达边界（前缀边界就是索引 `-1`，后缀边界就是索引 `n`）。因此我们可以保持栈底为 `-1` (计算前缀) / `n`（计算后缀），保证栈顶元素一定存在。  
 
 ![](./assets/img/Solution2866_oth_2_06.png)
-![image.png](https://pic.leetcode.cn/1703096049-kaRIUd-image.png)
 
 ```java
 class Solution {
