@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Reflection;
+using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -78,6 +79,38 @@ namespace LeetCode.Utilses
 
             return raw[2..^2].Split("],[")
                              .Select(str => str.Length == 0 ? new T[] { } : str.Split(',').Select(s => T.Parse(s, CultureInfo.InvariantCulture.NumberFormat)).ToArray())
+                             .ToArray();
+        }
+
+        /// <summary>
+        /// 将以字符串形式给出的二维数字数组转成二维字符数组
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="raw"></param>
+        /// <returns></returns>
+        public static char[][] Str2CharArray_2d(string raw)
+        {
+            raw = raw.Replace(" ", "").Replace("\"", "");
+            if (raw.Length == 0) return new char[][] { };
+
+            return raw[2..^2].Split("],[")
+                             .Select(str => str.Length == 0 ? new char[] { } : str.Split(',').Select(s => s[0]).ToArray())
+                             .ToArray();
+        }
+
+        /// <summary>
+        /// 将以字符串形式给出的二维数字数组转成二维字符串数组
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="raw"></param>
+        /// <returns></returns>
+        public static string[][] Str2StrArray_2d(string raw)
+        {
+            raw = raw.Replace(" ", "").Replace("\"", "");
+            if (raw.Length == 0) return new string[][] { };
+
+            return raw[2..^2].Split("],[")
+                             .Select(str => str.Length == 0 ? new string[] { } : str.Split(',').Select(s => s).ToArray())
                              .ToArray();
         }
 
