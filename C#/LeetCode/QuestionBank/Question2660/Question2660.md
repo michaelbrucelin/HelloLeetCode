@@ -1,4 +1,4 @@
-#### [2660\. 保龄球游戏的获胜者](https://leetcode.cn/problems/determine-the-winner-of-a-bowling-game/)
+### [2660\. 保龄球游戏的获胜者](https://leetcode.cn/problems/determine-the-winner-of-a-bowling-game/)
 
 难度：简单
 
@@ -6,10 +6,10 @@
 
 保龄球比赛由 `n` 轮组成，每轮的瓶数恰好为 `10` 。
 
-假设玩家在第 `i` 轮中击中 `x<sub>i</sub>` 个瓶子。玩家第 `i` 轮的价值为：
+假设玩家在第 `i` 轮中击中 `x_i` 个瓶子。玩家第 `i` 轮的价值为：
 
--   如果玩家在该轮的前两轮的任何一轮中击中了 `10` 个瓶子，则为 `2x<sub>i</sub>` 。
--   否则，为 `x<sub>i</sub>` 。
+-   如果玩家在该轮的前两轮的任何一轮中击中了 `10` 个瓶子，则为 `2x_i` 。
+-   否则，为 `x_i` 。
 
 玩家的得分是其 `n` 轮价值的总和。
 
