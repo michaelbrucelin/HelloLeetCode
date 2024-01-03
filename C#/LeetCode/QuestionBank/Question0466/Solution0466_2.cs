@@ -59,20 +59,20 @@ namespace LeetCode.QuestionBank.Question0466
             FoundK:;
             if (k > n1) return 0; else if (k == n1) return n2 == 1 ? 1 : 0;
 
-            int result = 0, K = n1 / k, R = n1 % k; string remainder = "";
-            Dictionary<string, (int Quotient, string Remainder)> cache = new Dictionary<string, (int Quotient, string Remainder)>();
-            (int Quotient, string Remainder) info;
+            int result = 0, K = n1 / k, R = n1 % k, start = 0;
+            Dictionary<int, (int Quotient, int Start)> cache = new Dictionary<int, (int Quotient, int Start)>();
+            (int Quotient, int Start) info;
             for (int i = 0; i < K; i++)
             {
-                if (!cache.ContainsKey(remainder))
+                if (!cache.ContainsKey(start))
                 {
-                    info = StrDivision(remainder, s1, k, s2);
-                    cache.Add(remainder, info);
+                    info = StrDivision(start, s1, k, s2);
+                    cache.Add(start, info);
                 }
-                result += cache[remainder].Quotient;
-                remainder = cache[remainder].Remainder;
+                result += cache[start].Quotient;
+                start = cache[start].Start;
             }
-            info = StrDivision(remainder, s1, R, s2);
+            info = StrDivision(start, s1, R, s2);
             result += info.Quotient;
 
             return result / n2;
@@ -87,11 +87,10 @@ namespace LeetCode.QuestionBank.Question0466
         /// <param name="n1"></param>
         /// <param name="s2"></param>
         /// <returns></returns>
-        private (int Quotient, string Remainder) StrDivision(string s0, string s1, int n1, string s2)
+        private (int Quotient, int Start) StrDivision(int start, string s1, int n1, string s2)
         {
             int Quotient = 0;
-            int len0 = s0.Length, len1 = s1.Length, len2 = s2.Length, p2 = 0;
-            for (int i = 0; i < len0; i++) if (s0[i] == s2[p2]) p2++;
+            int len1 = s1.Length, len2 = s2.Length, p2 = start;
             for (int i = 0; i < n1; i++) for (int j = 0; j < len1; j++)  // 遍历[s1, n1]中的每一个字符
                 {
                     if (s1[j] == s2[p2])
@@ -103,7 +102,7 @@ namespace LeetCode.QuestionBank.Question0466
                     }
                 }
 
-            return (Quotient, s2[..p2]);
+            return (Quotient, p2);
         }
     }
 }

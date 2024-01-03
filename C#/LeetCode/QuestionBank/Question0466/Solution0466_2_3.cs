@@ -33,35 +33,33 @@ namespace LeetCode.QuestionBank.Question0466
             for (int i = 0; i < len2; i++) mask2 |= 1 << (s2[i] - 'a');
             if (((mask1 ^ mask2) & mask2) != 0) return 0;
 
-            int result = 0, R = 0, _i; string remainder = "";
-            Dictionary<string, (int Quotient, string Remainder)> cache = new Dictionary<string, (int Quotient, string Remainder)>();
-            (int Quotient, string Remainder) info;
-            for (_i = 0; _i < n1; _i++)
+            int result = 0, R = 0, p, start = 0;
+            Dictionary<int, (int Quotient, int Start)> cache = new Dictionary<int, (int Quotient, int Start)>();
+            (int Quotient, int Start) info;
+            for (p = 0; p < n1; p++)
             {
-                if (cache.ContainsKey(remainder))  // 找到了循环节，处理循环节
+                if (cache.ContainsKey(start))  // 找到了循环节，处理循环节
                 {
-                    int loop_r = 0, loop_cnt = 0; string _remainder = remainder;
+                    int loop_r = 0, loop_cnt = 0, _start = start;
                     do
                     {
-                        loop_r += cache[_remainder].Quotient; loop_cnt++; _remainder = cache[_remainder].Remainder;
-                    } while (_remainder != remainder);
-                    result += loop_r * ((n1 - _i) / loop_cnt);
-                    R += (n1 - _i) % loop_cnt;
+                        loop_r += cache[_start].Quotient; loop_cnt++; _start = cache[_start].Start;
+                    } while (_start != start);
+                    result += loop_r * ((n1 - p) / loop_cnt);
+                    R += (n1 - p) % loop_cnt;
                     break;
                 }
-                info = StrDivision(remainder, s1, s2);
-                cache.Add(remainder, info);
-                result += cache[remainder].Quotient;
-                remainder = cache[remainder].Remainder;
+                info = StrDivision(start, s1, s2);
+                cache.Add(start, info);
+                result += cache[start].Quotient;
+                start = cache[start].Start;
             }
 
             // 处理余下的
             while (R > 0)
             {
-                result += cache[remainder].Quotient; remainder = cache[remainder].Remainder; R--;
+                result += cache[start].Quotient; start = cache[start].Start; R--;
             }
-            info = StrDivision(remainder, s1, s2);
-            result += info.Quotient;
 
             return result / n2;
         }
@@ -74,11 +72,10 @@ namespace LeetCode.QuestionBank.Question0466
         /// <param name="s1"></param>
         /// <param name="s2"></param>
         /// <returns></returns>
-        private (int Quotient, string Remainder) StrDivision(string s0, string s1, string s2)
+        private (int Quotient, int Start) StrDivision(int start, string s1, string s2)
         {
             int Quotient = 0;
-            int len0 = s0.Length, len1 = s1.Length, len2 = s2.Length, p2 = 0;
-            for (int i = 0; i < len0; i++) if (s0[i] == s2[p2]) p2++;
+            int len1 = s1.Length, len2 = s2.Length, p2 = start;
             for (int i = 0; i < len1; i++)  // 遍历s1中的每一个字符
             {
                 if (s1[i] == s2[p2])
@@ -90,7 +87,7 @@ namespace LeetCode.QuestionBank.Question0466
                 }
             }
 
-            return (Quotient, s2[..p2]);
+            return (Quotient, p2);
         }
 
         /// <summary>

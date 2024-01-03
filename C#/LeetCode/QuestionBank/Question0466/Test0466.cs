@@ -10,7 +10,7 @@ namespace LeetCode.QuestionBank.Question0466
     {
         public void Test()
         {
-            Interface0466 solution = new Solution0466_2();
+            Interface0466 solution = new Solution0466_2_3();
             string s1; int n1; string s2; int n2;
             int result, answer;
             int id = 0;
@@ -58,6 +58,12 @@ namespace LeetCode.QuestionBank.Question0466
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
 
             // 8. 
+            s1 = "aabb"; n1 = 14; s2 = "bbbbbab"; n2 = 1;
+            answer = 4;
+            result = solution.GetMaxRepetitions(s1, n1, s2, n2);
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            // 9. 
             s1 = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; n1 = 1000000;
             s2 = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; n2 = 1000000;
             answer = 1;
