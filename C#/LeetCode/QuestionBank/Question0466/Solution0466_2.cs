@@ -13,6 +13,7 @@ namespace LeetCode.QuestionBank.Question0466
         /// 1. 如果s1中还有的字符的种类覆盖不了s2中字符的种类，结果一定为0，否则子要有足够多的s1，一定可以构成s2
         ///     例如，s1="a", s2="b", 结果为0； s1="ab", s2="aaabbb", 5个s1可构成s2
         ///     用mask1表示s1的字符分布，mask2表示s2的字符分布，如果 (s1 ^ s2) & s2 == 0，s1可覆盖s2，否则不可覆盖
+        ///                                                          (s2 & s1) == s2 即可，上面搞复杂了
         /// 2. 假定k个s1可以构成一个s2，令S1 = [s1, k]
         /// 3. 将[s1, n1]按照[S1, Floor(n1/k)]分析，最后剩余的[s1, n1-Floor(n1/k)]单独分析
         ///     令S1="abcabcab", s2="abc"
@@ -43,7 +44,7 @@ namespace LeetCode.QuestionBank.Question0466
             int mask1 = 0, mask2 = 0, len1 = s1.Length, len2 = s2.Length;
             for (int i = 0; i < len1; i++) mask1 |= 1 << (s1[i] - 'a');
             for (int i = 0; i < len2; i++) mask2 |= 1 << (s2[i] - 'a');
-            if (((mask1 ^ mask2) & mask2) != 0) return 0;
+            if ((mask2 & mask1) != mask2) return 0;
 
             int k = 0, p1, p2 = 0;
             while (k++ < len2)      // 最多len2个s1一定可构成一个s2

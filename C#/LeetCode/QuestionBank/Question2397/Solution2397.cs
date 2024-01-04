@@ -34,7 +34,7 @@ namespace LeetCode.QuestionBank.Question2397
             {
                 _result = 0;
                 for (int r = 0; r < rcnt; r++)
-                    if (((masks[r] ^ kset) & masks[r]) == 0) _result++;
+                    if ((masks[r] & kset) == masks[r]) _result++;  // ((masks[r] ^ kset) & masks[r]) == 0 把问题搞复杂了
                 result = Math.Max(result, _result);
 
                 x = kset & -kset; y = kset + x; kset = (kset & ~y) / x >> 1 | y;

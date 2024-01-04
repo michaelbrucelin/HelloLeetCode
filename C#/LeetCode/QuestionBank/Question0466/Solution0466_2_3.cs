@@ -31,7 +31,7 @@ namespace LeetCode.QuestionBank.Question0466
             int mask1 = 0, mask2 = 0, len1 = s1.Length, len2 = s2.Length;
             for (int i = 0; i < len1; i++) mask1 |= 1 << (s1[i] - 'a');
             for (int i = 0; i < len2; i++) mask2 |= 1 << (s2[i] - 'a');
-            if (((mask1 ^ mask2) & mask2) != 0) return 0;
+            if ((mask2 & mask1) != mask2) return 0;
 
             int result = 0, R = 0, p, start = 0;
             Dictionary<int, (int Quotient, int Start)> cache = new Dictionary<int, (int Quotient, int Start)>();
