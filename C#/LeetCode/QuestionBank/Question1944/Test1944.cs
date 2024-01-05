@@ -11,7 +11,7 @@ namespace LeetCode.QuestionBank.Question1944
     {
         public void Test()
         {
-            Interface1944 solution = new Solution1944_2();
+            Interface1944 solution = new Solution1944_3();
             int[] heights;
             int[] result, answer;
             int id = 0;
