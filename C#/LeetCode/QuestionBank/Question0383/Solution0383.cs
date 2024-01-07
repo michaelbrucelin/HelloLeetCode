@@ -35,26 +35,5 @@ namespace LeetCode.QuestionBank.Question0383
             // for (int i = 0; i < 26; i++) if (cnts[i] < 0) return false;
             return true;
         }
-
-        /// <summary>
-        /// API
-        /// </summary>
-        /// <param name="ransomNote"></param>
-        /// <param name="magazine"></param>
-        /// <returns></returns>
-        public bool CanConstruct3(string ransomNote, string magazine)
-        {
-            if (ransomNote.Length > magazine.Length) return false;
-
-            Dictionary<char, int> dic1 = ransomNote.GroupBy(c => c).ToDictionary(g => g.Key, g => g.Count());
-            Dictionary<char, int> dic2 = magazine.GroupBy(c => c).ToDictionary(g => g.Key, g => g.Count());
-
-            foreach (var kv in dic1)
-            {
-                if (!dic2.ContainsKey(kv.Key) || dic2[kv.Key] < kv.Value) return false;
-            }
-
-            return true;
-        }
     }
 }

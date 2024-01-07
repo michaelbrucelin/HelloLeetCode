@@ -1,35 +1,29 @@
-#### [383\. Êê½ðÐÅ](https://leetcode.cn/problems/ransom-note/)
+### [383\. èµŽé‡‘ä¿¡](https://leetcode.cn/problems/ransom-note/)
 
-ÄÑ¶È£º¼òµ¥
+éš¾åº¦ï¼šç®€å•
 
-¸øÄãÁ½¸ö×Ö·û´®£º`ransomNote` ºÍ `magazine` £¬ÅÐ¶Ï `ransomNote` ÄÜ²»ÄÜÓÉ `magazine` ÀïÃæµÄ×Ö·û¹¹³É¡£
+ç»™ä½ ä¸¤ä¸ªå­—ç¬¦ä¸²ï¼š`ransomNote` å’Œ `magazine` ï¼Œåˆ¤æ–­ `ransomNote` èƒ½ä¸èƒ½ç”± `magazine` é‡Œé¢çš„å­—ç¬¦æž„æˆã€‚
 
-Èç¹û¿ÉÒÔ£¬·µ»Ø `true` £»·ñÔò·µ»Ø `false` ¡£
+å¦‚æžœå¯ä»¥ï¼Œè¿”å›ž `true` ï¼›å¦åˆ™è¿”å›ž `false` ã€‚
 
-`magazine` ÖÐµÄÃ¿¸ö×Ö·ûÖ»ÄÜÔÚ `ransomNote` ÖÐÊ¹ÓÃÒ»´Î¡£
+`magazine` ä¸­çš„æ¯ä¸ªå­—ç¬¦åªèƒ½åœ¨ `ransomNote` ä¸­ä½¿ç”¨ä¸€æ¬¡ã€‚
 
-**Ê¾Àý 1£º**
+**ç¤ºä¾‹ 1ï¼š**
 
-```
-ÊäÈë£ºransomNote = "a", magazine = "b"
-Êä³ö£ºfalse
-```
+> **è¾“å…¥ï¼š** ransomNote = "a", magazine = "b"
+> **è¾“å‡ºï¼š** false
 
-**Ê¾Àý 2£º**
+**ç¤ºä¾‹ 2ï¼š**
 
-```
-ÊäÈë£ºransomNote = "aa", magazine = "ab"
-Êä³ö£ºfalse
-```
+> **è¾“å…¥ï¼š** ransomNote = "aa", magazine = "ab"
+> **è¾“å‡ºï¼š** false
 
-**Ê¾Àý 3£º**
+**ç¤ºä¾‹ 3ï¼š**
 
-```
-ÊäÈë£ºransomNote = "aa", magazine = "aab"
-Êä³ö£ºtrue
-```
+> **è¾“å…¥ï¼š** ransomNote = "aa", magazine = "aab"
+> **è¾“å‡ºï¼š** true
 
-**ÌáÊ¾£º**
+**æç¤ºï¼š**
 
--   `1 <= ransomNote.length, magazine.length <= 10^5`
--   `ransomNote` ºÍ `magazine` ÓÉÐ¡Ð´Ó¢ÎÄ×ÖÄ¸×é³É
+- `1 <= ransomNote.length, magazine.length <= 10^5`
+- `ransomNote` å’Œ `magazine` ç”±å°å†™è‹±æ–‡å­—æ¯ç»„æˆ
