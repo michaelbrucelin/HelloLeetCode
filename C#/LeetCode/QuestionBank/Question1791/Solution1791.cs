@@ -16,5 +16,12 @@ namespace LeetCode.QuestionBank.Question1791
 
             throw new Exception("logic error.");
         }
+
+        public int FindCenter2(int[][] edges)
+        {
+            int p00 = edges[0][0], p01 = edges[0][1], p10 = edges[1][0], p11 = edges[1][1];
+            if (p00 == p10 || p00 == p11) return p00;
+            return p01;
+        }
     }
 }
