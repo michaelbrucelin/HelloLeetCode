@@ -8,6 +8,6 @@ namespace LeetCode.QuestionBank.Question1725
 {
     public interface Interface1725
     {
-        public int CountGoodRectangles(int[][] rectangles)
+        public int CountGoodRectangles(int[][] rectangles);
     }
 }
