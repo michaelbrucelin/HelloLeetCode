@@ -22,8 +22,8 @@ namespace LeetCode
             //test.TestDivergentTraverse();
             //test.Look4Rules();
             //test.VerifyRules();
-            Utils2614 utils = new();
-            utils.Dial();
+            //Utils2614 utils = new();
+            //utils.Dial();
 
             //标量值
             //Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
@@ -68,10 +68,12 @@ namespace LeetCode
 
                 //Enumerable.Range(0, 16).MyForEach(i => Console.WriteLine($"{i:D2}"));  // 00 01 ... 15
 
-                //Console.WriteLine(int.MaxValue);    // 2147483647            10位
-                //Console.WriteLine(uint.MaxValue);   // 4294967295            10位
-                //Console.WriteLine(long.MaxValue);   // 9223372036854775807   19位
-                //Console.WriteLine(ulong.MaxValue);  // 18446744073709551615  20位
+                //Console.WriteLine(int.MaxValue);      // 2147483647                               10位
+                //Console.WriteLine(uint.MaxValue);     // 4294967295                               10位
+                //Console.WriteLine(long.MaxValue);     // 9223372036854775807                      19位
+                //Console.WriteLine(ulong.MaxValue);    // 18446744073709551615                     20位
+                //Console.WriteLine(Int128.MaxValue);   // 170141183460469231731687303715884105727  39位
+                //Console.WriteLine(UInt128.MaxValue);  // 340282366920938463463374607431768211455  39位
 
                 //int[][] arr = new int[rcnt][];
                 //for (int i = 0; i < rcnt; i++) arr[i] = new int[ccnt];
