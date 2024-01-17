@@ -11,42 +11,23 @@ namespace LeetCode.QuestionBank.Question0405
         private static readonly char[] map = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
 
         /// <summary>
-        /// 唯一的难点在于处理负数，需要好好理解“补码”
+        /// 每4个二进制位换一次16进制即可
         /// </summary>
         /// <param name="num"></param>
         /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
         public string ToHex(int num)
         {
-            StringBuilder result = new StringBuilder();
+            if (num == 0) return "0";
 
-            long n = num;
-            if (n < 0) n = -(((~-n) | (1 << 31)) + 1);
-            while (n > 0)
+            char[] buffer = new char[8];
+            for (int i = 0; i < 8; i++)
             {
-                var info = Math.DivRem(n, 16);
-                result.Insert(0, map[info.Remainder]);
-                n = info.Quotient;
+                buffer[i] = map[(num >> ((7 - i) << 2)) & 15];
             }
 
-            return result.ToString();
-        }
-
-        /// <summary>
-        /// 与ToHex()一样，使用位运算替代 /16 与 %16
-        /// </summary>
-        /// <param name="num"></param>
-        /// <returns></returns>
-        public string ToHex2(int num)
-        {
-            StringBuilder result = new StringBuilder();
-
-            while (num > 0)
-            {
-                result.Insert(0, map[num & 15]);  // num % 16
-                num >>= 4;                        // num /= 16
-            }
-
-            return result.ToString();
+            int id = 0; while (buffer[id] == '0') id++;
+            return new string(buffer[id..]);
         }
     }
 }
