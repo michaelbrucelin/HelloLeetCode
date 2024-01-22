@@ -19,8 +19,7 @@ namespace LeetCode.QuestionBank.Question0670
             int num2 = num;
             while (num2 > 0)
             {
-                digits.Add(num2 % 10);
-                num2 /= 10;
+                digits.Add(num2 % 10); num2 /= 10;
             }
 
             int maxid = 0;
