@@ -10,7 +10,7 @@ namespace LeetCode.QuestionBank.Question0365
     {
         public void Test()
         {
-            Interface0365 solution = new Solution0365_2();
+            Interface0365 solution = new Solution0365_3_2();
             int jug1Capacity,  jug2Capacity,  targetCapacity;
             bool result, answer;
             int id = 0;
