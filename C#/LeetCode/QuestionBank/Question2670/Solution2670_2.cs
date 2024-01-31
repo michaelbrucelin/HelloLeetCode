@@ -32,5 +32,30 @@ namespace LeetCode.QuestionBank.Question2670
 
             return result;
         }
+
+        /// <summary>
+        /// 与DistinctDifferenceArray()逻辑一样，DistinctDifferenceArray()弄复杂了
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+        public int[] DistinctDifferenceArray2(int[] nums)
+        {
+            int len = nums.Length;
+            int[] sufcnt = new int[len];
+            HashSet<int> set = new HashSet<int>();
+            for (int i = len - 1; i >= 0; i--)
+            {
+                sufcnt[i] = set.Count(); set.Add(nums[i]);
+            }
+
+            int[] result = new int[len];
+            set.Clear();
+            for (int i = 0; i < len; i++)
+            {
+                set.Add(nums[i]); result[i] = set.Count - sufcnt[i];
+            }
+
+            return result;
+        }
     }
 }
