@@ -22,6 +22,7 @@ namespace LeetCode.QuestionBank.Question1696
         {
             int len = nums.Length;
             if (len <= 2 || k == 1) return nums.Sum();
+            if (k >= len) return nums[0] + nums[^1] + nums.Skip(1).Take(len - 2).Where(i => i > 0).Sum();
 
             PriorityQueue<(int r, int idx), int> maxpq = new PriorityQueue<(int r, int idx), int>();
             maxpq.Enqueue((nums[0], 0), -nums[0]);
