@@ -57,6 +57,18 @@ namespace LeetCode.QuestionBank.Question2846
             result = solution.MinOperationsQueries(n, edges, queries);
             // Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
             Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: [ ... ... ], answer: [ ... ... ]");
+
+            // 5. 
+            n = 10000;
+            testcase = "05";
+            path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"QuestionBank\Question{question}\TestCases\TestCase{question}");
+            edges = Utils.Str2NumArray_2d<int>(File.ReadAllText($"{path}_{testcase}_edges.txt"));
+            queries = Utils.Str2NumArray_2d<int>(File.ReadAllText($"{path}_{testcase}_queries.txt"));
+            answer = Utils.Str2NumArray<int>(File.ReadAllText($"{path}_{testcase}_answer.txt"));
+            result = solution.MinOperationsQueries(n, edges, queries);
+            // Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: [ ... ... ], answer: [ ... ... ]");
         }
     }
 }
