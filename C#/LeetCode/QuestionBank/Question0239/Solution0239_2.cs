@@ -17,6 +17,9 @@ namespace LeetCode.QuestionBank.Question0239
         /// <returns></returns>
         public int[] MaxSlidingWindow(int[] nums, int k)
         {
+            if (k == 1) return nums;
+            if (k == nums.Length) return new int[] { nums.Max() };
+
             int len = nums.Length;
             int[] result = new int[len - k + 1];
             LinkedList<(int val, int idx)> list = new LinkedList<(int val, int idx)>();
