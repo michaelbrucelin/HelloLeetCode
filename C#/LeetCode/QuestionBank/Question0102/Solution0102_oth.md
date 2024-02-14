@@ -1,51 +1,48 @@
-#### [��ģ�壡BFS �� DFS �����Խ��]()
+### [套模板！BFS 和 DFS 都可以解决](https://leetcode.cn/problems/binary-tree-level-order-traversal/solutions/244292/tao-mo-ban-bfs-he-dfs-du-ke-yi-jie-jue-by-fuxuemin/)
 
-#### ����
+#### 分析
 
-�����������ǰѶ�������ÿһ��ڵ���뵽ͬһ���б��У���󷵻ظ�����б���ɵ��ܵ��б���
+本题是让我们把二叉树的每一层节点放入到同一个列表中，最后返回各层的列表组成的总的列表。
 
-����ʹ�� BFS �� DFS �����
+可以使用 BFS 和 DFS 解决。
 
-�����BFS�����ղ����������ͼ�ұ���DFS����һ·�ߵ��ף�Ȼ���ٻ�ͷ������
+左边是BFS，按照层进行搜索；图右边是DFS，先一路走到底，然后再回头搜索。
 
-![](./assets/img/Solution0102_4.png)
+![](./assets/img/Solution0102_oth.png)
 
 #### BFS
 
-BFSʹ�ö��У���ÿ����û���������ĵ����η�����У�Ȼ���ٵ������е�ͷ��Ԫ�ص�����ǰ�����㡣BFS�ܹ�������ģ�壺
+BFS使用队列，把每个还没有搜索到的点依次放入队列，然后再弹出队列的头部元素当做当前遍历点。BFS总共有两个模板：
 
-1.  �������Ҫȷ����ǰ����������һ�㣬BFSģ�����¡�
-
-```cpp
-while queue ���գ�
-    cur = queue.pop()
-    for �ڵ� in cur���������ڽڵ㣺
-        if �ýڵ���Ч��δ���ʹ���
-            queue.push(�ýڵ�)
-```
-
-2.  ���Ҫȷ����ǰ����������һ�㣬BFSģ�����¡� ����������level��ʾ��ǰ�������������е���һ���ˣ�Ҳ��������Ϊ��һ��ͼ�У������Ѿ����˶��ٲ��ˡ�size��ʾ�ڵ�ǰ�������ж��ٸ�Ԫ�أ�Ҳ���Ƕ����е�Ԫ���������ǰ���ЩԪ��һ���Ա����꣬���ѵ�ǰ�������Ԫ�ض���������һ����
-
-```cpp
-level = 0
-while queue ���գ�
-    size = queue.size()
-    while (size --) {
+1. 如果不需要确定当前遍历到了哪一层，BFS模板如下。
+    ```cpp
+    while queue 不空：
         cur = queue.pop()
-        for �ڵ� in cur���������ڽڵ㣺
-            if �ýڵ���Ч��δ�����ʹ���
-                queue.push(�ýڵ�)
-    }
-    level ++;
-```
+        for 节点 in cur的所有相邻节点：
+            if 该节点有效且未访问过：
+                queue.push(该节点)
+    ```
+2. 如果要确定当前遍历到了哪一层，BFS模板如下。 这里增加了level表示当前遍历到二叉树中的哪一层了，也可以理解为在一个图中，现在已经走了多少步了。size表示在当前遍历层有多少个元素，也就是队列中的元素数，我们把这些元素一次性遍历完，即把当前层的所有元素都向外走了一步。
+    ```cpp
+    level = 0
+    while queue 不空：
+        size = queue.size()
+        while (size --) {
+            cur = queue.pop()
+            for 节点 in cur的所有相邻节点：
+                if 该节点有效且未被访问过：
+                    queue.push(该节点)
+        }
+        level ++;
+    ```
 
-����������ͨ��ģ�壬���κ���Ŀ�ж������ã���Ҫ��ס�ģ�
+上面两个是通用模板，在任何题目中都可以用，是要记住的！
 
-����Ҫ��������Ĳ�α���������ͬһ��Ľڵ�Ӧ�÷���һ�𣬹�ʹ��ģ�����
+本题要求二叉树的层次遍历，所以同一层的节点应该放在一起，故使用模板二。
 
-ʹ�ö��б���ÿ������нڵ㣬ÿ�ΰѶ������ԭ�����нڵ���г����в������ٰ�ÿ��Ԫ�صķǿ������ӽڵ������С���˼��ɵõ�ÿ��ı�����
+使用队列保存每层的所有节点，每次把队列里的原先所有节点进行出队列操作，再把每个元素的非空左右子节点进入队列。因此即可得到每层的遍历。
 
-�����ԵĴ������£�
+各语言的代码如下：
 
 ```python
 # Definition for a binary tree node.
@@ -156,13 +153,13 @@ class Solution {
 
 ##### DFS
 
-����ʹ�� DFS ͬ��������������ĿҪ��ÿһ��Ľڵ㶼�Ǵ����ұ�������˵ݹ�ʱҲҪ�ȵݹ����������ٵݹ���������
+本题使用 DFS 同样能做。由于题目要求每一层的节点都是从左到右遍历，因此递归时也要先递归左子树、再递归右子树。
 
-DFS ���������Ҫ�����ǣ� DFS ���ǰ��ղ�α����ġ�Ϊ���õݹ�Ĺ�����ͬһ��Ľڵ�ŵ�ͬһ���б��У��ڵݹ�ʱҪ��¼ÿ���ڵ����� level���ݹ鵽�½ڵ�Ҫ�Ѹýڵ���� level ��Ӧ�б���ĩβ��
+DFS 做本题的主要问题是： DFS 不是按照层次遍历的。为了让递归的过程中同一层的节点放到同一个列表中，在递归时要记录每个节点的深度 level。递归到新节点要把该节点放入 level 对应列表的末尾。
 
-��������һ���µ���� level�������ս�� res �л�û�д��� level ��Ӧ���б�ʱ��Ӧ���� res ���½�һ���б���������� level �����нڵ㡣
+当遍历到一个新的深度 level，而最终结果 res 中还没有创建 level 对应的列表时，应该在 res 中新建一个列表用来保存该 level 的所有节点。
 
-�����ԵĴ������£�
+各语言的代码如下：
 
 ```python
 # Definition for a binary tree node.
