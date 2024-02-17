@@ -14,7 +14,6 @@ namespace LeetCode.QuestionBank.Question0589
         /// </summary>
         /// <param name="root"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public IList<int> Preorder(Node root)
         {
             List<int> result = new List<int>();
