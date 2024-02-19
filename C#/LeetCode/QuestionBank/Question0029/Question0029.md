@@ -1,4 +1,4 @@
-﻿#### [29\. 两数相除](https://leetcode.cn/problems/divide-two-integers/description/)
+﻿### [29\. 两数相除](https://leetcode.cn/problems/divide-two-integers/description/)
 
 难度：中等
 
@@ -26,6 +26,6 @@
 
 **提示：**
 
--   被除数和除数均为 32 位有符号整数。
--   除数不为 0。
--   假设我们的环境只能存储 32 位有符号整数，其数值范围是 [−2<sup>31</sup>,  2<sup>31&nbsp;</sup> − 1]。本题中，如果除法结果溢出，则返回 2<sup>31&nbsp;</sup> − 1。
+- 被除数和除数均为 32 位有符号整数。
+- 除数不为 0。
+- 假设我们的环境只能存储 32 位有符号整数，其数值范围是 [−2<sup>31</sup>,  2<sup>31&nbsp;</sup> − 1]。本题中，如果除法结果溢出，则返回 2<sup>31&nbsp;</sup> − 1。
