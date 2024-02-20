@@ -8,6 +8,13 @@ namespace LeetCode.QuestionBank.Question0067
 {
     public class Solution0067 : Interface0067
     {
+        /// <summary>
+        /// 模拟
+        /// 其实可以将a b每63位分一组，转为long，计算，这里就不做了，这样一定程度也违背了题目的本意。
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public string AddBinary(string a, string b)
         {
             if (a.Length < b.Length)

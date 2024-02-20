@@ -9,6 +9,7 @@ namespace LeetCode.QuestionBank.Question0067
     public class Solution0067_2 : Interface0067
     {
         /// <summary>
+        /// 模拟
         /// 与Solution0067一样，不过将两个字符串长度补齐，与Solution0067相比，代码更简单，执行略慢
         /// </summary>
         /// <param name="a"></param>
