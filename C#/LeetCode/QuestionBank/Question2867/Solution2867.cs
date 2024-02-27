@@ -11,7 +11,7 @@ namespace LeetCode.QuestionBank.Question2867
         /// <summary>
         /// 暴力枚举
         /// 题目的本质还是在求解树中任意两点之间的最短路径问题，而树中两节点的最短路径就是两节点到最近公共祖先的两端路径的和
-        /// 1. 以节点1为根，构建树，Dictionary<int, HashSet<int>>
+        /// 1. 以节点1为根，构建树，List<int>[]
         /// 2. 遍历树，并统计根到每个节点的路径及其路径上质数的个数(List<int> path, int cnt)[]
         /// 3. 枚举任意两节点，计算两节点的最短路径及其路径上的质数数量，for(int i =1; i<n; i++) for(int j=i+1; j<=n; j++) ... ...
         /// 
@@ -28,11 +28,11 @@ namespace LeetCode.QuestionBank.Question2867
             HashSet<int> primes = new HashSet<int>();
             for (int i = 1; i <= n; i++) if (IsPrime(i)) primes.Add(i);
             // 构建树，0是哑节点
-            Dictionary<int, List<int>> tree = new Dictionary<int, List<int>>() { { 0, new List<int>() { 1 } } };
+            List<int>[] tree = new List<int>[n + 1];
+            tree[0] = new List<int>() { 1 }; for (int i = 1; i <= n; i++) tree[i] = new List<int>();
             foreach (var edge in edges)
             {
-                tree.TryAdd(edge[0], new List<int>()); tree[edge[0]].Add(edge[1]);
-                tree.TryAdd(edge[1], new List<int>()); tree[edge[1]].Add(edge[0]);
+                tree[edge[0]].Add(edge[1]); tree[edge[1]].Add(edge[0]);
             }
             // 遍历树，并统计根到每个节点的路径及其路径上质数的个数
             (List<int> path, int cnt)[] paths = new (List<int> path, int cnt)[n + 1];
@@ -68,7 +68,7 @@ namespace LeetCode.QuestionBank.Question2867
             return cnt == 1;
         }
 
-        private void DFSTree(Dictionary<int, List<int>> tree, int node, (List<int> path, int cnt)[] paths, HashSet<int> primes)
+        private void DFSTree(List<int>[] tree, int node, (List<int> path, int cnt)[] paths, HashSet<int> primes)
         {
             List<int> path = paths[node].path; int cnt = paths[node].cnt;
             foreach (int next in tree[node])

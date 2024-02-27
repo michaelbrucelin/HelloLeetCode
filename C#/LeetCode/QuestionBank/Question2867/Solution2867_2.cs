@@ -28,11 +28,11 @@ namespace LeetCode.QuestionBank.Question2867
             // 预处理质数集合，线性筛
             HashSet<int> primes = new HashSet<int>(GetPrimes(n + 1));
             // 构建树
-            Dictionary<int, List<int>> tree = new Dictionary<int, List<int>>();
+            List<int>[] tree = new List<int>[n + 1];
+            for (int i = 1; i <= n; i++) tree[i] = new List<int>();
             foreach (var edge in edges)
             {
-                tree.TryAdd(edge[0], new List<int>()); tree[edge[0]].Add(edge[1]);
-                tree.TryAdd(edge[1], new List<int>()); tree[edge[1]].Add(edge[0]);
+                tree[edge[0]].Add(edge[1]); tree[edge[1]].Add(edge[0]);
             }
             // 枚举质数
             long result = 0;
@@ -48,7 +48,7 @@ namespace LeetCode.QuestionBank.Question2867
         /// <param name="root"></param>
         /// <param name="primes"></param>
         /// <returns></returns>
-        private long CountPath(Dictionary<int, List<int>> tree, int root, HashSet<int> primes)
+        private long CountPath(List<int>[] tree, int root, HashSet<int> primes)
         {
             long result = 0;
             List<long> cnts = new List<long>(); int _cnt;
@@ -75,7 +75,7 @@ namespace LeetCode.QuestionBank.Question2867
         /// <param name="parent"></param>
         /// <param name="primes"></param>
         /// <returns></returns>
-        private int CountNode(Dictionary<int, List<int>> tree, int root, HashSet<int> primes)
+        private int CountNode(List<int>[] tree, int root, HashSet<int> primes)
         {
             int result = 0;
             Queue<int> queue = new Queue<int>();
@@ -104,7 +104,7 @@ namespace LeetCode.QuestionBank.Question2867
         /// <param name="root"></param>
         /// <param name="primes"></param>
         /// <returns></returns>
-        private int CountNode(Dictionary<int, List<int>> tree, int root, int parent, HashSet<int> primes)
+        private int CountNode(List<int>[] tree, int root, int parent, HashSet<int> primes)
         {
             int result = 1;
             foreach (int child in tree[root])
