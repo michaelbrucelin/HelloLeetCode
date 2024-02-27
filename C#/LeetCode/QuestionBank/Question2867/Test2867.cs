@@ -13,7 +13,7 @@ namespace LeetCode.QuestionBank.Question2867
     {
         public void Test()
         {
-            Interface2867 solution = new Solution2867();
+            Interface2867 solution = new Solution2867_2();
             int n; int[][] edges;
             long result, answer;
             int id = 0;
@@ -43,6 +43,16 @@ namespace LeetCode.QuestionBank.Question2867
             path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"QuestionBank\Question{question}\TestCases\TestCase{question}");
             edges = Utils.Str2NumArray_2d<int>(File.ReadAllText($"{path}_{testcase}_edges.txt"));
             answer = 1371755;
+            result = solution.CountPaths(n, edges);
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            // 5. 
+            n = 100000;
+            testcase = "05";
+            path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"QuestionBank\Question{question}\TestCases\TestCase{question}");
+            edges = Utils.Str2NumArray_2d<int>(File.ReadAllText($"{path}_{testcase}_edges.txt"));
+            answer = 4086848436;
             result = solution.CountPaths(n, edges);
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
         }
