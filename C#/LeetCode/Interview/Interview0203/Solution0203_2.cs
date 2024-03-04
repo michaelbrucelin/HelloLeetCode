@@ -8,11 +8,14 @@ namespace LeetCode.Interview.Interview0203
 {
     public class Solution0203_2 : Interface0203
     {
-        unsafe public void DeleteNode(ListNode node)
+        /// <summary>
+        /// TODO：通过指针实现真正的删除链表的中间节点
+        /// </summary>
+        /// <param name="node"></param>
+        public unsafe void DeleteNode(ListNode node)
         {
-            //ListNode next = node.next;
-            //int* addr = &next;
-            throw new NotImplementedException();
+            ListNode next = node.next;
+            node = @next;
         }
     }
 }
