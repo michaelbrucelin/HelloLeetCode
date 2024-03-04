@@ -21,7 +21,7 @@
 > **输入：**
 > ["MyStack", "push", "push", "top", "pop", "empty"]
 > \[[], [1], [2], [], [], []]
-> 输出：
+> **输出：**
 > [null, null, null, 2, 2, false]
 >  
 > **解释：**

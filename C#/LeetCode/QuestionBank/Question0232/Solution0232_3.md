@@ -1,14 +1,16 @@
-#### [����һ��˫ջ](https://leetcode.cn/problems/implement-queue-using-stacks/solutions/632369/yong-zhan-shi-xian-dui-lie-by-leetcode-s-xnb6/)
+### [用栈实现队列](https://leetcode.cn/problems/implement-queue-using-stacks/solutions/632369/yong-zhan-shi-xian-dui-lie-by-leetcode-s-xnb6/)
 
-**˼·**
+#### 方法一：双栈
 
-��һ��ջ��������ջ������ѹ�� $push$ ��������ݣ���һ��ջ�������ջ������ $pop$ �� $peek$ ������
+##### 思路
 
-ÿ�� $pop$ �� $peek$ ʱ�������ջΪ��������ջ��ȫ���������ε�����ѹ�����ջ���������ջ��ջ����ջ�׵�˳����Ƕ��дӶ�������β��˳��
+将一个栈当作输入栈，用于压入 $push$ 传入的数据；另一个栈当作输出栈，用于 $pop$ 和 $peek$ 操作。
 
-**����**
+每次 $pop$ 或 $peek$ 时，若输出栈为空则将输入栈的全部数据依次弹出并压入输出栈，这样输出栈从栈顶往栈底的顺序就是队列从队首往队尾的顺序。
 
-```cpp
+##### 代码
+
+```c++
 class MyQueue {
 private:
     stack<int> inStack, outStack;
@@ -289,7 +291,7 @@ void myQueueFree(MyQueue* obj) {
 }
 ```
 
-**���Ӷȷ���**
+##### 复杂度分析
 
--   ʱ�临�Ӷȣ�$push$ �� $empty$ Ϊ $O(1)$��$pop$ �� $peek$ Ϊ��̯ $O(1)$������ÿ��Ԫ�أ�������ջ�ͳ�ջ�����Σ��ʾ�̯���Ӷ�Ϊ $O(1)$��
--   �ռ临�Ӷȣ�$O(n)$������ $n$ �ǲ��������������� $n$ �� $push$ ����������������л��� $n$ ��Ԫ�أ��ʿռ临�Ӷ�Ϊ $O(n)$��
+- 时间复杂度：$push$ 和 $empty$ 为 $O(1)$，$pop$ 和 $peek$ 为均摊 $O(1)$。对于每个元素，至多入栈和出栈各两次，故均摊复杂度为 $O(1)$。
+- 空间复杂度：$O(n)$。其中 $n$ 是操作总数。对于有 $n$ 次 $push$ 操作的情况，队列中会有 $n$ 个元素，故空间复杂度为 $O(n)$。
