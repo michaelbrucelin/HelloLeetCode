@@ -13,7 +13,7 @@ namespace LeetCode.QuestionBank.Question2368
     {
         public void Test()
         {
-            Interface2368 solution = new Solution2368_3();
+            Interface2368 solution = new Solution2368_off_2();
             int n; int[][] edges; int[] restricted;
             int result, answer;
             int id = 0;
