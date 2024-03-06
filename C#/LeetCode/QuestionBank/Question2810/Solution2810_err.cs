@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question2810
 {
-    public class Solution2810_error : Interface2810
+    public class Solution2810_err : Interface2810
     {
         /// <summary>
         /// 三指针

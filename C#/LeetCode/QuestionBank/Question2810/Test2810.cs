@@ -10,7 +10,7 @@ namespace LeetCode.QuestionBank.Question2810
     {
         public void Test()
         {
-            Interface2810 solution = new Solution2810_error();
+            Interface2810 solution = new Solution2810_err();
             string s;
             string result, answer;
             int id = 0;
