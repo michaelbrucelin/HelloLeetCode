@@ -1,4 +1,4 @@
-﻿using LeetCode.Interview.Interview0203;
+﻿using LeetCode.Interview.Interview0806;
 using LeetCode.QuestionBank.Question2834;
 using LeetCode.LCP.LCP0030;
 using LeetCode.LCR.LCR0002;
@@ -17,7 +17,7 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test2834 test = new();
+            Test0806 test = new();
             test.Test();
             //Utils.FmtMarkDown(Utils.QuestionType.QuestionBank, "1253", "off");
             //test.TestDivergentTraverse();
@@ -46,6 +46,7 @@ namespace LeetCode
             //string question = "1234", testcase = "08";
             //string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"QuestionBank\Question{question}\TestCases\TestCase{question}");
+            //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"Interview\Interview{question}\TestCases\TestCase{question}");
             //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"LCP\LCP{question}\TestCases\TestCase{question}");
             //arg = File.ReadAllText($"{path}_{testcase}_arg.txt");
             //arg = Utils.Str2NumArray<int>(File.ReadAllText($"{path}_{testcase}_arg.txt"));
