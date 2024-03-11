@@ -1,4 +1,4 @@
-﻿using LeetCode.Interview.Interview0806;
+﻿using LeetCode.Interview.Interview0507;
 using LeetCode.QuestionBank.Question2834;
 using LeetCode.LCP.LCP0030;
 using LeetCode.LCR.LCR0002;
@@ -17,7 +17,7 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test0806 test = new();
+            Test0507 test = new();
             test.Test();
             //Utils.FmtMarkDown(Utils.QuestionType.QuestionBank, "1253", "off");
             //test.TestDivergentTraverse();
@@ -53,6 +53,7 @@ namespace LeetCode
             //arg = Utils.Str2NumArray_2d<int>(File.ReadAllText($"{path}_{testcase}_arg.txt"));
             //string raw = "[[0,1],[1,2]]";
             //Console.WriteLine(Utils.TestCase2CSharpDeclare(raw, Utils.TestCaseType.array_2d));
+            //               0xAAAAAAAA      10101010101010101010101010101010
             //const int M1 = 0x55555555;  // 01010101010101010101010101010101
             //const int M2 = 0x33333333;  // 00110011001100110011001100110011
             //const int M4 = 0x0f0f0f0f;  // 00001111000011110000111100001111
