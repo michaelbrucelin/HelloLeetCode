@@ -18,7 +18,7 @@ namespace LeetCode.QuestionBank.Question2864
         {
             int len = s.Length;
             int[] cnt = new int[2];
-            for (int i = 0; i < len; i++) cnt[s[i] - '0']++;
+            for (int i = 0; i < len; i++) cnt[s[i] & 15]++;
 
             char[] chars = new char[len];
             chars[^1] = '1'; cnt[1]--;

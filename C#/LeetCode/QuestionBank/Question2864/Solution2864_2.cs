@@ -16,7 +16,7 @@ namespace LeetCode.QuestionBank.Question2864
         public string MaximumOddBinaryNumber(string s)
         {
             char[] chars = s.ToCharArray();
-            int len = chars.Length, pl = 0, pr = chars.Length - 1;
+            int pl = 0, pr = chars.Length - 1;
             while (chars[pr] != '1') pr--; chars[pr] = '0'; chars[^1] = '1'; pr--;
             while (pl < pr)
             {
