@@ -10,7 +10,7 @@ namespace LeetCode.QuestionBank.Question2617
     {
         /// <summary>
         /// BFS
-        /// TLE，参考测试用例06
+        /// 逻辑没问题，但是TLE，参考测试用例06
         /// 
         /// 思考：为什么会TLE？
         ///       grid的每一项都会操作一次，事件复杂度为O(m*n)，每一项都需要向右与向下“走”，所以时间复杂度为O(m*n*(m+n))
