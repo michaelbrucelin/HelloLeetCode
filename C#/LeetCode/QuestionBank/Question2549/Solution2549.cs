@@ -21,9 +21,7 @@ namespace LeetCode.QuestionBank.Question2549
             Queue<int> queue = new Queue<int>(); queue.Enqueue(n);
             for (int i = 0, cnt; i < n; i++)  // 不会超过n天的
             {
-                while ((cnt = queue.Count()) > 0)
-                {
-                    for (int j = 0; j < cnt; j++)
+                while ((cnt = queue.Count()) > 0) for (int j = 0; j < cnt; j++)
                     {
                         int _n = queue.Dequeue() - 1;
                         if (_n > 1 && !result.Contains(_n))
@@ -41,7 +39,6 @@ namespace LeetCode.QuestionBank.Question2549
                             result.Add(_n); queue.Enqueue(_n);
                         }
                     }
-                }
             }
 
             return result.Count;
