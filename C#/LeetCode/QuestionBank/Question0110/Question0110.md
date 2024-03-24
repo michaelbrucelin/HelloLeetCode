@@ -1,4 +1,4 @@
-﻿#### [110\. 平衡二叉树](https://leetcode.cn/problems/balanced-binary-tree/)
+﻿### [110\. 平衡二叉树](https://leetcode.cn/problems/balanced-binary-tree/)
 
 难度：简单
 
@@ -12,28 +12,22 @@
 
 ![](./assets/img/Question0110_01.jpg)
 
-```
-输入：root = [3,9,20,null,null,15,7]
-输出：true
-```
+> **输入：** root = [3,9,20,null,null,15,7]
+> **输出：** true
 
 **示例 2：**
 
 ![](./assets/img/Question0110_02.jpg)
 
-```
-输入：root = [1,2,2,3,3,null,null,4,4]
-输出：false
-```
+> **输入：** root = [1,2,2,3,3,null,null,4,4]
+> **输出：** false
 
 **示例 3：**
 
-```
-输入：root = []
-输出：true
-```
+> **输入：** root = []
+> **输出：** true
 
 **提示：**
 
--   树中的节点数在范围 `[0, 5000]` 内
--   `-10^4 <= Node.val <= 10^4`
+- 树中的节点数在范围 `[0, 5000]` 内
+- `-10^4 <= Node.val <= 10^4`
