@@ -1,25 +1,25 @@
-#### [½£Ö¸ Offer 57 - II. ºÍÎªsµÄÁ¬ÐøÕýÊýÐòÁÐ](https://leetcode.cn/problems/he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof/)
+#### [å‰‘æŒ‡ Offer 57 - II. å’Œä¸ºsçš„è¿žç»­æ­£æ•°åºåˆ—](https://leetcode.cn/problems/he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof/)
 
-ÄÑ¶È£º¼òµ¥
+éš¾åº¦ï¼šç®€å•
 
-ÊäÈëÒ»¸öÕýÕûÊý `target` £¬Êä³öËùÓÐºÍÎª `target` µÄÁ¬ÐøÕýÕûÊýÐòÁÐ£¨ÖÁÉÙº¬ÓÐÁ½¸öÊý£©¡£
+è¾“å…¥ä¸€ä¸ªæ­£æ•´æ•° `target` ï¼Œè¾“å‡ºæ‰€æœ‰å’Œä¸º `target` çš„è¿žç»­æ­£æ•´æ•°åºåˆ—ï¼ˆè‡³å°‘å«æœ‰ä¸¤ä¸ªæ•°ï¼‰ã€‚
 
-ÐòÁÐÄÚµÄÊý×ÖÓÉÐ¡µ½´óÅÅÁÐ£¬²»Í¬ÐòÁÐ°´ÕÕÊ×¸öÊý×Ö´ÓÐ¡µ½´óÅÅÁÐ¡£
+åºåˆ—å†…çš„æ•°å­—ç”±å°åˆ°å¤§æŽ’åˆ—ï¼Œä¸åŒåºåˆ—æŒ‰ç…§é¦–ä¸ªæ•°å­—ä»Žå°åˆ°å¤§æŽ’åˆ—ã€‚
 
-**Ê¾Àý 1£º**
-
-```
-ÊäÈë£ºtarget = 9
-Êä³ö£º[[2,3,4],[4,5]]
-```
-
-**Ê¾Àý 2£º**
+**ç¤ºä¾‹ 1ï¼š**
 
 ```
-ÊäÈë£ºtarget = 15
-Êä³ö£º[[1,2,3,4,5],[4,5,6],[7,8]]
+è¾“å…¥ï¼štarget = 9
+è¾“å‡ºï¼š[[2,3,4],[4,5]]
 ```
 
-**ÏÞÖÆ£º**
+**ç¤ºä¾‹ 2ï¼š**
+
+```
+è¾“å…¥ï¼štarget = 15
+è¾“å‡ºï¼š[[1,2,3,4,5],[4,5,6],[7,8]]
+```
+
+**é™åˆ¶ï¼š**
 
 -   `1 <= target <= 10^5`
