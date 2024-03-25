@@ -10,7 +10,7 @@ namespace LeetCode.QuestionBank.Question0518
     {
         public void Test()
         {
-            Interface0518 solution = new Solution0518_3();
+            Interface0518 solution = new Solution0518_off();
             int amount; int[] coins;
             int result, answer;
             int id = 0;
