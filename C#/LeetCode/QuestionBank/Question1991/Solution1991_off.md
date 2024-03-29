@@ -1,4 +1,6 @@
-﻿#### [方法一：前缀和](https://leetcode.cn/problems/find-the-middle-index-in-array/solutions/1010005/zhao-dao-shu-zu-de-zhong-jian-wei-zhi-by-s8cy/)
+### [找到数组的中间位置](https://leetcode.cn/problems/find-the-middle-index-in-array/solutions/1010005/zhao-dao-shu-zu-de-zhong-jian-wei-zhi-by-s8cy/)
+
+#### 方法一：前缀和
 
 **思路**
 
@@ -107,5 +109,5 @@ int findMiddleIndex(int* nums, int numsSize) {
 
 **复杂度分析**
 
--   时间复杂度：$O(n)$，其中 $n$ 为数组的长度。
--   空间复杂度：$O(1)$。
+- 时间复杂度：$O(n)$，其中 $n$ 为数组的长度。
+- 空间复杂度：$O(1)$。

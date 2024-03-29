@@ -1,8 +1,8 @@
-### [724\. 寻找数组的中心下标](https://leetcode.cn/problems/find-pivot-index/)
+### [LCR 012. 寻找数组的中心下标](https://leetcode.cn/problems/tvdfij/)
 
 难度：简单
 
-给你一个整数数组 `nums` ，请计算数组的 **中心下标** 。
+给你一个整数数组 `nums` ，请计算数组的 **中心下标** 。
 
 数组 **中心下标** 是数组的一个下标，其左侧所有元素相加的和等于右侧所有元素相加的和。
 
@@ -12,7 +12,7 @@
 
 **示例 1：**
 
-> **输入：** nums = [1, 7, 3, 6, 5, 6]
+> **输入：** nums = [1,7,3,6,5,6]
 > **输出：** 3
 > **解释：**
 > 中心下标是 3 。
@@ -40,4 +40,4 @@
 - `1 <= nums.length <= 10^4`
 - `-1000 <= nums[i] <= 1000`
 
-**注意：** 本题与主站 1991 题相同：[https://leetcode-cn.com/problems/find-the-middle-index-in-array/](https://leetcode-cn.com/problems/find-the-middle-index-in-array/)
+注意：本题与主站 724 题相同： [https://leetcode-cn.com/problems/find-pivot-index/](https://leetcode-cn.com/problems/find-pivot-index/)

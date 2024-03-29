@@ -1,16 +1,17 @@
-### [寻找数组的中心下标](https://leetcode.cn/problems/find-pivot-index/solutions/579264/xun-zhao-shu-zu-de-zhong-xin-suo-yin-by-gzjle/)
+### [左右两边子数组的和相等](https://leetcode.cn/problems/tvdfij/solutions/1038043/zuo-you-liang-bian-zi-shu-zu-de-he-xiang-5j4r/)
 
 #### 方法一：前缀和
 
-**思路**
+##### 思路
 
-记数组的全部元素之和为 $total$，当遍历到第 $i$ 个元素时，设其左侧元素之和为 $sum$，则其右侧元素之和为 $total-nums_i-sum$。左右侧元素相等即为 $sum=total-nums_i-sum$，即 $2\times sum+nums_i=total$。
+记数组的全部元素之和为 $\textit{total}$，当遍历到第 $i$ 个元素时，设其左侧元素之和为 $\textit{sum}$，则其右侧元素之和为 $\textit{total}-\textit{nums}_i-\textit{sum}$。左右侧元素相等即为 $\textit{sum}=\textit{total}-\textit{nums}_i-\textit{sum}$，即 $2\times\textit{sum}+\textit{nums}_i=\textit{total}$。
 
-当中心索引左侧或右侧没有元素时，即为零个项相加，这在数学上称作「空和」（$empty sum$）。在程序设计中我们约定「空和是零」。
+当中心下标左侧或右侧没有元素时，即为零个项相加，这在数学上称作「空和」（$\text{empty sum}$）。在程序设计中我们约定「空和是零」。
 
-**代码**
 
-```cpp
+##### 代码
+
+```c++
 class Solution {
 public:
     int pivotIndex(vector<int> &nums) {
@@ -107,7 +108,7 @@ int pivotIndex(int* nums, int numsSize) {
 }
 ```
 
-**复杂度分析**
+##### 复杂度分析
 
 - 时间复杂度：$O(n)$，其中 $n$ 为数组的长度。
 - 空间复杂度：$O(1)$。

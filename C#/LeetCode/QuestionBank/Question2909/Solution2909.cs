@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCode.QuestionBank.Question2908
+namespace LeetCode.QuestionBank.Question2909
 {
-    public class Solution2908_2 : Interface2908
+    public class Solution2909 : Interface2909
     {
         /// <summary>
         /// 预处理

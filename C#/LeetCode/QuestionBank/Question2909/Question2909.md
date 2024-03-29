@@ -1,6 +1,6 @@
-### [2908\. 元素和最小的山形三元组 I](https://leetcode.cn/problems/minimum-sum-of-mountain-triplets-i/)
+### [2909\. 元素和最小的山形三元组 II](https://leetcode.cn/problems/minimum-sum-of-mountain-triplets-ii/)
 
-难度：简单
+难度：中等
 
 给你一个下标从 **0** 开始的整数数组 `nums` 。
 
@@ -28,7 +28,7 @@
 > **输出：** 13
 > **解释：** 三元组 (1, 3, 5) 是一个元素和等于 13 的山形三元组，因为： 
 >  
-> - 1 < 3 < 5 
+> - 1 < 3 < 5
 > - nums[1] < nums[3] 且 nums[5] < nums[3]
 >  
 > 这个三元组的元素和等于 nums[1] + nums[3] + nums[5] = 13 。可以证明不存在元素和小于 13 的山形三元组。
@@ -41,5 +41,5 @@
 
 **提示：**
 
-- `3 <= nums.length <= 50`
-- `1 <= nums[i] <= 50`
+- `3 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^8`
