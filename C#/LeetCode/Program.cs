@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview0801;
-using LeetCode.QuestionBank.Question1997;
+using LeetCode.QuestionBank.Question0331;
 using LeetCode.LCP.LCP0030;
 using LeetCode.LCR.LCR0002;
 using LeetCode.LCS.LCS0001;
@@ -18,7 +18,7 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test1997 test = new();
+            Test0331 test = new();
             test.Test();
             //Utils.FmtMarkDown(Utils.QuestionType.QuestionBank, "1253", "off");
             //test.TestDivergentTraverse();
