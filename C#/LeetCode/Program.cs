@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview0801;
-using LeetCode.QuestionBank.Question0894;
+using LeetCode.QuestionBank.Question3090;
 using LeetCode.LCP.LCP0030;
 using LeetCode.LCR.LCR0002;
 using LeetCode.LCS.LCS0001;
@@ -18,13 +18,13 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test0894 test = new();
+            Test3090 test = new();
             test.Test();
             //Utils.FmtMarkDown(Utils.QuestionType.QuestionBank, "1253", "off");
             //test.TestDivergentTraverse();
             //test.Look4Rules();
             //test.VerifyRules();
-            //Utils2729 utils = new();
+            //Utils3099 utils = new();
             //utils.Dial();
 
             //Utils.Dump(UtilsDial.DialPrime(1, 100000));

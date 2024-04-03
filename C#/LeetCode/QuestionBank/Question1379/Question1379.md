@@ -1,4 +1,4 @@
-#### [1379\. 找出克隆二叉树中的相同节点](https://leetcode.cn/problems/find-a-corresponding-node-of-a-binary-tree-in-a-clone-of-that-tree/)
+### [1379\. 找出克隆二叉树中的相同节点](https://leetcode.cn/problems/find-a-corresponding-node-of-a-binary-tree-in-a-clone-of-that-tree/)
 
 难度：简单
 
@@ -14,34 +14,28 @@
 
 ![](./assets/img/Question1379_01.png)
 
-```
-输入: tree = [7,4,3,null,null,6,19], target = 3
-输出: 3
-解释: 上图画出了树 original 和 cloned。target 节点在树 original 中，用绿色标记。答案是树 cloned 中的黄颜色的节点（其他示例类似）。
-```
+> **输入:** tree = [7,4,3,null,null,6,19], target = 3
+> **输出:** 3
+> **解释:** 上图画出了树 original 和 cloned。target 节点在树 original 中，用绿色标记。答案是树 cloned 中的黄颜色的节点（其他示例类似）。
 
 **示例 2:**
 
 ![](./assets/img/Question1379_02.png)
 
-```
-输入: tree = [7], target =  7
-输出: 7
-```
+> **输入:** tree = [7], target =  7
+> **输出:** 7
 
 **示例 3:**
 
 ![](./assets/img/Question1379_03.png)
 
-```
-输入: tree = [8,null,6,null,5,null,4,null,3,null,2,null,1], target = 4
-输出: 4
-```
+> **输入:** tree = [8,null,6,null,5,null,4,null,3,null,2,null,1], target = 4
+> **输出:** 4
 
 **提示：**
 
--   树中节点的数量范围为 `[1, 10^4]`。
--   同一棵树中，没有值相同的节点。
--   `target` 节点是树 `original` 中的一个节点，并且不会是 `null`。
+- 树中节点的数量范围为 `[1, 10^4]`。
+- 同一棵树中，没有值相同的节点。
+- `target` 节点是树 `original` 中的一个节点，并且不会是 `null`。
 
 **进阶：** 如果树中允许出现值相同的节点，将如何解答？
