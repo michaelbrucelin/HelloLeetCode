@@ -1,4 +1,4 @@
-﻿### [两种方法：自顶向下/自底向上（Python/Java/C++/Go）](https://leetcode.cn/problems/maximum-difference-between-node-and-ancestor/solutions/2232367/liang-chong-fang-fa-zi-ding-xiang-xia-zi-wj9v/)
+### [两种方法：自顶向下/自底向上（Python/Java/C++/Go）](https://leetcode.cn/problems/maximum-difference-between-node-and-ancestor/solutions/2232367/liang-chong-fang-fa-zi-ding-xiang-xia-zi-wj9v/)
 
 #### 前置知识：二叉树与递归
 
