@@ -1,4 +1,4 @@
-﻿#### [两种方法：自顶向下/自底向上（Python/Java/C++/Go）](https://leetcode.cn/problems/maximum-difference-between-node-and-ancestor/solutions/2232367/liang-chong-fang-fa-zi-ding-xiang-xia-zi-wj9v/)
+﻿### [两种方法：自顶向下/自底向上（Python/Java/C++/Go）](https://leetcode.cn/problems/maximum-difference-between-node-and-ancestor/solutions/2232367/liang-chong-fang-fa-zi-ding-xiang-xia-zi-wj9v/)
 
 #### 前置知识：二叉树与递归
 
@@ -11,13 +11,13 @@
 如果节点 $A$ 在从根节点到节点 $B$ 的**路径**上，则称 $A$ 是 $B$ 的**祖先**节点，称 $B$ 是 $A$ 的**子孙**节点。
 
 > 注：在这个定义中，$B$ 的祖先节点可以是 $B$ 自己。例如示例 1 中 $6$ 的祖先节点自上而下依次为 $8,3,6$。
-> 
+>  
 > 注 2：虽然题目要求「不同节点」，但计算的是**最大**差值，相同节点算出来的差值为 $0$，不影响最大差值。
 
 对于题目给出的公式 $V = |A.val - B.val|$，为了让 $V$ 尽量大，分类讨论：
 
--   如果 $A.val < B.val$，那么 $A.val$ 越小，$V$ 越大。
--   如果 $A.val \ge B.val$，那么 $A.val$ 越大，$V$ 越大；
+- 如果 $A.val < B.val$，那么 $A.val$ 越小，$V$ 越大。
+- 如果 $A.val \ge B.val$，那么 $A.val$ 越大，$V$ 越大；
 
 因此，无需记录递归路径中的全部节点值，只需要记录递归路径中的最小值 $mn$ 和最大值 $mx$。
 
@@ -212,10 +212,10 @@ func min(a, b int) int { if a > b { return b }; return a }
 func max(a, b int) int { if a < b { return b }; return a }
 ```
 
-#### 复杂度分析
+##### 复杂度分析
 
--   时间复杂度：$O(n)$，其中 $n$ 为二叉树的节点个数。
--   空间复杂度：$O(n)$。最坏情况下，二叉树退化成一条链，递归需要 $O(n)$ 的栈空间。
+- 时间复杂度：$O(n)$，其中 $n$ 为二叉树的节点个数。
+- 空间复杂度：$O(n)$。最坏情况下，二叉树退化成一条链，递归需要 $O(n)$ 的栈空间。
 
 #### 方法二：「归」
 
@@ -322,14 +322,14 @@ func min(a, b int) int { if a > b { return b }; return a }
 func max(a, b int) int { if a < b { return b }; return a }
 ```
 
-#### 复杂度分析
+##### 复杂度分析
 
--   时间复杂度：$O(n)$，其中 $n$ 为二叉树的节点个数。
--   空间复杂度：$O(n)$。最坏情况下，二叉树退化成一条链，递归需要 $O(n)$ 的栈空间。
+- 时间复杂度：$O(n)$，其中 $n$ 为二叉树的节点个数。
+- 空间复杂度：$O(n)$。最坏情况下，二叉树退化成一条链，递归需要 $O(n)$ 的栈空间。
 
 #### 练习
 
 用「递」和「归」两种思路，解决如下题目：
 
--   [104\. 二叉树的最大深度](https://leetcode.cn/problems/maximum-depth-of-binary-tree/) | [视频讲解](https://leetcode.cn/link/?target=https%3A%2F%2Fwww.bilibili.com%2Fvideo%2FBV1UD4y1Y769%2F)
--   [98\. 验证二叉搜索树](https://leetcode.cn/problems/validate-binary-search-tree/) | [视频讲解](https://leetcode.cn/link/?target=https%3A%2F%2Fwww.bilibili.com%2Fvideo%2FBV14G411P7C1%2F)
+- [104\. 二叉树的最大深度](https://leetcode.cn/problems/maximum-depth-of-binary-tree/) | [视频讲解](https://leetcode.cn/link/?target=https%3A%2F%2Fwww.bilibili.com%2Fvideo%2FBV1UD4y1Y769%2F)
+- [98\. 验证二叉搜索树](https://leetcode.cn/problems/validate-binary-search-tree/) | [视频讲解](https://leetcode.cn/link/?target=https%3A%2F%2Fwww.bilibili.com%2Fvideo%2FBV14G411P7C1%2F)
