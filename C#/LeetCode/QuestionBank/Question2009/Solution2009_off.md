@@ -127,25 +127,25 @@ int minOperations(int* nums, int numsSize) {
 ```go
 func minOperations(nums []int) int {
     n := len(nums)
-	cnt := make(map[int]bool)
-	for _, num := range nums {
-		cnt[num] = true
-	}
+    cnt := make(map[int]bool)
+    for _, num := range nums {
+        cnt[num] = true
+    }
     sortedUniqueNums := []int{}
     for num, _ := range cnt {
         sortedUniqueNums = append(sortedUniqueNums, num)
     }
-	sort.Ints(sortedUniqueNums)
-	res := n
-	j := 0
-	for i, left := range sortedUniqueNums {
-		right := left + n - 1
-		for j < len(sortedUniqueNums) && sortedUniqueNums[j] <= right {
-			res = min(res, n - (j - i + 1))
-			j++
-		}
-	}
-	return res
+    sort.Ints(sortedUniqueNums)
+    res := n
+    j := 0
+    for i, left := range sortedUniqueNums {
+        right := left + n - 1
+        for j < len(sortedUniqueNums) && sortedUniqueNums[j] <= right {
+            res = min(res, n - (j - i + 1))
+            j++
+        }
+    }
+    return res
 }
 ```
 
