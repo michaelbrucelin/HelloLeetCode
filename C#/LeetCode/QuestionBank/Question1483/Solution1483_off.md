@@ -1,4 +1,4 @@
-#### [方法一：倍增](https://leetcode.cn/problems/kth-ancestor-of-a-tree-node/solutions/2301511/shu-jie-dian-de-di-k-ge-zu-xian-by-leetc-hdxd/)
+### [方法一：倍增](https://leetcode.cn/problems/kth-ancestor-of-a-tree-node/solutions/2301511/shu-jie-dian-de-di-k-ge-zu-xian-by-leetc-hdxd/)
 
 **思路**
 
@@ -257,5 +257,5 @@ TreeAncestor.prototype.getKthAncestor = function(node, k) {
 
 **复杂度分析**
 
--   时间复杂度：初始化的时间复杂度是 $O(n\times\log{n})$，单次查询的时间复杂度是 $O(\log{n})$。
--   空间复杂度：初始化的空间复杂度是 $O(n\times\log{n})$，单次查询的空间复杂度是 $O(1)$。
+- 时间复杂度：初始化的时间复杂度是 $O(n\times\log{n})$，单次查询的时间复杂度是 $O(\log{n})$。
+- 空间复杂度：初始化的空间复杂度是 $O(n\times\log{n})$，单次查询的空间复杂度是 $O(1)$。

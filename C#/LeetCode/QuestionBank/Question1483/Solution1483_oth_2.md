@@ -1,4 +1,4 @@
-#### [【模板讲解】树上倍增算法（以及最近公共祖先）](https://leetcode.cn/problems/kth-ancestor-of-a-tree-node/solutions/2305895/mo-ban-jiang-jie-shu-shang-bei-zeng-suan-v3rw/)
+### [【模板讲解】树上倍增算法（以及最近公共祖先）](https://leetcode.cn/problems/kth-ancestor-of-a-tree-node/solutions/2305895/mo-ban-jiang-jie-shu-shang-bei-zeng-suan-v3rw/)
 
 #### 一、思考
 
@@ -28,11 +28,11 @@ $$node \rightarrow parent[node] \rightarrow parent[parent[node]] \rightarrow \cd
 
 在构造函数 $TreeAncestor$ 中，预处理出每个节点 $x$ 的第 $2^i$ 个祖先节点，记作 $pa[x][i]$（若第 $2^i$ 个祖先节点不存在则 $pa[x][i]=-1$）。计算方式如下：
 
--   先枚举 $i$，再枚举 $x$。相当于先算出所有爷爷节点，再算出所有爷爷的爷爷节点，依此类推。
--   $pa[x][0]=parent[x]$，即父节点。
--   $pa[x][1]=pa[pa[x][0]][0]$，即爷爷节点。
--   一般地，$pa[x][i+1]=pa[pa[x][i]][i]$。如果 $pa[x][i]=-1$ 则 $pa[x][i+1]=-1$。
--   这里 $i+1$ 至多为 $\left\lfloor\log_2 n \right\rfloor$。例如 $n=13$ 时，$\left\lfloor\log_2 13 \right\rfloor=3$，至多需要预处理到第 $2^3$ 个祖先节点。（当然，你也可以先把树高，或者每个节点的深度求出来，再据此做精细地计算。）
+- 先枚举 $i$，再枚举 $x$。相当于先算出所有爷爷节点，再算出所有爷爷的爷爷节点，依此类推。
+- $pa[x][0]=parent[x]$，即父节点。
+- $pa[x][1]=pa[pa[x][0]][0]$，即爷爷节点。
+- 一般地，$pa[x][i+1]=pa[pa[x][i]][i]$。如果 $pa[x][i]=-1$ 则 $pa[x][i+1]=-1$。
+- 这里 $i+1$ 至多为 $\left\lfloor\log_2 n \right\rfloor$。例如 $n=13$ 时，$\left\lfloor\log_2 13 \right\rfloor=3$，至多需要预处理到第 $2^3$ 个祖先节点。（当然，你也可以先把树高，或者每个节点的深度求出来，再据此做精细地计算。）
 
 对于 $getKthAncestor$，需要找到 $k$ 的二进制表示中的所有 $1$。可以从小到大枚举 $i$，如果 $k$ 右移 $i$ 位后的最低位为 $1$，就说明 $k$ 的二进制从低到高第 $i$ 位是 $1$，那么往上跳 $2^i$ 步，将 $node$ 更新为 $pa[node][i]$。如果 $node=-1$ 则说明第 $k$ 个祖先节点不存在。
 
@@ -179,10 +179,10 @@ func (pa TreeAncestor) GetKthAncestor2(node, k int) int {
 }
 ```
 
-#### 复杂度分析
+##### 复杂度分析
 
--   时间复杂度：预处理 $\mathcal{O}(n\log n)$，回答每个询问 $\mathcal{O}(\log k)$。
--   空间复杂度：预处理需要 $\mathcal{O}(n\log n)$ 的空间。
+- 时间复杂度：预处理 $\mathcal{O}(n\log n)$，回答每个询问 $\mathcal{O}(\log k)$。
+- 空间复杂度：预处理需要 $\mathcal{O}(n\log n)$ 的空间。
 
 > 注：利用**长链剖分**，可以做到预处理 $\mathcal{O}(n\log n)$，回答每个询问 $\mathcal{O}(1)$ 的时间复杂度。
 
@@ -198,8 +198,8 @@ func (pa TreeAncestor) GetKthAncestor2(node, k int) int {
 
 由于不知道 $lca$ 的具体位置，只能不断尝试，先尝试大步跳，再尝试小步跳。设 $i=\left\lfloor \log_2 n \right\rfloor$，循环直到 $i<0$。每次循环：
 
--   如果 $x$ 的第 $2^i$ 个祖先节点不存在，即 $pa[x][i]=-1$，说明步子迈大了，将 $i$ 减 $1$，继续循环。
--   如果 $x$ 的第 $2^i$ 个祖先节点存在，且 $pa[x][i] \ne pa[y][i]$，说明 $lca$ 在 $pa[x][i]$ 的上面，那么更新 $x$ 为 $pa[x][i]$，更新 $y$ 为 $pa[y][i]$，将 $i$ 减 $1$，继续循环。否则，若 $pa[x][i]=pa[y][i]$，那么 $lca$ 可能在 $pa[x][i]$ 下面，由于无法向下跳，只能将 $i$ 减 $1$，继续循环。
+- 如果 $x$ 的第 $2^i$ 个祖先节点不存在，即 $pa[x][i]=-1$，说明步子迈大了，将 $i$ 减 $1$，继续循环。
+- 如果 $x$ 的第 $2^i$ 个祖先节点存在，且 $pa[x][i] \ne pa[y][i]$，说明 $lca$ 在 $pa[x][i]$ 的上面，那么更新 $x$ 为 $pa[x][i]$，更新 $y$ 为 $pa[y][i]$，将 $i$ 减 $1$，继续循环。否则，若 $pa[x][i]=pa[y][i]$，那么 $lca$ 可能在 $pa[x][i]$ 下面，由于无法向下跳，只能将 $i$ 减 $1$，继续循环。
 
 上述做法能跳就尽量跳，不会错过任何可以上跳的机会。所以循环结束时，$x$ 与 $lca$ 只有一步之遥，即 $lca=pa[x][0]$。
 
@@ -449,7 +449,7 @@ func (t *TreeAncestor) GetLCA(x, y int) int {
 }
 ```
 
-#### 复杂度分析
+##### 复杂度分析
 
--   时间复杂度：预处理 $\mathcal{O}(n\log n)$，回答每个询问 $\mathcal{O}(\log n)$。
--   空间复杂度：预处理需要 $\mathcal{O}(n\log n)$ 的空间。
+- 时间复杂度：预处理 $\mathcal{O}(n\log n)$，回答每个询问 $\mathcal{O}(\log n)$。
+- 空间复杂度：预处理需要 $\mathcal{O}(n\log n)$ 的空间。

@@ -11,7 +11,7 @@ namespace LeetCode.QuestionBank.Question1483
     }
 
     /// <summary>
-    /// 暴力解 + 记忆化
+    /// 暴力解（递归） + 记忆化
     /// 逻辑与Solution1483一样，做了下面的优化：
     /// 如果(node, k)的结果已知，那么(node, y):
     ///     如果 y <= k，那么(node, y)的结果已知

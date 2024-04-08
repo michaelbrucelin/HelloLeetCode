@@ -1,11 +1,11 @@
-#### [dfs+层次遍历+二分查找 倍增什么的就是不想学（x）](https://leetcode.cn/problems/kth-ancestor-of-a-tree-node/solutions/288228/dfsceng-ci-bian-li-er-fen-cha-zhao-bei-zeng-shi-ya/)
+### [dfs+层次遍历+二分查找 倍增什么的就是不想学（x）](https://leetcode.cn/problems/kth-ancestor-of-a-tree-node/solutions/288228/dfsceng-ci-bian-li-er-fen-cha-zhao-bei-zeng-shi-ya/)
 
 #### 预备知识
 
-1.  一个节点的所有祖先节点(从根节点到该节点的路径上经过的所有点)的dfs序(从根节点已dfs访问的顺序)都在该节点前。 例如：
+1. 一个节点的所有祖先节点(从根节点到该节点的路径上经过的所有点)的dfs序(从根节点已dfs访问的顺序)都在该节点前。 例如：
     ![](./assets/img/Solution1483_oth_03_01.png)
     dfs序为 0, 1, 3, 4, 2, 5, 6。每个节点的祖先节点都在它前面。
-2.  可以通过BFS对树进行层次遍历，确定每层有哪些节点。
+2. 可以通过BFS对树进行层次遍历，确定每层有哪些节点。
 
 #### 分析
 
@@ -13,8 +13,8 @@
 
 #### 时间复杂度
 
-1.  DFS和BFS预处理 O(n)
-2.  二分查找搜索 O(logn)/次
+1. DFS和BFS预处理 O(n)
+2. 二分查找搜索 O(logn)/次
 
 #### Code
 
