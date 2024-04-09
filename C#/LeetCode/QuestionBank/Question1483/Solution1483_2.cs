@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1483
 {
-    public class Solution1483_02
+    public class Solution1483_2
     {
     }
 
@@ -21,9 +21,9 @@ namespace LeetCode.QuestionBank.Question1483
     ///     本想继续优化，例如当得到了(3,1) (3,2) (3,3)的结果后，其实((3,1),1) ((3,1),2) ((3,2),1)这3个值也已经知道了
     ///     但是当前已经内存溢出，就没必要做这部分优化了
     /// </summary>
-    public class TreeAncestor_02 : Interface1483
+    public class TreeAncestor_2 : Interface1483
     {
-        public TreeAncestor_02(int n, int[] parent)
+        public TreeAncestor_2(int n, int[] parent)
         {
             this.parent = parent;
             cache = new Dictionary<int, List<int>>();
