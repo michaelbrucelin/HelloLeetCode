@@ -1,4 +1,4 @@
-#### [力扣在逐渐把 ACM 模板题搬上来，这个问题是 Binary Lifting](https://leetcode.cn/problems/kth-ancestor-of-a-tree-node/solutions/287974/li-kou-zai-zhu-jian-ba-acm-mo-ban-ti-ban-shang-lai/)
+### [力扣在逐渐把 ACM 模板题搬上来，这个问题是 Binary Lifting](https://leetcode.cn/problems/kth-ancestor-of-a-tree-node/solutions/287974/li-kou-zai-zhu-jian-ba-acm-mo-ban-ti-ban-shang-lai/)
 
 因为力扣的数据还是有些弱的，所以这个问题我看到一些相对“暴力”的解也能过。但是这个问题的“正规解”应该是 Binary Lifting。
 
