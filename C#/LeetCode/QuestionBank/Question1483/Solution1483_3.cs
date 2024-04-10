@@ -11,7 +11,7 @@ namespace LeetCode.QuestionBank.Question1483
     }
 
     /// <summary>
-    /// 倍增，二进制预处理（即跳表）
+    /// 倍增(binary lifting)，二进制预处理（即跳表）
     /// Solution1483是没有预处理，TLE，Solution1483_2相当于（惰性）预处理的所有的可能，OLE
     /// 所以这里采用倍增的方式预处理（折中TLE与OLE），即预处理出 y = 1, 2, 4, 8, 16 ... 2^x 的值
     ///     当计算 k 的结果时，一定可以通过预处理出来的结果计算出来（二进制）
@@ -20,7 +20,7 @@ namespace LeetCode.QuestionBank.Question1483
     {
         public TreeAncestor_3(int n, int[] parent)
         {
-            int len = (int)Math.Ceiling(Math.Log2(n))+1;
+            int len = (int)Math.Ceiling(Math.Log2(n)) + 1;
             parents = new int[n, len];
             InitParents(parent, n, len);
         }
