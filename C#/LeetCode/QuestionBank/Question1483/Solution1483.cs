@@ -13,7 +13,7 @@ namespace LeetCode.QuestionBank.Question1483
 
     /// <summary>
     /// 暴力解（递归） + 记忆化
-    /// 逻辑没问题，提交会超时，参考测试用例03
+    /// 逻辑没问题，提交会超时，参考测试用例05
     /// </summary>
     public class TreeAncestor : Interface1483
     {
