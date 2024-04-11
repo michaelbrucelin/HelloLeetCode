@@ -17,7 +17,6 @@ namespace LeetCode.QuestionBank.Question0365
         /// <param name="jug2Capacity"></param>
         /// <param name="targetCapacity"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public bool CanMeasureWater(int jug1Capacity, int jug2Capacity, int targetCapacity)
         {
             if (jug1Capacity + jug2Capacity < targetCapacity) return false;

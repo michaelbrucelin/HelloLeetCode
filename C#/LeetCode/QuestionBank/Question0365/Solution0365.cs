@@ -30,6 +30,7 @@ namespace LeetCode.QuestionBank.Question0365
             int move = 0;
             while (x != y)
             {
+                if (x == 1 || y == 1) { x = 1; break; }
                 switch ((x & 1, y & 1))
                 {
                     case (0, 0): x >>= 1; y >>= 1; move++; break;
