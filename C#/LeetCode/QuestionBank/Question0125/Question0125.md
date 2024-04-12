@@ -1,39 +1,33 @@
-#### [125\. ÑéÖ¤»ØÎÄ´®](https://leetcode.cn/problems/valid-palindrome/)
+### [125\. éªŒè¯å›žæ–‡ä¸²](https://leetcode.cn/problems/valid-palindrome/)
 
-ÄÑ¶È£º¼òµ¥
+éš¾åº¦ï¼šç®€å•
 
-Èç¹ûÔÚ½«ËùÓÐ´óÐ´×Ö·û×ª»»ÎªÐ¡Ð´×Ö·û¡¢²¢ÒÆ³ýËùÓÐ·Ç×ÖÄ¸Êý×Ö×Ö·ûÖ®ºó£¬¶ÌÓïÕý×Å¶ÁºÍ·´×Å¶Á¶¼Ò»Ñù¡£Ôò¿ÉÒÔÈÏÎª¸Ã¶ÌÓïÊÇÒ»¸ö **»ØÎÄ´®** ¡£
+å¦‚æžœåœ¨å°†æ‰€æœ‰å¤§å†™å­—ç¬¦è½¬æ¢ä¸ºå°å†™å­—ç¬¦ã€å¹¶ç§»é™¤æ‰€æœ‰éžå­—æ¯æ•°å­—å­—ç¬¦ä¹‹åŽï¼ŒçŸ­è¯­æ­£ç€è¯»å’Œåç€è¯»éƒ½ä¸€æ ·ã€‚åˆ™å¯ä»¥è®¤ä¸ºè¯¥çŸ­è¯­æ˜¯ä¸€ä¸ª **å›žæ–‡ä¸²** ã€‚
 
-×ÖÄ¸ºÍÊý×Ö¶¼ÊôÓÚ×ÖÄ¸Êý×Ö×Ö·û¡£
+å­—æ¯å’Œæ•°å­—éƒ½å±žäºŽå­—æ¯æ•°å­—å­—ç¬¦ã€‚
 
-¸øÄãÒ»¸ö×Ö·û´® `s`£¬Èç¹ûËüÊÇ **»ØÎÄ´®** £¬·µ»Ø `true` £»·ñÔò£¬·µ»Ø `false` ¡£
+ç»™ä½ ä¸€ä¸ªå­—ç¬¦ä¸² `s`ï¼Œå¦‚æžœå®ƒæ˜¯ **å›žæ–‡ä¸²** ï¼Œè¿”å›ž `true` ï¼›å¦åˆ™ï¼Œè¿”å›ž `false` ã€‚
 
-**Ê¾Àý 1£º**
+**ç¤ºä¾‹ 1ï¼š**
 
-```
-ÊäÈë: s = "A man, a plan, a canal: Panama"
-Êä³ö£ºtrue
-½âÊÍ£º"amanaplanacanalpanama" ÊÇ»ØÎÄ´®¡£
-```
+> **è¾“å…¥ï¼š** s = "A man, a plan, a canal: Panama"
+> **è¾“å‡ºï¼š** true
+> **è§£é‡Šï¼š** "amanaplanacanalpanama" æ˜¯å›žæ–‡ä¸²ã€‚
 
-**Ê¾Àý 2£º**
+**ç¤ºä¾‹ 2ï¼š**
 
-```
-ÊäÈë£ºs = "race a car"
-Êä³ö£ºfalse
-½âÊÍ£º"raceacar" ²»ÊÇ»ØÎÄ´®¡£
-```
+> **è¾“å…¥ï¼š** s = "race a car"
+> **è¾“å‡ºï¼š** false
+> **è§£é‡Šï¼š** "raceacar" ä¸æ˜¯å›žæ–‡ä¸²ã€‚
 
-**Ê¾Àý 3£º**
+**ç¤ºä¾‹ 3ï¼š**
 
-```
-ÊäÈë£ºs = " "
-Êä³ö£ºtrue
-½âÊÍ£ºÔÚÒÆ³ý·Ç×ÖÄ¸Êý×Ö×Ö·ûÖ®ºó£¬s ÊÇÒ»¸ö¿Õ×Ö·û´® "" ¡£
-ÓÉÓÚ¿Õ×Ö·û´®Õý×Å·´×Å¶Á¶¼Ò»Ñù£¬ËùÒÔÊÇ»ØÎÄ´®¡£
-```
+> **è¾“å…¥ï¼š** s = " "
+> **è¾“å‡ºï¼š** true
+> **è§£é‡Šï¼š** åœ¨ç§»é™¤éžå­—æ¯æ•°å­—å­—ç¬¦ä¹‹åŽï¼Œs æ˜¯ä¸€ä¸ªç©ºå­—ç¬¦ä¸² "" ã€‚
+> ç”±äºŽç©ºå­—ç¬¦ä¸²æ­£ç€åç€è¯»éƒ½ä¸€æ ·ï¼Œæ‰€ä»¥æ˜¯å›žæ–‡ä¸²ã€‚
 
-**ÌáÊ¾£º**
+**æç¤ºï¼š**
 
--   `1 <= s.length <= 2 * 10^5`
--   `s` ½öÓÉ¿É´òÓ¡µÄ ASCII ×Ö·û×é³É
+- `1 <= s.length <= 2 * 10^5`
+- `s` ä»…ç”±å¯æ‰“å°çš„ ASCII å­—ç¬¦ç»„æˆ

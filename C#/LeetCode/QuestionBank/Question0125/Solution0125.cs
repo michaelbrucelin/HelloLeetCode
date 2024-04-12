@@ -8,6 +8,11 @@ namespace LeetCode.QuestionBank.Question0125
 {
     public class Solution0125 : Interface0125
     {
+        /// <summary>
+        /// 双指针遍历
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         public bool IsPalindrome(string s)
         {
             if (s.Length <= 1) return true;

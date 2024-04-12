@@ -19,23 +19,16 @@ namespace LeetCode.QuestionBank.Question0680
         /// <returns></returns>
         public bool ValidPalindrome(string s)
         {
-            int ptr_l = 0, ptr_r = s.Length - 1;
-            while (ptr_l < ptr_r)
-            {
-                if (s[ptr_l] != s[ptr_r]) break;
-                ptr_l++; ptr_r--;
-            }
-            if (ptr_l >= ptr_r) return true;
+            int pl = -1, pr = s.Length;
+            while (++pl < --pr) if (s[pl] != s[pr]) break;
+            if (pl >= pr) return true;
 
-            return ValidPalindrome(s, ptr_l + 1, ptr_r) || ValidPalindrome(s, ptr_l, ptr_r - 1);
+            return ValidPalindrome(s, pl + 1, pr) || ValidPalindrome(s, pl, pr - 1);
         }
 
         private bool ValidPalindrome(string s, int left, int right)
         {
-            while (left < right)
-            {
-                if (s[left++] != s[right--]) return false;
-            }
+            while (left < right) if (s[left++] != s[right--]) return false;
 
             return true;
         }
