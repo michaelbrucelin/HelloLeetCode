@@ -18,11 +18,11 @@ namespace LeetCode.QuestionBank.Question2924
         /// <returns></returns>
         public int FindChampion(int n, int[][] edges)
         {
-            int[] incnt = new int[n];
-            foreach (var edge in edges) incnt[edge[1]]++;
+            int[] indeg = new int[n];
+            foreach (var edge in edges) indeg[edge[1]]++;
 
             int result = -1;
-            for (int i = 0; i < n; i++) if (incnt[i] == 0)
+            for (int i = 0; i < n; i++) if (indeg[i] == 0)
                 {
                     if (result != -1) return -1;
                     result = i;
