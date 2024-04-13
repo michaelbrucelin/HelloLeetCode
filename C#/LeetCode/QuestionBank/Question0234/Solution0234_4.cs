@@ -10,7 +10,7 @@ namespace LeetCode.QuestionBank.Question0234
     {
         /// <summary>
         /// 递归
-        /// 有一种为了递归而递归的味道，只是联系一下，感觉没有现实意义
+        /// 有一种为了递归而递归的味道，只是练习一下，感觉没有现实意义
         /// </summary>
         /// <param name="head"></param>
         /// <returns></returns>
