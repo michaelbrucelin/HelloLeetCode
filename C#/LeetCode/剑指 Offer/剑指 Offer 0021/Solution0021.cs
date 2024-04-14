@@ -14,7 +14,6 @@ namespace LeetCode.剑指_Offer.剑指_Offer_0021
         /// </summary>
         /// <param name="nums"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int[] Exchange(int[] nums)
         {
             int len = nums.Length; int left = 0, right = len - 1;

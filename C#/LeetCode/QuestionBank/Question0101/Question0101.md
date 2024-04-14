@@ -1,30 +1,26 @@
-#### [101. �Գƶ�����](https://leetcode.cn/problems/symmetric-tree/)
+### [101. 对称二叉树](https://leetcode.cn/problems/symmetric-tree/)
 
-�Ѷȣ���
+难度：简单
 
-����һ���������ĸ��ڵ� `root` �� ������Ƿ���Գơ�
+给你一个二叉树的根节点 `root` ， 检查它是否轴对称。
 
-**ʾ�� 1��**
+**示例 1：**
 
 ![](./assets/img/Question0101_01.jpg)
 
-```
-���룺root = [1,2,2,3,4,4,3]
-�����true
-```
+> **输入：** root = [1,2,2,3,4,4,3]
+> **输出：** true
 
-**ʾ�� 2��**
+**示例 2：**
 
 ![](./assets/img/Question0101_02.jpg)
 
-```
-���룺root = [1,2,2,null,3,null,3]
-�����false
-```
+> **输入：** root = [1,2,2,null,3,null,3]
+> **输出：** false
 
-**��ʾ��**
+**提示：**
 
--   ���нڵ���Ŀ�ڷ�Χ `[1, 1000]` ��
--   `-100 <= Node.val <= 100`
+- 树中节点数目在范围 `[1, 1000]` 内
+- `-100 <= Node.val <= 100`
 
-**���ף�** ��������õݹ�͵������ַ���������������
+**进阶：** 你可以运用递归和迭代两种方法解决这个问题吗？

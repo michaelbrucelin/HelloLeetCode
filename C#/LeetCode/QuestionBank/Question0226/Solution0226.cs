@@ -8,6 +8,11 @@ namespace LeetCode.QuestionBank.Question0226
 {
     public class Solution0226 : Interface0226
     {
+        /// <summary>
+        /// 递归
+        /// </summary>
+        /// <param name="root"></param>
+        /// <returns></returns>
         public TreeNode InvertTree(TreeNode root)
         {
             if (root == null) return root;

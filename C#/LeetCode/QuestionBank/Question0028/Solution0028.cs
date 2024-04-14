@@ -14,7 +14,6 @@ namespace LeetCode.QuestionBank.Question0028
         /// <param name="haystack"></param>
         /// <param name="needle"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int StrStr(string haystack, string needle)
         {
             if (needle.Length > haystack.Length) return -1;

@@ -14,7 +14,6 @@ namespace LeetCode.QuestionBank.Question0001
         /// <param name="nums"></param>
         /// <param name="target"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int[] TwoSum(int[] nums, int target)
         {
             Dictionary<int, int> dic = new Dictionary<int, int>();
