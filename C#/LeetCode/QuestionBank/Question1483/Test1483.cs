@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Solution1483_N = LeetCode.QuestionBank.Question1483.TreeAncestor_4;
 
 namespace LeetCode.QuestionBank.Question1483
 {
@@ -19,7 +20,7 @@ namespace LeetCode.QuestionBank.Question1483
 
             // 1. 
             id++; id2 = 0; n = 7; parent = new int[] { -1, 0, 0, 1, 1, 2, 2 };
-            solution = new TreeAncestor_3(n, parent);
+            solution = new Solution1483_N(n, parent);
             answer = 1; result = solution.GetKthAncestor(3, 1);
             Console.WriteLine($"{$"{id}.{++id2}",4}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
             answer = 0; result = solution.GetKthAncestor(5, 2);
@@ -29,7 +30,7 @@ namespace LeetCode.QuestionBank.Question1483
 
             // 2. 
             id++; id2 = 0; n = 5; parent = new int[] { -1, 0, 0, 2, 1 };
-            solution = new TreeAncestor_3(n, parent);
+            solution = new Solution1483_N(n, parent);
             answer = -1; result = solution.GetKthAncestor(3, 5);
             Console.WriteLine($"{$"{id}.{++id2}",4}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
             answer = -1; result = solution.GetKthAncestor(2, 3);
@@ -43,7 +44,7 @@ namespace LeetCode.QuestionBank.Question1483
 
             // 3. 
             id++; id2 = 0; n = 4; parent = new int[] { -1, 2, 3, 0 };
-            solution = new TreeAncestor_3(n, parent);
+            solution = new Solution1483_N(n, parent);
             answer = -1; result = solution.GetKthAncestor(2, 3);
             Console.WriteLine($"{$"{id}.{++id2}",4}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
             answer = 0; result = solution.GetKthAncestor(2, 2);
@@ -53,7 +54,7 @@ namespace LeetCode.QuestionBank.Question1483
 
             // 4. 
             id++; id2 = 0; n = 2; parent = new int[] { -1, 0 };
-            solution = new TreeAncestor_3(n, parent);
+            solution = new Solution1483_N(n, parent);
             answer = -1; result = solution.GetKthAncestor(1, 2);
             Console.WriteLine($"{$"{id}.{++id2}",4}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
 
@@ -64,7 +65,7 @@ namespace LeetCode.QuestionBank.Question1483
             string[] raw = File.ReadAllText(path_args)[2..^2].Split("],[");
             n = int.Parse(raw[0].Split(",[")[0]);
             parent = raw[0].Replace("[", "").Replace("]", "").Split(',')[1..].Select(int.Parse).ToArray();
-            solution = new TreeAncestor_3(n, parent);
+            solution = new Solution1483_N(n, parent);
             string path_answer = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"QuestionBank\Question{question}\TestCases\TestCase{question}_{testcase}_answer.txt");
             int[] answers = File.ReadAllText(path_answer)[6..^1].Split(',').Select(int.Parse).ToArray();
             for (int i = 1; i < raw.Length; i++)
@@ -88,7 +89,7 @@ namespace LeetCode.QuestionBank.Question1483
             raw = File.ReadAllText(path_args)[2..^2].Split("],[");
             n = int.Parse(raw[0].Split(",[")[0]);
             parent = raw[0].Replace("[", "").Replace("]", "").Split(',')[1..].Select(int.Parse).ToArray();
-            solution = new TreeAncestor_3(n, parent);
+            solution = new Solution1483_N(n, parent);
             path_answer = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"QuestionBank\Question{question}\TestCases\TestCase{question}_{testcase}_answer.txt");
             answers = File.ReadAllText(path_answer)[6..^1].Split(',').Select(int.Parse).ToArray();
             for (int i = 1; i < raw.Length; i++)

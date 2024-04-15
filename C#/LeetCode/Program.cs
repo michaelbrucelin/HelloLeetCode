@@ -9,6 +9,7 @@ using LeetCode.Utilses;
 using System;
 using System.IO;
 using System.Reflection;
+using TestXXXX = LeetCode.QuestionBank.Question1483.Test1483;
 
 namespace LeetCode
 {
@@ -18,7 +19,7 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            Test1766 test = new();
+            TestXXXX test = new();
             test.Test();
             //Utils.FmtMarkDown(Utils.QuestionType.QuestionBank, "1253", "off");
             //test.TestDivergentTraverse();
