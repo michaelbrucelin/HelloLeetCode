@@ -1,38 +1,36 @@
-#### [706\. Éè¼Æ¹şÏ£Ó³Éä](https://leetcode.cn/problems/design-hashmap/)
+### [706\. è®¾è®¡å“ˆå¸Œæ˜ å°„](https://leetcode.cn/problems/design-hashmap/)
 
-ÄÑ¶È£º¼òµ¥
+éš¾åº¦ï¼šç®€å•
 
-²»Ê¹ÓÃÈÎºÎÄÚ½¨µÄ¹şÏ£±í¿âÉè¼ÆÒ»¸ö¹şÏ£Ó³Éä£¨HashMap£©¡£
+ä¸ä½¿ç”¨ä»»ä½•å†…å»ºçš„å“ˆå¸Œè¡¨åº“è®¾è®¡ä¸€ä¸ªå“ˆå¸Œæ˜ å°„ï¼ˆHashMapï¼‰ã€‚
 
-ÊµÏÖ `MyHashMap` Àà£º
+å®ç° `MyHashMap` ç±»ï¼š
 
--   `MyHashMap()` ÓÃ¿ÕÓ³Éä³õÊ¼»¯¶ÔÏó
--   `void put(int key, int value)` Ïò HashMap ²åÈëÒ»¸ö¼üÖµ¶Ô `(key, value)` ¡£Èç¹û `key` ÒÑ¾­´æÔÚÓÚÓ³ÉäÖĞ£¬Ôò¸üĞÂÆä¶ÔÓ¦µÄÖµ `value` ¡£
--   `int get(int key)` ·µ»ØÌØ¶¨µÄ `key` ËùÓ³ÉäµÄ `value` £»Èç¹ûÓ³ÉäÖĞ²»°üº¬ `key` µÄÓ³Éä£¬·µ»Ø `-1` ¡£
--   `void remove(key)` Èç¹ûÓ³ÉäÖĞ´æÔÚ `key` µÄÓ³Éä£¬ÔòÒÆ³ı `key` ºÍËüËù¶ÔÓ¦µÄ `value` ¡£
+- `MyHashMap()` ç”¨ç©ºæ˜ å°„åˆå§‹åŒ–å¯¹è±¡
+- `void put(int key, int value)` å‘ HashMap æ’å…¥ä¸€ä¸ªé”®å€¼å¯¹ `(key, value)` ã€‚å¦‚æœ `key` å·²ç»å­˜åœ¨äºæ˜ å°„ä¸­ï¼Œåˆ™æ›´æ–°å…¶å¯¹åº”çš„å€¼ `value` ã€‚
+- `int get(int key)` è¿”å›ç‰¹å®šçš„ `key` æ‰€æ˜ å°„çš„ `value` ï¼›å¦‚æœæ˜ å°„ä¸­ä¸åŒ…å« `key` çš„æ˜ å°„ï¼Œè¿”å› `-1` ã€‚
+- `void remove(key)` å¦‚æœæ˜ å°„ä¸­å­˜åœ¨ `key` çš„æ˜ å°„ï¼Œåˆ™ç§»é™¤ `key` å’Œå®ƒæ‰€å¯¹åº”çš„ `value` ã€‚
 
-**Ê¾Àı£º**
+**ç¤ºä¾‹ï¼š**
 
-```
-ÊäÈë£º
-["MyHashMap", "put", "put", "get", "get", "put", "get", "remove", "get"]
-[[], [1, 1], [2, 2], [1], [3], [2, 1], [2], [2], [2]]
-Êä³ö£º
-[null, null, null, 1, -1, null, 1, null, -1]
+> **è¾“å…¥ï¼š**
+> ["MyHashMap", "put", "put", "get", "get", "put", "get", "remove", "get"]
+> \[[], [1, 1], [2, 2], [1], [3], [2, 1], [2], [2], [2]]
+> **è¾“å‡ºï¼š**
+> [null, null, null, 1, -1, null, 1, null, -1]
+>  
+> **è§£é‡Šï¼š**
+> MyHashMap myHashMap = new MyHashMap();
+> myHashMap.put(1, 1);  // myHashMap ç°åœ¨ä¸º \[[1,1]]
+> myHashMap.put(2, 2);  // myHashMap ç°åœ¨ä¸º \[[1,1], [2,2]]
+> myHashMap.get(1);     // è¿”å› 1 ï¼ŒmyHashMap ç°åœ¨ä¸º \[[1,1], [2,2]]
+> myHashMap.get(3);     // è¿”å› -1ï¼ˆæœªæ‰¾åˆ°ï¼‰ï¼ŒmyHashMap ç°åœ¨ä¸º \[[1,1], [2,2]]
+> myHashMap.put(2, 1);  // myHashMap ç°åœ¨ä¸º \[[1,1], [2,1]]ï¼ˆæ›´æ–°å·²æœ‰çš„å€¼ï¼‰
+> myHashMap.get(2);     // è¿”å› 1 ï¼ŒmyHashMap ç°åœ¨ä¸º \[[1,1], [2,1]]
+> myHashMap.remove(2);  // åˆ é™¤é”®ä¸º 2 çš„æ•°æ®ï¼ŒmyHashMap ç°åœ¨ä¸º \[[1,1]]
+> myHashMap.get(2);     // è¿”å› -1ï¼ˆæœªæ‰¾åˆ°ï¼‰ï¼ŒmyHashMap ç°åœ¨ä¸º \[[1,1]]
 
-½âÊÍ£º
-MyHashMap myHashMap = new MyHashMap();
-myHashMap.put(1, 1);  // myHashMap ÏÖÔÚÎª [[1,1]]
-myHashMap.put(2, 2);  // myHashMap ÏÖÔÚÎª [[1,1], [2,2]]
-myHashMap.get(1);     // ·µ»Ø 1 £¬myHashMap ÏÖÔÚÎª [[1,1], [2,2]]
-myHashMap.get(3);     // ·µ»Ø -1£¨Î´ÕÒµ½£©£¬myHashMap ÏÖÔÚÎª [[1,1], [2,2]]
-myHashMap.put(2, 1);  // myHashMap ÏÖÔÚÎª [[1,1], [2,1]]£¨¸üĞÂÒÑÓĞµÄÖµ£©
-myHashMap.get(2);     // ·µ»Ø 1 £¬myHashMap ÏÖÔÚÎª [[1,1], [2,1]]
-myHashMap.remove(2);  // É¾³ı¼üÎª 2 µÄÊı¾İ£¬myHashMap ÏÖÔÚÎª [[1,1]]
-myHashMap.get(2);     // ·µ»Ø -1£¨Î´ÕÒµ½£©£¬myHashMap ÏÖÔÚÎª [[1,1]]
-```
+**æç¤ºï¼š**
 
-**ÌáÊ¾£º**
-
--   `0 <= key, value <= 10^6`
--   ×î¶àµ÷ÓÃ `10^4` ´Î `put`¡¢`get` ºÍ `remove` ·½·¨
+- `0 <= key, value <= 10^6`
+- æœ€å¤šè°ƒç”¨ `10^4` æ¬¡ `put`ã€`get` å’Œ `remove` æ–¹æ³•

@@ -1,8 +1,10 @@
-#### [����һ������ַ��](https://leetcode.cn/problems/design-hashmap/solutions/654139/she-ji-ha-xi-ying-she-by-leetcode-soluti-klu9/)
+### [设计哈希映射](https://leetcode.cn/problems/design-hashmap/solutions/654139/she-ji-ha-xi-ying-she-by-leetcode-soluti-klu9/)
 
-���Ǽٶ������Ѿ�����ˡ�[705\. ��ƹ�ϣ����](https://leetcode-cn.com/problems/design-hashset/)����һ��Ŀ��
+#### 方法一：链地址法
 
-����ƹ�ϣӳ�䡹�롸��ƹ�ϣ���ϡ��ⷨ�ӽ���Ψһ�������������Ǵ洢�Ĳ��� $key$ ���������� $(key,value)$ �ԡ�����֮�⣬������������Ƶġ�
+我们假定读者已经完成了「[705\. 设计哈希集合](https://leetcode-cn.com/problems/design-hashset/)」这一题目。
+
+「设计哈希映射」与「设计哈希集合」解法接近，唯一的区别在于我们存储的不是 $key$ 本身，而是 $(key,value)$ 对。除此之外，代码基本是类似的。
 
 ```cpp
 class MyHashMap {
@@ -323,7 +325,7 @@ void myHashMapFree(MyHashMap* obj) {
 }
 ```
 
-**���Ӷȷ���**
+**复杂度分析**
 
--   ʱ�临�Ӷȣ�$O(\frac{n}{b})$������ $n$ Ϊ��ϣ���е�Ԫ��������$b$ Ϊ�����������������ϣֵ�Ǿ��ȷֲ��ģ���ÿ��������ų���Ϊ $\frac{n}{b}$��
--   �ռ临�Ӷȣ�$O(n+b)$��
+- 时间复杂度：$O(\frac{n}{b})$。其中 $n$ 为哈希表中的元素数量，$b$ 为链表的数量。假设哈希值是均匀分布的，则每个链表大概长度为 $\frac{n}{b}$。
+- 空间复杂度：$O(n+b)$。

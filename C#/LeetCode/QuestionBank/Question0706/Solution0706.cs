@@ -21,7 +21,7 @@ namespace LeetCode.QuestionBank.Question0706
             for (int i = 0; i < arr.Length; i++) arr[i] = -1;
         }
 
-        int[] arr;
+        private int[] arr;
 
         public int Get(int key)
         {
