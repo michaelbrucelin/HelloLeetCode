@@ -9,7 +9,7 @@ using LeetCode.Utilses;
 using System;
 using System.IO;
 using System.Reflection;
-using TestXXXX = LeetCode.QuestionBank.Question1483.Test1483;
+using TestXXXX = LeetCode.QuestionBank.Question0924.Test0924;
 
 namespace LeetCode
 {
