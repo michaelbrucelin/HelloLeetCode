@@ -1,38 +1,38 @@
-#### [�����壺Boyer-Moore ͶƱ�㷨](https://leetcode.cn/problems/shu-zu-zhong-chu-xian-ci-shu-chao-guo-yi-ban-de-shu-zi-lcof/solutions/832356/shu-zu-zhong-chu-xian-ci-shu-chao-guo-yi-pvh8/)
+#### [方法五：Boyer-Moore 投票算法](https://leetcode.cn/problems/shu-zu-zhong-chu-xian-ci-shu-chao-guo-yi-ban-de-shu-zi-lcof/solutions/832356/shu-zu-zhong-chu-xian-ci-shu-chao-guo-yi-pvh8/)
 
-**˼·**
+**思路**
 
-������ǰ�������Ϊ $+1$������������Ϊ $-1$��������ȫ������������Ȼ�ʹ��� `0`���ӽ���������ǿ��Կ����������������ࡣ
+如果我们把众数记为 $+1$，把其他数记为 $-1$，将它们全部加起来，显然和大于 `0`，从结果本身我们可以看出众数比其他数多。
 
-**�㷨**
+**算法**
 
-Boyer-Moore �㷨�ı��ʺͷ������еķ���ʮ�����ơ��������ȸ��� Boyer-Moore �㷨����ϸ���裺
+Boyer-Moore 算法的本质和方法四中的分治十分类似。我们首先给出 Boyer-Moore 算法的详细步骤：
 
--   ����ά��һ����ѡ���� `candidate` �������ֵĴ��� `count`����ʼʱ `candidate` ����Ϊ����ֵ��`count` Ϊ `0`��
--   ���Ǳ������� `nums` �е�����Ԫ�أ�����ÿ��Ԫ�� `x`�����ж� `x` ֮ǰ����� `count` ��ֵΪ `0`�������Ƚ� `x` ��ֵ���� `candidate`����������ж� `x`��
-    -   ��� `x` �� `candidate` ��ȣ���ô������ `count` ��ֵ���� `1`��
-    -   ��� `x` �� `candidate` ���ȣ���ô������ `count` ��ֵ���� `1`��
--   �ڱ�����ɺ�`candidate` ��Ϊ���������������
+-   我们维护一个候选众数 `candidate` 和它出现的次数 `count`。初始时 `candidate` 可以为任意值，`count` 为 `0`；
+-   我们遍历数组 `nums` 中的所有元素，对于每个元素 `x`，在判断 `x` 之前，如果 `count` 的值为 `0`，我们先将 `x` 的值赋予 `candidate`，随后我们判断 `x`：
+    -   如果 `x` 与 `candidate` 相等，那么计数器 `count` 的值增加 `1`；
+    -   如果 `x` 与 `candidate` 不等，那么计数器 `count` 的值减少 `1`。
+-   在遍历完成后，`candidate` 即为整个数组的众数。
 
-���Ǿ�һ����������ӣ����������������飺
-
-```csharp
-[7, 7, 5, 7, 5, 1 | 5, 7 | 5, 5, 7, 7 | 7, 7, 7, 7]
-```
-
-�ڱ����������еĵ�һ��Ԫ���Լ�ÿ���� `|` ֮���Ԫ��ʱ��`candidate` ������Ϊ `count` ��ֵ��Ϊ `0` �������ı䡣���һ�� `candidate` ��ֵ�� `5` ��Ϊ `7`��Ҳ������������е�������
-
-Boyer-Moore �㷨����ȷ�Խ���֤�����������һ�ֽ�Ϊ��ϸ�������Ӹ���֤����˼·�������߲ο���
-
-�������Ǹ����㷨�����ж� `count` �Ķ��壬���Է��֣��ڶ�����������б����Ĺ����У�`count` ��ֵһ���Ǹ���������Ϊ��� `count` ��ֵΪ `0`����ô����һ�ֱ����Ŀ�ʼʱ�̣����ǻὫ `x` ��ֵ���� `candidate` ���ڽ�������һ���н� `count` ��ֵ���� `1`����� `count` ��ֵ�ڱ����Ĺ�����һֱ���ַǸ���
-
-��ô `count` �������˼�����֮�⣬����ʲô�����ε������أ����ǻ���������
+我们举一个具体的例子，例如下面的这个数组：
 
 ```csharp
 [7, 7, 5, 7, 5, 1 | 5, 7 | 5, 5, 7, 7 | 7, 7, 7, 7]
 ```
 
-��Ϊ���ӣ�����д������ÿһ������ʱ `candidate` �� `count` ��ֵ��
+在遍历到数组中的第一个元素以及每个在 `|` 之后的元素时，`candidate` 都会因为 `count` 的值变为 `0` 而发生改变。最后一次 `candidate` 的值从 `5` 变为 `7`，也就是这个数组中的众数。
+
+Boyer-Moore 算法的正确性较难证明，这里给出一种较为详细的用例子辅助证明的思路，供读者参考：
+
+首先我们根据算法步骤中对 `count` 的定义，可以发现：在对整个数组进行遍历的过程中，`count` 的值一定非负。这是因为如果 `count` 的值为 `0`，那么在这一轮遍历的开始时刻，我们会将 `x` 的值赋予 `candidate` 并在接下来的一步中将 `count` 的值增加 `1`。因此 `count` 的值在遍历的过程中一直保持非负。
+
+那么 `count` 本身除了计数器之外，还有什么更深层次的意义呢？我们还是以数组
+
+```csharp
+[7, 7, 5, 7, 5, 1 | 5, 7 | 5, 5, 7, 7 | 7, 7, 7, 7]
+```
+
+作为例子，首先写下它在每一步遍历时 `candidate` 和 `count` 的值：
 
 ```
 nums:      [7, 7, 5, 7, 5, 1 | 5, 7 | 5, 5, 7, 7 | 7, 7, 7, 7]
@@ -40,14 +40,14 @@ candidate:  7  7  7  7  7  7   5  5   5  5  5  5   7  7  7  7
 count:      1  2  1  2  1  0   1  0   1  2  1  0   1  2  3  4
 ```
 
-�����ٶ���һ������ `value`���������������� `maj` �󶨡���ÿһ������ʱ�������ǰ���� `x` �� `maj` ��ȣ���ô `value` ��ֵ�� `1`������� `1`��`value` ��ʵ�����弴Ϊ������ǰ����һ������Ϊֹ���������ֵĴ����ȷ���������˶��ٴΡ����ǽ� `value` ��ֵҲд���·���
+我们再定义一个变量 `value`，它和真正的众数 `maj` 绑定。在每一步遍历时，如果当前的数 `x` 和 `maj` 相等，那么 `value` 的值加 `1`，否则减 `1`。`value` 的实际意义即为：到当前的这一步遍历为止，众数出现的次数比非众数多出了多少次。我们将 `value` 的值也写在下方：
 
 ```
 nums:      [7, 7, 5, 7, 5, 1 | 5, 7 | 5, 5, 7, 7 | 7, 7, 7, 7]
 value:      1  2  1  2  1  0  -1  0  -1 -2 -1  0   1  2  3  4
 ```
 
-��û�з���ʲô�����ǽ� `count` �� `value` ����һ��
+有没有发现什么？我们将 `count` 和 `value` 放在一起：
 
 ```
 nums:      [7, 7, 5, 7, 5, 1 | 5, 7 | 5, 5, 7, 7 | 7, 7, 7, 7]
@@ -55,16 +55,16 @@ count:      1  2  1  2  1  0   1  0   1  2  1  0   1  2  3  4
 value:      1  2  1  2  1  0  -1  0  -1 -2 -1  0   1  2  3  4
 ```
 
-������ÿһ�������У�`count` �� `value` Ҫô��ȣ�Ҫô��Ϊ�෴���������ں�ѡ���� `candidate` ���� `maj` ʱ��������ȣ�`candidate` ����������ʱ�����ǻ�Ϊ�෴����
+发现在每一步遍历中，`count` 和 `value` 要么相等，要么互为相反数！并且在候选众数 `candidate` 就是 `maj` 时，它们相等，`candidate` 是其它的数时，它们互为相反数！
 
-Ϊʲô������ô����������أ��Ⲣ����֤�������ǽ���ѡ���� `candidate` ���ֲ���������ı�����Ϊ��һ�Ρ�����ͬһ���У�`count` ��ֵ�Ǹ��� `candidate == x` ���жϽ��мӼ��ġ���ô��� `candidate` ǡ��Ϊ `maj`����ô����һ���У�`count` �� `value` �ı仯��ͬ���ģ���� `candidate` ��Ϊ `maj`����ô����һ���� `count` �� `value` �ı仯���෴�ġ���˾���������һ����������ʡ�
+为什么会有这么奇妙的性质呢？这并不难证明：我们将候选众数 `candidate` 保持不变的连续的遍历称为「一段」。在同一段中，`count` 的值是根据 `candidate == x` 的判断进行加减的。那么如果 `candidate` 恰好为 `maj`，那么在这一段中，`count` 和 `value` 的变化是同步的；如果 `candidate` 不为 `maj`，那么在这一段中 `count` 和 `value` 的变化是相反的。因此就有了这样一个奇妙的性质。
 
-�������������ڣ�
+这样以来，由于：
 
--   ����֤���� `count` ��ֵһֱΪ�Ǹ��������һ������������Ҳ����ˣ�
--   ���� `value` ��ֵ������������ `maj` �󶨣���������ʾ���������ֵĴ����ȷ���������˶��ٴΡ�����ô�����һ������������`value` ��ֵΪ������
+-   我们证明了 `count` 的值一直为非负，在最后一步遍历结束后也是如此；
+-   由于 `value` 的值与真正的众数 `maj` 绑定，并且它表示「众数出现的次数比非众数多出了多少次」，那么在最后一步遍历结束后，`value` 的值为正数；
 
-�����һ������������`count` �Ǹ���`value` Ϊ�������������ǲ����ܻ�Ϊ�෴����ֻ������ȣ��� `count == value`����������һ�Ρ��У�`count` �� `value` �ı仯��ͬ���ģ�Ҳ����˵��`candidate` �д洢�ĺ�ѡ������������������ `maj`��
+在最后一步遍历结束后，`count` 非负，`value` 为正数，所以它们不可能互为相反数，只可能相等，即 `count == value`。因此在最后「一段」中，`count` 的 `value` 的变化是同步的，也就是说，`candidate` 中存储的候选众数就是真正的众数 `maj`。
 
 ```java
 class Solution {
@@ -117,7 +117,7 @@ public:
 };
 ```
 
-**���Ӷȷ���**
+**复杂度分析**
 
--   ʱ�临�Ӷȣ�$O(n)$��Boyer-Moore �㷨ֻ�����������һ�α�����
--   �ռ临�Ӷȣ�$O(1)$��Boyer-Moore �㷨ֻ��Ҫ��������Ķ���ռ䡣
+-   时间复杂度：$O(n)$。Boyer-Moore 算法只对数组进行了一次遍历。
+-   空间复杂度：$O(1)$。Boyer-Moore 算法只需要常数级别的额外空间。

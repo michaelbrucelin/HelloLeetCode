@@ -8,6 +8,6 @@ namespace LeetCode.LCR.LCR0158
 {
     public interface Interface0158
     {
-        public int MajorityElement(int[] nums);
+        public int InventoryManagement(int[] stock);
     }
 }
