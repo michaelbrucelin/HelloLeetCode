@@ -1,4 +1,4 @@
-### [最近的请求次数](https://leetcode.cn/problems/number-of-recent-calls/solutions/1467662/zui-jin-de-qing-qiu-ci-shu-by-leetcode-s-ncm1/)
+### [最近请求次数](https://leetcode.cn/problems/H8086Q/solutions/1467663/zui-jin-qing-qiu-ci-shu-by-leetcode-solu-ey1e/)
 
 #### 方法一：队列
 

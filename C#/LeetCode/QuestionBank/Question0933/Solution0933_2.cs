@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0933
 {
-    public class Solution0933_off
+    public class Solution0933_2
     {
     }
 
     /// <summary>
     /// 队列
     /// </summary>
-    public class RecentCounter_off : Interface0933
+    public class RecentCounter_2 : Interface0933
     {
-        public RecentCounter_off()
+        public RecentCounter_2()
         {
             queue = new Queue<int>();
         }
