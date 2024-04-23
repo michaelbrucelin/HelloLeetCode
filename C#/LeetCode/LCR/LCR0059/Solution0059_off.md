@@ -1,4 +1,4 @@
-### [数据流中的第 K 大元素](https://leetcode.cn/problems/kth-largest-element-in-a-stream/solutions/600598/shu-ju-liu-zhong-de-di-k-da-yuan-su-by-l-woz8/)
+### [数据流的第 K 大数值](https://leetcode.cn/problems/jBjn9C/solutions/1041946/shu-ju-liu-de-di-k-da-shu-zhi-by-leetcod-11n3/)
 
 #### 方法一：优先队列
 
