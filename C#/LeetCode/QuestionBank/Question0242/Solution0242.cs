@@ -41,21 +41,8 @@ namespace LeetCode.QuestionBank.Question0242
                 if (freq[t[i] - 'a'] < 0) return false;
             }
 
-            // for (int i = 0; i < 26; i++) if (freq[i] != 0) return false;  // 由于s与t长度相等，所以如果由>0，必然也会有<0
+            // for (int i = 0; i < 26; i++) if (freq[i] != 0) return false;  // 由于s与t长度相等，所以如果有>0，必然也会有<0
             return true;
-        }
-
-        /// <summary>
-        /// 进阶的话，算法无需更改
-        /// </summary>
-        /// <param name="s"></param>
-        /// <param name="t"></param>
-        /// <returns></returns>
-        public bool IsAnagram3(string s, string t)
-        {
-            if (s.Length != t.Length) return false;
-
-            return Enumerable.SequenceEqual(s.OrderBy(c => c), t.OrderBy(c => c));
         }
     }
 }

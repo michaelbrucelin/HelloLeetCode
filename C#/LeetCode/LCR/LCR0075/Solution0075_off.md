@@ -1,4 +1,4 @@
-### [数组的相对排序](https://leetcode.cn/problems/relative-sort-array/solutions/483863/shu-zu-de-xiang-dui-pai-xu-by-leetcode-solution/)
+### [数组相对排序](https://leetcode.cn/problems/0H97ZC/solutions/1036619/shu-zu-xiang-dui-pai-xu-by-leetcode-solu-sfng/)
 
 #### 方法一：自定义排序
 
