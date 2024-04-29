@@ -1,4 +1,4 @@
-### [使用最小花费爬楼梯](https://leetcode.cn/problems/min-cost-climbing-stairs/solutions/528955/shi-yong-zui-xiao-hua-fei-pa-lou-ti-by-l-ncf8/)
+### [爬楼梯的最少成本](https://leetcode.cn/problems/GzCJIP/solutions/1036522/pa-lou-ti-de-zui-shao-cheng-ben-by-leetc-xx4h/)
 
 #### 方法一：动态规划
 
