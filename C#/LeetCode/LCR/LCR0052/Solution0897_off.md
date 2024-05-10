@@ -1,4 +1,4 @@
-### [递增顺序查找树](https://leetcode.cn/problems/increasing-order-search-tree/solutions/741961/di-zeng-shun-xu-cha-zhao-shu-by-leetcode-dfrr/)
+### [展平二叉搜索树](https://leetcode.cn/problems/NYBBNL/solutions/1038420/zhan-ping-er-cha-sou-suo-shu-by-leetcode-pmxr/)
 
 #### 方法一：中序遍历之后生成新的树
 

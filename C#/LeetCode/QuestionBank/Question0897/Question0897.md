@@ -1,4 +1,4 @@
-#### [897\. 递增顺序搜索树](https://leetcode.cn/problems/increasing-order-search-tree/)
+### [897\. 递增顺序搜索树](https://leetcode.cn/problems/increasing-order-search-tree/)
 
 难度：简单
 
@@ -8,21 +8,17 @@
 
 ![](./assets/img/Question0897_01.jpg)
 
-```
-输入：root = [5,3,6,2,4,null,8,1,null,null,null,7,9]
-输出：[1,null,2,null,3,null,4,null,5,null,6,null,7,null,8,null,9]
-```
+> **输入：** root = [5,3,6,2,4,null,8,1,null,null,null,7,9]
+> **输出：** [1,null,2,null,3,null,4,null,5,null,6,null,7,null,8,null,9]
 
 **示例 2：**
 
 ![](./assets/img/Question0897_02.jpg)
 
-```
-输入：root = [5,1,7]
-输出：[1,null,5,null,7]
-```
+> **输入：** root = [5,1,7]
+> **输出：** [1,null,5,null,7]
 
 **提示：**
 
--   树中节点数的取值范围是 `[1, 100]`
--   `0 <= Node.val <= 1000`
+- 树中节点数的取值范围是 `[1, 100]`
+- `0 <= Node.val <= 1000`
