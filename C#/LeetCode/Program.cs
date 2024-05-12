@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview0801;
-using LeetCode.QuestionBank.Question1766;
+using LeetCode.QuestionBank.Question1553;
 using LeetCode.LCP.LCP0030;
 using LeetCode.LCR.LCR0002;
 using LeetCode.LCS.LCS0001;
@@ -9,7 +9,7 @@ using LeetCode.Utilses;
 using System;
 using System.IO;
 using System.Reflection;
-using TestXXXX = LeetCode.QuestionBank.Question2079.Test2079;
+using TestXXXX = LeetCode.QuestionBank.Question1553.Test1553;
 // using TestXXXX = LeetCode.LCR.LCR0034.Test0034;
 
 namespace LeetCode
@@ -26,8 +26,9 @@ namespace LeetCode
             //test.TestDivergentTraverse();
             //test.Look4Rules();
             //test.VerifyRules();
-            //Utils3099 utils = new();
+            //Utils1553 utils = new();
             //utils.Dial();
+            //utils.Debug();
 
             //Utils.Dump(UtilsDial.DialPrime(1, 100000));
 
