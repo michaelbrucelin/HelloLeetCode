@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0014
 {
-    public class Solution0014_2 : Interface0014
+    public class Solution0014_oth : Interface0014
     {
+        public Solution0014_oth()
+        {
+        }
+
         /// <summary>
         /// 先排序，后比较头尾即可
         /// </summary>
