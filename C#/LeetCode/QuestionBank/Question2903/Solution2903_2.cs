@@ -18,17 +18,17 @@ namespace LeetCode.QuestionBank.Question2903
         /// <returns></returns>
         public int[] FindIndices(int[] nums, int indexDifference, int valueDifference)
         {
-            if (indexDifference >= nums.Length) return new int[] { -1, -1 };
+            if (indexDifference >= nums.Length) return [-1, -1];
 
             int maxid = 0, minid = 0, len = nums.Length;
             for (int i = 0, j = indexDifference; j < len; i++, j++)
             {
                 if (nums[i] > nums[maxid]) maxid = i; else if (nums[i] < nums[minid]) minid = i;
-                if (nums[maxid] - nums[j] >= valueDifference) return new int[] { maxid, j };
-                if (nums[j] - nums[minid] >= valueDifference) return new int[] { minid, j };
+                if (nums[maxid] - nums[j] >= valueDifference) return [maxid, j];
+                if (nums[j] - nums[minid] >= valueDifference) return [minid, j];
             }
 
-            return new int[] { -1, -1 };
+            return [-1, -1];
         }
     }
 }

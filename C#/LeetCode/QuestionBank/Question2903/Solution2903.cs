@@ -17,7 +17,7 @@ namespace LeetCode.QuestionBank.Question2903
         /// <returns></returns>
         public int[] FindIndices(int[] nums, int indexDifference, int valueDifference)
         {
-            int[] result = new int[] { -1, -1 };
+            int[] result = [-1, -1];
             if (indexDifference >= nums.Length) return result;
 
             int len = nums.Length;
