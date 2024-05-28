@@ -1,4 +1,4 @@
-﻿#### [219\. 存在重复元素 II](https://leetcode.cn/problems/contains-duplicate-ii/)
+### [219\. 存在重复元素 II](https://leetcode.cn/problems/contains-duplicate-ii/)
 
 难度：简单
 
@@ -6,27 +6,21 @@
 
 **示例 1：**
 
-```
-输入：nums = [1,2,3,1], k = 3
-输出：true
-```
+> **输入：** nums = [1,2,3,1], k = 3
+> **输出：** true
 
 **示例 2：**
 
-```
-输入：nums = [1,0,1,1], k = 1
-输出：true
-```
+> **输入：** nums = [1,0,1,1], k = 1
+> **输出：** true
 
 **示例 3：**
 
-```
-输入：nums = [1,2,3,1,2,3], k = 2
-输出：false
-```
+> **输入：** nums = [1,2,3,1,2,3], k = 2
+> **输出：** false
 
 **提示：**
 
--   `1 <= nums.length <= 10^5`
--   `-10^9 <= nums[i] <= 10^9`
--   `0 <= k <= 10^5`
+- `1 <= nums.length <= 10^5`
+- `-10^9 <= nums[i] <= 10^9`
+- `0 <= k <= 10^5`

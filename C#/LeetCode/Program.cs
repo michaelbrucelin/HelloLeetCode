@@ -46,8 +46,7 @@ namespace LeetCode
             //Console.WriteLine($"{++id,2}: In {sw.Elapsed}, {Utils.CompareArray(result, answer, true) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
 
             //哑节点(dummy node)，也被称为哨兵节点
-            //const int MOD = 1000000007;    // 10^9 + 7
-            //const int MOD = (int)1e9 + 7;
+            //const int MOD = (int)1e9 + 7;               // 1000000007, 10^9 + 7
             //string question = "1234", testcase = "08";
             //string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"QuestionBank\Question{question}\TestCases\TestCase{question}");
