@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCode.剑指_Offer_II.剑指_Offer_II_0031
+namespace LeetCode.LCR.LCR0031
 {
     /// <summary>
     /// 使用字典+链表模拟
@@ -18,15 +18,15 @@ namespace LeetCode.剑指_Offer_II.剑指_Offer_II_0031
         }
 
         private int capacity;
-        private SortedDictionary<int, MyLinkedNode<int>> container = new SortedDictionary<int, MyLinkedNode<int>>();
-        private MyLinkedNode<int> firstNode = null;
-        private MyLinkedNode<int> lastNode = null;
+        private SortedDictionary<int, LinkedNode<int>> container = new SortedDictionary<int, LinkedNode<int>>();
+        private LinkedNode<int> firstNode = null;
+        private LinkedNode<int> lastNode = null;
 
         public int Get(int key)
         {
             if (!container.ContainsKey(key)) return -1;
 
-            MyLinkedNode<int> node = container[key];
+            LinkedNode<int> node = container[key];
             if (node == lastNode)
                 return node.Value;
 
@@ -40,7 +40,7 @@ namespace LeetCode.剑指_Offer_II.剑指_Offer_II_0031
         {
             if (container.Count == 0)
             {
-                MyLinkedNode<int> node = new MyLinkedNode<int>(key, value);
+                LinkedNode<int> node = new LinkedNode<int>(key, value);
                 container.Add(key, node);
                 firstNode = lastNode = node;
             }
@@ -52,8 +52,8 @@ namespace LeetCode.剑指_Offer_II.剑指_Offer_II_0031
                 }
                 else
                 {
-                    MyLinkedNode<int> node = Delete(key);
-                    if (node == null) node = new MyLinkedNode<int>(key, value);
+                    LinkedNode<int> node = Delete(key);
+                    if (node == null) node = new LinkedNode<int>(key, value);
                     else
                     {
                         node.Key = key;
@@ -67,13 +67,13 @@ namespace LeetCode.剑指_Offer_II.剑指_Offer_II_0031
             {
                 if (container.Count < capacity)
                 {
-                    MyLinkedNode<int> node = new MyLinkedNode<int>(key, value);
+                    LinkedNode<int> node = new LinkedNode<int>(key, value);
                     PutLast(node);
                 }
                 else
                 {
-                    MyLinkedNode<int> node = Delete(firstNode.Key);
-                    if (node == null) node = new MyLinkedNode<int>(key, value);
+                    LinkedNode<int> node = Delete(firstNode.Key);
+                    if (node == null) node = new LinkedNode<int>(key, value);
                     else
                     {
                         node.Key = key;
@@ -85,11 +85,11 @@ namespace LeetCode.剑指_Offer_II.剑指_Offer_II_0031
             }
         }
 
-        private MyLinkedNode<int> Delete(int key)
+        private LinkedNode<int> Delete(int key)
         {
             if (!container.ContainsKey(key)) return null;
 
-            MyLinkedNode<int> node = container[key];
+            LinkedNode<int> node = container[key];
             if (container.Count == 1)
             {
                 firstNode = lastNode = null;
@@ -118,7 +118,7 @@ namespace LeetCode.剑指_Offer_II.剑指_Offer_II_0031
             return node;  // 之所以要把删除的节点返回，是为了省点内存
         }
 
-        private void PutLast(MyLinkedNode<int> node)
+        private void PutLast(LinkedNode<int> node)
         {
             if (container.Count >= capacity) return;
 

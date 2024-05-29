@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCode.剑指_Offer_II.剑指_Offer_II_0072
+namespace LeetCode.LCR.LCR0072
 {
     internal class Solution0072 : Interface0072
     {
