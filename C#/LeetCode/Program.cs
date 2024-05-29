@@ -4,7 +4,6 @@ using LeetCode.LCP.LCP0030;
 using LeetCode.LCR.LCR0002;
 using LeetCode.LCS.LCS0001;
 using LeetCode.剑指_Offer.剑指_Offer_0058_1;
-using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
 using LeetCode.Utilses;
 using System;
 using System.IO;
