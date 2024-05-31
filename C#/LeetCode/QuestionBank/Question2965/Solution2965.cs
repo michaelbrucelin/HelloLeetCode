@@ -16,12 +16,11 @@ namespace LeetCode.QuestionBank.Question2965
         public int[] FindMissingAndRepeatedValues(int[][] grid)
         {
             int[] result = new int[2];
-            int n = grid.Length;
+            int id, n = grid.Length;
             bool[] record = new bool[n * n];
-            for (int i = 0; i < n; i++) for (int j = 0; j < n; j++)
+            for (int r = 0; r < n; r++) for (int c = 0; c < n; c++)
                 {
-                    if (record[grid[i][j] - 1]) result[0] = grid[i][j];
-                    else record[grid[i][j] - 1] = true;
+                    if (record[id = grid[r][c] - 1]) result[0] = grid[r][c]; else record[id] = true;
                 }
             for (int i = 0; i < n * n; i++) if (!record[i])
                 {
