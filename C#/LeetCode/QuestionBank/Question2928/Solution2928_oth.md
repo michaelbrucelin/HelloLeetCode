@@ -89,5 +89,5 @@ func distributeCandies(n int, limit int) int {
 
 #### 复杂度分析
 
--   时间复杂度：$\mathcal{O}(1)$。
--   空间复杂度：$\mathcal{O}(1)$。
+- 时间复杂度：$\mathcal{O}(1)$。
+- 空间复杂度：$\mathcal{O}(1)$。
