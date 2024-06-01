@@ -21,7 +21,7 @@ namespace LeetCode.QuestionBank.Question2928
             if (n == triple) return 1;
 
             int result = 0, twice = limit << 1;
-            for (int i = Math.Max(n - twice, 0); i <= limit; i++)  // 第1个小朋友
+            for (int i = Math.Max(n - twice, 0); i <= Math.Min(limit, n); i++)  // 第1个小朋友
             {
                 result += Math.Min(n - i + 1, twice - (n - i) + 1);
             }
