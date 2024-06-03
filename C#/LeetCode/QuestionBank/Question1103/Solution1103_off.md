@@ -51,12 +51,12 @@ public:
 
 **复杂度分析**
 
--   时间复杂度：$\mathcal{O}(max(\sqrt{G}, N))$，$G$ 为糖果数量，$N$ 为人数。
+- 时间复杂度：$\mathcal{O}(max(\sqrt{G}, N))$，$G$ 为糖果数量，$N$ 为人数。
     本方法的时间复杂度取决于循环到底走多少步。设总的步数为 $s$，用[等差数列求和公式](https://leetcode.cn/link/?target=https%3A%2F%2Fbaike.baidu.com%2Fitem%2F%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%E6%B1%82%E5%92%8C%E5%85%AC%E5%BC%8F%2F7527418)可以求得 $s$ 步时发放的糖果数量为 $\frac{s(s+1)}{2}$。那么只要 $s^2+s\geq 2G$ 糖果就可以保证被发完。
     而只要当 $s\geq \sqrt{2G}$ 时，就有 $s^2\geq 2G$，显然也有 $s^2+s\geq 2G$。
     因此可知总的步数 $s\leq \left \lceil{\sqrt{2G}}\right \rceil$，时间复杂度为 $\mathcal{O}(\sqrt G)$。
     另外建立糖果分配数组并初值赋值需要 $\mathcal{O}(N)$ 的时间，因此总的时间复杂度为 $\mathcal{O}(max(\sqrt{G}, N))$。
--   空间复杂度：$\mathcal{O}(1)$，除了答案数组只需要常数空间来存储若干变量。
+- 空间复杂度：$\mathcal{O}(1)$，除了答案数组只需要常数空间来存储若干变量。
 
 #### 方法二：等差数列求和
 
@@ -102,7 +102,7 @@ $$p = \textrm{floor}\left(\sqrt{2C + \frac{1}{4}} - \frac{1}{2}\right)$$
 
 在 `rows` 个完整回合中，第 `i` 个人获得礼物：
 
-$$d[i] = i + (i + N) + (i + 2N) + ... (i + (\\textrm{rows} - 1) N) = i \times \textrm{rows} + N \frac{\textrm{rows}(\textrm{rows} - 1)}{2}$$
+$$d[i] = i + (i + N) + (i + 2N) + ... (i + (\textrm{rows} - 1) N) = i \times \textrm{rows} + N \frac{\textrm{rows}(\textrm{rows} - 1)}{2}$$
 
 ![](./assets/img/Solution1103_off_2_03.png)
 
@@ -124,23 +124,15 @@ $$d[\textrm{cols} + 1] += \textrm{remaining}$$
 
 **算法**
 
--   计算完整礼物的份数
-
-$$p = \textrm{floor}\left(\sqrt{2C + \frac{1}{4}} - \frac{1}{2}\right)$$
-
-```
-最后一份礼物的糖果数量
-```
-
-$$\textrm{remaining} = C - \frac{p(p + 1)}{2}$$
-
--   完整的分发回合数：`rows = p // n`。此时每个人拥有的礼物数量：
-
-$$d[i] = i \times \textrm{rows} + N \frac{\textrm{rows}(\textrm{rows} - 1)}{2}$$
-
--   前 `p % N` 个人最后再获得一份完整的礼物：$d[i] += i + N \times \textrm{rows}$。
--   将剩余的糖果分发给第 `p % N` 个后面的一个人。
--   返回糖果分配数组：`d`。
+- 计算完整礼物的份数
+    $$p = \textrm{floor}\left(\sqrt{2C + \frac{1}{4}} - \frac{1}{2}\right)$$
+    最后一份礼物的糖果数量
+    $$\textrm{remaining} = C - \frac{p(p + 1)}{2}$$
+- 完整的分发回合数：`rows = p // n`。此时每个人拥有的礼物数量：
+    $$d[i] = i \times \textrm{rows} + N \frac{\textrm{rows}(\textrm{rows} - 1)}{2}$$
+- 前 `p % N` 个人最后再获得一份完整的礼物：$d[i] += i + N \times \textrm{rows}$。
+- 将剩余的糖果分发给第 `p % N` 个后面的一个人。
+- 返回糖果分配数组：`d`。
 
 ```python
 class Solution:
@@ -214,5 +206,5 @@ public:
 
 **复杂度分析**
 
--   时间复杂度：$\mathcal{O}(N)$，计算 $N$ 个人的糖果数量。
--   空间复杂度：$\mathcal{O}(1)$，，除了答案数组只需要常数空间来存储若干变量。
+- 时间复杂度：$\mathcal{O}(N)$，计算 $N$ 个人的糖果数量。
+- 空间复杂度：$\mathcal{O}(1)$，，除了答案数组只需要常数空间来存储若干变量。

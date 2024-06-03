@@ -1,4 +1,4 @@
-﻿#### [1003\. 检查替换后的词是否有效](https://leetcode.cn/problems/check-if-word-is-valid-after-substitutions/)
+﻿### [1003\. 检查替换后的词是否有效](https://leetcode.cn/problems/check-if-word-is-valid-after-substitutions/)
 
 难度：中等
 
@@ -12,33 +12,27 @@
 
 **示例 1：**
 
-```
-输入：s = "aabcbc"
-输出：true
-解释：
-"" -> "abc" -> "aabcbc"
-因此，"aabcbc" 有效。
-```
+> **输入：** s = "aabcbc"
+> **输出：** true
+> **解释：**
+> "" -> "abc" -> "aabcbc"
+> 因此，"aabcbc" 有效。
 
 **示例 2：**
 
-```
-输入：s = "abcabcababcc"
-输出：true
-解释：
-"" -> "abc" -> "abcabc" -> "abcabcabc" -> "abcabcababcc"
-因此，"abcabcababcc" 有效。
-```
+> **输入：** s = "abcabcababcc"
+> **输出：** true
+> **解释：**
+> "" -> "abc" -> "abcabc" -> "abcabcabc" -> "abcabcababcc"
+> 因此，"abcabcababcc" 有效。
 
 **示例 3：**
 
-```
-输入：s = "abccba"
-输出：false
-解释：执行操作无法得到 "abccba" 。
-```
+> **输入：** s = "abccba"
+> **输出：** false
+> **解释：** 执行操作无法得到 "abccba" 。
 
 **提示：**
 
--   `1 <= s.length <= 2 * 10^4`
--   `s` 由字母 `'a'`、`'b'` 和 `'c'` 组成
+- `1 <= s.length <= 2 * 10^4`
+- `s` 由字母 `'a'`、`'b'` 和 `'c'` 组成
