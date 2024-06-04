@@ -8,15 +8,15 @@ using LeetCode.Utilses;
 using System;
 using System.IO;
 using System.Reflection;
-// using TestXXXX = LeetCode.QuestionBank.Question1673.Test1673;
-using TestXXXX = LeetCode.LCP.LCP0051.Test0051;
+using TestXXXX = LeetCode.QuestionBank.Question3067.Test3067;
+// using TestXXXX = LeetCode.LCP.LCP0051.Test0051;
 // using TestXXXX = LeetCode.LCR.LCR0022.Test0022;
 
 namespace LeetCode
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             //Random random = new Random();
 
