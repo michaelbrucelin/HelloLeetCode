@@ -6,12 +6,12 @@
 
 设数组大小为 $n$，我们将数组 $nums$ 分成多个块，每个块大小 $size$，最后一个块的大小为剩余的不超过 $size$ 的元素数目，那么块的总数为 $\Big \lceil \dfrac{n}{size} \Big \rceil$，用一个数组 $sum$ 保存每个块的元素和。
 
--   构造函数
-    计算块大小 $size$，初始化 $sum$。
--   $update$ 函数
-    下标 $index$ 对应的块下标为 $\Big \lfloor \dfrac{index}{size} \Big \rfloor$，更新 $nums$ 和 $sum$。
--   $sumRange$ 函数
-    设 $left$ 位于第 $b_1$ 个块内的第 $i_1$ 个元素，$right$ 位于第 $b_2$ 个块内的第 $i_2$ 个元素。如果 $b_1 = b_2$，那么直接返回第 $b_1$ 个块位于区间 $[i_1, i_2]$ 的元素之和；否则计算第 $b_1$ 个块位于区间 $[i_1, size - 1)$的元素之和 $sum_1$，第 $b_2$ 个块位于区间 $[0, i_2]$ 的元素之和 $sum_2$，第 $b_1 + 1$ 个块到第 $b_2 - 1$ 个块的元素和的总和 $sum_3$，返回 $sum_1 + sum_2 + sum_3$。
+- 构造函数
+  计算块大小 $size$，初始化 $sum$。
+- $update$ 函数
+  下标 $index$ 对应的块下标为 $\Big \lfloor \dfrac{index}{size} \Big \rfloor$，更新 $nums$ 和 $sum$。
+- $sumRange$ 函数
+  设 $left$ 位于第 $b_1$ 个块内的第 $i_1$ 个元素，$right$ 位于第 $b_2$ 个块内的第 $i_2$ 个元素。如果 $b_1 = b_2$，那么直接返回第 $b_1$ 个块位于区间 $[i_1, i_2]$ 的元素之和；否则计算第 $b_1$ 个块位于区间 $[i_1, size - 1)$的元素之和 $sum_1$，第 $b_2$ 个块位于区间 $[0, i_2]$ 的元素之和 $sum_2$，第 $b_1 + 1$ 个块到第 $b_2 - 1$ 个块的元素和的总和 $sum_3$，返回 $sum_1 + sum_2 + sum_3$。
 
 对于块大小 $size$ 的取值，我们从各个函数的时间复杂度入手。构造函数的时间复杂度为 $O(n)$，$update$ 函数的时间复杂度为 $O(1)$，而 $sumRange$ 函数的时间复杂度为 O(size+nsize)O(size + \dfrac{n}{size})O(size+sizen)。因为 $size + \dfrac{n}{size} \ge 2\sqrt n$，仅当 $size = \sqrt n$ 时等号成立。因此 $size$ 取 $\lfloor \sqrt n \rfloor$，此时 $sumRange$ 函数的时间复杂度为 $O(\sqrt n)$。
 
@@ -309,8 +309,8 @@ func (na *NumArray) SumRange(left, right int) (ans int) {
 
 **复杂度分析**
 
--   时间复杂度：构造函数为 $O(n)$，$update$ 函数为 $O(1)$，$sumRange$ 函数为 $O(\sqrt n)$，其中 $n$ 为数组 $nums$ 的大小。对于 $sumRange$ 函数，我们最多遍历两个块以及 $sum$ 数组，因此时间复杂度为 $O(\sqrt n)$。
--   空间复杂度：$O(\sqrt n)$。保存 $sum$ 数组需要 $O(\sqrt n)$ 的空间。
+- 时间复杂度：构造函数为 $O(n)$，$update$ 函数为 $O(1)$，$sumRange$ 函数为 $O(\sqrt n)$，其中 $n$ 为数组 $nums$ 的大小。对于 $sumRange$ 函数，我们最多遍历两个块以及 $sum$ 数组，因此时间复杂度为 $O(\sqrt n)$。
+- 空间复杂度：$O(\sqrt n)$。保存 $sum$ 数组需要 $O(\sqrt n)$ 的空间。
 
 #### 方法二：线段树
 
@@ -318,17 +318,17 @@ func (na *NumArray) SumRange(left, right int) (ans int) {
 
 线段树 $segmentTree$ 是一个二叉树，每个结点保存数组 $nums$ 在区间 $[s, e]$ 的最小值、最大值或者总和等信息。线段树可以用树也可以用数组（堆式存储）来实现。对于数组实现，假设根结点的下标为 $0$，如果一个结点在数组的下标为 $node$，那么它的左子结点下标为 $node \times 2 + 1$，右子结点下标为 $node \times 2 + 2$。
 
--   建树 $build$ 函数
-    我们在结点 $node$ 保存数组 $nums$ 在区间 $[s, e]$ 的总和。
-    -   $s = e$ 时，结点 $node$ 是叶子结点，它保存的值等于 $nums[s]$。
-    -   $s < e$ 时，结点 $node$ 的左子结点保存区间 $\Big [ s, \Big \lfloor \dfrac{s + e}{2} \Big \rfloor \Big ]$ 的总和，右子结点保存区间 $\Big [ \Big \lfloor \dfrac{s + e}{2} \Big \rfloor + 1, e \Big ]$ 的总和，那么结点 $node$ 保存的值等于它的两个子结点保存的值之和。
-    假设 $nums$ 的大小为 $n$，我们规定根结点 $node = 0$ 保存区间 $[0, n - 1]$ 的总和，然后自下而上递归地建树。
--   单点修改 $change$ 函数
-    当我们要修改 $nums[index]$ 的值时，我们找到对应区间 $[index, index]$ 的叶子结点，直接修改叶子结点的值为 $val$，并自下而上递归地更新父结点的值。
--   范围求和 $range$ 函数
-    给定区间 $[left, right]$ 时，我们将区间 $[left, right]$ 拆成多个结点对应的区间。
-    -   如果结点 $node$ 对应的区间与 $[left, right]$ 相同，可以直接返回该结点的值，即当前区间和。
-    -   如果结点 $node$ 对应的区间与 $[left, right]$ 不同，设左子结点对应的区间的右端点为 $m$，那么将区间 $[left, right]$ 沿点 $m$ 拆成两个区间，分别计算左子结点和右子结点。
+- 建树 $build$ 函数
+  我们在结点 $node$ 保存数组 $nums$ 在区间 $[s, e]$ 的总和。
+  - $s = e$ 时，结点 $node$ 是叶子结点，它保存的值等于 $nums[s]$。
+  - $s < e$ 时，结点 $node$ 的左子结点保存区间 $\Big [ s, \Big \lfloor \dfrac{s + e}{2} \Big \rfloor \Big ]$ 的总和，右子结点保存区间 $\Big [ \Big \lfloor \dfrac{s + e}{2} \Big \rfloor + 1, e \Big ]$ 的总和，那么结点 $node$ 保存的值等于它的两个子结点保存的值之和。
+  假设 $nums$ 的大小为 $n$，我们规定根结点 $node = 0$ 保存区间 $[0, n - 1]$ 的总和，然后自下而上递归地建树。
+- 单点修改 $change$ 函数
+  当我们要修改 $nums[index]$ 的值时，我们找到对应区间 $[index, index]$ 的叶子结点，直接修改叶子结点的值为 $val$，并自下而上递归地更新父结点的值。
+- 范围求和 $range$ 函数
+  给定区间 $[left, right]$ 时，我们将区间 $[left, right]$ 拆成多个结点对应的区间。
+  - 如果结点 $node$ 对应的区间与 $[left, right]$ 相同，可以直接返回该结点的值，即当前区间和。
+  - 如果结点 $node$ 对应的区间与 $[left, right]$ 不同，设左子结点对应的区间的右端点为 $m$，那么将区间 $[left, right]$ 沿点 $m$ 拆成两个区间，分别计算左子结点和右子结点。
     我们从根结点开始递归地拆分区间 $[left, right]$。
 
 **代码**
@@ -742,11 +742,11 @@ func (seg NumArray) SumRange(left, right int) int {
 
 **复杂度分析**
 
--   时间复杂度：
-    -   构造函数：$O(n)$，其中 $n$ 是数组 $nums$ 的大小。二叉树的高度不超过 $\lceil \log n \rceil + 1$，那么 $segmentTree$ 的大小不超过 $2 ^ {\lceil \log n \rceil + 1} - 1 \le 4n$，所以 $build$ 的时间复杂度为 $O(n)$。
-    -   $update$ 函数：$O(\log n)$。因为树的高度不超过 $\lceil \log n \rceil + 1$，所以涉及更新的结点数不超过 $\lceil \log n \rceil + 1$。
-    -   $sumRange$ 函数：$O(\log n)$。每层结点最多访问四个，总共访问的结点数不超过 $4 \times (\lceil \log n \rceil + 1)$。
--   空间复杂度：$O(n)$。保存 $segmentTree$ 需要 $O(n)$ 的空间。
+- 时间复杂度：
+  - 构造函数：$O(n)$，其中 $n$ 是数组 $nums$ 的大小。二叉树的高度不超过 $\lceil \log n \rceil + 1$，那么 $segmentTree$ 的大小不超过 $2 ^ {\lceil \log n \rceil + 1} - 1 \le 4n$，所以 $build$ 的时间复杂度为 $O(n)$。
+  - $update$ 函数：$O(\log n)$。因为树的高度不超过 $\lceil \log n \rceil + 1$，所以涉及更新的结点数不超过 $\lceil \log n \rceil + 1$。
+  - $sumRange$ 函数：$O(\log n)$。每层结点最多访问四个，总共访问的结点数不超过 $4 \times (\lceil \log n \rceil + 1)$。
+- 空间复杂度：$O(n)$。保存 $segmentTree$ 需要 $O(n)$ 的空间。
 
 #### 方法三：树状数组
 
@@ -756,17 +756,17 @@ func (seg NumArray) SumRange(left, right int) int {
 
 树状数组是一种可以动态维护序列前缀和的数据结构（序列下标从 $1$ 开始），它的功能是：
 
--   单点修改 $add(index, val)$：把序列第 $index$ 个数增加 $val$；
--   区间查询 $prefixSum(index)$：查询前 $index$ 个元素的前缀和。
+- 单点修改 $add(index, val)$：把序列第 $index$ 个数增加 $val$；
+- 区间查询 $prefixSum(index)$：查询前 $index$ 个元素的前缀和。
 
 因为题目要求实现更新 $nums$ 在某个位置的值，因此我们保存原始的 $nums$ 数组。
 
--   构造函数
-    树状数组初始对应一个零序列，因此我们遍历 $nums$ 数组，调用 $add$ 函数来更新树状数组。
--   $update$ 函数
-    获取 $nums$ 在 $index$ 的增加值， 调用 $add$ 函数更新树状数组，并更新 $nums[index] = val$。
--   $sumRange$ 函数
-    区间和 $[left, right]$ 可以转化为两个前缀和之差，调用树状数组的 $prefixSum$ 函数获取前 $right + 1$ 个元素的前缀和 $sum_1$ 和前 $left$ 个元素的前缀和 $sum_2$，返回 $sum_1 - sum_2$。
+- 构造函数
+  树状数组初始对应一个零序列，因此我们遍历 $nums$ 数组，调用 $add$ 函数来更新树状数组。
+- $update$ 函数
+  获取 $nums$ 在 $index$ 的增加值， 调用 $add$ 函数更新树状数组，并更新 $nums[index] = val$。
+- $sumRange$ 函数
+  区间和 $[left, right]$ 可以转化为两个前缀和之差，调用树状数组的 $prefixSum$ 函数获取前 $right + 1$ 个元素的前缀和 $sum_1$ 和前 $left$ 个元素的前缀和 $sum_2$，返回 $sum_1 - sum_2$。
 
 **代码**
 
@@ -1064,8 +1064,8 @@ func (na *NumArray) SumRange(left, right int) int {
 
 **复杂度分析**
 
--   时间复杂度：
-    -   构造函数：$O(n \log n)$，其中 $n$ 是数组 $nums$ 的大小。$add$ 函数的时间复杂度是 $O(\log n)$，总共调用 $n$ 次。
-    -   $update$ 函数：$O(\log n)$。$add$ 函数的时间复杂度是 $O(\log n)$。
-    -   $sumRange$ 函数：$O(\log n)$。$prefixSum$ 函数的时间复杂度是 $O(\log n)$。
--   空间复杂度：$O(n)$。保存 $tree$ 需要 $O(n)$ 的空间。
+- 时间复杂度：
+  - 构造函数：$O(n \log n)$，其中 $n$ 是数组 $nums$ 的大小。$add$ 函数的时间复杂度是 $O(\log n)$，总共调用 $n$ 次。
+  - $update$ 函数：$O(\log n)$。$add$ 函数的时间复杂度是 $O(\log n)$。
+  - $sumRange$ 函数：$O(\log n)$。$prefixSum$ 函数的时间复杂度是 $O(\log n)$。
+- 空间复杂度：$O(n)$。保存 $tree$ 需要 $O(n)$ 的空间。
