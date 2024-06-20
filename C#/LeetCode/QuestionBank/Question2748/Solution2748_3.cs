@@ -30,7 +30,7 @@ namespace LeetCode.QuestionBank.Question2748
         {
             int result = 0, len = nums.Length;
             int[] cnt = new int[10];
-            for (int i = 1, y, num; i < len; i++)
+            for (int i = 1, y; i < len; i++)
             {
                 cnt[FirstDigit(nums[i - 1])]++;
                 y = nums[i] % 10 - 1;
