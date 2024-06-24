@@ -14,13 +14,12 @@ namespace LeetCode.QuestionBank.Question0503
             Array.Fill(result, -1);
 
             Stack<int> stack = new Stack<int>();
-            int N = nums.Length * 2;
+            int N = nums.Length << 1;
             for (int i = 0; i < N - 1; i++)
             {
                 int id = i >= nums.Length ? i - nums.Length : i;
 
-                while (stack.Count > 0 && nums[id] > nums[stack.Peek()])
-                    result[stack.Pop()] = nums[id];
+                while (stack.Count > 0 && nums[id] > nums[stack.Peek()]) result[stack.Pop()] = nums[id];
                 stack.Push(id);
             }
 
