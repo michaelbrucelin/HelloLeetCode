@@ -13,7 +13,7 @@ namespace LeetCode.QuestionBank.Question0520
         {
             if (word.Length == 1) return true;
 
-            return Regex.IsMatch("", @"^([a-z]+|[A-Z]+|[A-Z][a-z]*)$");
+            return Regex.IsMatch(word, @"^([a-z]+|[A-Z]+|[A-Z][a-z]*)$");
         }
     }
 }
