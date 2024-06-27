@@ -21,15 +21,5 @@ namespace LeetCode.QuestionBank.Question0448
 
             return result;
         }
-
-        /// <summary>
-        /// API
-        /// </summary>
-        /// <param name="nums"></param>
-        /// <returns></returns>
-        public IList<int> FindDisappearedNumbers2(int[] nums)
-        {
-            return Enumerable.Range(1, nums.Length).Except(nums).ToList();
-        }
     }
 }

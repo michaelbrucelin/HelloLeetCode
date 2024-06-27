@@ -1,4 +1,6 @@
-﻿#### [方法一：原地修改](https://leetcode.cn/problems/find-all-numbers-disappeared-in-an-array/solutions/601946/zhao-dao-suo-you-shu-zu-zhong-xiao-shi-d-mabl/)
+### [找到所有数组中消失的数字](https://leetcode.cn/problems/find-all-numbers-disappeared-in-an-array/solutions/601946/zhao-dao-suo-you-shu-zu-zhong-xiao-shi-d-mabl/)
+
+#### 方法一：原地修改
 
 **思路及解法**
 
@@ -119,5 +121,5 @@ var findDisappearedNumbers = function(nums) {
 
 **复杂度分析**
 
--   时间复杂度：$O(n)$。其中 $n$ 是数组 $nums$ 的长度。
--   空间复杂度：$O(1)$。返回值不计入空间复杂度。
+- 时间复杂度：$O(n)$。其中 $n$ 是数组 $nums$ 的长度。
+- 空间复杂度：$O(1)$。返回值不计入空间复杂度。

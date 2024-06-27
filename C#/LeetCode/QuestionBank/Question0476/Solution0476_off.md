@@ -122,5 +122,5 @@ func findComplement(num int) int {
 
 **复杂度分析**
 
--   时间复杂度：$O(\log num)$。找出 $num$ 二进制表示最高位的 $1$ 需要的时间为 $O(\log num)$。
--   空间复杂度：$O(1)$。
+- 时间复杂度：$O(\log num)$。找出 $num$ 二进制表示最高位的 $1$ 需要的时间为 $O(\log num)$。
+- 空间复杂度：$O(1)$。

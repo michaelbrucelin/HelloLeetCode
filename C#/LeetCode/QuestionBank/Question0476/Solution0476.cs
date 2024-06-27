@@ -26,5 +26,17 @@ namespace LeetCode.QuestionBank.Question0476
 
             return result;
         }
+
+        public int FindComplement2(int num)
+        {
+            int result = 0;
+            for (int i = 0; num > 0; i++)
+            {
+                result |= ((num & 1) ^ 1) << i;
+                num >>= 1;
+            }
+
+            return result;
+        }
     }
 }

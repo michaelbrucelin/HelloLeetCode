@@ -33,8 +33,7 @@ namespace LeetCode.QuestionBank.Question0448
         /// </summary>
         /// <param name="nums"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
-        public IList<int> FindDisappearedNumbers2(int[] nums)
+        public IList<int> FindDisappearedNumbers(int[] nums)
         {
             for (int i = 0, next, _next; i < nums.Length; i++)
             {
@@ -53,20 +52,25 @@ namespace LeetCode.QuestionBank.Question0448
 
         /// <summary>
         /// 与FindDisappearedNumbers()类似，但是并不是将对应位置标记为-1来记录值存在，而是将值的第18位置为1
-        /// 题目中n<=100000，17位整型就可以放得下
+        /// 题目中n<=100000，15位整型就可以放得下
         /// </summary>
         /// <param name="nums"></param>
         /// <returns></returns>
-        public IList<int> FindDisappearedNumbers(int[] nums)
+        public IList<int> FindDisappearedNumbers2(int[] nums)
         {
-            const int mask = 1 << 18;
-            for (int i = 0; i < nums.Length; i++)
+            const int flag = 1 << 16, mask = (1 << 16) - 1;
+            int len = nums.Length;
+            for (int i = 0, num; i < len; i++)
             {
-                nums[(nums[i] & (mask - 1)) - 1] |= mask;
+                num = nums[i] & mask;
+                nums[num - 1] |= flag;
             }
 
             List<int> result = new List<int>();
-            for (int i = 0; i < nums.Length; i++) if ((nums[i] & mask) == 0) result.Add(i + 1);
+            for (int i = 0; i < len; i++)
+            {
+                if ((nums[i] & flag) != flag) result.Add(i + 1);
+            }
 
             return result;
         }
