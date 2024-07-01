@@ -32,11 +32,11 @@ namespace LeetCode.QuestionBank.Question2742
                     done = Math.Min(time[i], n);
                     dp[i + 1, done] = Math.Min(cost[i], dp[i + 1, done]);
                     // 第i个工人与前面所有工人的组合
-                    for (int j = 1; j <= n; j++) if (dp[i, j] != max)
-                        {
-                            done = Math.Min(j + time[i], n);
-                            dp[i + 1, done] = Math.Min(dp[i, j] + cost[i], dp[i + 1, done]);
-                        }
+                    //for (int j = 1; j <= n; j++) if (dp[i, j] != max)
+                    //    {
+                    //        done = Math.Min(j + time[i], n);
+                    //        dp[i + 1, done] = Math.Min(dp[i, j] + cost[i], dp[i + 1, done]);
+                    //    }
                 }
 
             int result = int.MaxValue;
