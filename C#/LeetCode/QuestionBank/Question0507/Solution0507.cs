@@ -24,5 +24,21 @@ namespace LeetCode.QuestionBank.Question0507
 
             return result == num;
         }
+
+        public bool CheckPerfectNumber2(int num)
+        {
+            if (num == 1) return false;
+
+            int sum = 1, boundary = (int)Math.Floor(Math.Sqrt(num));
+            for (int i = 2; i <= boundary; i++)
+            {
+                if (num % i == 0)
+                {
+                    if ((sum += i + num / i) > num) return false;
+                }
+            }
+
+            return sum == num;
+        }
     }
 }
