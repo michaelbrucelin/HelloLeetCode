@@ -34,5 +34,30 @@ namespace LeetCode.QuestionBank.Question0541
             arr[i] = arr[j];
             arr[j] = temp;
         }
+
+        public string ReverseStr2(string s, int k)
+        {
+            char[] chars = s.ToCharArray();
+            int ptr, len = s.Length; bool flag = true;
+            for (ptr = 0; ptr + k - 1 < len; ptr += k, flag = !flag)
+            {
+                if (flag)
+                {
+                    for (int l = ptr, r = ptr + k - 1; l < r; l++, r--)
+                    {
+                        (chars[l], chars[r]) = (chars[r], chars[l]);
+                    }
+                }
+            }
+            if (flag)
+            {
+                for (int l = ptr, r = len - 1; l < r; l++, r--)
+                {
+                    (chars[l], chars[r]) = (chars[r], chars[l]);
+                }
+            }
+
+            return new string(chars);
+        }
     }
 }
