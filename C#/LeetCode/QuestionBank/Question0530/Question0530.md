@@ -10,23 +10,19 @@
 
 ![](./assets/img/Question0530_01.jpg)
 
-```
-输入：root = [4,2,6,1,3]
-输出：1
-```
+> **输入：** root = [4,2,6,1,3]
+> **输出：** 1
 
 **示例 2：**
 
 ![](./assets/img/Question0530_02.jpg)
 
-```
-输入：root = [1,0,48,null,null,12,49]
-输出：1
-```
+> **输入：** root = [1,0,48,null,null,12,49]
+> **输出：** 1
 
 **提示：**
 
--   树中节点的数目范围是 `[2, 10^4]`
--   `0 <= Node.val <= 10^5`
+- 树中节点的数目范围是 `[2, 10^4]`
+- `0 <= Node.val <= 10^5`
 
 **注意：** 本题与 783 [https://leetcode-cn.com/problems/minimum-distance-between-bst-nodes/](https://leetcode-cn.com/problems/minimum-distance-between-bst-nodes/) 相同

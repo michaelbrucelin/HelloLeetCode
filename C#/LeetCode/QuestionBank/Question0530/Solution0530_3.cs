@@ -31,5 +31,22 @@ namespace LeetCode.QuestionBank.Question0530
             prev = root.val;
             dfs(root.right, ref prev, ref result);
         }
+
+        public int GetMinimumDifference2(TreeNode root)
+        {
+            List<int> list = new List<int>();
+            int result = (int)1e5 + 1, last = -(int)1e9 - 1;
+            dfs(root);
+
+            return result;
+
+            void dfs(TreeNode node)
+            {
+                if (node == null) return;
+                dfs(node.left);
+                result = Math.Min(result, node.val - last); last = node.val;
+                dfs(node.right);
+            }
+        }
     }
 }

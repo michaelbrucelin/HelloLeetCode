@@ -11,7 +11,7 @@ namespace LeetCode.QuestionBank.Question0530
     {
         /// <summary>
         /// DFS
-        /// 最小插值一定在一下两种之中间
+        /// 最小插值一定是下面两种情况之一
         ///     根 - 左子树的最右边叶子
         ///     右子树的最左边叶子 - 根
         /// </summary>
