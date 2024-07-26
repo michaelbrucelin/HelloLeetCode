@@ -4,40 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCode.QuestionBank.Question0037
+namespace LeetCode.QuestionBank.Question0036
 {
-    public class Solution0037 : Interface0037
+    public class Solution0036_2 : Interface0036
     {
         /// <summary>
-        /// 回溯
+        /// 模拟
+        /// 逻辑本质上同Solution0036
+        /// Solution0036是遍历3次，使用1个mask记录，这里是遍历1次，使用27个mask记录
+        /// Solution0036是逐行，逐列，逐块去检查，这里是逐个单元格去检查
         /// </summary>
         /// <param name="board"></param>
-        public void SolveSudoku(char[][] board)
-        {
-            SolveSudoku(board, 0);
-        }
-
-        private bool SolveSudoku(char[][] board, int k)
-        {
-            if (k > 80) return true;
-
-            int r = k / 9, c = k % 9;
-            if (board[r][c] != '.') return SolveSudoku(board, k + 1);
-
-            for (char i = '1'; i <= '9'; i++)
-            {
-                board[r][c] = i;
-                if (IsValidSudoku(board))
-                {
-                    if (SolveSudoku(board, k + 1)) return true;
-                }
-            }
-
-            board[r][c] = '.';
-            return false;
-        }
-
-        private bool IsValidSudoku(char[][] board)
+        /// <returns></returns>
+        public bool IsValidSudoku(char[][] board)
         {
             int[,] masks = new int[3, 9];  // 1维 行，2维 列， 2维 块
             int val, mask, p;
