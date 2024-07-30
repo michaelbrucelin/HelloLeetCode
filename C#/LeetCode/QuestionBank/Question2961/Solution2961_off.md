@@ -6,17 +6,17 @@
 
 按题意扫描一遍 $variables$ 数组进行模拟，找到满足要求的下标即可。在模拟时，使用了快速幂算法来计算幂运算。以下是关于快速幂的简单介绍，详细内容可以访问 「[50\. Pow(x, n)](https://leetcode.cn/problems/powx-n/description/)」。
 
-「快速幂算法」的本质是分治算法。举个例子，如果我们要计算 x^64，我们可以按照：
+「快速幂算法」的本质是分治算法。举个例子，如果我们要计算 $x^{64}$，我们可以按照：
 
-$$x \rightarrow x^2 \rightarrow x^4 \rightarrow x^8 \rightarrow x^16 \rightarrow x^32 \rightarrow x^64$$
+$$x \rightarrow x^2 \rightarrow x^4 \rightarrow x^8 \rightarrow x^{16} \rightarrow x^{32} \rightarrow x^{64}$$
 
-的顺序，从 $x$ 开始，每次直接把上一次的结果进行平方，计算 $6$ 次就可以得到 $x^64$ 的值，而不需要对 $x$ 乘 $63$ 次 $x$。
+的顺序，从 $x$ 开始，每次直接把上一次的结果进行平方，计算 $6$ 次就可以得到 $x^{64}$ 的值，而不需要对 $x$ 乘 $63$ 次 $x$。
 
-再举一个例子，如果我们要计算 $x^77$，我们可以按照：
+再举一个例子，如果我们要计算 $x^{77}$，我们可以按照：
 
-$$x \rightarrow x^2 \rightarrow x^4 \rightarrow x^9 \rightarrow x^19 \rightarrow x^38 \rightarrow x^77$$
+$$x \rightarrow x^2 \rightarrow x^4 \rightarrow x^9 \rightarrow x^{19} \rightarrow x^{38} \rightarrow x^{77}$$
 
-的顺序，在 $x \rightarrow x^2$，$x^2 \rightarrow x^4$，$x^19 \rightarrow x^38$ 这些步骤中，我们直接把上一次的结果进行平方，而在 $x^4 \rightarrow x^9$，$x^9 \rightarrow x^19$，$x^38 \rightarrow x^77$ 这些步骤中，我们把上一次的结果进行平方后，还要额外乘一个 $x$。
+的顺序，在 $x \rightarrow x^2$，$x^2 \rightarrow x^4$，$x^{19} \rightarrow x^{38}$ 这些步骤中，我们直接把上一次的结果进行平方，而在 $x^4 \rightarrow x^9$，$x^9 \rightarrow x^{19}$，$x^{38} \rightarrow x^{77}$ 这些步骤中，我们把上一次的结果进行平方后，还要额外乘一个 $x$。
 
 直接从左到右进行推导看上去很困难，因为在每一步中，我们不知道在将上一次的结果平方之后，还需不需要额外乘 $x$。但如果我们从右往左看，分治的思想就十分明显了：
 
