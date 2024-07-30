@@ -12,29 +12,25 @@
 
 **示例 1：**
 
-```
-输入：licensePlate = "1s3 PSt", words = ["step", "steps", "stripe", "stepple"]
-输出："steps"
-解释：最短补全词应该包括 "s"、"p"、"s"（忽略大小写） 以及 "t"。
-"step" 包含 "t"、"p"，但只包含一个 "s"，所以它不符合条件。
-"steps" 包含 "t"、"p" 和两个 "s"。
-"stripe" 缺一个 "s"。
-"stepple" 缺一个 "s"。
-因此，"steps" 是唯一一个包含所有字母的单词，也是本例的答案。
-```
+> 输入：licensePlate = "1s3 PSt", words = ["step", "steps", "stripe", "stepple"]
+> 输出："steps"
+> 解释：最短补全词应该包括 "s"、"p"、"s"（忽略大小写） 以及 "t"。
+> "step" 包含 "t"、"p"，但只包含一个 "s"，所以它不符合条件。
+> "steps" 包含 "t"、"p" 和两个 "s"。
+> "stripe" 缺一个 "s"。
+> "stepple" 缺一个 "s"。
+> 因此，"steps" 是唯一一个包含所有字母的单词，也是本例的答案。
 
 **示例 2：**
 
-```
-输入：licensePlate = "1s3 456", words = ["looks", "pest", "stew", "show"]
-输出："pest"
-解释：licensePlate 只包含字母 "s" 。所有的单词都包含字母 "s" ，其中 "pest"、"stew"、和 "show" 三者最短。答案是 "pest" ，因为它是三个单词中在 words 里最靠前的那个。
-```
+> 输入：licensePlate = "1s3 456", words = ["looks", "pest", "stew", "show"]
+> 输出："pest"
+> 解释：licensePlate 只包含字母 "s" 。所有的单词都包含字母 "s" ，其中 "pest"、"stew"、和 "show" 三者最短。答案是 "pest" ，因为它是三个单词中在 words 里最靠前的那个。
 
 **提示：**
 
--   `1 <= licensePlate.length <= 7`
--   `licensePlate` 由数字、大小写字母或空格 `' '` 组成
--   `1 <= words.length <= 1000`
--   `1 <= words[i].length <= 15`
--   `words[i]` 由小写英文字母组成
+- `1 <= licensePlate.length <= 7`
+- `licensePlate` 由数字、大小写字母或空格 `' '` 组成
+- `1 <= words.length <= 1000`
+- `1 <= words[i].length <= 15`
+- `words[i]` 由小写英文字母组成

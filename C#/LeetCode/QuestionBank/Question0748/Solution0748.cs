@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0748
 {
-    public class Solution0050 : Interface0050
+    public class Solution0748 : Interface0748
     {
         public string ShortestCompletingWord(string licensePlate, string[] words)
         {
