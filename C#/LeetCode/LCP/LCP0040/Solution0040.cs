@@ -15,6 +15,7 @@ namespace LeetCode.LCP.LCP0040
         ///     用其中最小的奇数换其余数字中最大的偶数
         ///     用其中最小的偶数换其余数字中最大的奇数
         /// 优化，选择最大的cnt个数字，可以有排序换成TopK算法
+        ///       观察题目限定的数据范围，可以手写基数排序来代替API中的排序
         /// </summary>
         /// <param name="cards"></param>
         /// <param name="cnt"></param>
@@ -34,7 +35,7 @@ namespace LeetCode.LCP.LCP0040
             }
 
             Array.Sort(cards);
-            for (int i = 0; i < cnt; i++) result += cards[len - i - 1];
+            for (int i = 0; i < cnt; i++) result += cards[len - 1 - i];
             if ((result & 1) != 1) return result;
 
             int result1 = 0, result2 = 0, p, q;
