@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LeetCode.QuestionBank.Question0238
+{
+    public class Solution0238 : Interface0238
+    {
+        public int[] ProductExceptSelf(int[] nums)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
