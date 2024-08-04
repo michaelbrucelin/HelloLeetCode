@@ -10,23 +10,19 @@
 
 ![](./assets/img/Question0572_01.jpg)
 
-```
-输入：root = [3,4,5,1,2], subRoot = [4,1,2]
-输出：true
-```
+> **输入：** root = [3,4,5,1,2], subRoot = [4,1,2]
+> **输出：** true
 
 **示例 2：**
 
 ![](./assets/img/Question0572_02.jpg)
 
-```
-输入：root = [3,4,5,1,2,null,null,null,null,0], subRoot = [4,1,2]
-输出：false
-```
+> **输入：** root = [3,4,5,1,2,null,null,null,null,0], subRoot = [4,1,2]
+> **输出：** false
 
 **提示：**
 
--   `root` 树上的节点数量范围是 `[1, 2000]`
--   `subRoot` 树上的节点数量范围是 `[1, 1000]`
--   `-10^4 <= root.val <= 10^4`
--   `-10^4 <= subRoot.val <= 10^4`
+- `root` 树上的节点数量范围是 `[1, 2000]`
+- `subRoot` 树上的节点数量范围是 `[1, 1000]`
+- `-10^4 <= root.val <= 10^4`
+- `-10^4 <= subRoot.val <= 10^4`
