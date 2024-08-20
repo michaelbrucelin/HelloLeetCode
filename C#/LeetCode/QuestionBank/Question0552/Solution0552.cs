@@ -25,6 +25,32 @@ namespace LeetCode.QuestionBank.Question0552
         public int CheckRecord(int n)
         {
             if (n == 1) return 3;
+
+            const int MOD = (int)1e9 + 7;
+            long[] dp = { 1, 0, 0, 0, 1, 1, 0 }, _dp = new long[7];
+            while (n-- > 1)
+            {
+                _dp[0] = (dp[4] + dp[5] + dp[6]) % MOD;
+                _dp[1] = (dp[0] + dp[1] + dp[2] + dp[3]) % MOD;
+                _dp[2] = (dp[0] + dp[1]) % MOD;
+                _dp[3] = (dp[2]) % MOD;
+                _dp[4] = (dp[4] + dp[5] + dp[6]) % MOD;
+                _dp[5] = (dp[4]) % MOD;
+                _dp[6] = (dp[5]) % MOD;
+                Array.Copy(_dp, dp, 7);
+            }
+
+            return (int)(dp.Sum() % MOD);
+        }
+
+        /// <summary>
+        /// 逻辑与CheckRecord()完全一样，只是从3开始计算
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public int CheckRecord2(int n)
+        {
+            if (n == 1) return 3;
             if (n == 2) return 8;
 
             const int MOD = (int)1e9 + 7;
