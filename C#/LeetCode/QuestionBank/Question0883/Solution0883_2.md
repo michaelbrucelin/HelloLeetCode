@@ -1,4 +1,6 @@
-﻿#### [方法一：数学](https://leetcode.cn/problems/projection-area-of-3d-shapes/solutions/1444594/san-wei-xing-ti-tou-ying-mian-ji-by-leet-d66y/)
+### [三维形体投影面积](https://leetcode.cn/problems/projection-area-of-3d-shapes/solutions/1444594/san-wei-xing-ti-tou-ying-mian-ji-by-leet-d66y/)
+
+#### 方法一：数学
 
 **思路与算法**
 
@@ -6,9 +8,9 @@
 
 因此：
 
--   $xy$ 平面的投影面积等于网格上非零数值的数目；
--   $yz$ 平面的投影面积等于网格上每一列最大数值之和；
--   $zx$ 平面的投影面积等于网格上每一行最大数值之和。
+- $xy$ 平面的投影面积等于网格上非零数值的数目；
+- $yz$ 平面的投影面积等于网格上每一列最大数值之和；
+- $zx$ 平面的投影面积等于网格上每一行最大数值之和。
 
 返回上述三个投影面积之和。
 
@@ -149,5 +151,5 @@ var projectionArea = function(grid) {
 
 **复杂度分析**
 
--   时间复杂度：$O(n^2)$，其中 $n$ 是网格的行数或列数。
--   空间复杂度：$O(1)$。
+- 时间复杂度：$O(n^2)$，其中 $n$ 是网格的行数或列数。
+- 空间复杂度：$O(1)$。
