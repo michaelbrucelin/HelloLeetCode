@@ -1,10 +1,10 @@
-#### [](https://leetcode.cn/problems/partition-to-k-equal-sum-subsets/solution/hua-fen-wei-kge-xiang-deng-de-zi-ji-by-l-v66o//#��������״̬ѹ��-��̬�滮)��������״̬ѹ�� + ��̬�滮
+#### [](https://leetcode.cn/problems/partition-to-k-equal-sum-subsets/solution/hua-fen-wei-kge-xiang-deng-de-zi-ji-by-l-v66o//#方法二：状态压缩-动态规划)方法二：状态压缩 + 动态规划
 
-**˼·���㷨**
+**思路与算法**
 
-����ͬ�������á���̬�滮�����֡��Ե����ϡ��ķ���������Ƿ���ڿ��з�����ͬ��������һ������ S ����ʾ��ǰ���õ����ּ��ϣ��ӵ�λ����λ���� i λΪ 0 ���ʾ���� nums[i] ����ʹ�ã������ʾ nums[i] �ѱ�ʹ�á�Ȼ�������� dp[S] ����ʾ�ڿ��õ�����״̬Ϊ SSS ��������Ƿ���ܿ��У���ʼȫ��״̬Ϊ��¼Ϊ������״̬ False��ֻ�� dp[0]=True Ϊ����״̬��ͬ������ÿ�ζ��ڵ�ǰ״̬�´ӿ��õ�������ѡ��һ�����֣�����ʱѡ��ȫ������ȡģ��С�ڵ��� per����˵��ѡ������ֺ��״̬�ټ����������������ǿ�������������ģ����Ҵ�ʱ���״Ϊ���ܿ���״̬�������һ�����ܴﵽ���㡣���� dp[U] ���ɣ����� U ��ʾȫ������ʹ�õļ���״̬��
+我们同样可以用「动态规划」这种「自底向上」的方法来求解是否存在可行方案：同样我们用一个整数 S 来表示当前可用的数字集合：从低位到高位，第 i 位为 0 则表示数字 nums[i] 可以使用，否则表示 nums[i] 已被使用。然后我们用 dp[S] 来表示在可用的数字状态为 SSS 的情况下是否可能可行，初始全部状态为记录为不可行状态 False，只记 dp[0]=True 为可行状态。同样我们每次对于当前状态下从可用的数字中选择一个数字，若此时选择全部数字取模后小于等于 per。则说明选择该数字后的状态再继续往下添加数字是可能能满足题意的，并且此时标记状为可能可行状态，否则就一定不能达到满足。最终 dp[U] 即可，其中 U 表示全部数字使用的集合状态。
 
-**����**
+**代码**
 
 ```Python
 class Solution:
@@ -32,7 +32,6 @@ class Solution:
                         cursum[next] = (cursum[i] + nums[j]) % per
                         dp[next] = True
         return dp[(1 << n) - 1]
-
 ```
 
 ```Java
@@ -71,10 +70,9 @@ class Solution {
         return dp[(1 << n) - 1];
     }
 }
-
 ```
 
-```C#
+```CSharp
 public class Solution {
     public bool CanPartitionKSubsets(int[] nums, int k) {
         int all = nums.Sum();
@@ -110,7 +108,6 @@ public class Solution {
         return dp[(1 << n) - 1];
     }
 }
-
 ```
 
 ```C++
@@ -150,7 +147,6 @@ public:
         return dp[(1 << n) - 1];
     }
 };
-
 ```
 
 ```C
@@ -198,7 +194,6 @@ bool canPartitionKSubsets(int* nums, int numsSize, int k) {
     free(curSum);
     return res;
 }
-
 ```
 
 ```JavaScript
@@ -235,7 +230,6 @@ var canPartitionKSubsets = function(nums, k) {
     }
     return dp[(1 << n) - 1];
 }
-
 ```
 
 ```Go
@@ -277,10 +271,9 @@ func canPartitionKSubsets(nums []int, k int) bool {
     }
     return dp[1<<n-1]
 }
-
 ```
 
-**���Ӷȷ���**
+**复杂度分析**
 
--   ʱ�临�Ӷȣ�O(n��2^n^)������ n Ϊ���� nums �ĳ��ȣ����� 2^n^ ��״̬��ÿһ��״̬������ n �γ��ԡ�
--   �ռ临�Ӷȣ�O(2^n^)������ n Ϊ���� nums �ĳ��ȣ���ҪΪ״̬����Ŀռ俪����
+- 时间复杂度：O(n×2^n^)，其中 n 为数组 nums 的长度，共有 2^n^ 个状态，每一个状态进行了 n 次尝试。
+- 空间复杂度：O(2^n^)，其中 n 为数组 nums 的长度，主要为状态数组的空间开销。

@@ -18,20 +18,42 @@ namespace LeetCode.QuestionBank.Question0783
         public int MinDiffInBST(TreeNode root)
         {
             List<int> tree = new List<int>();
-            dfs(root, tree);
+            dfs(root);
 
             int result = tree[1] - tree[0];
             for (int i = 2; i < tree.Count; i++) result = Math.Min(result, tree[i] - tree[i - 1]);
 
             return result;
+
+            void dfs(TreeNode node)
+            {
+                if (node == null) return;
+                dfs(node.left);
+                tree.Add(node.val);
+                dfs(node.right);
+            }
         }
 
-        private void dfs(TreeNode node, List<int> tree)
+        /// <summary>
+        /// 同MinDiffInBST()，只是没有保存整个的中序遍历结果
+        /// </summary>
+        /// <param name="root"></param>
+        /// <returns></returns>
+        public int MinDiffInBST2(TreeNode root)
         {
-            if (node == null) return;
-            dfs(node.left, tree);
-            tree.Add(node.val);
-            dfs(node.right, tree);
+            int result = int.MaxValue, pre = -1;
+            dfs(root);
+
+            return result;
+
+            void dfs(TreeNode node)
+            {
+                if (node == null) return;
+                dfs(node.left);
+                if (pre != -1) result = Math.Min(result, node.val - pre);
+                pre = node.val;
+                dfs(node.right);
+            }
         }
     }
 }
