@@ -10,6 +10,34 @@ namespace LeetCode.QuestionBank.Question0824
     {
         public string ToGoatLatin(string sentence)
         {
+            HashSet<char> vowels = new HashSet<char>() { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
+            StringBuilder result = new StringBuilder();
+            int len = sentence.Length, id = 1, p1 = 0, p2;
+            while (p1 < len)
+            {
+                if (p1 != 0) result.Append(" ");
+                p2 = p1;
+                while (p2 < len && sentence[p2] != ' ') p2++;
+                if (vowels.Contains(sentence[p1]))
+                {
+                    result.Append(sentence[p1..p2]);
+                }
+                else
+                {
+                    result.Append(sentence[(p1 + 1)..p2]);
+                    result.Append(sentence[p1]);
+                }
+                result.Append("ma");
+                for (int i = 0; i < id; i++) result.Append('a');
+                p1 = p2 + 1;
+                id++;
+            }
+
+            return result.ToString();
+        }
+
+        public string ToGoatLatin2(string sentence)
+        {
             StringBuilder result = new StringBuilder();
             HashSet<char> vowel = new HashSet<char>() { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
             string[] words = sentence.Split(' '); string word;
