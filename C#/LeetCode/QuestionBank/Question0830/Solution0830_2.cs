@@ -23,7 +23,7 @@ namespace LeetCode.QuestionBank.Question0830
             {
                 if (s[i] != s[i - 1])
                 {
-                    if (len >= 3) result.Add(new int[] { i - len, i - 1 });
+                    if (len >= 3) result.Add([i - len, i - 1]);
                     len = 1;
                 }
                 else
@@ -31,7 +31,7 @@ namespace LeetCode.QuestionBank.Question0830
                     len++;
                 }
             }
-            if (len >= 3) result.Add(new int[] { s.Length - len, s.Length - 1 });
+            if (len >= 3) result.Add([s.Length - len, s.Length - 1]);
 
             return result;
         }
