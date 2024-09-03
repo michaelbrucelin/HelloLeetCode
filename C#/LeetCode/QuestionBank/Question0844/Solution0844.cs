@@ -26,8 +26,8 @@ namespace LeetCode.QuestionBank.Question0844
             {
                 if (t[i] == '#') skip++; else if (skip > 0) skip--; else sb_t.Insert(0, t[i]);
             }
-
             if (sb_s.Length != sb_t.Length) return false;
+
             return sb_s.ToString() == sb_t.ToString();
         }
 
@@ -52,8 +52,8 @@ namespace LeetCode.QuestionBank.Question0844
                 sb = sb_t; str = t; repeat = false;
                 goto Repeat;
             }
-
             if (sb_s.Length != sb_t.Length) return false;
+
             return sb_s.ToString() == sb_t.ToString();
         }
     }

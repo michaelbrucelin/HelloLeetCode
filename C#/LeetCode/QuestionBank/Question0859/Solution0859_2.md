@@ -1,17 +1,19 @@
-#### [·½·¨Ò»£ºÃ¶¾Ù](https://leetcode.cn/problems/buddy-strings/solutions/1090079/qin-mi-zi-fu-chuan-by-leetcode-solution-yyis/)
+### [äº²å¯†å­—ç¬¦ä¸²](https://leetcode.cn/problems/buddy-strings/solutions/1090079/qin-mi-zi-fu-chuan-by-leetcode-solution-yyis/)
 
-**Ë¼Â·ÓëËã·¨**
+#### æ–¹æ³•ä¸€ï¼šæžšä¸¾
 
-ÉèÁ½¸ö×Ö·û´®·Ö±ðÎª $s$ ºÍ $goal$£¬ÆäÖÐ $s[i]$ ±íÊ¾ $s$ µÄµÚ $i$ ¸ö×Ö·û£¬ÆäÖÐ $goal[i]$ ±íÊ¾ $goal$ µÄµÚ $i$ ¸ö×Ö·û¡£Èç¹û $s[i] = goal[i]$£¬ÎÒÃÇ¾ÍËµ $i$ ÊÇÆ¥ÅäµÄ£¬·ñÔò³Æ $i$ ÊÇ²»Æ¥ÅäµÄ¡£Ç×ÃÜ×Ö·û´®¶¨ÒåÎª£ºÐèÒª½»»» $s$ ÖÐµÄµÚ $i$ ¸ö×Ö·û $s[i]$ Óë $s$ ÖÐµÚ $j$ ¸ö×Ö·ûÇÒÂú×ã $i \neq j$£¬½»»»ºó $s$ Óë $goal$ ÏàµÈ¡£Ç×ÃÜ×Ö·û´®µÄÁ½¸ö×Ö·û´®ÐèÒª½»»»Ò»´ÎË÷Òý²»ÏàµÈµÄÁ½¸ö×Ö·ûºóÏàµÈ¡£
+**æ€è·¯ä¸Žç®—æ³•**
 
-Èç¹ûÂú×ã½»»» $s[i]$ ºÍ $s[j]$ ºóÁ½¸ö×Ö·û´®ÏàµÈ£¬ÄÇÃ´ÐèÒªÂú×ãÒÔÏÂ¼¸¸öÌõ¼þÊ¹µÃ $s$ ºÍ $goal$ ÎªÇ×ÃÜ×Ö·û´®£º
+è®¾ä¸¤ä¸ªå­—ç¬¦ä¸²åˆ†åˆ«ä¸º $s$ å’Œ $goal$ï¼Œå…¶ä¸­ $s[i]$ è¡¨ç¤º $s$ çš„ç¬¬ $i$ ä¸ªå­—ç¬¦ï¼Œå…¶ä¸­ $goal[i]$ è¡¨ç¤º $goal$ çš„ç¬¬ $i$ ä¸ªå­—ç¬¦ã€‚å¦‚æžœ $s[i] = goal[i]$ï¼Œæˆ‘ä»¬å°±è¯´ $i$ æ˜¯åŒ¹é…çš„ï¼Œå¦åˆ™ç§° $i$ æ˜¯ä¸åŒ¹é…çš„ã€‚äº²å¯†å­—ç¬¦ä¸²å®šä¹‰ä¸ºï¼šéœ€è¦äº¤æ¢ $s$ ä¸­çš„ç¬¬ $i$ ä¸ªå­—ç¬¦ $s[i]$ ä¸Ž $s$ ä¸­ç¬¬ $j$ ä¸ªå­—ç¬¦ä¸”æ»¡è¶³ $i \neq j$ï¼Œäº¤æ¢åŽ $s$ ä¸Ž $goal$ ç›¸ç­‰ã€‚äº²å¯†å­—ç¬¦ä¸²çš„ä¸¤ä¸ªå­—ç¬¦ä¸²éœ€è¦äº¤æ¢ä¸€æ¬¡ç´¢å¼•ä¸ç›¸ç­‰çš„ä¸¤ä¸ªå­—ç¬¦åŽç›¸ç­‰ã€‚
 
--   ×Ö·û´® $s$ µÄ³¤¶ÈÓë×Ö·û´® $goal$ µÄ³¤¶ÈÏàµÈ£»
--   ´æÔÚ $i \neq j$ ÇÒÂú×ã $s[i] = goal[j]$ ÒÔ¼° $s[j] = goal[i]$£¬Êµ¼ÊÔÚ $s[i], s[j], goal[i], goal[j]$ ÕâËÄ¸ö×ÔÓÉ±äÁ¿ÖÐ£¬Ö»´æÔÚÁ½ÖÖÇé¿ö£º
-    1.  Âú×ã $s[i] = s[j]$£ºÔò´ËÊ±±ØÈ»Âú×ã $s[i] = s[j] = goal[i] = goal[j]$£¬×Ö·û´® $s$ Óë $goal$ ÏàµÈ£¬ÎÒÃÇÓ¦µ±ÄÜ¹»ÔÚ $s$ ÖÐÕÒµ½Á½¸ö²»Í¬µÄË÷Òý $i,j$£¬ÇÒÂú×ã $s[i] = s[j]$£¬Èç¹ûÄÜ¹»ÕÒµ½Á½¸öË÷Òý²»Í¬µ«ÖµÏàµÈµÄ×Ö·ûÔòÂú×ã $s$ Óë $goal$ ÎªÇ×ÃÜ×Ö·û´®£»·ñÔò²»ÎªÇ×ÃÜ×Ö·û´®¡£
-    2.  Âú×ã $s[i] \neq s[j]$£ºÂú×ã $s[i] = goal[j], s[j] = goal[i], s[i] \neq s[j]$ µÄÇé¿öÏÂ£¬Á½¸ö×Ö·û´® $s$ Óë $goal$ ³ýÁËË÷Òý $i,j$ ÒÔÍâµÄ×Ö·û¶¼ÊÇÆ¥ÅäµÄ¡£
+å¦‚æžœæ»¡è¶³äº¤æ¢ $s[i]$ å’Œ $s[j]$ åŽä¸¤ä¸ªå­—ç¬¦ä¸²ç›¸ç­‰ï¼Œé‚£ä¹ˆéœ€è¦æ»¡è¶³ä»¥ä¸‹å‡ ä¸ªæ¡ä»¶ä½¿å¾— $s$ å’Œ $goal$ ä¸ºäº²å¯†å­—ç¬¦ä¸²ï¼š
 
-**´úÂë**
+- å­—ç¬¦ä¸² $s$ çš„é•¿åº¦ä¸Žå­—ç¬¦ä¸² $goal$ çš„é•¿åº¦ç›¸ç­‰ï¼›
+- å­˜åœ¨ $i \neq j$ ä¸”æ»¡è¶³ $s[i] = goal[j]$ ä»¥åŠ $s[j] = goal[i]$ï¼Œå®žé™…åœ¨ $s[i], s[j], goal[i], goal[j]$ è¿™å››ä¸ªè‡ªç”±å˜é‡ä¸­ï¼Œåªå­˜åœ¨ä¸¤ç§æƒ…å†µï¼š
+  1. æ»¡è¶³ $s[i] = s[j]$ï¼šåˆ™æ­¤æ—¶å¿…ç„¶æ»¡è¶³ $s[i] = s[j] = goal[i] = goal[j]$ï¼Œå­—ç¬¦ä¸² $s$ ä¸Ž $goal$ ç›¸ç­‰ï¼Œæˆ‘ä»¬åº”å½“èƒ½å¤Ÿåœ¨ $s$ ä¸­æ‰¾åˆ°ä¸¤ä¸ªä¸åŒçš„ç´¢å¼• $i,j$ï¼Œä¸”æ»¡è¶³ $s[i] = s[j]$ï¼Œå¦‚æžœèƒ½å¤Ÿæ‰¾åˆ°ä¸¤ä¸ªç´¢å¼•ä¸åŒä½†å€¼ç›¸ç­‰çš„å­—ç¬¦åˆ™æ»¡è¶³ $s$ ä¸Ž $goal$ ä¸ºäº²å¯†å­—ç¬¦ä¸²ï¼›å¦åˆ™ä¸ä¸ºäº²å¯†å­—ç¬¦ä¸²ã€‚
+  2. æ»¡è¶³ $s[i] \neq s[j]$ï¼šæ»¡è¶³ $s[i] = goal[j], s[j] = goal[i], s[i] \neq s[j]$ çš„æƒ…å†µä¸‹ï¼Œä¸¤ä¸ªå­—ç¬¦ä¸² $s$ ä¸Ž $goal$ é™¤äº†ç´¢å¼• $i,j$ ä»¥å¤–çš„å­—ç¬¦éƒ½æ˜¯åŒ¹é…çš„ã€‚
+
+**ä»£ç **
 
 ```java
 class Solution {
@@ -200,7 +202,7 @@ var buddyStrings = function(s, goal) {
 };
 ```
 
-**¸´ÔÓ¶È·ÖÎö**
+**å¤æ‚åº¦åˆ†æž**
 
--   Ê±¼ä¸´ÔÓ¶È£º$O(N)$£¬ÆäÖÐ $N$ Îª×Ö·û´®µÄ³¤¶È¡£ÎÒÃÇÖÁ¶à±éÀú×Ö·û´®Á½±é¡£
--   ¿Õ¼ä¸´ÔÓ¶È£º$O(C)$¡£ÐèÒª³£Êý¸ö¿Õ¼ä±£´æ×Ö·û´®µÄ×Ö·ûÍ³¼Æ´ÎÊý£¬ÎÒÃÇÍ³¼ÆËùÓÐÐ¡Ð´×ÖÄ¸µÄ¸öÊý£¬Òò´Ë $C = 26$¡£
+- æ—¶é—´å¤æ‚åº¦ï¼š$O(N)$ï¼Œå…¶ä¸­ $N$ ä¸ºå­—ç¬¦ä¸²çš„é•¿åº¦ã€‚æˆ‘ä»¬è‡³å¤šéåŽ†å­—ç¬¦ä¸²ä¸¤éã€‚
+- ç©ºé—´å¤æ‚åº¦ï¼š$O(C)$ã€‚éœ€è¦å¸¸æ•°ä¸ªç©ºé—´ä¿å­˜å­—ç¬¦ä¸²çš„å­—ç¬¦ç»Ÿè®¡æ¬¡æ•°ï¼Œæˆ‘ä»¬ç»Ÿè®¡æ‰€æœ‰å°å†™å­—æ¯çš„ä¸ªæ•°ï¼Œå› æ­¤ $C = 26$ã€‚

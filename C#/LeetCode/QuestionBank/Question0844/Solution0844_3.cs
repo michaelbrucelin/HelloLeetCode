@@ -31,8 +31,10 @@ namespace LeetCode.QuestionBank.Question0844
                 else
                     stack_t.Push(t[i]);
             }
-
             if (stack_s.Count != stack_t.Count) return false;
+
+            // while (stack_s.Count > 0) if (stack_s.Pop() != stack_t.Pop()) return false;
+            // return true;
             return Enumerable.SequenceEqual<char>(stack_s, stack_t);
         }
 
@@ -61,8 +63,10 @@ namespace LeetCode.QuestionBank.Question0844
                 stack = stack_t; str = t; repeat = false;
                 goto Repeat;
             }
-
             if (stack_s.Count != stack_t.Count) return false;
+
+            // while (stack_s.Count > 0) if (stack_s.Pop() != stack_t.Pop()) return false;
+            // return true;
             return Enumerable.SequenceEqual<char>(stack_s, stack_t);
         }
     }
