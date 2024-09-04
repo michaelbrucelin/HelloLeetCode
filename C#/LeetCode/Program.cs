@@ -8,7 +8,7 @@ using LeetCode.Utilses;
 using System;
 using System.IO;
 using System.Reflection;
-using TestXXXX = LeetCode.QuestionBank.Question2024.Test2024;
+using TestXXXX = LeetCode.QuestionBank.Question2860.Test2860;
 using UtilsXXXX = LeetCode.QuestionBank.Question0698.Utils0698;
 // using TestXXXX = LeetCode.LCP.LCP0051.Test0051;
 // using TestXXXX = LeetCode.LCR.LCR0022.Test0022;
