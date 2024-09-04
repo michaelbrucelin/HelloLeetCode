@@ -10,35 +10,27 @@
 
 **示例 1：**
 
-```
-输入：aliceSizes = [1,1], bobSizes = [2,2]
-输出：[1,2]
-```
+> **输入：** aliceSizes = [1,1], bobSizes = [2,2]
+> **输出：** [1,2]
 
 **示例 2：**
 
-```
-输入：aliceSizes = [1,2], bobSizes = [2,3]
-输出：[1,2]
-```
+> **输入：** aliceSizes = [1,2], bobSizes = [2,3]
+> **输出：** [1,2]
 
 **示例 3：**
 
-```
-输入：aliceSizes = [2], bobSizes = [1,3]
-输出：[2,3]
-```
+> **输入：** aliceSizes = [2], bobSizes = [1,3]
+> **输出：** [2,3]
 
 **示例 4：**
 
-```
-输入：aliceSizes = [1,2,5], bobSizes = [2,4]
-输出：[5,4]
-```
+> **输入：** aliceSizes = [1,2,5], bobSizes = [2,4]
+> **输出：** [5,4]
 
 **提示：**
 
--   `1 <= aliceSizes.length, bobSizes.length <= 10^4`
--   `1 <= aliceSizes[i], bobSizes[j] <= 10^5`
--   爱丽丝和鲍勃的糖果总数量不同。
--   题目数据保证对于给定的输入至少存在一个有效答案。
+- `1 <= aliceSizes.length, bobSizes.length <= 10^4`
+- `1 <= aliceSizes[i], bobSizes[j] <= 10^5`
+- 爱丽丝和鲍勃的糖果总数量不同。
+- 题目数据保证对于给定的输入至少存在一个有效答案。
