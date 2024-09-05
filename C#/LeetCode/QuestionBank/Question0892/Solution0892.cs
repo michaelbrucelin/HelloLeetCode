@@ -26,5 +26,19 @@ namespace LeetCode.QuestionBank.Question0892
 
             return result;
         }
+
+        public int SurfaceArea2(int[][] grid)
+        {
+            int area = 0, n = grid.Length;
+            for (int i = 0; i < n; i++) for (int j = 0; j < n; j++) if (grid[i][j] > 0)
+                    {
+                        area += 2;                                                                           // 上下
+                        area += grid[i][j] << 2;                                                             // 4个侧边
+                        if (i > 0 && grid[i - 1][j] > 0) area -= Math.Min(grid[i][j], grid[i - 1][j]) << 1;  // 上边重叠
+                        if (j > 0 && grid[i][j - 1] > 0) area -= Math.Min(grid[i][j], grid[i][j - 1]) << 1;  // 左边重叠
+                    }
+
+            return area;
+        }
     }
 }
