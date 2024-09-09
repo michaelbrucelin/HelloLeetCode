@@ -11,7 +11,7 @@ namespace LeetCode.QuestionBank.Question2181
         public ListNode MergeNodes(ListNode head)
         {
             ListNode dummy = new ListNode();
-            ListNode prev = dummy, ptr = head;  // 节点数 >= 3
+            ListNode prev = dummy, ptr = head.next;  // 节点数 >= 3
             int val = 0;
             while (ptr != null)
             {
@@ -26,7 +26,7 @@ namespace LeetCode.QuestionBank.Question2181
                 ptr = ptr.next;
             }
 
-            return dummy.next.next;
+            return dummy.next;
         }
     }
 }
