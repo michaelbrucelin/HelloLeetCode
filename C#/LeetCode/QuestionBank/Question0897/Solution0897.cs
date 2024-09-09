@@ -36,5 +36,27 @@ namespace LeetCode.QuestionBank.Question0897
             list.Add(root);
             rec(root.right, list);
         }
+
+        public TreeNode IncreasingBST2(TreeNode root)
+        {
+            List<TreeNode> list = new List<TreeNode>();
+            dfs(root);
+
+            for (int i = 1; i < list.Count; i++)
+            {
+                list[i - 1].left = null; list[i - 1].right = list[i];
+            }
+            list[^1].left = null; list[^1].right = null;
+
+            return list[0];
+
+            void dfs(TreeNode node)
+            {
+                if (node == null) return;
+                dfs(node.left);
+                list.Add(node);
+                dfs(node.right);
+            }
+        }
     }
 }
