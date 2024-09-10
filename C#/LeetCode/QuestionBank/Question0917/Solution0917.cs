@@ -19,9 +19,9 @@ namespace LeetCode.QuestionBank.Question0917
             int i = -1, j = s.Length; char t;
             while (++i < --j)
             {
-                while (i < j && !char.IsLetter(chars[i])) i++;
+                while (i < j && !char.IsAsciiLetter(chars[i])) i++;
                 if (i == j) break;
-                while (j > i && !char.IsLetter(chars[j])) j--;
+                while (j > i && !char.IsAsciiLetter(chars[j])) j--;
                 if (j == i) break;
 
                 t = chars[i]; chars[i] = chars[j]; chars[j] = t;
