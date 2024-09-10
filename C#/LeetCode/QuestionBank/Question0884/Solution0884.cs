@@ -175,20 +175,5 @@ namespace LeetCode.QuestionBank.Question0884
 
             return dic.Where(kv => kv.Value == 1).Select(kv => kv.Key).ToArray();
         }
-
-        /// <summary>
-        /// 使用API
-        /// </summary>
-        /// <param name="s1"></param>
-        /// <param name="s2"></param>
-        /// <returns></returns>
-        public string[] UncommonFromSentences5(string s1, string s2)
-        {
-            return s1.Split(' ').Concat(s2.Split(" "))
-                     .GroupBy(str => str)
-                     .Where(g => g.Count() == 1)
-                     .Select(g => g.Key)
-                     .ToArray();
-        }
     }
 }
