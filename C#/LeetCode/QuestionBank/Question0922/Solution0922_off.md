@@ -1,4 +1,6 @@
-#### [方法一：两次遍历](https://leetcode.cn/problems/sort-array-by-parity-ii/solutions/481450/an-qi-ou-pai-xu-shu-zu-ii-by-leetcode-solution/)
+### [按奇偶排序数组 II](https://leetcode.cn/problems/sort-array-by-parity-ii/solutions/481450/an-qi-ou-pai-xu-shu-zu-ii-by-leetcode-solution/)
+
+#### 方法一：两次遍历
 
 **思路和算法**
 
@@ -126,10 +128,10 @@ func sortArrayByParityII(nums []int) []int {
 
 **复杂度分析**
 
--   时间复杂度：$O(N)$，其中 $N$ 是数组 $nums$ 的长度。
--   空间复杂度：$O(1)$。注意在这里我们不考虑输出数组的空间占用。
+- 时间复杂度：$O(N)$，其中 $N$ 是数组 $nums$ 的长度。
+- 空间复杂度：$O(1)$。注意在这里我们不考虑输出数组的空间占用。
 
-#### [方法二：双指针](https://leetcode.cn/problems/sort-array-by-parity-ii/solutions/481450/an-qi-ou-pai-xu-shu-zu-ii-by-leetcode-solution/)
+#### 方法二：双指针
 
 **思路与算法**
 
@@ -238,5 +240,5 @@ func sortArrayByParityII(nums []int) []int {
 
 **复杂度分析**
 
--   时间复杂度：$O(N)$，其中 $N$ 是数组 $nums$ 的长度。
--   空间复杂度：$O(1)$。
+- 时间复杂度：$O(N)$，其中 $N$ 是数组 $nums$ 的长度。
+- 空间复杂度：$O(1)$。
