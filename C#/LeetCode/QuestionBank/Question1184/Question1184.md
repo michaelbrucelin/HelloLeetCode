@@ -12,35 +12,29 @@
 
 ![](./assets/img/Question1184_01.jpg)
 
-```
-输入：distance = [1,2,3,4], start = 0, destination = 1
-输出：1
-解释：公交站 0 和 1 之间的距离是 1 或 9，最小值是 1。
-```
+> **输入：** distance = [1,2,3,4], start = 0, destination = 1
+> **输出：** 1
+> **解释：** 公交站 0 和 1 之间的距离是 1 或 9，最小值是 1。
 
 **示例 2：**
 
 ![](./assets/img/Question1184_02.jpg)
 
-```
-输入：distance = [1,2,3,4], start = 0, destination = 2
-输出：3
-解释：公交站 0 和 2 之间的距离是 3 或 7，最小值是 3。
-```
+> **输入：** distance = [1,2,3,4], start = 0, destination = 2
+> **输出：** 3
+> **解释：** 公交站 0 和 2 之间的距离是 3 或 7，最小值是 3。
 
 **示例 3：**
 
 ![](./assets/img/Question1184_03.jpg)
 
-```
-输入：distance = [1,2,3,4], start = 0, destination = 3
-输出：4
-解释：公交站 0 和 3 之间的距离是 6 或 4，最小值是 4。
-```
+> **输入：** distance = [1,2,3,4], start = 0, destination = 3
+> **输出：** 4
+> **解释：** 公交站 0 和 3 之间的距离是 6 或 4，最小值是 4。
 
 **提示：**
 
--   `1 <= n <= 10^4`
--   `distance.length == n`
--   `0 <= start, destination < n`
--   `0 <= distance[i] <= 10^4`
+- `1 <= n <= 10^4`
+- `distance.length == n`
+- `0 <= start, destination < n`
+- `0 <= distance[i] <= 10^4`
