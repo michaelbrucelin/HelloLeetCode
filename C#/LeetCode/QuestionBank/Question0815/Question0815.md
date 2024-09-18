@@ -25,7 +25,7 @@
 
 - <code>1 <= routes.length <= 500</code>
 - <code>1 <= routes[i].length <= 10<sup>5</sup></code>
-- <code>routes[i]` 中的所有值 **互不相同*</code>
+- `routes[i]` 中的所有值 **互不相同**
 - <code>sum(routes[i].length) <= 10<sup>5</sup></code>
 - <code>0 <= routes[i][j] < 10<sup>6</sup></code>
 - <code>0 <= source, target < 10<sup>6</sup></code>
