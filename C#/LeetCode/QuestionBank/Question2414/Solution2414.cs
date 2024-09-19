@@ -32,5 +32,23 @@ namespace LeetCode.QuestionBank.Question2414
 
             return result;
         }
+
+        public int LongestContinuousSubstring2(string s)
+        {
+            int result = 1, dp = 1, len = s.Length;
+            for (int i = 1; i < len; i++)
+            {
+                if (s[i] - s[i - 1] == 1)
+                {
+                    if ((result = Math.Max(result, ++dp)) == 26) break;
+                }
+                else
+                {
+                    dp = 1;
+                }
+            }
+
+            return result;
+        }
     }
 }
