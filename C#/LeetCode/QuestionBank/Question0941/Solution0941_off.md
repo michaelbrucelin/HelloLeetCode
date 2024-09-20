@@ -148,5 +148,5 @@ bool validMountainArray(int* arr, int arrSize) {
 
 **复杂度分析**
 
--   时间复杂度：$O(N)$，其中 $N$ 是数组 $arr$ 的长度。
--   空间复杂度：$O(1)$。
+- 时间复杂度：$O(N)$，其中 $N$ 是数组 $arr$ 的长度。
+- 空间复杂度：$O(1)$。
