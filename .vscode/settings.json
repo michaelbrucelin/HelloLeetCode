@@ -2,5 +2,5 @@
     "mssql.resultsFontSize": 14,
     "scm.inputFontSize": 14,
     "markdown-preview-enhanced.automaticallyShowPreviewOfMarkdownBeingEdited": true,
-    "markdown-preview-enhanced.imageFolderPath": ""
+    "markdown-preview-enhanced.imageFolderPath": "/assets"
 }

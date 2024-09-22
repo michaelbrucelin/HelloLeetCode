@@ -142,5 +142,5 @@ func findJudge(n int, trust [][]int) int {
 
 **复杂度分析**
 
--   时间复杂度：$O(n+m)$，其中 $m$ 是 $trust$ 的长度。首先需要遍历 $trust$ 计算出 $inDegrees$ 和 $outDegrees$，然后需要遍历 $inDegrees$ 和 $outDegrees$ 来确定法官。
--   空间复杂度：$O(n)$。记录各个节点的入度和出度需要 $O(n)$ 的空间。
+- 时间复杂度：$O(n+m)$，其中 $m$ 是 $trust$ 的长度。首先需要遍历 $trust$ 计算出 $inDegrees$ 和 $outDegrees$，然后需要遍历 $inDegrees$ 和 $outDegrees$ 来确定法官。
+- 空间复杂度：$O(n)$。记录各个节点的入度和出度需要 $O(n)$ 的空间。
