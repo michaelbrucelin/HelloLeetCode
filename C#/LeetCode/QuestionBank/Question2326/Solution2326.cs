@@ -9,7 +9,14 @@ namespace LeetCode.QuestionBank.Question2326
     public class Solution2326 : Interface2326
     {
         /// <summary>
-        /// 模拟
+        /// 模拟，状态机
+        /// 定义上、右、下、左四个边界分别为up, right, down, left
+        /// 1. 向右，r取[up, up]，    c取[left, right]， 完后，up++；
+        /// 2. 向下，r取[up, down]，  c取[right, right]，完后，right--；
+        /// 3. 向左，r取[down, down]，c取[right, left]， 完后，down--；
+        /// 4. 向上，r取[down, up]，  c取[left, left]，  完后，left++；
+        /// 1, 2, 3, 4这4个步骤循环执行即可
+        /// 由于C#中没有指针，所以可以考虑将up, right, down, left放入数组，这样就方便定义状态机了
         /// </summary>
         /// <param name="m"></param>
         /// <param name="n"></param>
