@@ -42,5 +42,20 @@ namespace LeetCode.QuestionBank.Question2535
 
             return sum_n - sum_d;
         }
+
+        public int DifferenceOfSum3(int[] nums)
+        {
+            int result = 0, _num;
+            foreach (int num in nums)
+            {
+                result += (_num = num);
+                while (_num > 0)
+                {
+                    result -= _num % 10; _num /= 10;
+                }
+            }
+
+            return result;
+        }
     }
 }
