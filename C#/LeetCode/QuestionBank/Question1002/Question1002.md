@@ -1,25 +1,21 @@
-#### [1002\. ²éÕÒ¹²ÓÃ×Ö·û](https://leetcode.cn/problems/find-common-characters/)
+### [1002\. æŸ¥æ‰¾å…±ç”¨å­—ç¬¦](https://leetcode.cn/problems/find-common-characters/)
 
-ÄÑ¶È£º¼òµ¥
+éš¾åº¦ï¼šç®€å•
 
-¸øÄãÒ»¸ö×Ö·û´®Êý×é `words` £¬ÇëÄãÕÒ³öËùÓÐÔÚ `words` µÄÃ¿¸ö×Ö·û´®ÖÐ¶¼³öÏÖµÄ¹²ÓÃ×Ö·û£¨ **°üÀ¨ÖØ¸´×Ö·û**£©£¬²¢ÒÔÊý×éÐÎÊ½·µ»Ø¡£Äã¿ÉÒÔ°´ **ÈÎÒâË³Ðò** ·µ»Ø´ð°¸¡£
+ç»™ä½ ä¸€ä¸ªå­—ç¬¦ä¸²æ•°ç»„ `words` ï¼Œè¯·ä½ æ‰¾å‡ºæ‰€æœ‰åœ¨ `words` çš„æ¯ä¸ªå­—ç¬¦ä¸²ä¸­éƒ½å‡ºçŽ°çš„å…±ç”¨å­—ç¬¦ï¼ˆ **åŒ…æ‹¬é‡å¤å­—ç¬¦**ï¼‰ï¼Œå¹¶ä»¥æ•°ç»„å½¢å¼è¿”å›žã€‚ä½ å¯ä»¥æŒ‰ **ä»»æ„é¡ºåº** è¿”å›žç­”æ¡ˆã€‚
 
-**Ê¾Àý 1£º**
+**ç¤ºä¾‹ 1ï¼š**
 
-```
-ÊäÈë£ºwords = ["bella","label","roller"]
-Êä³ö£º["e","l","l"]
-```
+> **è¾“å…¥ï¼š** words = ["bella","label","roller"]
+> **è¾“å‡ºï¼š** ["e","l","l"]
 
-**Ê¾Àý 2£º**
+**ç¤ºä¾‹ 2ï¼š**
 
-```
-ÊäÈë£ºwords = ["cool","lock","cook"]
-Êä³ö£º["c","o"]
-```
+> **è¾“å…¥ï¼š** words = ["cool","lock","cook"]
+> **è¾“å‡ºï¼š** ["c","o"]
 
-**ÌáÊ¾£º**
+**æç¤ºï¼š**
 
--   `1 <= words.length <= 100`
--   `1 <= words[i].length <= 100`
--   `words[i]` ÓÉÐ¡Ð´Ó¢ÎÄ×ÖÄ¸×é³É
+- `1 <= words.length <= 100`
+- `1 <= words[i].length <= 100`
+- `words[i]` ç”±å°å†™è‹±æ–‡å­—æ¯ç»„æˆ

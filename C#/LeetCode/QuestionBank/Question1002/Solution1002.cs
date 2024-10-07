@@ -30,16 +30,19 @@ namespace LeetCode.QuestionBank.Question1002
 
         public IList<string> CommonChars2(string[] words)
         {
-            if (words.Length == 1) return words[0].Select(c => $"{c}").ToArray();
+            int[] freq = new int[26], _freq = new int[26];
+            int len = words.Length;
+            Array.Fill(freq, int.MaxValue);
+            foreach (string word in words)
+            {
+                Array.Fill(_freq, 0);
+                foreach (char c in word) _freq[c - 'a']++;
+                for (int i = 0; i < 26; i++) freq[i] = Math.Min(freq[i], _freq[i]);
+            }
 
-            var freqs = words.Select(s => s.GroupBy(c => c).ToDictionary(g => g.Key, g => g.Count())).ToArray();
-            return freqs.Select(dic => (IEnumerable<char>)dic.Keys)
-                        .Aggregate((arr1, arr2) => arr1.Intersect(arr2))
-                        .Select(c => new string(c, freqs.Select(dic => dic[c]).Min()))
-                        .DefaultIfEmpty(string.Empty)
-                        .Aggregate((s1, s2) => $"{s1}{s2}")
-                        .Select(c => $"{c}")
-                        .ToArray();
+            List<string> result = new List<string>();
+            for (int i = 0; i < 26; i++) for (int j = 0; j < freq[i]; j++) result.Add($"{(char)(i + 'a')}");
+            return result;
         }
     }
 }
