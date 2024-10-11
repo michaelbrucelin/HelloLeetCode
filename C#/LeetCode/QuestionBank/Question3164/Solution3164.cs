@@ -34,7 +34,7 @@ namespace LeetCode.QuestionBank.Question3164
                 if (freq2.ContainsKey(num)) freq2[num]++; else freq2.Add(num, 1);
             }
 
-            foreach (int num in nums2)
+            foreach (int num in freq2.Keys)
             {
                 key = num;
                 for (int i = 1; (key = num * i) <= max; i++) if (freq1.ContainsKey(key))
