@@ -35,5 +35,27 @@ namespace LeetCode.QuestionBank.Question1022
                 dfs(node.right, curr, ref result);
             }
         }
+
+        public int SumRootToLeaf2(TreeNode root)
+        {
+            int result = 0;
+            dfs(root, root.val);
+
+            return result;
+
+            void dfs(TreeNode node, int curr)
+            {
+                if (node.left == null && node.right == null)
+                {
+                    result += curr;
+                }
+                else
+                {
+                    curr <<= 1;
+                    if (node.left != null) dfs(node.left, curr + node.left.val);
+                    if (node.right != null) dfs(node.right, curr + node.right.val);
+                }
+            }
+        }
     }
 }
