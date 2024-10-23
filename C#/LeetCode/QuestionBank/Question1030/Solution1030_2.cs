@@ -37,5 +37,23 @@ namespace LeetCode.QuestionBank.Question1030
 
             return result;
         }
+
+        public int[][] AllCellsDistOrder2(int rows, int cols, int rCenter, int cCenter)
+        {
+            int[][] result = new int[rows * cols][];
+            int maxdist = Math.Max(rCenter, rows - rCenter - 1) + Math.Max(cCenter, cols - cCenter - 1);
+            List<int[]>[] buffer = new List<int[]>[maxdist + 1];
+            for (int i = 0; i <= maxdist; i++) buffer[i] = new List<int[]>();
+            for (int r = 0; r < rows; r++) for (int c = 0; c < cols; c++)
+                {
+                    buffer[Math.Abs(r - rCenter) + Math.Abs(c - cCenter)].Add(new int[] { r, c });
+                }
+
+            int id = 0;
+            for (int i = 0; i <= maxdist; i++) for (int j = 0; j < buffer[i].Count; j++)
+                    result[id++] = buffer[i][j];
+
+            return result;
+        }
     }
 }
