@@ -38,7 +38,7 @@ namespace LeetCode.QuestionBank.Question1005
                 {
                     nums[i] = -nums[i];
                 }
-                else  //  if (i < len)
+                else  // if (i < len)
                 {
                     nums[i - 1] = -nums[i - 1];
                 }
