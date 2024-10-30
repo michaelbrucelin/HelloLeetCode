@@ -25,5 +25,17 @@ namespace LeetCode.QuestionBank.Question3216
 
             return $"{s[0..(p - 1)]}{s[p]}{s[p - 1]}{s[(p + 1)..]}";
         }
+
+        public string GetSmallestString2(string s)
+        {
+            int p = 0, len = s.Length;
+            while (++p < len)
+            {
+                if (s[p] < s[p - 1] && ((s[p] ^ s[p - 1]) & 1) == 0) break;
+            }
+            if (p == len) return s;
+
+            return $"{s[0..(p - 1)]}{s[p]}{s[p - 1]}{s[(p + 1)..]}";
+        }
     }
 }
