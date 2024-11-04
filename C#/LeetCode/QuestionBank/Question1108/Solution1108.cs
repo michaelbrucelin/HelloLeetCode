@@ -31,12 +31,23 @@ namespace LeetCode.QuestionBank.Question1108
 
         public string DefangIPaddr2(string address)
         {
-            return address.Replace(".", "[.]");
-        }
+            int len = address.Length;
+            char[] chars = new char[len + 6];
+            for (int i = 0, j = 0; i < len; i++)
+            {
+                if (address[i] != '.')
+                {
+                    chars[j++] = address[i];
+                }
+                else
+                {
+                    chars[j++] = '[';
+                    chars[j++] = '.';
+                    chars[j++] = ']';
+                }
+            }
 
-        public string DefangIPaddr3(string address)
-        {
-            return string.Join("[.]", address.Split('.'));
+            return new string(chars);
         }
     }
 }
