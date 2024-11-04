@@ -53,7 +53,7 @@ namespace LeetCode.QuestionBank.Question0638
                     {
                         for (int j = 0; j < n; j++) needs[j] -= special[pos][j] * i;
                         dfs(pos + 1, cost + special[pos][^1] * i);
-                        for (int j = 0; j < n; j++) needs[j] += special[pos][j] * i;
+                        for (int j = 0; j < n; j++) needs[j] += special[pos][j] * i;  // 回溯
                     }
                 }
             }
