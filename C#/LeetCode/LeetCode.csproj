@@ -35,7 +35,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="D:\我的代码\github\HelloLeetCode\C#\LeetCode\QuestionBank\Question1617\.editorconfig" />
+    <None Include="C:\Users\Administrator\数据\Data\MyCode\github\HelloLeetCode\C#\LeetCode\QuestionBank\Question3254\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\Administrator\数据\Data\MyCode\github\HelloLeetCode\C#\LeetCode\QuestionBank\Question3254\.editorconfig" />
   </ItemGroup>
 
 </Project>
