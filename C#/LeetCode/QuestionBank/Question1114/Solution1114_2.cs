@@ -2,49 +2,44 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1114
 {
-    public class Foo : Interface1114
+    public class Solution1114_2
     {
+    }
 
-        public Foo()
+    public class Foo_2 : Interface1114
+    {
+        public Foo_2()
         {
-            this.state = 0;
+            flags = new bool[3];
         }
 
-        private static readonly object LOCK = new object();
-        private int state;  // 初始值：0，1表示执行完First()，2表示执行完Second()，3表示执行完Third()
+        private bool[] flags;
 
         public void First(Action printFirst)
         {
-
             // printFirst() outputs "first". Do not change or remove this line.
             printFirst();
-
-            this.state = 1;
+            flags[0] = true;
         }
 
         public void Second(Action printSecond)
         {
-            while (state != 1) Thread.Sleep(10);
-
+            while (!flags[0]) ;
             // printSecond() outputs "second". Do not change or remove this line.
             printSecond();
-
-            this.state = 2;
+            flags[1] = true;
         }
 
         public void Third(Action printThird)
         {
-            while (state != 2) Thread.Sleep(10);
-
+            while (!flags[1]) ;
             // printThird() outputs "third". Do not change or remove this line.
             printThird();
-
-            this.state = 3;
+            flags[2] = true;
         }
     }
 }
