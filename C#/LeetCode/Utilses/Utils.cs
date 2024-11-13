@@ -340,8 +340,9 @@ namespace LeetCode.Utilses
 
             sb.Append("[ ");
             sb.Append(list[0].ToString().PadLeft(width, ' '));
-            for (int i = 1; i < list.Count; i++)
+            for (int i = 1; i < Math.Min(8, list.Count); i++)
                 sb.Append($", {list[i].ToString().PadLeft(width, ' ')}");
+            if (list.Count > 8) sb.Append(", ...");
             sb.Append(" ]");
 
             return sb.ToString();
@@ -365,8 +366,9 @@ namespace LeetCode.Utilses
 
             sb.Append("[ ");
             sb.Append(list[start].ToString().PadLeft(width, ' '));
-            for (int i = start + 1; i < len; i++)
+            for (int i = start + 1; i < Math.Min(8, len); i++)
                 sb.Append($", {list[i].ToString().PadLeft(width, ' ')}");
+            if (list.Count > 8) sb.Append(", ...");
             sb.Append(" ]");
 
             return sb.ToString();
@@ -389,7 +391,9 @@ namespace LeetCode.Utilses
             sb.Append("[ ");
             sb.Append($"{ToString(list[0])}, "); if (multiline) sb.Append(Environment.NewLine);
             for (int i = 1; i < list.Count - 1; i++)
-            { if (multiline) sb.Append("  "); sb.Append($"{ToString(list[i])}, "); if (multiline) sb.Append(Environment.NewLine); }
+            {
+                if (multiline) sb.Append("  "); sb.Append($"{ToString(list[i])}, "); if (multiline) sb.Append(Environment.NewLine);
+            }
             if (multiline) sb.Append("  "); sb.Append($"{ToString(list[list.Count - 1])}");
             sb.Append(" ]");
 
@@ -413,7 +417,9 @@ namespace LeetCode.Utilses
             sb.Append("[ ");
             sb.Append($"{ToString(list[0], width)}, "); if (multiline) sb.Append(Environment.NewLine);
             for (int i = 1; i < list.Count - 1; i++)
-            { if (multiline) sb.Append("  "); sb.Append($"{ToString(list[i], width)}, "); if (multiline) sb.Append(Environment.NewLine); }
+            {
+                if (multiline) sb.Append("  "); sb.Append($"{ToString(list[i], width)}, "); if (multiline) sb.Append(Environment.NewLine);
+            }
             if (multiline) sb.Append("  "); sb.Append($"{ToString(list[list.Count - 1], width)}");
             sb.Append(" ]");
 
