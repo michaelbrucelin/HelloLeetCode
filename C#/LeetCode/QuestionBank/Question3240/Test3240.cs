@@ -10,7 +10,7 @@ namespace LeetCode.QuestionBank.Question3240
     {
         public void Test()
         {
-            Interface3240 solution = new Solution3240_err();
+            Interface3240 solution = new Solution3240();
             int[][] grid;
             int result, answer;
             int id = 0;
@@ -36,6 +36,12 @@ namespace LeetCode.QuestionBank.Question3240
             // 4. 
             grid = [[0, 0, 1], [1, 1, 0], [1, 1, 1], [0, 1, 1]];
             answer = 4;
+            result = solution.MinFlips(grid);
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            // 5. 
+            grid = [[0], [1], [1], [1], [1]];
+            answer = 2;
             result = solution.MinFlips(grid);
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
         }
