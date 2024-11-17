@@ -25,7 +25,7 @@ namespace LeetCode.QuestionBank.Question1137
             int[,] unit = { { 1, 1, 1 }, { 1, 0, 0 }, { 0, 1, 0 } };
             int[,] k;
             int power = n - 2;
-            k = (power & 1) == 1 ? new int[3, 3] { { 1, 1, 1 }, { 1, 0, 0 }, { 0, 1, 0 } } : new int[3, 3] { { 1, 0, 0 }, { 1, 0, 0 }, { 0, 0, 1 } };
+            k = (power & 1) == 1 ? new int[3, 3] { { 1, 1, 1 }, { 1, 0, 0 }, { 0, 1, 0 } } : new int[3, 3] { { 1, 0, 0 }, { 0, 1, 0 }, { 0, 0, 1 } };
             power >>= 1;
             while (power != 0)
             {
