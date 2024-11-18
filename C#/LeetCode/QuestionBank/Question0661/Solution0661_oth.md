@@ -1,6 +1,6 @@
-#### [【宫水三叶】一题双解 :「模拟」&「前缀和」](https://leetcode.cn/problems/image-smoother/solutions/1363215/by-ac_oier-nn3v/)
+### [【宫水三叶】一题双解 :「模拟」&「前缀和」](https://leetcode.cn/problems/image-smoother/solutions/1363215/by-ac_oier-nn3v/)
 
-#### [朴素解法](https://leetcode.cn/problems/image-smoother/solutions/1363215/by-ac_oier-nn3v/)
+#### 朴素解法
 
 为了方便，我们称每个单元格及其八连通方向单元格所组成的连通块为一个 `item`。
 
@@ -46,11 +46,11 @@ class Solution:
         return ans
 ```
 
--   时间复杂度：$O(m \times n \times C)$，其中 $C$ 为灰度单位所包含的单元格数量，固定为 $9$
--   空间复杂度：$O(m \times n)$
+- 时间复杂度：$O(m \times n \times C)$，其中 $C$ 为灰度单位所包含的单元格数量，固定为 $9$
+- 空间复杂度：$O(m \times n)$
 ___
 
-#### [前缀和](https://leetcode.cn/problems/image-smoother/solutions/1363215/by-ac_oier-nn3v/)
+#### 前缀和
 
 在朴素解法中，对于每个 $ans[i][j]$ 我们都不可避免的遍历 $8$ 联通方向，而利用「前缀和」我们可以对该操作进行优化。
 
@@ -104,5 +104,5 @@ class Solution:
         return ans
 ```
 
--   时间复杂度：$O(m \times n)$
--   空间复杂度：$O(m \times n)$
+- 时间复杂度：$O(m \times n)$
+- 空间复杂度：$O(m \times n)$

@@ -38,5 +38,33 @@ namespace LeetCode.QuestionBank.Question0661
 
             return result;
         }
+
+        /// <summary>
+        /// 前缀和
+        /// 20241118
+        /// </summary>
+        /// <param name="img"></param>
+        /// <returns></returns>
+        public int[][] ImageSmoother2(int[][] img)
+        {
+            int rcnt = img.Length, ccnt = img[0].Length;
+            int[,] pre = new int[rcnt + 1, ccnt + 1];
+            for (int r = 0; r < rcnt; r++) for (int c = 0; c < ccnt; c++)
+                {
+                    pre[r + 1, c + 1] = img[r][c] + pre[r, c + 1] + pre[r + 1, c] - pre[r, c];
+                }
+
+            int[][] result = new int[rcnt][];
+            for (int r = 0; r < rcnt; r++) result[r] = new int[ccnt];
+            int r1, r2, c1, c2;
+            for (int r = 0; r < rcnt; r++) for (int c = 0; c < ccnt; c++)
+                {
+                    r1 = Math.Max(r - 1, 0); r2 = Math.Min(r + 2, rcnt);
+                    c1 = Math.Max(c - 1, 0); c2 = Math.Min(c + 2, ccnt);
+                    result[r][c] = (pre[r2, c2] - pre[r1, c2] - pre[r2, c1] + pre[r1, c1]) / ((r2 - r1) * (c2 - c1));
+                }
+
+            return result;
+        }
     }
 }

@@ -23,5 +23,18 @@ namespace LeetCode.QuestionBank.Question1207
 
             return true;
         }
+
+        public bool UniqueOccurrences2(int[] arr)
+        {
+            int[] freq = new int[2001];
+            foreach (int num in arr) freq[num + 1000]++;
+            HashSet<int> set = new HashSet<int>();
+            for (int i = 0; i < 2001; i++) if (freq[i] > 0)
+                {
+                    if (set.Contains(freq[i])) return false; else set.Add(freq[i]);
+                }
+
+            return true;
+        }
     }
 }

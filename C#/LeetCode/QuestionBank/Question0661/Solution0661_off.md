@@ -1,4 +1,6 @@
-#### [方法一：遍历](https://leetcode.cn/problems/image-smoother/solutions/1358687/tu-pian-ping-hua-qi-by-leetcode-solution-9oi5/)
+### [图片平滑器]](https://leetcode.cn/problems/image-smoother/solutions/1358687/tu-pian-ping-hua-qi-by-leetcode-solution-9oi5/)
+
+#### 方法一：遍历
 
 **思路和算法**
 
@@ -188,5 +190,5 @@ func min(a, b int) int {
 
 **复杂度分析**
 
--   时间复杂度：$O(mnC^2)$，其中 $m$ 为给定矩阵的行数，$n$ 为给定矩阵的列数，$C=3$ 为过滤器的宽高。我们需要遍历整个矩阵以计算每个位置的值，计算单个位置的值的时间复杂度为 $O(C^2)$。
--   空间复杂度：$O(1)$。注意返回值不计入空间复杂度。
+- 时间复杂度：$O(mnC^2)$，其中 $m$ 为给定矩阵的行数，$n$ 为给定矩阵的列数，$C=3$ 为过滤器的宽高。我们需要遍历整个矩阵以计算每个位置的值，计算单个位置的值的时间复杂度为 $O(C^2)$。
+- 空间复杂度：$O(1)$。注意返回值不计入空间复杂度。

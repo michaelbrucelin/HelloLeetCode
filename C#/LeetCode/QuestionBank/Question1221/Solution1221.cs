@@ -47,5 +47,18 @@ namespace LeetCode.QuestionBank.Question1221
 
             return result;
         }
+
+        public int BalancedStringSplit3(string s)
+        {
+            int result = 0;
+            int[] cnts = new int[3];
+            foreach (char c in s)
+            {
+                cnts[c & 3]++;
+                if (cnts[0] == cnts[2]) result++;
+            }
+
+            return result;
+        }
     }
 }
