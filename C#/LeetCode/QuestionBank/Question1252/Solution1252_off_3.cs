@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1252
 {
-    public class Solution1252_2 : Interface1252
+    public class Solution1252_off_3 : Interface1252
     {
         /// <summary>
-        /// 本质上只要记录每一行与每一列的操作次数即可
+        /// 参照Solution1252_off_3.png就容易理解了
         /// </summary>
         /// <param name="m"></param>
         /// <param name="n"></param>
@@ -22,14 +22,11 @@ namespace LeetCode.QuestionBank.Question1252
             {
                 rows[indices[i][0]]++; cols[indices[i][1]]++;
             }
+            int oddr = 0, oddc = 0;
+            for (int i = 0; i < m; i++) oddr += rows[i] & 1;
+            for (int i = 0; i < n; i++) oddc += cols[i] & 1;
 
-            int result = 0;
-            for (int r = 0; r < m; r++) for (int c = 0; c < n; c++)
-                {
-                    result += (rows[r] + cols[c]) & 1;
-                }
-
-            return result;
+            return oddr * (n - oddc) + oddc * (m - oddr);
         }
     }
 }

@@ -1,4 +1,6 @@
-#### [方法一：数学](https://leetcode.cn/problems/check-if-it-is-a-straight-line/solutions/562860/zhui-dian-cheng-xian-by-leetcode-solutio-lpt6/)
+### [缀点成线](https://leetcode.cn/problems/check-if-it-is-a-straight-line/solutions/562860/zhui-dian-cheng-xian-by-leetcode-solutio-lpt6/)
+
+#### 方法一：数学
 
 **思路**
 
@@ -112,5 +114,5 @@ bool checkStraightLine(int** coordinates, int coordinatesSize, int* coordinatesC
 
 **复杂度分析**
 
--   时间复杂度：$O(n)$，其中 $n$ 是数组中的元素数量。
--   空间复杂度：$O(1)$
+- 时间复杂度：$O(n)$，其中 $n$ 是数组中的元素数量。
+- 空间复杂度：$O(1)$
