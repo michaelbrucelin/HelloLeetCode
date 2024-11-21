@@ -22,5 +22,20 @@ namespace LeetCode.QuestionBank.Question3248
 
             return r * n + c;
         }
+
+        public int FinalPositionOfSnake2(int n, IList<string> commands)
+        {
+            int r = 0, c = 0;
+            foreach (string cmd in commands) switch (cmd[0])
+                {
+                    case 'U': r--; break;
+                    case 'R': c++; break;
+                    case 'D': r++; break;
+                    case 'L': c--; break;
+                    default: break;
+                }
+
+            return r * n + c;
+        }
     }
 }

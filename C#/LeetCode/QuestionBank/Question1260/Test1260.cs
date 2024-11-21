@@ -11,7 +11,7 @@ namespace LeetCode.QuestionBank.Question1260
     {
         public void Test()
         {
-            Interface1260 solution = new Solution1260_2();
+            Interface1260 solution = new Solution1260_3();
             int[][] grid; int k;
             IList<IList<int>> result, answer;
             int id = 0;
@@ -20,7 +20,7 @@ namespace LeetCode.QuestionBank.Question1260
             grid = Utils.Str2NumArray_2d<int>("[[1,2,3],[4,5,6],[7,8,9]]");
             k = 1;
             answer = Utils.Str2NumArray_2d<int>("[[9,1,2],[3,4,5],[6,7,8]]");
-            result = solution.ShiftGrid(grid, k);
+             result = solution.ShiftGrid(grid, k);
             Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ToString(result, false)}, answer: {Utils.ToString(answer, false)}");
 
             // 2. 
