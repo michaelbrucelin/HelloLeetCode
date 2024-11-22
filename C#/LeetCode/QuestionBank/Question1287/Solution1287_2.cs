@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,46 +10,41 @@ namespace LeetCode.QuestionBank.Question1287
     public class Solution1287_2 : Interface1287
     {
         /// <summary>
-        /// 二分法
+        /// 哈希计数
         /// </summary>
         /// <param name="arr"></param>
         /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public int FindSpecialInteger(int[] arr)
         {
-            int ptr = 0, _ptr, len = arr.Length, p25 = arr.Length >> 2;
-            while (ptr < len)
-            {
-                _ptr = BinarySearch(arr, ptr, arr[ptr]);
-                if (_ptr == -1 || _ptr - ptr > p25) return arr[ptr];
-                ptr = _ptr;
-            }
+            Dictionary<int, int> freq = new Dictionary<int, int>();
+            foreach (var num in arr)
+                if (freq.ContainsKey(num)) freq[num]++; else freq.Add(num, 1);
+
+            int p25 = arr.Length >> 2;
+            foreach (var kv in freq)
+                if (kv.Value > p25) return kv.Key;
 
             throw new Exception("TestCase Or Code Logic Error.");  // 题目保证了一定有唯一解
         }
 
         /// <summary>
-        /// 返回数组中第一个大于target的元素的索引
+        /// 哈希计数优化
         /// </summary>
         /// <param name="arr"></param>
-        /// <param name="target"></param>
         /// <returns></returns>
-        private int BinarySearch(int[] arr, int start, int target)
+        /// <exception cref="Exception"></exception>
+        public int FindSpecialInteger2(int[] arr)
         {
-            int result = -1, low = start, high = arr.Length - 1, mid;
-            while (low <= high)
+            int p25 = arr.Length >> 2;
+            Dictionary<int, int> freq = new Dictionary<int, int>();
+            foreach (var num in arr)
             {
-                mid = low + ((high - low) >> 1);
-                if (arr[mid] > target)
-                {
-                    result = mid; high = mid - 1;
-                }
-                else
-                {
-                    low = mid + 1;
-                }
+                if (freq.ContainsKey(num)) freq[num]++; else freq.Add(num, 1);
+                if (freq[num] > p25) return num;
             }
 
-            return result;
+            throw new Exception("TestCase Or Code Logic Error.");  // 题目保证了一定有唯一解
         }
     }
 }

@@ -6,57 +6,49 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1287
 {
-    public class Solution1287_3
+    public class Solution1287_3 : Interface1287
     {
         /// <summary>
-        /// 随机化 + 二分法
-        /// 随机化取数组中的一个值，二分法统计数组中有多少个这个值，没有生产意义，只是写着玩的
+        /// 二分法
         /// </summary>
         /// <param name="arr"></param>
         /// <returns></returns>
         public int FindSpecialInteger(int[] arr)
         {
-            int len = arr.Length, p25 = arr.Length >> 2, id;
-            Random random = new Random();
-            id = random.Next(0, len);
-            while (true)
+            int ptr = 0, _ptr, len = arr.Length, p25 = arr.Length >> 2;
+            while (ptr < len)
             {
-                if (CountValue(arr, id) > p25) return arr[id];
-                id = random.Next(0, len);
+                _ptr = BinarySearch(arr, ptr, arr[ptr]);
+                if (_ptr == -1 || _ptr - ptr > p25) return arr[ptr];
+                ptr = _ptr;
             }
+
+            throw new Exception("TestCase Or Code Logic Error.");  // 题目保证了一定有唯一解
         }
 
-        private int CountValue(int[] arr, int targetid)
+        /// <summary>
+        /// 返回数组中第一个大于target的元素的索引
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        private int BinarySearch(int[] arr, int start, int target)
         {
-            int left = targetid, right = targetid, target = arr[targetid];
-            int low = 0, high = targetid, mid;
+            int result = -1, low = start, high = arr.Length - 1, mid;
             while (low <= high)
             {
                 mid = low + ((high - low) >> 1);
-                if (arr[mid] == target)
+                if (arr[mid] > target)
                 {
-                    left = mid; high = mid - 1;
+                    result = mid; high = mid - 1;
                 }
                 else
                 {
                     low = mid + 1;
                 }
             }
-            low = targetid; high = arr.Length - 1;
-            while (low <= high)
-            {
-                mid = low + ((high - low) >> 1);
-                if (arr[mid] == target)
-                {
-                    right = mid; low = mid + 1;
-                }
-                else
-                {
-                    high = mid - 1;
-                }
-            }
 
-            return right - left + 1;
+            return result;
         }
     }
 }

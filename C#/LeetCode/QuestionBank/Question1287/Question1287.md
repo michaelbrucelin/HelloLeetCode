@@ -1,4 +1,4 @@
-﻿#### [1287\. 有序数组中出现次数超过25%的元素](https://leetcode.cn/problems/element-appearing-more-than-25-in-sorted-array/)
+﻿### [1287\. 有序数组中出现次数超过25%的元素](https://leetcode.cn/problems/element-appearing-more-than-25-in-sorted-array/)
 
 难度：简单
 
@@ -8,12 +8,10 @@
 
 **示例：**
 
-```
-输入：arr = [1,2,2,6,6,6,6,7,10]
-输出：6
-```
+> **输入：** arr = [1,2,2,6,6,6,6,7,10]
+> **输出：** 6
 
 **提示：**
 
--   `1 <= arr.length <= 10^4`
--   `0 <= arr[i] <= 10^5`
+- <code>1 <= arr.length <= 10^4</code>
+- <code>0 <= arr[i] <= 10^5</code>

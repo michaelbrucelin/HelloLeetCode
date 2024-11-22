@@ -1,12 +1,12 @@
-#### [ÀûÓÃÓĞĞòÊı×éÌØĞÔÇó½â](https://leetcode.cn/problems/element-appearing-more-than-25-in-sorted-array/solutions/71711/li-yong-you-xu-shu-zu-te-xing-qiu-jie-by-user8300r/)
+### [åˆ©ç”¨æœ‰åºæ•°ç»„ç‰¹æ€§æ±‚è§£](https://leetcode.cn/problems/element-appearing-more-than-25-in-sorted-array/solutions/71711/li-yong-you-xu-shu-zu-te-xing-qiu-jie-by-user8300r/)
 
-#### ½âÌâË¼Â·
+#### è§£é¢˜æ€è·¯
 
-1.  Çó³ö 25% ¶ÔÓ¦µÄ³öÏÖ´ÎÊıthreshold
-2.  ±éÀúÊı×é
-3.  ÓÉÓÚÊÇÓĞĞòÊı×é£¬Ö»Ğè±È½Ï µ±Ç°Î»ÖÃ i ÖµºÍ i + thresholdµÄÖµÊÇ·ñÏàµÈ¼´¿É
+1. æ±‚å‡º 25% å¯¹åº”çš„å‡ºç°æ¬¡æ•°threshold
+2. éå†æ•°ç»„
+3. ç”±äºæ˜¯æœ‰åºæ•°ç»„ï¼Œåªéœ€æ¯”è¾ƒ å½“å‰ä½ç½® i å€¼å’Œ i + thresholdçš„å€¼æ˜¯å¦ç›¸ç­‰å³å¯
 
-#### ´úÂë
+#### ä»£ç 
 
 ```cpp
 class Solution {
