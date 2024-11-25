@@ -14,7 +14,8 @@ namespace LeetCode.QuestionBank.Question1290
             ListNode ptr = head;
             while (ptr != null)
             {
-                result = (result << 1) | ptr.val; ptr = ptr.next;
+                result = (result << 1) | ptr.val;
+                ptr = ptr.next;
             }
 
             return result;

@@ -10,6 +10,7 @@ namespace LeetCode.QuestionBank.Question1275
     public class Solution1275 : Interface1275
     {
         /// <summary>
+        /// 最后一步棋决胜负
         /// 由题目知，如果由胜利方，那么最后一步棋是胜利方掷出的，而且这步棋一定是制胜棋，即在直线上
         /// 所以直接检查最后一步棋即可
         /// 无论最后一步棋摆在哪里，都需要检查所在行，所在列，如果最后一步棋的横纵坐标和是偶数，还要检查对角线
