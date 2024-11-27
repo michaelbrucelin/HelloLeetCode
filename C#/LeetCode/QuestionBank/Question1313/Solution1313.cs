@@ -30,15 +30,5 @@ namespace LeetCode.QuestionBank.Question1313
 
             return result;
         }
-
-        public int[] DecompressRLElist3(int[] nums)
-        {
-            return nums.Skip(1)
-                       .Select((value, id) => (nums[id], value))
-                       .Where((item, id) => (id & 1) != 1)
-                       .Select(item => Enumerable.Repeat(item.value, item.Item1))
-                       .SelectMany(nums => nums)
-                       .ToArray();
-        }
     }
 }
