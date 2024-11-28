@@ -1,0 +1,42 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LeetCode.QuestionBank.Question3250
+{
+    public class Solution3250_7 : Interface3250
+    {
+        /// <summary>
+        /// DP + 前缀和
+        /// 逻辑同Solution3250_6，将其中DP过程中的累加，优化为前缀和
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+        public int CountOfPairs(int[] nums)
+        {
+            const int MOD = (int)1e9 + 7;
+            int max = nums.Max(), len = nums.Length;
+            int[] dp = new int[max + 2], _dp = new int[max + 2];
+            for (int i = 1; i < max + 2; i++) dp[i] = i;
+            for (int id = len - 2; id >= 0; id--)
+            {
+                Array.Fill(_dp, 0);
+                for (int i = 0, j, sum = nums[id], left, right; i <= sum; i++)
+                {
+                    j = sum - i;
+                    if (j < 0) break;
+                    left = Math.Max(i, nums[id + 1] - j);
+                    right = nums[id + 1];
+                    _dp[i + 1] = _dp[i];
+                    if (right >= left) _dp[i + 1] = (_dp[i] + dp[right + 1] - dp[left]) % MOD;
+                    if (_dp[i + 1] < 0) _dp[i + 1] += MOD;  // dp[right + 1] - dp[left] 有可能小于0
+                }
+                Array.Copy(_dp, dp, max + 2);
+            }
+
+            return dp[nums[0] + 1];
+        }
+    }
+}
