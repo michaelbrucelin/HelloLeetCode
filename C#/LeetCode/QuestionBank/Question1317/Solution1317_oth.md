@@ -1,4 +1,4 @@
-#### [[JAVA]0ms 超过100% 非暴力法 时间复杂度O(log(n))](https://leetcode.cn/problems/convert-integer-to-the-sum-of-two-no-zero-integers/solutions/509530/java0ms-chao-guo-100-fei-bao-li-fa-shi-j-okmq/)
+### [[JAVA]0ms 超过100% 非暴力法 时间复杂度O(log(n))](https://leetcode.cn/problems/convert-integer-to-the-sum-of-two-no-zero-integers/solutions/509530/java0ms-chao-guo-100-fei-bao-li-fa-shi-j-okmq/)
 
 看了一圈题解，大多都是暴力法，现将我的非暴力的方法记录如下：
 
