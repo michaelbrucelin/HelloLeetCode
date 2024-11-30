@@ -29,5 +29,17 @@ namespace LeetCode.QuestionBank.Question1323
 
             return result;
         }
+
+        public int Maximum69Number2(int num)
+        {
+            int pos = -1;
+            for (int i = 1, j = 0; ; i *= 10, j++)
+            {
+                if (num < i) break;
+                if (num / i % 10 == 6) pos = j;
+            }
+
+            return num + (pos != -1 ? 3 * (int)Math.Pow(10, pos) : 0);
+        }
     }
 }
