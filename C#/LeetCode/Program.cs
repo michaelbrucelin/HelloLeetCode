@@ -9,7 +9,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using TestXXXX = LeetCode.QuestionBank.Question3250.Test3250;
-using UtilsXXXX = LeetCode.QuestionBank.Question3233.Utils3233;
+using UtilsXXXX = LeetCode.QuestionBank.Question0051.Utils0051;
 // using TestXXXX = LeetCode.LCP.LCP0051.Test0051;
 // using TestXXXX = LeetCode.LCR.LCR0022.Test0022;
 
@@ -22,13 +22,13 @@ namespace LeetCode
             //Random random = new Random();
 
             TestXXXX test = new();
-            test.Test();
+            //test.Test();
             //Utils.FmtMarkDown(Utils.QuestionType.QuestionBank, "1253", "off");
             //test.TestDivergentTraverse();
             //test.Look4Rules();
             //test.VerifyRules();
-            //UtilsXXXX utils = new();
-            //utils.Dial();
+            UtilsXXXX utils = new();
+            utils.Dial();
             //utils.DialInt();
             //utils.Debug();
 
