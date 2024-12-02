@@ -30,5 +30,18 @@ namespace LeetCode.QuestionBank.Question1346
 
             return false;
         }
+
+        public bool CheckIfExist2(int[] arr)
+        {
+            HashSet<int> set = new HashSet<int>();
+            foreach (int num in arr)
+            {
+                if (set.Contains(num << 1)) return true;
+                if ((num & 1) != 1 && set.Contains(num >> 1)) return true;
+                set.Add(num);
+            }
+
+            return false;
+        }
     }
 }

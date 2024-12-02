@@ -24,5 +24,18 @@ namespace LeetCode.QuestionBank.Question1342
 
             return result;
         }
+
+        public int NumberOfSteps2(int num)
+        {
+            int result = 0;
+            while (num > 1)
+            {
+                result += (num & 1) + 1;
+                num >>= 1;
+            }
+            if (num > 0) result++;
+
+            return result;
+        }
     }
 }
