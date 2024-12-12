@@ -16,11 +16,21 @@ namespace LeetCode.QuestionBank.Question1413
             for (int i = 1; i < nums.Length; i++)
             {
                 sum += nums[i];
-                if (sum < min)
-                    min = sum;
+                if (sum < min) min = sum;
             }
 
             return min >= 0 ? 1 : 1 - min;
+        }
+
+        public int MinStartValue2(int[] nums)
+        {
+            int min = nums[0], sum = nums[0];
+            for (int i = 1; i < nums.Length; i++)
+            {
+                min = Math.Min(min, sum += nums[i]);
+            }
+
+            return min < 0 ? 1 - min : 1;
         }
     }
 }
