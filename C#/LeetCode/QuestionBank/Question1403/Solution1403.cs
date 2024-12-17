@@ -8,6 +8,11 @@ namespace LeetCode.QuestionBank.Question1403
 {
     public class Solution1403 : Interface1403
     {
+        /// <summary>
+        /// 暴力枚举
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
         public IList<int> MinSubsequence(int[] nums)
         {
             List<int> listTar = new List<int>();
@@ -20,8 +25,9 @@ namespace LeetCode.QuestionBank.Question1403
             {
                 int maxid = 0;
                 for (int i = 0; i < listSrc.Count; i++)
-                    if (listSrc[i] > listSrc[maxid])
-                        maxid = i;
+                {
+                    if (listSrc[i] > listSrc[maxid]) maxid = i;
+                }
 
                 sumtar += listSrc[maxid];
                 sumsrc -= listSrc[maxid];
