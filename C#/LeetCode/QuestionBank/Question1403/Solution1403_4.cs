@@ -13,7 +13,6 @@ namespace LeetCode.QuestionBank.Question1403
         /// </summary>
         /// <param name="nums"></param>
         /// <returns></returns>
-
         public IList<int> MinSubsequence(int[] nums)
         {
             int[] freq = new int[101];
