@@ -99,7 +99,7 @@ namespace LeetCode.Utilses
         }
 
         /// <summary>
-        /// 将以字符串形式给出的二维数字数组转成二维字符串数组
+        /// 将以字符串形式给出的二维字符串数组转成二维字符串数组
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="raw"></param>
