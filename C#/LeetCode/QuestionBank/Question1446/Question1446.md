@@ -1,4 +1,4 @@
-﻿#### [1446\. 连续字符](https://leetcode.cn/problems/consecutive-characters/)
+#### [1446\. 连续字符](https://leetcode.cn/problems/consecutive-characters/)
 
 难度：简单
 

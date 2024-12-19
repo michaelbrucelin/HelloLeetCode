@@ -29,5 +29,27 @@ namespace LeetCode.QuestionBank.Question1437
 
             return true;
         }
+
+        public bool KLengthApart2(int[] nums, int k)
+        {
+            int cnt = 0, ptr = 0, len = nums.Length;
+            while (ptr < len && nums[ptr] == 0) ptr++;
+            ptr++;
+            while (ptr < len)
+            {
+                if (nums[ptr] == 0)
+                {
+                    cnt++;
+                }
+                else
+                {
+                    if (cnt < k) return false;
+                    cnt = 0;
+                }
+                ptr++;
+            }
+
+            return true;
+        }
     }
 }
