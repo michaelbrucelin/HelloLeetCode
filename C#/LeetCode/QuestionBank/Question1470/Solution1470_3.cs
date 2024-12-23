@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +8,12 @@ namespace LeetCode.QuestionBank.Question1470
 {
     public class Solution1470_3 : Interface1470
     {
+        /// <summary>
+        /// 原地交换
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <param name="n"></param>
+        /// <returns></returns>
         public int[] Shuffle(int[] nums, int n)
         {
             for (int i = 1; i < n * 2 - 1; i++)
@@ -21,8 +27,7 @@ namespace LeetCode.QuestionBank.Question1470
                 }
             }
 
-            for (int i = 1; i < n * 2 - 1; i++)
-                nums[i] *= -1;
+            for (int i = 1; i < n * 2 - 1; i++) nums[i] *= -1;
 
             return nums;
         }

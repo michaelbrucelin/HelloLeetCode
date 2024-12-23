@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +8,13 @@ namespace LeetCode.QuestionBank.Question1470
 {
     public class Solution1470_2 : Interface1470
     {
+        /// <summary>
+        /// 原地映射
+        /// 高低位存储
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <param name="n"></param>
+        /// <returns></returns>
         public int[] Shuffle(int[] nums, int n)
         {
             for (int i = 1; i < n * 2 - 1; i++)
@@ -16,8 +23,7 @@ namespace LeetCode.QuestionBank.Question1470
                 nums[i] |= (nums[j] & 1023) << 10;  // nums[i] |= nums[j] << 10;  // 这样是不对的，为什么？因为高位有符号位？
             }
 
-            for (int i = 1; i < n * 2 - 1; i++)
-                nums[i] = nums[i] >> 10;
+            for (int i = 1; i < n * 2 - 1; i++) nums[i] = nums[i] >> 10;
 
             return nums;
         }
