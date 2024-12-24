@@ -58,7 +58,7 @@ $$\begin{aligned} & 0 \oplus 1 \oplus 2 \oplus 3 = 0 \\ & 4 \oplus 5 \oplus 6 \o
 
 综上所述，$0$ 到 $n$ 的异或和为：
 
-$$i = 0 \oplus ni = ⎩⎨⎧n, 1, n+1, 0, n = 4kn = 4k+1n = 4k+2n = 4k+3$$
+$$\bigoplus_{i=0}^{n}i = \begin{cases}n, & n = 4k \\ 1, & n = 4k+1 \\ n + 1, & n = 4k+2 \\ 0, & n = 4k+3 \end{cases}$$
 
 ```Python
 class Solution:
