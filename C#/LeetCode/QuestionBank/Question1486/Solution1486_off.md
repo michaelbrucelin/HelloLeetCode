@@ -6,9 +6,9 @@
 
 按照题意模拟即可：
 
-1.  初始化 $ans = 0$；
-2.  遍历区间 $[0, n - 1]$ 中的每一个整数 $i$，令 $ans$ 与每一个 $start + 2 \times i$ 做异或运算；
-3.  最终返回 $ans$，即我们需要的答案。
+1. 初始化 $ans = 0$；
+2. 遍历区间 $[0, n - 1]$ 中的每一个整数 $i$，令 $ans$ 与每一个 $start + 2 \times i$ 做异或运算；
+3. 最终返回 $ans$，即我们需要的答案。
 
 **代码**
 
@@ -89,18 +89,18 @@ int xorOperation(int n, int start) {
 
 **复杂度分析**
 
--   时间复杂度：$O(n)$。这里用一重循环对 $n$ 个数字进行异或。
--   空间复杂度：$O(1)$。这里只是用了常量级别的辅助空间。
+- 时间复杂度：$O(n)$。这里用一重循环对 $n$ 个数字进行异或。
+- 空间复杂度：$O(1)$。这里只是用了常量级别的辅助空间。
 
 #### 方法二：数学
 
 记 $\oplus$ 为异或运算，异或运算满足以下性质：
 
-1.  $x \oplus x = 0$；
-2.  $x \oplus y = y \oplus x$（交换律）；
-3.  $(x \oplus y) \oplus z = x \oplus (y \oplus z)$（结合律）；
-4.  $x \oplus y \oplus y = x$（自反性）；
-5.  $\forall i \in Z$，有 $4i \oplus (4i+1) \oplus (4i+2) \oplus (4i+3) = 0$。
+1. $x \oplus x = 0$；
+2. $x \oplus y = y \oplus x$（交换律）；
+3. $(x \oplus y) \oplus z = x \oplus (y \oplus z)$（结合律）；
+4. $x \oplus y \oplus y = x$（自反性）；
+5. $\forall i \in Z$，有 $4i \oplus (4i+1) \oplus (4i+2) \oplus (4i+3) = 0$。
 
 在本题中，我们需要计算 $start \oplus (start+2i) \oplus (start+4i) \oplus \dots \oplus (start+2(n-1))$。
 
@@ -255,5 +255,5 @@ int xorOperation(int n, int start) {
 
 **复杂度分析**
 
--   时间复杂度：$O(1)$。我们只需要常数的时间计算出结果。
--   空间复杂度：$O(1)$。我们只需要常数的空间保存若干变量。
+- 时间复杂度：$O(1)$。我们只需要常数的时间计算出结果。
+- 空间复杂度：$O(1)$。我们只需要常数的空间保存若干变量。
