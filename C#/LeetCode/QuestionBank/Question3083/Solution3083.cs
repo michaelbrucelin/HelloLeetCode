@@ -9,7 +9,7 @@ namespace LeetCode.QuestionBank.Question3083
     public class Solution3083 : Interface3083
     {
         /// <summary>
-        /// 
+        /// 枚举
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>

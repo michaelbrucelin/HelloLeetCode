@@ -1,4 +1,4 @@
-#### [方法一：哈希表](https://leetcode.cn/problems/path-crossing/solutions/310426/pan-duan-lu-jing-shi-fou-xiang-jiao-by-leetcode-so/)
+### [方法一：哈希表](https://leetcode.cn/problems/path-crossing/solutions/310426/pan-duan-lu-jing-shi-fou-xiang-jiao-by-leetcode-so/)
 
 **思路**
 
@@ -136,5 +136,5 @@ class Solution:
 
 假设 `path` 的长度为 $n$。
 
--   时间复杂度：$O(n)$。最坏情况下，对于 $n$ 个元素，每个元素做一次 $O(1)$ 的哈希表查询和一次 $O(1)$ 的哈希表插入。
--   空间复杂度：$O(n)$。这里使用了哈希表作为辅助空间，故空间代价是 $O(n)$。
+- 时间复杂度：$O(n)$。最坏情况下，对于 $n$ 个元素，每个元素做一次 $O(1)$ 的哈希表查询和一次 $O(1)$ 的哈希表插入。
+- 空间复杂度：$O(n)$。这里使用了哈希表作为辅助空间，故空间代价是 $O(n)$。

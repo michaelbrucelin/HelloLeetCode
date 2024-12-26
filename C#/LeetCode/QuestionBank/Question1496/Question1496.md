@@ -1,4 +1,4 @@
-#### [1496\. 判断路径是否相交](https://leetcode.cn/problems/path-crossing/)
+### [1496\. 判断路径是否相交](https://leetcode.cn/problems/path-crossing/)
 
 难度：简单
 
@@ -12,23 +12,19 @@
 
 ![](./assets/img/Question1496_01.png)
 
-```
-输入：path = "NES"
-输出：false 
-解释：该路径没有在任何位置相交。
-```
+> **输入：** path = "NES"
+> **输出：** false
+> **解释：** 该路径没有在任何位置相交。
 
 **示例 2：**
 
 ![](./assets/img/Question1496_02.png)
 
-```
-输入：path = "NESWW"
-输出：true
-解释：该路径经过原点两次。
-```
+> **输入：** path = "NESWW"
+> **输出：** true
+> **解释：** 该路径经过原点两次。
 
 **提示：**
 
--   `1 <= path.length <= 10<sup>4</sup>`
--   `path[i]` 为 `'N'`、`'S'`、`'E'` 或 `'W'`
+- <code>1 <= path.length <= 10<sup>4</sup></code>
+- `path[i]` 为 `'N'`、`'S'`、`'E'` 或 `'W'`
