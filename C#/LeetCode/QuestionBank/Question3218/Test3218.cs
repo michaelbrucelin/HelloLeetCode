@@ -10,7 +10,7 @@ namespace LeetCode.QuestionBank.Question3218
     {
         public void Test()
         {
-            Interface3218 solution = new Solution3218_3();
+            Interface3218 solution = new Solution3218_4();
             int m, n; int[] horizontalCut, verticalCut;
             int result, answer;
             int id = 0;
