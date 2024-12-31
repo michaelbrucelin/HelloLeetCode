@@ -1,55 +1,77 @@
-### [【图解】逆向思维+最小生成树（Python/Java/C++/C/Go/JS/Rust）](https://leetcode.cn/problems/minimum-cost-for-cutting-cake-ii/solutions/2843063/tan-xin-ji-qi-zheng-ming-jiao-huan-lun-z-ivtn/)
+### [切蛋糕的最小总开销 II](https://leetcode.cn/problems/minimum-cost-for-cutting-cake-ii/solutions/3024578/qie-dan-gao-de-zui-xiao-zong-kai-xiao-ii-oisi/)
 
-![](./assets/img/Solution3219_off.png)
+#### 方法一：贪心
 
-根据最小生成树的 **Kruskal 算法**，先把边权从小到大排序，然后遍历边，如果边的两个点属于不同连通块，则合并。
+**思路**
 
-在上图中：
+我们先尝试按照两种顺序切，第一种顺序是横着切一次，竖着沿着一条线连续切两次，开销是 $horizontalCut[i]+2 \times verticalCut[j]$；第二种顺序是竖着切一次，横着沿着一条线连续切两次，开销是 $verticalCut[j]+2 \times horizontalCut[j]$。这么一比较，这两种顺序的切法，切出来的一样的，但是开销却有不同。贪心地看，第一刀应该选择开销最大的线来切。因此，我们就提出一个贪心的猜想，将 $horizontalCut$ 和 $verticalCut$ 分别排序，每次切的时候都挑选最大的开销，并切到底。
 
-- 由于 $1$ 最小，把第一、二排的节点上下连边，也就是把 $3$ 条边权为 $1$ 的边加入生成树。
-- 对于 $3$，由于第一、二排的节点已经上下连边，所以只需把 $2$ 条边权为 $3$ 的边加入生成树。
-- $5$ 同理，把 $2$ 条边权为 $5$ 的边加入生成树。
-- 最后，对于 $7$，此时只剩下两个连通块，只需把 $1$ 条边权为 $7$ 的边加入生成树。
+接下来证明，按照这样的顺序，交换相邻两刀，不会使得开销更小。假设当前蛋糕已经沿着水平线切了 $p$ 刀，沿着垂直线切了 $q$ 刀。我们尝试交换接下来两刀：
 
-一般地，我们用**双指针**计算答案：
+- 如果接下来两刀都是水平或者垂直，那么交换这两刀对开销不会产生任何影响。
+- 如果先是一刀水平，再是一刀垂直，那么开销就是 $(q+1) \times horizontalCut[i]+(p+2) \times verticalCut[j]$。如果我们交换这两刀的顺序，那么开销就是 $(q+2) \times horizontalCut[i]+(p+1) \times verticalCut[j]$。因为是原来是先切水平，再切垂直，那么会有 $horizontalCut[i] \ge verticalCut[j]$。因此，交换顺序并不会使得开销变小。
+- 如果先是一刀垂直，再是一刀水平。相似的论证，交换顺序并不会使得开销变小。
 
-- 从小到大排序两个数组。初始化 $i=j=0$。
-- 如果 $horizontalCut[i]<verticalCut[j]$，把 $n-j$ 条边权为 $horizontalCut[i]$ 的边加入答案，然后 $i$ 加一。
-- 否则，把 $m-i$ 条边权为 $verticalCut[j]$ 的边加入答案，然后 $j$ 加一。
-- 循环次数为两个数组的长度之和，即 $(m-1)+(n-1)=m+n-2$。
+因此，按照这样的顺序，交换相邻两刀，不会使得开销更小。而交换任意两刀的顺序，可以通过多次交换相邻两刀的顺序得到。因此，交换任意两刀，不会使得开销更小。
+
+**代码**
 
 ```Python
 class Solution:
-    def minimumCost(self, m: int, n: int, horizontalCut: List[int], verticalCut: List[int]) -> int:
-        horizontalCut.sort()
-        verticalCut.sort()
-        ans = i = j = 0
-        for _ in range(m + n - 2):
-            if j == n - 1 or i < m - 1 and horizontalCut[i] < verticalCut[j]:
-                ans += horizontalCut[i] * (n - j)  # 上下连边
-                i += 1
+    def minimumCost(self, m: int, n: int, H: List[int], V: List[int]) -> int:  
+        H.sort(), V.sort()
+        h, v = 1, 1
+        res = 0
+        while H or V:
+            if not V or (H and H[-1] > V[-1]):
+                res += H.pop() * h
+                v += 1
             else:
-                ans += verticalCut[j] * (m - i)  # 左右连边
-                j += 1
-        return ans
+                res += V.pop() * v
+                h += 1
+        return res
 ```
 
 ```Java
 class Solution {
     public long minimumCost(int m, int n, int[] horizontalCut, int[] verticalCut) {
-        Arrays.sort(horizontalCut); // 下面倒序遍历
+        Arrays.sort(horizontalCut);
         Arrays.sort(verticalCut);
-        long ans = 0;
-        int i = 0;
-        int j = 0;
-        while (i < m - 1 || j < n - 1) {
-            if (j == n - 1 || i < m - 1 && horizontalCut[i] < verticalCut[j]) {
-                ans += horizontalCut[i++] * (n - j); // 上下连边
+        int h = 1, v = 1;
+        long res = 0;
+        int horizontalIndex = horizontalCut.length - 1, verticalIndex = verticalCut.length - 1;
+        while (horizontalIndex >= 0 || verticalIndex >= 0) {
+            if (verticalIndex < 0 || (horizontalIndex >= 0 && horizontalCut[horizontalIndex] > verticalCut[verticalIndex])) {
+                res += horizontalCut[horizontalIndex--] * h;
+                v++;
             } else {
-                ans += verticalCut[j++] * (m - i); // 左右连边
+                res += verticalCut[verticalIndex--] * v;
+                h++;
             }
         }
-        return ans;
+        return res;
+    }
+}
+```
+
+```CSharp
+public class Solution {
+    public long MinimumCost(int m, int n, int[] horizontalCut, int[] verticalCut) {
+        Array.Sort(horizontalCut);
+        Array.Sort(verticalCut);
+        int h = 1, v = 1;
+        long res = 0;
+        int horizontalIndex = horizontalCut.Length - 1, verticalIndex = verticalCut.Length - 1;
+        while (horizontalIndex >= 0 || verticalIndex >= 0) {
+            if (verticalIndex < 0 || (horizontalIndex >= 0 && horizontalCut[horizontalIndex] > verticalCut[verticalIndex])) {
+                res += horizontalCut[horizontalIndex--] * h;
+                v++;
+            } else {
+                res += verticalCut[verticalIndex--] * v;
+                h++;
+            }
+        }
+        return res;
     }
 }
 ```
@@ -58,58 +80,68 @@ class Solution {
 class Solution {
 public:
     long long minimumCost(int m, int n, vector<int>& horizontalCut, vector<int>& verticalCut) {
-        ranges::sort(horizontalCut);
-        ranges::sort(verticalCut);
-        long long ans = 0;
-        int i = 0, j = 0;
-        while (i < m - 1 || j < n - 1) {
-            if (j == n - 1 || i < m - 1 && horizontalCut[i] < verticalCut[j]) {
-                ans += horizontalCut[i++] * (n - j); // 上下连边
+        sort(horizontalCut.begin(), horizontalCut.end());
+        sort(verticalCut.begin(), verticalCut.end());
+        long long h = 1, v = 1;
+        long long res = 0;
+        while (!horizontalCut.empty() || !verticalCut.empty()) {
+            if (verticalCut.empty() || !horizontalCut.empty() && horizontalCut.back() > verticalCut.back()) {
+                res += horizontalCut.back() * h;
+                horizontalCut.pop_back();
+                v++;
             } else {
-                ans += verticalCut[j++] * (m - i); // 左右连边
+                res += verticalCut.back() * v;
+                verticalCut.pop_back();
+                h++;
             }
         }
-        return ans;
+        return res;
     }
 };
 ```
 
-```C
-int cmp(const void* a, const void* b) {
-    return *(int*)a - *(int*)b;
-}
-
-long long minimumCost(int m, int n, int* horizontalCut, int horizontalSize, int* verticalCut, int verticalSize) {
-    qsort(horizontalCut, horizontalSize, sizeof(int), cmp);
-    qsort(verticalCut, verticalSize, sizeof(int), cmp);
-    long long ans = 0;
-    int i = 0, j = 0;
-    while (i < m - 1 || j < n - 1) {
-        if (j == n - 1 || i < m - 1 && horizontalCut[i] < verticalCut[j]) {
-            ans += horizontalCut[i++] * (n - j); // 上下连边
+```Go
+func minimumCost(m int, n int, horizontalCut []int, verticalCut []int) int64 {
+    sort.Ints(horizontalCut)
+    sort.Ints(verticalCut)
+    h, v := 1, 1
+    var res int64
+    for len(horizontalCut) > 0 || len(verticalCut) > 0 {
+        if len(verticalCut) == 0 || len(horizontalCut) > 0 && horizontalCut[len(horizontalCut) - 1] > verticalCut[len(verticalCut) - 1] {
+            res += int64(horizontalCut[len(horizontalCut) - 1] * h)
+            horizontalCut = horizontalCut[:len(horizontalCut) - 1]
+            v++
         } else {
-            ans += verticalCut[j++] * (m - i); // 左右连边
+            res += int64(verticalCut[len(verticalCut) - 1] * v)
+            verticalCut = verticalCut[:len(verticalCut) - 1]
+            h++
         }
     }
-    return ans;
+    return res
 }
 ```
 
-```Go
-func minimumCost(m, n int, horizontalCut, verticalCut []int) (ans int64) {
-    slices.Sort(horizontalCut)
-    slices.Sort(verticalCut)
-    i, j := 0, 0
-    for range m + n - 2 {
-        if j == n-1 || i < m-1 && horizontalCut[i] < verticalCut[j] {
-            ans += int64(horizontalCut[i] * (n - j)) // 上下连边
-            i++
+```C
+int compare(const void* a, const void* b) {
+    return (*(int*)b - *(int*)a);
+}
+
+long long minimumCost(int m, int n, int* horizontalCut, int horizontalCutSize, int* verticalCut, int verticalCutSize) {
+    qsort(horizontalCut, horizontalCutSize, sizeof(int), compare);
+    qsort(verticalCut, verticalCutSize, sizeof(int), compare);
+    long long h = 1, v = 1;
+    long long res = 0;
+    int hIndex = 0, vIndex = 0;
+    while (hIndex < horizontalCutSize || vIndex < verticalCutSize) {
+        if (vIndex == verticalCutSize || (hIndex < horizontalCutSize && horizontalCut[hIndex] > verticalCut[vIndex])) {
+            res += horizontalCut[hIndex++] * h;
+            v++;
         } else {
-            ans += int64(verticalCut[j] * (m - i)) // 左右连边
-            j++
+            res += verticalCut[vIndex++] * v;
+            h++;
         }
     }
-    return
+    return res;
 }
 ```
 
@@ -117,60 +149,71 @@ func minimumCost(m, n int, horizontalCut, verticalCut []int) (ans int64) {
 var minimumCost = function(m, n, horizontalCut, verticalCut) {
     horizontalCut.sort((a, b) => a - b);
     verticalCut.sort((a, b) => a - b);
-    let ans = 0, i = 0, j = 0;
-    while (i < m - 1 || j < n - 1) {
-        if (j === n - 1 || i < m - 1 && horizontalCut[i] < verticalCut[j]) {
-            ans += horizontalCut[i++] * (n - j); // 上下连边
+    let h = 1, v = 1;
+    let res = 0;
+    while (horizontalCut.length || verticalCut.length) {
+        if (!verticalCut.length || (horizontalCut.length && horizontalCut[horizontalCut.length - 1] > verticalCut[verticalCut.length - 1])) {
+            res += horizontalCut[horizontalCut.length - 1] * h;
+            horizontalCut.pop();
+            v++;
         } else {
-            ans += verticalCut[j++] * (m - i); // 左右连边
+            res += verticalCut[verticalCut.length - 1] * v;
+            verticalCut.pop();
+            h++;
         }
     }
-    return ans;
+    return res;
+};
+```
+
+```TypeScript
+function minimumCost(m: number, n: number, horizontalCut: number[], verticalCut: number[]): number {
+    horizontalCut.sort((a, b) => a - b);
+    verticalCut.sort((a, b) => a - b);
+    let h = 1, v = 1;
+    let res = 0;
+    while (horizontalCut.length || verticalCut.length) {
+        if (!verticalCut.length || (horizontalCut.length && horizontalCut[horizontalCut.length - 1] > verticalCut[verticalCut.length - 1])) {
+            res += horizontalCut[horizontalCut.length - 1] * h;
+            horizontalCut.pop();
+            v++;
+        } else {
+            res += verticalCut[verticalCut.length - 1] * v;
+            verticalCut.pop();
+            h++;
+        }
+    }
+    return res;
 };
 ```
 
 ```Rust
 impl Solution {
-    pub fn minimum_cost(m: i32, n: i32, mut horizontal_cut: Vec<i32>, mut vertical_cut: Vec<i32>) -> i64 {
-        let m = m as usize;
-        let n = n as usize;
+    pub fn minimum_cost(m: i32, n: i32, horizontal_cut: Vec<i32>, vertical_cut: Vec<i32>) -> i64 {
+        let mut horizontal_cut = horizontal_cut.into_iter().collect::<Vec<_>>();
+        let mut vertical_cut = vertical_cut.into_iter().collect::<Vec<_>>();
         horizontal_cut.sort_unstable();
         vertical_cut.sort_unstable();
-        let mut ans = 0;
-        let mut i = 0;
-        let mut j = 0;
-        for _ in 0..m + n - 2 {
-            if j == n - 1 || i < m - 1 && horizontal_cut[i] < vertical_cut[j] {
-                ans += (horizontal_cut[i] * (n - j) as i32) as i64; // 上下连边
-                i += 1;
+        let mut h = 1;
+        let mut v = 1;
+        let mut res = 0i64;
+        while !horizontal_cut.is_empty() || !vertical_cut.is_empty() {
+            if vertical_cut.is_empty() || (!horizontal_cut.is_empty() && horizontal_cut.last().unwrap() > vertical_cut.last().unwrap()) {
+                res += (*horizontal_cut.last().unwrap() as i64) * h as i64;
+                horizontal_cut.pop();
+                v += 1;
             } else {
-                ans += (vertical_cut[j] * (m - i) as i32) as i64; // 左右连边
-                j += 1;
+                res += (*vertical_cut.last().unwrap() as i64) * v as i64;
+                vertical_cut.pop();
+                h += 1;
             }
         }
-        ans
+        res
     }
 }
 ```
 
-#### 复杂度分析
+**复杂度分析**
 
-- 时间复杂度：$O(mlogm+nlogn)$。瓶颈在排序上。
-- 空间复杂度：$O(1)$。不计入排序的栈开销。
-
-#### 分类题单
-
-[如何科学刷题？](https://leetcode.cn/circle/discuss/RvFUtj/)
-
-1. [滑动窗口与双指针（定长/不定长/单序列/双序列/三指针/分组循环）](https://leetcode.cn/circle/discuss/0viNMK/)
-2. [二分算法（二分答案/最小化最大值/最大化最小值/第K小）](https://leetcode.cn/circle/discuss/SqopEo/)
-3. [单调栈（基础/矩形面积/贡献法/最小字典序）](https://leetcode.cn/circle/discuss/9oZFK9/)
-4. [网格图（DFS/BFS/综合应用）](https://leetcode.cn/circle/discuss/YiXPXW/)
-5. [位运算（基础/性质/拆位/试填/恒等式/思维）](https://leetcode.cn/circle/discuss/dHn9Vk/)
-6. [图论算法（DFS/BFS/拓扑排序/最短路/最小生成树/二分图/基环树/欧拉路径）](https://leetcode.cn/circle/discuss/01LUak/)
-7. [动态规划（入门/背包/状态机/划分/区间/状压/数位/数据结构优化/树形/博弈/概率期望）](https://leetcode.cn/circle/discuss/tXLS3i/)
-8. [常用数据结构（前缀和/差分/栈/队列/堆/字典树/并查集/树状数组/线段树）](https://leetcode.cn/circle/discuss/mOr1u6/)
-9. [数学算法（数论/组合/概率期望/博弈/计算几何/随机算法）](https://leetcode.cn/circle/discuss/IYT3ss/)
-10. [贪心与思维（基本贪心策略/反悔/区间/字典序/数学/思维/脑筋急转弯/构造）](https://leetcode.cn/circle/discuss/g6KTKL/)
-11. [链表、二叉树与回溯（前后指针/快慢指针/DFS/BFS/直径/LCA/一般树）](https://leetcode.cn/circle/discuss/K0n2gO/)
-12. [字符串（KMP/Z函数/Manacher/字符串哈希/AC自动机/后缀数组/子序列自动机）](https://leetcode.cn/circle/discuss/SJFwQI/)
+- 时间复杂度：$O(m \times logm+n \times logn)$。
+- 空间复杂度：$O(logm+logn)$。
