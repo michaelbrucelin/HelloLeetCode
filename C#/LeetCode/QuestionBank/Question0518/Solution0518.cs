@@ -11,10 +11,10 @@ namespace LeetCode.QuestionBank.Question0518
         /// <summary>
         /// BFS
         /// 将数组序列化为字符串来去除重复的组合
-        /// 效率不高，容易OLE，可以考虑DFS+回溯来优化空间复杂度
+        /// 效率不高，容易MLE，可以考虑DFS+回溯来优化空间复杂度
         /// 本质上就是求排列组合中的组合
         /// 
-        /// 逻辑没问题，还没OLE，先TLE了，参考测试用例04
+        /// 逻辑没问题，还没MLE，先TLE了，参考测试用例04
         /// </summary>
         /// <param name="amount"></param>
         /// <param name="coins"></param>

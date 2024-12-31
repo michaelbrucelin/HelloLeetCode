@@ -12,8 +12,8 @@ namespace LeetCode.QuestionBank.Question1483
 
     /// <summary>
     /// 倍增(binary lifting)，二进制预处理（即跳表）
-    /// Solution1483是没有预处理，TLE，Solution1483_2相当于（惰性）预处理的所有的可能，OLE
-    /// 所以这里采用倍增的方式预处理（折中TLE与OLE），即预处理出 y = 1, 2, 4, 8, 16 ... 2^x 的值
+    /// Solution1483是没有预处理，TLE，Solution1483_2相当于（惰性）预处理的所有的可能，MLE
+    /// 所以这里采用倍增的方式预处理（折中TLE与MLE），即预处理出 y = 1, 2, 4, 8, 16 ... 2^x 的值
     ///     当计算 k 的结果时，一定可以通过预处理出来的结果计算出来（二进制）
     /// </summary>
     public class TreeAncestor_3 : Interface1483

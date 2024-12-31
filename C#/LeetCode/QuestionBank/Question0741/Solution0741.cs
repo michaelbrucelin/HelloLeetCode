@@ -15,7 +15,7 @@ namespace LeetCode.QuestionBank.Question0741
         /// 3. 所有去程两两组合并计算摘樱桃位置的并集，即是结果
         /// 4. 记录摘樱桃的位置可以使用集合，也可以使用int[]，这里先使用集合
         /// 
-        /// 肉眼可见的会TLE及OLE，先写出来试试，意料之中的TLE，参考测试用例03
+        /// 肉眼可见的会TLE及MLE，先写出来试试，意料之中的TLE，参考测试用例03
         /// </summary>
         /// <param name="grid"></param>
         /// <returns></returns>

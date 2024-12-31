@@ -11,7 +11,7 @@ namespace LeetCode.Interview.Interview1712
         /// <summary>
         /// 逻辑同Solution1712_3，只是将递归1:1翻译为迭代试一下
         /// 
-        /// 提交依然TLE且OLE。
+        /// 提交依然TLE且MLE。
         /// </summary>
         /// <param name="root"></param>
         /// <returns></returns>

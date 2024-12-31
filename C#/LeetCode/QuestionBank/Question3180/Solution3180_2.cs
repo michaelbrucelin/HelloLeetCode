@@ -10,9 +10,9 @@ namespace LeetCode.QuestionBank.Question3180
     {
         /// <summary>
         /// 排序 + BFS
-        /// 类似于计算所有的组合，大概率会OLE
+        /// 类似于计算所有的组合，大概率会MLE
         /// 
-        /// 提交没有OLE，通过了
+        /// 提交没有MLE，通过了
         /// </summary>
         /// <param name="rewardValues"></param>
         /// <returns></returns>

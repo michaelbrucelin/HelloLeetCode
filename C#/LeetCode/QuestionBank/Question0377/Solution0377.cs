@@ -10,7 +10,7 @@ namespace LeetCode.QuestionBank.Question0377
     {
         /// <summary>
         /// BFS
-        /// 逻辑没问题，OLE，参考测试用例03
+        /// 逻辑没问题，MLE，参考测试用例03
         /// </summary>
         /// <param name="nums"></param>
         /// <param name="target"></param>

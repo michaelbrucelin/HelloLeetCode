@@ -13,7 +13,7 @@ namespace LeetCode.QuestionBank.Question0688
 
         /// <summary>
         /// BFS
-        /// 逻辑没问题，OLE，参考测试用例03
+        /// 逻辑没问题，MLE，参考测试用例03
         /// </summary>
         /// <param name="n"></param>
         /// <param name="k"></param>

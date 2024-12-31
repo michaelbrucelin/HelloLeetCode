@@ -16,7 +16,7 @@ namespace LeetCode.QuestionBank.Question2860
         ///     不选第n+1项，如果第n+1项 > 0，仍然有效；如果第n+1项 = 0，无效；
         ///     选了第n+1项，不一定有效了
         ///     所以要维护当前有效的方案，记录每一个方案的：(选了几项, 最小未选项)
-        /// 不确定会不会TLE或OLE，先写出来试试
+        /// 不确定会不会TLE或MLE，先写出来试试
         /// </summary>
         /// <param name="nums"></param>
         /// <returns></returns>

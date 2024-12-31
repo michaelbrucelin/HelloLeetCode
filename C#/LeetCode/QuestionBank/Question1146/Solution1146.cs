@@ -11,7 +11,7 @@ namespace LeetCode.QuestionBank.Question1146
     }
 
     /// <summary>
-    /// 逻辑没问题，但是OLE
+    /// 逻辑没问题，但是MLE
     /// </summary>
     public class SnapshotArray : Interface1146
     {

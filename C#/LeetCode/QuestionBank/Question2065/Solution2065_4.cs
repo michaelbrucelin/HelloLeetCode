@@ -52,7 +52,7 @@ namespace LeetCode.QuestionBank.Question2065
         /// <summary>
         /// 同MaximalPathQuality()，只不过将Hash表改为数组，Hash很慢，试试数组
         /// 
-        /// OLE, ... ...，参看测试用例06
+        /// MLE, ... ...，参看测试用例06
         /// </summary>
         /// <param name="values"></param>
         /// <param name="edges"></param>
