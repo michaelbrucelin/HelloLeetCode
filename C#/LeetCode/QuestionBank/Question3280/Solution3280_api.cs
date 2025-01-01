@@ -12,5 +12,10 @@ namespace LeetCode.QuestionBank.Question3280
         {
             return $"{Convert.ToString(int.Parse(date[0..4]), 2)}-{Convert.ToString(int.Parse(date[5..7]), 2)}-{Convert.ToString(int.Parse(date[8..10]), 2)}";
         }
+
+        public string ConvertDateToBinary2(string date)
+        {
+            return string.Join('-', date.Split('-').Select(x => Convert.ToString(int.Parse(x), 2)));
+        }
     }
 }
