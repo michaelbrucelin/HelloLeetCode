@@ -20,5 +20,10 @@ namespace LeetCode.QuestionBank.Question1523
             int result = (high - low) >> 1;
             return ((low & 1) != 1 && (high & 1) != 1) ? result : result + 1;
         }
+
+        public int CountOdds2(int low, int high)
+        {
+            return ((high - low) >> 1) + ((low | high) & 1);
+        }
     }
 }
