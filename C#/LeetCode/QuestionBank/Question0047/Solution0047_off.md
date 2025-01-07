@@ -194,7 +194,7 @@ int** permuteUnique(int* nums, int numsSize, int* returnSize, int** returnColumn
 - 时间复杂度：$O(n \times n!)$，其中 $n$ 为序列的长度。
     算法的复杂度首先受 $backtrack$ 的调用次数制约，$backtrack$ 的调用次数为 $\sum_{k = 1}^nP(n,k)$ 次，其中 $P(n,k) = \dfrac{n!}{(n-k)!} = n(n-1) \dots (n-k+1)$，该式被称作 [n 的 k - 排列，或者部分排列](https://leetcode.cn/link/?target=https%3A%2F%2Fbaike.baidu.com%2Fitem%2F%E6%8E%92%E5%88%97%2F7804523)。
     而 $\sum_{k = 1}^nP(n,k) = n!+\dfrac{n!}{1!}+\dfrac{n!}{2!}+\dfrac{n!}{3!}+ \dots +\dfrac{n!}{(n-1)!}<2n!+\dfrac{n!}{2}+\dfrac{n!}{2^2}+\dots+\dfrac{n!}{2^{n-2}}<3n!$
-    这说明 backtrack 的调用次数是 O(n!) 的。
-    而对于 backtrack 调用的每个叶结点（最坏情况下没有重复数字共 n! 个），我们需要将当前答案使用 O(n) 的时间复制到答案数组中，相乘得时间复杂度为 $O(n \times n!)$。
+    这说明 $backtrack$ 的调用次数是 $O(n!)$ 的。
+    而对于 $backtrack$ 调用的每个叶结点（最坏情况下没有重复数字共 $n!$ 个），我们需要将当前答案使用 $O(n)$ 的时间复制到答案数组中，相乘得时间复杂度为 $O(n \times n!)$。
     因此时间复杂度为 $O(n \times n!)$。
-- 空间复杂度：O(n)。我们需要 O(n) 的标记数组，同时在递归的时候栈深度会达到 O(n)，因此总空间复杂度为 O(n+n)=O(2n)=O(n)。
+- 空间复杂度：$O(n)$。我们需要 $O(n)$ 的标记数组，同时在递归的时候栈深度会达到 $O(n)$，因此总空间复杂度为 $O(n+n)=O(2n)=O(n)$。
