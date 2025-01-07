@@ -11,7 +11,9 @@ namespace LeetCode.QuestionBank.Question0732
     }
 
     /// <summary>
-    /// 线段树
+    /// 线段树，动态开点
+    /// 
+    /// 逻辑没问题，MLE，参考测试用例02
     /// </summary>
     public class MyCalendarThree : Interface0732
     {
@@ -19,12 +21,12 @@ namespace LeetCode.QuestionBank.Question0732
         {
             LEFT = 0;
             RIGHT = (int)1e9;
-            tree = new Dictionary<int, int>();
+            tree = new Dictionary<long, int>();
         }
 
         private int LEFT;
         private int RIGHT;
-        private Dictionary<int, int> tree;
+        private Dictionary<long, int> tree;
 
         public int Book(int startTime, int endTime)
         {
@@ -34,29 +36,23 @@ namespace LeetCode.QuestionBank.Question0732
             return tree[1];
         }
 
-        private void Update(int left, int right, int val, int Left, int Right, int idx)
+        private void Update(int left, int right, int val, int Left, int Right, long idx)
         {
             if (!tree.ContainsKey(idx)) tree.Add(idx, 0);
-            if (left <= Left && right >= Right)
+            if (Left == Right)  // if (left <= Left && right >= Right)
             {
                 tree[idx] += val; return;
             }
 
             int mid = Left + (Right - Left) / 2, lchild = 0, rchild = 0;
-            if (left <= mid)
-            {
-                Update(left, right, val, Left, mid, idx << 1);
-                lchild = tree[idx << 1];
-            }
-            if (right > mid)
-            {
-                Update(left, right, val, mid + 1, Right, idx << 1 | 1);
-                rchild = tree[idx << 1 | 1];
-            }
+            if (left <= mid) Update(left, right, val, Left, mid, idx << 1);
+            if (right > mid) Update(left, right, val, mid + 1, Right, idx << 1 | 1);
+            lchild = tree.ContainsKey(idx << 1) ? tree[idx << 1] : 0;
+            rchild = tree.ContainsKey(idx << 1 | 1) ? tree[idx << 1 | 1] : 0;
             tree[idx] = Math.Max(lchild, rchild);
         }
 
-        private int Query(int left, int right, int Left, int Right, int idx)
+        private int Query(int left, int right, int Left, int Right, long idx)
         {
             if (!tree.ContainsKey(idx)) return 0;
             if (left <= Left && right >= Right) return tree[idx];

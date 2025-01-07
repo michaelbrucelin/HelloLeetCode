@@ -18,7 +18,8 @@ namespace LeetCode.QuestionBank.Question0732
         public MyCalendarThree_debug()
         {
             LEFT = 0;
-            RIGHT = (int)1e9;
+            // RIGHT = (int)1e9;
+            RIGHT = 60;
             tree = new Dictionary<long, long[]>();
         }
 
@@ -43,16 +44,10 @@ namespace LeetCode.QuestionBank.Question0732
             }
 
             int mid = Left + (Right - Left) / 2, lchild = 0, rchild = 0;
-            if (left <= mid)
-            {
-                Update(left, right, val, Left, mid, idx << 1);
-                lchild = (int)tree[idx << 1][0];
-            }
-            if (right > mid)
-            {
-                Update(left, right, val, mid + 1, Right, idx << 1 | 1);
-                rchild = (int)tree[idx << 1 | 1][0];
-            }
+            if (left <= mid) Update(left, right, val, Left, mid, idx << 1);
+            if (right > mid) Update(left, right, val, mid + 1, Right, idx << 1 | 1);
+            lchild = tree.ContainsKey(idx << 1) ? (int)tree[idx << 1][0] : 0;
+            rchild = tree.ContainsKey(idx << 1 | 1) ? (int)tree[idx << 1 | 1][0] : 0;
             tree[idx][0] = Math.Max(lchild, rchild);
         }
 
