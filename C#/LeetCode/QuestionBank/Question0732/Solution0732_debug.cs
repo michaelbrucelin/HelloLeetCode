@@ -6,60 +6,60 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0732
 {
-    public class Solution0732
+    public class Solution0732_debug
     {
     }
 
     /// <summary>
-    /// 线段树
+    /// 
     /// </summary>
-    public class MyCalendarThree : Interface0732
+    public class MyCalendarThree_debug : Interface0732
     {
-        public MyCalendarThree()
+        public MyCalendarThree_debug()
         {
             LEFT = 0;
             RIGHT = (int)1e9;
-            tree = new Dictionary<int, int>();
+            tree = new Dictionary<long, long[]>();
         }
 
         private int LEFT;
         private int RIGHT;
-        private Dictionary<int, int> tree;
+        private Dictionary<long, long[]> tree;
 
         public int Book(int startTime, int endTime)
         {
             Update(startTime, endTime - 1, 1, LEFT, RIGHT, 1);
 
             // return Query(startTime, endTime - 1, LEFT, RIGHT, 1);
-            return tree[1];
+            return (int)tree[1][0];
         }
 
-        private void Update(int left, int right, int val, int Left, int Right, int idx)
+        private void Update(int left, int right, int val, int Left, int Right, long idx)
         {
-            if (!tree.ContainsKey(idx)) tree.Add(idx, 0);
-            if (left <= Left && right >= Right)
+            if (!tree.ContainsKey(idx)) tree.Add(idx, [0, Left, Right]);
+            if (Left == Right)  // if (left <= Left && right >= Right)
             {
-                tree[idx] += val; return;
+                tree[idx][0] += val; return;
             }
 
             int mid = Left + (Right - Left) / 2, lchild = 0, rchild = 0;
             if (left <= mid)
             {
                 Update(left, right, val, Left, mid, idx << 1);
-                lchild = tree[idx << 1];
+                lchild = (int)tree[idx << 1][0];
             }
             if (right > mid)
             {
                 Update(left, right, val, mid + 1, Right, idx << 1 | 1);
-                rchild = tree[idx << 1 | 1];
+                rchild = (int)tree[idx << 1 | 1][0];
             }
-            tree[idx] = Math.Max(lchild, rchild);
+            tree[idx][0] = Math.Max(lchild, rchild);
         }
 
-        private int Query(int left, int right, int Left, int Right, int idx)
+        private int Query(int left, int right, int Left, int Right, long idx)
         {
             if (!tree.ContainsKey(idx)) return 0;
-            if (left <= Left && right >= Right) return tree[idx];
+            if (left <= Left && right >= Right) return (int)tree[idx][0];
 
             int mid = Left + (Right - Left) / 2, lchild = 0, rchild = 0;
             if (left <= mid) lchild = Query(left, right, Left, mid, idx << 1);
