@@ -1,4 +1,6 @@
-﻿#### [方法一：排序](https://leetcode.cn/problems/sort-the-people/solutions/2242694/an-shen-gao-pai-xu-by-leetcode-solution-p6bk/)
+﻿### [按身高排序](https://leetcode.cn/problems/sort-the-people/solutions/2242694/an-shen-gao-pai-xu-by-leetcode-solution-p6bk/)
+
+#### 方法一：排序
 
 **思路与算法**
 
@@ -132,5 +134,5 @@ char ** sortPeople(char ** names, int namesSize, int* heights, int heightsSize, 
 
 **复杂度分析**
 
--   时间复杂度：$O(n\log n)$，其中 $n$ 是 $names$ 和 $heights$ 的长度。对 $indices$ 数组排序的时间复杂度为 $O(n\log n)$。
--   空间复杂度：$O(n)$，其中 $n$ 是 $names$ 和 $heights$ 的长度。排序过程中所需要的栈空间为 $O(\log n)$，创建 $indices$ 数组所需要的空间是 $O(n)$，对它们求和后空间复杂度渐进意义下等于 $O(n)$。
+- 时间复杂度：$O(n\log n)$，其中 $n$ 是 $names$ 和 $heights$ 的长度。对 $indices$ 数组排序的时间复杂度为 $O(n\log n)$。
+- 空间复杂度：$O(n)$，其中 $n$ 是 $names$ 和 $heights$ 的长度。排序过程中所需要的栈空间为 $O(\log n)$，创建 $indices$ 数组所需要的空间是 $O(n)$，对它们求和后空间复杂度渐进意义下等于 $O(n)$。
