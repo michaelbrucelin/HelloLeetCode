@@ -1,4 +1,4 @@
-﻿#### [2379\. 得到 K 个黑块的最少涂色次数](https://leetcode.cn/problems/minimum-recolors-to-get-k-consecutive-black-blocks/)
+### [2379\. 得到 K 个黑块的最少涂色次数](https://leetcode.cn/problems/minimum-recolors-to-get-k-consecutive-black-blocks/)
 
 难度：简单
 
@@ -12,29 +12,25 @@
 
 **示例 1：**
 
-```
-输入：blocks = "WBBWWBBWBW", k = 7
-输出：3
-解释：
-一种得到 7 个连续黑色块的方法是把第 0 ，3 和 4 个块涂成黑色。
-得到 blocks = "BBBBBBBWBW" 。
-可以证明无法用少于 3 次操作得到 7 个连续的黑块。
-所以我们返回 3 。
-```
+> **输入：** blocks = "WBBWWBBWBW", k = 7
+> **输出：** 3
+> **解释：**
+> 一种得到 7 个连续黑色块的方法是把第 0 ，3 和 4 个块涂成黑色。
+> 得到 blocks = "BBBBBBBWBW" 。
+> 可以证明无法用少于 3 次操作得到 7 个连续的黑块。
+> 所以我们返回 3 。
 
 **示例 2：**
 
-```
-输入：blocks = "WBWBBBW", k = 2
-输出：0
-解释：
-不需要任何操作，因为已经有 2 个连续的黑块。
-所以我们返回 0 。
-```
+> **输入：** blocks = "WBWBBBW", k = 2
+> **输出：** 0
+> **解释：**
+> 不需要任何操作，因为已经有 2 个连续的黑块。
+> 所以我们返回 0 。
 
 **提示：**
 
--   `n == blocks.length`
--   `1 <= n <= 100`
--   `blocks[i]` 要么是 `'W'` ，要么是 `'B'` 。
--   `1 <= k <= n`
+- `n == blocks.length`
+- `1 <= n <= 100`
+- `blocks[i]` 要么是 `'W'` ，要么是 `'B'` 。
+- `1 <= k <= n`

@@ -53,19 +53,5 @@ namespace LeetCode.QuestionBank.Question2379
 
             return result;
         }
-
-        public int MinimumRecolors3(string blocks, int k)
-        {
-            return Enumerable.Range(0, blocks.Length - k + 1)
-                             .Select(i => blocks.Skip(i).Take(k).Count(c => c != 'B'))
-                             .Min();
-        }
-
-        public int MinimumRecolors4(string blocks, int k)
-        {
-            return Enumerable.Range(0, blocks.Length - k + 1)
-                             .Select(i => blocks.Skip(i).Take(k).Sum(c => c & 1))
-                             .Min();
-        }
     }
 }

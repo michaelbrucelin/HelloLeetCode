@@ -25,5 +25,22 @@ namespace LeetCode.QuestionBank.Question2264
 
             return result;
         }
+
+        public string LargestGoodInteger2(string num)
+        {
+            string result = "";
+            char c = '\0';
+            for (int i = 0; i < num.Length - 2; i++)
+            {
+                if (num[i] == num[i + 1] && num[i] == num[i + 2] && num[i] > c)
+                {
+                    result = num.Substring(i, 3);
+                    c = num[i];
+                }
+                if (c == '9') break;
+            }
+
+            return result;
+        }
     }
 }
