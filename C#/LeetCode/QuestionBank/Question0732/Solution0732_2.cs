@@ -19,47 +19,45 @@ namespace LeetCode.QuestionBank.Question0732
         {
             LEFT = 0;
             RIGHT = (int)1e9;
-            tree = new Dictionary<long, int>();
-            lazy = new Dictionary<long, int>();
+            tree = new Dictionary<long, int[]>();
         }
 
         private int LEFT;
         private int RIGHT;
-        private Dictionary<long, int> tree;
-        private Dictionary<long, int> lazy;
+        private Dictionary<long, int[]> tree;  // value[0] max, value[1] lazy
 
 
         public int Book(int startTime, int endTime)
         {
             Update(startTime, endTime - 1, 1, LEFT, RIGHT, 1);
 
-            return tree[1];
+            return tree[1][0];
         }
 
         private void Update(int left, int right, int val, int Left, int Right, long idx)
         {
-            if (!tree.ContainsKey(idx)) tree.Add(idx, 0);
+            if (!tree.ContainsKey(idx)) tree.Add(idx, new int[2]);
             if (left <= Left && right >= Right)
             {
-                tree[idx] += val;
-                if (lazy.ContainsKey(idx)) lazy[idx] += val; else lazy.Add(idx, val);
+                tree[idx][0] += val;
+                tree[idx][1] += val;
                 return;
             }
 
             int mid = Left + (Right - Left) / 2;
-            if (lazy.ContainsKey(idx))
+            if (tree[idx][1] > 0)
             {
-                Update(Left, Right, lazy[idx], Left, mid, idx << 1);
-                Update(Left, Right, lazy[idx], mid + 1, Right, idx << 1 | 1);
-                lazy.Remove(idx);
+                Update(Left, Right, tree[idx][1], Left, mid, idx << 1);
+                Update(Left, Right, tree[idx][1], mid + 1, Right, idx << 1 | 1);
+                tree[idx][1] = 0;
             }
 
             if (left <= mid) Update(left, right, val, Left, mid, idx << 1);
             if (right > mid) Update(left, right, val, mid + 1, Right, idx << 1 | 1);
-            int lchild = tree.ContainsKey(idx << 1) ? tree[idx << 1] : 0;
-            int rchild = tree.ContainsKey(idx << 1 | 1) ? tree[idx << 1 | 1] : 0;
+            int lchild = tree.ContainsKey(idx << 1) ? tree[idx << 1][0] : 0;
+            int rchild = tree.ContainsKey(idx << 1 | 1) ? tree[idx << 1 | 1][0] : 0;
 
-            tree[idx] = Math.Max(lchild, rchild);
+            tree[idx][0] = Math.Max(lchild, rchild);
         }
     }
 }
