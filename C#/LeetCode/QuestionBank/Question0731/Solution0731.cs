@@ -27,7 +27,8 @@ namespace LeetCode.QuestionBank.Question0731
         {
             Update(startTime, endTime - 1, 1, LEFT, RIGHT, 1);
 
-            if (Query(startTime, endTime - 1, LEFT, RIGHT, 1) < 3) return true;
+            // if (Query(startTime, endTime - 1, LEFT, RIGHT, 1) < 3) return true;
+            if (tree[1][0] < 3) return true;
             Update(startTime, endTime - 1, -1, LEFT, RIGHT, 1);
             return false;
         }
