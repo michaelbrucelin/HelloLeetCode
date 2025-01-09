@@ -12,6 +12,9 @@ namespace LeetCode.QuestionBank.Question0731
 
     public class MyCalendarTwo : Interface0731
     {
+        /// <summary>
+        /// 线段树
+        /// </summary>
         public MyCalendarTwo()
         {
             tree = new Dictionary<long, int[]>();
@@ -43,7 +46,7 @@ namespace LeetCode.QuestionBank.Question0731
                 return;
             }
 
-            int mid = Left + (Right - Left) / 2, lchild = 0, rchild = 0;
+            int mid = Left + ((Right - Left) >> 1), lchild = 0, rchild = 0;
             if (tree[idx][1] > 0)
             {
                 Update(Left, Right, tree[idx][1], Left, mid, idx << 1);
@@ -63,7 +66,7 @@ namespace LeetCode.QuestionBank.Question0731
             if (!tree.ContainsKey(idx)) return 0;
             if (left <= Left && right >= Right) return tree[idx][0];
 
-            int mid = Left + (Right - Left) / 2, lchild = 0, rchild = 0;
+            int mid = Left + ((Right - Left) >> 1), lchild = 0, rchild = 0;
             if (tree[idx][1] > 0)
             {
                 Update(Left, Right, tree[idx][1], Left, mid, idx << 1);

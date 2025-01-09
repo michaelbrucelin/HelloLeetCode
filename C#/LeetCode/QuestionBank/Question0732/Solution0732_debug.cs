@@ -43,7 +43,7 @@ namespace LeetCode.QuestionBank.Question0732
                 tree[idx][0] += val; return;
             }
 
-            int mid = Left + (Right - Left) / 2, lchild = 0, rchild = 0;
+            int mid = Left + ((Right - Left) >> 1), lchild = 0, rchild = 0;
             if (left <= mid) Update(left, right, val, Left, mid, idx << 1);
             if (right > mid) Update(left, right, val, mid + 1, Right, idx << 1 | 1);
             lchild = tree.ContainsKey(idx << 1) ? (int)tree[idx << 1][0] : 0;
@@ -56,7 +56,7 @@ namespace LeetCode.QuestionBank.Question0732
             if (!tree.ContainsKey(idx)) return 0;
             if (left <= Left && right >= Right) return (int)tree[idx][0];
 
-            int mid = Left + (Right - Left) / 2, lchild = 0, rchild = 0;
+            int mid = Left + ((Right - Left) >> 1), lchild = 0, rchild = 0;
             if (left <= mid) lchild = Query(left, right, Left, mid, idx << 1);
             if (right > mid) rchild = Query(left, right, mid + 1, Right, idx << 1 | 1);
 
