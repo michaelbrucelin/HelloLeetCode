@@ -16,7 +16,32 @@ namespace LeetCode.QuestionBank.Question3298
         /// <returns></returns>
         public long ValidSubstringCount(string word1, string word2)
         {
-            throw new NotImplementedException();
+            if (word1.Length < word2.Length) return 0;
+
+            long result = 0;
+            int[] cnt1 = new int[26], cnt2 = new int[26];
+            int len1 = word1.Length, len2 = word2.Length;
+            for (int i = 0; i < len2; i++)
+            {
+                cnt1[word1[i] - 'a']++; cnt2[word2[i] - 'a']++;
+            }
+
+            int p1 = 0, p2 = len2 - 1, diff = 0, id;
+            for (int i = 0; i < 26; i++) if (cnt1[i] < cnt2[i]) diff++;
+            while (p2 < len1)
+            {
+                while (diff > 0 && ++p2 < len1)
+                {
+                    cnt1[id = word1[p2] - 'a']++;
+                    if (cnt1[id] == cnt2[id]) diff--;
+                }
+                if (p2 == len1) break;
+                result += len1 - p2;
+                cnt1[id = word1[p1++] - 'a']--;
+                if (cnt1[id] < cnt2[id]) diff++;
+            }
+
+            return result;
         }
     }
 }
