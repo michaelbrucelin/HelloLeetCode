@@ -21,7 +21,7 @@ namespace LeetCode.QuestionBank.Question1582
             for (int i = 0; i < mat.Length; i++) for (int j = 0; j < mat[0].Length; j++)
                 {
                     if (colmask[j]) continue;
-                    if (mat[i][j] == 1)  // 无论这个值验证是否通过，都直接下一行，因为这一行后面的值如果是1，也会因为一行两个1而验证失败
+                    if (mat[i][j] == 1)     // 无论这个值验证是否通过，都直接下一行，因为这一行后面的值如果是1，也会因为一行两个1而验证失败
                     {
                         colmask[j] = true;  // 这一列已经有一个1了，这一列的其他值无需再验证
                         if (!VerifyRow(mat, i, j)) { break; }
@@ -37,17 +37,13 @@ namespace LeetCode.QuestionBank.Question1582
 
         private bool VerifyRow(int[][] mat, int row, int column)
         {
-            for (int i = 0; i < mat[0].Length; i++)
-                if (i != column && mat[row][i] == 1) return false;
-
+            for (int i = 0; i < mat[0].Length; i++) if (i != column && mat[row][i] == 1) return false;
             return true;
         }
 
         private bool VerifyColumn(int[][] mat, int row, int column)
         {
-            for (int i = 0; i < mat.Length; i++)
-                if (i != row && mat[i][column] == 1) return false;
-
+            for (int i = 0; i < mat.Length; i++) if (i != row && mat[i][column] == 1) return false;
             return true;
         }
     }

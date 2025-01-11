@@ -10,7 +10,7 @@ namespace LeetCode.QuestionBank.Question1582
     {
         public void Test()
         {
-            Solution1582_3 solution = new Solution1582_3();
+            Solution1582_off solution = new Solution1582_off();
             int[][] mat;
 
             // [[1,0,0],[0,0,1],[1,0,0]]

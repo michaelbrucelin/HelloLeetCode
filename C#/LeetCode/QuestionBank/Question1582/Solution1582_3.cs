@@ -8,49 +8,30 @@ namespace LeetCode.QuestionBank.Question1582
 {
     public class Solution1582_3 : Interface1582
     {
-        public int NumSpecial(int[][] mat)
-        {
-            int result = 0;
-
-            int[] rowcnt = new int[mat.Length], colcnt = new int[mat[0].Length];
-            for (int i = 0; i < mat.Length; i++)
-                for (int j = 0; j < mat[0].Length; j++)
-                { rowcnt[i] += mat[i][j]; colcnt[j] += mat[i][j]; }
-
-            for (int i = 0; i < mat.Length; i++)
-                for (int j = 0; j < mat[0].Length; j++)
-                    if (mat[i][j] == 1 && rowcnt[i] == 1 && colcnt[j] == 1) result++;
-
-            return result;
-        }
-
         /// <summary>
-        /// 在上面的算法的基础上做一些优化，使外层循环的次数更少
+        /// 预处理
+        /// 预处理除只有1个1的行与列，然后找二者的交集
         /// </summary>
         /// <param name="mat"></param>
         /// <returns></returns>
-        public int NumSpecial2(int[][] mat)
+        public int NumSpecial(int[][] mat)
         {
-            int result = 0;
-
-            int[] rowcnt = new int[mat.Length], colcnt = new int[mat[0].Length];
-            for (int i = 0; i < mat.Length; i++)
-                for (int j = 0; j < mat[0].Length; j++)
-                { rowcnt[i] += mat[i][j]; colcnt[j] += mat[i][j]; }
-
-            for (int i = 0; i < mat.Length; i++)
-            {
-                if (rowcnt[i] != 1) continue;
-                for (int j = 0; j < mat[0].Length; j++)
+            int rcnt = mat.Length, ccnt = mat[0].Length;
+            int[,] rcnts = new int[rcnt, 2], ccnts = new int[ccnt, 2];
+            for (int r = 0; r < rcnt; r++) for (int c = 0; c < ccnt; c++)
                 {
-                    if (mat[i][j] == 1 && rowcnt[i] == 1 && colcnt[j] == 1)
+                    if (mat[r][c] != 0)
                     {
-                        result++;
-                        break;
+                        rcnts[r, 0]++; rcnts[r, 1] = c;
+                        ccnts[c, 0]++; ccnts[c, 1] = r;
                     }
                 }
-            }
 
+            int result = 0;
+            for (int r = 0; r < rcnt; r++)
+            {
+                if (rcnts[r, 0] == 1 && ccnts[rcnts[r, 1], 0] == 1) result++;
+            }
             return result;
         }
     }

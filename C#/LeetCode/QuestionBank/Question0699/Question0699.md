@@ -37,5 +37,5 @@
 **提示：**
 
 - `1 <= positions.length <= 1000`
-- `1 <= left_i <= 10^8`
-- `1 <= sideLength_i <= 10^6`
+- <code>1 <= left_i <= 10<sup>8</sup></code>
+- <code>1 <= sideLength_i <= 10<sup>6</sup></code>
