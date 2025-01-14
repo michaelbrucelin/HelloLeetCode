@@ -22,15 +22,5 @@ namespace LeetCode.QuestionBank.Question1984
 
             return result;
         }
-
-        public int MinimumDifference2(int[] nums, int k)
-        {
-            if (k == 1) return 0;
-
-            Array.Sort(nums);
-            return Enumerable.Range(0, nums.Length - k + 1)
-                             .Select(i => nums[i + k - 1] - nums[i])
-                             .Min();
-        }
     }
 }

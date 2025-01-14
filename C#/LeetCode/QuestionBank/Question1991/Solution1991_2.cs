@@ -27,5 +27,18 @@ namespace LeetCode.QuestionBank.Question1991
 
             return -1;
         }
+
+        public int FindMiddleIndex2(int[] nums)
+        {
+            int lsum = 0, rsum = nums.Sum(), len = nums.Length;
+            for (int i = 0; i < len; i++)
+            {
+                rsum -= nums[i];
+                if (lsum == rsum) return i;
+                lsum += nums[i];
+            }
+
+            return -1;
+        }
     }
 }
