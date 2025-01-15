@@ -44,5 +44,30 @@ namespace LeetCode.QuestionBank.Question0062
 
             return (int)result;
         }
+
+        /// <summary>
+        /// 逻辑同UniquePaths()，官解中是这么写的，怎样证明的每次都可以整除？
+        /// 1. i = 1, 一定可以整除
+        /// 2. i = 2, 连续两个数中一定有一个可以被2整除
+        /// 3. i = 3, 连续三个数中一定有一个可以被3整除
+        /// ... ...
+        /// 原来证明这么简单，稍微一想就想到了，自己写的时候怎么就想当然的给弄复杂了。。。
+        /// </summary>
+        /// <param name="m"></param>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public int UniquePaths2(int m, int n)
+        {
+            if (m == 1 || n == 1) return 1;
+            if (--m < --n) { m ^= n; n ^= m; m ^= n; }  // 让 m >= n
+
+            long result = 1;
+            for (int i = 1, j = m + 1; i <= n; i++, j++)
+            {
+                result = result * j / i;
+            }
+
+            return (int)result;
+        }
     }
 }
