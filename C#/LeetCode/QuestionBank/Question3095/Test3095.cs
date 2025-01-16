@@ -10,7 +10,7 @@ namespace LeetCode.QuestionBank.Question3095
     {
         public void Test()
         {
-            Interface3095 solution = new Solution3095_2();
+            Interface3095 solution = new Solution3095_3();
             int[] nums; int k;
             int result, answer;
             int id = 0;
@@ -36,6 +36,12 @@ namespace LeetCode.QuestionBank.Question3095
             // 4. 
             nums = [32, 1, 25, 11, 2]; k = 59;
             answer = 4;
+            result = solution.MinimumSubarrayLength(nums, k);
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            // 5. 
+            nums = [5, 18, 16]; k = 25;
+            answer = -1;
             result = solution.MinimumSubarrayLength(nums, k);
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
         }
