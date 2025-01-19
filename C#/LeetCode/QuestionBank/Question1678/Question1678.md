@@ -1,38 +1,32 @@
-#### [1678\. Éè¼Æ Goal ½âÎöÆ÷](https://leetcode.cn/problems/goal-parser-interpretation/)
+### [1678\. è®¾è®¡ Goal è§£æžå™¨](https://leetcode.cn/problems/goal-parser-interpretation/)
 
-ÄÑ¶È£º¼òµ¥
+éš¾åº¦ï¼šç®€å•
 
-ÇëÄãÉè¼ÆÒ»¸ö¿ÉÒÔ½âÊÍ×Ö·û´® `command` µÄ **Goal ½âÎöÆ÷** ¡£`command` ÓÉ `"G"`¡¢`"()"` ºÍ/»ò `"(al)"` °´Ä³ÖÖË³Ðò×é³É¡£Goal ½âÎöÆ÷»á½« `"G"` ½âÊÍÎª×Ö·û´® `"G"`¡¢`"()"` ½âÊÍÎª×Ö·û´® `"o"` £¬`"(al)"` ½âÊÍÎª×Ö·û´® `"al"` ¡£È»ºó£¬°´Ô­Ë³Ðò½«¾­½âÊÍµÃµ½µÄ×Ö·û´®Á¬½Ó³ÉÒ»¸ö×Ö·û´®¡£
+è¯·ä½ è®¾è®¡ä¸€ä¸ªå¯ä»¥è§£é‡Šå­—ç¬¦ä¸² `command` çš„ **Goal è§£æžå™¨**ã€‚`command` ç”± `"G"`ã€`"()"` å’Œ/æˆ– `"(al)"` æŒ‰æŸç§é¡ºåºç»„æˆã€‚Goal è§£æžå™¨ä¼šå°† `"G"` è§£é‡Šä¸ºå­—ç¬¦ä¸² `"G"`ã€`"()"` è§£é‡Šä¸ºå­—ç¬¦ä¸² `"o"`ï¼Œ`"(al)"` è§£é‡Šä¸ºå­—ç¬¦ä¸² `"al"`ã€‚ç„¶åŽï¼ŒæŒ‰åŽŸé¡ºåºå°†ç»è§£é‡Šå¾—åˆ°çš„å­—ç¬¦ä¸²è¿žæŽ¥æˆä¸€ä¸ªå­—ç¬¦ä¸²ã€‚
 
-¸øÄã×Ö·û´® `command` £¬·µ»Ø **Goal ½âÎöÆ÷** ¶Ô `command` µÄ½âÊÍ½á¹û¡£
+ç»™ä½ å­—ç¬¦ä¸² `command`ï¼Œè¿”å›ž **Goal è§£æžå™¨** å¯¹ `command` çš„è§£é‡Šç»“æžœã€‚
 
-**Ê¾Àý 1£º**
+**ç¤ºä¾‹ 1ï¼š**
 
-```
-ÊäÈë£ºcommand = "G()(al)"
-Êä³ö£º"Goal"
-½âÊÍ£ºGoal ½âÎöÆ÷½âÊÍÃüÁîµÄ²½ÖèÈçÏÂËùÊ¾£º
-G -> G
-() -> o
-(al) -> al
-×îºóÁ¬½ÓµÃµ½µÄ½á¹ûÊÇ "Goal"
-```
+> **è¾“å…¥ï¼š** command = "G()(al)"
+> **è¾“å‡ºï¼š** "Goal"
+> **è§£é‡Šï¼š** Goal è§£æžå™¨è§£é‡Šå‘½ä»¤çš„æ­¥éª¤å¦‚ä¸‹æ‰€ç¤ºï¼š
+> G -> G
+> () -> o
+> (al) -> al
+> æœ€åŽè¿žæŽ¥å¾—åˆ°çš„ç»“æžœæ˜¯ "Goal"
 
-**Ê¾Àý 2£º**
+**ç¤ºä¾‹ 2ï¼š**
 
-```
-ÊäÈë£ºcommand = "G()()()()(al)"
-Êä³ö£º"Gooooal"
-```
+> **è¾“å…¥ï¼š** command = "G()()()()(al)"
+> **è¾“å‡ºï¼š** "Gooooal"
 
-**Ê¾Àý 3£º**
+**ç¤ºä¾‹ 3ï¼š**
 
-```
-ÊäÈë£ºcommand = "(al)G(al)()()G"
-Êä³ö£º"alGalooG"
-```
+> **è¾“å…¥ï¼š** command = "(al)G(al)()()G"
+> **è¾“å‡ºï¼š** "alGalooG"
 
-**ÌáÊ¾£º**
+**æç¤ºï¼š**
 
--   `1 <= command.length <= 100`
--   `command` ÓÉ `"G"`¡¢`"()"` ºÍ/»ò `"(al)"` °´Ä³ÖÖË³Ðò×é³É
+- `1 <= command.length <= 100`
+- `command` ç”± `"G"`ã€`"()"` å’Œ/æˆ– `"(al)"` æŒ‰æŸç§é¡ºåºç»„æˆ

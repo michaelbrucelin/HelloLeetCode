@@ -35,15 +35,5 @@ namespace LeetCode.QuestionBank.Question1678
 
             return sb.ToString();
         }
-
-        /// <summary>
-        /// 使用API
-        /// </summary>
-        /// <param name="command"></param>
-        /// <returns></returns>
-        public string Interpret2(string command)
-        {
-            return command.Replace("(al)", "al").Replace("()", "o");
-        }
     }
 }
