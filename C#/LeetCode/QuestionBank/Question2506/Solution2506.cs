@@ -18,16 +18,16 @@ namespace LeetCode.QuestionBank.Question2506
         public int SimilarPairs(string[] words)
         {
             Dictionary<int, int> map = new Dictionary<int, int>();
-            int mask; foreach (string word in words)
+            int mask;
+            foreach (string word in words)
             {
                 mask = 0;
-                for (int i = 0; i < word.Length; i++) mask |= 1 << (word[i] - 'a');
-                map.TryAdd(mask, 0); map[mask]++;
+                foreach (char c in word) mask |= 1 << (c - 'a');
+                if (map.ContainsKey(mask)) map[mask]++; else map.Add(mask, 1);
             }
 
             int result = 0;
-            foreach (var v in map.Values) result += v * (v - 1) >> 1;
-
+            foreach (int cnt in map.Values) result += (cnt * (cnt - 1)) >> 1;
             return result;
         }
     }
