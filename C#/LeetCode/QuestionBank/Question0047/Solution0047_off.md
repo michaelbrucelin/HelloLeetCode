@@ -189,6 +189,122 @@ int** permuteUnique(int* nums, int numsSize, int* returnSize, int** returnColumn
 }
 ```
 
+```Python
+class Solution:
+    def __init__(self):
+        self.vis = []
+
+    def backtrack(self, nums: List[int], ans: List[List[int]], idx: int, perm: List[int]):
+        if idx == len(nums):
+            ans.append(perm[:])
+            return
+        for i in range(len(nums)):
+            if self.vis[i] or (i > 0 and nums[i] == nums[i - 1] and not self.vis[i - 1]):
+                continue
+            perm.append(nums[i])
+            self.vis[i] = 1
+            self.backtrack(nums, ans, idx + 1, perm)
+            self.vis[i] = 0
+            perm.pop()
+
+    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+        ans = []
+        perm = []
+        self.vis = [0] * len(nums)
+        nums.sort()
+        self.backtrack(nums, ans, 0, perm)
+        return ans
+```
+
+```TypeScript
+function permuteUnique(nums: number[]): number[][] {
+    const ans: number[][] = [];
+    const perm: number[] = [];
+    const vis: boolean[] = new Array(nums.length).fill(false);
+    nums.sort((a, b) => a - b);
+    function backtrack(idx: number) {
+        if (idx === nums.length) {
+            ans.push([...perm]);
+            return;
+        }
+        for (let i = 0; i < nums.length; i++) {
+            if (vis[i] || (i > 0 && nums[i] === nums[i - 1] && !vis[i - 1])) {
+                continue;
+            }
+            perm.push(nums[i]);
+            vis[i] = true;
+            backtrack(idx + 1);
+            vis[i] = false;
+            perm.pop();
+        }
+    }
+    backtrack(0);
+    return ans;
+}
+```
+
+```CSharp
+public class Solution {
+    private List<bool> vis;
+
+    private void Backtrack(IList<int> nums, IList<IList<int>> ans, int idx, IList<int> perm) {
+        if (idx == nums.Count) {
+            ans.Add(new List<int>(perm));
+            return;
+        }
+        for (int i = 0; i < nums.Count; ++i) {
+            if (vis[i] || (i > 0 && nums[i] == nums[i - 1] && !vis[i - 1])) {
+                continue;
+            }
+            perm.Add(nums[i]);
+            vis[i] = true;
+            Backtrack(nums, ans, idx + 1, perm);
+            vis[i] = false;
+            perm.RemoveAt(perm.Count - 1);
+        }
+    }
+
+    public IList<IList<int>> PermuteUnique(int[] nums) {
+        var ans = new List<IList<int>>();
+        var perm = new List<int>();
+        vis = new List<bool>(new bool[nums.Length]);
+        Array.Sort(nums);
+        Backtrack(nums, ans, 0, perm);
+        return ans;
+    }
+}
+```
+
+```Rust
+impl Solution {
+    pub fn permute_unique(nums: Vec<i32>) -> Vec<Vec<i32>> {
+        fn backtrack(nums: &Vec<i32>, ans: &mut Vec<Vec<i32>>, perm: &mut Vec<i32>, vis: &mut Vec<bool>, idx: usize) {
+            if idx == nums.len() {
+                ans.push(perm.clone());
+                return;
+            }
+            for i in 0..nums.len() {
+                if vis[i] || (i > 0 && nums[i] == nums[i - 1] && !vis[i - 1]) {
+                    continue;
+                }
+                perm.push(nums[i]);
+                vis[i] = true;
+                backtrack(nums, ans, perm, vis, idx + 1);
+                vis[i] = false;
+                perm.pop();
+            }
+        }
+        let mut nums = nums.clone();
+        nums.sort();
+        let mut ans = Vec::new();
+        let mut perm = Vec::new();
+        let mut vis = vec![false; nums.len()];
+        backtrack(&nums, &mut ans, &mut perm, &mut vis, 0);
+        ans
+    }
+}
+```
+
 **复杂度分析**
 
 - 时间复杂度：$O(n \times n!)$，其中 $n$ 为序列的长度。
