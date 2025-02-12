@@ -21,5 +21,25 @@ namespace LeetCode.QuestionBank.Question1800
 
             return result;
         }
+
+        public int MaxAscendingSum2(int[] nums)
+        {
+            int result = 0, sum = nums[0], len = nums.Length;
+            for (int i = 1; i < len; i++)
+            {
+                if (nums[i] > nums[i - 1])
+                {
+                    sum += nums[i];
+                }
+                else
+                {
+                    result = Math.Max(result, sum);
+                    sum = nums[i];
+                }
+            }
+            result = Math.Max(result, sum);
+
+            return result;
+        }
     }
 }
