@@ -24,7 +24,7 @@
 
 **提示：**
 
--   `1 <= rectangles.length <= 1000`
--   `rectangles[i].length == 2`
--   `1 <= l_i, w_i <= 10^9`
--   `l_i != w_i`
+- `1 <= rectangles.length <= 1000`
+- `rectangles[i].length == 2`
+- `1 <= l_i, w_i <= 10^9`
+- `l_i != w_i`

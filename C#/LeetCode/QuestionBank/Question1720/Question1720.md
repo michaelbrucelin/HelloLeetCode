@@ -1,4 +1,4 @@
-#### [1720\. 解码异或后的数组](https://leetcode.cn/problems/decode-xored-array/)
+### [1720\. 解码异或后的数组](https://leetcode.cn/problems/decode-xored-array/)
 
 难度：简单
 
@@ -12,22 +12,18 @@
 
 **示例 1：**
 
-```
-输入：encoded = [1,2,3], first = 1
-输出：[1,0,2,1]
-解释：若 arr = [1,0,2,1] ，那么 first = 1 且 encoded = [1 XOR 0, 0 XOR 2, 2 XOR 1] = [1,2,3]
-```
+> **输入：** encoded = [1,2,3], first = 1
+> **输出：** [1,0,2,1]
+> **解释：** 若 arr = [1,0,2,1] ，那么 first = 1 且 encoded = [1 XOR 0, 0 XOR 2, 2 XOR 1] = [1,2,3]
 
 **示例 2：**
 
-```
-输入：encoded = [6,2,7,3], first = 4
-输出：[4,2,0,7,4]
-```
+> **输入：** encoded = [6,2,7,3], first = 4
+> **输出：** [4,2,0,7,4]
 
 **提示：**
 
--   `2 <= n <= 10^4`
--   `encoded.length == n - 1`
--   `0 <= encoded[i] <= 10^5`
--   `0 <= first <= 10^5`
+- `2 <= n <= 10^4`
+- `encoded.length == n - 1`
+- `0 <= encoded[i] <= 10^5`
+- `0 <= first <= 10^5`
