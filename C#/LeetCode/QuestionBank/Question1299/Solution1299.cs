@@ -8,6 +8,11 @@ namespace LeetCode.QuestionBank.Question1299
 {
     public class Solution1299 : Interface1299
     {
+        /// <summary>
+        /// 遍历
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <returns></returns>
         public int[] ReplaceElements(int[] arr)
         {
             for (int i = arr.Length - 1, rmax = -1, _t; i >= 0; i--)

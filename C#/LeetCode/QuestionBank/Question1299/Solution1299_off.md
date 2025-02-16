@@ -6,7 +6,7 @@
 
 设 `ans[i] = max(arr[i + 1], arr[i + 2], ..., arr[n - 1])`，那么在进行逆序遍历时，我们可以直接通过
 
-```cc
+```c
 ans[i] = max(ans[i + 1], arr[i + 1])
 ```
 
@@ -35,6 +35,96 @@ class Solution:
         for i in range(n - 2, -1, -1):
             ans[i] = max(ans[i + 1], arr[i + 1])
         return ans
+```
+
+```Java
+class Solution {
+    public int[] replaceElements(int[] arr) {
+        int n = arr.length;
+        int[] ans = new int[n];
+        ans[n - 1] = -1;
+        for (int i = n - 2; i >= 0; --i) {
+            ans[i] = Math.max(ans[i + 1], arr[i + 1]);
+        }
+        return ans;
+    }
+}
+```
+
+```CSharp
+public class Solution {
+    public int[] ReplaceElements(int[] arr) {
+        int n = arr.Length;
+        int[] ans = new int[n];
+        ans[n - 1] = -1;
+        for (int i = n - 2; i >= 0; --i) {
+            ans[i] = Math.Max(ans[i + 1], arr[i + 1]);
+        }
+        return ans;
+    }
+}
+```
+
+```Go
+func replaceElements(arr []int) []int {
+    n := len(arr)
+    ans := make([]int, n)
+    ans[n-1] = -1
+    for i := n - 2; i >= 0; i-- {
+        ans[i] = max(ans[i + 1], arr[i + 1])
+    }
+    return ans
+}
+```
+
+```C
+int* replaceElements(int* arr, int arrSize, int* returnSize) {
+    int *ans = calloc(arrSize, sizeof(int));
+    ans[arrSize - 1] = -1;
+    *returnSize = arrSize;
+    for (int i = arrSize - 2; i >= 0; --i) {
+        ans[i] = (arr[i + 1] > ans[i + 1]) ? arr[i + 1] : ans[i + 1];
+    }
+    return ans;
+}
+```
+
+```JavaScript
+var replaceElements = function(arr) {
+    const n = arr.length;
+    const ans = new Array(n);
+    ans[n - 1] = -1;
+    for (let i = n - 2; i >= 0; i--) {
+        ans[i] = Math.max(ans[i + 1], arr[i + 1]);
+    }
+    return ans;
+};
+```
+
+```TypeScript
+function replaceElements(arr: number[]): number[] {
+    const n = arr.length;
+    const ans: number[] = new Array(n);
+    ans[n - 1] = -1;
+    for (let i = n - 2; i >= 0; i--) {
+        ans[i] = Math.max(ans[i + 1], arr[i + 1]);
+    }
+    return ans;
+};
+```
+
+```Rust
+impl Solution {
+    pub fn replace_elements(arr: Vec<i32>) -> Vec<i32> {
+        let mut ans = vec![0; arr.len()];
+        let n = arr.len();
+        ans[n - 1] = -1;
+        for i in (0..n - 1).rev() {
+            ans[i] = ans[i + 1].max(arr[i + 1]);
+        }
+        ans
+    }
+}
 ```
 
 **复杂度分析**
