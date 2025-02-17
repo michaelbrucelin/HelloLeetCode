@@ -20,7 +20,7 @@ namespace LeetCode.QuestionBank.Question1287
 
             int span = len / 4;
             for (int i = 0; i < len; i++) if (arr[i] == arr[i + span]) return arr[i];
-            throw new Exception("");
+            throw new Exception("TestCase Or Code Logic Error.");
         }
     }
 }
