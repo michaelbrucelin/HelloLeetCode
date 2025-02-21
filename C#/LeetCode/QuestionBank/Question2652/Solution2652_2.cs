@@ -16,7 +16,7 @@ namespace LeetCode.QuestionBank.Question2652
         public int SumOfMultiples(int n)
         {
             int result = 0;
-            for (int i = 0, j = 0, k = 0, _i, _j, _k; i <= n || j <= n || k <= n;)
+            for (int i = 0, j = 0, k = 0, _i = 0, _j = 0, _k; i <= n || j <= n || k <= n;)
             {
                 _i = i + 3; _j = j + 5; _k = k + 7;
                 if (_i < _j && _i < _k)

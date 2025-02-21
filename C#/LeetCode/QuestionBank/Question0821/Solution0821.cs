@@ -54,7 +54,7 @@ namespace LeetCode.QuestionBank.Question0821
 
             int[] result = new int[len];
             for (int i = 0; i < pos[0]; i++) result[i] = pos[0] - i;
-            for (int j = 0, l, r; j < pos.Count - 1; j++)
+            for (int j = 0, l = 0, r = 0; j < pos.Count - 1; j++)
             {
                 l = pos[j]; r = pos[j + 1];
                 while (l <= r)

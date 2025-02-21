@@ -24,7 +24,7 @@ namespace LeetCode.QuestionBank.Question2865
 
             // 左至右
             stack.Push((0, 0, 0));
-            for (int i = 0, _val, _cnt; i < len; i++)
+            for (int i = 0, _val = 0, _cnt = 0; i < len; i++)
             {
                 _val = maxHeights[i];
                 if (_val > stack.Peek().val)
@@ -45,7 +45,7 @@ namespace LeetCode.QuestionBank.Question2865
 
             // 右至左
             stack.Clear(); stack.Push((0, 0, 0));
-            for (int i = len - 1, _val, _cnt; i >= 0; i--)
+            for (int i = len - 1, _val = 0, _cnt = 0; i >= 0; i--)
             {
                 _val = maxHeights[i];
                 if (_val > stack.Peek().val)
@@ -84,7 +84,7 @@ namespace LeetCode.QuestionBank.Question2865
 
             // 左至右
             stack.Push((0, 0, 0));
-            for (int i = 0, _val, _cnt; i < len; i++)
+            for (int i = 0, _val = 0, _cnt = 0; i < len; i++)
             {
                 _val = maxHeights[i];
                 if (_val > stack.Peek().val)
@@ -106,7 +106,7 @@ namespace LeetCode.QuestionBank.Question2865
             // 右至左
             long result = 0;
             stack.Clear(); stack.Push((0, 0, 0));
-            for (int i = len - 1, _val, _cnt; i >= 0; i--)
+            for (int i = len - 1, _val = 0, _cnt = 0; i >= 0; i--)
             {
                 _val = maxHeights[i];
                 if (_val > stack.Peek().val)

@@ -33,7 +33,7 @@ namespace LeetCode.QuestionBank.Question2056
         public int CountCombinations(string[] pieces, int[][] positions)
         {
             int result = 1, n = pieces.Length;
-            for (int i = 0, j = 1, r, c; i < n; i++)
+            for (int i = 0, j = 1, r = 0, c = 0; i < n; i++)
             {
                 if (pieces[i] == "rook")
                 {
@@ -62,7 +62,7 @@ namespace LeetCode.QuestionBank.Question2056
                         Array.Fill(flag, false);
                         while (true)
                         {
-                            for (int i = 0, _r, _c; i < n; i++)
+                            for (int i = 0, _r = 0, _c = 0; i < n; i++)
                             {
                                 _r = _pos[i][0] + _dir[i].r; _c = _pos[i][1] + _dir[i].c;
                                 if (_r >= 1 && _r <= 8 && _c >= 1 && _c <= 8)

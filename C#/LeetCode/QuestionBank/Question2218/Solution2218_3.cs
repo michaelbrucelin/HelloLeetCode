@@ -64,7 +64,7 @@ namespace LeetCode.QuestionBank.Question2218
 
             int pcnt = piles.Count;
             int[,] dp = new int[pcnt + 1, k + 1];
-            for (int i = 1, cnt, total_cnt = 0; i <= pcnt; i++)
+            for (int i = 1, cnt = 0, total_cnt = 0; i <= pcnt; i++)
             {
                 total_cnt += piles[i - 1].Count;
                 cnt = Math.Min(total_cnt, k);

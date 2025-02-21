@@ -30,7 +30,7 @@ namespace LeetCode.QuestionBank.Question2866
             Array.Sort(ids, (i, j) => maxHeights[i] != maxHeights[j] ? maxHeights[j] - maxHeights[i] : i - j);
 
             long result = 0, _result;
-            for (int id = 0, i, _limit; id < len; id++)
+            for (int id = 0, i = 0, _limit = 0; id < len; id++)
             {
                 if (maxHeights[i = ids[id]] * len <= result) break;
                 _result = maxHeights[i];

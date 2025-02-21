@@ -19,7 +19,7 @@ namespace LeetCode.QuestionBank.Question3143
             int len = points.Length;
             int[,] pos = new int[26, 2];  // 记录每个标签最靠近远点的距离
             for (int i = 0; i < 26; i++) for (int j = 0; j < 2; j++) pos[i, j] = int.MaxValue;
-            for (int i = 0, p, d; i < len; i++)
+            for (int i = 0, p = 0, d = 0; i < len; i++)
             {
                 p = s[i] - 'a';
                 d = Math.Max(Math.Abs(points[i][0]), Math.Abs(points[i][1]));

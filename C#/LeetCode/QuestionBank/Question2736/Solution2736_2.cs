@@ -39,7 +39,7 @@ namespace LeetCode.QuestionBank.Question2736
 
             int[] result = new int[len];
             Dictionary<(int, int), int> memory = new Dictionary<(int, int), int>();
-            for (int i = 0, q1, q2; i < len; i++)
+            for (int i = 0, q1 = 0, q2 = 0; i < len; i++)
             {
                 (q1, q2) = (queries[i][0], queries[i][1]);
                 if (!memory.ContainsKey((q1, q2)))

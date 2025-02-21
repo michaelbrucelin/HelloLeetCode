@@ -19,7 +19,7 @@ namespace LeetCode.QuestionBank.Question2786
             int len = nums.Length;
             long[,] dp = new long[len, 2];  // dp[,0] even, dp[,1] odd
             dp[0, nums[0] & 1] = nums[0]; dp[0, 1 - (nums[0] & 1)] = -1;
-            for (int i = 1, j, num; i < len; i++)
+            for (int i = 1, j = 0, num = 0; i < len; i++)
             {
                 num = nums[i]; j = num & 1;
                 dp[i, j ^ 1] = dp[i - 1, j ^ 1];
@@ -47,7 +47,7 @@ namespace LeetCode.QuestionBank.Question2786
             int len = nums.Length;
             long[] dp = new long[2];
             dp[nums[0] & 1] = nums[0]; dp[1 - (nums[0] & 1)] = -1;
-            for (int i = 1, j, num; i < len; i++)
+            for (int i = 1, j = 0, num = 0; i < len; i++)
             {
                 num = nums[i]; j = num & 1;
                 if (dp[j] == -1)

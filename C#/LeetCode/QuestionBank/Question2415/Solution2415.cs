@@ -35,7 +35,7 @@ namespace LeetCode.QuestionBank.Question2415
             }
 
             // 在数组中翻转奇数行
-            for (int i = 1, left, right, temp; ; i += 2)
+            for (int i = 1, left = 0, right = 0, temp = 0; ; i += 2)
             {
                 if ((left = (1 << i) - 1) >= list.Count) break;
                 right = (1 << (i + 1)) - 2;
@@ -86,7 +86,7 @@ namespace LeetCode.QuestionBank.Question2415
             }
 
             // 在数组中翻转奇数行
-            for (int i = 1, left, right; ; i += 2)
+            for (int i = 1, left = 0, right = 0; ; i += 2)
             {
                 if ((left = (1 << i) - 1) >= list.Count) break;
                 right = (1 << (i + 1)) - 2;
@@ -98,7 +98,7 @@ namespace LeetCode.QuestionBank.Question2415
             }
 
             // 利用数组中的节点重构树
-            for (int i = 0, j, cnt = list.Count; i < cnt; i++) if ((j = (i << 1) + 1) < cnt)
+            for (int i = 0, j = 0, cnt = list.Count; i < cnt; i++) if ((j = (i << 1) + 1) < cnt)
                 {
                     list[i].left = list[j]; list[i].right = list[j + 1];
                 }

@@ -18,7 +18,7 @@ namespace LeetCode.QuestionBank.Question1560
         {
             int[] cnts = new int[n + 1];
             cnts[rounds[0]] = 1;
-            for (int i = 1, start, end; i < rounds.Length; i++)
+            for (int i = 1, start = 0, end = 0; i < rounds.Length; i++)
             {
                 start = rounds[i - 1] + 1; end = rounds[i];  // 题目限定rounds[i] != rounds[i + 1]
                 if (end >= start)

@@ -83,7 +83,7 @@ namespace LeetCode.QuestionBank.Question2258
             int cnt; while ((cnt = queue.Count) > 0)
             {
                 steps++;
-                for (int i = 0, _r, _c; i < cnt; i++)
+                for (int i = 0, _r = 0, _c = 0; i < cnt; i++)
                 {
                     pos = queue.Dequeue(); visited[pos.r, pos.c] = true;
                     for (int j = 0; j < 4; j++)
@@ -122,7 +122,7 @@ namespace LeetCode.QuestionBank.Question2258
             (int r, int c) pos; int cnt;
             for (int t = 0; t < wait; t++)
             {
-                cnt = queue_fire.Count; for (int i = 0, _r, _c; i < cnt; i++)
+                cnt = queue_fire.Count; for (int i = 0, _r = 0, _c = 0; i < cnt; i++)
                 {
                     pos = queue_fire.Dequeue();
                     for (int j = 0; j < 4; j++)
@@ -143,7 +143,7 @@ namespace LeetCode.QuestionBank.Question2258
             while (true)
             {
                 // 火蔓延一次
-                cnt = queue_fire.Count; for (int i = 0, _r, _c; i < cnt; i++)
+                cnt = queue_fire.Count; for (int i = 0, _r = 0, _c = 0; i < cnt; i++)
                 {
                     pos = queue_fire.Dequeue();
                     for (int j = 0; j < 4; j++)
@@ -157,7 +157,7 @@ namespace LeetCode.QuestionBank.Question2258
                     }
                 }
                 // 人前进一次
-                cnt = queue_man.Count; for (int i = 0, _r, _c; i < cnt; i++)
+                cnt = queue_man.Count; for (int i = 0, _r = 0, _c = 0; i < cnt; i++)
                 {
                     pos = queue_man.Dequeue(); visited_man[pos.r, pos.c] = true;
                     for (int j = 0; j < 4; j++)

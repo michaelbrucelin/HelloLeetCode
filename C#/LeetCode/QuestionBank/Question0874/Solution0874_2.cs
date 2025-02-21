@@ -19,7 +19,7 @@ namespace LeetCode.QuestionBank.Question0874
         {
             int result = 0;
             Dictionary<int, List<int>> obs_x = new Dictionary<int, List<int>>(), obs_y = new Dictionary<int, List<int>>();
-            for (int i = 0, _x, _y; i < obstacles.Length; i++)
+            for (int i = 0, _x = 0, _y = 0; i < obstacles.Length; i++)
             {
                 _x = obstacles[i][0]; _y = obstacles[i][1];
                 if (obs_x.ContainsKey(_x)) obs_x[_x].Add(_y); else obs_x.Add(_x, new List<int>() { _y });

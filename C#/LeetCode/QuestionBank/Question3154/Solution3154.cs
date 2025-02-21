@@ -31,7 +31,7 @@ namespace LeetCode.QuestionBank.Question3154
             if (k == 0) return 2;
 
             int result = k == 1 ? 1 : 0;
-            for (int up = 1, down, reach = 1; ; up++)
+            for (int up = 1, down = 0, reach = 1; ; up++)
             {
                 reach += (int)Math.Pow(2, up - 1);
                 down = reach - k;
@@ -74,7 +74,7 @@ namespace LeetCode.QuestionBank.Question3154
             if (k == 0) return 2;
 
             int result = k == 1 ? 1 : 0;
-            for (int up = 1, down, reach = 1; ; up++)
+            for (int up = 1, down = 0, reach = 1; ; up++)
             {
                 reach += (int)Math.Pow(2, up - 1);
                 down = reach - k;

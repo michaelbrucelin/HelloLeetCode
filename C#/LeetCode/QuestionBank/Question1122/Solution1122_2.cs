@@ -27,7 +27,7 @@ namespace LeetCode.QuestionBank.Question1122
             for (int i = 0; i < arr1.Length; i++) freq[arr1[i] - min]++;
 
             int ptr = 0;
-            for (int i = 0, num, id; i < arr2.Length; i++)
+            for (int i = 0, num = 0, id = 0; i < arr2.Length; i++)
             {
                 num = arr2[i]; id = num - min;
                 for (int j = 0; j < freq[id]; j++) arr1[ptr++] = num;

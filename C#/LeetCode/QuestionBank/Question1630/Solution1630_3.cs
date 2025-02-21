@@ -12,7 +12,7 @@ namespace LeetCode.QuestionBank.Question1630
         {
             bool[] result = new bool[l.Length];
             HashSet<int> set = new HashSet<int>();
-            for (int i = 0, min, max, len, diff; i < l.Length; i++)
+            for (int i = 0, min = 0, max = 0, len = 0, diff = 0; i < l.Length; i++)
             {
                 min = max = nums[l[i]]; len = r[i] - l[i] + 1;
                 for (int j = l[i] + 1; j <= r[i]; j++)

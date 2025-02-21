@@ -13,7 +13,7 @@ namespace LeetCode.QuestionBank.Question3007
         {
             int cnt = 0;
             string _base2;
-            for (int i = 0, _i, _cnt, _sp1, _sp2; i < k; i++)
+            for (int i = 0, _i = 0, _cnt = 0, _sp1 = 0, _sp2 = 0; i < k; i++)
             {
                 _i = i; _cnt = 0;
                 while (_i > 0)

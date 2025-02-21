@@ -32,7 +32,7 @@ namespace LeetCode.QuestionBank.Question0661
 
             int[][] result = new int[rcnt][];
             for (int i = 0; i < rcnt; i++) result[i] = new int[ccnt];
-            for (int c = 0, win, cnt, _cnt; c < ccnt; c++)
+            for (int c = 0, win = 0, cnt = 0, _cnt = 0; c < ccnt; c++)
             {
                 win = rsum[0][c];
                 for (int r = 0; r < rcnt; r++)
@@ -73,7 +73,7 @@ namespace LeetCode.QuestionBank.Question0661
                 }
             }
 
-            for (int c = 0, win, cnt, _cnt; c < ccnt; c++)
+            for (int c = 0, win = 0, cnt = 0, _cnt = 0; c < ccnt; c++)
             {
                 win = img[0][c] >> 8;
                 for (int r = 0; r < rcnt; r++)

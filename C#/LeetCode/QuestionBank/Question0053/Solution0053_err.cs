@@ -18,7 +18,7 @@ namespace LeetCode.QuestionBank.Question0053
         {
             int len = nums.Length, max = nums[0];  // 子数组至少取一项，下面的DP可以取空数组，所以这里用max记录数组的最大值
             int[] dp1 = new int[len + 1], dp2 = new int[len + 1];
-            for (int i = 0, num, _dp2; i < len; i++)
+            for (int i = 0, num = 0, _dp2 = 0; i < len; i++)
             {
                 num = nums[i]; _dp2 = dp2[i] + num; max = Math.Max(max, num);
                 if (_dp2 >= 0)

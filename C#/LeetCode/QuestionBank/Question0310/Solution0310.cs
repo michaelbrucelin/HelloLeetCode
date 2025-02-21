@@ -30,7 +30,7 @@ namespace LeetCode.QuestionBank.Question0310
             int minHeight = n;
             Queue<(int v, int u)> queue = new Queue<(int v, int u)>();
             (int v, int u) item;
-            for (int i = 0, _height, _cnt; i < n; i++)
+            for (int i = 0, _height = 0, _cnt = 0; i < n; i++)
             {
                 _height = 0;
                 queue.Enqueue((i, -1));

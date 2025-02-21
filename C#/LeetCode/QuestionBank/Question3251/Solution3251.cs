@@ -23,7 +23,7 @@ namespace LeetCode.QuestionBank.Question3251
             for (int id = len - 2; id >= 0; id--)
             {
                 Array.Fill(_dp, 0);
-                for (int i = 0, j, sum = nums[id], left, right; i <= sum; i++)
+                for (int i = 0, j = 0, sum = nums[id], left = 0, right = 0; i <= sum; i++)
                 {
                     j = sum - i;
                     if (j < 0) break;

@@ -23,12 +23,12 @@ namespace LeetCode.QuestionBank.Question3250
             for (int id = len - 2; id >= 0; id--)
             {
                 Array.Fill(_dp, 0);
-                for (int i = 0, j, sum = nums[id], cnt; i <= sum; i++)
+                for (int i = 0, j = 0, sum = nums[id], cnt; i <= sum; i++)
                 {
                     j = sum - i;
                     if (j < 0) break;
                     cnt = 0;
-                    for (int _i = i, _j, _sum = nums[id + 1]; _i <= _sum; _i++)
+                    for (int _i = i, _j = 0, _sum = nums[id + 1]; _i <= _sum; _i++)
                     {
                         _j = _sum - _i;
                         if (_j > j) continue;
@@ -60,7 +60,7 @@ namespace LeetCode.QuestionBank.Question3250
             for (int id = len - 2; id >= 0; id--)
             {
                 Array.Fill(_dp, 0);
-                for (int i = 0, j, sum = nums[id], cnt, _sum; i <= sum; i++)
+                for (int i = 0, j = 0, sum = nums[id], cnt = 0, _sum = 0; i <= sum; i++)
                 {
                     j = sum - i;
                     if (j < 0) break;

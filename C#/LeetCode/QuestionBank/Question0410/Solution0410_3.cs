@@ -28,7 +28,7 @@ namespace LeetCode.QuestionBank.Question0410
             for (int i = 0; i < len; i++) sums[i + 1] = sums[i] + nums[i];
 
             int[][] dp = new int[len][];
-            for (int i = 0, min, cnt; i < len - 1; i++)   // 数组前i项的分组结果，只要没到最后一项，最多分k-1组就行
+            for (int i = 0, min = 0, cnt = 0; i < len - 1; i++)   // 数组前i项的分组结果，只要没到最后一项，最多分k-1组就行
             {
                 cnt = Math.Min(i + 1, k - 1) + 1;         // 数组前i项最多分Math.Min(i + 1, k - 1)组
                 dp[i] = new int[cnt];

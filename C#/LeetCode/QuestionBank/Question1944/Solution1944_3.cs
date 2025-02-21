@@ -19,7 +19,7 @@ namespace LeetCode.QuestionBank.Question1944
             int[] result = new int[heights.Length];
             Stack<int> stack = new Stack<int>();
             stack.Push(heights[^1]);
-            for (int i = heights.Length - 2, cnt, height; i >= 0; i--)
+            for (int i = heights.Length - 2, cnt = 0, height = 0; i >= 0; i--)
             {
                 cnt = 0; height = heights[i];
                 while (stack.Count > 0 && stack.Peek() < height)

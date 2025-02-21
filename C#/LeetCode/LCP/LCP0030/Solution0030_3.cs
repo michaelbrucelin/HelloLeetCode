@@ -21,7 +21,7 @@ namespace LeetCode.LCP.LCP0030
             int result = 0; long blood = 1;
             Queue<int> queue = new Queue<int>();
             PriorityQueue<int, int> minpq = new PriorityQueue<int, int>();
-            for (int i = 0, num, _num; i < nums.Length; i++)
+            for (int i = 0, num = 0, _num = 0; i < nums.Length; i++)
             {
                 if ((num = nums[i]) < 0) minpq.Enqueue(num, num);
                 if ((blood += num) <= 0)  // 此时minpq必不为空，且一定移动一个最小的负值blood即可大于0
@@ -47,7 +47,7 @@ namespace LeetCode.LCP.LCP0030
         {
             int result = 0; long blood = 1, renums = 0;
             PriorityQueue<int, int> minpq = new PriorityQueue<int, int>();
-            for (int i = 0, num, _num; i < nums.Length; i++)
+            for (int i = 0, num = 0, _num = 0; i < nums.Length; i++)
             {
                 if ((num = nums[i]) < 0) minpq.Enqueue(num, num);
                 if ((blood += num) <= 0)  // 此时minpq必不为空，且一定移动一个最小的负值blood即可大于0

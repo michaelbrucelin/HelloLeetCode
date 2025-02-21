@@ -50,7 +50,7 @@ namespace LeetCode.QuestionBank.Question2376
             int result = 0, len = digits.Count;
             bool[] mask = new bool[10];
             result += dstb[len - 1];
-            for (int i = len - 1, cnt, start = 11 - len; i >= 0; i--)
+            for (int i = len - 1, cnt = 0, start = 11 - len; i >= 0; i--)
             {
                 cnt = 1; for (int j = 0; j < i; j++) cnt *= start + j;
                 for (int j = (i == len - 1 ? 1 : 0); j < digits[i]; j++) if (!mask[j]) result += cnt;

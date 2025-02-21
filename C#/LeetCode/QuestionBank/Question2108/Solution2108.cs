@@ -11,7 +11,7 @@ namespace LeetCode.QuestionBank.Question2108
         public string FirstPalindrome(string[] words)
         {
             string result = string.Empty;
-            for (int i = 0, left, right; i < words.Length; i++)
+            for (int i = 0, left = 0, right = 0; i < words.Length; i++)
             {
                 left = -1; right = words[i].Length;
                 while (++left < --right && words[i][left] == words[i][right]) ;

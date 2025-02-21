@@ -22,7 +22,7 @@ namespace LeetCode.QuestionBank.Question1605
             for (int r = 0; r < rows; r++) result[r] = new int[cols];
 
             for (int c = 0; c < cols; c++) result[0][c] = colSum[c];
-            for (int r = 0, _sum, sum; r < rows - 1; r++)
+            for (int r = 0, _sum = 0, sum = 0; r < rows - 1; r++)
             {
                 _sum = 0; sum = rowSum[r];
                 for (int c = 0; c < cols; c++)

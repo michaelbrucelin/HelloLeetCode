@@ -17,7 +17,7 @@ namespace LeetCode.QuestionBank.Question0922
         {
             int len = nums.Length;
             int[] result = new int[len];
-            for (int i = 0, num, even = 0, odd = 1; i < len; i++)
+            for (int i = 0, num = 0, even = 0, odd = 1; i < len; i++)
             {
                 num = nums[i];
                 if ((num & 1) != 0)

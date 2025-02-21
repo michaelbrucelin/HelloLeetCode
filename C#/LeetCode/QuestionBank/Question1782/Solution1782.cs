@@ -25,14 +25,14 @@ namespace LeetCode.QuestionBank.Question1782
         public int[] CountPairs(int n, int[][] edges, int[] queries)
         {
             int[] ent = new int[n]; int[,] adj = new int[n, n];
-            for (int id = 0, i, j; id < edges.Length; id++)
+            for (int id = 0, i = 0, j = 0; id < edges.Length; id++)
             {
                 i = edges[id][0] - 1; j = edges[id][1] - 1;
                 ent[i]++; ent[j]++; adj[i, j]++; adj[j, i]++;
             }
 
             int len = queries.Length; int[] result = new int[len];
-            for (int id = 0, cnt, tar; id < len; id++)
+            for (int id = 0, cnt = 0, tar = 0; id < len; id++)
             {
                 cnt = 0; tar = queries[id];
                 for (int i = 0; i < n; i++) for (int j = i + 1; j < n; j++)
@@ -57,7 +57,7 @@ namespace LeetCode.QuestionBank.Question1782
         {
             int[] ent = new int[n]; int[][] adj = new int[n][];
             for (int id = 0; id < n - 1; id++) adj[id] = new int[n - id - 1];
-            for (int id = 0, i, j; id < edges.Length; id++)
+            for (int id = 0, i = 0, j = 0; id < edges.Length; id++)
             {
                 i = edges[id][0] - 1; j = edges[id][1] - 1;
                 if (j < i) (i, j) = (j, i);
@@ -65,7 +65,7 @@ namespace LeetCode.QuestionBank.Question1782
             }
 
             int len = queries.Length; int[] result = new int[len];
-            for (int id = 0, cnt, tar; id < len; id++)
+            for (int id = 0, cnt = 0, tar = 0; id < len; id++)
             {
                 cnt = 0; tar = queries[id];
                 for (int i = 0; i < n; i++) for (int j = i + 1; j < n; j++)

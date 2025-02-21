@@ -28,7 +28,7 @@ namespace LeetCode.QuestionBank.Question3250
                 if (memory[id, asc, desc] == -1)
                 {
                     int result = 0;
-                    for (int i = asc, j, sum = nums[id]; i <= sum; i++)
+                    for (int i = asc, j = 0, sum = nums[id]; i <= sum; i++)
                     {
                         j = sum - i;
                         if (j > desc) continue;
@@ -62,7 +62,7 @@ namespace LeetCode.QuestionBank.Question3250
                 if (memory[id, asc] == -1)
                 {
                     int result = 0;
-                    for (int i = asc, j, sum = nums[id]; i <= sum; i++)
+                    for (int i = asc, j = 0, sum = nums[id]; i <= sum; i++)
                     {
                         j = sum - i;
                         if (j > desc) continue;

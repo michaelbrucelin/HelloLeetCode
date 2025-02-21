@@ -49,7 +49,7 @@ namespace LeetCode.QuestionBank.Question1016
         {
             uint[] mask = new uint[(n >> 5) + 1]; const int _m = 31;
             string _str;
-            for (int _n = n, __n, i, j; _n > 0; _n--)
+            for (int _n = n, __n = 0, i = 0, j = 0; _n > 0; _n--)
             {
                 i = _n >> 5; j = _n & _m; j = j != 0 ? j - 1 : _m;
                 if (((mask[i] >> j) & 1) == 1) continue;

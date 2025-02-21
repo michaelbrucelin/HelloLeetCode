@@ -26,7 +26,7 @@ namespace LeetCode.QuestionBank.Question1030
             bool[,] mask = new bool[rows, cols];
             int[][] result = new int[rows * cols][];
             result[0] = new int[] { rCenter, cCenter }; mask[rCenter, cCenter] = true;
-            for (int i = 1, id = 1, r, c; i <= max; i++) for (int _r = 0, _c; _r <= i; _r++)
+            for (int i = 1, id = 1, r = 0, c = 0; i <= max; i++) for (int _r = 0, _c; _r <= i; _r++)
                 {
                     _c = i - _r;
                     for (int j = 0; j < 4; j++)

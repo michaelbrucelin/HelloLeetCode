@@ -22,7 +22,7 @@ namespace LeetCode.QuestionBank.Question0697
             Dictionary<int, int> freq1 = new Dictionary<int, int>();
             Dictionary<int, HashSet<int>> freq2 = new Dictionary<int, HashSet<int>>() { { 1, new HashSet<int>() } };
 
-            for (int i = 0, val, freq; i < nums.Length; i++)
+            for (int i = 0, val = 0, freq = 0; i < nums.Length; i++)
             {
                 val = nums[i];
                 if (range.ContainsKey(val))

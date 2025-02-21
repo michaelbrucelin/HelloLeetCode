@@ -20,7 +20,7 @@ namespace LeetCode.QuestionBank.Question0688
             {
                 for (int r = 0; r < n; r++) for (int c = 0; c < n; c++)
                     {
-                        for (int j = 0, _r, _c; j < 8; j++)
+                        for (int j = 0, _r = 0, _c = 0; j < 8; j++)
                         {
                             _r = r + dirs[j].r; _c = c + dirs[j].c;
                             if (_r >= 0 && _r < n && _c >= 0 && _c < n)

@@ -32,7 +32,7 @@ namespace LeetCode.QuestionBank.Question3128
                     }
 
             long result = 0;
-            for (int r = 0, _rcnt, _csum; r < rcnt; r++)
+            for (int r = 0, _rcnt = 0, _csum = 0; r < rcnt; r++)
             {
                 _rcnt = rowpos[r].Count; _csum = 0;
                 for (int c = 0; c < _rcnt; c++) _csum += colcnt[rowpos[r][c]] - 1;

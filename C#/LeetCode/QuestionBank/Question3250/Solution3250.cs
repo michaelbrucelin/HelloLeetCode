@@ -26,7 +26,7 @@ namespace LeetCode.QuestionBank.Question3250
             {
                 if (id == len) { result = (result + 1) % MOD; return; }
 
-                for (int i = asc, j, sum = nums[id]; i <= sum; i++)
+                for (int i = asc, j = 0, sum = nums[id]; i <= sum; i++)
                 {
                     j = sum - i;
                     if (j > desc) continue;

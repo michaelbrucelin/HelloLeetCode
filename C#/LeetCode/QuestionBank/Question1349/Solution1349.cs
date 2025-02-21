@@ -40,7 +40,7 @@ namespace LeetCode.QuestionBank.Question1349
                 dp[state] = r_state.cnt;
             }
             // 第二行至最后一行
-            for (int r = 1, _mask, _result; r < rcnt; r++)
+            for (int r = 1, _mask = 0, _result = 0; r < rcnt; r++)
             {
                 Array.Fill(_dp, -1);
                 for (int state = 0; state < len; state++)

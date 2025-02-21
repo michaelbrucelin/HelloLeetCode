@@ -42,7 +42,7 @@ namespace LeetCode.QuestionBank.Question1389
         public int[] CreateTargetArray2(int[] nums, int[] index)
         {
             int len = nums.Length;
-            for (int i = 0, id, num; i < len; i++)
+            for (int i = 0, id = 0, num = 0; i < len; i++)
             {
                 id = index[i]; num = nums[i];
                 if (id < i) for (int j = i; j > id; j--)

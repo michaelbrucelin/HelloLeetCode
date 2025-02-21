@@ -18,7 +18,7 @@ namespace LeetCode.QuestionBank.Question3153
         public long SumDigitDifferences(int[] nums)
         {
             List<int[]> dstb = new List<int[]>();
-            for (int i = 0, div, len = nums.Length; i <= 9; i++)
+            for (int i = 0, div = 0, len = nums.Length; i <= 9; i++)
             {
                 div = (int)Math.Pow(10, i);
                 if (nums[0] < div) break;

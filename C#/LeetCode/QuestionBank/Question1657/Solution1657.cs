@@ -29,7 +29,7 @@ namespace LeetCode.QuestionBank.Question1657
 
             int mask1 = 0, mask2 = 0, len = word1.Length;
             int[] freq1 = new int[26], freq2 = new int[26];
-            for (int i = 0, p1, p2; i < len; i++)
+            for (int i = 0, p1 = 0, p2 = 0; i < len; i++)
             {
                 p1 = word1[i] - 'a'; mask1 |= 1 << p1; freq1[p1]++;
                 p2 = word2[i] - 'a'; mask2 |= 1 << p2; freq2[p2]++;

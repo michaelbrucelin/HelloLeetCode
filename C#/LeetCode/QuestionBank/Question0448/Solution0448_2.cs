@@ -35,7 +35,7 @@ namespace LeetCode.QuestionBank.Question0448
         /// <returns></returns>
         public IList<int> FindDisappearedNumbers(int[] nums)
         {
-            for (int i = 0, next, _next; i < nums.Length; i++)
+            for (int i = 0, next = 0, _next = 0; i < nums.Length; i++)
             {
                 if ((next = nums[i]) == -1) continue;
                 while (next != -1)

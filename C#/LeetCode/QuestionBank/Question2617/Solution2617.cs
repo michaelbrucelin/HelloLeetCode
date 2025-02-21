@@ -29,7 +29,7 @@ namespace LeetCode.QuestionBank.Question2617
             while ((cnt = queue.Count) > 0)
             {
                 result++;
-                for (int i = 0, rlimit, climit; i < cnt; i++)
+                for (int i = 0, rlimit = 0, climit = 0; i < cnt; i++)
                 {
                     item = queue.Dequeue();
                     rlimit = item.r + grid[item.r][item.c]; climit = item.c + grid[item.r][item.c];

@@ -17,7 +17,7 @@ namespace LeetCode.QuestionBank.Question0907
         {
             long result = 0;
             int len = arr.Length; const int MOD = 1000000007;
-            for (int i = 0, lcnt, rcnt; i < len; i++)
+            for (int i = 0, lcnt = 0, rcnt = 0; i < len; i++)
             {
                 lcnt = rcnt = 0;
                 for (int j = i - 1; j >= 0 && arr[j] >= arr[i]; j--, lcnt++) ;

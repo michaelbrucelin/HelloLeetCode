@@ -22,7 +22,7 @@ namespace LeetCode.QuestionBank.Question3261
 
             int len = queries.Length;
             long[] result = new long[len];
-            for (int i = 0, j, J; i < len; i++)
+            for (int i = 0, j = 0, J = 0; i < len; i++)
             {
                 for (j = queries[i][0], J = queries[i][1]; j <= queries[i][1]; j++)
                 {

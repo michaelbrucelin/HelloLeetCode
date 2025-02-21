@@ -19,7 +19,7 @@ namespace LeetCode.QuestionBank.Question1763
         {
             int len = s.Length;
             int[,,] freq = new int[len + 1, 2, 27];
-            for (int i = 0, d2, d3; i < len; i++)
+            for (int i = 0, d2 = 0, d3 = 0; i < len; i++)
             {
                 d2 = (s[i] >> 5) & 1; d3 = s[i] & 31;
                 for (int j = 1; j < 27; j++)
@@ -40,7 +40,7 @@ namespace LeetCode.QuestionBank.Question1763
             int width = len + 1; bool flag;
             while (--width > 1)
             {
-                for (int i = 0, cnt0, cnt1; i <= len - width; i++)
+                for (int i = 0, cnt0 = 0, cnt1 = 0; i <= len - width; i++)
                 {
                     flag = true;
                     for (int j = 1; j < 27; j++)

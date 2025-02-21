@@ -23,7 +23,7 @@ namespace LeetCode.QuestionBank.Question2976
             int infty = int.MaxValue;
             for (int i = 0; i < 26; i++) for (int j = 0; j < 26; j++) grpah[i, j] = infty;
             for (int i = 0; i < 26; i++) grpah[i, i] = 0;
-            for (int i = 0, _s, _t; i < cost.Length; i++)
+            for (int i = 0, _s = 0, _t = 0; i < cost.Length; i++)
             {
                 _s = original[i] - 'a'; _t = changed[i] - 'a';
                 grpah[_s, _t] = Math.Min(grpah[_s, _t], cost[i]);
@@ -35,7 +35,7 @@ namespace LeetCode.QuestionBank.Question2976
                     }
 
             long result = 0;
-            for (int i = 0, _s, _t; i < source.Length; i++) if (source[i] != target[i])
+            for (int i = 0, _s = 0, _t = 0; i < source.Length; i++) if (source[i] != target[i])
                 {
                     _s = source[i] - 'a'; _t = target[i] - 'a';
                     if (grpah[_s, _t] != infty) result += grpah[_s, _t]; else return -1;

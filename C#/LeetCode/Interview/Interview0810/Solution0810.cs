@@ -34,7 +34,7 @@ namespace LeetCode.Interview.Interview0810
                 {
                     var p = queue.Dequeue();
                     image[p.r][p.c] = newColor;
-                    for (int j = 0, _r, _c; j < 4; j++)
+                    for (int j = 0, _r = 0, _c = 0; j < 4; j++)
                     {
                         _r = p.r + dirs[j]; _c = p.c + dirs[j + 1];
                         if (_r < 0 || _r >= rcnt || _c < 0 || _c >= ccnt) continue;
@@ -67,7 +67,7 @@ namespace LeetCode.Interview.Interview0810
             {
                 var p = queue.Dequeue();
                 image[p.r][p.c] = newColor;
-                for (int j = 0, _r, _c; j < 4; j++)
+                for (int j = 0, _r = 0, _c = 0; j < 4; j++)
                 {
                     _r = p.r + dirs[j]; _c = p.c + dirs[j + 1];
                     if (_r < 0 || _r >= rcnt || _c < 0 || _c >= ccnt) continue;

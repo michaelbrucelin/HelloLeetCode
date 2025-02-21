@@ -17,7 +17,7 @@ namespace LeetCode.QuestionBank.Question1365
         {
             int len = nums.Length;
             int[] result = new int[len];
-            for (int i = 0, _num, _cnt; i < len; i++)
+            for (int i = 0, _num = 0, _cnt = 0; i < len; i++)
             {
                 _num = nums[i]; _cnt = 0;
                 for (int j = 0; j < len; j++) if (nums[j] < _num) _cnt++;

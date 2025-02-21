@@ -17,7 +17,7 @@ namespace LeetCode.QuestionBank.Question3185
         {
             long result = 0;
             int[] cache = new int[24];
-            for (int i = 0, hour, id1, id2; i < hours.Length; i++)
+            for (int i = 0, hour = 0, id1 = 0, id2 = 0; i < hours.Length; i++)
             {
                 hour = hours[i];
                 id2 = hour % 24;

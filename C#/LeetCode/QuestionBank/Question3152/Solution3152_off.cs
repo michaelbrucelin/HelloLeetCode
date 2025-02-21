@@ -16,7 +16,7 @@ namespace LeetCode.QuestionBank.Question3152
 
             len = queries.Length;
             bool[] result = new bool[len];
-            for (int i = 0, from, to; i < len; i++)
+            for (int i = 0, from = 0, to = 0; i < len; i++)
             {
                 (from, to) = (queries[i][0], queries[i][1]);
                 result[i] = dp[to] >= to - from + 1;

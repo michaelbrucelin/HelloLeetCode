@@ -28,7 +28,7 @@ namespace LeetCode.QuestionBank.Question3152
                 Array.Fill(result, true); return result;
             }
 
-            for (int i = 0, from, to, id; i < len; i++)
+            for (int i = 0, from = 0, to = 0, id = 0; i < len; i++)
             {
                 from = queries[i][0]; to = queries[i][1];
                 if (from == to)

@@ -34,7 +34,7 @@ namespace LeetCode.Interview.Interview1716
         public int Massage2(int[] nums)
         {
             int len = nums.Length, use = 0, no = 0;
-            for (int i = 0, _use, _no; i < len; i++)
+            for (int i = 0, _use = 0, _no = 0; i < len; i++)
             {
                 _use = no + nums[i]; _no = Math.Max(use, no);
                 use = _use; no = _no;

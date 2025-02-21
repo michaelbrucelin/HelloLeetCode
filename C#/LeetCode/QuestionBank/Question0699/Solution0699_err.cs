@@ -28,7 +28,7 @@ namespace LeetCode.QuestionBank.Question0699
             int height = (int)Math.Ceiling(Math.Log(right - left + 1, 2));
             int n = (1 << (height + 1)) - 1;
             int[] segment = new int[n];
-            for (int i = 0, l, r, max; i < len; i++)
+            for (int i = 0, l = 0, r = 0, max = 0; i < len; i++)
             {
                 l = positions[i][0]; r = positions[i][0] + positions[i][1];
                 max = query(0, left, right, l, r) + positions[i][1];

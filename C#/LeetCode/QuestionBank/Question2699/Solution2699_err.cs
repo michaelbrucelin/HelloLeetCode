@@ -35,7 +35,7 @@ namespace LeetCode.QuestionBank.Question2699
         public int[][] ModifiedGraphEdges(int n, int[][] edges, int source, int destination, int target)
         {
             Dictionary<int, Dictionary<int, (int weight, bool _if)>> _edges = new Dictionary<int, Dictionary<int, (int weight, bool _if)>>();
-            for (int i = 0, s1, e1, s2, e2, w; i < edges.Length; i++)
+            for (int i = 0, s1 = 0, e1 = 0, s2 = 0, e2 = 0, w = 0; i < edges.Length; i++)
             {
                 s1 = edges[i][0]; e1 = edges[i][1]; s2 = edges[i][1]; e2 = edges[i][0]; w = edges[i][2];
                 if (!_edges.ContainsKey(s1)) _edges.Add(s1, new Dictionary<int, (int weight, bool _if)>());

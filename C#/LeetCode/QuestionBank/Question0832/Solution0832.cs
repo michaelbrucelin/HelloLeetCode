@@ -16,7 +16,7 @@ namespace LeetCode.QuestionBank.Question0832
         public int[][] FlipAndInvertImage(int[][] image)
         {
             int n = image.Length;
-            for (int r = 0, left, right; r < n; r++)
+            for (int r = 0, left = 0, right = 0; r < n; r++)
             {
                 left = -1; right = n;
                 while (++left < --right)
@@ -38,7 +38,7 @@ namespace LeetCode.QuestionBank.Question0832
         public int[][] FlipAndInvertImage2(int[][] image)
         {
             int n = image.Length;
-            for (int r = 0, left, right; r < n; r++)
+            for (int r = 0, left = 0, right = 0; r < n; r++)
             {
                 left = -1; right = n;
                 while (++left < --right)
@@ -60,7 +60,7 @@ namespace LeetCode.QuestionBank.Question0832
         public int[][] FlipAndInvertImage3(int[][] image)
         {
             int n = image.Length;
-            for (int r = 0, left, right; r < n; r++)
+            for (int r = 0, left = 0, right = 0; r < n; r++)
             {
                 left = -1; right = n;
                 while (++left < --right)

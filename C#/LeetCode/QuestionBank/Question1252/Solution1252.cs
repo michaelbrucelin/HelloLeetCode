@@ -18,7 +18,7 @@ namespace LeetCode.QuestionBank.Question1252
         public int OddCells(int m, int n, int[][] indices)
         {
             int[,] nums = new int[m, n];
-            for (int i = 0, r, c; i < indices.Length; i++)
+            for (int i = 0, r = 0, c = 0; i < indices.Length; i++)
             {
                 r = indices[i][0]; c = indices[i][1];
                 for (int j = 0; j < n; j++) nums[r, j]++;
@@ -40,7 +40,7 @@ namespace LeetCode.QuestionBank.Question1252
         public int OddCells2(int m, int n, int[][] indices)
         {
             bool[,] mask = new bool[m, n];
-            for (int i = 0, r, c; i < indices.Length; i++)
+            for (int i = 0, r = 0, c = 0; i < indices.Length; i++)
             {
                 r = indices[i][0]; c = indices[i][1];
                 for (int j = 0; j < n; j++) mask[r, j] = !mask[r, j];

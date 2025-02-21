@@ -21,7 +21,7 @@ namespace LeetCode.QuestionBank.Question1761
         public int MinTrioDegree(int n, int[][] edges)
         {
             Dictionary<int, HashSet<int>> map = new Dictionary<int, HashSet<int>>();
-            for (int i = 0, x, y; i < edges.Length; i++)
+            for (int i = 0, x = 0, y = 0; i < edges.Length; i++)
             {
                 x = edges[i][0]; y = edges[i][1];
                 if (map.ContainsKey(x)) map[x].Add(y); else map.Add(x, new HashSet<int>() { y });

@@ -26,7 +26,7 @@ namespace LeetCode.QuestionBank.Question0982
                     }
             }
 
-            for (int k = 0, sup, sub; k < len; k++)
+            for (int k = 0, sup = 0, sub = 0; k < len; k++)
             {
                 sub = sup = nums[k] ^ 0xFFFF;
                 do

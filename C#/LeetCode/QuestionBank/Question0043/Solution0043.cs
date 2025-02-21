@@ -36,7 +36,7 @@ namespace LeetCode.QuestionBank.Question0043
                 List<int> result = new List<int>();
                 for (int i = 0; i < offset; i++) result.Add(0);
                 int carry = 0;
-                for (int i = s.Length - 1, y, m; i >= 0; i--)
+                for (int i = s.Length - 1, y = 0, m = 0; i >= 0; i--)
                 {
                     y = s[i] & 15;
                     m = y * x + carry;

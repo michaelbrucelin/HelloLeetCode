@@ -24,7 +24,7 @@ namespace LeetCode.QuestionBank.Question0910
             if (k == 0 || nums.Length == 1) return 0;
 
             int result = int.MaxValue, min = nums[0] - k, max = nums[0] + k, len = nums.Length;
-            for (int i = 1,_min,_max; i < len; i++)
+            for (int i = 1, _min = 0, _max = 0; i < len; i++)
             {
             }
 

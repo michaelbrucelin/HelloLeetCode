@@ -19,7 +19,7 @@ namespace LeetCode.QuestionBank.Question3112
         public int[] MinimumTime(int n, int[][] edges, int[] disappear)
         {
             Dictionary<int, Dictionary<int, int>> graph = new Dictionary<int, Dictionary<int, int>>() { { 0, new Dictionary<int, int>() } };
-            for (int i = 0, _u, _v, _length; i < edges.Length; i++) if (edges[i][0] != edges[i][1])
+            for (int i = 0, _u = 0, _v = 0, _length = 0; i < edges.Length; i++) if (edges[i][0] != edges[i][1])
                 {
                     (_u, _v, _length) = (edges[i][0], edges[i][1], edges[i][2]);
                     if (!graph.ContainsKey(_u))

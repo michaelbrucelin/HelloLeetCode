@@ -37,7 +37,7 @@ namespace LeetCode.QuestionBank.Question1631
             if (!memory[r, c].ContainsKey(key))
             {
                 int result = int.MaxValue;
-                for (int i = 0, _r, _c, _result; i < 4; i++)
+                for (int i = 0, _r = 0, _c = 0, _result; i < 4; i++)
                 {
                     _r = r + dirs[i]; _c = c + dirs[i + 1];
                     if (_r >= 0 && _r < rcnt && _c >= 0 && _c < ccnt && !visited[_r, _c])

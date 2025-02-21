@@ -20,7 +20,7 @@ namespace LeetCode.QuestionBank.Question0090
             HashSet<string> set = new() { "" };
             int sup = 1 << nums.Length;
             List<int> item; string flag;
-            for (int i = 0, mask, j; i < sup; i++)
+            for (int i = 0, mask = 0, j = 0; i < sup; i++)
             {
                 item = new List<int>();
                 mask = i; j = 0;
@@ -62,7 +62,7 @@ namespace LeetCode.QuestionBank.Question0090
             Array.Sort(nums);
             int sup = 1 << nums.Length;
             List<int> item; string flag;
-            for (int i = 0, mask, j; i < sup; i++)
+            for (int i = 0, mask = 0, j = 0; i < sup; i++)
             {
                 item = new List<int>();
                 mask = i; j = 0;

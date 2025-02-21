@@ -35,7 +35,7 @@ namespace LeetCode.QuestionBank.Question0688
                 for (int i = 0; i < cnt; i++)
                 {
                     item = queue.Dequeue();
-                    for (int j = 0, _r, _c; j < 8; j++)
+                    for (int j = 0, _r = 0, _c = 0; j < 8; j++)
                     {
                         _r = item.r + dirs[j].r; _c = item.c + dirs[j].c;
                         if (_r >= 0 && _r < n && _c >= 0 && _c < n) queue.Enqueue((_r, _c)); else failed++;

@@ -31,7 +31,7 @@ namespace LeetCode.QuestionBank.Question2846
 
             int[] result = new int[queries.Length];
             Dictionary<int, int> path = new Dictionary<int, int>();
-            for (int i = 0, j, u, v, p; i < queries.Length; i++)
+            for (int i = 0, j = 0, u = 0, v = 0, p = 0; i < queries.Length; i++)
             {
                 j = 0; u = queries[i][0]; v = queries[i][1];
                 path.Clear();

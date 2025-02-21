@@ -27,7 +27,7 @@ namespace LeetCode.QuestionBank.Question0016
             if (len == 3) return result;
 
             Array.Sort(nums);
-            for (int i = 0, left, right, add; i < len - 2; i++)
+            for (int i = 0, left = 0, right = 0, add = 0; i < len - 2; i++)
             {
                 left = i + 1; right = len - 1;
                 while (left < right)
@@ -54,7 +54,7 @@ namespace LeetCode.QuestionBank.Question0016
             if (len == 3) return result;
 
             Array.Sort(nums);
-            for (int i = 0, left, right, add; i < len - 2; i++)
+            for (int i = 0, left = 0, right = 0, add = 0; i < len - 2; i++)
             {
                 if (i > 0 && nums[i] == nums[i - 1]) continue;  // 此时的解一定在上一轮已经计算过了
                 left = i + 1; right = len - 1;

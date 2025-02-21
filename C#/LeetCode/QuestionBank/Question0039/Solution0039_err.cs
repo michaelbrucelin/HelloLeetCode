@@ -21,7 +21,7 @@ namespace LeetCode.QuestionBank.Question0039
         {
             Dictionary<int, List<int>> map = new Dictionary<int, List<int>>();
             List<int> _value = new List<int>();
-            for (int i = 0, key, candidate; i < candidates.Length; i++)
+            for (int i = 0, key = 0, candidate = 0; i < candidates.Length; i++)
             {
                 key = 0; candidate = candidates[i]; _value.Clear();
                 while ((key += candidate) <= target)
@@ -35,7 +35,7 @@ namespace LeetCode.QuestionBank.Question0039
             List<int> _result = new List<int>();
             int[] nums = map.Keys.ToArray();
             long all = 1L << nums.Length;
-            for (long mask = 1, i, sum; mask < all; mask++)
+            for (long mask = 1, i = 0, sum = 0; mask < all; mask++)
             {
                 i = 0; sum = 0; _result.Clear();
                 while (mask > 0)

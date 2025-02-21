@@ -29,7 +29,7 @@ namespace LeetCode.QuestionBank.Question2661
 
             int[] mask_r = new int[rcnt], mask_c = new int[ccnt];
             int cnt = arr.Length;
-            for (int i = 0, r, c; i < cnt; i++)
+            for (int i = 0, r = 0, c = 0; i < cnt; i++)
             {
                 r = map[arr[i]].r; c = map[arr[i]].c;
                 mask_r[r]++; if (mask_r[r] == ccnt) return i;

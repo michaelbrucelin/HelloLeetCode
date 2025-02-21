@@ -24,7 +24,7 @@ namespace LeetCode.QuestionBank.Question3243
             int[] result = new int[len];
             Queue<int> queue = new Queue<int>();
             bool[] mask = new bool[n - 1];
-            for (int i = 0, _result, _cnt; i < len; i++)
+            for (int i = 0, _result = 0, _cnt = 0; i < len; i++)
             {
                 graph[queries[i][0]].Add(queries[i][1]);
                 if (graph[0].Contains(n - 1))

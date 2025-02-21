@@ -18,7 +18,7 @@ namespace LeetCode.QuestionBank.Question1638
         public int CountSubstrings(string s, string t)
         {
             int result = 0, len1 = s.Length, len2 = t.Length;
-            for (int i = 0, lcnt, rcnt; i < len1; i++) for (int j = 0; j < len2; j++)
+            for (int i = 0, lcnt = 0, rcnt = 0; i < len1; i++) for (int j = 0; j < len2; j++)
                 {
                     if (s[i] != t[j])
                     {

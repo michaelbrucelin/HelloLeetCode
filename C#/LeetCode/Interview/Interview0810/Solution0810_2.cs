@@ -31,7 +31,7 @@ namespace LeetCode.Interview.Interview0810
         private void dfs(int[][] image, int sr, int sc, int rcnt, int ccnt, int curr, int newColor)
         {
             image[sr][sc] = newColor;
-            for (int i = 0, _r, _c; i < 4; i++)
+            for (int i = 0, _r = 0, _c = 0; i < 4; i++)
             {
                 _r = sr + dirs[i]; _c = sc + dirs[i + 1];
                 if (_r < 0 || _r >= rcnt || _c < 0 || _c >= ccnt) continue;
@@ -53,7 +53,7 @@ namespace LeetCode.Interview.Interview0810
 
             int rcnt = image.Length, ccnt = image[0].Length, curr = image[sr][sc];
             image[sr][sc] = newColor;
-            for (int i = 0, _r, _c; i < 4; i++)
+            for (int i = 0, _r = 0, _c = 0; i < 4; i++)
             {
                 _r = sr + dirs[i]; _c = sc + dirs[i + 1];
                 if (_r < 0 || _r >= rcnt || _c < 0 || _c >= ccnt) continue;

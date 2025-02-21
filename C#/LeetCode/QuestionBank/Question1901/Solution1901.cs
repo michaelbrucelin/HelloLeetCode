@@ -70,7 +70,7 @@ namespace LeetCode.QuestionBank.Question1901
                     // 开始爬山
                     while (true)
                     {
-                        for (int i = 0, _r, _c; i < 4; i++)
+                        for (int i = 0, _r = 0, _c = 0; i < 4; i++)
                         {
                             _r = r + dirs[i]; _c = c + dirs[i + 1];
                             if (_r >= 0 && _r < rcnt && _c >= 0 && _c < ccnt)

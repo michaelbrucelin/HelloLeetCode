@@ -22,7 +22,7 @@ namespace LeetCode.QuestionBank.Question1847
             int rlen = rooms.Length, qlen = queries.Length;
             int[] result = new int[qlen];
             // Array.Fill(result, -1);
-            for (int i = 0, cnt, prefer, size; i < qlen; i++)
+            for (int i = 0, cnt = 0, prefer = 0, size = 0; i < qlen; i++)
             {
                 result[i] = -1; prefer = queries[i][0] - 1; size = queries[i][1];
                 if (prefer >= rlen)

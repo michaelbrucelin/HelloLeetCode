@@ -31,7 +31,7 @@ namespace LeetCode.QuestionBank.Question3138
             for (int span = 1, times; span < len; span++) if (len % span == 0)
                 {
                     times = len / span;
-                    for (int time = 1, pl, pr; time < times; time++)
+                    for (int time = 1, pl = 0, pr = 0; time < times; time++)
                     {
                         pl = span * time; pr = pl + span;
                         for (int i = 0; i < 26; i++)

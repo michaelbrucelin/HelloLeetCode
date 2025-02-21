@@ -44,7 +44,7 @@ namespace LeetCode.QuestionBank.Question3235
             groups.Add((new HashSet<(int x, int y, int r)>() { (list[0].x, list[0].y, list[0].r) }, [list[0].x - list[0].r, list[0].x + list[0].r, list[0].y - list[0].r, list[0].y + list[0].r, 0]));
             if (IsCircleIntersectLineSegment(list[0], 0, 0, xCorner, yCorner)) groups[0].border[4] = 1;
             (int x, int y, int r) circle;
-            for (int i = 1, pl, pr; i < list.Count; i++)
+            for (int i = 1, pl = 0, pr = 0; i < list.Count; i++)
             {
                 circle = (list[i].x, list[i].y, list[i].r);
                 for (pl = 0; pl < groups.Count; pl++)

@@ -18,7 +18,7 @@ namespace LeetCode.QuestionBank.Question1944
         {
             int[] result = new int[heights.Length];
             List<int> stack = new List<int>() { heights[^1] };
-            for (int i = heights.Length - 2, id, height; i >= 0; i--)
+            for (int i = heights.Length - 2, id = 0, height = 0; i >= 0; i--)
             {
                 height = heights[i]; id = BinarySearch(stack, height);
                 if (id == -1)
