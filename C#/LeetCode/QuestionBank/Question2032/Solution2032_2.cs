@@ -27,5 +27,17 @@ namespace LeetCode.QuestionBank.Question2032
 
             return result;
         }
+
+        public IList<int> TwoOutOfThree2(int[] nums1, int[] nums2, int[] nums3)
+        {
+            List<int> result = new List<int>();
+            int[] masks = new int[101];
+            foreach (int num in nums1) masks[num] |= 1;
+            foreach (int num in nums2) masks[num] |= 2;
+            foreach (int num in nums3) masks[num] |= 4;
+            for (int i = 1; i < 101; i++) if (masks[i] > 4 || masks[i] == 3) result.Add(i);
+
+            return result;
+        }
     }
 }

@@ -26,21 +26,5 @@ namespace LeetCode.QuestionBank.Question2032
 
             return result.ToList();
         }
-
-        /// <summary>
-        /// 使用API
-        /// </summary>
-        /// <param name="nums1"></param>
-        /// <param name="nums2"></param>
-        /// <param name="nums3"></param>
-        /// <returns></returns>
-        public IList<int> TwoOutOfThree2(int[] nums1, int[] nums2, int[] nums3)
-        {
-            HashSet<int> result = new HashSet<int>(nums1.Intersect(nums2));
-            result.UnionWith(nums1.Intersect(nums3));
-            result.UnionWith(nums2.Intersect(nums3));
-
-            return result.ToList();
-        }
     }
 }
