@@ -4,22 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCode.QuestionBank.Question3305
+namespace LeetCode.QuestionBank.Question3306
 {
-    public class Solution3305 : Interface3305
+    public class Solution3306 : Interface3306
     {
         /// <summary>
         /// 类前缀和 + 二分
-        /// 记录下每个元音字母以及辅音字母的前缀数据的数量，枚举子字符串的左端点，二分查找辅音数量为k的位置，然后再判断元音（只可能向右）
-        /// 
-        /// 双指针（滑动窗口）应该也可以，但是写恶心了，不写了
+        /// 逻辑同Solution3306
         /// </summary>
         /// <param name="word"></param>
         /// <param name="k"></param>
         /// <returns></returns>
-        public int CountOfSubstrings(string word, int k)
+        public long CountOfSubstrings(string word, int k)
         {
-            int result = 0, len = word.Length;
+            long result = 0;
+            int len = word.Length;
             HashSet<char> vowels = new HashSet<char> { 'a', 'e', 'i', 'o', 'u' };
             int[,] pres = new int[len + 1, 6];  // 类前缀和
             for (int i = 0; i < len; i++)
