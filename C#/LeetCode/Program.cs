@@ -8,7 +8,7 @@ using LeetCode.Utilses;
 using System;
 using System.IO;
 using System.Reflection;
-using TestXXXX = LeetCode.QuestionBank.Question3306.Test3306;
+using TestXXXX = LeetCode.QuestionBank.Question2272.Test2272;
 using UtilsXXXX = LeetCode.QuestionBank.Question3370.Utils3370;
 // using TestXXXX = LeetCode.LCP.LCP0051.Test0051;
 // using TestXXXX = LeetCode.LCR.LCR0022.Test0022;
@@ -54,6 +54,7 @@ namespace LeetCode
             //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"Interview\Interview{question}\TestCases\TestCase{question}");
             //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"LCP\LCP{question}\TestCases\TestCase{question}");
             //arg = File.ReadAllText($"{path}_{testcase}_arg.txt");
+            //arg = File.ReadAllText($"{path}_{testcase}_arg.txt")[1..^1];
             //arg = Utils.Str2NumArray<int>(File.ReadAllText($"{path}_{testcase}_arg.txt"));
             //arg = Utils.Str2NumArray_2d<int>(File.ReadAllText($"{path}_{testcase}_arg.txt"));
             //string raw = "[[0,1],[1,2]]";
