@@ -31,4 +31,4 @@
 
 - `1 <= nums.length <= 300`
 - `nums.length == nums_i.length`
-- `1 <= nums[i][j] <= 4*10^6`
+- <code>1 <= nums[i][j] <= 4 &times; 10<sup>6</sup></code>
