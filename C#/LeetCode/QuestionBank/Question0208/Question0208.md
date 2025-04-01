@@ -18,7 +18,7 @@
 > `[[], ["apple"], ["apple"], ["app"], ["app"], ["app"], ["app"]]`
 > **输出**
 > `[null, null, true, false, true, null, true]`
-> 
+>
 > **解释**
 > `Trie trie = new Trie();`
 > `trie.insert("apple");`
@@ -32,4 +32,4 @@
 
 - `1 <= word.length, prefix.length <= 2000`
 - `word` 和 `prefix` 仅由小写英文字母组成
-- `insert`、`search` 和 `startsWith` 调用次数 **总计** 不超过 `3 * 10^4` 次
+- `insert`、`search` 和 `startsWith` 调用次数 **总计** 不超过 <code>3 &times; 10<sup>4</sup></code> 次

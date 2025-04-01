@@ -15,6 +15,8 @@ namespace LeetCode.QuestionBank.Question0208
     /// </summary>
     public interface Interface0208
     {
+        // public Trie() { }
+
         public void Insert(string word);
 
         public bool Search(string word);
