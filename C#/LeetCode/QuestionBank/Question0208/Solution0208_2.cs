@@ -18,12 +18,11 @@ namespace LeetCode.QuestionBank.Question0208
     {
         public Trie_2()
         {
-            this.val = '\0';
+            children = new Trie_2[26];
         }
 
-        private char val;
         private bool isEnd;
-        private Trie_2[] children = new Trie_2[26];
+        private Trie_2[] children;
 
         public void Insert(string word)
         {

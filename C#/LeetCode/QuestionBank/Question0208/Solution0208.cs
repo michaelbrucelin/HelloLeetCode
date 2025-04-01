@@ -18,11 +18,12 @@ namespace LeetCode.QuestionBank.Question0208
         public Trie()
         {
             this.val = '\0';
+            children = new Dictionary<char, Trie>();
         }
 
         private char val;
         private bool isEnd;
-        private Dictionary<char, Trie> children = new Dictionary<char, Trie>();
+        private Dictionary<char, Trie> children;
 
         public void Insert(string word)
         {
