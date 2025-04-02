@@ -29,7 +29,7 @@ namespace LeetCode.QuestionBank.Question0208
             Trie_2 ptr = this;
             foreach (char c in word)
             {
-                ptr.children[c - 'a'] ??= new Trie_2() { val = c };
+                ptr.children[c - 'a'] ??= new Trie_2();
                 ptr = ptr.children[c - 'a'];
             }
             ptr.isEnd = true;
