@@ -8,6 +8,11 @@ namespace LeetCode.QuestionBank.Question2248
 {
     public class Solution2248_2 : Interface2248
     {
+        /// <summary>
+        /// 统计每个数字出现的次数
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
         public IList<int> Intersection(int[][] nums)
         {
             Dictionary<int, int> freq = new Dictionary<int, int>();
@@ -26,7 +31,7 @@ namespace LeetCode.QuestionBank.Question2248
         }
 
         /// <summary>
-        /// 将字典改为数组
+        /// 逻辑同Intersection()，将字典改为数组
         /// </summary>
         /// <param name="nums"></param>
         /// <returns></returns>

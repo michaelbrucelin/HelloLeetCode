@@ -1,4 +1,57 @@
-﻿#### [方法二：统计每个整数的出现次数](https://leetcode.cn/problems/intersection-of-multiple-arrays/solutions/1486063/duo-ge-shu-zu-qiu-jiao-ji-by-leetcode-so-5c9z/)
+### [多个数组求交集](https://leetcode.cn/problems/intersection-of-multiple-arrays/solutions/1486063/duo-ge-shu-zu-qiu-jiao-ji-by-leetcode-so-5c9z/)
+
+#### 方法一：模拟
+
+**思路与算法**
+
+我们可以用哈希集合来模拟求解交集的过程。具体地，我们用哈希集合 $res$ 存储第一个数组 $nums[0]$ 的所有元素，随后，我们遍历二维数组 $nums$ 的剩余元素。遍历元素 $nums[i]$ 时，我们用另一个哈希集合 $tmp$ 来存储 $res$ 和 $nums[i]$ 中元素的交集。我们可以通过遍历 $nums[i]$ 判断每个元素是否在 $res$ 中。最后，我们令 $res=tmp$，即为前 $i+1$ 个数组的交集。
+
+最终，$res$ 即为所有数组的元素交集。我们用数组记录哈希集合 $res$ 的所有元素，并排序后作为答案返回。
+
+**代码**
+
+```C++
+class Solution {
+public:
+    vector<int> intersection(vector<vector<int>>& nums) {
+        int n = nums.size();
+        unordered_set<int> res(nums[0].begin(), nums[0].end());
+        for (int i = 1; i < n; ++i) {
+            unordered_set<int> tmp;
+            for (int num: nums[i]) {
+                if (res.count(num)) {
+                    tmp.insert(num);
+                }
+            }
+            res = tmp;
+        }
+        vector<int> ans(res.begin(), res.end());
+        sort(ans.begin(), ans.end());
+        return ans;
+    }
+};
+```
+
+```Python
+class Solution:
+    def intersection(self, nums: List[List[int]]) -> List[int]:
+        n = len(nums)
+        res = set(nums[0])
+        for i in range(1, n):
+            tmp = set()
+            for num in nums[i]:
+                if num in res:
+                    tmp.add(num)
+            res = tmp
+        return sorted(res)
+```
+
+**复杂度分析**
+
+- 时间复杂度：$O(\sum_i n_i+min(n_i) \log min(n_i))$，其中 $n_i$ 为 $nums[i]$ 的长度。其中遍历求交集的时间复杂度为 $O(\sum_i n_i)$，对结果排序的时间复杂度为 $O(min(n_i) \log min(n_i))$。
+- 空间复杂度：$O(max(n_i))$，即为辅助哈希集合的空间开销。
+
+#### 方法二：统计每个整数的出现次数
 
 **思路与算法**
 
@@ -8,7 +61,7 @@
 
 **代码**
 
-```cpp
+```C++
 class Solution {
 public:
     vector<int> intersection(vector<vector<int>>& nums) {
@@ -31,7 +84,7 @@ public:
 };
 ```
 
-```python
+```Python
 class Solution:
     def intersection(self, nums: List[List[int]]) -> List[int]:
         n = len(nums)
@@ -48,5 +101,5 @@ class Solution:
 
 **复杂度分析**
 
--   时间复杂度：$O(\sum_i n_i + \min(n_i)\log\min(n_i))$，其中 $n_i$ 为 $nums[i]$ 的长度。即为遍历统计每个整数出现次数，遍历哈希表统计结果以及排序的时间复杂度。
--   空间复杂度：$O(\max_i n_i)$，即为辅助哈希表的时间复杂度。
+- 时间复杂度：$O(\sum_in_i+min(n_i) \log min(n_i))$，其中 $n_i$ 为 $nums[i]$ 的长度。即为遍历统计每个整数出现次数，遍历哈希表统计结果以及排序的时间复杂度。
+- 空间复杂度：$O(max_i n_i)$，即为辅助哈希表的时间复杂度。
