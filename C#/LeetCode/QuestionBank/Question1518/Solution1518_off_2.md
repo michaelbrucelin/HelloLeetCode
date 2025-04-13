@@ -1,4 +1,4 @@
-﻿#### [方法二：数学](https://leetcode.cn/problems/water-bottles/solutions/339339/huan-jiu-wen-ti-by-leetcode-solution/)
+#### [方法二：数学](https://leetcode.cn/problems/water-bottles/solutions/339339/huan-jiu-wen-ti-by-leetcode-solution/)
 
 **思路与算法**
 

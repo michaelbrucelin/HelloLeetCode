@@ -21,5 +21,13 @@ namespace LeetCode.QuestionBank.Question1518
 
             return numBottles + (numBottles - numExchange) / (numExchange - 1) + 1;
         }
+
+        public int NumWaterBottles2(int numBottles, int numExchange)
+        {
+            if (numBottles % (numExchange - 1) > 0)
+                return numBottles + numBottles / (numExchange - 1);
+            else
+                return numBottles + numBottles / (numExchange - 1) - 1;
+        }
     }
 }
