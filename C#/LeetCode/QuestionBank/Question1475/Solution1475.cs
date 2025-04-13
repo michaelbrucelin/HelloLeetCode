@@ -8,6 +8,11 @@ namespace LeetCode.QuestionBank.Question1475
 {
     public class Solution1475 : Interface1475
     {
+        /// <summary>
+        /// 暴力查找
+        /// </summary>
+        /// <param name="prices"></param>
+        /// <returns></returns>
         public int[] FinalPrices(int[] prices)
         {
             int[] result = prices.ToArray();
