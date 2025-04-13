@@ -31,8 +31,38 @@ namespace LeetCode.QuestionBank.Question1922
                 y >>= 1;
                 while (y > 0)
                 {
-                    unit *= unit; unit %= MOD;
-                    if ((y & 1) != 0) { result *= unit; result %= MOD; }
+                    unit = unit * unit % MOD;
+                    if ((y & 1) != 0) result = result * unit % MOD;
+                    y >>= 1;
+                }
+
+                return (int)result;
+            }
+        }
+
+        /// <summary>
+        /// 逻辑同CountGoodNumbers()，写法上稍稍优化，简洁一点
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public int CountGoodNumbers2(long n)
+        {
+            const int MOD = (int)1e9 + 7;
+
+            if ((n & 1) == 0)
+                return quickpow(20, n >> 1);
+            else
+                return (int)(quickpow(20, n >> 1) * 5L % MOD);
+
+            int quickpow(int x, long y)
+            {
+                if (x == 1 || y == 0) return 1;
+
+                long result = 1, unit = x;
+                while (y > 0)
+                {
+                    if ((y & 1) != 0) result = result * unit % MOD;
+                    unit = unit * unit % MOD;
                     y >>= 1;
                 }
 
