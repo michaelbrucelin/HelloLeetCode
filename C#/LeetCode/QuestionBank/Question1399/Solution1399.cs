@@ -15,38 +15,38 @@ namespace LeetCode.QuestionBank.Question1399
         /// <returns></returns>
         public int CountLargestGroup(int n)
         {
-            Dictionary<int, int> dic = new Dictionary<int, int>();
+            Dictionary<int, int> map = new Dictionary<int, int>();
             for (int i = 1, sum; i <= n; i++)
             {
                 sum = SumDigit(i);
-                dic[sum] = dic.GetValueOrDefault(sum, 0) + 1;
+                map[sum] = map.GetValueOrDefault(sum, 0) + 1;
             }
 
-            int cnt = 0, max = 0;
-            foreach (int sum in dic.Values)
+            int result = 0, max = 0;
+            foreach (int sum in map.Values)
             {
                 if (sum > max)
                 {
-                    cnt = 1; max = sum;
+                    result = 1; max = sum;
                 }
                 else if (sum == max)
                 {
-                    cnt++;
+                    result++;
                 }
             }
 
-            return cnt;
-        }
-
-        private int SumDigit(int num)
-        {
-            int result = 0;
-            while (num > 0)
-            {
-                result += num % 10; num /= 10;
-            }
-
             return result;
+
+            int SumDigit(int num)
+            {
+                int result = 0;
+                while (num > 0)
+                {
+                    result += num % 10; num /= 10;
+                }
+
+                return result;
+            }
         }
     }
 }
