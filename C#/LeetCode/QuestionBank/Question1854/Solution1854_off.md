@@ -14,9 +14,9 @@
 
 这种考虑数量「变化量」的方法也被称为「差分」方法，而对应的数组叫做「差分数组」。而将变化量转换为对应数量的过程正是求解「前缀和」的方法，因此「差分」也是「前缀和」的逆运算。如果读者不熟悉「差分数组」及其相关用法，可以在解决本题的同时尝试以下题目：
 
--   [370\. 区间加法](https://leetcode-cn.com/problems/range-addition/)
--   [1094\. 拼车](https://leetcode-cn.com/problems/car-pooling/)
--   [1109\. 航班预订统计](https://leetcode-cn.com/problems/corporate-flight-bookings/)
+- [370\. 区间加法](https://leetcode-cn.com/problems/range-addition/)
+- [1094\. 拼车](https://leetcode-cn.com/problems/car-pooling/)
+- [1109\. 航班预订统计](https://leetcode-cn.com/problems/corporate-flight-bookings/)
 
 **思路与算法**
 
@@ -78,5 +78,5 @@ class Solution:
 
 **复杂度分析**
 
--   时间复杂度：$O(m + n)$，其中 $m$ 为 $logs$ 的长度，$n$ 为年份的跨度。建立变化量数组的时间复杂度为 $O(n)$，维护变化量数组的时间复杂度为 $O(m)$，遍历维护最大值的时间复杂度为 $O(n)$。
--   空间复杂度：$O(n)$，即为变化量数组的空间开销。
+- 时间复杂度：$O(m + n)$，其中 $m$ 为 $logs$ 的长度，$n$ 为年份的跨度。建立变化量数组的时间复杂度为 $O(n)$，维护变化量数组的时间复杂度为 $O(m)$，遍历维护最大值的时间复杂度为 $O(n)$。
+- 空间复杂度：$O(n)$，即为变化量数组的空间开销。
