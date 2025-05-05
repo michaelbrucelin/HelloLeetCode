@@ -31,5 +31,28 @@ namespace LeetCode.QuestionBank.Question2210
 
             return result;
         }
+
+        public int CountHillValley2(int[] nums)
+        {
+            int result = 0, len = nums.Length;
+            bool isPeak;
+            int ptr = 1;
+            while (ptr < len && nums[ptr] == nums[ptr - 1]) ptr++;
+            if (ptr == len) return 0;
+
+            isPeak = nums[ptr] > nums[ptr - 1];
+            while (ptr < len)
+            {
+                if (ptr + 1 < len && nums[ptr] != nums[ptr + 1])
+                {
+                    if (isPeak && nums[ptr] > nums[ptr + 1]) result++;
+                    else if (!isPeak && nums[ptr] < nums[ptr + 1]) result++;
+                    isPeak = nums[ptr + 1] > nums[ptr];
+                }
+                ptr++;
+            }
+
+            return result;
+        }
     }
 }
