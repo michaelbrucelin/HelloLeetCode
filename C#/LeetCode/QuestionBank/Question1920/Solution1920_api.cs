@@ -12,5 +12,7 @@ namespace LeetCode.QuestionBank.Question1920
         {
             return nums.Select(i => nums[i]).ToArray();
         }
+
+        public int[] BuildArray2(int[] nums) => [.. nums.Select(i => nums[i])];
     }
 }
