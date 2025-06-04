@@ -15,7 +15,6 @@ namespace LeetCode.QuestionBank.Question0389
         /// <param name="s"></param>
         /// <param name="t"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public char FindTheDifference(string s, string t)
         {
             char[] arr_s = s.OrderBy(c => c).ToArray();

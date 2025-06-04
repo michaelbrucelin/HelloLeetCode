@@ -16,7 +16,6 @@ namespace LeetCode.剑指_Offer.剑指_Offer_0047
         /// </summary>
         /// <param name="grid"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int MaxValue(int[][] grid)
         {
             int rcnt = grid.Length, ccnt = grid[0].Length;

@@ -17,7 +17,6 @@ namespace LeetCode.QuestionBank.Question1696
         /// <param name="nums"></param>
         /// <param name="k"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int MaxResult(int[] nums, int k)
         {
             int len = nums.Length;

@@ -14,7 +14,6 @@ namespace LeetCode.QuestionBank.Question0886
         /// <param name="n"></param>
         /// <param name="dislikes"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public bool PossibleBipartition(int n, int[][] dislikes)
         {
             if (dislikes.Length <= 1) return true;

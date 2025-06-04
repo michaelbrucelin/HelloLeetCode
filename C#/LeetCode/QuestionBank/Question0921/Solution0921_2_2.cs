@@ -13,7 +13,6 @@ namespace LeetCode.QuestionBank.Question0921
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int MinAddToMakeValid(string s)
         {
             throw new NotImplementedException();

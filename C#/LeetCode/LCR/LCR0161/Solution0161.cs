@@ -14,7 +14,6 @@ namespace LeetCode.LCR.LCR0161
         /// </summary>
         /// <param name="sales"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int MaxSales(int[] sales)
         {
             int result = sales[0], sum = 0;

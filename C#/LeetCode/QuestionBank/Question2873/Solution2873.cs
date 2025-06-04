@@ -13,7 +13,6 @@ namespace LeetCode.QuestionBank.Question2873
         /// </summary>
         /// <param name="nums"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public long MaximumTripletValue(int[] nums)
         {
             long result = 0; int len = nums.Length;

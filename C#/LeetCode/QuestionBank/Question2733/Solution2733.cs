@@ -14,7 +14,6 @@ namespace LeetCode.QuestionBank.Question2733
         /// </summary>
         /// <param name="nums"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int FindNonMinOrMax(int[] nums)
         {
             if (nums.Length < 3) return -1;

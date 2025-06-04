@@ -13,7 +13,6 @@ namespace LeetCode.QuestionBank.Question0257
         /// </summary>
         /// <param name="root"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public IList<string> BinaryTreePaths(TreeNode root)
         {
             List<string> paths = new List<string>();

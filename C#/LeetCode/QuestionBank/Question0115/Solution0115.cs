@@ -14,7 +14,6 @@ namespace LeetCode.QuestionBank.Question0115
         /// <param name="s"></param>
         /// <param name="t"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int NumDistinct(string s, string t)
         {
             int row = s.Length, col = t.Length;

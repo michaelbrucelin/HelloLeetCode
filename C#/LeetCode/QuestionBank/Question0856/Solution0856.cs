@@ -13,7 +13,6 @@ namespace LeetCode.QuestionBank.Question0856
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int ScoreOfParentheses(string s)
         {
             Stack<int> helper = new Stack<int>();  // 用0表示(

@@ -16,7 +16,6 @@ namespace LeetCode.Interview.Interview0506
         /// <param name="A"></param>
         /// <param name="B"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int ConvertInteger(int A, int B)
         {
             if (A == B) return 0;

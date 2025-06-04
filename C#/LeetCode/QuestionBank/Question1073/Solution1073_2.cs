@@ -17,7 +17,6 @@ namespace LeetCode.QuestionBank.Question1073
         /// <param name="arr1"></param>
         /// <param name="arr2"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int[] AddNegabinary(int[] arr1, int[] arr2)
         {
             int len = Math.Max(arr1.Length, arr2.Length);

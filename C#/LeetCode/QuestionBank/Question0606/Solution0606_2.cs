@@ -13,7 +13,6 @@ namespace LeetCode.QuestionBank.Question0606
         /// </summary>
         /// <param name="root"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public string Tree2str(TreeNode root)
         {
             throw new NotImplementedException();

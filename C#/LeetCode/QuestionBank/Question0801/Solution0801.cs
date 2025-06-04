@@ -14,7 +14,6 @@ namespace LeetCode.QuestionBank.Question0801
         /// <param name="nums1"></param>
         /// <param name="nums2"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int MinSwap(int[] nums1, int[] nums2)
         {
             int len = nums1.Length;

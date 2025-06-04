@@ -18,7 +18,6 @@ namespace LeetCode.QuestionBank.Question0870
         /// <param name="nums1"></param>
         /// <param name="nums2"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int[] AdvantageCount(int[] nums1, int[] nums2)
         {
             int[] result = new int[nums1.Length];

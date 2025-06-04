@@ -14,7 +14,6 @@ namespace LeetCode.QuestionBank.Question2367
         /// <param name="nums"></param>
         /// <param name="diff"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int ArithmeticTriplets(int[] nums, int diff)
         {
             int result = 0, len = nums.Length;

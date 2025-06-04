@@ -14,7 +14,6 @@ namespace LeetCode.QuestionBank.Question2475
         /// </summary>
         /// <param name="nums"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int UnequalTriplets(int[] nums)
         {
             Dictionary<int, int> freq = new Dictionary<int, int>();

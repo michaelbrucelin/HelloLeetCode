@@ -14,7 +14,6 @@ namespace LeetCode.QuestionBank.Question0783
         /// </summary>
         /// <param name="root"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int MinDiffInBST(TreeNode root)
         {
             List<int> tree = new List<int>();

@@ -17,7 +17,6 @@ namespace LeetCode.QuestionBank.Question0777
         /// <param name="start"></param>
         /// <param name="end"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public bool CanTransform(string start, string end)
         {
             if (start.Length != end.Length) return false;

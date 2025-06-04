@@ -14,7 +14,6 @@ namespace LeetCode.QuestionBank.Question2558
         /// <param name="gifts"></param>
         /// <param name="k"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public long PickGifts(int[] gifts, int k)
         {
             PriorityQueue<int, int> maxpq = new PriorityQueue<int, int>();

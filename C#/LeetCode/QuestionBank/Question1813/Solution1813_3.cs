@@ -14,7 +14,6 @@ namespace LeetCode.QuestionBank.Question1813
         /// <param name="sentence1"></param>
         /// <param name="sentence2"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public bool AreSentencesSimilar(string sentence1, string sentence2)
         {
             int len1 = sentence1.Length, len2 = sentence2.Length;

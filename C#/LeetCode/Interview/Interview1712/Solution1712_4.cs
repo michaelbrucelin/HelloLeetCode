@@ -15,7 +15,6 @@ namespace LeetCode.Interview.Interview1712
         /// </summary>
         /// <param name="root"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public TreeNode ConvertBiNode(TreeNode root)
         {
             TreeNode dummy = new TreeNode(-1);

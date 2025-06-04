@@ -16,7 +16,6 @@ namespace LeetCode.QuestionBank.Question0514
         /// <param name="ring"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int FindRotateSteps(string ring, string key)
         {
             int len = ring.Length;

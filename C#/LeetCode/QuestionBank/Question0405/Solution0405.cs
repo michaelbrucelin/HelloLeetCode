@@ -15,7 +15,6 @@ namespace LeetCode.QuestionBank.Question0405
         /// </summary>
         /// <param name="num"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public string ToHex(int num)
         {
             if (num == 0) return "0";

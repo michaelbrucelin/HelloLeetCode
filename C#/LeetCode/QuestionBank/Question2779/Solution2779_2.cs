@@ -14,7 +14,6 @@ namespace LeetCode.QuestionBank.Question2779
         /// <param name="nums"></param>
         /// <param name="k"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int MaximumBeauty(int[] nums, int k)
         {
             Array.Sort(nums);

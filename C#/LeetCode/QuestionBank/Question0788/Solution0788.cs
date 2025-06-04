@@ -16,7 +16,6 @@ namespace LeetCode.QuestionBank.Question0788
         /// </summary>
         /// <param name="n"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int RotatedDigits(int n)
         {
             int result = 0;

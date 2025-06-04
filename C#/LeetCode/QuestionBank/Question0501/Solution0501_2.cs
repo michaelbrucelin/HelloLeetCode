@@ -14,7 +14,6 @@ namespace LeetCode.QuestionBank.Question0501
         /// </summary>
         /// <param name="root"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int[] FindMode(TreeNode root)
         {
             int max = 0, cnt = -1, prev = int.MinValue;

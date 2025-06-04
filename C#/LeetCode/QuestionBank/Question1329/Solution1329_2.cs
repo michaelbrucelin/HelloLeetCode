@@ -13,7 +13,6 @@ namespace LeetCode.QuestionBank.Question1329
         /// </summary>
         /// <param name="mat"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int[][] DiagonalSort(int[][] mat)
         {
             int rcnt = mat.Length, ccnt = mat[0].Length;

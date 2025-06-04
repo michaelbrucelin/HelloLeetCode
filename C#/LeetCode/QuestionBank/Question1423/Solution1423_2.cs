@@ -16,7 +16,6 @@ namespace LeetCode.QuestionBank.Question1423
         /// <param name="cardPoints"></param>
         /// <param name="k"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int MaxScore(int[] cardPoints, int k)
         {
             int result, len = cardPoints.Length;

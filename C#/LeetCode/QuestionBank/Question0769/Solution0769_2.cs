@@ -13,7 +13,6 @@ namespace LeetCode.QuestionBank.Question0769
         /// </summary>
         /// <param name="arr"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int MaxChunksToSorted(int[] arr)
         {
             int result = 0;

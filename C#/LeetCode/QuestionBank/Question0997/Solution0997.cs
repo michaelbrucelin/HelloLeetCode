@@ -16,7 +16,6 @@ namespace LeetCode.QuestionBank.Question0997
         /// <param name="n"></param>
         /// <param name="trust"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int FindJudge(int n, int[][] trust)
         {
             if (trust.Length < n - 1) return -1;

@@ -16,7 +16,6 @@ namespace LeetCode.QuestionBank.Question0117
         /// </summary>
         /// <param name="root"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public Node Connect(Node root)
         {
             if (root == null) return root;

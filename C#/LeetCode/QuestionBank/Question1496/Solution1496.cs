@@ -13,7 +13,6 @@ namespace LeetCode.QuestionBank.Question1496
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public bool IsPathCrossing(string path)
         {
             HashSet<(int x, int y)> set = new HashSet<(int x, int y)>() { (0, 0) };

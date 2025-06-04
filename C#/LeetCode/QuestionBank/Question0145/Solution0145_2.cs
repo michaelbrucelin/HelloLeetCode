@@ -32,7 +32,6 @@ namespace LeetCode.QuestionBank.Question0145
         /// </summary>
         /// <param name="root"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public IList<int> PostorderTraversal(TreeNode root)
         {
             List<int> result = new List<int>();

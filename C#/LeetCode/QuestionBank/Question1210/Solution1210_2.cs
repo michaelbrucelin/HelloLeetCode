@@ -19,7 +19,6 @@ namespace LeetCode.QuestionBank.Question1210
         /// </summary>
         /// <param name="grid"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int MinimumMoves(int[][] grid)
         {
             int steps = int.MaxValue, len = grid.Length;   // 题目：2 <= n <= 100，有结果的话结果一定小于200

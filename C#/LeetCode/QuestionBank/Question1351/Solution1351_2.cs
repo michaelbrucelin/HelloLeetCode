@@ -13,7 +13,6 @@ namespace LeetCode.QuestionBank.Question1351
         /// </summary>
         /// <param name="grid"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int CountNegatives(int[][] grid)
         {
             int result = 0, rcnt = grid.Length, ccnt = grid[0].Length;

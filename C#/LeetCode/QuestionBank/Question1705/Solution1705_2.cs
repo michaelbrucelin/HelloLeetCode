@@ -15,7 +15,6 @@ namespace LeetCode.QuestionBank.Question1705
         /// <param name="apples"></param>
         /// <param name="days"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int EatenApples(int[] apples, int[] days)
         {
             int result = 0, day, len = apples.Length;

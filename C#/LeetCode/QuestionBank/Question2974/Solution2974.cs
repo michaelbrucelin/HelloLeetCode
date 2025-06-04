@@ -13,7 +13,6 @@ namespace LeetCode.QuestionBank.Question2974
         /// </summary>
         /// <param name="nums"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public int[] NumberGame(int[] nums)
         {
             int len = nums.Length;
