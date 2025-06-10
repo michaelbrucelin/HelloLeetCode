@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCode.QuestionBank.Question0083
+namespace LeetCode.QuestionBank.Question3442
 {
-    public interface Interface0083
+    internal class Solution3442
     {
-        public ListNode DeleteDuplicates(ListNode head);
     }
 }

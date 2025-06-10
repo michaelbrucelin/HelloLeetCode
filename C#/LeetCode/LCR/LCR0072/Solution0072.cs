@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.LCR.LCR0072
 {
-    internal class Solution0072 : Interface0072
+    public class Solution0072 : Interface0072
     {
         public int MySqrt(int x)
         {
