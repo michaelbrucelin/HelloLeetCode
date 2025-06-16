@@ -21,5 +21,16 @@ namespace LeetCode.QuestionBank.Question2016
 
             return result;
         }
+
+        public int MaximumDifference2(int[] nums)
+        {
+            int result = -1, min = nums[0], ptr = 0, len = nums.Length;
+            while (++ptr < len)
+            {
+                if (nums[ptr] <= min) min = nums[ptr]; else result = Math.Max(result, nums[ptr] - min);
+            }
+
+            return result;
+        }
     }
 }
