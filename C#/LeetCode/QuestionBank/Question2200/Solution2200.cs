@@ -12,8 +12,7 @@ namespace LeetCode.QuestionBank.Question2200
         {
             List<int> result = new List<int>();
             List<int> points = new List<int>();
-            for (int i = 0; i < nums.Length; i++)
-                if (nums[i] == key) points.Add(i);
+            for (int i = 0; i < nums.Length; i++) if (nums[i] == key) points.Add(i);
 
             int left = 0, right = nums.Length - 1;
             for (int i = 0; i < points.Count; i++)

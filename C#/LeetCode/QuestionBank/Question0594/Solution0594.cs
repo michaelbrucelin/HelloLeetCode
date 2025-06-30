@@ -16,16 +16,14 @@ namespace LeetCode.QuestionBank.Question0594
         /// <returns></returns>
         public int FindLHS(int[] nums)
         {
-            Dictionary<int, int> buffer = new Dictionary<int, int>();
-            for (int i = 0; i < nums.Length; i++)
-                if (buffer.ContainsKey(nums[i])) buffer[nums[i]]++; else buffer.Add(nums[i], 1);
+            Dictionary<int, int> map = new Dictionary<int, int>();
+            foreach (int num in nums) if (map.ContainsKey(num)) map[num]++; else map.Add(num, 1);
 
             int result = 0;
-            foreach (var kv in buffer)
-            {
-                if (buffer.ContainsKey(kv.Key - 1)) result = Math.Max(result, kv.Value + buffer[kv.Key - 1]);
-                // if (buffer.ContainsKey(kv.Key + 1)) result = Math.Max(result, kv.Value + buffer[kv.Key + 1]);
-            }
+            foreach (var key in map.Keys) if (map.ContainsKey(key - 1))
+                {
+                    result = Math.Max(result, map[key] + map[key - 1]);
+                }
 
             return result;
         }
