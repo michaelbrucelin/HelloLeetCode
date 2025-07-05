@@ -22,8 +22,7 @@ namespace LeetCode.QuestionBank.Question1394
             }
 
             int result = -1;
-            foreach (var kv in freq)
-                if (kv.Key == kv.Value && kv.Key > result) result = kv.Key;
+            foreach (var kv in freq) if (kv.Key == kv.Value && kv.Key > result) result = kv.Key;
 
             return result;
         }
@@ -42,8 +41,7 @@ namespace LeetCode.QuestionBank.Question1394
             }
 
             int result = -1;
-            foreach (var kv in freq)
-                if (kv.Key == kv.Value) return kv.Key;
+            foreach (var kv in freq) if (kv.Key == kv.Value) return kv.Key;
 
             return result;
         }
