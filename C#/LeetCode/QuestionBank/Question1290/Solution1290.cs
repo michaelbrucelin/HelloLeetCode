@@ -8,6 +8,11 @@ namespace LeetCode.QuestionBank.Question1290
 {
     public class Solution1290 : Interface1290
     {
+        /// <summary>
+        /// 遍历
+        /// </summary>
+        /// <param name="head"></param>
+        /// <returns></returns>
         public int GetDecimalValue(ListNode head)
         {
             int result = 0;
