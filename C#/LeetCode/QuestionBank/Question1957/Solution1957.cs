@@ -20,8 +20,7 @@ namespace LeetCode.QuestionBank.Question1957
             List<char> chars = s.ToList();
             for (int i = chars.Count - 1; i >= 2; i--)
             {
-                if (chars[i] == chars[i - 1] && chars[i] == chars[i - 2])
-                    chars.RemoveAt(i);
+                if (chars[i] == chars[i - 1] && chars[i] == chars[i - 2]) chars.RemoveAt(i);
             }
             return new string(chars.ToArray());
         }
@@ -60,8 +59,7 @@ namespace LeetCode.QuestionBank.Question1957
             List<char> chars = new List<char>() { s[0], s[1] };
             for (int i = 2; i < s.Length; i++)
             {
-                if (s[i] != chars[^1] || s[i] != chars[^2])
-                    chars.Add(s[i]);
+                if (s[i] != chars[^1] || s[i] != chars[^2]) chars.Add(s[i]);
             }
             return new string(chars.ToArray());
         }
