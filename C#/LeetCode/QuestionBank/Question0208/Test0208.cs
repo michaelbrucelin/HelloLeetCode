@@ -16,7 +16,7 @@ namespace LeetCode.QuestionBank.Question0208
 
             // ["Trie", "insert",  "search",  "search", "startsWith", "insert", "search"]
             // [[],     ["apple"], ["apple"], ["app"], ["app"],       ["app"],  ["app"]]
-            solution = new Trie_2();
+            solution = new Trie_3();
             solution.Insert("apple");
             result = solution.Search("apple");
             answer = true;
