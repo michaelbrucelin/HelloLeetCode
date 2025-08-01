@@ -18,11 +18,11 @@ namespace LeetCode.QuestionBank.Question0118
             List<IList<int>> result = new List<IList<int>>() { new List<int>() { 1 } };
             if (numRows == 1) return result;
 
-            for (int i = 2; i <= numRows; i++)
+            for (int i = 1; i < numRows; i++)
             {
                 IList<int> row = new List<int>() { 1 };
-                IList<int> _row = result[i - 2];
-                for (int j = 0; j < _row.Count - 1; j++) row.Add(_row[j] + _row[j + 1]);
+                IList<int> _row = result[^1];
+                for (int j = 0; j < i - 1; j++) row.Add(_row[j] + _row[j + 1]);
                 row.Add(1);
                 result.Add(row);
             }
