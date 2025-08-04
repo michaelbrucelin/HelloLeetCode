@@ -16,7 +16,7 @@ namespace LeetCode.QuestionBank.Question0001
                                    || ((kv.Key << 1) == target && kv.Value.Count() > 1)
                                ).First().Key;
 
-            return (num << 1) != target ? new int[] { dic[num].First(), dic[target - num].First() } : dic[num].ToArray();
+            return (num << 1) != target ? [dic[num].First(), dic[target - num].First()] : dic[num].ToArray();
         }
     }
 }

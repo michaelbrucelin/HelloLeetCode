@@ -19,8 +19,8 @@ namespace LeetCode.LCR.LCR0003
         /// <returns></returns>
         public int[] CountBits(int n)
         {
-            if (n == 0) return new int[] { 0 };
-            if (n == 1) return new int[] { 0, 1 };
+            if (n == 0) return [0];
+            if (n == 1) return [0, 1];
 
             int[] result = new int[n + 1]; result[1] = 1;
             int k = 2, _n;

@@ -20,7 +20,7 @@ namespace LeetCode.QuestionBank.Question0001
             for (int i = 0; i < nums.Length; i++)
             {
                 if (dic.ContainsKey(target - nums[i]))
-                    return new int[] { dic[target - nums[i]], i };
+                    return [dic[target - nums[i]], i];
                 dic.TryAdd(nums[i], i);
             }
 
