@@ -21,7 +21,7 @@ namespace LeetCode.QuestionBank.Question0904
             int kindcnt = ptr + 1;
 
             int result = 0, temp = kinds[0, 1];
-            int[] key = new int[] { kinds[0, 0], -1 };
+            int[] key = [kinds[0, 0], -1];
             ptr = 0;
             while (++ptr < kindcnt)
             {
