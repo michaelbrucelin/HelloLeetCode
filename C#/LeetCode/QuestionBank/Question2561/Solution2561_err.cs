@@ -6,18 +6,17 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question2561
 {
-    public class Solution2561 : Interface2561
+    public class Solution2561_err : Interface2561
     {
         /// <summary>
         /// 贪心
         /// 用最小的换最大的
         /// 用SortedDictionary来模拟双向有序队列（堆）
-        /// 注意下面这种情况：
+        /// 
+        /// 思路没什么问题，只是考虑的不周全，例如：
         ///     basket1 = [8, 16, 88, 88, 100];
         ///     basket2 = [8, 16, 32, 32, 100];
         /// 按照下面的算法结果是32，但是结果应该是16，可以换2次，8 <--> 32, 8 <--> 88，而不是只换一次 32 <--> 88
-        /// 
-        /// 逻辑没问题，TLE，参考测试用例05
         /// </summary>
         /// <param name="basket1"></param>
         /// <param name="basket2"></param>
@@ -33,17 +32,9 @@ namespace LeetCode.QuestionBank.Question2561
             foreach (int x in basket1) if (minpq1.ContainsKey(x)) minpq1[x]++; else minpq1.Add(x, 1);
             foreach (int x in basket2) if (minpq2.ContainsKey(x)) minpq2[x]++; else minpq2.Add(x, 1);
 
-            long result = 0, key, keymin, keymax, min = Math.Min(minpq1.First().Key, minpq2.First().Key);
+            long result = 0, key, keymin, keymax;
             while (minpq1.Count > 0 && minpq2.Count > 0)
             {
-                var keys = minpq1.Keys.Intersect(minpq2.Keys).ToArray();
-                foreach (int _key in keys) switch (minpq1[_key] - minpq2[_key])
-                    {
-                        case > 0: minpq1[_key] -= minpq2[_key]; minpq2.Remove(_key); break;
-                        case < 0: minpq2[_key] -= minpq1[_key]; minpq1.Remove(_key); break;
-                        default: minpq1.Remove(_key); minpq2.Remove(_key); break;
-                    }
-
                 while (minpq1.Count > 0 && minpq2.Count > 0 && (key = minpq1.First().Key) == minpq2.First().Key) switch (minpq1[key] - minpq2[key])
                     {
                         case > 0: minpq1[key] -= minpq2[key]; minpq2.Remove(key); break;
@@ -67,17 +58,17 @@ namespace LeetCode.QuestionBank.Question2561
                         case > 0:
                             minpq2[keymax] >>= 1; minpq1.TryAdd(keymax, 0); minpq1[keymax] += minpq2[keymax];
                             minpq1[keymin] -= minpq2[keymax]; minpq2.Add(keymin, minpq2[keymax]);
-                            result += Math.Min(keymin * minpq2[keymax], (min * minpq2[keymax]) << 1);
+                            result += keymin * minpq2[keymax];
                             break;
                         case < 0:
                             minpq1[keymin] >>= 1; minpq2.Add(keymin, minpq1[keymin]);
                             minpq2[keymax] -= minpq1[keymin]; minpq1.TryAdd(keymax, 0); minpq1[keymax] += minpq1[keymin];
-                            result += Math.Min(keymin * minpq1[keymin], (min * minpq1[keymin]) << 1);
+                            result += keymin * minpq1[keymin];
                             break;
                         default:
                             minpq1[keymin] >>= 1; minpq2.Add(keymin, minpq1[keymin]);
                             minpq2[keymax] >>= 1; minpq1.TryAdd(keymax, 0); minpq1[keymax] += minpq2[keymax];
-                            result += Math.Min(keymin * minpq1[keymin], (min * minpq1[keymin]) << 1);
+                            result += keymin * minpq1[keymin];
                             break;
                     }
                 }
@@ -90,17 +81,17 @@ namespace LeetCode.QuestionBank.Question2561
                         case > 0:
                             minpq1[keymax] >>= 1; minpq2.TryAdd(keymax, 0); minpq2[keymax] += minpq1[keymax];
                             minpq2[keymin] -= minpq1[keymax]; minpq1.Add(keymin, minpq1[keymax]);
-                            result += Math.Min(keymin * minpq1[keymax], (min * minpq1[keymax]) << 1);
+                            result += keymin * minpq1[keymax];
                             break;
                         case < 0:
                             minpq2[keymin] >>= 1; minpq1.Add(keymin, minpq2[keymin]);
                             minpq1[keymax] -= minpq2[keymin]; minpq2.TryAdd(keymax, 0); minpq2[keymax] += minpq2[keymin];
-                            result += Math.Min(keymin * minpq2[keymin], (min * minpq2[keymin]) << 1);
+                            result += keymin * minpq2[keymin];
                             break;
                         default:
                             minpq2[keymin] >>= 1; minpq1.Add(keymin, minpq2[keymin]);
                             minpq1[keymax] >>= 1; minpq2.TryAdd(keymax, 0); minpq2[keymax] += minpq1[keymax];
-                            result += Math.Min(keymin * minpq2[keymin], (min * minpq2[keymin]) << 1);
+                            result += keymin * minpq2[keymin];
                             break;
                     }
                 }
