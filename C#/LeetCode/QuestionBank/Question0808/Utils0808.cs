@@ -14,7 +14,7 @@ namespace LeetCode.QuestionBank.Question0808
         /// </summary>
         public void Dial(int n)
         {
-            Solution0808_2 solution = new Solution0808_2();
+            Solution0808 solution = new Solution0808();
             double[] result = new double[n + 1];
             for (int i = 0; i <= n; i++) result[i] = solution.SoupServings2(i);
             Utils.Dump(result);
