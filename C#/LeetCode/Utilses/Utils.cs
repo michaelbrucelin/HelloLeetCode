@@ -330,19 +330,20 @@ namespace LeetCode.Utilses
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static string ToString<T>(IList<T> list, int width = 0)
+        public static string ToString<T>(IList<T> list, int width = 0, int printcnt = 0)
         {
             if (list == null) return "null";
             if (list.Count == 0) return "[ ]";
             if (list.Count == 1) return $"[ {list[0]} ]";
 
+            if (printcnt == 0) printcnt = list.Count;
             StringBuilder sb = new StringBuilder();
 
             sb.Append("[ ");
             sb.Append(list[0].ToString().PadLeft(width, ' '));
-            for (int i = 1; i < Math.Min(8, list.Count); i++)
+            for (int i = 1; i < Math.Min(printcnt, list.Count); i++)
                 sb.Append($", {list[i].ToString().PadLeft(width, ' ')}");
-            if (list.Count > 8) sb.Append(", ...");
+            if (list.Count > printcnt) sb.Append(", ...");
             sb.Append(" ]");
 
             return sb.ToString();
@@ -366,9 +367,8 @@ namespace LeetCode.Utilses
 
             sb.Append("[ ");
             sb.Append(list[start].ToString().PadLeft(width, ' '));
-            for (int i = start + 1; i < Math.Min(8, len); i++)
-                sb.Append($", {list[i].ToString().PadLeft(width, ' ')}");
-            if (list.Count > 8) sb.Append(", ...");
+            for (int i = 0; i < len; i++)
+                sb.Append($", {list[start + i].ToString().PadLeft(width, ' ')}");
             sb.Append(" ]");
 
             return sb.ToString();
@@ -380,7 +380,7 @@ namespace LeetCode.Utilses
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static string ToString<T>(IList<IList<T>> list, bool multiline = true)
+        public static string ToString<T>(IList<IList<T>> list, bool multiline)
         {
             if (list == null) return "null";
             if (list.Count == 0) return "[ ]";
@@ -406,7 +406,7 @@ namespace LeetCode.Utilses
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static string ToString<T>(IList<IList<T>> list, int width, bool multiline = true)
+        public static string ToString<T>(IList<IList<T>> list, int width, bool multiline)
         {
             if (list == null) return "null";
             if (list.Count == 0) return "[ ]";

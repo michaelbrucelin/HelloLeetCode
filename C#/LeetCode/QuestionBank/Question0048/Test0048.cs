@@ -21,14 +21,14 @@ namespace LeetCode.QuestionBank.Question0048
             answer = [[7, 4, 1], [8, 5, 2], [9, 6, 3]];
             solution.Rotate(matrix);
             result = matrix;
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString<int>(result)}, answer: {Utils.ToString<int>(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString<int>(result, true)}, answer: {Utils.ToString<int>(answer, true)}");
 
             // 2. 
             matrix = [[5, 1, 9, 11], [2, 4, 8, 10], [13, 3, 6, 7], [15, 14, 12, 16]];
             answer = [[15, 13, 2, 5], [14, 3, 4, 1], [12, 6, 8, 9], [16, 7, 10, 11]];
             solution.Rotate(matrix);
             result = matrix;
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString<int>(result)}, answer: {Utils.ToString<int>(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString<int>(result, true)}, answer: {Utils.ToString<int>(answer, true)}");
         }
     }
 }
