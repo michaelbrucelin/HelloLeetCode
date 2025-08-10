@@ -9,6 +9,7 @@ namespace LeetCode.QuestionBank.Question0869
     public class Solution0869 : Interface0869
     {
         /// <summary>
+        /// Hash
         /// 题目范围内的2的幂，一共有29个
         /// </summary>
         /// <param name="n"></param>
