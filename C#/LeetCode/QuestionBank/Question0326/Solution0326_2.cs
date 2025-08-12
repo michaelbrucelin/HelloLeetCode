@@ -8,19 +8,10 @@ namespace LeetCode.QuestionBank.Question0326
 {
     public class Solution0326_2 : Interface0326
     {
-        /// <summary>
-        /// 数学
-        /// 3^n分解质因数全部是3，所以3^n的约数是3的幂，反过来亦成立。
-        /// 这种解法可以拓展为k的幂，k为质数。
-        /// </summary>
-        /// <param name="n"></param>
-        /// <returns></returns>
+        private static readonly HashSet<int> pow3s = new HashSet<int>() { 1, 3, 9, 27, 81, 243, 729, 2187, 6561, 19683, 59049, 177147, 531441, 1594323, 4782969, 14348907, 43046721, 129140163, 387420489, 1162261467 };
         public bool IsPowerOfThree(int n)
         {
-            if (n <= 0) return false;
-
-            const int max3pow = 1162261467;
-            return (max3pow % n) == 0;
+            return pow3s.Contains(n);
         }
     }
 }
