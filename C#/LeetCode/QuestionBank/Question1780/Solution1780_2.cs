@@ -8,6 +8,12 @@ namespace LeetCode.QuestionBank.Question1780
 {
     public class Solution1780_2 : Interface1780
     {
+        /// <summary>
+        /// 遍历
+        /// 除3的余数必定为0或1
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
         public bool CheckPowersOfThree(int n)
         {
             while (n > 0)
