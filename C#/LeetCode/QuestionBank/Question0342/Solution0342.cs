@@ -31,11 +31,5 @@ namespace LeetCode.QuestionBank.Question0342
             if (info.Remainder != 0) return false;
             return IsPowerOfFour2(info.Quotient);
         }
-
-        private static readonly HashSet<int> pow4s = new HashSet<int>() { 1, 4, 16, 64, 256, 1024, 4096, 16384, 65536, 262144, 1048576, 4194304, 16777216, 67108864, 268435456, 1073741824 };
-        public bool IsPowerOfFour3(int n)
-        {
-            return pow4s.Contains(n);
-        }
     }
 }

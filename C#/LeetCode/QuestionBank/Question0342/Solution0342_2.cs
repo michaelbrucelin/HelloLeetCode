@@ -8,14 +8,11 @@ namespace LeetCode.QuestionBank.Question0342
 {
     public class Solution0342_2 : Interface0342
     {
+        private static readonly HashSet<int> pow4 = [1, 4, 16, 64, 256, 1024, 4096, 16384, 65536, 262144, 1048576, 4194304, 16777216, 67108864, 268435456, 1073741824];
+
         public bool IsPowerOfFour(int n)
         {
-            return n > 0 && (n & (n - 1)) == 0 && (n & 0xAAAAAAAA) == 0;  // 10101010101010101010101010101010
-        }
-
-        public bool IsPowerOfFour2(int n)
-        {
-            return n > 0 && (n & (n - 1)) == 0 && (n & 0x55555555) == n;  // 01010101010101010101010101010101
+            return pow4.Contains(n);
         }
     }
 }

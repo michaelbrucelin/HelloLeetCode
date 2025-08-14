@@ -10,7 +10,7 @@ $$n \& (n - 1)$$
 
 这一方法进行判断。
 
-#### [方法一：二进制表示中 $1$ 的位置](https://leetcode.cn/problems/power-of-four/solutions/798268/4de-mi-by-leetcode-solution-b3ya/)
+#### 方法一：二进制表示中 $1$ 的位置
 
 **思路与算法**
 
