@@ -30,6 +30,6 @@
 
 **提示：**
 
-- `1 <= nums.length <= 10^5`
-- `-10^4 <= nums[i] <= 10^4`
+- <code>1 <= nums.length <= 10<sup>5</sup></code>
+- <code>-10<sup>4</sup> <= nums[i] <= 10<sup>4</sup></code>
 - `1 <= k <= nums.length`
