@@ -18,13 +18,13 @@ namespace LeetCode.QuestionBank.Question0077
 
             // 1. 
             n = 4; k = 2;
-            answer = Utils.Str2NumArray_2d<int>("[[2,4],[3,4],[2,3],[1,2],[1,3],[1,4]]");
+            answer = [[2, 4], [3, 4], [2, 3], [1, 2], [1, 3], [1, 4]];
             result = solution.Combine(n, k);
             Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ToString(result, false)}, answer: {Utils.ToString(answer, false)}");
 
             // 2. 
             n = 1; k = 1;
-            answer = Utils.Str2NumArray_2d<int>("[[1]]");
+            answer = [[1]];
             result = solution.Combine(n, k);
             Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ToString(result, false)}, answer: {Utils.ToString(answer, false)}");
         }
