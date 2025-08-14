@@ -17,7 +17,7 @@ namespace LeetCode.QuestionBank.Question0239
         public int[] MaxSlidingWindow(int[] nums, int k)
         {
             if (k == 1) return nums;
-            if (k == nums.Length) return new int[] { nums.Max() };
+            if (k == nums.Length) return [nums.Max()];
 
             int cnt = (int)Math.Ceiling(((float)nums.Length) / k);
             int[,,] maxs = new int[cnt, 2, k];  // maxs[,0,] prefix, maxs[,1,] suffix
