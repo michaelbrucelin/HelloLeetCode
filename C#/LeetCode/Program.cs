@@ -8,7 +8,7 @@ using LeetCode.Utilses;
 using System;
 using System.IO;
 using System.Reflection;
-using TestXXXX = LeetCode.QuestionBank.Question0837.Test0837;
+using TestXXXX = LeetCode.QuestionBank.Question0148.Test0148;
 using UtilsXXXX = LeetCode.QuestionBank.Question0808.Utils0808;
 // using TestXXXX = LeetCode.LCP.LCP0051.Test0051;
 // using TestXXXX = LeetCode.LCR.LCR0022.Test0022;
@@ -46,6 +46,19 @@ namespace LeetCode
             //Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, precision) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
             //Console.WriteLine($"{++id,2}: In {sw.Elapsed}, {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
             //Console.WriteLine($"{++id,2}: In {sw.Elapsed}, {Utils.CompareArray(result, answer, true) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
+            //链表
+            /*
+            _result = link2list(result); _answer = link2list(answer);
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(_result, _answer) + ",",-6} result: {Utils.ToString(_result)}, answer: {Utils.ToString(_answer)}");
+            private List<int> link2list(ListNode head)
+            {
+                if (head == null) return [];
+                List<int> list = [];
+                ListNode ptr = head;
+                while (ptr != null) { list.Add(ptr.val); ptr = ptr.next; }
+                return list;
+            }
+            */
 
             //哑节点(dummy node)，也被称为哨兵节点
             //const int MOD = (int)1e9 + 7;               // 1000000007, 10^9 + 7
