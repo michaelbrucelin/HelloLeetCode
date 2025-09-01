@@ -18,7 +18,7 @@ namespace LeetCode.QuestionBank.Question0036
         /// <returns></returns>
         public bool IsValidSudoku(char[][] board)
         {
-            int[,] masks = new int[3, 9];  // 1维 行，2维 列， 2维 块
+            int[,] masks = new int[3, 9];  // 1维 行，2维 列， 3维 块
             int val, mask, p;
             for (int r = 0; r < 9; r++) for (int c = 0; c < 9; c++) if (board[r][c] != '.')
                     {
