@@ -8,7 +8,7 @@ using LeetCode.Utilses;
 using System;
 using System.IO;
 using System.Reflection;
-using TestXXXX = LeetCode.QuestionBank.Question0037.Test0037;
+using TestXXXX = LeetCode.QuestionBank.Question0099.Test0099;
 using UtilsXXXX = LeetCode.QuestionBank.Question0808.Utils0808;
 // using TestXXXX = LeetCode.LCP.LCP0051.Test0051;
 // using TestXXXX = LeetCode.LCR.LCR0132.Test0132;
@@ -60,6 +60,33 @@ namespace LeetCode
                 return list;
             }
             */
+            //二叉树
+            /*
+            _result = tree2list(result); _answer = tree2list(answer);
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(_result, _answer) + ",",-6} result: {Utils.ToString(_result)}, answer: {Utils.ToString(_answer)}");
+            private List<int?> tree2list(TreeNode root)
+            {
+                if (root == null) return [null];
+                List<int?> result = [];
+                Queue<TreeNode> queue = new Queue<TreeNode>(); queue.Enqueue(root);
+                TreeNode item;
+                while (queue.Count > 0)
+                {
+                    item = queue.Dequeue();
+                    if (item == null)
+                    {
+                        result.Add(null);
+                    }
+                    else
+                    {
+                        result.Add(item.val); queue.Enqueue(item.left); queue.Enqueue(item.right);
+                    }
+                }
+                while (result[^1] == null) result.RemoveAt(result.Count - 1);
+
+                return result;
+            }
+             */
 
             //哑节点(dummy node)，也被称为哨兵节点
             //const int MOD = (int)1e9 + 7;               // 1000000007, 10^9 + 7

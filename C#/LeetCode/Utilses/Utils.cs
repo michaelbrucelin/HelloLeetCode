@@ -172,6 +172,28 @@ namespace LeetCode.Utilses
         /// <summary>
         /// 比较两个一维数组是否相等
         /// </summary>
+        /// <param name="list1"></param>
+        /// <param name="list2"></param>
+        /// <param name="ignoreOrder"></param>
+        /// <returns></returns>
+        public static bool CompareArray(IList<int?> list1, IList<int?> list2, bool ignoreOrder = false)
+        {
+            if (list1.Count != list2.Count) return false;
+
+            if (ignoreOrder)
+            {
+                list1 = list1.OrderBy(t => t).ToList();
+                list2 = list2.OrderBy(t => t).ToList();
+            }
+
+            for (int i = 0; i < list1.Count; i++) if (list1[i] != list2[i]) return false;
+
+            return true;
+        }
+
+        /// <summary>
+        /// 比较两个一维数组是否相等
+        /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list1"></param>
         /// <param name="list2"></param>
@@ -186,8 +208,7 @@ namespace LeetCode.Utilses
                 list2 = list2.OrderBy(t => t).ToList();
             }
 
-            for (int i = 0; i < list1.Count; i++)
-                if (list1[i].CompareTo(list2[i]) != 0) return false;
+            for (int i = 0; i < list1.Count; i++) if (list1[i].CompareTo(list2[i]) != 0) return false;
 
             return true;
         }
