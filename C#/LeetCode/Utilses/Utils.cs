@@ -248,7 +248,6 @@ namespace LeetCode.Utilses
 
         /// <summary>
         /// 比较两个二维数组是否相等
-        /// TODO：忽略顺序的那部分没有完成，主要是没有想清楚怎么忽略顺序
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list1"></param>
@@ -260,11 +259,19 @@ namespace LeetCode.Utilses
 
             if (ignoreOrder)
             {
-                //for (int i = 0; i < list1.Count; i++)
-                //{
-                //    list1[i] = list1[i].OrderBy(t => t).ToList();
-                //    list2[i] = list2[i].OrderBy(t => t).ToList();
-                //}
+                for (int i = 0; i < list1.Count; i++)
+                {
+                    list1[i] = [.. list1[i].OrderBy(t => t)];
+                    list2[i] = [.. list2[i].OrderBy(t => t)];
+                }
+                Comparer<IList<T>> comparer = Comparer<IList<T>>.Create((x, y) =>
+                {
+                    if (x.Count != y.Count) return x.Count - y.Count;
+                    for (int i = 0, compare; i < x.Count; i++) if ((compare = x[i].CompareTo(y[i])) != 0) return compare;
+                    return 0;
+                });
+                list1 = [.. list1.OrderBy(x => x, comparer)];
+                list2 = [.. list2.OrderBy(x => x, comparer)];
             }
 
             for (int i = 0; i < list1.Count; i++)

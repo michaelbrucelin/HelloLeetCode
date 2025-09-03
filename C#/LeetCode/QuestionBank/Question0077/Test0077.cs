@@ -11,7 +11,7 @@ namespace LeetCode.QuestionBank.Question0077
     {
         public void Test()
         {
-            Interface0077 solution = new Solution0077();
+            Interface0077 solution = new Solution0077_2();
             int n, k;
             IList<IList<int>> result, answer;
             int id = 0;
@@ -20,13 +20,13 @@ namespace LeetCode.QuestionBank.Question0077
             n = 4; k = 2;
             answer = [[2, 4], [3, 4], [2, 3], [1, 2], [1, 3], [1, 4]];
             result = solution.Combine(n, k);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ToString(result, false)}, answer: {Utils.ToString(answer, false)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, true) + ",",-6} result: {Utils.ToString(result, false)}, answer: {Utils.ToString(answer, false)}");
 
             // 2. 
             n = 1; k = 1;
             answer = [[1]];
             result = solution.Combine(n, k);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, false) + ",",-6} result: {Utils.ToString(result, false)}, answer: {Utils.ToString(answer, false)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, true) + ",",-6} result: {Utils.ToString(result, false)}, answer: {Utils.ToString(answer, false)}");
         }
     }
 }
