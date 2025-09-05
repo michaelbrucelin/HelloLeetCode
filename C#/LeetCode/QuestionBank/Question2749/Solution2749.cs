@@ -20,14 +20,14 @@ namespace LeetCode.QuestionBank.Question2749
         {
             if (num1 <= num2) return -1;
 
-            long n1 = num1, n2 = num2;
+            long num = num1;
             int result = 1, cnt1;
             while (true)
             {
-                n1 -= n2;
-                if (n1 <= 0) break;
-                cnt1 = BitOperations.PopCount((ulong)n1);
-                if (result >= cnt1 && result <= n1) return result;
+                num -= num2;
+                if (num <= 0) break;
+                cnt1 = BitOperations.PopCount((ulong)num);
+                if (result >= cnt1 && result <= num) return result;
                 result++;
             }
 
