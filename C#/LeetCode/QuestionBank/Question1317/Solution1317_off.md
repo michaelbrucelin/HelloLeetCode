@@ -29,6 +29,104 @@ class Solution:
         return []
 ```
 
+```Java
+class Solution {
+    public int[] getNoZeroIntegers(int n) {
+        for (int A = 1; A < n; ++A) {
+            int B = n - A;
+            if (!String.valueOf(A).contains("0") && !String.valueOf(B).contains("0")) {
+                return new int[]{A, B};
+            }
+        }
+        return new int[0];
+    }
+}
+```
+
+```CSharp
+public class Solution {
+    public int[] GetNoZeroIntegers(int n) {
+        for (int A = 1; A < n; ++A) {
+            int B = n - A;
+            if (!A.ToString().Contains("0") && !B.ToString().Contains("0")) {
+                return new int[] { A, B };
+            }
+        }
+        return new int[0];
+    }
+}
+```
+
+```Go
+func getNoZeroIntegers(n int) []int {
+    for A := 1; A < n; A++ {
+        B := n - A
+        if !strings.Contains(strconv.Itoa(A), "0") && !strings.Contains(strconv.Itoa(B), "0") {
+            return []int{A, B}
+        }
+    }
+    return []int{}
+}
+```
+
+```C
+int* getNoZeroIntegers(int n, int* returnSize) {
+    char aStr[8], bStr[8];
+    for (int A = 1; A < n; ++A) {
+        int B = n - A;
+        sprintf(aStr, "%d", A);
+        sprintf(bStr, "%d", B);
+        if (strchr(aStr, '0') == NULL && strchr(bStr, '0') == NULL) {
+            int* result = malloc(2 * sizeof(int));
+            *returnSize = 2;
+            result[0] = A;
+            result[1] = B;
+            return result;
+        }
+    }
+    *returnSize = 0;
+    return NULL;
+}
+```
+
+```JavaScript
+var getNoZeroIntegers = function(n) {
+    for (let A = 1; A < n; A++) {
+        const B = n - A;
+        if (!A.toString().includes('0') && !B.toString().includes('0')) {
+            return [A, B];
+        }
+    }
+    return [];
+};
+```
+
+```TypeScript
+function getNoZeroIntegers(n: number): number[] {
+    for (let A = 1; A < n; A++) {
+        const B = n - A;
+        if (!A.toString().includes('0') && !B.toString().includes('0')) {
+            return [A, B];
+        }
+    }
+    return [];
+}
+```
+
+```Rust
+impl Solution {
+    pub fn get_no_zero_integers(n: i32) -> Vec<i32> {
+        for A in 1..n {
+            let B = n - A;
+            if !A.to_string().contains('0') && !B.to_string().contains('0') {
+                return vec![A, B];
+            }
+        }
+        vec![]
+    }
+}
+```
+
 **复杂度分析**
 
 - 时间复杂度：$O(NlogN)$，枚举 `A` 的时间复杂度为 $O(N)$，判断 `A` 和 `B` 是否均不包含 `0` 的时间复杂度为 $O(logN)$，即 `A` 与 `B` 的位数之和。

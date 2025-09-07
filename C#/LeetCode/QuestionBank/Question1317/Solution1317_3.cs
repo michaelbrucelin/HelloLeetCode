@@ -24,7 +24,7 @@ namespace LeetCode.QuestionBank.Question1317
                 break;
             }
 
-            return new int[] { n1, n2 };
+            return [n1, n2];
         }
 
         private bool CheckZero(int n)

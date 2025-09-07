@@ -25,16 +25,16 @@ namespace LeetCode.QuestionBank.Question1317
             }
 
             return result;
-        }
 
-        private bool CheckZero(int n)
-        {
-            while (n > 0)
+            bool CheckZero(int n)
             {
-                if (n % 10 == 0) return true;
-                n /= 10;
+                while (n > 0)
+                {
+                    if (n % 10 == 0) return true;
+                    n /= 10;
+                }
+                return false;
             }
-            return false;
         }
     }
 }

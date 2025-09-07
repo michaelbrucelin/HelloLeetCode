@@ -52,7 +52,7 @@ namespace LeetCode.QuestionBank.Question1317
                 pos *= 10;
             }
 
-            return new int[] { n1, n2 };
+            return [n1, n2];
         }
     }
 }

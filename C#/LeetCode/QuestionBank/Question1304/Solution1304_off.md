@@ -38,6 +38,111 @@ class Solution:
         return ans
 ```
 
+```Java
+class Solution {
+    public int[] sumZero(int n) {
+        int[] ans = new int[n];
+        int index = 0;
+        for (int i = 1; i <= n / 2; ++i) {
+            ans[index++] = i;
+            ans[index++] = -i;
+        }
+        if (n % 2 == 1) {
+            ans[index] = 0;
+        }
+        return ans;
+    }
+}
+```
+
+```CSharp
+public class Solution {
+    public int[] SumZero(int n) {
+        int[] ans = new int[n];
+        int index = 0;
+        for (int i = 1; i <= n / 2; ++i) {
+            ans[index++] = i;
+            ans[index++] = -i;
+        }
+        if (n % 2 == 1) {
+            ans[index] = 0;
+        }
+        return ans;
+    }
+}
+```
+
+```Go
+func sumZero(n int) []int {
+    ans := make([]int, 0, n)
+    for i := 1; i <= n / 2; i++ {
+        ans = append(ans, i, -i)
+    }
+    if n % 2 == 1 {
+        ans = append(ans, 0)
+    }
+    return ans
+}
+```
+
+```C
+int* sumZero(int n, int* returnSize) {
+    *returnSize = n;
+    int* ans = malloc(n * sizeof(int));
+    int index = 0;
+    for (int i = 1; i <= n / 2; ++i) {
+        ans[index++] = i;
+        ans[index++] = -i;
+    }
+    if (n % 2 == 1) {
+        ans[index] = 0;
+    }
+    return ans;
+}
+```
+
+```JavaScript
+var sumZero = function(n) {
+    let ans = [];
+    for (let i = 1; i <= Math.floor(n / 2); i++) {
+        ans.push(i, -i);
+    }
+    if (n % 2 === 1) {
+        ans.push(0);
+    }
+    return ans;
+};
+```
+
+```TypeScript
+function sumZero(n: number): number[] {
+    let ans: number[] = [];
+    for (let i = 1; i <= Math.floor(n / 2); i++) {
+        ans.push(i, -i);
+    }
+    if (n % 2 === 1) {
+        ans.push(0);
+    }
+    return ans;
+}
+```
+
+```Rust
+impl Solution {
+    pub fn sum_zero(n: i32) -> Vec<i32> {
+        let mut ans = Vec::with_capacity(n as usize);
+        for i in 1..= n / 2 {
+            ans.push(i);
+            ans.push(-i);
+        }
+        if n % 2 == 1 {
+            ans.push(0);
+        }
+        ans
+    }
+}
+```
+
 **复杂度分析**
 
 - 时间复杂度：$O(N)$。
