@@ -24,7 +24,7 @@ namespace LeetCode.QuestionBank.Question2327
         /// <param name="delay"></param>
         /// <param name="forget"></param>
         /// <returns></returns>
-        public int PeopleAwareOfSecret2(int n, int delay, int forget)
+        public int PeopleAwareOfSecret(int n, int delay, int forget)
         {
             const int MOD = (int)1e9 + 7;
             int[] dp = new int[forget];
@@ -54,7 +54,7 @@ namespace LeetCode.QuestionBank.Question2327
         /// <param name="delay"></param>
         /// <param name="forget"></param>
         /// <returns></returns>
-        public int PeopleAwareOfSecret(int n, int delay, int forget)
+        public int PeopleAwareOfSecret2(int n, int delay, int forget)
         {
             const int MOD = (int)1e9 + 7;
             int[] dp = new int[forget];
@@ -73,6 +73,18 @@ namespace LeetCode.QuestionBank.Question2327
             int result = dp[0];
             for (int i = 1; i < forget; i++) result = (result + dp[i]) % MOD;
             return result;
+        }
+
+        /// <summary>
+        /// 逻辑同PeopleAwareOfSecret2，将计算每一轮新增加的人数的数量改为使用滑动数组的思想解决
+        /// </summary>
+        /// <param name="n"></param>
+        /// <param name="delay"></param>
+        /// <param name="forget"></param>
+        /// <returns></returns>
+        public int PeopleAwareOfSecret3(int n, int delay, int forget)
+        {
+            throw new NotImplementedException("以后再说，先不做了");
         }
     }
 }
