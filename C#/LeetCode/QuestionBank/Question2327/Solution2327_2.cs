@@ -9,20 +9,8 @@ namespace LeetCode.QuestionBank.Question2327
     public class Solution2327_2 : Interface2327
     {
         /// <summary>
-        /// 矩阵快速幂
-        /// 逻辑同Solution2327，使用矩阵快速幂优化速度
-        /// n = 6, delay = 2, forget = 4
-        /// 1     0 1 1 0     0     0 1 1 0     1     0 1 1 0     1     0 1 1 0     1     0 1 1 0     2
-        /// 0  \/ 1 0 0 0 --  1  \/ 1 0 0 0 --  0  \/ 1 0 0 0 --  1  \/ 1 0 0 0 --  1  \/ 1 0 0 0 --  1
-        /// 0  /\ 0 1 0 0 --  0  /\ 0 1 0 0 --  1  /\ 0 1 0 0 --  0  /\ 0 1 0 0 --  1  /\ 0 1 0 0 --  1
-        /// 0     0 0 1 0     0     0 0 1 0     0     0 0 1 0     1     0 0 1 0     0     0 0 1 0     1
-        /// 矩阵如下，第一行第一个1为delay-1列，最后一个1为倒数第二列
-        /// 0 1 1 0
-        /// 1 0 0 0
-        /// 0 1 0 0
-        /// 0 0 1 0
-        /// 
-        /// 逻辑没问题，TLE了，具体问题具体分析，这道题本身数据量不大，但是矩阵计算导致每个单元的计算量陡增，具体参考测试用例03
+        /// 链表
+        /// 逻辑完全同Solution2327，仔细看Solution2327中的数组操作，如果换成链表操作数会少得多，但是内存消耗会大一些
         /// </summary>
         /// <param name="n"></param>
         /// <param name="delay"></param>
@@ -31,40 +19,72 @@ namespace LeetCode.QuestionBank.Question2327
         public int PeopleAwareOfSecret(int n, int delay, int forget)
         {
             const int MOD = (int)1e9 + 7;
-            long[,] unit = new long[forget, forget], matrix = new long[forget, forget];
-            for (int i = delay - 1; i <= forget - 2; i++) unit[0, i] = 1;
-            for (int i = 1; i < forget; i++) unit[i, i - 1] = 1;
+            LinkedList<int> list = new LinkedList<int>();
+            list.AddFirst(1);
+            for (int i = 1; i < forget; i++) list.AddLast(0);
 
-            n--;
-            if ((n & 1) == 1)
+            int temp; LinkedListNode<int> ptr;
+            while (--n > 0)
             {
-                for (int i = delay - 1; i <= forget - 2; i++) matrix[0, i] = 1;
-                for (int i = 1; i < forget; i++) matrix[i, i - 1] = 1;
-            }
-            else
-            {
-                for (int i = 0; i < forget; i++) matrix[i, i] = 1;
-            }
-            while ((n >>= 1) > 0)
-            {
-                unit = matrixpower(unit, unit);
-                if ((n & 1) == 1) matrix = matrixpower(matrix, unit);
+                temp = 0;
+                ptr = list.Last;
+                for (int i = forget; i > delay; i--)
+                {
+                    ptr = ptr.Previous;
+                    temp = (temp + ptr.Value) % MOD;
+                }
+                list.RemoveLast();
+                list.AddFirst(temp);
             }
 
-            long result = matrix[0, 0];                  // 结果就是matrix的第一列
-            for (int i = 1; i < forget; i++) result = (result + matrix[i, 0]) % MOD;
-            return (int)result;
-
-            long[,] matrixpower(long[,] m1, long[,] m2)  // 限定本题，只算forget*gorget
+            int result = 0;
+            ptr = list.First;
+            while (ptr != null)
             {
-                long[,] result = new long[forget, forget];
-                for (int r = 0; r < forget; r++) for (int c = 0; c < forget; c++)
-                    {
-                        for (int i = 0; i < forget; i++) result[r, c] = (result[r, c] + m1[r, i] * m2[i, c]) % MOD;
-                    }
-
-                return result;
+                result = (result + ptr.Value) % MOD;
+                ptr = ptr.Next;
             }
+            return result;
+        }
+
+        /// <summary>
+        /// 逻辑同PeopleAwareOfSecret，节省点内存
+        /// </summary>
+        /// <param name="n"></param>
+        /// <param name="delay"></param>
+        /// <param name="forget"></param>
+        /// <returns></returns>
+        public int PeopleAwareOfSecret2(int n, int delay, int forget)
+        {
+            const int MOD = (int)1e9 + 7;
+            LinkedList<int> list = new LinkedList<int>();
+            list.AddFirst(1);
+            for (int i = 1; i < forget; i++) list.AddLast(0);
+
+            int temp; LinkedListNode<int> ptr;
+            while (--n > 0)
+            {
+                temp = 0;
+                ptr = list.Last;
+                for (int i = forget; i > delay; i--)
+                {
+                    ptr = ptr.Previous;
+                    temp = (temp + ptr.Value) % MOD;
+                }
+                ptr = list.Last;
+                list.RemoveLast();
+                ptr.Value = temp;
+                list.AddFirst(ptr);
+            }
+
+            int result = 0;
+            ptr = list.First;
+            while (ptr != null)
+            {
+                result = (result + ptr.Value) % MOD;
+                ptr = ptr.Next;
+            }
+            return result;
         }
     }
 }

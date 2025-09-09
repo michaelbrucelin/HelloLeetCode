@@ -12,13 +12,43 @@ namespace LeetCode.QuestionBank.Question2327
         /// DP
         /// 记录知道秘密1天，2天，...forget-1天的人数
         /// n = 6, delay = 2, forget = 4
-        ///    0   1   2   3   4
-        /// 1  0   1A  0   0   0
-        /// 2  0   0   1A  0   0
-        /// 3  0   1B  0   1A  0
-        /// 4  0   1C  1B  0   1A
-        /// 5  0   1D  1C  1B  0
-        /// 6  0   2EF 1D  1C  1B
+        ///    1   2   3   4
+        /// 1  1A  0   0   0
+        /// 2  0   1A  0   0
+        /// 3  1B  0   1A  0
+        /// 4  1C  1B  0   1A
+        /// 5  1D  1C  1B  0
+        /// 6  2EF 1D  1C  1B
+        /// </summary>
+        /// <param name="n"></param>
+        /// <param name="delay"></param>
+        /// <param name="forget"></param>
+        /// <returns></returns>
+        public int PeopleAwareOfSecret2(int n, int delay, int forget)
+        {
+            const int MOD = (int)1e9 + 7;
+            int[] dp = new int[forget];
+            dp[0] = 1;
+            int temp;
+            while (--n > 0)
+            {
+                temp = 0;
+                for (int i = forget - 1; i > delay - 1; i--)
+                {
+                    dp[i] = dp[i - 1];
+                    temp = (temp + dp[i - 1]) % MOD;
+                }
+                for (int i = delay; i > 0; i--) dp[i] = dp[i - 1];
+                dp[0] = temp;
+            }
+
+            int result = dp[0];
+            for (int i = 1; i < forget; i++) result = (result + dp[i]) % MOD;
+            return result;
+        }
+
+        /// <summary>
+        /// 逻辑同PeopleAwareOfSecret，改为使用循环数组来减少计算次数
         /// </summary>
         /// <param name="n"></param>
         /// <param name="delay"></param>
@@ -27,21 +57,21 @@ namespace LeetCode.QuestionBank.Question2327
         public int PeopleAwareOfSecret(int n, int delay, int forget)
         {
             const int MOD = (int)1e9 + 7;
-            int[] dp = new int[forget + 1];
-            dp[1] = 1;
-            while (--n > 0)
+            int[] dp = new int[forget];
+            dp[0] = 1;
+            int temp, _n = -1, border = forget * 1000; n--;
+            while (++_n < n)
             {
-                dp[0] = 0;
-                for (int i = forget; i > delay; i--)
+                temp = 0;
+                for (int i = forget - 1; i > delay - 1; i--)
                 {
-                    dp[i] = dp[i - 1];
-                    dp[0] = (dp[0] + dp[i - 1]) % MOD;
+                    temp = (temp + dp[(border + i - 1 - _n) % forget]) % MOD;
                 }
-                for (int i = delay; i > 0; i--) dp[i] = dp[i - 1];
+                dp[(border - _n - 1) % forget] = temp;
             }
 
-            int result = dp[1];
-            for (int i = 2; i <= forget; i++) result = (result + dp[i]) % MOD;
+            int result = dp[0];
+            for (int i = 1; i < forget; i++) result = (result + dp[i]) % MOD;
             return result;
         }
     }
