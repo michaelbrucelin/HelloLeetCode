@@ -10,7 +10,7 @@ namespace LeetCode.QuestionBank.Question1733
     public class Solution1733_2 : Interface1733
     {
         /// <summary>
-        /// 逻辑同Solution1733，将HashSet<int>改为
+        /// 逻辑同Solution1733，将HashSet<int>改为BigInteger
         /// </summary>
         /// <param name="n"></param>
         /// <param name="languages"></param>
