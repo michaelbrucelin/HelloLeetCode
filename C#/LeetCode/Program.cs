@@ -8,7 +8,7 @@ using LeetCode.Utilses;
 using System;
 using System.IO;
 using System.Reflection;
-using TestXXXX = LeetCode.QuestionBank.Question1733.Test1733;
+using TestXXXX = LeetCode.QuestionBank.Question0086.Test0086;
 using UtilsXXXX = LeetCode.QuestionBank.Question0808.Utils0808;
 // using TestXXXX = LeetCode.LCP.LCP0051.Test0051;
 // using TestXXXX = LeetCode.LCR.LCR0132.Test0132;
@@ -49,6 +49,7 @@ namespace LeetCode
             //Console.WriteLine($"{++id,2}: In {sw.Elapsed}, {Utils.CompareArray(result, answer, true) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
             //链表
             /*
+            List<int> _result, _answer;
             _result = link2list(result); _answer = link2list(answer);
             Console.WriteLine($"{++id,2}: {Utils.CompareArray(_result, _answer) + ",",-6} result: {Utils.ToString(_result)}, answer: {Utils.ToString(_answer)}");
             private List<int> link2list(ListNode head)
