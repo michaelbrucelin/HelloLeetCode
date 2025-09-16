@@ -13,7 +13,7 @@ namespace LeetCode.QuestionBank.Question2197
     {
         public void Test()
         {
-            Interface2197 solution = new Solution2197_2();
+            Interface2197 solution = new Solution2197_5();
             int[] nums;
             IList<int> result, answer;
             int id = 0;
@@ -68,6 +68,13 @@ namespace LeetCode.QuestionBank.Question2197
             answer = [6];
             result = solution.ReplaceNonCoprimes(nums);
             Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
+
+            // 9. 
+            testcase = "09";
+            nums = Utils.Str2NumArray<int>(File.ReadAllText($"{path}_{testcase}_nums.txt"));
+            answer = Utils.Str2NumArray<int>(File.ReadAllText($"{path}_{testcase}_answer.txt"));
+            result = solution.ReplaceNonCoprimes(nums);
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result, 0, 4)}, answer: {Utils.ToString(answer, 0, 4)}");
         }
     }
 }
