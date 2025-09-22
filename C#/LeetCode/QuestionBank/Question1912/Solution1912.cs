@@ -68,6 +68,7 @@ namespace LeetCode.QuestionBank.Question1912
             while (result.Count < count && rent.Count > 0)
             {
                 (int shop, int movie) item = rent.Dequeue();
+                while (rent.Count > 0 && rent.Peek() == item) rent.Dequeue();
                 if (_rent.Contains(item)) result.Add([item.shop, item.movie]);
             }
             foreach (var item in result) rent.Enqueue((item[0], item[1]), (price[(item[0], item[1])], item[0]));
@@ -83,6 +84,7 @@ namespace LeetCode.QuestionBank.Question1912
             while (result.Count < count && shops.Count > 0)
             {
                 shop = shops.Dequeue();
+                while (shops.Count > 0 && shops.Peek() == shop) shops.Dequeue();
                 if (_have.Contains((shop, movie))) result.Add(shop);
             }
             foreach (int _shop in result) shops.Enqueue(_shop, (price[(_shop, movie)], _shop));
