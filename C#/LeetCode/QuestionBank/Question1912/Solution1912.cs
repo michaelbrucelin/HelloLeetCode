@@ -17,53 +17,77 @@ namespace LeetCode.QuestionBank.Question1912
     {
         public MovieRentingSystem(int n, int[][] entries)
         {
+            count = 5;
             comparer = Comparer<(int, int)>.Create((x, y) => (x.Item1 != y.Item1) ? x.Item1 - y.Item1 : x.Item2 - y.Item2);
-            have = new PriorityQueue<(int shop, int movie), (int, int)>(comparer);
-            rent = new PriorityQueue<(int shop, int movie), (int, int)>(comparer);
+            have = new Dictionary<int, PriorityQueue<int, (int price, int shop)>>();
+            rent = new PriorityQueue<(int shop, int movie), (int price, int shop)>(comparer);
             _rent = new HashSet<(int shop, int moive)>();
             _have = new HashSet<(int shop, int moive)>();
             price = new Dictionary<(int shop, int moive), int>();
 
             foreach (int[] entry in entries)
             {
-                have.Enqueue((entry[0], entry[1]), (entry[2], entry[0]));
+                if (have.TryGetValue(entry[1], out var shops))
+                    shops.Enqueue(entry[0], (entry[2], entry[0]));
+                else
+                    have.Add(entry[1], new PriorityQueue<int, (int, int)>([(entry[0], (entry[2], entry[0]))], comparer));
                 _have.Add((entry[0], entry[1]));
                 price.Add((entry[0], entry[1]), entry[2]);
             }
         }
 
-        Comparer<(int, int)> comparer;
-        PriorityQueue<(int, int), (int, int)> have, rent;
-        HashSet<(int, int)> _have, _rent;
-        Dictionary<(int, int), int> price;
+        private int count;
+        private Comparer<(int, int)> comparer;
+        private Dictionary<int, PriorityQueue<int, (int, int)>> have;
+        private PriorityQueue<(int, int), (int, int)> rent;
+        private HashSet<(int, int)> _have, _rent;
+        private Dictionary<(int, int), int> price;
 
         public void Drop(int shop, int movie)
         {
+            int _price = price[(shop, movie)];
             _rent.Remove((shop, movie));
             _have.Add((shop, movie));
+            if (have.TryGetValue(movie, out var shops))
+                shops.Enqueue(shop, (_price, shop));
+            else
+                have.Add(movie, new PriorityQueue<int, (int, int)>([(shop, (_price, shop))], comparer));
         }
 
         public void Rent(int shop, int movie)
         {
+            int _price = price[(shop, movie)];
             _have.Remove((shop, movie));
             _rent.Add((shop, movie));
+            rent.Enqueue((shop, movie), (_price, shop));
         }
 
         public IList<IList<int>> Report()
         {
             List<IList<int>> result = new List<IList<int>>();
-            while (result.Count < 5 && rent.Count > 0)
+            while (result.Count < count && rent.Count > 0)
             {
                 (int shop, int movie) item = rent.Dequeue();
                 if (_rent.Contains(item)) result.Add([item.shop, item.movie]);
             }
+            foreach (var item in result) rent.Enqueue((item[0], item[1]), (price[(item[0], item[1])], item[0]));
 
             return result;
         }
 
         public IList<int> Search(int movie)
         {
-            throw new NotImplementedException();
+            List<int> result = new List<int>();
+            if (!have.TryGetValue(movie, out var shops) || shops.Count == 0) return result;
+            int shop;
+            while (result.Count < count && shops.Count > 0)
+            {
+                shop = shops.Dequeue();
+                if (_have.Contains((shop, movie))) result.Add(shop);
+            }
+            foreach (int _shop in result) shops.Enqueue(_shop, (price[(_shop, movie)], _shop));
+
+            return result;
         }
     }
 }
