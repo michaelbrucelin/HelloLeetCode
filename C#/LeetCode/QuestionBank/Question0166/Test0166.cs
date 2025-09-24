@@ -10,7 +10,7 @@ namespace LeetCode.QuestionBank.Question0166
     {
         public void Test()
         {
-            Interface0166 solution = new Solution0166();
+            Interface0166 solution = new Solution0166_2();
             int numerator, denominator;
             string result, answer;
             int id = 0;
@@ -48,7 +48,7 @@ namespace LeetCode.QuestionBank.Question0166
             // 6. 
             numerator = 7; denominator = 24000;
             answer = "0.000291(6)";
-            result = solution.FractionToDecimal(numerator, denominator);
+             result = solution.FractionToDecimal(numerator, denominator);
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
         }
     }

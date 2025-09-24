@@ -93,5 +93,42 @@ namespace LeetCode.QuestionBank.Question0166
                 return x << move;
             }
         }
+
+        /// <summary>
+        /// 逻辑同FractionToDecimal()，删除了分数约分的步骤，没有用，画蛇添足了
+        /// </summary>
+        /// <param name="numerator"></param>
+        /// <param name="denominator"></param>
+        /// <returns></returns>
+        public string FractionToDecimal2(int numerator, int denominator)
+        {
+            long _numerator = numerator, _denominator = denominator;
+            if (_numerator % _denominator == 0) return (_numerator / _denominator).ToString();  // 溢出... ...
+
+            int sign = 1;
+            if (_numerator < 0) { sign *= -1; _numerator *= -1; }
+            if (_denominator < 0) { sign *= -1; _denominator *= -1; }
+            BigInteger x = _numerator, y = _denominator, _x = x, r;
+            Dictionary<int, int> remainder = new Dictionary<int, int>();
+            int id = 0;
+            while (true)
+            {
+                r = _x % y;
+                if (r == 0 || remainder.ContainsKey((int)r)) break;
+                remainder.Add((int)r, id++);
+                _x *= 10;
+            }
+
+            string result = (_x / y).ToString();
+            int dotpos = result.Length - id;
+            result = dotpos > 0 ? $"{result[..dotpos]}.{result[dotpos..]}" : $"0.{new string('0', -dotpos)}{result}";
+            if (r != 0)
+            {
+                int len = result.Length, _len = id - remainder[(int)r];
+                result = $"{result[..(len - _len)]}({result[(len - _len)..]})";
+            }
+
+            return sign == -1 ? $"-{result}" : result;
+        }
     }
 }
