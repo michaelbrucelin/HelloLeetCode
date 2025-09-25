@@ -12,15 +12,19 @@ namespace LeetCode.QuestionBank.Question1912
 
     /// <summary>
     /// 堆，懒删除
+    /// 
+    /// 逻辑没问题，TLE，推测是因为Search与Report时，需要出队列再进队列导致的，可以改为SortedDictionary试试
+    /// 再次提交通过了...，不写了，官解用的就是SortedDictionary，由于Search与Report的数量是5，直接上堆+懒删除效率不比有序Hash慢
     /// </summary>
     public class MovieRentingSystem : Interface1912
     {
         public MovieRentingSystem(int n, int[][] entries)
         {
             count = 5;
-            comparer = Comparer<(int, int)>.Create((x, y) => (x.Item1 != y.Item1) ? x.Item1 - y.Item1 : x.Item2 - y.Item2);
+            comparer2 = Comparer<(int, int)>.Create((x, y) => (x.Item1 != y.Item1) ? x.Item1 - y.Item1 : x.Item2 - y.Item2);
+            comparer3 = Comparer<(int, int, int)>.Create((x, y) => (x.Item1 != y.Item1) ? x.Item1 - y.Item1 : ((x.Item2 != y.Item2) ? x.Item2 - y.Item2 : x.Item3 - y.Item3));
             have = new Dictionary<int, PriorityQueue<int, (int price, int shop)>>();
-            rent = new PriorityQueue<(int shop, int movie), (int price, int shop)>(comparer);
+            rent = new PriorityQueue<(int shop, int movie), (int price, int shop, int moive)>(comparer3);
             _rent = new HashSet<(int shop, int moive)>();
             _have = new HashSet<(int shop, int moive)>();
             price = new Dictionary<(int shop, int moive), int>();
@@ -30,16 +34,17 @@ namespace LeetCode.QuestionBank.Question1912
                 if (have.TryGetValue(entry[1], out var shops))
                     shops.Enqueue(entry[0], (entry[2], entry[0]));
                 else
-                    have.Add(entry[1], new PriorityQueue<int, (int, int)>([(entry[0], (entry[2], entry[0]))], comparer));
+                    have.Add(entry[1], new PriorityQueue<int, (int, int)>([(entry[0], (entry[2], entry[0]))], comparer2));
                 _have.Add((entry[0], entry[1]));
                 price.Add((entry[0], entry[1]), entry[2]);
             }
         }
 
         private int count;
-        private Comparer<(int, int)> comparer;
+        private Comparer<(int, int)> comparer2;
+        private Comparer<(int, int, int)> comparer3;
         private Dictionary<int, PriorityQueue<int, (int, int)>> have;
-        private PriorityQueue<(int, int), (int, int)> rent;
+        private PriorityQueue<(int, int), (int, int, int)> rent;
         private HashSet<(int, int)> _have, _rent;
         private Dictionary<(int, int), int> price;
 
@@ -51,7 +56,7 @@ namespace LeetCode.QuestionBank.Question1912
             if (have.TryGetValue(movie, out var shops))
                 shops.Enqueue(shop, (_price, shop));
             else
-                have.Add(movie, new PriorityQueue<int, (int, int)>([(shop, (_price, shop))], comparer));
+                have.Add(movie, new PriorityQueue<int, (int, int)>([(shop, (_price, shop))], comparer2));
         }
 
         public void Rent(int shop, int movie)
@@ -59,7 +64,7 @@ namespace LeetCode.QuestionBank.Question1912
             int _price = price[(shop, movie)];
             _have.Remove((shop, movie));
             _rent.Add((shop, movie));
-            rent.Enqueue((shop, movie), (_price, shop));
+            rent.Enqueue((shop, movie), (_price, shop, movie));
         }
 
         public IList<IList<int>> Report()
@@ -71,7 +76,7 @@ namespace LeetCode.QuestionBank.Question1912
                 while (rent.Count > 0 && rent.Peek() == item) rent.Dequeue();
                 if (_rent.Contains(item)) result.Add([item.shop, item.movie]);
             }
-            foreach (var item in result) rent.Enqueue((item[0], item[1]), (price[(item[0], item[1])], item[0]));
+            foreach (var item in result) rent.Enqueue((item[0], item[1]), (price[(item[0], item[1])], item[0], item[1]));
 
             return result;
         }
