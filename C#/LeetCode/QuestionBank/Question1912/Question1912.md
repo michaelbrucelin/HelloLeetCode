@@ -11,7 +11,7 @@
 - **Search：** 找到拥有指定电影且 **未借出** 的商店中 **最便宜的 5 个**。商店需要按照 **价格** 升序排序，如果价格相同，则 <code>shop<sub>i</sup></code> **较小** 的商店排在前面。如果查询结果少于 5 个商店，则将它们全部返回。如果查询结果没有任何商店，则返回空列表。
 - **Rent：** 从指定商店借出指定电影，题目保证指定电影在指定商店 **未借出**。
 - **Drop：** 在指定商店返还 **之前已借出** 的指定电影。
-- **Report：** 返回 **最便宜的 5 部已借出电影** （可能有重复的电影 ID），将结果用二维列表 `res` 返回，其中 `res[j] = [shop<sub>j</sub>, movie<sub>j</sub>]` 表示第 `j` 便宜的已借出电影是从商店 <code>shop<sub>j</sup></code> 借出的电影 <code>movie<sub>j</sup></code>。`res` 中的电影需要按 **价格** 升序排序；如果价格相同，则 <code>shop<sub>j</sup></code> **较小** 的排在前面；如果仍然相同，则 <code>movie<sub>j</sup></code> **较小** 的排在前面。如果当前借出的电影小于 5 部，则将它们全部返回。如果当前没有借出电影，则返回一个空的列表。
+- **Report：** 返回 **最便宜的 5 部已借出电影** （可能有重复的电影 ID），将结果用二维列表 `res` 返回，其中 <code>res[j] = [shop<sub>j</sub>, movie<sub>j</sub>]</code> 表示第 `j` 便宜的已借出电影是从商店 <code>shop<sub>j</sup></code> 借出的电影 <code>movie<sub>j</sup></code>。`res` 中的电影需要按 **价格** 升序排序；如果价格相同，则 <code>shop<sub>j</sup></code> **较小** 的排在前面；如果仍然相同，则 <code>movie<sub>j</sup></code> **较小** 的排在前面。如果当前借出的电影小于 5 部，则将它们全部返回。如果当前没有借出电影，则返回一个空的列表。
 
 请你实现 `MovieRentingSystem` 类：
 
@@ -43,7 +43,7 @@
 
 - <code>1 <= n <= 3 &times; 10<sup>5</sup></code>
 - <code>1 <= entries.length <= 10<sup>5</sup></code>
-- `0 <= shop<sub>i</sub> < n`
+- <code>0 <= shop<sub>i</sub> < n</code>
 - <code>1 <= movie<sub>i</sub>, price<sub>i</sub> <= 10<sup>4</sup></code>
 - 每个商店 **至多** 有一份电影 <code>movie<sub>i</sup></code> 的拷贝。
 - `search`，`rent`，`drop` 和 `report` 的调用 **总共** 不超过 <code>10<sup>5</sup></code> 次。
