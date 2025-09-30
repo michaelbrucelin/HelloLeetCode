@@ -16,9 +16,10 @@ namespace LeetCode.QuestionBank.Question2221
         /// <returns></returns>
         public int TriangularSum(int[] nums)
         {
+            if (nums.Length == 1) return nums[0];
+
             int len = nums.Length;
-            // for (int i = len - 1; i > 0; i--) for (int j = 0; j < i; j++) nums[j] += nums[j + 1];  // 溢出了
-            for (int i = len - 1; i > 0; i--) for (int j = 0; j < i; j++) nums[j] = (nums[j] + nums[j + 1]) % 10;
+            for (int i = len; i > 1; i--) for (int j = 1; j < i; j++) nums[j - 1] = (nums[j - 1] + nums[j]) % 10;
 
             return nums[0];
         }
