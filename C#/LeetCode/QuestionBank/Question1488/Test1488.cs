@@ -13,7 +13,7 @@ namespace LeetCode.QuestionBank.Question1488
     {
         public void Test()
         {
-            Interface1488 solution = new Solution1488_2();
+            Interface1488 solution = new Solution1488_oth_2();
             int[] rains;
             int[] result, answer;
             int id = 0;
@@ -55,7 +55,14 @@ namespace LeetCode.QuestionBank.Question1488
             rains = Utils.Str2NumArray<int>(File.ReadAllText($"{path}_{testcase}_rains.txt"));
             answer = Utils.Str2NumArray<int>(File.ReadAllText($"{path}_{testcase}_answer.txt"));
             result = solution.AvoidFlood(rains);
-            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result[0..8])}, answer: {Utils.ToString(answer[0..8])}");
+
+            // 7. 
+            testcase = "07";
+            rains = Utils.Str2NumArray<int>(File.ReadAllText($"{path}_{testcase}_rains.txt"));
+            answer = Utils.Str2NumArray<int>(File.ReadAllText($"{path}_{testcase}_answer.txt"));
+            result = solution.AvoidFlood(rains);
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result[0..8])}, answer: {Utils.ToString(answer[0..8])}");
         }
     }
 }
