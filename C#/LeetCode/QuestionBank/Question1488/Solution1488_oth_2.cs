@@ -10,7 +10,7 @@ namespace LeetCode.QuestionBank.Question1488
     {
         /// <summary>
         /// 并查集
-        /// 逻辑没问题，TLE，猜测是由于并查集没有合并导致的，暂时不改了
+        /// 逻辑没问题，TLE，参考测试用例07，猜测是由于并查集没有合并导致的，暂时不改了
         /// </summary>
         /// <param name="rains"></param>
         /// <returns></returns>
