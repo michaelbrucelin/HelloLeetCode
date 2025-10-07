@@ -1,4 +1,7 @@
 {
     "mssql.resultsFontSize": 13,
-    "scm.inputFontSize": 13
+    "scm.inputFontSize": 13,
+    "cSpell.enabledFileTypes": {
+        "txt": false
+    }
 }
