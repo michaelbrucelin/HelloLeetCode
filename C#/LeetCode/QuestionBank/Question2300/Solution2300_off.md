@@ -159,8 +159,8 @@ var successfulPairs = function(spells, potions, success) {
 
 **复杂度分析**
 
--   时间复杂度：$O(m \times \log m + n \times \log m)$，其中 $n$ 为数组 $spells$ 的长度，$m$ 是数组 $postion$ 的长度，主要为对数组 $potions$ 排序和对数组 $spells$ 中每一个元素对数组 $potions$ 进行「二分查找」的时间开销。
--   空间复杂度：$O(\log m)$，主要为对 $potions$ 排序的空间开销，其中返回的答案不计入空间复杂度。
+- 时间复杂度：$O(m \times \log m + n \times \log m)$，其中 $n$ 为数组 $spells$ 的长度，$m$ 是数组 $postion$ 的长度，主要为对数组 $potions$ 排序和对数组 $spells$ 中每一个元素对数组 $potions$ 进行「二分查找」的时间开销。
+- 空间复杂度：$O(\log m)$，主要为对 $potions$ 排序的空间开销，其中返回的答案不计入空间复杂度。
 
 #### 方法二：双指针
 
@@ -362,5 +362,5 @@ var successfulPairs = function(spells, potions, success) {
 
 **复杂度分析**
 
--   时间复杂度：$O(n \times \log n + m \times \log m)$，其中 $n$ 为数组 $spells$ 的长度，$m$ 是数组 $postion$ 的长度，主要为对数组 $potions$ 和 $idx$ 排序的时间开销。
--   空间复杂度：$O(n + \log n + \log m)$，主要为数组 $idx$ 的空间开销和对数组 $potions$ 排序的空间开销，其中返回的答案不计入空间复杂度。
+- 时间复杂度：$O(n \times \log n + m \times \log m)$，其中 $n$ 为数组 $spells$ 的长度，$m$ 是数组 $postion$ 的长度，主要为对数组 $potions$ 和 $idx$ 排序的时间开销。
+- 空间复杂度：$O(n + \log n + \log m)$，主要为数组 $idx$ 的空间开销和对数组 $potions$ 排序的空间开销，其中返回的答案不计入空间复杂度。
