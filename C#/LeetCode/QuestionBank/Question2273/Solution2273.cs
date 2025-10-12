@@ -30,14 +30,14 @@ namespace LeetCode.QuestionBank.Question2273
             }
 
             return result;
-        }
 
-        private int[] CalFreq(string word)
-        {
-            int[] freq = new int[26];
-            for (int i = 0; i < word.Length; i++) freq[word[i] - 'a']++;
+            int[] CalFreq(string word)
+            {
+                int[] freq = new int[26];
+                for (int i = 0; i < word.Length; i++) freq[word[i] - 'a']++;
 
-            return freq;
+                return freq;
+            }
         }
 
         /// <summary>

@@ -1,47 +1,45 @@
-#### [2273\. �Ƴ���ĸ��λ�ʺ�Ľ������](https://leetcode.cn/problems/find-resultant-array-after-removing-anagrams/)
+### [2273\. 移除字母异位词后的结果数组](https://leetcode.cn/problems/find-resultant-array-after-removing-anagrams/)
 
-�Ѷȣ���
+难度：简单
 
-����һ���±�� **0** ��ʼ���ַ��� `words` ������ `words[i]` ��СдӢ���ַ���ɡ�
+给你一个下标从 **0** 开始的字符串数组 `words`，其中 `words[i]` 由小写英文字符组成。
 
-��һ�������У���Ҫѡ����һ�±� `i` ���� `words` �� **ɾ��** `words[i]` �������±� `i` ��Ҫͬʱ������������������
+在一步操作中，需要选出任一下标 `i`，从 `words` 中 **删除** `words[i]`。其中下标 `i` 需要同时满足下述两个条件：
 
-1.  `0 < i < words.length`
-2.  `words[i - 1]` �� `words[i]` �� **��ĸ��λ��** ��
+1. `0 < i < words.length`
+2. `words[i - 1]` 和 `words[i]` 是 **字母异位词**。
 
-ֻҪ����ѡ�������������±꣬��һֱִ�����������
+只要可以选出满足条件的下标，就一直执行这个操作。
 
-��ִ�����в����󣬷��� `words` ������֤����������˳��Ϊÿ������ѡ���±궼��õ���ͬ�Ľ����
+在执行所有操作后，返回 `words`。可以证明，按任意顺序为每步操作选择下标都会得到相同的结果。
 
-**��ĸ��λ��** ������������Դ���ʵ���ĸ�õ���һ���µ��ʣ�����Դ�����е���ĸͨ��ǡ��ֻ��һ�Ρ����磬`"dacb"` �� `"abdc"` ��һ����ĸ��λ�ʡ�
+**字母异位词** 是由重新排列源单词的字母得到的一个新单词，所有源单词中的字母通常恰好只用一次。例如，`"dacb"` 是 `"abdc"` 的一个字母异位词。
 
-**ʾ�� 1��**
+**示例 1：**
 
-```
-���룺words = ["abba","baba","bbaa","cd","cd"]
-�����["abba","cd"]
-���ͣ�
-��ȡ�������ķ���֮һ��ִ���������裺
-- ���� words[2] = "bbaa" �� words[1] = "baba" ����ĸ��λ�ʣ�ѡ���±� 2 ��ɾ�� words[2] ��
-  ���� words = ["abba","baba","cd","cd"] ��
-- ���� words[1] = "baba" �� words[0] = "abba" ����ĸ��λ�ʣ�ѡ���±� 1 ��ɾ�� words[1] ��
-  ���� words = ["abba","cd","cd"] ��
-- ���� words[2] = "cd" �� words[1] = "cd" ����ĸ��λ�ʣ�ѡ���±� 2 ��ɾ�� words[2] ��
-  ���� words = ["abba","cd"] ��
-�޷���ִ���κβ��������� ["abba","cd"] �����մ𰸡�
-```
+> > **输入：** words = ["abba","baba","bbaa","cd","cd"]
+> > **输出：** ["abba","cd"]
+> > **解释：**
+> 获取结果数组的方法之一是执行下述步骤：
+>
+> - 由于 words[2] = "bbaa" 和 words[1] = "baba" 是字母异位词，选择下标 2 并删除 words[2]。
+>   现在 words = ["abba","baba","cd","cd"]。
+> - 由于 words[1] = "baba" 和 words[0] = "abba" 是字母异位词，选择下标 1 并删除 words[1]。
+>   现在 words = ["abba","cd","cd"]。
+> - 由于 words[2] = "cd" 和 words[1] = "cd" 是字母异位词，选择下标 2 并删除 words[2]。
+>   现在 words = ["abba","cd"]。
+>
+> 无法再执行任何操作，所以 ["abba","cd"] 是最终答案。
 
-**ʾ�� 2��**
+**示例 2：**
 
-```
-���룺words = ["a","b","c","d","e"]
-�����["a","b","c","d","e"]
-���ͣ�
-words �в����ڻ�Ϊ��ĸ��λ�ʵ����������ַ�������������ִ���κβ�����
-```
+> **输入：** words = ["a","b","c","d","e"]
+> **输出：** ["a","b","c","d","e"]
+> **解释：**
+> words 中不存在互为字母异位词的两个相邻字符串，所以无需执行任何操作。
 
-**��ʾ��**
+**提示：**
 
--   `1 <= words.length <= 100`
--   `1 <= words[i].length <= 10`
--   `words[i]` ��СдӢ����ĸ���
+- `1 <= words.length <= 100`
+- `1 <= words[i].length <= 10`
+- `words[i]` 由小写英文字母组成
