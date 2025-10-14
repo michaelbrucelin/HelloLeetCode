@@ -26,5 +26,19 @@ namespace LeetCode.QuestionBank.Question1518
 
             return result;
         }
+
+        public int NumWaterBottles2(int numBottles, int numExchange)
+        {
+            int result = 0, numEmpty = 0;
+            while (numBottles > 0 || numEmpty >= numExchange)
+            {
+                numBottles += numEmpty / numExchange;            // 换
+                result += numBottles;                            // 喝
+                numEmpty = numEmpty % numExchange + numBottles;
+                numBottles = 0;
+            }
+
+            return result;
+        }
     }
 }
