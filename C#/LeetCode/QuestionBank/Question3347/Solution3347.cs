@@ -11,7 +11,7 @@ namespace LeetCode.QuestionBank.Question3347
     {
         /// <summary>
         /// 排序 + 两轮滑动窗口
-        /// 题目完全同Solution3346，连输入的数据范围都一致。
+        /// 题目完全同Solution3346，只是数据范围变大。
         /// 逻辑没问题，TLE，参考测试用例06, 07
         /// </summary>
         /// <param name="nums"></param>
