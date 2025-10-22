@@ -18,8 +18,6 @@ namespace LeetCode.QuestionBank.Question3346
         ///     遍历nums中每个元素num
         ///     pl为满足num-nums[pl]<=k的最小左指针，pr为满足nums[pr]-num<=k最大的右指针
         ///     那么以num为目标贡献的最大频次为Min(pr-pl+1-Count(num), numOperations)+Count(num)
-        ///     
-        /// 逻辑没问题，TLE，参考测试用例06
         /// </summary>
         /// <param name="nums"></param>
         /// <param name="k"></param>
@@ -41,12 +39,13 @@ namespace LeetCode.QuestionBank.Question3346
                 if (pr == len - 1) break;
             }
             // 第2轮滑动窗口
-            int p = 0, _p; pl = 0;
+            int p = 0, _p; pl = 0; pr = 0;
             while (p < len)
             {
-                _p = p; while (_p + 1 < len && nums[_p + 1] == nums[_p]) _p++;
+                _p = p;
+                while (_p + 1 < len && nums[_p + 1] == nums[_p]) _p++;
                 while (nums[p] - nums[pl] > k) pl++;
-                pr = _p; while (pr + 1 < len && nums[pr + 1] - nums[p] <= k) pr++;
+                while (pr + 1 < len && nums[pr + 1] - nums[p] <= k) pr++;
                 result = Math.Max(result, Math.Min((pr - pl) - (_p - p), numOperations) + _p - p + 1);
                 p = _p + 1;
             }
