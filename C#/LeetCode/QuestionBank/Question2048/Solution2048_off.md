@@ -4,15 +4,15 @@
 
 **思路与算法**
 
-题目给一个整数 $n$ ，要求返回严格大于 $n$ 的最小数值平衡数，我们直接按照题目的要求进行模拟即可。
+题目给一个整数 $n$，要求返回严格大于 $n$ 的最小数值平衡数，我们直接按照题目的要求进行模拟即可。
 
-观察到 $0 <= n <= 10^6$, 我们可能返回的数值平衡数最大是 $1224444$，这个范围可以在时间要求内找到答案。
+观察到 $0<=n<=10^6,$ 我们可能返回的数值平衡数最大是 $1224444$，这个范围可以在时间要求内找到答案。
 
 我们依次枚举大于 $n$ 的整数，统计所有数字的出现频数，判断是否是数值平衡数即可。
 
 **代码**
 
-```cpp
+```C++
 class Solution {
 public:
     bool isBalance(int x) {
@@ -40,7 +40,7 @@ public:
 };
 ```
 
-```java
+```Java
 class Solution {
     public int nextBeautifulNumber(int n) {
         for (int i = n + 1; i <= 1224444; ++i) {
@@ -67,7 +67,7 @@ class Solution {
 }
 ```
 
-```python
+```Python
 class Solution:
     def nextBeautifulNumber(self, n: int) -> int:
         for i in range(n + 1, 1224445):
@@ -76,7 +76,7 @@ class Solution:
                 return i
 ```
 
-```javascript
+```JavaScript
 function isBalance(x) {
     const count = new Array(10).fill(0);
     while (x > 0) {
@@ -100,7 +100,7 @@ var nextBeautifulNumber = function(n) {
 };
 ```
 
-```go
+```Go
 func isBalance(x int) bool {
     count := make([]int, 10)
     for x > 0 {
@@ -123,9 +123,10 @@ func nextBeautifulNumber(n int) int {
     }
     return -1
 }
+
 ```
 
-```c
+```C
 int isBalance(int x) {
     int count[10] = {0};
     while (x > 0) {
@@ -150,7 +151,7 @@ int nextBeautifulNumber(int n) {
 }
 ```
 
-```csharp
+```CSharp
 public class Solution {
     public int NextBeautifulNumber(int n) {
         for (int i = n + 1; i <= 1224444; i++) {
@@ -179,10 +180,10 @@ public class Solution {
 
 **复杂度分析**
 
--   时间复杂度：$O(C - n)$，其中 $C = 1224444$ 是可能为答案的最大的数值平衡数，取决于题目的数据范围。
--   空间复杂度：$O(1)$。
+- 时间复杂度：$O(C-n)$，其中 $C=1224444$ 是可能为答案的最大的数值平衡数，取决于题目的数据范围。
+- 空间复杂度：$O(1)$。
 
-#### 方法二：打表 + 二分
+#### 方法二：打表 $+$ 二分
 
 **思路与算法**
 
@@ -192,7 +193,7 @@ public class Solution {
 
 **代码**
 
-```cpp
+```C++
 class Solution {
 public:
     const vector<int> balance {
@@ -219,7 +220,7 @@ public:
 };
 ```
 
-```java
+```Java
 class Solution {
     private static final int[] balance = new int[] {
         1, 22, 122, 212, 221, 333, 1333, 3133, 3313, 3331, 4444,
@@ -249,7 +250,7 @@ class Solution {
 }
 ```
 
-```python
+```Python
 balance = [
     1, 22, 122, 212, 221, 333, 1333, 3133, 3313, 3331, 4444,
     14444, 22333, 23233, 23323, 23332, 32233, 32323, 32332,
@@ -273,7 +274,7 @@ class Solution:
         return balance[bisect_right(balance, n)]
 ```
 
-```javascript
+```JavaScript
 const balance = [
     1, 22, 122, 212, 221, 333, 1333, 3133, 3313, 3331, 4444,
     14444, 22333, 23233, 23323, 23332, 32233, 32323, 32332,
@@ -306,7 +307,7 @@ var nextBeautifulNumber = function(n) {
 };
 ```
 
-```go
+```Go
 var balance = []int{
     1, 22, 122, 212, 221, 333, 1333, 3133, 3313, 3331, 4444,
     14444, 22333, 23233, 23323, 23332, 32233, 32323, 32332,
@@ -329,7 +330,7 @@ func nextBeautifulNumber(n int) int {
 }
 ```
 
-```c
+```C
 const int balance[] = {
     1, 22, 122, 212, 221, 333, 1333, 3133, 3313, 3331, 4444,
     14444, 22333, 23233, 23323, 23332, 32233, 32323, 32332,
@@ -362,7 +363,7 @@ int nextBeautifulNumber(int n) {
 }
 ```
 
-```csharp
+```CSharp
 public class Solution {
     private static int[] balance = new int[] {
         1, 22, 122, 212, 221, 333, 1333, 3133, 3313, 3331, 4444,
@@ -394,5 +395,5 @@ public class Solution {
 
 **复杂度分析**
 
--   时间复杂度：$O(log C)$，其中 $C =110$ 是数值平衡数的个数，取决于题目的数据范围。
--   空间复杂度：$O(C)$，其中 $C =110$ 是数值平衡数的个数，取决于题目的数据范围。
+- 时间复杂度：$O(\log C)$，其中 $C=110$ 是数值平衡数的个数，取决于题目的数据范围。
+- 空间复杂度：$O(C)$，其中 $C=110$ 是数值平衡数的个数，取决于题目的数据范围。

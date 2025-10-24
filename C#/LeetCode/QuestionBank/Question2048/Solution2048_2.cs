@@ -43,51 +43,51 @@ namespace LeetCode.QuestionBank.Question2048
                 default: goto LEN7;
             }
 
-            // 3位
-            LEN3:;
+        // 3位
+        LEN3:;
             dfs(n, new Dictionary<int, int>() { { 1, 1 }, { 2, 2 } }, 0, ref result);
             if (result != MAX_RESULT) return result;
-            if (333 > n) return 333;
+            return (n < 333) ? 333 : 1333;
 
-            // 4位
-            LEN4:;
+        // 4位
+        LEN4:;
             dfs(n, new Dictionary<int, int>() { { 1, 1 }, { 3, 3 } }, 0, ref result);
             if (result != MAX_RESULT) return result;
-            if (4444 > n) return 4444;
+            return (n < 4444) ? 4444 : 14444;
 
-            // 5位
-            LEN5:;
+        // 5位
+        LEN5:;
             dfs(n, new Dictionary<int, int>() { { 1, 1 }, { 4, 4 } }, 0, ref result);
             dfs(n, new Dictionary<int, int>() { { 2, 2 }, { 3, 3 } }, 0, ref result);
             if (result != MAX_RESULT) return result;
-            if (55555 > n) return 55555;
+            return (n < 55555) ? 55555 : 122333;
 
-            // 6位
-            LEN6:;
+        // 6位
+        LEN6:;
             dfs(n, new Dictionary<int, int>() { { 1, 1 }, { 5, 5 } }, 0, ref result);
             dfs(n, new Dictionary<int, int>() { { 2, 2 }, { 4, 4 } }, 0, ref result);
             dfs(n, new Dictionary<int, int>() { { 1, 1 }, { 2, 2 }, { 3, 3 } }, 0, ref result);
             if (result != MAX_RESULT) return result;
-            if (666666 > n) return 666666;
+            return (n < 666666) ? 666666 : 1224444;
 
-            // 7位
-            LEN7:;
+        // 7位
+        LEN7:;
             return 1224444;
-        }
 
-        private void dfs(int n, Dictionary<int, int> digits, int curr, ref int result)
-        {
-            if (digits.Count == 0)
+            static void dfs(int n, Dictionary<int, int> digits, int curr, ref int result)
             {
-                if (curr > n) result = Math.Min(result, curr);
-                return;
-            }
+                if (digits.Count == 0)
+                {
+                    if (curr > n) result = Math.Min(result, curr);
+                    return;
+                }
 
-            foreach (var kv in digits)
-            {
-                Dictionary<int, int> _digits = new Dictionary<int, int>(digits);
-                if (--_digits[kv.Key] == 0) _digits.Remove(kv.Key);
-                dfs(n, _digits, curr * 10 + kv.Key, ref result);
+                foreach (var kv in digits)
+                {
+                    Dictionary<int, int> _digits = new Dictionary<int, int>(digits);
+                    if (--_digits[kv.Key] == 0) _digits.Remove(kv.Key);
+                    dfs(n, _digits, curr * 10 + kv.Key, ref result);
+                }
             }
         }
     }

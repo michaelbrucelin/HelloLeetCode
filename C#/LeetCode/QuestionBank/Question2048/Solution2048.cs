@@ -22,22 +22,22 @@ namespace LeetCode.QuestionBank.Question2048
             while (!IsBeautifulNumber(result)) result++;
 
             return result;
-        }
 
-        private bool IsBeautifulNumber(int n)
-        {
-            if (n <= 0) return false;
-
-            int r; int[] freq = new int[10];
-            while (n > 0)
+            static bool IsBeautifulNumber(int n)
             {
-                if ((r = n % 10) == 0 || r > 6) return false;
-                freq[r]++; n /= 10;
+                if (n <= 0) return false;
+
+                int r; int[] freq = new int[10];
+                while (n > 0)
+                {
+                    if ((r = n % 10) == 0 || r > 6) return false;
+                    freq[r]++; n /= 10;
+                }
+
+                for (int i = 1; i < 7; i++) if (freq[i] != 0 && freq[i] != i) return false;
+
+                return true;
             }
-
-            for (int i = 1; i < 7; i++) if (freq[i] != 0 && freq[i] != i) return false;
-
-            return true;
         }
     }
 }
