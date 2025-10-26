@@ -58,7 +58,6 @@ namespace LeetCode.QuestionBank.Question0236
         public TreeNode FindTreeNode(TreeNode root, int val)
         {
             if(root.val==val) return root;
-            
 
             return null;
         }

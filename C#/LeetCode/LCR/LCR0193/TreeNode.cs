@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCode.LCR.LCR0194
+namespace LeetCode.LCR.LCR0193
 {
     /// <summary>
     /// Definition for a binary tree node.
