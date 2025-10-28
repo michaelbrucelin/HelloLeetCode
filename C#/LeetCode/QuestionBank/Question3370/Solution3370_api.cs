@@ -12,5 +12,10 @@ namespace LeetCode.QuestionBank.Question3370
         {
             return Convert.ToInt32(new string('1', Convert.ToString(n, 2).Length), 2);
         }
+
+        public int SmallestNumber2(int n)
+        {
+            return (1 << (Convert.ToString(n, 2).Length)) - 1;
+        }
     }
 }
