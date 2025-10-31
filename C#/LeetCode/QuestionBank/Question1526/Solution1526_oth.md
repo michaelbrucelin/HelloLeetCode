@@ -1,0 +1,151 @@
+### [用差分思考，简洁写法（Python/Java/C++/C/Go/JS/Rust）](https://leetcode.cn/problems/minimum-number-of-increments-on-subarrays-to-form-a-target-array/solutions/3808716/yong-chai-fen-si-kao-jian-ji-xie-fa-pyth-0v7x/)
+
+**前置知识**：[差分数组原理讲解](https://leetcode.cn/problems/car-pooling/solution/suan-fa-xiao-ke-tang-chai-fen-shu-zu-fu-9d4ra/)。
+
+本题有「区间加一」操作，这非常适合用差分数组做。
+
+定义 $target$ 的差分数组 $d$ 为
+
+$$d[i]=\begin{cases}target[i], & i=0 \\ target[i]-target[i-1], & i\ge 1\end{cases}$$
+
+示例 $2$ 的 $target=[3,1,1,2]$，差分数组为 $d=[3,-2,0,1]$。
+
+由于全 $0$ 数组的差分数组也全为 $0$，所以示例 $2$ 相当于把 $d_0=[0,0,0,0]$ 变成 $d=[3,-2,0,1]$ 的最小操作次数。
+
+根据前置知识，如果「区间加一」操作的不是 $initial$ 的后缀，那么操作等价于修改 $d_0$ 两个位置上的数，**左边加一，右边减一**。如果操作的是 $initial$ 的后缀，那么操作等价于把 $d_0$ 中的一个数**单独加一**。
+
+示例 $2$ 的一种操作方案如下：
+
+$$[0,0,0,0]\rightarrow [1,-1,0,0]\rightarrow [2,-2,0,0]\rightarrow [3,-2,0,0]\rightarrow [3,-2,0,1]$$
+
+为了最小化操作次数，优先修改两个位置上的数（加一减一），然后再考虑单独加一。
+
+注意到，无论每次操作修改的是两个数还是一个数，一定会把一个数加一。所以最小操作次数等于加一的次数，即 $d$ 中**所有正数之和**。
+
+> **注**：具体操作方案为，从左到右遍历 $d$，先让负数与其左边的正数匹配，然后剩余的未匹配正数单独算（对应后缀加）。由于 $d$ 的前缀和就是原数组 $target$，且 $target[i]>0$，所以负数一定可以与其左边的正数匹配，不会出现 $d=[2,2,-5]$ 或 $d=[2,-3,4]$ 等无法匹配的情况。具体见下面答疑。
+
+#### 答疑
+
+**问**：有没有一种可能，$d=[2,2,-5]$，负数绝对值之和比正数之和还大？
+
+**答**：不可能。由于差分数组 $d$ 的前缀和就是原数组 $target$，如果出现负数绝对值之和比正数之和还大，说明 $d$ 的总和是负数，即 $target[n-1]<0$，这与本题的数据范围 $target[i]>0$ 矛盾。
+
+**问**：有没有一种可能，$d=[2,-3,4]$，无法使用「左边加一，右边减一」的操作从 $[0,0,0]$ 得到 d？
+
+**答**：不可能。同样地，计算 $d$ 的前缀和，如果出现这种情况，说明前缀和中的某个数是负数，即 $target[i]<0$，这与本题的数据范围 $target[i]>0$ 矛盾。
+
+```Python
+class Solution:
+    def minNumberOperations(self, target: List[int]) -> int:
+        ans = target[0]
+        for x, y in pairwise(target):
+            ans += max(y - x, 0)
+        return ans
+```
+
+```Python
+class Solution:
+    def minNumberOperations(self, target: List[int]) -> int:
+        return target[0] + sum(max(y - x, 0) for x, y in pairwise(target))
+```
+
+```Java
+class Solution {
+    public int minNumberOperations(int[] target) {
+        // 题目保证答案在 int 范围内
+        int ans = target[0];
+        for (int i = 1; i < target.length; i++) {
+            ans += Math.max(target[i] - target[i - 1], 0);
+        }
+        return ans;
+    }
+}
+```
+
+```C++
+class Solution {
+public:
+    int minNumberOperations(vector<int>& target) {
+        // 题目保证答案在 int 范围内
+        int ans = target[0];
+        for (int i = 1; i < target.size(); i++) {
+            ans += max(target[i] - target[i - 1], 0);
+        }
+        return ans;
+    }
+};
+```
+
+```C
+#define MAX(a, b) ((b) > (a) ? (b) : (a))
+
+int minNumberOperations(int* target, int targetSize) {
+    // 题目保证答案在 int 范围内
+    int ans = target[0];
+    for (int i = 1; i < targetSize; i++) {
+        ans += MAX(target[i] - target[i - 1], 0);
+    }
+    return ans;
+}
+```
+
+```Go
+func minNumberOperations(target []int) int {
+    ans := target[0]
+    for i := 1; i < len(target); i++ {
+        ans += max(target[i]-target[i-1], 0)
+    }
+    return ans
+}
+```
+
+```JavaScript
+var minNumberOperations = function(target) {
+    let ans = target[0];
+    for (let i = 1; i < target.length; i++) {
+        ans += Math.max(target[i] - target[i - 1], 0);
+    }
+    return ans;
+};
+```
+
+```Rust
+impl Solution {
+    pub fn min_number_operations(target: Vec<i32>) -> i32 {
+        // 题目保证答案在 i32 范围内
+        target[0] + target.windows(2)
+            .map(|w| 0.max(w[1] - w[0]))
+            .sum::<i32>()
+    }
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$O(n)$，其中 $n$ 是 $target$ 的长度。
+- 空间复杂度：$O(1)$。
+
+#### 相似题目
+
+[3229\. 使数组等于目标数组所需的最少操作次数](https://leetcode.cn/problems/minimum-operations-to-make-array-equal-to-target/)
+
+#### 专题训练
+
+见下面数据结构题单的「**§2.1 一维差分**」。
+
+#### 分类题单
+
+[如何科学刷题？](https://leetcode.cn/circle/discuss/RvFUtj/)
+
+1. [滑动窗口与双指针（定长/不定长/单序列/双序列/三指针/分组循环）](https://leetcode.cn/circle/discuss/0viNMK/)
+2. [二分算法（二分答案/最小化最大值/最大化最小值/第K小）](https://leetcode.cn/circle/discuss/SqopEo/)
+3. [单调栈（基础/矩形面积/贡献法/最小字典序）](https://leetcode.cn/circle/discuss/9oZFK9/)
+4. [网格图（DFS/BFS/综合应用）](https://leetcode.cn/circle/discuss/YiXPXW/)
+5. [位运算（基础/性质/拆位/试填/恒等式/思维）](https://leetcode.cn/circle/discuss/dHn9Vk/)
+6. [图论算法（DFS/BFS/拓扑排序/基环树/最短路/最小生成树/网络流）](https://leetcode.cn/circle/discuss/01LUak/)
+7. [动态规划（入门/背包/划分/状态机/区间/状压/数位/数据结构优化/树形/博弈/概率期望）](https://leetcode.cn/circle/discuss/tXLS3i/)
+8. [常用数据结构（前缀和/差分/栈/队列/堆/字典树/并查集/树状数组/线段树）](https://leetcode.cn/circle/discuss/mOr1u6/)
+9. [数学算法（数论/组合/概率期望/博弈/计算几何/随机算法）](https://leetcode.cn/circle/discuss/IYT3ss/)
+10. [贪心与思维（基本贪心策略/反悔/区间/字典序/数学/思维/脑筋急转弯/构造）](https://leetcode.cn/circle/discuss/g6KTKL/)
+11. [链表、二叉树与回溯（前后指针/快慢指针/DFS/BFS/直径/LCA/一般树）](https://leetcode.cn/circle/discuss/K0n2gO/)
+12. [字符串（KMP/Z函数/Manacher/字符串哈希/AC自动机/后缀数组/子序列自动机）](https://leetcode.cn/circle/discuss/SJFwQI/)
