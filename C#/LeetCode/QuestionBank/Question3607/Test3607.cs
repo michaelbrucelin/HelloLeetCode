@@ -11,7 +11,7 @@ namespace LeetCode.QuestionBank.Question3607
     {
         public void Test()
         {
-            Interface3607 solution = new Solution3607();
+            Interface3607 solution = new Solution3607_2();
             int c; int[][] connections, queries;
             int[] result, answer;
             int id = 0;
