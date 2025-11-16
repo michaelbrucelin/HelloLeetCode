@@ -45,7 +45,7 @@ $$0\le cnt_0\le \sqrt{n}$$
 
 下面考虑更一般的情况。
 
-![](./assets/img/Solution3234_oth)
+![](./assets/img/Solution3234_oth.png)
 
 上图用红线/蓝线标记的子串，右端点相同，左端点不同，都恰好有 $2$ 个 $0$。
 
