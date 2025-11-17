@@ -58,6 +58,104 @@ class Solution {
 }
 ```
 
+```CSharp
+public class Solution {
+    public bool KLengthApart(int[] nums, int k) {
+        int n = nums.Length;
+        int prev = -1;
+        for (int i = 0; i < n; ++i) {
+            if (nums[i] == 1) {
+                if (prev != -1 && i - prev - 1 < k) {
+                    return false;
+                }
+                prev = i;
+            }
+        }
+        return true;
+    }
+}
+```
+
+```Go
+func kLengthApart(nums []int, k int) bool {
+    n := len(nums)
+    prev := -1
+    for i := 0; i < n; i++ {
+        if nums[i] == 1 {
+            if prev != -1 && i - prev - 1 < k {
+                return false
+            }
+            prev = i
+        }
+    }
+    return true
+}
+```
+
+```C
+bool kLengthApart(int* nums, int numsSize, int k) {
+    int prev = -1;
+    for (int i = 0; i < numsSize; ++i) {
+        if (nums[i] == 1) {
+            if (prev != -1 && i - prev - 1 < k) {
+                return false;
+            }
+            prev = i;
+        }
+    }
+    return true;
+}
+```
+
+```JavaScript
+var kLengthApart = function(nums, k) {
+    const n = nums.length;
+    let prev = -1;
+    for (let i = 0; i < n; ++i) {
+        if (nums[i] === 1) {
+            if (prev !== -1 && i - prev - 1 < k) {
+                return false;
+            }
+            prev = i;
+        }
+    }
+    return true;
+};
+```
+
+```TypeScript
+function kLengthApart(nums: number[], k: number): boolean {
+    const n = nums.length;
+    let prev = -1;
+    for (let i = 0; i < n; ++i) {
+        if (nums[i] === 1) {
+            if (prev !== -1 && i - prev - 1 < k) {
+                return false;
+            }
+            prev = i;
+        }
+    }
+    return true;
+}
+```
+
+```Rust
+impl Solution {
+    pub fn k_length_apart(nums: Vec<i32>, k: i32) -> bool {
+        let mut prev: i32 = -1;
+        for (i, &num) in nums.iter().enumerate() {
+            if num == 1 {
+                if prev != -1 && (i as i32 - prev - 1) < k {
+                    return false;
+                }
+                prev = i as i32;
+            }
+        }
+        true
+    }
+}
+```
+
 **复杂度分析**
 
 - 时间复杂度：$O(N)$，其中 $N$ 是数组 $nums$ 的长度。
