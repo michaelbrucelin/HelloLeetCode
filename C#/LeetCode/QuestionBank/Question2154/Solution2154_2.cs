@@ -25,23 +25,23 @@ namespace LeetCode.QuestionBank.Question2154
             }
 
             return original;
-        }
 
-        private (bool found, int index) BinarySearch(int[] nums, int left, int right, int target)
-        {
-            int mid;
-            while (left <= right)
+            static (bool found, int index) BinarySearch(int[] nums, int left, int right, int target)
             {
-                mid = left + ((right - left) >> 1);
-                switch (nums[mid] - target)
+                int mid;
+                while (left <= right)
                 {
-                    case < 0: left = mid + 1; break;
-                    case > 0: right = mid - 1; break;
-                    default: return (true, mid);
+                    mid = left + ((right - left) >> 1);
+                    switch (nums[mid] - target)
+                    {
+                        case < 0: left = mid + 1; break;
+                        case > 0: right = mid - 1; break;
+                        default: return (true, mid);
+                    }
                 }
-            }
 
-            return (false, -1);
+                return (false, -1);
+            }
         }
     }
 }

@@ -17,11 +17,32 @@ namespace LeetCode.QuestionBank.Question0430
         public Node Flatten(Node head)
         {
             if (head == null) return head;
+            rec(head);
             return head;
 
             static Node rec(Node node)
             {
-                throw new NotImplementedException();
+                while (node.next != null)
+                {
+                    while (node.next != null && node.child == null) node = node.next;
+                    if (node.child != null)
+                    {
+                        Node next = node.next;
+                        Node tail = rec(node.child);
+                        node.next = node.child; node.child = null; node.next.prev = node;
+                        tail.next = next; next.prev = tail;
+                    }
+                }
+
+                if (node.child != null)
+                {
+                    Node tail = rec(node.child);
+                    node.next = node.child; node.child = null; node.next.prev = node;
+                    tail.next = null;
+                    return tail;
+                }
+
+                return node;
             }
         }
     }

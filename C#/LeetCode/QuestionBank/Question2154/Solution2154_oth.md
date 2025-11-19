@@ -1,6 +1,6 @@
 ### [巧妙利用位运算优化空间复杂度：从 O(n) 到 O(log C) 到 O(1)](https://leetcode.cn/problems/keep-multiplying-found-values-by-two/solutions/1239409/ha-xi-biao-mo-ni-by-endlesscheng-ipk3/)
 
-#### 方法一：用哈希表记录 $nums$ 的每个元素
+#### 方法一：用哈希表记录 nums 的每个元素
 
 用哈希表记录 $nums$ 的每个元素，然后不断将 $original$ 乘 $2$ 直至其不在哈希表中。
 
@@ -28,10 +28,10 @@ public:
 };
 ```
 
--   时间复杂度：$O(n+\log\dfrac{\max(nums)}{original})$，其中 $n$ 为 $nums$ 的长度（下同）。
--   空间复杂度：$O(n)$。
+- 时间复杂度：$O(n+\log\dfrac{\max(nums)}{original})$，其中 $n$ 为 $nums$ 的长度（下同）。
+- 空间复杂度：$O(n)$。
 
-#### 方法二：用哈希表记录 $original$ 的所有可能值
+#### 方法二：用哈希表记录 original 的所有可能值
 
 我们还可以反过来，用哈希表记录 $original$ 可能出现的值，将其标记为 $1$。然后遍历 $nums$ 的每个元素，将标记为 $1$ 的值标记为 $2$。最后不断将 $original$ 乘 $2$ 直至其标记值不为 $2$。
 
@@ -66,8 +66,8 @@ public:
 };
 ```
 
--   时间复杂度：$O(n+\log\dfrac{C}{original})$，这里 $C=1000$。
--   空间复杂度：$O(\log C)$，或者更准确地说是 $O(\log\dfrac{C}{original})$。
+- 时间复杂度：$O(n+\log\dfrac{C}{original})$，这里 $C=1000$。
+- 空间复杂度：$O(\log C)$，或者更准确地说是 $O(\log\dfrac{C}{original})$。
 
 #### 方法三：位运算
 
@@ -110,5 +110,5 @@ public:
 };
 ```
 
--   时间复杂度：$O(n)$。
--   空间复杂度：$O(1)$。仅需要几个额外的变量。
+- 时间复杂度：$O(n)$。
+- 空间复杂度：$O(1)$。仅需要几个额外的变量。
