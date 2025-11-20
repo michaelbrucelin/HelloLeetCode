@@ -30,7 +30,7 @@ namespace LeetCode.QuestionBank.Question0430
                         Node next = node.next;
                         Node tail = rec(node.child);
                         node.next = node.child; node.child = null; node.next.prev = node;
-                        tail.next = next; next.prev = tail;
+                        tail.next = next; if (next != null) next.prev = tail;
                     }
                 }
 
