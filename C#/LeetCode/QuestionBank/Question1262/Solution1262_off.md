@@ -1,16 +1,18 @@
-#### [方法一：贪心 + 正向思维](https://leetcode.cn/problems/greatest-sum-divisible-by-three/solutions/2309835/ke-bei-san-zheng-chu-de-zui-da-he-by-lee-cvzo/)
+### [可被三整除的最大和](https://leetcode.cn/problems/greatest-sum-divisible-by-three/solutions/2309835/ke-bei-san-zheng-chu-de-zui-da-he-by-lee-cvzo/)
 
-我们把数组中的数分成三部分 $a, b, c$，它们分别包含所有被 $3$ 除余 $0, 1, 2$ 的数。显然，我们可以选取 $a$ 中所有的数，而对于 $b$ 和 $c$ 中的数，我们需要根据不同的情况选取不同数量的数。
+#### 方法一：贪心 + 正向思维
+
+我们把数组中的数分成三部分 $a,b,c$，它们分别包含所有被 $3$ 除余 $0,1,2$ 的数。显然，我们可以选取 $a$ 中所有的数，而对于 $b$ 和 $c$ 中的数，我们需要根据不同的情况选取不同数量的数。
 
 假设我们在 $b$ 中选取了 $cnt_b$ 个数，$c$ 中选取了 $cnt_c$ 个数，那么这些数的和被 $3$ 除的余数为：
 
-$$(cnt_b + 2 \times cnt_c) \bmod 3 = (cnt_b - cnt_c) \bmod 3$$
+$$(cnt_b+2\times cnt_c)\mod 3=(cnt_b-cnt_c)\mod 3$$
 
-我们希望上式的值为 $0$，那么 $cnt_b$ 和 $cnt_c$ 模 $3$ 同余。并且我们可以发现，$cnt_b$ 一定至少为 $|b| - 2$，其中 $|b|$ 是数组 $b$ 中的元素个数。这是因为如果 $cnt_b \leq |b| - 3$，我们可以继续在 $b$ 中选择 $3$ 个数，使得 $cnt_b$ 和 $cnt_c$ 仍然模 $3$ 同余。同理，$cnt_c$ 一定至少为 $|c| - 2$。
+我们希望上式的值为 $0$，那么 $cnt_b$ 和 $cnt_c$ 模 $3$ 同余。并且我们可以发现，$cnt_b$ 一定至少为 $\vert b\vert -2$，其中 $\vert b\vert $ 是数组 $b$ 中的元素个数。这是因为如果 $cnt_b\le \vert b\vert -3$，我们可以继续在 $b$ 中选择 $3$ 个数，使得 $cnt_b$ 和 $cnt_c$ 仍然模 $3$ 同余。同理，$cnt_c$ 一定至少为 $\vert c\vert -2$。
 
-因此，$cnt_b$ 的选择范围一定在 $\{ |b|-2, |b|-1, |b| \}$ 中，$cnt_c$ 的选择范围一定在 $\{ |c|-2, |c|-1, |c| \}$ 中。我们只需要使用两重循环，枚举最多 $3 \times 3 = 9$ 种情况。在从 $b$ 或 $c$ 中选取数时，我们可以贪心地从大到小选取数，因此需要对 $b$ 和 $c$ 进行排序。
+因此，$cnt_b$ 的选择范围一定在 ${\vert b\vert -2,\vert b\vert -1,\vert b\vert}$ 中，$cnt_c$ 的选择范围一定在 ${\vert c\vert -2,\vert c\vert -1,\vert c\vert}$ 中。我们只需要使用两重循环，枚举最多 $3\times 3=9$ 种情况。在从 $b$ 或 $c$ 中选取数时，我们可以贪心地从大到小选取数，因此需要对 $b$ 和 $c$ 进行排序。
 
-```cpp
+```C++
 class Solution {
 public:
     int maxSumDivThree(vector<int>& nums) {
@@ -38,7 +40,7 @@ public:
 };
 ```
 
-```java
+```Java
 class Solution {
     public int maxSumDivThree(int[] nums) {
         // 使用 v[0], v[1], v[2] 分别表示 a, b, c
@@ -76,7 +78,7 @@ class Solution {
 }
 ```
 
-```csharp
+```CSharp
 public class Solution {
     public int MaxSumDivThree(int[] nums) {
         // 使用 v[0], v[1], v[2] 分别表示 a, b, c
@@ -114,7 +116,7 @@ public class Solution {
 }
 ```
 
-```python
+```Python
 class Solution:
     def maxSumDivThree(self, nums: List[int]) -> int:
         a = [x for x in nums if x % 3 == 0]
@@ -131,7 +133,7 @@ class Solution:
         return ans + sum(a)
 ```
 
-```go
+```Go
 func accumulate(v []int) int {
     ans := 0
     for _, x := range v {
@@ -171,7 +173,7 @@ func maxSumDivThree(nums []int) int {
 }
 ```
 
-```c
+```C
 static int cmp(const void *a, const void *b) {
     return *(int *)b - *(int *)a;
 }
@@ -213,7 +215,7 @@ int maxSumDivThree(int* nums, int numsSize) {
 }
 ```
 
-```javascript
+```JavaScript
 var maxSumDivThree = function(nums) {
     const v = [[], [], []];
     for (const num of nums) {
@@ -248,24 +250,24 @@ const getSum = (list, start, end) => {
 
 **复杂度分析**
 
--   时间复杂度：$O(n \log n)$，其中 $n$ 是数组 $nums$ 的长度。对 $b$ 和 $c$ 进行排序需要 $O(n \log n)$ 的时间。两重循环枚举的 $9$ 种情况可以看作常数，每一种情况需要 $O(n)$ 的时间进行求和。
--   空间复杂度：$O(n)$，即为 $a,b,c$ 需要使用的空间。
+- 时间复杂度：$O(n\log n)$，其中 $n$ 是数组 $nums$ 的长度。对 $b$ 和 $c$ 进行排序需要 $O(n\log n)$ 的时间。两重循环枚举的 $9$ 种情况可以看作常数，每一种情况需要 $O(n)$ 的时间进行求和。
+- 空间复杂度：$O(n)$，即为 $a,b,c$ 需要使用的空间。
 
-#### [方法二：贪心 + 逆向思维](https://leetcode.cn/problems/greatest-sum-divisible-by-three/solutions/2309835/ke-bei-san-zheng-chu-de-zui-da-he-by-lee-cvzo/)
+#### 方法二：贪心 + 逆向思维
 
 在方法一中，我们使用的是「正向思维」，即枚举 $b$ 和 $c$ 中分别选出了多少个数。我们同样也可以使用「逆向思维」，枚举 $b$ 和 $c$ 中分别丢弃了多少个数。
 
 设 $tot$ 是数组 $nums$ 中所有元素的和，此时 $tot$ 会有三种情况：
 
--   如果 $tot$ 是 $3$ 的倍数，那么我们不需要丢弃任何数；
--   如果 $tot$ 模 $3$ 余 $1$，此时我们有两种选择：要么丢弃 $b$ 中最小的 $1$ 个数，要么丢弃 $c$ 中最小的 $2$ 个数；
--   如果 $tot$ 模 $3$ 余 $2$，此时我们有两种选择：要么丢弃 $b$ 中最小的 $2$ 个数，要么丢弃 $c$ 中最小的 $1$ 个数。
+- 如果 $tot$ 是 $3$ 的倍数，那么我们不需要丢弃任何数；
+- 如果 $tot$ 模 $3$ 余 $1$，此时我们有两种选择：要么丢弃 $b$ 中最小的 $1$ 个数，要么丢弃 $c$ 中最小的 $2$ 个数；
+- 如果 $tot$ 模 $3$ 余 $2$，此时我们有两种选择：要么丢弃 $b$ 中最小的 $2$ 个数，要么丢弃 $c$ 中最小的 $1$ 个数。
 
 我们同样可以对 $b$ 和 $c$ 进行排序，根据 $tot$ 的情况来选出 $b$ 或 $c$ 中最小的 $1$ 或 $2$ 个数。
 
 下面的代码中使用的是排序的方法。
 
-```cpp
+```C++
 class Solution {
 public:
     int maxSumDivThree(vector<int>& nums) {
@@ -304,7 +306,7 @@ public:
 };
 ```
 
-```java
+```Java
 class Solution {
     public int maxSumDivThree(int[] nums) {
         // 使用 v[0], v[1], v[2] 分别表示 a, b, c
@@ -344,7 +346,7 @@ class Solution {
 }
 ```
 
-```csharp
+```CSharp
 public class Solution {
     public int MaxSumDivThree(int[] nums) {
         // 使用 v[0], v[1], v[2] 分别表示 a, b, c
@@ -384,7 +386,7 @@ public class Solution {
 }
 ```
 
-```python
+```Python
 class Solution:
     def maxSumDivThree(self, nums: List[int]) -> int:
         a = [x for x in nums if x % 3 == 0]
@@ -408,7 +410,7 @@ class Solution:
         return tot - remove
 ```
 
-```go
+```Go
 func accumulate(v []int) int {
     ans := 0
     for _, x := range v {
@@ -458,7 +460,7 @@ func maxSumDivThree(nums []int) int {
 }
 ```
 
-```c
+```C
 static int cmp(const void *a, const void *b) {
     return *(int *)b - *(int *)a;
 }
@@ -501,7 +503,7 @@ int maxSumDivThree(int* nums, int numsSize) {
 }
 ```
 
-```javascript
+```JavaScript
 var maxSumDivThree = function(nums) {
     const v = [[], [], []];
     for (const num of nums) {
@@ -537,26 +539,26 @@ var maxSumDivThree = function(nums) {
 
 **复杂度分析**
 
--   时间复杂度：$O(n \log n)$，其中 $n$ 是数组 $nums$ 的长度。对 $b$ 和 $c$ 进行排序需要 $O(n \log n)$ 的时间。也可以不用排序，将时间复杂度优化至 $O(n)$。
--   空间复杂度：$O(n)$，即为 $a,b,c$ 需要使用的空间。如果不排序，可以不显示将 $a,b,c$ 求出来，而是直接对数组 $nums$ 进行一次遍历，找出模 $3$ 余 $1$ 和 $2$ 的最小的两个数，将空间复杂度优化至 $O(1)$。
+- 时间复杂度：$O(n\log n)$，其中 $n$ 是数组 $nums$ 的长度。对 $b$ 和 $c$ 进行排序需要 $O(n\log n)$ 的时间。也可以不用排序，将时间复杂度优化至 $O(n)$。
+- 空间复杂度：$O(n)$，即为 $a,b,c$ 需要使用的空间。如果不排序，可以不显示将 $a,b,c$ 求出来，而是直接对数组 $nums$ 进行一次遍历，找出模 $3$ 余 $1$ 和 $2$ 的最小的两个数，将空间复杂度优化至 $O(1)$。
 
-#### [方法三：动态规划](https://leetcode.cn/problems/greatest-sum-divisible-by-three/solutions/2309835/ke-bei-san-zheng-chu-de-zui-da-he-by-lee-cvzo/)
+#### 方法三：动态规划
 
 在上面的两种方法中，我们都是基于贪心的思路，要么选择若干个较大的数，要么丢弃若干个较小的数。我们也可以使用动态规划的方法，不需要进行排序或者贪心，直接借助状态转移方程得出解。
 
-记 $f(i, j)$ 表示前 $i~(i \geq 1)$ 个数中选取了若干个数，并且它们的和模 $3$ 余 $j~(0 \leq j < 3)$ 时，这些数的和的最大值。那么对于当前的数 $nums[i]$，如果我们选取它，那么就可以通过 $f(i-1, (j-nums[i]) \bmod 3)$ 转移得来；如果我们不选取它，就可以通过 $f(i-1, j)$ 转移得来。因此我们可以写出如下的状态转移方程：
+记 $f(i,j)$ 表示前 $i (i\ge 1)$ 个数中选取了若干个数，并且它们的和模 $3$ 余 $j (0\le j<3)$ 时，这些数的和的最大值。那么对于当前的数 $nums[i]$，如果我们选取它，那么就可以通过 $f(i-1,(j-nums[i])\mod 3)$ 转移得来；如果我们不选取它，就可以通过 $f(i-1,j)$ 转移得来。因此我们可以写出如下的状态转移方程：
 
-$$f(i, j) = \max\big\{ f(i-1, j), f(i-1, (j-nums[i]) \bmod 3) + nums[i] \big\}$$
+$$f(i,j)=max{f(i-1,j),f(i-1,(j-nums[i])\mod 3)+nums[i]}$$
 
-边界条件为 $f(0, 0) = 0$ 以及 $f(0, 1) = f(0, 2) = -\infty$。表示当我们没有选取任何数时，和为 $0$，并且模 $3$ 的余数为 $0$。对于 $f(0, 1)$ 和 $f(0, 2)$ 这两种不合法的状态，由于我们在状态转移中维护的是最大值，因此可以把它们设定成一个极小值。
+边界条件为 $f(0,0)=0$ 以及 $f(0,1)=f(0,2)=-\infty $。表示当我们没有选取任何数时，和为 $0$，并且模 $3$ 的余数为 $0$。对于 $f(0,1)$ 和 $f(0,2)$ 这两种不合法的状态，由于我们在状态转移中维护的是最大值，因此可以把它们设定成一个极小值。
 
-在某些语言中，$(j-nums[i]) \bmod 3$ 可能会引入负数，因此这道题用递推的形式来实现动态规划较为方便，即：
+在某些语言中，$(j-nums[i])\mod 3$ 可能会引入负数，因此这道题用递推的形式来实现动态规划较为方便，即：
 
-$$\begin{cases} f(i-1, j) \to f(i, j) \\ f(i-1, j) + nums[i] \to f(i, (j + nums[i]) \bmod 3) \end{cases}$$
+$$\begin{cases}f(i-1,j)\rightarrow f(i,j) \\ f(i-1,j)+nums[i]\rightarrow f(i,(j+nums[i])\mod 3)\end{cases}$$
 
-我们还可以发现，所有的 $f(i, \cdots)$ 只会从 $f(i-1, \cdots)$ 转移得来，因此在动态规划时只需要存储当前第 $i$ 行以及上一行第 $i-1$ 行的结果，减少空间复杂度。
+我们还可以发现，所有的 $f(i,\dots )$ 只会从 $f(i-1,\dots )$ 转移得来，因此在动态规划时只需要存储当前第 $i$ 行以及上一行第 $i-1$ 行的结果，减少空间复杂度。
 
-```cpp
+```C++
 class Solution {
 public:
     int maxSumDivThree(vector<int>& nums) {
@@ -573,7 +575,7 @@ public:
 };
 ```
 
-```java
+```Java
 class Solution {
     public int maxSumDivThree(int[] nums) {
         int[] f = {0, Integer.MIN_VALUE, Integer.MIN_VALUE};
@@ -590,7 +592,7 @@ class Solution {
 }
 ```
 
-```csharp
+```CSharp
 public class Solution {
     public int MaxSumDivThree(int[] nums) {
         int[] f = {0, int.MinValue, int.MinValue};
@@ -607,7 +609,7 @@ public class Solution {
 }
 ```
 
-```python
+```Python
 class Solution:
     def maxSumDivThree(self, nums: List[int]) -> int:
         f = [0, -float("inf"), -float("inf")]
@@ -619,7 +621,7 @@ class Solution:
         return f[0]
 ```
 
-```go
+```Go
 func max(a, b int) int {
     if a > b {
         return a
@@ -640,7 +642,7 @@ func maxSumDivThree(nums []int) int {
 }
 ```
 
-```c
+```C
 int maxSumDivThree(int* nums, int numsSize) {
     int f[3] = {0, INT_MIN, INT_MIN};
     int g[3] = {0};
@@ -655,7 +657,7 @@ int maxSumDivThree(int* nums, int numsSize) {
 }
 ```
 
-```javascript
+```JavaScript
 var maxSumDivThree = function(nums) {
     let f = [0, Number.MIN_SAFE_INTEGER, Number.MIN_SAFE_INTEGER];
     for (const num of nums) {
@@ -671,5 +673,5 @@ var maxSumDivThree = function(nums) {
 
 **复杂度分析**
 
--   时间复杂度：$O(n)$，其中 $n$ 是数组 $nums$ 的长度。
--   空间复杂度：$O(1)$。
+- 时间复杂度：$O(n)$，其中 $n$ 是数组 $nums$ 的长度。
+- 空间复杂度：$O(1)$。

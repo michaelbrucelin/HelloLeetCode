@@ -12,7 +12,7 @@ namespace LeetCode.QuestionBank.Question1262
         /// DP
         /// 假定前n项，对3取余的最大和分别为Max0, Max1, Max2
         /// 那么对于第n+1项(Val)，考虑其对3的模mod：
-        ///     mod = 0
+        ///    mod = 0
         ///         Max0 = Max0 + Val
         ///         Max1 = Max1 + Val
         ///         Max2 = Max2 + Val
@@ -65,14 +65,13 @@ namespace LeetCode.QuestionBank.Question1262
         /// <returns></returns>
         public int MaxSumDivThree2(int[] nums)
         {
-            int[] dp = new int[3] { 0, int.MinValue, int.MinValue };
+            int[] dp = [0, int.MinValue, int.MinValue], _dp = new int[3];
 
             for (int i = 0; i < nums.Length; i++)
             {
-                int[] buffer = new int[3];
                 for (int j = 0; j < 3; j++)
-                    buffer[(nums[i] + j) % 3] = Math.Max(dp[(nums[i] + j) % 3], dp[j] + nums[i]);
-                dp = buffer;
+                    _dp[(nums[i] + j) % 3] = Math.Max(dp[(nums[i] + j) % 3], dp[j] + nums[i]);
+                Array.Copy(_dp, dp, 3);
             }
 
             return dp[0];

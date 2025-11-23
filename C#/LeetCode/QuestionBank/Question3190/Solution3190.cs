@@ -8,6 +8,12 @@ namespace LeetCode.QuestionBank.Question3190
 {
     public class Solution3190 : Interface3190
     {
+        /// <summary>
+        /// 遍历
+        /// 一个数字要么可以被3整除，要么距离最近的能被3整除的相距为1
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
         public int MinimumOperations(int[] nums)
         {
             int result = 0;
