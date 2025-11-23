@@ -8,7 +8,7 @@ namespace LeetCode.QuestionBank.Question1018
 {
     public class Solution1018 : Interface1018
     {
-        private static readonly int[] bits = new int[] { 2, 4, 8, 6 };
+        private static readonly int[] bits = [2, 4, 8, 6];
 
         /// <summary>
         /// 数学

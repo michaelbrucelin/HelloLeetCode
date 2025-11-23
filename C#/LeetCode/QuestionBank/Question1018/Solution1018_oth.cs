@@ -8,6 +8,8 @@ namespace LeetCode.QuestionBank.Question1018
 {
     public class Solution1018_oth : Interface1018
     {
+        private static readonly int[,] states = new int[,] { { 0, 1 }, { 2, 3 }, { 4, 0 }, { 1, 2 }, { 3, 4 } };
+
         /// <summary>
         /// 有限状态机
         /// </summary>
@@ -16,8 +18,6 @@ namespace LeetCode.QuestionBank.Question1018
         public IList<bool> PrefixesDivBy5(int[] nums)
         {
             int len = nums.Length;
-            int[,] states = new int[,] { { 0, 1 }, { 2, 3 }, { 4, 0 }, { 1, 2 }, { 3, 4 } };
-
             bool[] result = new bool[len];
             for (int i = 0, m = 0; i < len; i++)
             {

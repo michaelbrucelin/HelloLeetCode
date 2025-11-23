@@ -1,4 +1,6 @@
-#### [方法一：遍历](https://leetcode.cn/problems/binary-prefix-divisible-by-5/solutions/558959/ke-bei-5-zheng-chu-de-er-jin-zhi-qian-zh-asih/)
+### [可被 5 整除的二进制前缀](https://leetcode.cn/problems/binary-prefix-divisible-by-5/solutions/558959/ke-bei-5-zheng-chu-de-er-jin-zhi-qian-zh-asih/)
+
+#### 方法一：遍历
 
 令 $num_i$ 为数组 $nums$ 从下标 $0$ 到下标 $i$ 的前缀表示的二进制数，则有 $num_0=nums[0]$。当 $i>0$ 时，有 $num_i=num_{i-1} \times 2+nums[i]$。令 $n$ 为数组 $nums$ 的长度，则对于 $0 \le i< n$，可以依次计算每个 $num_i$ 的值。对于每个 $num_i$ 的值，判断其是否可以被 $5$ 整除，即可得到答案。
 
@@ -100,5 +102,5 @@ bool* prefixesDivBy5(int* nums, int numsSize, int* returnSize) {
 
 **复杂度分析**
 
--   时间复杂度：$O(n)$，其中 $n$ 是数组 $nums$ 的长度。需要遍历数组一次并计算前缀。
--   空间复杂度：$O(1)$。除了返回值以外，额外使用的空间为常数。
+- 时间复杂度：$O(n)$，其中 $n$ 是数组 $nums$ 的长度。需要遍历数组一次并计算前缀。
+- 空间复杂度：$O(1)$。除了返回值以外，额外使用的空间为常数。
