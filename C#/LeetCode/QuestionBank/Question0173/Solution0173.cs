@@ -10,21 +10,37 @@ namespace LeetCode.QuestionBank.Question0173
     {
     }
 
+    /// <summary>
+    /// 将树初始化为列表
+    /// </summary>
     public class BSTIterator : Interface0173
     {
         public BSTIterator(TreeNode root)
         {
-
+            ptr = 0;
+            list = [];
+            dfs(root);
         }
+
+        private List<int> list;
+        private int ptr;
 
         public bool HasNext()
         {
-            throw new NotImplementedException();
+            return ptr < list.Count();
         }
 
         public int Next()
         {
-            throw new NotImplementedException();
+            return list[ptr++];
+        }
+
+        private void dfs(TreeNode node)
+        {
+            if (node == null) return;
+            dfs(node.left);
+            list.Add(node.val);
+            dfs(node.right);
         }
     }
 }
