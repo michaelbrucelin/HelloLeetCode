@@ -16,27 +16,44 @@ namespace LeetCode.QuestionBank.Question1015
             int id = 0;
 
             // 1. 
-            k = 1; answer = 1;
+            k = 1;
+            answer = 1;
             result = solution.SmallestRepunitDivByK(k);
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
 
             // 2. 
-            k = 2; answer = -1;
+            k = 2;
+            answer = -1;
             result = solution.SmallestRepunitDivByK(k);
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
 
             // 3. 
-            k = 3; answer = 3;
+            k = 3;
+            answer = 3;
             result = solution.SmallestRepunitDivByK(k);
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
 
             // 4. 
-            k = 7; answer = 6;
+            k = 7;
+            answer = 6;
             result = solution.SmallestRepunitDivByK(k);
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
 
             // 5. 
-            k = 17; answer = 16;
+            k = 17;
+            answer = 16;
+            result = solution.SmallestRepunitDivByK(k);
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            // 6. 
+            k = 49;
+            answer = 42;
+            result = solution.SmallestRepunitDivByK(k);
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            // 7. 
+            k = 9671;
+            answer = 4572;
             result = solution.SmallestRepunitDivByK(k);
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
         }
