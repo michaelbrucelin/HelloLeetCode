@@ -20,7 +20,8 @@ namespace LeetCode.QuestionBank.Question2435
             int rcnt = grid.Length, ccnt = grid[0].Length;
             const int MOD = (int)1e9 + 7;
             // if (k == 1) { return (rcnt + ccnt - 2)! / (rcnt - 1)! / (ccnt - 1)!; }
-            if (rcnt == 1 && ccnt == 1) return grid[0][0] % k == 0 ? 1 : 0;
+            if (rcnt == 1) { int result = 0; int sum = 0; for (int c = 0; c < ccnt; c++) if ((sum += grid[0][c]) % k == 0) result++; }
+            if (ccnt == 1) { int result = 0; int sum = 0; for (int r = 0; r < rcnt; r++) if ((sum += grid[r][0]) % k == 0) result++; }
 
             int[,,] dp = new int[rcnt + 1, ccnt + 1, k];
             dp[1, 1, grid[0][0] % k] = 1;
