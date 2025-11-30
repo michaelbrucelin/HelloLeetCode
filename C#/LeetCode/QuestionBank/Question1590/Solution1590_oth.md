@@ -1,4 +1,4 @@
-﻿#### [【套路】前缀和+哈希表（Python/Java/C++/Go）](https://leetcode.cn/problems/make-sum-divisible-by-p/solutions/2158435/tao-lu-qian-zhui-he-ha-xi-biao-pythonjav-rzl0/)
+#### [【套路】前缀和+哈希表（Python/Java/C++/Go）](https://leetcode.cn/problems/make-sum-divisible-by-p/solutions/2158435/tao-lu-qian-zhui-he-ha-xi-biao-pythonjav-rzl0/)
 
 #### 前置知识：前缀和
 

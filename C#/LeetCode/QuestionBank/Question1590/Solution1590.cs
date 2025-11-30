@@ -13,6 +13,8 @@ namespace LeetCode.QuestionBank.Question1590
         /// 如果子数组的和对p取余的值 与 数组和对p取余的值 相等，这个子数组就是一个解，题目找的是最短的子数组解
         /// 1. 前缀和数组，只需要统计mod p值的前缀和即可
         /// 2. 前缀和数组需要是long类型，int类型可能会溢出
+        /// 
+        /// 逻辑没问题，TLE，参考测试用06
         /// </summary>
         /// <param name="nums"></param>
         /// <param name="p"></param>
@@ -25,8 +27,10 @@ namespace LeetCode.QuestionBank.Question1590
             if (pre[len] % p == 0) return 0;
 
             long target = pre[len] % p;
-            for (int i = 1; i < len; i++) for (int j = 0; j <= len - i; j++)
-                    if ((pre[j + i] - pre[j]) % p == target) return i;
+            for (int i = 1; i < len; i++) for (int j = i; j <= len; j++)
+                {
+                    if ((pre[j] - pre[j - i]) % p == target) return i;
+                }
 
             return -1;
         }
