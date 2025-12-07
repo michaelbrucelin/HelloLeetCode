@@ -17,10 +17,10 @@ namespace LeetCode.QuestionBank.Question1925
         {
             int[] square = new int[n];
             for (int i = 1; i <= n; i++) square[i - 1] = i * i;
-            HashSet<int> set = new HashSet<int>(square);
+            HashSet<int> set = [.. square];
 
             int result = 0;
-            for (int i = 0; i < n - 2; i++) for (int j = i + 1; j < n - 1; j++)
+            for (int i = 0; i < n; i++) for (int j = i + 1; j < n; j++)
                 {
                     if (set.Contains(square[i] + square[j])) result += 2;
                 }

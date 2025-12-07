@@ -52,6 +52,131 @@ class Solution:
         return res
 ```
 
+```java
+class Solution {
+    public int countTriples(int n) {
+        int res = 0;
+        // 枚举 a 与 b
+        for (int a = 1; a <= n; ++a) {
+            for (int b = 1; b <= n; ++b) {
+                // 判断是否符合要求
+                int c = (int) Math.sqrt(a * a + b * b + 1.0);
+                if (c <= n && c * c == a * a + b * b) {
+                    ++res;
+                }
+            }
+        }
+        return res;
+    }
+}
+```
+
+```csharp
+public class Solution {
+    public int CountTriples(int n) {
+        int res = 0;
+        // 枚举 a 与 b
+        for (int a = 1; a <= n; ++a) {
+            for (int b = 1; b <= n; ++b) {
+                // 判断是否符合要求
+                int c = (int) Math.Sqrt(a * a + b * b + 1.0);
+                if (c <= n && c * c == a * a + b * b) {
+                    ++res;
+                }
+            }
+        }
+        return res;
+    }
+}
+```
+
+```go
+func countTriples(n int) int {
+    res := 0
+    // 枚举 a 与 b
+    for a := 1; a <= n; a++ {
+        for b := 1; b <= n; b++ {
+            // 判断是否符合要求
+            c := int(math.Sqrt(float64(a * a + b * b + 1)))
+            if c <= n && c * c == a * a + b * b {
+                res++
+            }
+        }
+    }
+    return res
+}
+```
+
+```c
+int countTriples(int n) {
+    int res = 0;
+    // 枚举 a 与 b
+    for (int a = 1; a <= n; ++a) {
+        for (int b = 1; b <= n; ++b) {
+            // 判断是否符合要求
+            int c = (int) sqrt(a * a + b * b + 1.0);
+            if (c <= n && c * c == a * a + b * b) {
+                ++res;
+            }
+        }
+    }
+    return res;
+}
+```
+
+```javascript
+var countTriples = function(n) {
+    let res = 0;
+    // 枚举 a 与 b
+    for (let a = 1; a <= n; a++) {
+        for (let b = 1; b <= n; b++) {
+            // 判断是否符合要求
+            let c = Math.floor(Math.sqrt(a * a + b * b + 1));
+            if (c <= n && c * c === a * a + b * b) {
+                res++;
+            }
+        }
+    }
+    return res;
+};
+```
+
+```typescript
+function countTriples(n: number): number {
+    let res = 0;
+    // 枚举 a 与 b
+    for (let a = 1; a <= n; a++) {
+        for (let b = 1; b <= n; b++) {
+            // 判断是否符合要求
+            let c = Math.floor(Math.sqrt(a * a + b * b + 1));
+            if (c <= n && c * c === a * a + b * b) {
+                res++;
+            }
+        }
+    }
+    return res;
+};
+```
+
+```rust
+impl Solution {
+    pub fn count_triples(n: i32) -> i32 {
+        let mut res = 0;
+        // 枚举 a 与 b
+        for a in 1..= n {
+            for b in 1..= n {
+                // 判断是否符合要求
+                let c = ((a * a + b * b) as f64).sqrt().floor() as i32;
+                if c <= n && c * c == a * a + b * b {
+                    res += 1;
+                }
+            }
+        }
+        res
+    }
+}
+```
+
 #### 复杂度分析
 
 - 时间复杂度：$O(n^2)$，其中 $n$ 为三元组元素的上界。即为遍历 $a$ 与 $b$ 的时间复杂度。
