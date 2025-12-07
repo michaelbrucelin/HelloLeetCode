@@ -9,7 +9,7 @@ namespace LeetCode.QuestionBank.Question1162
 {
     public class Solution1162 : Interface1162
     {
-        private readonly static (int x, int y)[] directions = new (int x, int y)[] { (-1, 0), (0, 1), (1, 0), (0, -1) };
+        private readonly static (int, int)[] directions = [(-1, 0), (0, 1), (1, 0), (0, -1)];
 
         /// <summary>
         /// 遍历每一个“海洋”点，BFS找出最近的陆地
@@ -27,16 +27,16 @@ namespace LeetCode.QuestionBank.Question1162
                 {
                     int dis_x = Math.Max(j, n - 1 - j);
                     if (grid[i][j] == 1 || dis_y + dis_x <= result) continue;
-                    HashSet<(int x, int y)> ocean = new HashSet<(int x, int y)>() { (i, j) };
-                    Queue<(int x, int y)> queue = new Queue<(int x, int y)>(); queue.Enqueue((i, j));
+                    HashSet<(int, int)> ocean = new HashSet<(int, int)>() { (i, j) };
+                    Queue<(int, int)> queue = new Queue<(int, int)>(); queue.Enqueue((i, j));
                     int steps = 0;
                     int cnt; while ((cnt = queue.Count) > 0)
                     {
                         steps++;
                         for (int k = 0; k < cnt; k++)
                         {
-                            var sea = queue.Dequeue();
-                            foreach (var direction in directions)
+                            (int x, int y) sea = queue.Dequeue();
+                            foreach ((int x, int y) direction in directions)
                             {
                                 (int x, int y) point = (sea.x + direction.x, sea.y + direction.y);
                                 if (point.x >= 0 && point.x < n && point.y >= 0 && point.y < n)
@@ -54,7 +54,7 @@ namespace LeetCode.QuestionBank.Question1162
                             }
                         }
                     }
-                    Find:;
+                Find:;
                 }
             }
 

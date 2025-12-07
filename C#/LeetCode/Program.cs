@@ -8,7 +8,7 @@ using LeetCode.Utilses;
 using System;
 using System.IO;
 using System.Reflection;
-using TestXXXX = LeetCode.QuestionBank.Question3625.Test3625;
+using TestXXXX = LeetCode.QuestionBank.Question1162.Test1162;
 using UtilsXXXX = LeetCode.QuestionBank.Question0808.Utils0808;
 // using TestXXXX = LeetCode.LCP.LCP0051.Test0051;
 // using TestXXXX = LeetCode.LCR.LCR0194.Test0194;
@@ -91,15 +91,15 @@ namespace LeetCode
 
             //哑节点(dummy node)，也被称为哨兵节点
             //const int MOD = (int)1e9 + 7;               // 1000000007, 10^9 + 7
-            //string question = "1234", testcase = "08";
+            //string question = "1234", testcase = "08", arg = "nums";
             //string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"QuestionBank\Question{question}\TestCases\TestCase{question}");
             //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"Interview\Interview{question}\TestCases\TestCase{question}");
             //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"LCP\LCP{question}\TestCases\TestCase{question}");
-            //arg = File.ReadAllText($"{path}_{testcase}_arg.txt");
-            //arg = File.ReadAllText($"{path}_{testcase}_arg.txt")[1..^1];
-            //arg = Utils.Str2NumArray<int>(File.ReadAllText($"{path}_{testcase}_arg.txt"));
-            //arg = Utils.Str2NumArray_2d<int>(File.ReadAllText($"{path}_{testcase}_arg.txt"));
+            //arg = File.ReadAllText($"{path}_{testcase}_{arg}.txt");
+            //arg = File.ReadAllText($"{path}_{testcase}_{arg}.txt")[1..^1];
+            //arg = Utils.Str2NumArray<int>(File.ReadAllText($"{path}_{testcase}_{arg}.txt"));
+            //arg = Utils.Str2NumArray_2d<int>(File.ReadAllText($"{path}_{testcase}_{arg}.txt"));
             //string raw = "[[0,1],[1,2]]";
             //Console.WriteLine(Utils.TestCase2CSharpDeclare(raw, Utils.TestCaseType.array_2d));
             //               0xAAAAAAAA      10101010101010101010101010101010
