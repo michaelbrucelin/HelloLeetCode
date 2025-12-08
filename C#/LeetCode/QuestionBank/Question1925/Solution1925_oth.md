@@ -1,0 +1,530 @@
+### [非暴力做法：本原勾股数组+数论分块+容斥（Python/Java/C++/Go）](https://leetcode.cn/problems/count-square-sum-triples/solutions/869409/go-yu-chu-li-you-hua-by-endlesscheng-61mj/)
+
+#### 方法一：暴力枚举
+
+先说暴力怎么做。
+
+我们可以枚举所有 $a>b$ 的平方和三元组 $(a,b,c)$。由于 $a^2+b^2=b^2+a^2$，所以 $(b,a,c)$ 也是平方和三元组。所以只需统计 $a>b$ 的情况，最后把统计结果乘以 $2$，即为答案。
+
+$a=b$ 的情况呢？如果 $2a^2=c^2$，那么 $c=\sqrt{2}a$，所以 $c$ 一定不是整数（反证法：如果 $c$ 是整数，式子变形得 $\dfrac{c}{a}=\sqrt{2}$，左边是有理数，右边是无理数，有理数不可能等于无理数）。所以无需考虑 $a=b$ 的情况。
+
+枚举 $a=2,3,\dots ,n-1$，枚举 $b=1,2,\dots ,a-1$，如果 $a^2+b^2\le n$ 且 $c=\sqrt{a^2+b^2}$ 是整数，那么我们找到了一个平方和三元组 $(a,b,c)$，计数器加一。
+
+```Python
+class Solution:
+    def countTriples(self, n: int) -> int:
+        ans = 0
+        for a in range(1, n):
+            for b in range(1, a):
+                if a * a + b * b > n * n:
+                    break
+                c2 = a * a + b * b
+                if isqrt(c2) ** 2 == c2:
+                    ans += 1
+        return ans * 2  # (a,b,c) 和 (b,a,c) 各算一次
+```
+
+```Java
+class Solution {
+    public int countTriples(int n) {
+        int ans = 0;
+        for (int a = 1; a < n; a++) {
+            for (int b = 1; b < a && a * a + b * b <= n * n; b++) {
+                int c2 = a * a + b * b;
+                int rt = (int) Math.sqrt(c2);
+                if (rt * rt == c2) {
+                    ans++;
+                }
+            }
+        }
+        return ans * 2; // (a,b,c) 和 (b,a,c) 各算一次
+    }
+}
+```
+
+```C++
+class Solution {
+public:
+    int countTriples(int n) {
+        int ans = 0;
+        for (int a = 1; a < n; a++) {
+            for (int b = 1; b < a && a * a + b * b <= n * n; b++) {
+                int c2 = a * a + b * b;
+                int rt = sqrt(c2);
+                if (rt * rt == c2) {
+                    ans++;
+                }
+            }
+        }
+        return ans * 2; // (a,b,c) 和 (b,a,c) 各算一次
+    }
+};
+```
+
+```Go
+func countTriples(n int) (ans int) {
+    for a := 1; a < n; a++ {
+        for b := 1; b < a && a*a+b*b <= n*n; b++ {
+            c2 := a*a + b*b
+            rt := int(math.Sqrt(float64(c2)))
+            if rt*rt == c2 {
+                ans++
+            }
+        }
+    }
+    return ans * 2 // (a,b,c) 和 (b,a,c) 各算一次
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$O(n^2)$。
+- 空间复杂度：$O(1)$。
+
+#### 方法二：本原勾股数组
+
+请看 [勾三股四弦五：生成勾股数的公式](https://leetcode.cn/link/?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F1978057341963368012)。
+
+```Python
+class Solution:
+    def countTriples(self, n: int) -> int:
+        ans = 0
+        u = 3
+        while u * u < n * 2:
+            v = 1
+            while v < u and u * u + v * v <= n * 2:
+                if gcd(u, v) == 1:
+                    ans += n * 2 // (u * u + v * v)
+                v += 2
+            u += 2
+        return ans * 2  # (a,b,c) 和 (b,a,c) 各算一次
+```
+
+```Python
+# 预处理
+MX = isqrt(500) + 1
+gcds = [[0] * MX for _ in range(MX)]
+for i in range(1, MX):
+    gcds[i][0] = i
+    for j in range(1, MX):
+        # 更相减损术
+        gcds[i][j] = gcds[i][j - i] if j >= i else gcds[j][i]
+
+class Solution:
+    def countTriples(self, n: int) -> int:
+        ans = 0
+        u = 3
+        while u * u < n * 2:
+            v = 1
+            while v < u and u * u + v * v <= n * 2:
+                if gcds[u][v] == 1:
+                    ans += n * 2 // (u * u + v * v)
+                v += 2
+            u += 2
+        return ans * 2  # (a,b,c) 和 (b,a,c) 各算一次
+```
+
+```Java
+class Solution {
+    public int countTriples(int n) {
+        int ans = 0;
+        for (int u = 3; u * u < n * 2; u += 2) {
+            for (int v = 1; v < u && u * u + v * v <= n * 2; v += 2) {
+                if (gcd(u, v) == 1) {
+                    ans += n * 2 / (u * u + v * v);
+                }
+            }
+        }
+        return ans * 2; // (a,b,c) 和 (b,a,c) 各算一次
+    }
+
+    private int gcd(int a, int b) {
+        while (a != 0) {
+            int tmp = a;
+            a = b % a;
+            b = tmp;
+        }
+        return b;
+    }
+}
+```
+
+```C++
+class Solution {
+public:
+    int countTriples(int n) {
+        int ans = 0;
+        for (int u = 3; u * u < n * 2; u += 2) {
+            for (int v = 1; v < u && u * u + v * v <= n * 2; v += 2) {
+                if (gcd(u, v) == 1) {
+                    ans += n * 2 / (u * u + v * v);
+                }
+            }
+        }
+        return ans * 2; // (a,b,c) 和 (b,a,c) 各算一次
+    }
+};
+```
+
+```Go
+func countTriples(n int) (ans int) {
+    for u := 3; u*u < n*2; u += 2 {
+        for v := 1; v < u && u*u+v*v <= n*2; v += 2 {
+            if gcd(u, v) == 1 {
+                ans += n * 2 / (u*u + v*v)
+            }
+        }
+    }
+    return ans * 2 // (a,b,c) 和 (b,a,c) 各算一次
+}
+
+func gcd(a, b int) int {
+    for a != 0 {
+        a, b = b%a, a
+    }
+    return b
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$O(n\log n)$ 或 $O(n)$。枚举 $O(\sqrt{n}\cdot\sqrt{n})=O(n)$ 次，每次花费 $O(\log n)$ 的时间计算 $GCD$。如果预处理 $\sqrt{2n}$ 以内的数对 $GCD$，则可以做到 $O(n)$ 时间，参考 $Python3$ 写法二。
+- 空间复杂度：$O(1)$。
+
+#### 方法三：数论分块 $+$ 容斥原理
+
+##### 数论分块
+
+更仔细地考察枚举 $(u,v)$ 计算 $\Bigl\lfloor\dfrac{2n}{u^2+v^2}\Bigr\rfloor $ 的过程：
+
+- 当 $u\le\sqrt[3]{n}$ 时，枚举 $(u,v)$ 的循环次数为 $O(n^{2/3})$。
+- 当 $u>\sqrt[3]{n}$ 时，由于 $\dfrac{2n}{u^2+v^2}<\dfrac{2n}{u^2}$，所以对于固定的 $u$，$\Bigl\lfloor\dfrac{2n}{u^2+v^2}\Bigr\rfloor$ 只有 $O(\dfrac{n}{u^2})$ 个不同的整数值。横看成岭侧成峰，考虑对这 $O(\dfrac{n}{u^2})$ 个不同的整数值，分别计算有多少个 $v$。
+
+推荐读者先看 [数论分块](https://leetcode.cn/link/?target=https%3A%2F%2Foi-wiki.org%2Fmath%2Fnumber-theory%2Fsqrt-decomposition%2F) 中的图，先理解怎么算 $\sum\limits_{i=1}^n\Bigl\lfloor\dfrac{n}{i}\Bigr\rfloor$，再理解更复杂的 $\Bigl\lfloor\dfrac{2n}{u^2+v^2}\Bigr\rfloor$。
+
+外层循环枚举 $u=3,5,7,\dots $ 内层循环用数论分块枚举 $v$。
+
+设闭区间 $[L,R]$ 内的 $v$，对应的 $\Bigl\lfloor\dfrac{2n}{u^2+v^2}\Bigr\rfloor $ 都相等。
+
+如果已知 $L$，如何计算 R？一开始 $L=1$，只要我们算出了 $R$，那么下一个区间的左端点 $L′$ 就是 $R+1$。再用同样的方法根据 $L′$ 算出 $R′$，得到下下个区间的左端点 $L′′=R′+1$，依此类推，用这个方法可以算出后续所有区间。
+
+设 $num=\Bigl\lfloor\dfrac{2n}{u^2+L^2}\Bigr\rfloor$。
+
+由于 $\dfrac{2n}{u^2+v^2}$ 的整数部分是 $num$，即
+
+$$\dfrac{2n}{u^2+v^2}\ge num$$
+
+所以
+
+$$(u^2+v^2)\cdot num\le 2n$$
+
+在正整数情况下，上式等价于
+
+$$u^2+v^2\le\Bigl\lfloor\dfrac{2n}{num}\Bigr\rfloor $$
+
+解得
+
+$$v\le\sqrt{\Bigl\lfloor\dfrac{2n}{num}\Bigr\rfloor -u^2}$$
+
+由于 $v<u$，所以还要与 $u-1$ 取最小值，得到
+
+$$R=min\Biggl(\sqrt{\Bigl\lfloor\dfrac{2n}{num}\Bigr\rfloor -u^2},u-1\Biggr)$$
+
+##### 互质个数
+
+对于 $[L,R]$ 内的 $v$，还要满足 $v$ 是奇数，且 $v$ 与 $u$ 互质。
+
+现在问题变成：
+
+- 给定正奇数 $u$ 和整数 $L,R$，计算 $[L,R]$ 内的与 $u$ 互质的奇数个数。
+
+用 $[1,R]$ 的答案，减去 $[1,L-1]$ 的答案，就是 $[L,R]$ 的答案。
+
+$[1,R]$ 内的与 $u$ 互质的奇数个数，等于 $[1,R]$ 内的与 $u$ 互质的整数个数，减去 $[1,R]$ 内的与 $u$ 互质的偶数个数。对于后者，设偶数为 $2k$，由于 $u$ 是奇数（不含质因子 $2$），所以 $gcd(2k,u)=gcd(k,u)$，我们只需考虑 $k$ 与 $u$ 是否互质。由于 $2k\le R$，所以 $k\le \lfloor\frac{R}{2}\rfloor $。所以 $[1,R]$ 内的与 $u$ 互质的偶数个数，等于 $[1,\lfloor\frac{R}{2}\rfloor ]$ 内的与 $u$ 互质的整数个数。
+
+设 $n$ 以内的与 $u$ 互质的正整数个数为 $f(n,u)$。那么 $[1,R]$ 的答案就是 $f(R,u)-f(\lfloor\frac{R}{2}\rfloor ,u)$。
+
+##### 容斥原理
+
+计算 $n$ 以内的与 $u$ 互质的正整数个数 $f(n,u)$。
+
+例如 $u=15$。与 $15$ 互质的数，不能包含质因子 $3$ 和 $5$。
+
+- $[1,n]$ 中有 $n$ 个数。
+- 其中有 $\Bigl\lfloor\dfrac{n}{3}\Bigr\rfloor $ 个数是 $3$ 的倍数，这些数不与 $15$ 互质，减掉。
+- 其中有 $\Bigl\lfloor\dfrac{n}{5}\Bigr\rfloor $ 个数是 $5$ 的倍数，这些数不与 $15$ 互质，减掉。
+- 其中有 $\Bigl\lfloor\dfrac{n}{15}\Bigr\rfloor $ 个数既是 $3$ 的倍数，又是 $5$ 的倍数（即 $15$ 的倍数），我们多减了一次，加回来。
+
+所以
+
+$$f(n,15)=n-\Bigl\lfloor\dfrac{n}{3}\Bigr\rfloor -\Bigl\lfloor\dfrac{n}{5}\Bigr\rfloor +\Bigl\lfloor\dfrac{n}{15}\Bigr\rfloor$$
+
+一般地，设 $u$ 的质因子集合为 $P$，由容斥原理可得
+
+$$f(n,u)=\sum\limits_{S\subseteq P}(-1)^{\vert S\vert}\Bigl\lfloor\dfrac{n}{\Pi S}\Bigr\rfloor$$
+
+用莫比乌斯函数表示就是
+
+$$f(n,u)=\sum\limits_{d\vert u}\mu (d)\Bigl\lfloor\dfrac{n}{d}\Bigr\rfloor$$
+
+其中莫比乌斯函数为
+
+$$\mu (n)=\begin{cases}1, & n=1 \\ (-1)^k, & n=p_1p_2\dots p_k \\ 0, & n 有大于 1 的平方因子\end{cases}$$
+
+> 注：也可以用莫比乌斯反演推导 $f(n,u)$ 的式子。
+
+```Python
+MX = isqrt(500) + 1
+
+# 预处理莫比乌斯函数
+# 当 n > 1 时，sum_{d|n} mu[d] = 0
+# 所以 mu[n] = -sum_{d|n ∧ d<n} mu[d]
+mu = [0] * MX
+mu[1] = 1
+for i in range(1, MX):
+    for j in range(i * 2, MX, i):
+        mu[j] -= mu[i]  # i 是 j 的真因子
+
+# 预处理不含平方因子的因子列表，用于 count_coprime
+divisors = [[] for _ in range(MX)]
+for i in range(1, MX):
+    if mu[i]:
+        for j in range(i, MX, i):
+            divisors[j].append(i)  # i 是 j 的因子，且 mu[i] != 0
+
+# 返回 [1,n] 中与 x 互质的整数个数
+def count_coprime(n: int, x: int) -> int:
+    return sum(mu[d] * (n // d) for d in divisors[x])
+
+# 返回 [1,n] 中与奇数 x 互质的奇数个数
+# 与 x 互质的整数个数 - 与 x 互质的偶数个数
+def count_coprime_odd(n: int, x: int) -> int:
+    return count_coprime(n, x) - count_coprime(n // 2, x)
+
+class Solution:
+    def countTriples(self, n: int) -> int:
+        ans = 0
+        u = 3
+        while u * u < n * 2:
+            l = 1
+            while l < u and u * u + l * l <= n * 2:
+                num = (n * 2) // (u * u + l * l)
+                # 对于 [l,r] 中的整数 v，2n // (u^2 + v^2) 都等于 num
+                r = min(isqrt(n * 2 // num - u * u), u - 1)  # 推导过程见题解
+                # 只有与 u 互质的奇数 v 才能得到本原勾股数组
+                num_coprime_odd_v = count_coprime_odd(r, u) - count_coprime_odd(l - 1, u)
+                ans += num * num_coprime_odd_v
+                l = r + 1
+            u += 2
+        return ans * 2  # (a,b,c) 和 (b,a,c) 各算一次
+```
+
+```Java
+class Solution {
+    private static final int MX = 23; // floor(sqrt(250 * 2)) + 1
+    private static final int[] mu = new int[MX];
+    private static final List<Integer>[] divisors = new ArrayList[MX];
+
+    static {
+        // 预处理莫比乌斯函数
+        // 当 n > 1 时，sum_{d|n} mu[d] = 0
+        // 所以 mu[n] = -sum_{d|n ∧ d<n} mu[d]
+        mu[1] = 1;
+        for (int i = 1; i < MX; i++) {
+            for (int j = i * 2; j < MX; j += i) {
+                mu[j] -= mu[i]; // i 是 j 的真因子
+            }
+        }
+
+        // 预处理不含平方因子的因子列表，用于 countCoprime
+        Arrays.setAll(divisors, _ -> new ArrayList<>());
+        for (int i = 1; i < MX; i++) {
+            if (mu[i] == 0) {
+                continue;
+            }
+            for (int j = i; j < MX; j += i) {
+                divisors[j].add(i); // i 是 j 的因子，且 mu[i] != 0
+            }
+        }
+    }
+
+    public int countTriples(int n) {
+        int ans = 0;
+        for (int u = 3; u * u < n * 2; u += 2) {
+            for (int l = 1, r; l < u && u * u + l * l <= n * 2; l = r + 1) {
+                int num = (n * 2) / (u * u + l * l);
+                // 对于 [l,r] 中的整数 v，floor(2n / (u^2 + v^2)) 都等于 num
+                r = Math.min((int) Math.sqrt(n * 2 / num - u * u), u - 1); // 推导过程见题解
+                // 只有与 u 互质的奇数 v 才能得到本原勾股数组
+                int numCoprimeOddV = countCoprimeOdd(r, u) - countCoprimeOdd(l - 1, u);
+                ans += num * numCoprimeOddV;
+            }
+        }
+        return ans * 2; // (a,b,c) 和 (b,a,c) 各算一次
+    }
+
+    // 返回 [1,n] 中与奇数 x 互质的奇数个数
+    // 与 x 互质的整数个数 - 与 x 互质的偶数个数
+    private int countCoprimeOdd(int n, int x) {
+        return countCoprime(n, x) - countCoprime(n / 2, x);
+    }
+
+    // 返回 [1,n] 中与 x 互质的整数个数
+    private int countCoprime(int n, int x) {
+        int res = 0;
+        for (int d : divisors[x]) {
+            res += mu[d] * (n / d);
+        }
+        return res;
+    }
+}
+```
+
+```C++
+constexpr int MX = 23; // floor(sqrt(250 * 2)) + 1
+int mu[MX];
+vector<int> divisors[MX];
+
+int init = [] {
+    // 预处理莫比乌斯函数
+    // 当 n > 1 时，sum_{d|n} mu[d] = 0
+    // 所以 mu[n] = -sum_{d|n ∧ d<n} mu[d]
+    mu[1] = 1;
+    for (int i = 1; i < MX; i++) {
+        for (int j = i * 2; j < MX; j += i) {
+            mu[j] -= mu[i]; // i 是 j 的真因子
+        }
+    }
+
+    // 预处理不含平方因子的因子列表，用于 count_coprime
+    for (int i = 1; i < MX; i++) {
+        if (mu[i]) {
+            for (int j = i; j < MX; j += i) {
+                divisors[j].push_back(i); // i 是 j 的因子，且 mu[i] != 0
+            }
+        }
+    }
+    return 0;
+}();
+
+class Solution {
+    // 返回 [1,n] 中与 x 互质的整数个数
+    int count_coprime(int n, int x) {
+        int res = 0;
+        for (int d : divisors[x]) {
+            res += mu[d] * (n / d);
+        }
+        return res;
+    }
+
+    // 返回 [1,n] 中与奇数 x 互质的奇数个数
+    // 与 x 互质的整数个数 - 与 x 互质的偶数个数
+    int count_coprime_odd(int n, int x) {
+        return count_coprime(n, x) - count_coprime(n / 2, x);
+    }
+
+public:
+    int countTriples(int n) {
+        int ans = 0;
+        for (int u = 3; u * u < n * 2; u += 2) {
+            for (int l = 1, r; l < u && u * u + l * l <= n * 2; l = r + 1) {
+                int num = (n * 2) / (u * u + l * l);
+                // 对于 [l,r] 中的整数 v，floor(2n / (u^2 + v^2)) 都等于 num
+                r = min((int) sqrt(n * 2 / num - u * u), u - 1); // 推导过程见题解
+                // 只有与 u 互质的奇数 v 才能得到本原勾股数组
+                int num_coprime_odd_v = count_coprime_odd(r, u) - count_coprime_odd(l - 1, u);
+                ans += num * num_coprime_odd_v;
+            }
+        }
+        return ans * 2; // (a,b,c) 和 (b,a,c) 各算一次
+    }
+};
+```
+
+```Go
+const mx = 23 // floor(sqrt(250 * 2)) + 1
+var mu = [mx]int{1: 1}
+var divisors [mx][]int
+
+func init() {
+    // 预处理莫比乌斯函数
+    // 当 n > 1 时，sum_{d|n} mu[d] = 0
+    // 所以 mu[n] = -sum_{d|n ∧ d<n} mu[d]
+    for i := 1; i < mx; i++ {
+        for j := i * 2; j < mx; j += i {
+            mu[j] -= mu[i] // i 是 j 的真因子
+        }
+    }
+
+    // 预处理不含平方因子的因子列表，用于 countCoprime
+    for i := 1; i < mx; i++ {
+        if mu[i] == 0 {
+            continue
+        }
+        for j := i; j < mx; j += i {
+            divisors[j] = append(divisors[j], i) // i 是 j 的因子，且 mu[i] != 0
+        }
+    }
+}
+
+// 返回 [1,n] 中与 x 互质的整数个数
+func countCoprime(n, x int) (res int) {
+    for _, d := range divisors[x] {
+        res += mu[d] * (n / d)
+    }
+    return
+}
+
+// 返回 [1,n] 中与奇数 x 互质的奇数个数
+// 与 x 互质的整数个数 - 与 x 互质的偶数个数
+func countCoprimeOdd(n, x int) (res int) {
+    return countCoprime(n, x) - countCoprime(n/2, x)
+}
+
+func countTriples(n int) (ans int) {
+    for u := 3; u*u < n*2; u += 2 {
+        for l, r := 1, 0; l < u && u*u+l*l <= n*2; l = r + 1 {
+            num := n * 2 / (u*u + l*l)
+            // 对于 [l,r] 中的整数 v，floor(2n / (u^2 + v^2)) 都等于 num
+            r = min(int(math.Sqrt(float64(n*2/num-u*u))), u-1) // 推导过程见题解
+            // 只有与 u 互质的奇数 v 才能得到本原勾股数组
+            numCoprimeOddV := countCoprimeOdd(r, u) - countCoprimeOdd(l-1, u)
+            ans += num * numCoprimeOddV
+        }
+    }
+    return ans * 2 // (a,b,c) 和 (b,a,c) 各算一次
+}
+
+func gcd(a, b int) int {
+    for a != 0 {
+        a, b = b%a, a
+    }
+    return b
+}
+```
+
+#### 复杂度分析
+
+> 预处理的时空复杂度为 $O(\sqrt{N}\log N)$，N=500，不计入。
+
+- 时间复杂度：$O(n^{2/3}\log n)$。为方便分析，这里省略 $2n$ 中的常系数 $2$（不影响时间复杂度）。当 $u\le\sqrt[3]{n}$ 时，枚举 $u$ 和 $v$ 是 $O(n^{2/3})$ 的。当 $u>\sqrt[3]{n}$ 时，对于固定的 $u$，$\Bigl\lfloor\dfrac{n}{u^2+v^2}\Bigr\rfloor $ 有 $O(\dfrac{n}{u^2})$ 种不同的整数值。用积分估计，$\sum\limits_{u=n^{1/3}}^{n^{1/2}}\dfrac{n}{u^2}\approx\displaystyle\int_{n^{1/3}}^{n^{1/2}}\dfrac{n}{u^2}du=n^{2/3}-n^{1/2}$，所以当 $u>\sqrt[3]{n}$ 时的循环次数为 $O(n^{2/3})$。由于 $n$ 以内正整数的平均因子个数是 $O(\log n)$ 的（即使只考虑 $\mu (d)\ne 0$ 的因子，平均因子个数仍然是 $O(\log n)$ 的），所以总的时间复杂度为 $O(n^{2/3}\log n)$。
+- 空间复杂度：$O(1)$。
+
+**注**：进一步地，考虑根号分解，取阈值 $B=\sqrt[3]{n\ln n}$，当 $u\le B$ 时使用方法二，当 $u>B$ 时使用方法三，可以做到 $O((n\log n)^{2/3})$ 的时间复杂度。
+
+#### 分类题单
+
+[如何科学刷题？](https://leetcode.cn/circle/discuss/RvFUtj/)
+
+1. [滑动窗口与双指针（定长/不定长/单序列/双序列/三指针/分组循环）](https://leetcode.cn/circle/discuss/0viNMK/)
+2. [二分算法（二分答案/最小化最大值/最大化最小值/第K小）](https://leetcode.cn/circle/discuss/SqopEo/)
+3. [单调栈（基础/矩形面积/贡献法/最小字典序）](https://leetcode.cn/circle/discuss/9oZFK9/)
+4. [网格图（DFS/BFS/综合应用）](https://leetcode.cn/circle/discuss/YiXPXW/)
+5. [位运算（基础/性质/拆位/试填/恒等式/思维）](https://leetcode.cn/circle/discuss/dHn9Vk/)
+6. [图论算法（DFS/BFS/拓扑排序/基环树/最短路/最小生成树/网络流）](https://leetcode.cn/circle/discuss/01LUak/)
+7. [动态规划（入门/背包/划分/状态机/区间/状压/数位/数据结构优化/树形/博弈/概率期望）](https://leetcode.cn/circle/discuss/tXLS3i/)
+8. [常用数据结构（前缀和/差分/栈/队列/堆/字典树/并查集/树状数组/线段树）](https://leetcode.cn/circle/discuss/mOr1u6/)
+9. [数学算法（数论/组合/概率期望/博弈/计算几何/随机算法）](https://leetcode.cn/circle/discuss/IYT3ss/)
+10. [贪心与思维（基本贪心策略/反悔/区间/字典序/数学/思维/脑筋急转弯/构造）](https://leetcode.cn/circle/discuss/g6KTKL/)
+11. [链表、树与回溯（前后指针/快慢指针/DFS/BFS/直径/LCA）](https://leetcode.cn/circle/discuss/K0n2gO/)
+12. [字符串（KMP/Z函数/Manacher/字符串哈希/AC自动机/后缀数组/子序列自动机）](https://leetcode.cn/circle/discuss/SJFwQI/)
