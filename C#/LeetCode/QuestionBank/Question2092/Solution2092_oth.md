@@ -1,0 +1,575 @@
+### [两种方法：DFS / 并查集（Python/Java/C++/Go）](https://leetcode.cn/problems/find-all-people-with-secret/solutions/1126268/an-zhao-x_iang-tong-shi-jian-fen-zu-jian-2y4yx/)
+
+#### 分析
+
+假设一开始 $0$ 和 $1$ 知道秘密。对比如下两种情况：
+
+- 时间 $1$，1 和 $2$ 开会。时间 $2$，2 和 $3$ 开会。秘密会传播给 $2$ 和 $3$，最终 $0,1,2,3$ 都知道秘密。
+- 时间 $1$，2 和 $3$ 开会。时间 $2$，1 和 $2$ 开会。第一场会议，参加会议的人都不知道秘密，所以秘密不会传播。秘密只会在第二场会议传播给 $2$，最终 $0,1,2$ 都知道秘密。
+
+所以要**按照开会的先后顺序传播秘密**，模拟这个过程。
+
+注意题目的这段话：
+
+- 秘密共享是瞬时发生的。也就是说，在同一时间，一个专家不光可以接收到秘密，还能在其他会议上与其他专家分享。
+
+**解读**：在**同一时间**发生的所有会议，可以视作一个无向图。专家是图中的节点，$meetings[i]$ 是图的边，连接 $x_i$ 和 $y_i$。
+
+这个图可能有多个连通块。对于一个连通块，如果其中有知道秘密的专家，那么这个专家会把秘密分享给这个连通块中的其他专家。
+
+#### 方法一：DFS
+
+1. 把 $meetings$ 按照 $time$ 从小到大排序。
+2. 创建一个哈希集合（或者布尔数组），记录知道秘密的专家。
+3. 遍历 $meetings$，对于在同一时间发生的所有会议，创建一个无向图。
+4. 遍历同一时间参加会议的专家列表，如果 $x$ 知道秘密且没有访问过，那么从 $x$ 出发，$DFS x$ 所在连通块，把连通块中的点都标记为知道秘密，且访问过。
+5. 最后，把知道秘密的专家放入答案列表，返回答案列表。
+
+##### 分组循环
+
+如何遍历 $time$ 相同的会议？分组循环。
+
+**适用场景**：按照题目要求，数组会被分割成若干组，每一组的判断/处理逻辑是相同的。
+
+**核心思想**：
+
+- 外层循环负责遍历组之前的准备工作（记录开始位置等），和遍历组之后的工作（传播秘密）。
+- 内层循环负责遍历组，找出这一组最远在哪结束，同时建图。
+
+这个写法的好处是，各个逻辑块分工明确，也不需要特判最后一组（易错点）。以我的经验，这个写法是所有写法中最不容易出 $bug$ 的，推荐大家记住。
+
+```Python
+class Solution:
+    def findAllPeople(self, _, meetings: List[List[int]], firstPerson: int) -> List[int]:
+        # 按照 time 从小到大排序
+        meetings.sort(key=lambda m: m[2])
+
+        # 一开始 0 和 firstPerson 都知道秘密
+        have_secret = {0, firstPerson}
+
+        # 分组循环
+        m = len(meetings)
+        i = 0
+        while i < m:
+            # 在同一时间发生的会议，建图
+            g = defaultdict(list)
+            time = meetings[i][2]
+            while i < m and meetings[i][2] == time:
+                x, y, _ = meetings[i]
+                g[x].append(y)
+                g[y].append(x)
+                i += 1
+
+            # 每个连通块只要有一个人知道秘密，那么整个连通块的人都知道秘密
+            vis = set()  # 避免重复访问节点
+
+            def dfs(x: int) -> None:
+                vis.add(x)
+                have_secret.add(x)
+                for y in g[x]:
+                    if y not in vis:
+                        dfs(y)
+
+            # 遍历在 time 时间点参加会议的专家
+            for x in g:
+                # 从知道秘密的专家出发，DFS 标记其余专家
+                if x in have_secret and x not in vis:
+                    dfs(x)
+
+        # 可以按任何顺序返回答案
+        return list(have_secret)
+```
+
+```Java
+class Solution {
+    public List<Integer> findAllPeople(int n, int[][] meetings, int firstPerson) {
+        // 按照 time 从小到大排序
+        Arrays.sort(meetings, (a, b) -> a[2] - b[2]);
+
+        // 一开始 0 和 firstPerson 都知道秘密
+        Set<Integer> haveSecret = new HashSet<>();
+        haveSecret.add(0);
+        haveSecret.add(firstPerson);
+
+        // 分组循环
+        int m = meetings.length;
+        for (int i = 0; i < m;) {
+            // 在同一时间发生的会议，建图
+            Map<Integer, List<Integer>> g = new HashMap<>();
+            int time = meetings[i][2];
+            for (; i < m && meetings[i][2] == time; i++) {
+                int x = meetings[i][0];
+                int y = meetings[i][1];
+                g.computeIfAbsent(x, k -> new ArrayList<>()).add(y);
+                g.computeIfAbsent(y, k -> new ArrayList<>()).add(x);
+            }
+
+            // 每个连通块只要有一个人知道秘密，那么整个连通块的人都知道秘密
+            Set<Integer> vis = new HashSet<>(); // 避免重复访问节点
+            for (int x : g.keySet()) {
+                // 从知道秘密的专家出发，DFS 标记其余专家
+                if (haveSecret.contains(x) && !vis.contains(x)) {
+                    dfs(x, g, vis, haveSecret);
+                }
+            }
+        }
+
+        // 可以按任何顺序返回答案
+        return new ArrayList<>(haveSecret);
+    }
+
+    private void dfs(int x, Map<Integer, List<Integer>> g, Set<Integer> vis, Set<Integer> haveSecret) {
+        vis.add(x);
+        haveSecret.add(x);
+        for (int y : g.get(x)) {
+            if (!vis.contains(y)) {
+                dfs(y, g, vis, haveSecret);
+            }
+        }
+    }
+}
+```
+
+```C++
+class Solution {
+public:
+    vector<int> findAllPeople(int, vector<vector<int>>& meetings, int firstPerson) {
+        // 按照 time 从小到大排序
+        ranges::sort(meetings, {}, [](auto& a) { return a[2]; });
+
+        // 一开始 0 和 firstPerson 都知道秘密
+        unordered_set<int> have_secret = {0, firstPerson};
+
+        // 分组循环
+        int m = meetings.size();
+        for (int i = 0; i < m;) {
+            // 在同一时间发生的会议，建图
+            unordered_map<int, vector<int>> g;
+            int time = meetings[i][2];
+            for (; i < m && meetings[i][2] == time; i++) {
+                int x = meetings[i][0], y = meetings[i][1];
+                g[x].push_back(y);
+                g[y].push_back(x);
+            }
+
+            // 每个连通块只要有一个人知道秘密，那么整个连通块的人都知道秘密
+            unordered_set<int> vis; // 避免重复访问节点
+            auto dfs = [&](this auto&& dfs, int x) -> void {
+                vis.insert(x);
+                have_secret.insert(x);
+                for (int y : g[x]) {
+                    if (!vis.contains(y)) {
+                        dfs(y);
+                    }
+                }
+            };
+            for (auto& [x, _] : g) { // 遍历在 time 时间点参加会议的专家
+                // 从知道秘密的专家出发，DFS 标记其余专家
+                if (have_secret.contains(x) && !vis.contains(x)) {
+                    dfs(x);
+                }
+            }
+        }
+
+        // 可以按任何顺序返回答案
+        return vector(have_secret.begin(), have_secret.end());
+    }
+};
+```
+
+```Go
+func findAllPeople(_ int, meetings [][]int, firstPerson int) []int {
+    // 按照 time 从小到大排序
+    slices.SortFunc(meetings, func(a, b []int) int { return a[2] - b[2] })
+
+    // 一开始 0 和 firstPerson 都知道秘密
+    haveSecret := map[int]bool{0: true, firstPerson: true}
+
+    // 分组循环
+    m := len(meetings)
+    for i := 0; i < m; {
+        // 在同一时间发生的会议，建图
+        g := map[int][]int{}
+        time := meetings[i][2]
+        for ; i < m && meetings[i][2] == time; i++ {
+            x, y := meetings[i][0], meetings[i][1]
+            g[x] = append(g[x], y)
+            g[y] = append(g[y], x)
+        }
+
+        // 每个连通块只要有一个人知道秘密，那么整个连通块的人都知道秘密
+        vis := map[int]bool{} // 避免重复访问节点
+        var dfs func(int)
+        dfs = func(x int) {
+            vis[x] = true
+            haveSecret[x] = true
+            for _, y := range g[x] {
+                if !vis[y] {
+                    dfs(y)
+                }
+            }
+        }
+        for x := range g { // 遍历在 time 时间点参加会议的专家
+            // 从知道秘密的专家出发，DFS 标记其余专家
+            if haveSecret[x] && !vis[x] {
+                dfs(x)
+            }
+        }
+    }
+
+    // 可以按任何顺序返回答案
+    return slices.Collect(maps.Keys(haveSecret))
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$O(m\log m)$，其中 $m$ 是 $meetings$ 的长度。瓶颈在排序上。分组循环是 $O(m)$ 的，每个 $meetings[i]$ 恰好遍历一次。
+- 空间复杂度：$O(m)$。
+
+#### 方法二：并查集
+
+考虑用并查集，把参加会议的 $x$ 和 $y$ 合并到同一个集合中。一开始把 $firstPerson$ 和 $0$ 合并。
+
+但是，回顾这个例子：
+
+- 假设一开始 $0$ 和 $1$ 知道秘密。时间 $1$，2 和 $3$ 开会。时间 $2$，1 和 $2$ 开会。第一场会议，参加会议的人都不知道秘密，所以秘密不会传播。秘密只会在第二场会议传播给 $2$，最终 $0,1,2$ 都知道秘密。
+
+如果用并查集合并 $0$ 和 $1$，2 和 $3$，1 和 $2$，最终发现 $0,1,2,3$ 都在同一个集合中，我们会误认为最终 $0,1,2,3$ 都知道秘密。
+
+**解决办法**：第一场会议，把 $2$ 和 $3$ 合并。合并后，发现 $2$ 不和 $0$ 在同一个集合，说明 $2$ 不知道秘密，那么**撤销合并**，重置 $2$ 的代表元为 $2$（并查集的初始值）。$3$ 同理。
+
+最后，和 $0$ 在同一个集合的专家（包括 $0$）就是知道秘密的专家。
+
+关于并查集的完整模板，见 [数据结构题单](https://leetcode.cn/circle/discuss/mOr1u6/)。
+
+```Python
+class UnionFind:
+    def __init__(self, n: int):
+        # 一开始有 n 个集合 {0}, {1}, ..., {n-1}
+        # 集合 i 的代表元是自己
+        self.fa = list(range(n))  # 代表元
+
+    # 返回 x 所在集合的代表元
+    # 同时做路径压缩，也就是把 x 所在集合中的所有元素的 fa 都改成代表元
+    def find(self, x: int) -> int:
+        fa = self.fa
+        # 如果 fa[x] == x，则表示 x 是代表元
+        if fa[x] != x:
+            fa[x] = self.find(fa[x])  # fa 改成代表元
+        return fa[x]
+
+    # 判断 x 和 y 是否在同一个集合
+    def is_same(self, x: int, y: int) -> bool:
+        # 如果 x 的代表元和 y 的代表元相同，那么 x 和 y 就在同一个集合
+        # 这就是代表元的作用：用来快速判断两个元素是否在同一个集合
+        return self.find(x) == self.find(y)
+
+    # 把 from 所在集合合并到 to 所在集合中
+    def merge(self, from_: int, to: int) -> None:
+        x, y = self.find(from_), self.find(to)
+        self.fa[x] = y  # 合并集合
+
+
+class Solution:
+    def findAllPeople(self, n: int, meetings: List[List[int]], firstPerson: int) -> List[int]:
+        # 按照 time 从小到大排序
+        meetings.sort(key=lambda x: x[2])
+
+        uf = UnionFind(n)
+        # 一开始 0 和 firstPerson 都知道秘密
+        uf.merge(firstPerson, 0)
+
+        # 分组循环
+        m = len(meetings)
+        i = 0
+        while i < m:
+            start = i
+            time = meetings[i][2]
+            # 合并在同一时间发生的会议
+            while i < m and meetings[i][2] == time:
+                x, y, _ = meetings[i]
+                uf.merge(x, y)
+                i += 1
+
+            # 如果节点不和 0 在同一个集合，那么撤销合并，恢复成初始值
+            for x, y, _ in meetings[start: i]:
+                if not uf.is_same(x, 0):
+                    uf.fa[x] = x
+                if not uf.is_same(y, 0):
+                    uf.fa[y] = y
+
+        # 和 0 在同一个集合的专家都知道秘密
+        return [i for i in range(n) if uf.is_same(i, 0)]
+```
+
+```Java
+class UnionFind {
+    private final int[] fa; // 代表元
+
+    UnionFind(int n) {
+        // 一开始有 n 个集合 {0}, {1}, ..., {n-1}
+        // 集合 i 的代表元是自己
+        fa = new int[n];
+        for (int i = 0; i < n; i++) {
+            fa[i] = i;
+        }
+    }
+
+    // 返回 x 所在集合的代表元
+    // 同时做路径压缩，也就是把 x 所在集合中的所有元素的 fa 都改成代表元
+    public int find(int x) {
+        // 如果 fa[x] == x，则表示 x 是代表元
+        if (fa[x] != x) {
+            fa[x] = find(fa[x]); // fa 改成代表元
+        }
+        return fa[x];
+    }
+
+    // 判断 x 和 y 是否在同一个集合
+    public boolean isSame(int x, int y) {
+        // 如果 x 的代表元和 y 的代表元相同，那么 x 和 y 就在同一个集合
+        // 这就是代表元的作用：用来快速判断两个元素是否在同一个集合
+        return find(x) == find(y);
+    }
+
+    // 把 from 所在集合合并到 to 所在集合中
+    public void merge(int from, int to) {
+        int x = find(from);
+        int y = find(to);
+        fa[x] = y; // 合并集合
+    }
+
+    public void reset(int x) {
+        fa[x] = x;
+    }
+}
+
+class Solution {
+    public List<Integer> findAllPeople(int n, int[][] meetings, int firstPerson) {
+        // 按照 time 从小到大排序
+        Arrays.sort(meetings, (a, b) -> a[2] - b[2]);
+
+        UnionFind uf = new UnionFind(n);
+        // 一开始 0 和 firstPerson 都知道秘密
+        uf.merge(firstPerson, 0);
+
+        // 分组循环
+        int m = meetings.length;
+        for (int i = 0; i < m; ) {
+            int start = i;
+            int time = meetings[i][2];
+            // 合并在同一时间发生的会议
+            for (; i < m && meetings[i][2] == time; i++) {
+                uf.merge(meetings[i][0], meetings[i][1]);
+            }
+
+            // 如果节点不和 0 在同一个集合，那么撤销合并，恢复成初始值
+            for (int j = start; j < i; j++) {
+                int x = meetings[j][0];
+                int y = meetings[j][1];
+                if (!uf.isSame(x, 0)) {
+                    uf.reset(x);
+                }
+                if (!uf.isSame(y, 0)) {
+                    uf.reset(y);
+                }
+            }
+        }
+
+        // 和 0 在同一个集合的专家都知道秘密
+        List<Integer> ans = new ArrayList<>();
+        for (int k = 0; k < n; k++) {
+            if (uf.isSame(k, 0)) {
+                ans.add(k);
+            }
+        }
+        return ans;
+    }
+}
+```
+
+```C++
+class UnionFind {
+public:
+    vector<int> fa; // 代表元
+
+    UnionFind(int n) : fa(n) {
+        // 一开始有 n 个集合 {0}, {1}, ..., {n-1}
+        // 集合 i 的代表元是自己
+        ranges::iota(fa, 0);
+    }
+
+    // 返回 x 所在集合的代表元
+    // 同时做路径压缩，也就是把 x 所在集合中的所有元素的 fa 都改成代表元
+    int find(int x) {
+        // 如果 fa[x] == x，则表示 x 是代表元
+        if (fa[x] != x) {
+            fa[x] = find(fa[x]); // fa 改成代表元
+        }
+        return fa[x];
+    }
+
+    // 判断 x 和 y 是否在同一个集合
+    bool is_same(int x, int y) {
+        // 如果 x 的代表元和 y 的代表元相同，那么 x 和 y 就在同一个集合
+        // 这就是代表元的作用：用来快速判断两个元素是否在同一个集合
+        return find(x) == find(y);
+    }
+
+    // 把 from 所在集合合并到 to 所在集合中
+    void merge(int from, int to) {
+        int x = find(from), y = find(to);
+        fa[x] = y; // 合并集合
+    }
+};
+
+class Solution {
+public:
+    vector<int> findAllPeople(int n, vector<vector<int>>& meetings, int firstPerson) {
+        // 按照 time 从小到大排序
+        ranges::sort(meetings, {}, [](auto& a) { return a[2]; });
+
+        UnionFind uf(n);
+        // 一开始 0 和 firstPerson 都知道秘密
+        uf.merge(firstPerson, 0);
+
+        // 分组循环
+        int m = meetings.size();
+        for (int i = 0; i < m;) {
+            int start = i;
+            int time = meetings[i][2];
+            // 合并在同一时间发生的会议
+            for (; i < m && meetings[i][2] == time; i++) {
+                uf.merge(meetings[i][0], meetings[i][1]);
+            }
+
+            // 如果节点不和 0 在同一个集合，那么撤销合并，恢复成初始值
+            for (int j = start; j < i; j++) {
+                int x = meetings[j][0], y = meetings[j][1];
+                if (!uf.is_same(x, 0)) {
+                    uf.fa[x] = x;
+                }
+                if (!uf.is_same(y, 0)) {
+                    uf.fa[y] = y;
+                }
+            }
+        }
+
+        // 和 0 在同一个集合的专家都知道秘密
+        vector<int> ans;
+        for (int i = 0; i < n; i++) {
+            if (uf.is_same(i, 0)) {
+                ans.push_back(i);
+            }
+        }
+        return ans;
+    }
+};
+```
+
+```Go
+type unionFind struct {
+    fa []int // 代表元
+}
+
+func newUnionFind(n int) unionFind {
+    fa := make([]int, n)
+    // 一开始有 n 个集合 {0}, {1}, ..., {n-1}
+    // 集合 i 的代表元是自己
+    for i := range fa {
+        fa[i] = i
+    }
+    return unionFind{fa}
+}
+
+// 返回 x 所在集合的代表元
+// 同时做路径压缩，也就是把 x 所在集合中的所有元素的 fa 都改成代表元
+func (u unionFind) find(x int) int {
+    // 如果 fa[x] == x，则表示 x 是代表元
+    if u.fa[x] != x {
+        u.fa[x] = u.find(u.fa[x]) // fa 改成代表元
+    }
+    return u.fa[x]
+}
+
+// 判断 x 和 y 是否在同一个集合
+func (u unionFind) same(x, y int) bool {
+    // 如果 x 的代表元和 y 的代表元相同，那么 x 和 y 就在同一个集合
+    // 这就是代表元的作用：用来快速判断两个元素是否在同一个集合
+    return u.find(x) == u.find(y)
+}
+
+// 把 from 所在集合合并到 to 所在集合中
+func (u *unionFind) merge(from, to int) {
+    x, y := u.find(from), u.find(to)
+    u.fa[x] = y
+}
+
+func findAllPeople(n int, meetings [][]int, firstPerson int) (ans []int) {
+    // 按照 time 从小到大排序
+    slices.SortFunc(meetings, func(a, b []int) int { return a[2] - b[2] })
+
+    uf := newUnionFind(n)
+    // 一开始 0 和 firstPerson 都知道秘密
+    uf.merge(firstPerson, 0)
+
+    // 分组循环
+    m := len(meetings)
+    for i := 0; i < m; {
+        start := i
+        // 合并在同一时间发生的会议
+        time := meetings[i][2]
+        for ; i < m && meetings[i][2] == time; i++ {
+            uf.merge(meetings[i][0], meetings[i][1])
+        }
+
+        // 如果节点不和 0 在同一个集合，那么撤销合并，恢复成初始值
+        for j := start; j < i; j++ {
+            x, y := meetings[j][0], meetings[j][1]
+            if !uf.same(x, 0) {
+                uf.fa[x] = x
+            }
+            if !uf.same(y, 0) {
+                uf.fa[y] = y
+            }
+        }
+    }
+
+    // 和 0 在同一个集合的专家都知道秘密
+    for i := range n {
+        if uf.same(i, 0) {
+            ans = append(ans, i)
+        }
+    }
+    return
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$O(n+m\log m)$，其中 $m$ 是 $meetings$ 的长度。分组循环是 $O(m)$ 的，每个 $meetings[i]$ 恰好遍历两次。
+- 空间复杂度：$O(n)$。忽略排序的栈开销。
+
+#### 专题训练
+
+1. 图论题单的「**§1.1 深度优先搜索（$DFS$）**」。
+2. 数据结构题单的「**七、并查集**」。
+3. 双指针题单的「**六、分组循环**」。
+
+#### 分类题单
+
+[如何科学刷题？](https://leetcode.cn/circle/discuss/RvFUtj/)
+
+1. [滑动窗口与双指针（定长/不定长/单序列/双序列/三指针/分组循环）](https://leetcode.cn/circle/discuss/0viNMK/)
+2. [二分算法（二分答案/最小化最大值/最大化最小值/第K小）](https://leetcode.cn/circle/discuss/SqopEo/)
+3. [单调栈（基础/矩形面积/贡献法/最小字典序）](https://leetcode.cn/circle/discuss/9oZFK9/)
+4. [网格图（DFS/BFS/综合应用）](https://leetcode.cn/circle/discuss/YiXPXW/)
+5. [位运算（基础/性质/拆位/试填/恒等式/思维）](https://leetcode.cn/circle/discuss/dHn9Vk/)
+6. [图论算法（DFS/BFS/拓扑排序/基环树/最短路/最小生成树/网络流）](https://leetcode.cn/circle/discuss/01LUak/)
+7. [动态规划（入门/背包/划分/状态机/区间/状压/数位/数据结构优化/树形/博弈/概率期望）](https://leetcode.cn/circle/discuss/tXLS3i/)
+8. [常用数据结构（前缀和/差分/栈/队列/堆/字典树/并查集/树状数组/线段树）](https://leetcode.cn/circle/discuss/mOr1u6/)
+9. [数学算法（数论/组合/概率期望/博弈/计算几何/随机算法）](https://leetcode.cn/circle/discuss/IYT3ss/)
+10. [贪心与思维（基本贪心策略/反悔/区间/字典序/数学/思维/脑筋急转弯/构造）](https://leetcode.cn/circle/discuss/g6KTKL/)
+11. [链表、树与回溯（前后指针/快慢指针/DFS/BFS/直径/LCA）](https://leetcode.cn/circle/discuss/K0n2gO/)
+12. [字符串（KMP/Z函数/Manacher/字符串哈希/AC自动机/后缀数组/子序列自动机）](https://leetcode.cn/circle/discuss/SJFwQI/)
