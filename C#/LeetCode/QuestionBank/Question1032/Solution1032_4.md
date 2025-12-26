@@ -1,13 +1,13 @@
-#### [����һ��ǰ׺��](https://leetcode.cn/problems/stream-of-characters/solutions/2187670/python3javacgo-yi-ti-yi-jie-qian-zhui-sh-79kg/)
+#### [方法一：前缀树](https://leetcode.cn/problems/stream-of-characters/solutions/2187670/python3javacgo-yi-ti-yi-jie-qian-zhui-sh-79kg/)
 
-���ǿ��Ը��ݳ�ʼ��ʱ���ַ������� $words$ ����ǰ׺����ǰ׺����ÿ���ڵ�����������ԣ�
+我们可以根据初始化时的字符串数组 $words$ 构建前缀树，前缀树的每个节点包含两个属性：
 
--   `children`��ָ�� $26$ ����ĸ��ָ�����飬���ڴ洢��ǰ�ڵ���ӽڵ㡣
--   `is_end`����ǵ�ǰ�ڵ��Ƿ�Ϊĳ���ַ����Ľ�β��
+-   `children`：指向 $26$ 个字母的指针数组，用于存储当前节点的子节点。
+-   `is_end`：标记当前节点是否为某个字符串的结尾。
 
-�ڹ��캯���У����Ǳ����ַ������� $words$������ÿ���ַ��� $w$�����ǽ��䷴ת������ַ����뵽ǰ׺���У���������󣬽���ǰ�ڵ�� `is_end` ���Ϊ `true`��
+在构造函数中，我们遍历字符串数组 $words$，对于每个字符串 $w$，我们将其反转后，逐个字符插入到前缀树中，插入结束后，将当前节点的 `is_end` 标记为 `true`。
 
-�� `query` �����У����ǽ���ǰ�ַ� $c$ ���뵽�ַ����У�Ȼ��Ӻ���ǰ�����ַ���������ÿ���ַ� $c$��������ǰ׺���в����Ƿ������ $c$ Ϊ��β���ַ�����������ڣ����� `true`�����򷵻� `false`��ע�⵽ $words$ �е��ַ������Ȳ����� $200$����˲�ѯʱ���ֻ��Ҫ���� $200$ ���ַ���
+在 `query` 函数中，我们将当前字符 $c$ 加入到字符流中，然后从后往前遍历字符流，对于每个字符 $c$，我们在前缀树中查找是否存在以 $c$ 为结尾的字符串，如果存在，返回 `true`，否则返回 `false`。注意到 $words$ 中的字符串长度不超过 $200$，因此查询时最多只需要遍历 $200$ 个字符。
 
 ```python
 class Trie:
@@ -235,4 +235,4 @@ func (this *StreamChecker) Query(letter byte) bool {
  */
 ```
 
-ʱ�临�Ӷȷ��棬���캯����ʱ�临�Ӷ�Ϊ $O(L)$���� `query` ������ʱ�临�Ӷ�Ϊ $O(M)$������ $L$ Ϊ�ַ������� $words$ �������ַ����ĳ���֮�ͣ��� $M$ Ϊ�ַ������� $words$ ���ַ�������󳤶ȡ��ռ临�Ӷ� $O(L)$��
+时间复杂度方面，构造函数的时间复杂度为 $O(L)$，而 `query` 函数的时间复杂度为 $O(M)$。其中 $L$ 为字符串数组 $words$ 中所有字符串的长度之和，而 $M$ 为字符串数组 $words$ 中字符串的最大长度。空间复杂度 $O(L)$。
