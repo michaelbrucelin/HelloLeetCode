@@ -51,5 +51,36 @@ namespace LeetCode.QuestionBank.Question0840
                 return true;
             }
         }
+
+        /// <summary>
+        /// 逻辑同NumMagicSquaresInside()，优化Check()，证明见Solution0840_oth.md
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <returns></returns>
+        public int NumMagicSquaresInside2(int[][] grid)
+        {
+            const int SUM = 15, CENTER = 5, MASK = 511;
+            int result = 0, rcnt = grid.Length, ccnt = grid[0].Length;
+            for (int r = 1; r < rcnt - 1; r++) for (int c = 1; c < ccnt - 1; c++)
+                {
+                    if (grid[r][c] == CENTER && Check(r, c)) result++;
+                }
+
+            return result;
+
+            bool Check(int r, int c)
+            {
+                int check = 0;
+                for (int _r = r - 1; _r <= r + 1; _r++) for (int _c = c - 1; _c <= c + 1; _c++) check |= (1 << (grid[_r][_c] - 1));
+                if (check != MASK) return false;
+
+                if (grid[r - 1][c - 1] + grid[r - 1][c] + grid[r - 1][c + 1] != SUM) return false;
+                if (grid[r][c - 1] + grid[r][c + 1] != SUM - CENTER) return false;
+                if (grid[r - 1][c - 1] + grid[r][c - 1] + grid[r + 1][c - 1] != SUM) return false;
+                if (grid[r - 1][c] + grid[r + 1][c] != SUM - CENTER) return false;
+
+                return true;
+            }
+        }
     }
 }
