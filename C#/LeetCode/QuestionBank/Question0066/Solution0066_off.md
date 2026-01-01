@@ -1,19 +1,22 @@
-#### [����һ���ҳ���ĺ�׺ 9](https://leetcode.cn/problems/plus-one/solutions/1057162/jia-yi-by-leetcode-solution-2hor/)
+### [加一](https://leetcode.cn/problems/plus-one/solutions/1057162/jia-yi-by-leetcode-solution-2hor/)
 
-**˼·**
+#### 方法一：找出最长的后缀 9
 
-�����Ƕ����� $digits$ ��һʱ������ֻ��Ҫ��ע $digits$ ��ĩβ�����˶��ٸ� $9$ ���ɡ����ǿ��Կ������µ����������
--   ��� $digits$ ��ĩβû�� $9$������ $[1, 2, 3]$����ô����ֱ�ӽ�ĩβ������һ���õ� $[1, 2, 4]$ �����أ�
--   ��� $digits$ ��ĩβ�����ɸ� $9$������ $[1, 2, 3, 9, 9]$����ô����ֻ��Ҫ�ҳ���ĩβ��ʼ��**��һ��**��Ϊ $9$ ��Ԫ�أ��� $3$������Ԫ�ؼ�һ���õ� $[1, 2, 4, 9, 9]$�����ĩβ�� $9$ ȫ�����㣬�õ� $[1, 2, 4, 0, 0]$ �����ء�
--   ��� $digits$ ������Ԫ�ض��� $9$������ $[9, 9, 9, 9, 9]$����ô��Ϊ $[1, 0, 0, 0, 0, 0]$������ֻ��Ҫ����һ�����ȱ� $digits$ �� $1$ �������飬����Ԫ����Ϊ $1$������Ԫ����Ϊ $0$ ���ɡ�
+**思路**
 
-**�㷨**
+当我们对数组 $digits$ 加一时，我们只需要关注 $digits$ 的末尾出现了多少个 $9$ 即可。我们可以考虑如下的三种情况：
 
-����ֻ��Ҫ������ $digits$ ����һ������������ҳ���һ����Ϊ $9$ ��Ԫ�أ������һ������������Ԫ�����㼴�ɡ���� $digits$ �����е�Ԫ�ؾ�Ϊ $9$����ô��Ӧ�š�˼·�����ֵĵ����������������Ҫ����һ���µ����顣
+- 如果 $digits$ 的末尾没有 $9$，例如 $[1,2,3]$，那么我们直接将末尾的数加一，得到 $[1,2,4]$ 并返回；
+- 如果 $digits$ 的末尾有若干个 $9$，例如 $[1,2,3,9,9]$，那么我们只需要找出从末尾开始的**第一个**不为 $9$ 的元素，即 $3$，将该元素加一，得到 $[1,2,4,9,9]$。随后将末尾的 $9$ 全部置零，得到 $[1,2,4,0,0]$ 并返回。
+- 如果 $digits$ 的所有元素都是 $9$，例如 $[9,9,9,9,9]$，那么答案为 $[1,0,0,0,0,0]$。我们只需要构造一个长度比 $digits$ 多 $1$ 的新数组，将首元素置为 $1$，其余元素置为 $0$ 即可。
 
-**����**
+**算法**
 
-```cpp
+们只需要对数组 $digits$ 进行一次逆序遍历，找出第一个不为 $9$ 的元素，将其加一并将后续所有元素置零即可。如果 $digits$ 中所有的元素均为 $9$，那么对应着「思路」部分的第三种情况，我们需要返回一个新的数组。
+
+**代码**
+
+```C++
 class Solution {
 public:
     vector<int> plusOne(vector<int>& digits) {
@@ -28,7 +31,7 @@ public:
             }
         }
 
-        // digits �����е�Ԫ�ؾ�Ϊ 9
+        // digits 中所有的元素均为 9
         vector<int> ans(n + 1);
         ans[0] = 1;
         return ans;
@@ -36,7 +39,7 @@ public:
 };
 ```
 
-```java
+```Java
 class Solution {
     public int[] plusOne(int[] digits) {
         int n = digits.length;
@@ -50,7 +53,7 @@ class Solution {
             }
         }
 
-        // digits �����е�Ԫ�ؾ�Ϊ 9
+        // digits 中所有的元素均为 9
         int[] ans = new int[n + 1];
         ans[0] = 1;
         return ans;
@@ -58,7 +61,7 @@ class Solution {
 }
 ```
 
-```c#
+```CSharp
 public class Solution {
     public int[] PlusOne(int[] digits) {
         int n = digits.Length;
@@ -72,7 +75,7 @@ public class Solution {
             }
         }
 
-        // digits �����е�Ԫ�ؾ�Ϊ 9
+        // digits 中所有的元素均为 9
         int[] ans = new int[n + 1];
         ans[0] = 1;
         return ans;
@@ -80,7 +83,7 @@ public class Solution {
 }
 ```
 
-```python
+```Python
 class Solution:
     def plusOne(self, digits: List[int]) -> List[int]:
         n = len(digits)
@@ -91,11 +94,11 @@ class Solution:
                     digits[j] = 0
                 return digits
 
-        # digits �����е�Ԫ�ؾ�Ϊ 9
+        # digits 中所有的元素均为 9
         return [1] + [0] * n
 ```
 
-```go
+```Go
 func plusOne(digits []int) []int {
     n := len(digits)
     for i := n - 1; i >= 0; i-- {
@@ -107,7 +110,7 @@ func plusOne(digits []int) []int {
             return digits
         }
     }
-    // digits �����е�Ԫ�ؾ�Ϊ 9
+    // digits 中所有的元素均为 9
 
     digits = make([]int, n+1)
     digits[0] = 1
@@ -115,7 +118,7 @@ func plusOne(digits []int) []int {
 }
 ```
 
-```javascript
+```JavaScript
 var plusOne = function(digits) {
     const n = digits.length;
     for (let i = n - 1; i >= 0; --i) {
@@ -128,14 +131,14 @@ var plusOne = function(digits) {
         }
     }
 
-    // digits �����е�Ԫ�ؾ�Ϊ 9
+    // digits 中所有的元素均为 9
     const ans = new Array(n + 1).fill(0);
     ans[0] = 1;
     return ans;
 };
 ```
 
-**���Ӷȷ���**
+**复杂度分析**
 
--   ʱ�临�Ӷȣ�$O(n)$������ $n$ ������ $digits$ �ĳ��ȡ�
--   �ռ临�Ӷȣ�$O(1)$������ֵ������ռ临�Ӷȡ�
+- 时间复杂度：$O(n)$，其中 $n$ 是数组 $digits$ 的长度。
+- 空间复杂度：$O(1)$。返回值不计入空间复杂度。
