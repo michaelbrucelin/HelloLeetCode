@@ -4,7 +4,7 @@
 
 给你一个整数数组 `nums` ，该数组具有以下属性：
 
-- `nums.length == 2 * n`.
+- <code>nums.length == 2 &times; n</code>
 - `nums` 包含 `n + 1` 个 **不同的** 元素
 - `nums` 中恰有一个元素重复 `n` 次
 
@@ -28,6 +28,6 @@
 **提示：**
 
 - `2 <= n <= 5000`
-- `nums.length == 2 * n`
-- `0 <= nums[i] <= 10^4`
+- <code>nums.length == 2 &times; n</code>
+- <code>0 <= nums[i] <= 10<sup>4</sup></code>
 - `nums` 由 `n + 1` 个 **不同的** 元素组成，且其中一个元素恰好重复 `n` 次
