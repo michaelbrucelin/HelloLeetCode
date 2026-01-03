@@ -18,48 +18,36 @@ namespace LeetCode.QuestionBank.Question0622
     {
         public MyCircularQueue(int k)
         {
-            queue = new int[k];
-            tail = 0;
-            this.k = k;
         }
-
-        private int[] queue;
-        private int tail, k;
 
         public bool EnQueue(int value)
         {
-            if (tail == k) return false;
-            queue[tail++] = value;
-            return true;
+            throw new NotImplementedException();
         }
 
         public bool DeQueue()
         {
-            if (tail == 0) return false;
-            tail--;
-            return true;
+            throw new NotImplementedException();
         }
 
         public int Front()
         {
-            if (tail == 0) return -1;
-            return queue[0];
+            throw new NotImplementedException();
         }
 
         public int Rear()
         {
-            if (tail == 0) return -1;
-            return queue[tail - 1];
+            throw new NotImplementedException();
         }
 
         public bool IsEmpty()
         {
-            return tail == 0;
+            throw new NotImplementedException();
         }
 
         public bool IsFull()
         {
-            return tail == k;
+            throw new NotImplementedException();
         }
     }
 }
