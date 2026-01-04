@@ -6,7 +6,7 @@
 
 如果 `x` 恰好有四个因数，我们就将其因数之和累加到答案中。
 
-```C++
+```c++
 class Solution {
 public:
     int sumFourDivisors(vector<int>& nums) {
@@ -34,7 +34,7 @@ public:
 };
 ```
 
-```Java
+```java
 class Solution {
     public int sumFourDivisors(int[] nums) {
         int ans = 0;
@@ -61,7 +61,7 @@ class Solution {
 }
 ```
 
-```Python
+```python
 class Solution:
     def sumFourDivisors(self, nums: List[int]) -> int:
         ans = 0
@@ -81,6 +81,164 @@ class Solution:
             if factor_cnt == 4:
                 ans += factor_sum
         return ans
+```
+
+```csharp
+public class Solution {
+    public int SumFourDivisors(int[] nums) {
+        int ans = 0;
+        foreach (int num in nums) {
+            // factor_cnt: 因数的个数
+            // factor_sum: 因数的和
+            int factor_cnt = 0, factor_sum = 0;
+            for (int i = 1; i * i <= num; ++i) {
+                if (num % i == 0) {
+                    ++factor_cnt;
+                    factor_sum += i;
+                    if (i * i != num) {   // 判断 i 和 num/i 是否相等，若不相等才能将 num/i 看成新的因数
+                        ++factor_cnt;
+                        factor_sum += num / i;
+                    }
+                }
+            }
+            if (factor_cnt == 4) {
+                ans += factor_sum;
+            }
+        }
+        return ans;
+    }
+}
+```
+
+```go
+func sumFourDivisors(nums []int) int {
+    ans := 0
+    for _, num := range nums {
+        // factor_cnt: 因数的个数
+        // factor_sum: 因数的和
+        factor_cnt, factor_sum := 0, 0
+        for i := 1; i*i <= num; i++ {
+            if num%i == 0 {
+                factor_cnt++
+                factor_sum += i
+                if i*i != num {   // 判断 i 和 num/i 是否相等，若不相等才能将 num/i 看成新的因数
+                    factor_cnt++
+                    factor_sum += num / i
+                }
+            }
+        }
+        if factor_cnt == 4 {
+            ans += factor_sum
+        }
+    }
+    return ans
+}
+```
+
+```c
+int sumFourDivisors(int* nums, int numsSize) {
+    int ans = 0;
+    for (int idx = 0; idx < numsSize; idx++) {
+        int num = nums[idx];
+        // factor_cnt: 因数的个数
+        // factor_sum: 因数的和
+        int factor_cnt = 0, factor_sum = 0;
+        for (int i = 1; i * i <= num; ++i) {
+            if (num % i == 0) {
+                ++factor_cnt;
+                factor_sum += i;
+                if (i * i != num) {   // 判断 i 和 num/i 是否相等，若不相等才能将 num/i 看成新的因数
+                    ++factor_cnt;
+                    factor_sum += num / i;
+                }
+            }
+        }
+        if (factor_cnt == 4) {
+            ans += factor_sum;
+        }
+    }
+    return ans;
+}
+```
+
+```javascript
+var sumFourDivisors = function(nums) {
+    let ans = 0;
+    for (const num of nums) {
+        // factor_cnt: 因数的个数
+        // factor_sum: 因数的和
+        let factor_cnt = 0, factor_sum = 0;
+        for (let i = 1; i * i <= num; ++i) {
+            if (num % i === 0) {
+                ++factor_cnt;
+                factor_sum += i;
+                if (i * i !== num) {   // 判断 i 和 num/i 是否相等，若不相等才能将 num/i 看成新的因数
+                    ++factor_cnt;
+                    factor_sum += num / i;
+                }
+            }
+        }
+        if (factor_cnt === 4) {
+            ans += factor_sum;
+        }
+    }
+    return ans;
+};
+```
+
+```typescript
+function sumFourDivisors(nums: number[]): number {
+    let ans = 0;
+    for (const num of nums) {
+        // factor_cnt: 因数的个数
+        // factor_sum: 因数的和
+        let factor_cnt = 0, factor_sum = 0;
+        for (let i = 1; i * i <= num; ++i) {
+            if (num % i === 0) {
+                ++factor_cnt;
+                factor_sum += i;
+                if (i * i !== num) {   // 判断 i 和 num/i 是否相等，若不相等才能将 num/i 看成新的因数
+                    ++factor_cnt;
+                    factor_sum += num / i;
+                }
+            }
+        }
+        if (factor_cnt === 4) {
+            ans += factor_sum;
+        }
+    }
+    return ans;
+}
+```
+
+```rust
+impl Solution {
+    pub fn sum_four_divisors(nums: Vec<i32>) -> i32 {
+        let mut ans = 0;
+        for &num in &nums {
+            // factor_cnt: 因数的个数
+            // factor_sum: 因数的和
+            let mut factor_cnt = 0;
+            let mut factor_sum = 0;
+            let mut i = 1;
+            while i * i <= num {
+                if num % i == 0 {
+                    factor_cnt += 1;
+                    factor_sum += i;
+                    if i * i != num {   // 判断 i 和 num/i 是否相等，若不相等才能将 num/i 看成新的因数
+                        factor_cnt += 1;
+                        factor_sum += num / i;
+                    }
+                }
+                i += 1;
+            }
+            if factor_cnt == 4 {
+                ans += factor_sum;
+            }
+        }
+        ans
+    }
+}
 ```
 
 **复杂度分析**
@@ -118,13 +276,13 @@ $$factor\_count(x)=\mathop{\Pi}\limits_{i=1}^k(\alpha_i+1)$$
 
 下面的代码给出了 $Python$ 和 $C++$ 语言的「埃拉托斯特尼筛法」以及「欧拉筛法」的实现。
 
-```C++
+```c++
 class Solution {
 public:
     int sumFourDivisors(vector<int>& nums) {
         // C 是数组 nums 元素的上限，C3 是 C 的立方根
         int C = 100000, C3 = 46;
-        
+
         vector<int> isprime(C + 1, 1);
         vector<int> primes;
 
@@ -155,7 +313,7 @@ public:
             }
         }
         */
-        
+
         // 通过质数表构造出所有的四因数
         unordered_map<int, int> factor4;
         for (int prime: primes) {
@@ -185,12 +343,12 @@ public:
 };
 ```
 
-```Java
+```java
 class Solution {
     public int sumFourDivisors(int[] nums) {
         // C 是数组 nums 元素的上限，C3 是 C 的立方根
         int C = 100000, C3 = 46;
-        
+
         boolean[] isPrime = new boolean[C + 1];
         Arrays.fill(isPrime, true);
         List<Integer> primes = new ArrayList<Integer>();
@@ -222,7 +380,7 @@ class Solution {
             }
         }
         */
-        
+
         // 通过质数表构造出所有的四因数
         Map<Integer, Integer> factor4 = new HashMap<Integer, Integer>();
         for (int prime : primes) {
@@ -251,7 +409,7 @@ class Solution {
 }
 ```
 
-```Python
+```python
 class Solution:
     def sumFourDivisors(self, nums: List[int]) -> int:
         # C 是数组 nums 元素的上限，C3 是 C 的立方根
@@ -266,7 +424,7 @@ class Solution:
                 primes.append(i)
             for j in range(i + i, C + 1, i):
                 isprime[j] = False
-        
+
         # 欧拉筛法
         """
         for i in range(2, C + 1):
@@ -279,7 +437,7 @@ class Solution:
                 if i % prime == 0:
                     break
         """
-        
+
         # 通过质数表构造出所有的四因数
         factor4 = dict()
         for prime in primes:
@@ -291,12 +449,440 @@ class Solution:
                     factor4[primes[i] * primes[j]] = 1 + primes[i] + primes[j] + primes[i] * primes[j]
                 else:
                     break
-        
+
         ans = 0
         for num in nums:
             if num in factor4:
                 ans += factor4[num]
         return ans
+```
+
+```csharp
+public class Solution {
+    public int SumFourDivisors(int[] nums) {
+        // C 是数组 nums 元素的上限，C3 是 C 的立方根
+        int C = 100000, C3 = 46;
+
+        int[] isprime = new int[C + 1];
+        for (int i = 2; i <= C; i++) isprime[i] = 1;
+        List<int> primes = new List<int>();
+
+        // 埃拉托斯特尼筛法
+        for (int i = 2; i <= C; ++i) {
+            if (isprime[i] == 1) {
+                primes.Add(i);
+            }
+            for (int j = i + i; j <= C; j += i) {
+                isprime[j] = 0;
+            }
+        }
+
+        // 欧拉筛法
+        /*
+        for (int i = 2; i <= C; ++i) {
+            if (isprime[i] == 1) {
+                primes.Add(i);
+            }
+            foreach (int prime in primes) {
+                if (i * prime > C) {
+                    break;
+                }
+                isprime[i * prime] = 0;
+                if (i % prime == 0) {
+                    break;
+                }
+            }
+        }
+        */
+
+        // 通过质数表构造出所有的四因数
+        Dictionary<int, int> factor4 = new Dictionary<int, int>();
+        foreach (int prime in primes) {
+            if (prime <= C3) {
+                factor4[prime * prime * prime] = 1 + prime + prime * prime + prime * prime * prime;
+            }
+        }
+        for (int i = 0; i < primes.Count; ++i) {
+            for (int j = i + 1; j < primes.Count; ++j) {
+                if (primes[i] <= C / primes[j]) {
+                    factor4[primes[i] * primes[j]] = 1 + primes[i] + primes[j] + primes[i] * primes[j];
+                }
+                else {
+                    break;
+                }
+            }
+        }
+
+        int ans = 0;
+        foreach (int num in nums) {
+            if (factor4.ContainsKey(num)) {
+                ans += factor4[num];
+            }
+        }
+        return ans;
+    }
+}
+```
+
+```go
+func sumFourDivisors(nums []int) int {
+    // C 是数组 nums 元素的上限，C3 是 C 的立方根
+    C, C3 := 100000, 46
+
+    isprime := make([]int, C+1)
+    for i := 2; i <= C; i++ {
+        isprime[i] = 1
+    }
+    primes := []int{}
+
+    // 埃拉托斯特尼筛法
+    for i := 2; i <= C; i++ {
+        if isprime[i] == 1 {
+            primes = append(primes, i)
+        }
+        for j := i + i; j <= C; j += i {
+            isprime[j] = 0
+        }
+    }
+
+    // 欧拉筛法
+    /*
+    for i := 2; i <= C; i++ {
+        if isprime[i] == 1 {
+            primes = append(primes, i)
+        }
+        for _, prime := range primes {
+            if i * prime > C {
+                break
+            }
+            isprime[i * prime] = 0
+            if i % prime == 0 {
+                break
+            }
+        }
+    }
+    */
+
+    // 通过质数表构造出所有的四因数
+    factor4 := make(map[int]int)
+    for _, prime := range primes {
+        if prime <= C3 {
+            factor4[prime * prime * prime] = 1 + prime + prime * prime + prime * prime * prime
+        }
+    }
+    for i := 0; i < len(primes); i++ {
+        for j := i + 1; j < len(primes); j++ {
+            if primes[i] <= C / primes[j] {
+                factor4[primes[i] * primes[j]] = 1 + primes[i] + primes[j] + primes[i] * primes[j]
+            } else {
+                break
+            }
+        }
+    }
+
+    ans := 0
+    for _, num := range nums {
+        if val, exists := factor4[num]; exists {
+            ans += val
+        }
+    }
+    return ans
+}
+```
+
+```c
+int sumFourDivisors(int* nums, int numsSize) {
+    // C 是数组 nums 元素的上限，C3 是 C 的立方根
+    const int C = 100000, C3 = 46;
+
+    int* isprime = (int*)malloc((C + 1) * sizeof(int));
+    memset(isprime, 0, (C + 1) * sizeof(int));
+    int* primes = (int*)malloc((C + 1) * sizeof(int));
+    int primeCount = 0;
+
+    // 埃拉托斯特尼筛法
+    for (int i = 2; i <= C; ++i) {
+        isprime[i] = 1;
+    }
+    for (int i = 2; i <= C; ++i) {
+        if (isprime[i]) {
+            primes[primeCount++] = i;
+        }
+        for (int j = i + i; j <= C; j += i) {
+            isprime[j] = 0;
+        }
+    }
+
+    // 欧拉筛法
+    /*
+    for (int i = 2; i <= C; ++i) {
+        if (isprime[i]) {
+            primes[primeCount++] = i;
+        }
+        for (int j = 0; j < primeCount; ++j) {
+            if (i * primes[j] > C) {
+                break;
+            }
+            isprime[i * primes[j]] = 0;
+            if (i % primes[j] == 0) {
+                break;
+            }
+        }
+    }
+    */
+
+    // 通过质数表构造出所有的四因数
+    int* factor4_keys = (int*)malloc(primeCount * primeCount * sizeof(int));
+    int* factor4_values = (int*)malloc(primeCount * primeCount * sizeof(int));
+    int factor4_count = 0;
+
+    for (int i = 0; i < primeCount; ++i) {
+        int prime = primes[i];
+        if (prime <= C3) {
+            factor4_keys[factor4_count] = prime * prime * prime;
+            factor4_values[factor4_count] = 1 + prime + prime * prime + prime * prime * prime;
+            factor4_count++;
+        }
+    }
+    for (int i = 0; i < primeCount; ++i) {
+        for (int j = i + 1; j < primeCount; ++j) {
+            if (primes[i] <= C / primes[j]) {
+                factor4_keys[factor4_count] = primes[i] * primes[j];
+                factor4_values[factor4_count] = 1 + primes[i] + primes[j] + primes[i] * primes[j];
+                factor4_count++;
+            } else {
+                break;
+            }
+        }
+    }
+
+    int ans = 0;
+    for (int idx = 0; idx < numsSize; ++idx) {
+        int num = nums[idx];
+        for (int i = 0; i < factor4_count; ++i) {
+            if (factor4_keys[i] == num) {
+                ans += factor4_values[i];
+                break;
+            }
+        }
+    }
+
+    free(isprime);
+    free(primes);
+    free(factor4_keys);
+    free(factor4_values);
+
+    return ans;
+}
+```
+
+```javascript
+var sumFourDivisors = function(nums) {
+    // C 是数组 nums 元素的上限，C3 是 C 的立方根
+    const C = 100000, C3 = 46;
+
+    let isprime = new Array(C + 1).fill(0);
+    let primes = [];
+
+    // 埃拉托斯特尼筛法
+    for (let i = 2; i <= C; i++) {
+        isprime[i] = 1;
+    }
+    for (let i = 2; i <= C; i++) {
+        if (isprime[i]) {
+            primes.push(i);
+        }
+        for (let j = i + i; j <= C; j += i) {
+            isprime[j] = 0;
+        }
+    }
+
+    // 欧拉筛法
+    /*
+    for (let i = 2; i <= C; i++) {
+        if (isprime[i]) {
+            primes.push(i);
+        }
+        for (let prime of primes) {
+            if (i * prime > C) {
+                break;
+            }
+            isprime[i * prime] = 0;
+            if (i % prime === 0) {
+                break;
+            }
+        }
+    }
+    */
+
+    // 通过质数表构造出所有的四因数
+    let factor4 = new Map();
+    for (let prime of primes) {
+        if (prime <= C3) {
+            factor4.set(prime * prime * prime, 1 + prime + prime * prime + prime * prime * prime);
+        }
+    }
+    for (let i = 0; i < primes.length; i++) {
+        for (let j = i + 1; j < primes.length; j++) {
+            if (primes[i] <= C / primes[j]) {
+                factor4.set(primes[i] * primes[j], 1 + primes[i] + primes[j] + primes[i] * primes[j]);
+            } else {
+                break;
+            }
+        }
+    }
+
+    let ans = 0;
+    for (let num of nums) {
+        if (factor4.has(num)) {
+            ans += factor4.get(num);
+        }
+    }
+    return ans;
+};
+```
+
+```typescript
+function sumFourDivisors(nums: number[]): number {
+    // C 是数组 nums 元素的上限，C3 是 C 的立方根
+    const C: number = 100000, C3: number = 46;
+
+    let isprime: number[] = new Array(C + 1).fill(0);
+    let primes: number[] = [];
+
+    // 埃拉托斯特尼筛法
+    for (let i = 2; i <= C; i++) {
+        isprime[i] = 1;
+    }
+    for (let i = 2; i <= C; i++) {
+        if (isprime[i]) {
+            primes.push(i);
+        }
+        for (let j = i + i; j <= C; j += i) {
+            isprime[j] = 0;
+        }
+    }
+
+    // 欧拉筛法
+    /*
+    for (let i = 2; i <= C; i++) {
+        if (isprime[i]) {
+            primes.push(i);
+        }
+        for (let prime of primes) {
+            if (i * prime > C) {
+                break;
+            }
+            isprime[i * prime] = 0;
+            if (i % prime === 0) {
+                break;
+            }
+        }
+    }
+    */
+
+    // 通过质数表构造出所有的四因数
+    let factor4: Map<number, number> = new Map();
+    for (let prime of primes) {
+        if (prime <= C3) {
+            factor4.set(prime * prime * prime, 1 + prime + prime * prime + prime * prime * prime);
+        }
+    }
+    for (let i = 0; i < primes.length; i++) {
+        for (let j = i + 1; j < primes.length; j++) {
+            if (primes[i] <= C / primes[j]) {
+                factor4.set(primes[i] * primes[j], 1 + primes[i] + primes[j] + primes[i] * primes[j]);
+            } else {
+                break;
+            }
+        }
+    }
+
+    let ans: number = 0;
+    for (let num of nums) {
+        if (factor4.has(num)) {
+            ans += factor4.get(num)!;
+        }
+    }
+    return ans;
+}
+```
+
+```rust
+use std::collections::HashMap;
+
+impl Solution {
+    pub fn sum_four_divisors(nums: Vec<i32>) -> i32 {
+        // C 是数组 nums 元素的上限，C3 是 C 的立方根
+        const C: i32 = 100000;
+        const C3: i32 = 46;
+
+        let mut isprime = vec![0; (C + 1) as usize];
+        let mut primes = Vec::new();
+
+        // 埃拉托斯特尼筛法
+        for i in 2..=C {
+            isprime[i as usize] = 1;
+        }
+        for i in 2..=C {
+            if isprime[i as usize] == 1 {
+                primes.push(i);
+            }
+            let mut j = i + i;
+            while j <= C {
+                isprime[j as usize] = 0;
+                j += i;
+            }
+        }
+
+        // 欧拉筛法
+        /*
+        for i in 2..=C {
+            if isprime[i as usize] == 1 {
+                primes.push(i);
+            }
+            for &prime in &primes {
+                if i * prime > C {
+                    break;
+                }
+                isprime[(i * prime) as usize] = 0;
+                if i % prime == 0 {
+                    break;
+                }
+            }
+        }
+        */
+
+        // 通过质数表构造出所有的四因数
+        let mut factor4 = HashMap::new();
+        for &prime in &primes {
+            if prime <= C3 {
+                let key = prime * prime * prime;
+                let value = 1 + prime + prime * prime + prime * prime * prime;
+                factor4.insert(key, value);
+            }
+        }
+        for i in 0..primes.len() {
+            for j in i + 1..primes.len() {
+                if primes[i] <= C / primes[j] {
+                    let key = primes[i] * primes[j];
+                    let value = 1 + primes[i] + primes[j] + primes[i] * primes[j];
+                    factor4.insert(key, value);
+                } else {
+                    break;
+                }
+            }
+        }
+
+        let mut ans = 0;
+        for num in nums {
+            if let Some(&value) = factor4.get(&num) {
+                ans += value;
+            }
+        }
+        ans
+    }
+}
 ```
 
 **复杂度分析**
