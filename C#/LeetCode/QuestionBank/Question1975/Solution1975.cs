@@ -20,13 +20,13 @@ namespace LeetCode.QuestionBank.Question1975
         /// <returns></returns>
         public long MaxMatrixSum(int[][] matrix)
         {
-            long sum = 0; int min = int.MaxValue, cnt = 0;
-            for (int i = 0; i < matrix.Length; i++) for (int j = 0; j < matrix[i].Length; j++)
+            long sum = 0; int min = int.MaxValue, rcnt = matrix.Length, ccnt = matrix[0].Length, cnt = 0;
+            for (int r = 0, val; r < rcnt; r++) for (int c = 0; c < ccnt; c++)
                 {
-                    int v = Math.Abs(matrix[i][j]);
-                    sum += v;
-                    if (v < min) min = v;
-                    if (matrix[i][j] < 0) cnt++;
+                    val = Math.Abs(matrix[r][c]);
+                    sum += val;
+                    if (val < min) min = val;
+                    if (matrix[r][c] < 0) cnt++;
                 }
 
             return (cnt & 1) == 0 ? sum : sum - min - min;
