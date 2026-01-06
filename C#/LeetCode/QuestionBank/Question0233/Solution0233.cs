@@ -9,10 +9,14 @@ namespace LeetCode.QuestionBank.Question0233
     public class Solution0233 : Interface0233
     {
         /// <summary>
-        /// 数位DP
-        /// dp[i,j]表示首位是j的i位数的结果
+        /// 找规律
+        /// 1位数，有1个
+        /// 2位数，首位是1，有11=1+10个，否则有1个，一共20个
+        /// 3位数，首位是1，有120=20+100个，否则有20个，一共有300个
+        /// ...
+        /// k位数，一共有k*10^(k-1)个，k<=9
         /// 
-        /// 代码是错的，不写了
+        /// 没写完，先不写了
         /// </summary>
         /// <param name="n"></param>
         /// <returns></returns>
@@ -21,16 +25,10 @@ namespace LeetCode.QuestionBank.Question0233
             if (n == 0) return 0;
 
             int len = 0; for (int _n = n; _n > 0; _n /= 10) len++;
-            int[,] dp = new int[len + 1, 10];
-            for (int i = 1, cnt = 1; i <= len; i++, cnt *= 10) for (int j = 0; j < 10; j++)
-                {
-                    for (int k = 0; k < 10; k++) dp[i, j] += dp[i - 1, k];
-                    if (j == 1) dp[i, j] += cnt;
-                }
+            int[] cnts = new int[len];
+            for (int i = 0, j = 1; i < len; i++, j *= 10) cnts[i] = i * j;
 
-            int result = 0;
-            for (int i = 1, _n = n; _n > 0; i++, _n /= 10) for (int j = _n % 10; j > 0; j--) result += dp[i, j];
-            return result;
+            throw new NotImplementedException();
         }
     }
 }

@@ -22,14 +22,14 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            TestXXXX test = new();
-            test.Test();
+            //TestXXXX test = new();
+            //test.Test();
             //Utils.FmtMarkDown(Utils.QuestionType.QuestionBank, "1253", "off");
             //test.TestDivergentTraverse();
             //test.Look4Rules();
             //test.VerifyRules();
-            //UtilsXXXX utils = new();
-            //utils.Dial(1024);
+            UtilsXXXX utils = new();
+            utils.Dial(10240);
             //utils.DialInt();
             //utils.Debug();
 
