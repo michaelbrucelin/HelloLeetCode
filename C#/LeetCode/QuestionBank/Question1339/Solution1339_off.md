@@ -8,9 +8,9 @@
 
 那么我们如何找到这个节点呢？我们首先使用深度优先搜索计算出 `sum_r`，即遍历二叉树中的每一个节点，将其对应的元素值进行累加。随后我们再次使用深度优先搜索，通过递归的方式计算出每一个节点 `v` 对应的子树元素之和 `sum_v`，并求出所有 <code>(sum_v) &times; (sum_r - sum_v)</code> 中的最大值，就可以得到答案。
 
-由于题目中需要将结果对 `10^9+7` 取模，我们需要注意的是，不能在计算 <code>(sum_v) &times; (sum_r - sum_v)</code> 时将其直接对 `10^9+7` 取模，这是因为原先较大的数，取模之后不一定仍然较大。这一步可以有两种解决方案：
+由于题目中需要将结果对 <code>10<sup>9</sup>+7</code> 取模，我们需要注意的是，不能在计算 <code>(sum_v) &times; (sum_r - sum_v)</code> 时将其直接对 <code>10<sup>9</sup>+7</code> 取模，这是因为原先较大的数，取模之后不一定仍然较大。这一步可以有两种解决方案：
 
-- 我们用 $64$ 位的整数类型（例如 `long`，`long $long`$ 等）计算和存储 <code>(sum_v) &times; (sum_r - sum_v)</code> 的值，并在最后对 `10^9+7` 取模；
+- 我们用 $64$ 位的整数类型（例如 `long`，`long long` 等）计算和存储 <code>(sum_v) &times; (sum_r - sum_v)</code> 的值，并在最后对 <code>10<sup>9</sup>+7</code> 取模；
 - 我们使用均值不等式的知识，当 `sum_r` 为定值时，`sum_v` 越接近 `sum_r` 的一半，<code>(sum_v) &times; (sum_r - sum_v)</code> 的值越大。我们只需要存储最接近 `sum_r` 的一半的那个 `sum_v`，在最后计算 <code>(sum_v) &times; (sum_r - sum_v)</code> 的值并对 <code>10<sup>9</sup>+7</code> 取模。
 
 ```C++
