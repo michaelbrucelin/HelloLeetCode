@@ -61,7 +61,7 @@ namespace LeetCode.Utilses
         public static T[] Str2NumArray<T>(string raw) where T : INumber<T>
         {
             raw = raw.Replace(" ", "");
-            if (raw.Length == 0) return new T[] { };
+            if (raw.Length == 0) return [];
 
             return raw[1..^1].Split(',').Select(s => T.Parse(s, CultureInfo.InvariantCulture.NumberFormat)).ToArray();
         }
@@ -91,10 +91,10 @@ namespace LeetCode.Utilses
         public static char[][] Str2CharArray_2d(string raw)
         {
             raw = raw.Replace(" ", "").Replace("\"", "");
-            if (raw.Length == 0) return new char[][] { };
+            if (raw.Length == 0) return [];
 
             return raw[2..^2].Split("],[")
-                             .Select(str => str.Length == 0 ? new char[] { } : str.Split(',').Select(s => s[0]).ToArray())
+                             .Select(str => str.Length == 0 ? [] : str.Split(',').Select(s => s[0]).ToArray())
                              .ToArray();
         }
 
@@ -107,10 +107,10 @@ namespace LeetCode.Utilses
         public static string[][] Str2StrArray_2d(string raw)
         {
             raw = raw.Replace(" ", "").Replace("\"", "");
-            if (raw.Length == 0) return new string[][] { };
+            if (raw.Length == 0) return [];
 
             return raw[2..^2].Split("],[")
-                             .Select(str => str.Length == 0 ? new string[] { } : str.Split(',').Select(s => s).ToArray())
+                             .Select(str => str.Length == 0 ? [] : str.Split(',').Select(s => s).ToArray())
                              .ToArray();
         }
 

@@ -1,14 +1,15 @@
 ﻿using LeetCode.Interview.Interview0801;
-using LeetCode.QuestionBank.Question1553;
 using LeetCode.LCP.LCP0030;
 using LeetCode.LCR.LCR0002;
 using LeetCode.LCS.LCS0001;
-using LeetCode.剑指_Offer.剑指_Offer_0058_1;
+using LeetCode.QuestionBank.Question1553;
 using LeetCode.Utilses;
+using LeetCode.剑指_Offer.剑指_Offer_0058_1;
 using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
-using TestXXXX = LeetCode.QuestionBank.Question0233.Test0233;
+using TestXXXX = LeetCode.QuestionBank.Question1339.Test1339;
 using UtilsXXXX = LeetCode.QuestionBank.Question0233.Utils0233;
 // using TestXXXX = LeetCode.LCP.LCP0051.Test0051;
 // using TestXXXX = LeetCode.LCR.LCR0063.Test0063;
@@ -22,14 +23,14 @@ namespace LeetCode
         {
             //Random random = new Random();
 
-            //TestXXXX test = new();
-            //test.Test();
+            TestXXXX test = new();
+            test.Test();
             //Utils.FmtMarkDown(Utils.QuestionType.QuestionBank, "1253", "off");
             //test.TestDivergentTraverse();
             //test.Look4Rules();
             //test.VerifyRules();
-            UtilsXXXX utils = new();
-            utils.Dial(10240);
+            //UtilsXXXX utils = new();
+            //utils.Dial(10240);
             //utils.DialInt();
             //utils.Debug();
 
@@ -47,7 +48,7 @@ namespace LeetCode
             //Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, precision) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
             //Console.WriteLine($"{++id,2}: In {sw.Elapsed}, {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
             //Console.WriteLine($"{++id,2}: In {sw.Elapsed}, {Utils.CompareArray(result, answer, true) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
-            //链表
+            #region 比较两个链表
             /*
             List<int> _result, _answer;
             _result = link2list(result); _answer = link2list(answer);
@@ -61,7 +62,8 @@ namespace LeetCode
                 return list;
             }
             */
-            //二叉树
+            #endregion
+            #region 比较两个二叉树
             /*
             _result = tree2list(result); _answer = tree2list(answer);
             Console.WriteLine($"{++id,2}: {Utils.CompareArray(_result, _answer) + ",",-6} result: {Utils.ToString(_result)}, answer: {Utils.ToString(_answer)}");
@@ -88,6 +90,34 @@ namespace LeetCode
                 return result;
             }
              */
+            #endregion
+            #region 字符串反序列化为二叉树
+            /*
+            TreeNode TreeBuilder(string input)
+            {
+                int?[] _nodes = input[1..^1].Split(',', StringSplitOptions.RemoveEmptyEntries)
+                                            .Select(x => x.Replace(" ", "").ToLower())
+                                            .Select(x => (int?)(x != "null" ? int.Parse(x) : null))
+                                            .ToArray();
+                if (_nodes[0] == null) return null;
+
+                int p1 = 0, p2 = 1, n = _nodes.Length;
+                TreeNode[] nodes = new TreeNode[n];
+                for (int i = 0; i < n; i++) if (_nodes[i] != null) nodes[i] = new TreeNode(_nodes[i].Value);
+                while (p2 < n)
+                {
+                    while (nodes[p1] == null) p1++;
+                    if (nodes[p2] != null) nodes[p1].left = nodes[p2];
+                    if (++p2 >= n) break;
+                    if (nodes[p2] != null) nodes[p1].right = nodes[p2];
+                    ++p2;
+                    ++p1;
+                }
+
+                return nodes[0];
+            }
+             */
+            #endregion
 
             //哑节点(dummy node)，也被称为哨兵节点
             //const int MOD = (int)1e9 + 7;               // 1000000007, 10^9 + 7
