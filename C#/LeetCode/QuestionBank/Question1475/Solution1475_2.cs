@@ -19,8 +19,7 @@ namespace LeetCode.QuestionBank.Question1475
 
                 if (stack.Count == 0)
                 {
-                    stack.Push(prices[i]);
-                    continue;
+                    stack.Push(prices[i]); continue;
                 }
 
                 if (prices[i] == stack.Peek()) result[i] = 0;

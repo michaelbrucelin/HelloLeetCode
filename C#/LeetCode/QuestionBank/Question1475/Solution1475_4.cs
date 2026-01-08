@@ -18,7 +18,7 @@ namespace LeetCode.QuestionBank.Question1475
             int len = prices.Length;
             int[] result = new int[len];
             Stack<int> stack = new Stack<int>();
-            for (int i = len - 1, price = 0; i >= 0; i--)
+            for (int i = len - 1, price; i >= 0; i--)
             {
                 price = prices[i];
                 while (stack.Count > 0 && stack.Peek() > price) stack.Pop();
