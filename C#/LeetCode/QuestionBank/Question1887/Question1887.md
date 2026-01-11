@@ -33,8 +33,8 @@
 > **解释：** 需要 4 次操作使 nums 中的所有元素相等：
 >
 > 1. largest = 3 下标为 4。nextLargest = 2。将 nums[4] 减少到 2。nums = [1,1,2,2,**2**]。
-> 2. largest = 2 下标为 2。nextLargest = 1。将 nums[2] 减少到 1。nums = [1,1,**1**,2,2]。 
-> 3. largest = 2 下标为 3。nextLargest = 1。将 nums[3] 减少到 1。nums = [1,1,1,**1**,2]。 
+> 2. largest = 2 下标为 2。nextLargest = 1。将 nums[2] 减少到 1。nums = [1,1,**1**,2,2]。
+> 3. largest = 2 下标为 3。nextLargest = 1。将 nums[3] 减少到 1。nums = [1,1,1,**1**,2]。
 > 4. largest = 2 下标为 4。nextLargest = 1。将 nums[4] 减少到 1。nums = [1,1,1,1,**1**]。
 
 **提示：**
