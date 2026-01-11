@@ -75,10 +75,10 @@ namespace LeetCode.Utilses
         public static T[][] Str2NumArray_2d<T>(string raw) where T : INumber<T>
         {
             raw = raw.Replace(" ", "");
-            if (raw.Length == 0) return new T[][] { };
+            if (raw.Length == 0) return [];
 
             return raw[2..^2].Split("],[")
-                             .Select(str => str.Length == 0 ? new T[] { } : str.Split(',').Select(s => T.Parse(s, CultureInfo.InvariantCulture.NumberFormat)).ToArray())
+                             .Select(str => str.Length == 0 ? [] : str.Split(',').Select(s => T.Parse(s, CultureInfo.InvariantCulture.NumberFormat)).ToArray())
                              .ToArray();
         }
 
