@@ -16,5 +16,5 @@
 
 **提示：**
 
-- `1 <= nums.length <= 5 * 10^4`
-- `-5 * 10^4 <= nums[i] <= 5 * 10^4`
+- <code>1 <= nums.length <= 5 &times; 10<sup>4</sup></code>
+- <code>-5 &times; 10<sup>4</sup> <= nums[i] <= 5 &times; 10<sup>4</sup></code>
