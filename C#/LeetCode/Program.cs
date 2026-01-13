@@ -9,7 +9,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using TestXXXX = LeetCode.QuestionBank.Question1887.Test1887;
+using TestXXXX = LeetCode.QuestionBank.Question0861.Test0861;
 using UtilsXXXX = LeetCode.QuestionBank.Question0233.Utils0233;
 // using TestXXXX = LeetCode.LCP.LCP0051.Test0051;
 // using TestXXXX = LeetCode.LCR.LCR0063.Test0063;
@@ -120,6 +120,7 @@ namespace LeetCode
             #endregion
 
             //哑节点(dummy node)，也被称为哨兵节点
+            //const double epsilon = 1e-5;
             //const int MOD = (int)1e9 + 7;               // 1000000007, 10^9 + 7
             //string question = "1234", testcase = "08", arg = "nums";
             //string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
