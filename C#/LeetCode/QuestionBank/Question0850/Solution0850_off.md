@@ -1,4 +1,4 @@
-﻿#### [](https://leetcode.cn/problems/rectangle-area-ii/solution/ju-xing-mian-ji-ii-by-leetcode-solution-ulqz//#方法一：离散化-扫描线-使用简单数组实时维护)方法一：离散化 + 扫描线 + 使用简单数组实时维护
+#### [](https://leetcode.cn/problems/rectangle-area-ii/solution/ju-xing-mian-ji-ii-by-leetcode-solution-ulqz//#方法一：离散化-扫描线-使用简单数组实时维护)方法一：离散化 + 扫描线 + 使用简单数组实时维护
 
 **思路与算法**
 
