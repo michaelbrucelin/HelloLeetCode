@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question3454
 {
-    internal class Solution3454
+    public class Solution3454 : Interface3454
     {
+        public double SeparateSquares(int[][] squares)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
