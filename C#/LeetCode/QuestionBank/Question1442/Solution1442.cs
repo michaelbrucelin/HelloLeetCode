@@ -16,10 +16,10 @@ namespace LeetCode.QuestionBank.Question1442
         public int CountTriplets(int[] arr)
         {
             int result = 0, len = arr.Length;
-            for (int i = 0, xorl = 0; i < len; i++, xorl = 0) for (int j = i; j < len; j++)
+            for (int i = 0, xorl = 0; i < len; i++, xorl = 0) for (int j = i + 1; j < len; j++)
                 {
-                    xorl ^= arr[j];
-                    for (int k = j + 1, xorr = 0; k < len; k++, xorr = 0)
+                    xorl ^= arr[j - 1];
+                    for (int k = j, xorr = 0; k < len; k++)
                     {
                         if ((xorr ^= arr[k]) == xorl) result++;
                     }
