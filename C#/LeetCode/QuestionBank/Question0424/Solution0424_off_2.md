@@ -20,17 +20,17 @@
 
 以 `s = AABCABBB`，`k = 2` 为例，寻找替换 `k` 次以后字符全部相等的最长子串的长度的过程如下图所示：
 
-![](./assets/img/Solution1292_off_2_01.jpeg)
-![](./assets/img/Solution1292_off_2_02.jpeg)
-![](./assets/img/Solution1292_off_2_03.jpeg)
-![](./assets/img/Solution1292_off_2_04.jpeg)
-![](./assets/img/Solution1292_off_2_05.jpeg)
-![](./assets/img/Solution1292_off_2_06.jpeg)
-![](./assets/img/Solution1292_off_2_07.jpeg)
-![](./assets/img/Solution1292_off_2_08.jpeg)
-![](./assets/img/Solution1292_off_2_09.jpeg)
-![](./assets/img/Solution1292_off_2_10.jpeg)
-![](./assets/img/Solution1292_off_2_11.jpeg)
+![](./assets/img/Solution0424_off_2_01.jpeg)
+![](./assets/img/Solution0424_off_2_02.jpeg)
+![](./assets/img/Solution0424_off_2_03.jpeg)
+![](./assets/img/Solution0424_off_2_04.jpeg)
+![](./assets/img/Solution0424_off_2_05.jpeg)
+![](./assets/img/Solution0424_off_2_06.jpeg)
+![](./assets/img/Solution0424_off_2_07.jpeg)
+![](./assets/img/Solution0424_off_2_08.png)
+![](./assets/img/Solution0424_off_2_09.jpeg)
+![](./assets/img/Solution0424_off_2_10.jpeg)
+![](./assets/img/Solution0424_off_2_11.jpeg)
 
 整个过程，我们使用了两个表示边界的变量，一前一后，交替在字符串上前进：右边界先向右和移动，直到它不能移动了为止，左边界再继续向右移动，整个过程像极了一个滑动的窗口在一条线段上移动。
 

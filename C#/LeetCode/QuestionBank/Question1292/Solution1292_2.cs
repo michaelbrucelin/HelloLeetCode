@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1292
 {
-    public class Solution1292 : Interface1292
+    public class Solution1292_2 : Interface1292
     {
         /// <summary>
-        /// 二分 + 前缀和
-        /// 枚举每个起点（左上），二分查找最大的终点（右下），前缀和优化
+        /// 前缀和
+        /// 逻辑同Solution1292，将最内层的二分改为遍历，就是使用双指针代替二分的思路
         /// </summary>
         /// <param name="mat"></param>
         /// <param name="threshold"></param>
@@ -26,18 +26,10 @@ namespace LeetCode.QuestionBank.Question1292
             for (int r = 0; r + result < rcnt; r++) for (int c = 0; r + result < rcnt & c + result < ccnt; c++)
                 {
                     low = result; high = Math.Min(rcnt - r, ccnt - c) - 1;
-                    while (low <= high)
+                    for (int i = low; i <= high; i++)
                     {
-                        mid = low + ((high - low) >> 1);
-                        sum = sums[r + mid + 1, c + mid + 1] - sums[r + mid + 1, c] - sums[r, c + mid + 1] + sums[r, c];
-                        if (sum <= threshold)
-                        {
-                            result = Math.Max(result, mid + 1); low = mid + 1;
-                        }
-                        else
-                        {
-                            high = mid - 1;
-                        }
+                        sum = sums[r + i + 1, c + i + 1] - sums[r + i + 1, c] - sums[r, c + i + 1] + sums[r, c];
+                        if (sum <= threshold) result++;
                     }
                 }
 

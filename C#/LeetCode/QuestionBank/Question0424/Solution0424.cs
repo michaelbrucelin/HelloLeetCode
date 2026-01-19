@@ -11,6 +11,8 @@ namespace LeetCode.QuestionBank.Question0424
         /// <summary>
         /// 双指针，滑动窗口
         /// 窗口内除数量最多的字母外，其余字母总数量小于等于k即可
+        /// 
+        /// 官解写的很巧妙，多看看官解
         /// </summary>
         /// <param name="s"></param>
         /// <param name="k"></param>
