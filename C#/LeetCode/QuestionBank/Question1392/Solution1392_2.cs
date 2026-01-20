@@ -15,7 +15,7 @@ namespace LeetCode.QuestionBank.Question1392
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        public string LongestPrefix100(string s)
+        public string LongestPrefix(string s)
         {
             const int MOD = (int)1e9 + 7;
             int result = 0, len = s.Length;
@@ -64,7 +64,7 @@ namespace LeetCode.QuestionBank.Question1392
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        public string LongestPrefix(string s)
+        public string LongestPrefix3(string s)
         {
             const int MOD = (int)1e9 + 7;
             int len = s.Length;
@@ -75,6 +75,37 @@ namespace LeetCode.QuestionBank.Question1392
                 hashs1[i] = hash1 = (hash1 * 26 + s[i] - '`') % MOD;
                 hashs2[i] = hash2 = ((s[j] - '`') * esab + hash2) % MOD;
                 esab = (esab * 26) % MOD;
+            }
+
+            for (int k = len - 2; k >= 0; k--)
+            {
+                if (hashs1[k] == hashs2[k])
+                {
+                    for (int i = 0, j = len - k - 1; j < len; i++, j++) if (s[i] != s[j]) goto NOTEQEAL;
+                    return s[..(k + 1)];
+                NOTEQEAL:;
+                }
+            }
+
+            return "";
+        }
+
+        /// <summary>
+        /// 逻辑完全同LongestPrefix3()，继续优化，将基数26改为31
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public string LongestPrefix4(string s)
+        {
+            const int MOD = (int)1e9 + 7;
+            int len = s.Length;
+            long[] hashs1 = new long[len - 1], hashs2 = new long[len - 1];
+            long hash1 = 0, hash2 = 0, esab = 1;
+            for (int i = 0, j = len - 1; j > 0; i++, j--)
+            {
+                hashs1[i] = hash1 = (hash1 * 31 + s[i] - '`') % MOD;
+                hashs2[i] = hash2 = ((s[j] - '`') * esab + hash2) % MOD;
+                esab = (esab * 31) % MOD;
             }
 
             for (int k = len - 2; k >= 0; k--)
