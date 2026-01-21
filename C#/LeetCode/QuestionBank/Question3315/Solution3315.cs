@@ -4,20 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCode.QuestionBank.Question3314
+namespace LeetCode.QuestionBank.Question3315
 {
-    public class Solution3314_2 : Interface3314
+    public class Solution3315 : Interface3315
     {
         /// <summary>
         /// 位运算
-        /// 一个整数x，x+1相等于把x的最低位的0改为1，这一位后面全部改为0
-        /// 所以，x | x+1 相等于把x的最低位的0改为1
-        /// 那么这里相等于已知 y = x | x+1，已知y，求x，就相当于把y的最低位连续的1中任意一位1改为0即可
-        ///     例如，y=23，即 10111，所以最后3个1中任意1个1改为0都是解，即 10110，10101，10011 都是解
-        /// 题目要求最小的x，就相当于把y的最低位连续的1中的最高位的1改为0即可
-        /// 
-        /// 这样找规律也行
-        /// for (int i = 1; i < 257; i++) for (int j = 1; j < 257; j++) if ((j | (j + 1)) == i) Console.WriteLine($"i = {i}, \t j = {j}");
+        /// 逻辑同Solution3314_2
         /// </summary>
         /// <param name="nums"></param>
         /// <returns></returns>
