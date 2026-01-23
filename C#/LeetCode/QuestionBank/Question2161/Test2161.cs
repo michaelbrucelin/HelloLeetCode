@@ -11,7 +11,7 @@ namespace LeetCode.QuestionBank.Question2161
     {
         public void Test()
         {
-            Interface2161 solution = new Solution2161();
+            Interface2161 solution = new Solution2161_2();
             int[] nums; int pivot;
             int[] result, answer;
             int id = 0;
