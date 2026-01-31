@@ -754,8 +754,8 @@ func minimumCost(source, target string, original, changed []string, cost []int) 
 #### 专题训练
 
 1. 动态规划题单的「**§5.2 最优划分**」。
-2. 图论题单的「**§3.2 全源最短路：$Floyd$ 算法**」。
-3. 数据结构题单的「**六、字典树（$trie$）**」。
+2. 图论题单的「**§3.2 全源最短路：Floyd 算法**」。
+3. 数据结构题单的「**六、字典树（trie）**」。
 
 #### 分类题单
 
