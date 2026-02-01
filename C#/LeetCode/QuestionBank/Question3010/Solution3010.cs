@@ -15,21 +15,21 @@ namespace LeetCode.QuestionBank.Question3010
         /// <returns></returns>
         public int MinimumCost(int[] nums)
         {
-            int result = nums[0], first = int.MaxValue, second = int.MaxValue;
-            for (int i = 1, num; i < nums.Length; i++)
+            int first = nums[0], second = int.MaxValue, third = int.MaxValue, len = nums.Length;
+            for (int i = 1, num; i < len; i++)
             {
                 num = nums[i];
-                if (num < first)
+                if (num < second)
                 {
-                    second = first; first = num;
+                    third = second; second = num;
                 }
-                else if (num < second)
+                else if (num < third)
                 {
-                    second = num;
+                    third = num;
                 }
             }
 
-            return result + first + second;
+            return first + second + third;
         }
     }
 }

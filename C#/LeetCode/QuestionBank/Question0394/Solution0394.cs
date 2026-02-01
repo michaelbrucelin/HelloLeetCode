@@ -19,6 +19,13 @@ namespace LeetCode.QuestionBank.Question0394
             StringBuilder result = new StringBuilder();
             Stack<int> cnts = new Stack<int>();
             Stack<string> strs = new Stack<string>();
+            int ptr = -1, cnt = 0, pl = 0, pr = -1, len = s.Length;
+            char c;
+            while (++ptr < len)
+            {
+                c=s[ptr];
+
+            }
 
             return result.ToString();
         }

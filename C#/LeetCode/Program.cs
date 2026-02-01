@@ -9,11 +9,11 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using TestXXXX = LeetCode.QuestionBank.Question2223.Test2223;
+using TestXXXX = LeetCode.QuestionBank.Question1545.Test1545;
 using UtilsXXXX = LeetCode.QuestionBank.Question0233.Utils0233;
 // using TestXXXX = LeetCode.LCP.LCP0051.Test0051;
 // using TestXXXX = LeetCode.LCR.LCR0063.Test0063;
-// using TestXXXX = LeetCode.Interview.Interview1625.Test1625;
+// using TestXXXX = LeetCode.Interview.Interview0809.Test0809;
 
 namespace LeetCode
 {
@@ -44,7 +44,7 @@ namespace LeetCode
             //数组
             //Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");                // 1d
             //Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result, false)}, answer: {Utils.ToString(answer, false)}");  // 2d
-            //Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, true) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
+            //Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, true) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");          // ignore order
             //Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer, precision) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
             //Console.WriteLine($"{++id,2}: In {sw.Elapsed}, {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
             //Console.WriteLine($"{++id,2}: In {sw.Elapsed}, {Utils.CompareArray(result, answer, true) + ",",-6} result: {Utils.ToString(result)}, answer: {Utils.ToString(answer)}");
