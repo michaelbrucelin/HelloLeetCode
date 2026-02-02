@@ -38,6 +38,24 @@ namespace LeetCode.QuestionBank.Question0394
             answer = "abccdcdcdxyz";
             result = solution.DecodeString(s);
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            //5. 
+            s = "2[abc]xyz3[cd]ef";
+            answer = "abcabcxyzcdcdcdef";
+            result = solution.DecodeString(s);
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            // 6. 
+            s = "2[2[ab]c]xyz3[cd]ef";
+            answer = "ababcababcxyzcdcdcdef";
+            result = solution.DecodeString(s);
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            // 7. 
+            s = "2[2[a3[x]b]c]xyz3[cd]ef";
+            answer = "axxxbaxxxbcaxxxbaxxxbcxyzcdcdcdef";
+            result = solution.DecodeString(s);
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
         }
     }
 }
