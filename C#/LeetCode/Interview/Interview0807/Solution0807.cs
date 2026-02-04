@@ -38,5 +38,36 @@ namespace LeetCode.Interview.Interview0807
                 }
             }
         }
+
+        /// <summary>
+        /// 逻辑完全同Permutation()，改为回溯
+        /// </summary>
+        /// <param name="S"></param>
+        /// <returns></returns>
+        public string[] Permutation2(string S)
+        {
+            int n = 1, len = S.Length;
+            for (int i = 2; i <= len; i++) n *= i;
+            string[] result = new string[n];
+            int idx = 0;
+            bool[] mask = new bool[len];
+            Array.Fill(mask, true);
+            char[] s = new char[len];
+            backtrack(0);
+
+            return result;
+
+            void backtrack(int p)
+            {
+                if (p == len) { result[idx++] = new string(s); return; }
+
+                for (int i = 0; i < len; i++) if (mask[i])
+                    {
+                        s[p] = S[i]; mask[i] = false;
+                        backtrack(p + 1);
+                        mask[i] = true;
+                    }
+            }
+        }
     }
 }
