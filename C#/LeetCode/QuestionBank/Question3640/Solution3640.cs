@@ -48,7 +48,7 @@ namespace LeetCode.QuestionBank.Question3640
                 {
                     (pl, pr, _) = ranges[j];
                     sum1 = nums[pl - 1]; sum2 = 0; sum3 = nums[pr + 1];
-                    for (p = pl; p <= pr; p++) sum2 += nums[p];                             // 第2段全要
+                    for (p = pl; p <= pr; p++) sum2 += nums[p];                             // 第2段全部保留
                     (pl, pr, _) = ranges[i]; _sum = sum1;
                     for (p = pr - 2; p >= pl; p--) sum1 = Math.Max(sum1, _sum += nums[p]);  // 第1段找最大后缀
                     (pl, pr, _) = ranges[k]; _sum = sum2;
