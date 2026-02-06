@@ -40,7 +40,25 @@ namespace LeetCode.LCR.LCR0083
         /// <exception cref="NotImplementedException"></exception>
         public IList<IList<int>> Permute2(int[] nums)
         {
-            throw new NotImplementedException();
+            IList<IList<int>> result = [];
+            int n = nums.Length;
+            int[] buffer = new int[n];
+            backtrack([.. nums]);
+
+            return result;
+
+            void backtrack(HashSet<int> set)
+            {
+                if (set.Count == 0) { result.Add([.. buffer]); return; }
+                int idx = n - set.Count;
+                foreach (int x in set)
+                {
+                    HashSet<int> _set = [.. set];
+                    _set.Remove(x);
+                    buffer[idx] = x;
+                    backtrack(_set);
+                }
+            }
         }
     }
 }
