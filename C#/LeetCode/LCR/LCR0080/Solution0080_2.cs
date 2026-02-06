@@ -16,7 +16,20 @@ namespace LeetCode.LCR.LCR0080
         /// <returns></returns>
         public IList<IList<int>> Combine(int n, int k)
         {
-            throw new NotImplementedException();
+            IList<IList<int>> result = [];
+            Queue<(List<int>, int)> queue = new Queue<(List<int>, int)>();
+            queue.Enqueue(([], 1));
+            List<int> list; int _n;
+            while (queue.Count > 0)
+            {
+                (list, _n) = queue.Dequeue();
+                if (list.Count == k) { result.Add(list); continue; }
+                if (n - _n + 1 < k - list.Count) continue;
+                queue.Enqueue(([.. list, _n], _n + 1));
+                queue.Enqueue((list, _n + 1));
+            }
+
+            return result;
         }
     }
 }
