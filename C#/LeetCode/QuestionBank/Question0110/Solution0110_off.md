@@ -1,4 +1,4 @@
-﻿### [平衡二叉树](https://leetcode.cn/problems/balanced-binary-tree/solutions/377216/ping-heng-er-cha-shu-by-leetcode-solution/)
+### [平衡二叉树](https://leetcode.cn/problems/balanced-binary-tree/solutions/377216/ping-heng-er-cha-shu-by-leetcode-solution/)
 
 #### 前言
 
