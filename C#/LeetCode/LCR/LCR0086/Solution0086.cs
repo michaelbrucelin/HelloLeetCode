@@ -36,18 +36,61 @@ namespace LeetCode.LCR.LCR0086
                 dfs([.. list, (left, left)], left + 1);
                 for (int right = left + 1; right < len; right++)
                 {
-                    switch (memory[left, right])
+                    if (memory[left, right] == 0)
                     {
-                        case 1: continue;
-                        case 2: dfs([.. list, (left, right)], right + 1); continue;
-                        default:
-                            for (int l = left, r = right; l < r; l++, r--) if (s[l] != s[r]) goto CONTINUE;
-                            memory[left, right] = 2;
-                            dfs([.. list, (left, right)], right + 1);
-                            continue;
+                        memory[left, right] = 2;
+                        for (int l = left, r = right; l < r; l++, r--) if (s[l] != s[r]) { memory[left, right] = 1; break; }
                     }
-                CONTINUE:;
-                    memory[left, right] = 1;
+
+                    if (memory[left, right] == 2) dfs([.. list, (left, right)], right + 1);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 逻辑同Partition()，改成回溯
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public string[][] Partition2(string s)
+        {
+            int len = s.Length;
+            byte[,] memory = new byte[len, len];  // 0: null, 1: false, 2: true
+            List<string[]> result = [];
+            List<(int, int)> buffer = [];
+            backtrack(0);
+
+            return [.. result];
+
+            void backtrack(int left)
+            {
+                if (left == len)
+                {
+                    int idx = 0, cnt = buffer.Count;
+                    string[] strs = new string[cnt];
+                    foreach ((int l, int r) in buffer) strs[idx++] = s[l..(r + 1)];
+                    result.Add(strs);
+                    return;
+                }
+
+                buffer.Add((left, left));
+                backtrack(left + 1);
+                buffer.RemoveAt(buffer.Count - 1);
+
+                for (int right = left + 1; right < len; right++)
+                {
+                    if (memory[left, right] == 0)
+                    {
+                        memory[left, right] = 2;
+                        for (int l = left, r = right; l < r; l++, r--) if (s[l] != s[r]) { memory[left, right] = 1; break; }
+                    }
+
+                    if (memory[left, right] == 2)
+                    {
+                        buffer.Add((left, right));
+                        backtrack(right + 1);
+                        buffer.RemoveAt(buffer.Count - 1);
+                    }
                 }
             }
         }
