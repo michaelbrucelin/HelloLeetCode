@@ -23,4 +23,4 @@
 - `1 <= s.length <= 1000`
 - `s` 由小写英文字母组成
 
-注意：本题与主站 70 题相同：[https://leetcode.cn/problems/palindromic-substrings/](https://leetcode.cn/problems/palindromic-substrings/) 
+注意：本题与主站 70 题相同：[https://leetcode.cn/problems/palindromic-substrings/](https://leetcode.cn/problems/palindromic-substrings/)
