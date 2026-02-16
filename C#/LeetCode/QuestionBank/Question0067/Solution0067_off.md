@@ -527,5 +527,5 @@ impl Solution {
 
 **复杂度分析**
 
-- 时间复杂度：$O(\vert a\vert +\vert b\vert +X\cdot max(\vert a\vert +\vert b\vert ))$，字符串转化成数字需要的时间代价为 $O(\vert a\vert +\vert b\vert)$，计算的时间代价为 $O(max{\vert a\vert ,\vert b\vert })$，$X$ 为位运算所需的时间，因为这里用到了高精度计算，所以位运算的时间不一定为 $O(1)$。
+- 时间复杂度：$O(\vert a\vert +\vert b\vert +X\cdot max(\vert a\vert +\vert b\vert))$，字符串转化成数字需要的时间代价为 $O(\vert a\vert +\vert b\vert)$，计算的时间代价为 $O(max{\vert a\vert ,\vert b\vert})$，$X$ 为位运算所需的时间，因为这里用到了高精度计算，所以位运算的时间不一定为 $O(1)$。
 - 空间复杂度：这里使用了 $x$ 和 $y$ 来保存 $a$ 和 $b$ 的整数形式，如果用 $Python$ 实现，这里用到了 $Python$ 的高精度功能，实际的空间代价是 $O(\vert a\vert +\vert b\vert)$。
