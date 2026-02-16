@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCode.QuestionBank.Question0190
+namespace LeetCode.QuestionBank.Question0190_old
 {
     public class Solution0190_3 : Interface0190
     {
