@@ -1,16 +1,18 @@
-﻿#### [方法一：按字符分组](https://leetcode.cn/problems/count-binary-substrings/solutions/367704/ji-shu-er-jin-zhi-zi-chuan-by-leetcode-solution/)
+﻿### [计数二进制子串](https://leetcode.cn/problems/count-binary-substrings/solutions/367704/ji-shu-er-jin-zhi-zi-chuan-by-leetcode-solution/)
+
+#### 方法一：按字符分组
 
 **思路与算法**
 
-我们可以将字符串 $s$ 按照 $0$ 和 $1$ 的连续段分组，存在 $counts$ 数组中，例如 $s = 00111011$，可以得到这样的 $counts$ 数组：$counts = \{2, 3, 1, 2\}$。
+我们可以将字符串 $s$ 按照 $0$ 和 $1$ 的连续段分组，存在 $counts$ 数组中，例如 $s=00111011$，可以得到这样的 $counts$ 数组：$counts=\{2,3,1,2\}$。
 
-这里 $counts$ 数组中两个相邻的数一定代表的是两种不同的字符。假设 $counts$ 数组中两个相邻的数字为 $u$ 或者 $v$，它们对应着 $u$ 个 $0$ 和 $v$ 个 $1$，或者 $u$ 个 $1$ 和 $v$ 个 $0$。它们能组成的满足条件的子串数目为 $\min \{ u, v \}$，即一对相邻的数字对答案的贡献。
+这里 $counts$ 数组中两个相邻的数一定代表的是两种不同的字符。假设 $counts$ 数组中两个相邻的数字为 $u$ 或者 $v$，它们对应着 $u$ 个 $0$ 和 $v$ 个 $1$，或者 $u$ 个 $1$ 和 $v$ 个 $0$。它们能组成的满足条件的子串数目为 $min\{u,v\}$，即一对相邻的数字对答案的贡献。
 
 我们只要遍历所有相邻的数对，求它们的贡献总和，即可得到答案。
 
 不难得到这样的实现：
 
-```cpp
+```C++
 class Solution {
 public:
     int countBinarySubstrings(string s) {
@@ -34,7 +36,7 @@ public:
 };
 ```
 
-```java
+```Java
 class Solution {
     public int countBinarySubstrings(String s) {
         List<Integer> counts = new ArrayList<Integer>();
@@ -57,7 +59,7 @@ class Solution {
 }
 ```
 
-```javascript
+```JavaScript
 var countBinarySubstrings = function(s) {
     const counts = [];
     let ptr = 0, n = s.length;
@@ -78,7 +80,7 @@ var countBinarySubstrings = function(s) {
 };
 ```
 
-```go
+```Go
 func countBinarySubstrings(s string) int {
     counts := []int{}
     ptr, n := 0, len(s)
@@ -97,16 +99,9 @@ func countBinarySubstrings(s string) int {
     }
     return ans
 }
-
-func min(x, y int) int {
-    if x < y {
-        return x
-    }
-    return y
-}
 ```
 
-```c
+```C
 int countBinarySubstrings(char* s) {
     int n = strlen(s);
     int counts[n], counts_len = 0;
@@ -129,13 +124,112 @@ int countBinarySubstrings(char* s) {
 }
 ```
 
+```Python
+class Solution:
+    def countBinarySubstrings(self, s: str) -> int:
+        counts = []
+        ptr, n = 0, len(s)
+
+        while ptr < n:
+            c = s[ptr]
+            count = 0
+            while ptr < n and s[ptr] == c:
+                ptr += 1
+                count += 1
+            counts.append(count)
+
+        ans = 0
+        for i in range(1, len(counts)):
+            ans += min(counts[i], counts[i - 1])
+
+        return ans
+```
+
+```CSharp
+public class Solution {
+    public int CountBinarySubstrings(string s) {
+        List<int> counts = new List<int>();
+        int ptr = 0, n = s.Length;
+
+        while (ptr < n) {
+            char c = s[ptr];
+            int count = 0;
+            while (ptr < n && s[ptr] == c) {
+                ptr++;
+                count++;
+            }
+            counts.Add(count);
+        }
+
+        int ans = 0;
+        for (int i = 1; i < counts.Count; i++) {
+            ans += Math.Min(counts[i], counts[i - 1]);
+        }
+
+        return ans;
+    }
+}
+```
+
+```TypeScript
+function countBinarySubstrings(s: string): number {
+    const counts: number[] = [];
+    let ptr = 0, n = s.length;
+
+    while (ptr < n) {
+        const c = s[ptr];
+        let count = 0;
+        while (ptr < n && s[ptr] === c) {
+            ptr++;
+            count++;
+        }
+        counts.push(count);
+    }
+
+    let ans = 0;
+    for (let i = 1; i < counts.length; i++) {
+        ans += Math.min(counts[i], counts[i - 1]);
+    }
+
+    return ans;
+}
+```
+
+```Rust
+impl Solution {
+    pub fn count_binary_substrings(s: String) -> i32 {
+        let mut counts = Vec::new();
+        let bytes = s.as_bytes();
+        let n = bytes.len();
+        let mut ptr = 0;
+
+        while ptr < n {
+            let c = bytes[ptr];
+            let mut count = 0;
+            while ptr < n && bytes[ptr] == c {
+                ptr += 1;
+                count += 1;
+            }
+            counts.push(count);
+        }
+
+        let mut ans = 0;
+        for i in 1..counts.len() {
+            ans += counts[i].min(counts[i - 1]);
+        }
+
+        ans
+    }
+}
+```
+
 这个实现的时间复杂度和空间复杂度都是 $O(n)$。
 
-对于某一个位置 $i$，其实我们只关心 $i - 1$ 位置的 $counts$ 值是多少，所以可以用一个 $last$ 变量来维护当前位置的前一个位置，这样可以省去一个 $counts$ 数组的空间。
+对于某一个位置 $i$，其实我们只关心 $i-1$ 位置的 $counts$ 值是多少，所以可以用一个 $last$ 变量来维护当前位置的前一个位置，这样可以省去一个 $counts$ 数组的空间。
 
 **代码**
 
-```cpp
+```C++
 class Solution {
 public:
     int countBinarySubstrings(string s) {
@@ -155,7 +249,7 @@ public:
 };
 ```
 
-```java
+```Java
 class Solution {
     public int countBinarySubstrings(String s) {
         int ptr = 0, n = s.length(), last = 0, ans = 0;
@@ -174,7 +268,7 @@ class Solution {
 }
 ```
 
-```javascript
+```JavaScript
 var countBinarySubstrings = function(s) {
     let ptr = 0, n = s.length, last = 0, ans = 0;
     while (ptr < n) {
@@ -191,7 +285,7 @@ var countBinarySubstrings = function(s) {
 };
 ```
 
-```go
+```Go
 func countBinarySubstrings(s string) int {
     var ptr, last, ans int
     n := len(s)
@@ -208,16 +302,9 @@ func countBinarySubstrings(s string) int {
 
     return ans
 }
-
-func min(x, y int) int {
-    if x < y {
-        return x
-    }
-    return y
-}
 ```
 
-```c
+```C
 int countBinarySubstrings(char* s) {
     int ptr = 0, n = strlen(s), last = 0, ans = 0;
     while (ptr < n) {
@@ -234,7 +321,92 @@ int countBinarySubstrings(char* s) {
 }
 ```
 
+```Python
+class Solution:
+    def countBinarySubstrings(self, s: str) -> int:
+        ptr, n = 0, len(s)
+        last, ans = 0, 0
+
+        while ptr < n:
+            c = s[ptr]
+            count = 0
+            while ptr < n and s[ptr] == c:
+                ptr += 1
+                count += 1
+            ans += min(count, last)
+            last = count
+
+        return ans
+```
+
+```CSharp
+public class Solution {
+    public int CountBinarySubstrings(string s) {
+        int ptr = 0, n = s.Length;
+        int last = 0, ans = 0;
+
+        while (ptr < n) {
+            char c = s[ptr];
+            int count = 0;
+            while (ptr < n && s[ptr] == c) {
+                ptr++;
+                count++;
+            }
+            ans += Math.Min(count, last);
+            last = count;
+        }
+
+        return ans;
+    }
+}
+```
+
+```TypeScript
+function countBinarySubstrings(s: string): number {
+    let ptr = 0, n = s.length;
+    let last = 0, ans = 0;
+
+    while (ptr < n) {
+        const c = s[ptr];
+        let count = 0;
+        while (ptr < n && s[ptr] === c) {
+            ptr++;
+            count++;
+        }
+        ans += Math.min(count, last);
+        last = count;
+    }
+
+    return ans;
+}
+```
+
+```Rust
+impl Solution {
+    pub fn count_binary_substrings(s: String) -> i32 {
+        let bytes = s.as_bytes();
+        let n = bytes.len();
+        let mut ptr = 0;
+        let mut last = 0;
+        let mut ans = 0;
+
+        while ptr < n {
+            let c = bytes[ptr];
+            let mut count = 0;
+            while ptr < n && bytes[ptr] == c {
+                ptr += 1;
+                count += 1;
+            }
+            ans += count.min(last);
+            last = count;
+        }
+
+        ans
+    }
+}
+```
+
 **复杂度分析**
 
--   时间复杂度：$O(n)$。
--   空间复杂度：$O(1)$。
+- 时间复杂度：$O(n)$。
+- 空间复杂度：$O(1)$。

@@ -41,5 +41,26 @@ namespace LeetCode.QuestionBank.Question0696
             for (int i = 1; i < list.Count; i++) result += Math.Min(list[i - 1], list[i]);
             return result;
         }
+
+        public int CountBinarySubstrings2(string s)
+        {
+            int result = 0, cnt1 = 0, cnt2 = 1, len = s.Length;
+            for (int i = 1; i < len; i++)
+            {
+                if (s[i] == s[i - 1])
+                {
+                    cnt2++;
+                }
+                else
+                {
+                    result += Math.Min(cnt1, cnt2);
+                    cnt1 = cnt2;
+                    cnt2 = 1;
+                }
+            }
+            result += Math.Min(cnt1, cnt2);
+
+            return result;
+        }
     }
 }
