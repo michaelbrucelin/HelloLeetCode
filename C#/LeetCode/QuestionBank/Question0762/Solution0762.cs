@@ -16,18 +16,13 @@ namespace LeetCode.QuestionBank.Question0762
             for (int i = left; i <= right; i++) if (prime.Contains(BitCount(i))) result++;
 
             return result;
-        }
 
-        private int BitCount(int u)
-        {
-            int result = 0;
-
-            while (u > 0)
+            static int BitCount(int x)
             {
-                result++; u &= u - 1;
+                int result = 0;
+                while (x > 0) { result++; x &= x - 1; }
+                return result;
             }
-
-            return result;
         }
     }
 }

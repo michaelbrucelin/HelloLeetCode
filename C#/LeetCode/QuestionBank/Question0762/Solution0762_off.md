@@ -6,8 +6,8 @@
 
 对于每个数 $x$，我们需要解决两个问题：
 
-1.  如何求出 $x$ 的二进制中的 $1$ 的个数，见「[191\. 位 1 的个数](https://leetcode-cn.com/problems/number-of-1-bits/)」，下面代码用库函数实现；
-2.  如何判断一个数是否为质数，见「[204\. 计数质数](https://leetcode-cn.com/problems/count-primes/)」的「[官方解法](https://leetcode-cn.com/problems/count-primes/solution/ji-shu-zhi-shu-by-leetcode-solution/)」的方法一（注意 $0$ 和 $1$ 不是质数）。
+1. 如何求出 $x$ 的二进制中的 $1$ 的个数，见「[191\. 位 1 的个数](https://leetcode-cn.com/problems/number-of-1-bits/)」，下面代码用库函数实现；
+2. 如何判断一个数是否为质数，见「[204\. 计数质数](https://leetcode-cn.com/problems/count-primes/)」的「[官方解法](https://leetcode-cn.com/problems/count-primes/solution/ji-shu-zhi-shu-by-leetcode-solution/)」的方法一（注意 $0$ 和 $1$ 不是质数）。
 
 ```python
 class Solution:
@@ -190,8 +190,8 @@ const bitCount = (x) => {
 
 **复杂度分析**
 
--   时间复杂度：$O((right-left)\sqrt{\log right})$。二进制中 $1$ 的个数为 $O(\log right)$，判断值为 $x$ 的数是否为质数的时间为 $O(\sqrt{x})$。
--   空间复杂度：$O(1)$。我们只需要常数的空间保存若干变量。
+- 时间复杂度：$O((right-left)\sqrt{\log right})$。二进制中 $1$ 的个数为 $O(\log right)$，判断值为 $x$ 的数是否为质数的时间为 $O(\sqrt{x})$。
+- 空间复杂度：$O(1)$。我们只需要常数的空间保存若干变量。
 
 #### 方法二：判断质数优化
 
@@ -302,5 +302,5 @@ const bitCount = (x) => {
 
 **复杂度分析**
 
--   时间复杂度：$O(right-left)$。
--   空间复杂度：$O(1)$。我们只需要常数的空间保存若干变量。
+- 时间复杂度：$O(right-left)$。
+- 空间复杂度：$O(1)$。我们只需要常数的空间保存若干变量。
