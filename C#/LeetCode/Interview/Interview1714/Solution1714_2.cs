@@ -18,12 +18,24 @@ namespace LeetCode.Interview.Interview1714
         {
             if (k == arr.Length) return arr;
 
+            int p, lo = 0, hi = arr.Length - 1;
+            while ((p = partition(lo, hi)) != k) if (p < k) lo = p + 1; else hi = p - 1;
 
             return arr[0..k];
 
             int partition(int lo, int hi)
             {
-                throw new NotImplementedException();
+                int v = arr[lo], t, i = lo, j = hi + 1;
+                while (true)
+                {
+                    while (arr[++i] < v) if (i == hi) break;
+                    while (arr[--j] > v) ;                    // if (j == lo) break;
+                    if (i >= j) break;
+                    t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+                }
+                arr[lo] = arr[j]; arr[j] = v;
+
+                return j;
             }
         }
     }
