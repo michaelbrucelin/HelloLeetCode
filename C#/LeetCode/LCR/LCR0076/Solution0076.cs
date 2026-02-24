@@ -16,7 +16,17 @@ namespace LeetCode.LCR.LCR0076
         /// <returns></returns>
         public int FindKthLargest(int[] nums, int k)
         {
-            throw new NotImplementedException();
+            if (k == 1) return nums.Max();
+            if (k == nums.Length) return nums.Min();
+
+            PriorityQueue<int, int> minpq = new PriorityQueue<int, int>();
+            foreach (int num in nums)
+            {
+                minpq.Enqueue(num, num);
+                if (minpq.Count > k) minpq.Dequeue();
+            }
+
+            return minpq.Peek();
         }
     }
 }
