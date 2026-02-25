@@ -198,7 +198,7 @@ namespace LeetCode.Utilses
         /// <param name="list1"></param>
         /// <param name="list2"></param>
         /// <returns></returns>
-        public static bool CompareArray<T>(IList<T> list1, IList<T> list2, bool ignoreOrder = false) where T : IComparable
+        public static bool CompareArray<T>(IList<T> list1, IList<T> list2, bool ignoreOrder = false) where T : IComparable<T>
         {
             if (list1.Count != list2.Count) return false;
 
@@ -253,7 +253,7 @@ namespace LeetCode.Utilses
         /// <param name="list1"></param>
         /// <param name="list2"></param>
         /// <returns></returns>
-        public static bool CompareArray<T>(IList<IList<T>> list1, IList<IList<T>> list2, bool ignoreOrder = false) where T : IComparable
+        public static bool CompareArray<T>(IList<IList<T>> list1, IList<IList<T>> list2, bool ignoreOrder = false) where T : IComparable<T>
         {
             if (list1.Count != list2.Count) return false;
 
@@ -261,8 +261,10 @@ namespace LeetCode.Utilses
             {
                 for (int i = 0; i < list1.Count; i++)
                 {
-                    list1[i] = [.. list1[i].OrderBy(t => t)];
-                    list2[i] = [.. list2[i].OrderBy(t => t)];
+                    // list1[i] = [.. list1[i].OrderBy(t => t)];
+                    // list2[i] = [.. list2[i].OrderBy(t => t)];
+                    if (list1[i] is List<T> l1) l1.Sort(); else { T[] sorted = [.. list1[i].OrderBy(t => t)]; list1[i] = sorted; }
+                    if (list2[i] is List<T> l2) l2.Sort(); else { T[] sorted = [.. list2[i].OrderBy(t => t)]; list2[i] = sorted; }
                 }
                 Comparer<IList<T>> comparer = Comparer<IList<T>>.Create((x, y) =>
                 {
