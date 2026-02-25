@@ -25,6 +25,8 @@ namespace LeetCode.Interview.Interview1714
 
             int partition(int lo, int hi)
             {
+                if (lo == hi) return lo;
+
                 int v = arr[lo], t, i = lo, j = hi + 1;
                 while (true)
                 {
