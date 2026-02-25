@@ -29,6 +29,8 @@ namespace LeetCode.QuestionBank.Question0973
 
             int partition(int lo, int hi)
             {
+                if (lo == hi) return lo;
+
                 int v = dist[lo], i = lo, j = hi + 1;
                 while (true)
                 {
