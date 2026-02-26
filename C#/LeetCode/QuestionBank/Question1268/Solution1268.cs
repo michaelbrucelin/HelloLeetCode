@@ -10,9 +10,9 @@ namespace LeetCode.QuestionBank.Question1268
     {
         /// <summary>
         /// Trie + 回溯
-        /// 使用Trie优化检索，使用回溯找出3个字典树最小的串
-        /// 
-        /// 没写完，先不写了
+        /// TODO
+        ///   1. Trie增加Childcnt属性，记录有几个孩子，用于剪枝？
+        ///   2. 下一轮查找不需要从根开始，从上一次的结果开始即可
         /// </summary>
         /// <param name="products"></param>
         /// <param name="searchWord"></param>
@@ -20,55 +20,70 @@ namespace LeetCode.QuestionBank.Question1268
         public IList<IList<string>> SuggestedProducts(string[] products, string searchWord)
         {
             Trie trie = new Trie();
-            Trie ptr; int pc;
-            foreach (string product in products)
+            foreach (string s in products) insert(s);
+
+            int len = searchWord.Length;
+            List<string>[] result = new List<string>[len];
+            result[0] = search(0);
+            for (int i = 1; i < len; i++)
             {
-                ptr = trie;
-                foreach (char c in product)
-                {
-                    pc = c - 'a';
-                    if (trie.Children == null)
-                    {
-                        trie.Children = new Trie[26]; trie.Children[pc] = new Trie();
-                    }
-                    else
-                    {
-                        if (trie.Children[pc] == null) trie.Children[pc] = new Trie();
-                    }
-                    trie = trie.Children[pc];
-                }
-                trie.IsEnd = true;
+                if (result[i - 1].Count == 0) result[i] = []; else result[i] = search(i);
             }
-
-            List<IList<string>> result = [];
-            ptr = trie; Trie _ptr;
-            StringBuilder buffer = new StringBuilder(), _buffer;
-            foreach (char c in searchWord)
-            {
-                pc = c - 'a';
-                ptr = ptr.Children[pc];
-                if (ptr == null) { result.Add([]); break; }
-                buffer.Append(c);
-
-                List<string> _result = [];
-
-
-                result.Add(_result);
-            }
-            for (int i = searchWord.Length - result.Count; i > 0; i--) result.Add([]);
 
             return result;
 
-            void backtrack(Trie node, List<string> list, StringBuilder sb)
-            { 
-                
+            List<string> search(int x)
+            {
+                Trie ptr = trie;
+                int idx;
+                List<char> buffer = [];
+                for (int i = 0; i <= x; i++)
+                {
+                    idx = searchWord[i] - 'a';
+                    if (ptr.Children[idx] == null) return [];
+                    buffer.Add(searchWord[i]);
+                    ptr = ptr.Children[idx];
+                }
+
+                List<string> result = ptr.IsEnd ? [searchWord] : [];
+                backtrack(ptr, buffer, result);
+                return result;
+            }
+
+            void backtrack(Trie ptr, List<char> buffer, List<string> result)
+            {
+                for (int i = 0; i < 26 && result.Count < 3; i++) if (ptr.Children[i] != null)
+                    {
+                        buffer.Add((char)('a' + i));
+                        if (ptr.Children[i].IsEnd)
+                        {
+                            result.Add(new string([.. buffer]));
+                            if (result.Count == 3) return;
+                        }
+                        backtrack(ptr.Children[i], buffer, result);
+                        buffer.RemoveAt(buffer.Count - 1);
+                    }
+            }
+
+            void insert(string s)
+            {
+                Trie ptr = trie;
+                int idx;
+                foreach (char c in s)
+                {
+                    idx = c - 'a';
+                    if (ptr.Children[idx] == null) { ptr.Children[idx] = new Trie(); }
+                    ptr = ptr.Children[idx];
+                }
+                ptr.IsEnd = true;
             }
         }
 
         class Trie
         {
-            public bool IsEnd = false;
+            public Trie() { Children = new Trie[26]; IsEnd = false; }
             public Trie[] Children;
+            public bool IsEnd;
         }
     }
 }
