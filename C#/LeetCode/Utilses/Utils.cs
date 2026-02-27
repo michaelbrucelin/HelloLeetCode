@@ -99,6 +99,33 @@ namespace LeetCode.Utilses
         }
 
         /// <summary>
+        /// 将以字符串形式给出的字符串数组转成字符串数组
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="raw"></param>
+        /// <returns></returns>
+        public static string[] Str2StrArray(string raw)
+        {
+            // raw = raw.Replace(" ", "").Replace("\"", "");
+            if (raw.Length == 0) return [];
+
+            return raw[2..^2].Split("\",\"").ToArray();
+        }
+
+        /// <summary>
+        /// 将以字符串形式给出的字符串列表转成字符串列表
+        /// </summary>
+        /// <param name="raw"></param>
+        /// <returns></returns>
+        public static List<string> Str2StrList(string raw)
+        {
+            // raw = raw.Replace(" ", "").Replace("\"", "");
+            if (raw.Length == 0) return [];
+
+            return raw[2..^2].Split("\",\"").ToList();
+        }
+
+        /// <summary>
         /// 将以字符串形式给出的二维字符串数组转成二维字符串数组
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -106,12 +133,23 @@ namespace LeetCode.Utilses
         /// <returns></returns>
         public static string[][] Str2StrArray_2d(string raw)
         {
-            raw = raw.Replace(" ", "").Replace("\"", "");
+            // raw = raw.Replace(" ", "").Replace("\"", "");
             if (raw.Length == 0) return [];
 
-            return raw[2..^2].Split("],[")
-                             .Select(str => str.Length == 0 ? [] : str.Split(',').Select(s => s).ToArray())
-                             .ToArray();
+            return raw[3..^3].Split("\"],[\"").Select(x => x.Length == 0 ? [] : x.Split("\",\"").ToArray()).ToArray();
+        }
+
+        /// <summary>
+        /// 将以字符串形式给出的二维字符串列表转成二维字符串列表
+        /// </summary>
+        /// <param name="raw"></param>
+        /// <returns></returns>
+        public static List<List<string>> Str2StrList_2d(string raw)
+        {
+            // raw = raw.Replace(" ", "").Replace("\"", "");
+            if (raw.Length == 0) return [];
+
+            return raw[3..^3].Split("\"],[\"").Select(x => x.Length == 0 ? [] : x.Split("\",\"").ToList()).ToList();
         }
 
         /// <summary>

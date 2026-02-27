@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1268
 {
-    public class Solution1268 : Interface1268
+    public class Solution1268_2 : Interface1268
     {
         /// <summary>
         /// Trie + 回溯
-        /// TODO
-        ///   1. Trie增加Childcnt属性，记录有几个孩子，用于剪枝？
-        ///   2. 下一轮查找不需要从根开始，从上一次的结果开始即可
+        /// 优化
+        ///   1. 下一轮查找不需要从根开始，从上一次的结果开始即可
         /// </summary>
         /// <param name="products"></param>
         /// <param name="searchWord"></param>
@@ -24,6 +23,8 @@ namespace LeetCode.QuestionBank.Question1268
 
             int len = searchWord.Length;
             List<string>[] result = new List<string>[len];
+            Trie root = trie;
+            List<char> buffer = [];
             result[0] = search(0);
             for (int i = 1; i < len; i++)
             {
@@ -34,23 +35,20 @@ namespace LeetCode.QuestionBank.Question1268
 
             List<string> search(int x)
             {
-                Trie ptr = trie;
-                int idx;
-                List<char> buffer = [];
-                for (int i = 0; i <= x; i++)
-                {
-                    idx = searchWord[i] - 'a';
-                    if (ptr.Children[idx] == null) return [];
-                    buffer.Add(searchWord[i]);
-                    ptr = ptr.Children[idx];
-                }
+                int idx = searchWord[x] - 'a';
+                if (root.Children[idx] == null) { root = null; return []; }
+                while (buffer.Count > x) buffer.RemoveAt(buffer.Count - 1);
+                buffer.Add(searchWord[x]);
+                root = root.Children[idx];
 
-                List<string> result = ptr.IsEnd ? [searchWord[..(x + 1)]] : [];
-                backtrack(ptr, buffer, result);
+                List<string> result = root.IsEnd ? [searchWord[..(x + 1)]] : [];
+                Trie ptr = root;
+                backtrack(ptr, result);
+
                 return result;
             }
 
-            void backtrack(Trie ptr, List<char> buffer, List<string> result)
+            void backtrack(Trie ptr, List<string> result)
             {
                 for (int i = 0; i < 26 && result.Count < 3; i++) if (ptr.Children[i] != null)
                     {
@@ -60,7 +58,7 @@ namespace LeetCode.QuestionBank.Question1268
                             result.Add(new string([.. buffer]));
                             if (result.Count == 3) return;
                         }
-                        backtrack(ptr.Children[i], buffer, result);
+                        backtrack(ptr.Children[i], result);
                         buffer.RemoveAt(buffer.Count - 1);
                     }
             }

@@ -131,6 +131,8 @@ namespace LeetCode
             //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"LCP\LCP{question}\TestCases\TestCase{question}");
             //arg = File.ReadAllText($"{path}_{testcase}_{arg}.txt");
             //arg = File.ReadAllText($"{path}_{testcase}_{arg}.txt")[1..^1];
+            //arg = Utils.Str2StrArray_2d(File.ReadAllText($"{path}_{testcase}_{arg}.txt"));
+            //arg = Utils.Str2StrList_2d(File.ReadAllText($"{path}_{testcase}_{arg}.txt"));
             //arg = Utils.Str2NumArray<int>(File.ReadAllText($"{path}_{testcase}_{arg}.txt"));
             //arg = Utils.Str2NumArray_2d<int>(File.ReadAllText($"{path}_{testcase}_{arg}.txt"));
             //string raw = "[[0,1],[1,2]]";

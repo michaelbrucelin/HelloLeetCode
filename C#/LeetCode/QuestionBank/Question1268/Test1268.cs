@@ -13,7 +13,7 @@ namespace LeetCode.QuestionBank.Question1268
     {
         public void Test()
         {
-            Interface1268 solution = new Solution1268();
+            Interface1268 solution = new Solution1268_2();
             string[] products; string searchWord;
             IList<IList<string>> result, answer;
             int id = 0;
@@ -46,9 +46,11 @@ namespace LeetCode.QuestionBank.Question1268
             string question = "1268", testcase = "05", arg = "products";
             string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"QuestionBank\Question{question}\TestCases\TestCase{question}");
-            products = Utils.Str2NumArray<string>(File.ReadAllText($"{path}_{testcase}_{arg}.txt"));
-            //arg = Utils.Str2NumArray_2d<int>(File.ReadAllText($"{path}_{testcase}_{arg}.txt"));
+            products = Utils.Str2StrArray(File.ReadAllText($"{path}_{testcase}_{arg}.txt"));
             searchWord = "tyqcpfvorznmxxdzsnkjnrrzpfgknvqvderckuzdqqgaqejetbnuniwwjbdchviotvdticwxwcliylrpvrokbcguhnfvpd";
+            answer = Utils.Str2StrArray_2d(File.ReadAllText($"{path}_{testcase}_answer.txt"));
+            result = solution.SuggestedProducts(products, searchWord);
+            Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ToString(result, false)[..10]}, answer: {Utils.ToString(answer, false)[..10]}");
         }
     }
 }
