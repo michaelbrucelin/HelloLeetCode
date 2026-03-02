@@ -16,9 +16,9 @@ namespace LeetCode.QuestionBank.Question3847
         public int ScoreDifference(int[] nums)
         {
             int[] scores = new int[2];
-            int idx=0,len= nums.Length;
+            int idx = 0, len = nums.Length;
             for (int i = 0; i < len; i += 2)
-            { 
+            {
             }
 
             return scores[0] - scores[1];
