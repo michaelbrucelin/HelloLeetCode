@@ -6,34 +6,38 @@ using System.Threading.Tasks;
 
 namespace LeetCode.LCR.LCR0066
 {
-    public class Solution0066_2
+    public class Solution0066_3
     {
     }
 
     /// <summary>
     /// Trie
-    /// 逻辑同Solution0066，优化，记录Trie有哪些子节点
+    /// 逻辑同Solution0066，优化，再插入新值时，直接更新前缀和
     /// </summary>
-    public class MapSum_2 : Interface0066
+    public class MapSum_3 : Interface0066
     {
-        public MapSum_2()
+        public MapSum_3()
         {
             trie = new Trie();
+            map = new Dictionary<string, int>();
         }
 
         private Trie trie;
+        private Dictionary<string, int> map;
 
         public void Insert(string key, int val)
         {
+            if (map.TryGetValue(key, out int _val)) { map[key] = val; val -= _val; } else map.Add(key, val);
+
             Trie ptr = trie;
             int idx;
             foreach (char c in key)
             {
                 idx = c - 'a';
-                if (ptr.Children[idx] == null) { ptr.Children[idx] = new Trie(); ptr.ChildrenIds.Add(idx); }
+                if (ptr.Children[idx] == null) ptr.Children[idx] = new Trie();
                 ptr = ptr.Children[idx];
+                ptr.Value += val;
             }
-            ptr.Value = val;
         }
 
         public int Sum(string prefix)
@@ -47,22 +51,13 @@ namespace LeetCode.LCR.LCR0066
                 ptr = ptr.Children[idx];
             }
 
-            return Sum(ptr);
-        }
-
-        private int Sum(Trie root)
-        {
-            int sum = root.Value;
-            foreach (int id in root.ChildrenIds) sum += Sum(root.Children[id]);
-
-            return sum;
+            return ptr.Value;
         }
 
         public class Trie
         {
-            public Trie() { Children = new Trie[26]; ChildrenIds = []; Value = 0; }
+            public Trie() { Children = new Trie[26]; Value = 0; }
             public Trie[] Children;
-            public List<int> ChildrenIds;
             public int Value;
         }
     }
