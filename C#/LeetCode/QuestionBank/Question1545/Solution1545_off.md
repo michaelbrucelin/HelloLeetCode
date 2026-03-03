@@ -97,6 +97,126 @@ class Solution:
             return "0" if self.findKthBit(n - 1, k) == "1" else "1"
 ```
 
+```CSharp
+public class Solution {
+    public char FindKthBit(int n, int k) {
+        if (k == 1) {
+            return '0';
+        }
+        int mid = 1 << (n - 1);
+        if (k == mid) {
+            return '1';
+        } else if (k < mid) {
+            return FindKthBit(n - 1, k);
+        } else {
+            k = mid * 2 - k;
+            return Invert(FindKthBit(n - 1, k));
+        }
+    }
+
+    private char Invert(char bit) {
+        return (char)('0' + '1' - bit);
+    }
+}
+```
+
+```Go
+func findKthBit(n int, k int) byte {
+    if k == 1 {
+        return '0'
+    }
+    mid := 1 << (n - 1)
+    if k == mid {
+        return '1'
+    } else if k < mid {
+        return findKthBit(n - 1, k)
+    } else {
+        k = mid*2 - k
+        return invert(findKthBit(n - 1, k))
+    }
+}
+
+func invert(bit byte) byte {
+    if bit == '0' {
+        return '1'
+    }
+    return '0'
+}
+```
+
+```C
+char invert(char bit) {
+    return '0' + '1' - bit;
+}
+
+char findKthBit(int n, int k) {
+    if (k == 1) {
+        return '0';
+    }
+    int mid = 1 << (n - 1);
+    if (k == mid) {
+        return '1';
+    } else if (k < mid) {
+        return findKthBit(n - 1, k);
+    } else {
+        k = mid * 2 - k;
+        return invert(findKthBit(n - 1, k));
+    }
+}
+```
+
+```TypeScript
+function findKthBit(n: number, k: number): string {
+    if (k === 1) {
+        return '0';
+    }
+    const mid = 1 << (n - 1);
+    if (k === mid) {
+        return '1';
+    } else if (k < mid) {
+        return findKthBit(n - 1, k);
+    } else {
+        k = mid * 2 - k;
+        return invert(findKthBit(n - 1, k));
+    }
+}
+
+function invert(bit: string): string {
+    return bit === '0' ? '1' : '0';
+}
+```
+
+```Rust
+impl Solution {
+    pub fn find_kth_bit(n: i32, k: i32) -> char {
+        Self::find_kth_bit_recursive(n, k)
+    }
+
+    fn find_kth_bit_recursive(n: i32, k: i32) -> char {
+        if k == 1 {
+            return '0';
+        }
+        let mid = 1 << (n - 1);
+        if k == mid {
+            return '1';
+        } else if k < mid {
+            return Self::find_kth_bit_recursive(n - 1, k);
+        } else {
+            let new_k = mid * 2 - k;
+            return Self::invert(Self::find_kth_bit_recursive(n - 1, new_k));
+        }
+    }
+
+    fn invert(bit: char) -> char {
+        if bit == '0' {
+            '1'
+        } else {
+            '0'
+        }
+    }
+}
+```
+
 **复杂度分析**
 
 - 时间复杂度：$O(n)$。字符串 $S_n$ 的长度为 $2^n-1$，每次递归调用可以将查找范围缩小一半，因此时间复杂度为 $O(\log 2^n)=O(n)$。
