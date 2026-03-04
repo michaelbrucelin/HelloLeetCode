@@ -9,6 +9,7 @@ namespace LeetCode.QuestionBank.Question1758
     public class Solution1758 : Interface1758
     {
         /// <summary>
+        /// 两轮遍历
         /// 最终结果只有两种可能，0开头或1开头，所以原字符串与中两种结果比较一下，取较小的结果就可以
         /// </summary>
         /// <param name="s"></param>
@@ -25,6 +26,23 @@ namespace LeetCode.QuestionBank.Question1758
             for (int i = 1; i < s.Length; i += 2) if (s[i] == '0') r1++;
 
             return r0 <= r1 ? r0 : r1;
+        }
+
+        /// <summary>
+        /// 逻辑同MinOperations()，改为一轮遍历
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public int MinOperations2(string s)
+        {
+            if (s.Length == 1) return 0;
+            if (s.Length == 2) return (s == "01" || s == "10") ? 0 : 1;
+
+            int cnt = 0;
+            for (int i = 0; i < s.Length; i += 2) if (s[i] == '0') cnt++;
+            for (int i = 1; i < s.Length; i += 2) if (s[i] == '1') cnt++;
+
+            return Math.Min(cnt, s.Length - cnt);
         }
     }
 }
