@@ -21,8 +21,7 @@ namespace LeetCode.QuestionBank.Question1784
             while (left < s.Length && s[left] == '0') left++;  // 找出s中第一个1，由题意知必是0
             while (right >= 0 && s[right] == '0') right--;     // 找出s中最后一个1
 
-            for (; left <= right; left++)
-                if (s[left] == '0') return false;
+            for (; left <= right; left++) if (s[left] == '0') return false;
 
             return true;
         }
