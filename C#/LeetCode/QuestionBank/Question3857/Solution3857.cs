@@ -11,6 +11,8 @@ namespace LeetCode.QuestionBank.Question3857
         /// <summary>
         /// 贪心 + 记忆化搜索
         /// 怎样证明？
+        /// 
+        /// 看答案就知道无论怎样操作，结果都是 n(n+1)/2，果然没有证明的贪心都是扯淡... ...
         /// </summary>
         /// <param name="n"></param>
         /// <returns></returns>
