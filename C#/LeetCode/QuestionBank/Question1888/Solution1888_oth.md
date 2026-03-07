@@ -1,0 +1,236 @@
+### [s + s 上的滑动窗口（Python/Java/C++/Go）](https://leetcode.cn/problems/minimum-number-of-flips-to-make-the-binary-string-alternating/solutions/815298/cong-qian-wang-hou-pi-pei-cong-hou-wang-uiq6a/)
+
+注意题目只要求类型 $2$ 操作次数尽量少，并没有约束类型 $1$，操作类型 $1$ 多少次都可以。
+
+例如 $s=111000$，不断操作类型 $1$，可以得到如下字符串（$\_$ 只是为了排版好看）：
+
+$$111000\_\_\_\_\_ \\
+  \_110001\_\_\_\_ \\
+  \_\_100011\_\_\_ \\
+  \_\_\_000111\_\_ \\
+  \_\_\_\_001110\_ \\
+  \_\_\_\_\_011100$$
+
+注意到，这些字符串其实都是 $s+s=111000111000$（去掉最后一个字符）的长为 $n$ 的**子串**。
+
+设 $t=11100011100$。题目要求字符串是交替的：
+
+- 如果改成 $0101\dots $，那么对于每个 $i$，都要满足 $int(t[i])=i\bmod 2$。
+- 如果改成 $1010\dots $，那么对于每个 $i$，都要满足 $int(t[i])\ne i\bmod 2$。
+
+把满足 $int(t[i])=i\bmod 2$ 的 $t[i]$ 视作 $.$ 字符，把满足 $int(t[i])\ne i\bmod 2$ 的 $t[i]$ 视作 $X$ 字符，我们可以得到
+
+$$X.XX.XX.XX.$$
+
+- 当子串左端点下标是偶数时：
+  - 子串中的 $X$ 的个数就是改成 $0101\dots $ 的类型 $2$ 操作次数。
+  - 子串中的 $.$ 的个数就是改成 $1010\dots $ 的类型 $2$ 操作次数。
+- 当子串左端点下标是奇数时：
+  - 子串中的 $.$ 的个数就是改成 $0101\dots $ 的类型 $2$ 操作次数。
+  - 子串中的 $X$ 的个数就是改成 $1010\dots $ 的类型 $2$ 操作次数。
+
+我们可以统计子串中的 $X$ 的个数 $cnt$，那么 $n-cnt$ 就是子串中的 $.$ 的个数。
+
+对于每个子串，既可以改成 $0101\dots $，又可以改成 $1010\dots $，取最小值，用
+
+$$min(cnt,n-cnt)$$
+
+更新答案的最小值。
+
+cnt 可以用滑动窗口计算，原理见 [定长滑窗套路](https://leetcode.cn/problems/maximum-number-of-vowels-in-a-substring-of-given-length/solutions/2809359/tao-lu-jiao-ni-jie-jue-ding-chang-hua-ch-fzfo/)。
+
+##### 写法一
+
+int(t[i])\ne $i\bmod 2$ 等价于 $t[i]\bmod 2\ne i\bmod 2$，后者用 $t[i]$ 的 $ASCII$ 值参与运算。
+
+t[i] 可以写成 $s[i\bmod n]$，这样无需生成字符串 $t$。
+
+**问**：为什么循环写的是 $i<2n-1$ 而不是 i<2n？
+
+**答**：因为 $[0,n-1]$ 和 $[n,2n-1]$ 是同一个字符串，不需要重复计算。
+
+```Python
+class Solution:
+    def minFlips(self, s: str) -> int:
+        ans = n = len(s)
+        cnt = 0
+        for i in range(n * 2 - 1):
+            if ord(s[i % n]) % 2 != i % 2:
+                cnt += 1
+            left = i - n + 1
+            if left < 0:
+                continue
+            ans = min(ans, cnt, n - cnt)
+            if ord(s[left]) % 2 != left % 2:
+                cnt -= 1
+        return ans
+```
+
+```Java
+class Solution {
+    public int minFlips(String S) {
+        char[] s = S.toCharArray();
+        int n = s.length;
+        int ans = n;
+        int cnt = 0;
+        for (int i = 0; i < n * 2 - 1; i++) {
+            if (s[i % n] % 2 != i % 2) {
+                cnt++;
+            }
+            int left = i - n + 1;
+            if (left < 0) {
+                continue;
+            }
+            ans = Math.min(ans, Math.min(cnt, n - cnt));
+            if (s[left] % 2 != left % 2) {
+                cnt--;
+            }
+        }
+        return ans;
+    }
+}
+```
+
+```C++
+class Solution {
+public:
+    int minFlips(string s) {
+        int n = s.size(), ans = n, cnt = 0;
+        for (int i = 0; i < n * 2 - 1; i++) {
+            if (s[i % n] % 2 != i % 2) {
+                cnt++;
+            }
+            int left = i - n + 1;
+            if (left < 0) {
+                continue;
+            }
+            ans = min({ans, cnt, n - cnt});
+            if (s[left] % 2 != left % 2) {
+                cnt--;
+            }
+        }
+        return ans;
+    }
+};
+```
+
+```Go
+func minFlips(s string) int {
+    n := len(s)
+    ans := n
+    cnt := 0
+    for i := range n*2 - 1 {
+        if int(s[i%n]%2) != i%2 {
+            cnt++
+        }
+        left := i - n + 1
+        if left < 0 {
+            continue
+        }
+        ans = min(ans, cnt, n-cnt)
+        if int(s[left]%2) != left%2 {
+            cnt--
+        }
+    }
+    return ans
+}
+```
+
+##### 写法二（位运算）
+
+$t[i]\bmod 2\ne i\bmod 2$ 等价于，取 $t[i]$ 和 $i$ 的异或结果的最低位，相同则为 $0$，不同则为 $1$。
+
+```Python
+class Solution:
+    def minFlips(self, s: str) -> int:
+        ans = n = len(s)
+        cnt = 0
+        for i in range(n * 2 - 1):
+            cnt += (ord(s[i % n]) ^ i) & 1
+            left = i - n + 1
+            if left < 0:
+                continue
+            ans = min(ans, cnt, n - cnt)
+            cnt -= (ord(s[left]) ^ left) & 1
+        return ans
+```
+
+```Java
+class Solution {
+    public int minFlips(String S) {
+        char[] s = S.toCharArray();
+        int n = s.length;
+        int ans = n;
+        int cnt = 0;
+        for (int i = 0; i < n * 2 - 1; i++) {
+            cnt += (s[i % n] ^ i) & 1;
+            int left = i - n + 1;
+            if (left < 0) {
+                continue;
+            }
+            ans = Math.min(ans, Math.min(cnt, n - cnt));
+            cnt -= (s[left] ^ left) & 1;
+        }
+        return ans;
+    }
+}
+```
+
+```C++
+class Solution {
+public:
+    int minFlips(string s) {
+        int n = s.size(), ans = n, cnt = 0;
+        for (int i = 0; i < n * 2 - 1; i++) {
+            cnt += (s[i % n] ^ i) & 1;
+            int left = i - n + 1;
+            if (left < 0) {
+                continue;
+            }
+            ans = min({ans, cnt, n - cnt});
+            cnt -= (s[left] ^ left) & 1;
+        }
+        return ans;
+    }
+};
+```
+
+```Go
+func minFlips(s string) int {
+    n := len(s)
+    ans := n
+    cnt := 0
+    for i := range n*2 - 1 {
+        cnt += (int(s[i%n]) ^ i) & 1
+        left := i - n + 1
+        if left < 0 {
+            continue
+        }
+        ans = min(ans, cnt, n-cnt)
+        cnt -= (int(s[left]) ^ left) & 1
+    }
+    return ans
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$O(n)$，其中 $n$ 是 $s$ 的长度。
+- 空间复杂度：$O(1)$。
+
+#### 分类题单
+
+[如何科学刷题？](https://leetcode.cn/circle/discuss/RvFUtj/)
+
+1. [滑动窗口与双指针（定长/不定长/单序列/双序列/三指针/分组循环）](https://leetcode.cn/circle/discuss/0viNMK/)
+2. [二分算法（二分答案/最小化最大值/最大化最小值/第K小）](https://leetcode.cn/circle/discuss/SqopEo/)
+3. [单调栈（基础/矩形面积/贡献法/最小字典序）](https://leetcode.cn/circle/discuss/9oZFK9/)
+4. [网格图（DFS/BFS/综合应用）](https://leetcode.cn/circle/discuss/YiXPXW/)
+5. [位运算（基础/性质/拆位/试填/恒等式/思维）](https://leetcode.cn/circle/discuss/dHn9Vk/)
+6. [图论算法（DFS/BFS/拓扑排序/最短路/最小生成树/二分图/基环树/欧拉路径）](https://leetcode.cn/circle/discuss/01LUak/)
+7. [动态规划（入门/背包/状态机/划分/区间/状压/数位/数据结构优化/树形/博弈/概率期望）](https://leetcode.cn/circle/discuss/tXLS3i/)
+8. [常用数据结构（前缀和/差分/栈/队列/堆/字典树/并查集/树状数组/线段树）](https://leetcode.cn/circle/discuss/mOr1u6/)
+9. [数学算法（数论/组合/概率期望/博弈/计算几何/随机算法）](https://leetcode.cn/circle/discuss/IYT3ss/)
+10. [贪心与思维（基本贪心策略/反悔/区间/字典序/数学/思维/脑筋急转弯/构造）](https://leetcode.cn/circle/discuss/g6KTKL/)
+11. [链表、二叉树与回溯（前后指针/快慢指针/DFS/BFS/直径/LCA/一般树）](https://leetcode.cn/circle/discuss/K0n2gO/)
+12. [字符串（KMP/Z函数/Manacher/字符串哈希/AC自动机/后缀数组/子序列自动机）](https://leetcode.cn/circle/discuss/SJFwQI/)
