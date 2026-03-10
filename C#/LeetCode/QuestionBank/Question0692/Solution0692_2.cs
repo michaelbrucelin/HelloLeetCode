@@ -24,7 +24,7 @@ namespace LeetCode.QuestionBank.Question0692
 
             Comparer<(string, int)> comparer = Comparer<(string s, int i)>.Create((x, y) => x.i != y.i ? y.i - x.i : string.CompareOrdinal(x.s, y.s));
             int lo = 0, hi = items.Length - 1, p, len = items.Length;
-            while ((p = partition(lo, hi)) != k) if (p < k) lo = p + 1; else hi = p - 1;
+            while ((p = partition(lo, hi)) != k - 1) if (p < k - 1) lo = p + 1; else hi = p - 1;
             Array.Sort(items, 0, p + 1, comparer);
 
             string[] result = new string[k];
