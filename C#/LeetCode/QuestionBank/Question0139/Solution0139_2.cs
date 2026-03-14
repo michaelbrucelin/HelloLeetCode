@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0139
 {
-    public class Solution0139 : Interface0139
+    public class Solution0139_2 : Interface0139
     {
         /// <summary>
-        /// DFS + 记忆化搜索
+        /// DP
+        /// 逻辑同Solution0139，改为DP，有点BFS的味道，就是从 true 的位置向后找全部的 true 的位置，然后看最后的位置是不是 true
         /// </summary>
         /// <param name="s"></param>
         /// <param name="wordDict"></param>
@@ -19,26 +20,14 @@ namespace LeetCode.QuestionBank.Question0139
             int maxlen = 0, len = s.Length;
             HashSet<string> set = [];
             foreach (string word in wordDict) { maxlen = Math.Max(maxlen, word.Length); set.Add(word); }
-            byte[] memory = new byte[len + 1];  // 1 - true, 2 - false
-            memory[len] = 1;
+            bool[] memory = new bool[len + 1];
+            memory[0] = true;
+            for (int i = 0; i <= len && !memory[len]; i++) if (memory[i])
+                {
+                    for (int j = i + 1; j <= len && j - i <= maxlen; j++) if (set.Contains(s[i..j])) memory[j] = true;
+                }
 
-            return dfs(0) == 1;
-
-            int dfs(int l)
-            {
-                if (memory[l] != 0) return memory[l];
-
-                memory[l] = 2;
-                for (int r = l + 1; r <= len && r - l <= maxlen; r++) if (set.Contains(s[l..r]))
-                    {
-                        if (dfs(r) == 1)
-                        {
-                            memory[l] = 1; break;
-                        }
-                    }
-
-                return memory[l];
-            }
+            return memory[len];
         }
 
         /// <summary>
@@ -52,24 +41,16 @@ namespace LeetCode.QuestionBank.Question0139
             int len = s.Length;
             Trie trie = new Trie();
             foreach (string word in wordDict) trie.Insert(word);
-            byte[] memory = new byte[len + 1];  // 1 - true, 2 - false
-            memory[len] = 1;
+            bool[] memory = new bool[len + 1];
+            memory[0] = true;
+            List<int> ends;
+            for (int i = 0; i <= len && !memory[len]; i++) if (memory[i])
+                {
+                    ends = trie.MultiQuery(s, i);
+                    foreach (int j in ends) memory[j + 1] = true;
+                }
 
-            return dfs(0) == 1;
-
-            int dfs(int l)
-            {
-                if (memory[l] != 0) return memory[l];
-
-                memory[l] = 2;
-                List<int> ends = trie.MultiQuery(s, l);
-                foreach (int i in ends) if (dfs(i + 1) == 1)
-                    {
-                        memory[l] = 1; break;
-                    }
-
-                return memory[l];
-            }
+            return memory[len];
         }
 
         public class Trie
