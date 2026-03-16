@@ -17,8 +17,12 @@ namespace LeetCode.QuestionBank.Question3847
         {
             int[] scores = new int[2];
             int idx = 0, len = nums.Length;
-            for (int i = 0; i < len; i += 2)
+            for (int i = 0, j = 5, num; i < len; i++)
             {
+                num = nums[i];
+                if ((num & 1) == 1) idx ^= num & 1;     // idx = 1 - idx;
+                if (i == j) { idx = 1 - idx; j += 6; }
+                scores[idx] += num;
             }
 
             return scores[0] - scores[1];
