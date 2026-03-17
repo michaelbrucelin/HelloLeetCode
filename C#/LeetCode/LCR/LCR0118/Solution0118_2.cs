@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace LeetCode.LCR.LCR0118
 {
-    public class Solution0118 : Interface0118
+    public class Solution0118_2 : Interface0118
     {
         /// <summary>
         /// 并查集
+        /// 逻辑同Solution0118，将路径压缩中的递归改为迭代
         /// </summary>
         /// <param name="edges"></param>
         /// <returns></returns>
@@ -40,7 +41,14 @@ namespace LeetCode.LCR.LCR0118
 
             int find(int x)
             {
-                if (uf[x] != x) uf[x] = find(uf[x]);
+                int y = x;
+                while (y != uf[y]) y = uf[y];
+                int i = x, j;
+                while (uf[i] != y)
+                {
+                    j = uf[i]; uf[i] = y; i = j;
+                }
+
                 return uf[x];
             }
         }
