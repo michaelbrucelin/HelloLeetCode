@@ -9,7 +9,8 @@ namespace LeetCode.Interview.Interview1717
     public class Solution1717 : Interface1717
     {
         /// <summary>
-        /// 
+        /// Trie
+        /// 直觉上与KMP有关系，看来对KMP理解的还是不够透彻
         /// </summary>
         /// <param name="big"></param>
         /// <param name="smalls"></param>
@@ -18,5 +19,7 @@ namespace LeetCode.Interview.Interview1717
         {
             throw new NotImplementedException();
         }
+
+
     }
 }
