@@ -14,9 +14,7 @@ namespace LeetCode.QuestionBank.Question0307
     /// </summary>
     public interface Interface0307
     {
-        // public NumArray(int[] nums)
-        // {
-        // }
+        // public NumArray(int[] nums){ }
 
         public void Update(int index, int val);
 
