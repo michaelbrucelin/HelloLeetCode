@@ -13,61 +13,65 @@ namespace LeetCode.QuestionBank.Question0307
     public class NumArray_2 : Interface0307
     {
         /// <summary>
-        /// 树状数组
-        /// 逻辑与Solution0307一样，优化了树状数组的初始化过程
+        /// 线段树
+        /// 基于数组实现
         /// </summary>
         /// <param name="nums"></param>
         public NumArray_2(int[] nums)
         {
-            len = nums.Length;
-            bit = new int[len + 1];
-            ori = new int[len];
-            build(nums);
+            ori = nums;
+            build();
         }
 
-        private int[] bit;
+        private int[] tree;
         private int[] ori;
-        private int len;
+        private int n;
 
         public void Update(int index, int val)
         {
-            add(index + 1, val - ori[index]);
+            add(0, n - 1, 1, val - ori[index], index);
             ori[index] = val;
         }
 
         public int SumRange(int left, int right)
         {
-            return sum(right + 1) - sum(left);
+            return query(0, n - 1, 1, left, right);
         }
 
-        private void build(int[] nums)
+        private void build()
         {
-            for (int i = 0, j; i < len; i++)
-            {
-                ori[i] = nums[i];
-                bit[i + 1] += nums[i];
-                if ((j = i + 1 + ((i + 1) & (-i - 1))) <= len) bit[j] += bit[i + 1];
-            }
+            n = ori.Length;
+            tree = new int[n << 2];
+            build(0, n - 1, 1);
         }
 
-        private void add(int idx, int val)
+        private int build(int left, int right, int idx)
         {
-            while (idx <= len)
-            {
-                bit[idx] += val;
-                idx += idx & -idx;
-            }
+            if (left == right) { tree[idx] = ori[left]; return tree[idx]; }
+
+            int sum = 0, mid = left + ((right - left) >> 1);
+            sum += build(left, mid, idx << 1);
+            sum += build(mid + 1, right, (idx << 1) + 1);
+
+            return tree[idx] = sum;
         }
 
-        private int sum(int idx)
+        private void add(int left, int right, int idx, int val, int orid)
         {
-            int sum = 0;
-            while (idx > 0)
-            {
-                sum += bit[idx];
-                idx -= idx & -idx;
-            }
-            return sum;
+            if (left == right) { tree[idx] += val; return; }
+
+            int mid = left + ((right - left) >> 1);
+            if (orid <= mid) add(left, mid, idx << 1, val, orid); else add(mid + 1, right, (idx << 1) + 1, val, orid);
+        }
+
+        private int query(int left, int right, int idx, int orileft, int oriright)
+        {
+            if (orileft == left && oriright == right) return tree[idx];
+
+            int mid = left + ((right - left) >> 1);
+            if (mid >= oriright) return query(left, mid, idx << 1, orileft, oriright);
+            if (mid < orileft) return query(mid + 1, right, (idx << 1) + 1, orileft, oriright);
+            return query(left, mid, idx << 1, orileft, mid) + query(mid + 1, right, (idx << 1) + 1, mid + 1, oriright);
         }
     }
 }

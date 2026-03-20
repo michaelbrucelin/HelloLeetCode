@@ -18,19 +18,13 @@ namespace LeetCode.QuestionBank.Question0307
         /// <param name="nums"></param>
         public NumArray(int[] nums)
         {
-            len = nums.Length;
-            bit = new int[len + 1];
-            ori = new int[len];
-            for (int i = 0; i < len; i++)
-            {
-                ori[i] = nums[i];
-                add(i + 1, nums[i]);
-            }
+            ori = nums;
+            build();
         }
 
-        private int[] bit;
+        private int[] tree;
         private int[] ori;
-        private int len;
+        private int n;
 
         public void Update(int index, int val)
         {
@@ -43,24 +37,34 @@ namespace LeetCode.QuestionBank.Question0307
             return sum(right + 1) - sum(left);
         }
 
-        private void add(int id, int x)
+        private void build()
         {
-            while (id <= len)
+            n = ori.Length + 1;
+            tree = new int[n];
+            for (int i = 1, j; i < n; i++)
             {
-                bit[id] += x;
-                id += id & -id;
+                tree[i] += ori[i - 1];
+                if ((j = i + (i & -i)) < n) tree[j] += tree[i];
             }
         }
 
-        private int sum(int id)
+        private void add(int idx, int val)
+        {
+            while (idx < n)
+            {
+                tree[idx] += val;
+                idx += idx & -idx;
+            }
+        }
+
+        private int sum(int idx)
         {
             int sum = 0;
-            while (id > 0)
+            while (idx > 0)
             {
-                sum += bit[id];
-                id -= id & -id;
+                sum += tree[idx];
+                idx -= idx & -idx;
             }
-
             return sum;
         }
     }
