@@ -1,4 +1,4 @@
-﻿#### [同向双指针（滑动窗口）Python/Java/C++/Go](https://leetcode.cn/problems/replace-the-substring-for-balanced-string/solutions/2108358/tong-xiang-shuang-zhi-zhen-hua-dong-chua-z7tu/)
+### [同向双指针（滑动窗口）Python/Java/C++/Go](https://leetcode.cn/problems/replace-the-substring-for-balanced-string/solutions/2108358/tong-xiang-shuang-zhi-zhen-hua-dong-chua-z7tu/)
 
 根据题意，如果在待替换子串**之外**的任意字符的出现次数都超过 $m=\dfrac{n}{4}$，那么无论怎么替换，都无法使这个字符的出现次数等于 $m$。
 

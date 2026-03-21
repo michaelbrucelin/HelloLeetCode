@@ -1,20 +1,22 @@
-﻿#### [方法一：滑动窗口](https://leetcode.cn/problems/replace-the-substring-for-balanced-string/solutions/2107520/ti-huan-zi-chuan-de-dao-ping-heng-zi-fu-f8fk8/)
+### [替换子串得到平衡字符串](https://leetcode.cn/problems/replace-the-substring-for-balanced-string/solutions/2107520/ti-huan-zi-chuan-de-dao-ping-heng-zi-fu-f8fk8/)
+
+#### 方法一：滑动窗口
 
 **思路与算法**
 
-设 $partial = \dfrac{n}{4}$，我们选择 $s$ 的一个子串作为「待替换子串」，只有当 $s$ 剩余的部分中 $‘Q’$，$‘W’$，$‘E’$，$‘R’$ 的出现次数都小于等于 $partial$ 时，我们才有可能使 $s$ 变为「平衡字符串」。
+设 $partial=\dfrac{n}{4}$，我们选择 $s$ 的一个子串作为「待替换子串」，只有当 $s$ 剩余的部分中 ‘Q’，‘W’，‘E’，‘R’ 的出现次数都小于等于 $partial$ 时，我们才有可能使 $s$ 变为「平衡字符串」。
 
 如果原始的 $s$ 就是 「平衡字符串」，我们直接返回 $0$，否则我们按照以下思路求解。
 
-从小到大枚举「待替换子串」的左端点 $l$，为了使得替换的长度最小，我们要找到最近的右端点 $s$，使得去除 $[l,r)$ 之后的剩余部分满足上述条件。不难发现，随着 $l$ 的递增，$s$ 也是递增的。
+从小到大枚举「待替换子串」的左端点 $l$，为了使得替换的长度最小，我们要找到最近的右端点 $r$，使得去除 $[l,r)$ 之后的剩余部分满足上述条件。不难发现，随着 $l$ 的递增，$r$ 也是递增的。
 
-具体的，我们使用滑动窗口来维护区间 $[l, r)$ 之外的剩余部分中 $‘Q’$，$‘W’$，$‘E’$，$‘R’$ 的出现次数，当其中一种字符的出现次数大于 $partial$ 时，令 $s[r]$ 的出现次数减 $1$，并使得 $s$ 向右移动一个单位。该操作一直被执行，直到条件被满足或者 $s$ 到达 $s$ 的末尾。
+具体的，我们使用滑动窗口来维护区间 $[l,r)$ 之外的剩余部分中 ‘Q’，‘W’，‘E’，‘R’ 的出现次数，当其中一种字符的出现次数大于 $partial$ 时，令 $s[r]$ 的出现次数减 $1$，并使得 $r$ 向右移动一个单位。该操作一直被执行，直到条件被满足或者 $r$ 到达 $s$ 的末尾。
 
-如果找到了使得条件被满足的 $s$，我们用 $r - l$ 来更新答案，然后令 $s[l]$ 的出现次数加 $1$，并使得 $l$ 向右移动一个单位进行下一次枚举。否则，后序的 $l$ 也将不会有合法的 $s$，此时我们可以直接跳出循环。对于所有合法的 $[l, r)$，取 $r - l$ 的最小值做为答案。
+如果找到了使得条件被满足的 $r$，我们用 $r-l$ 来更新答案，然后令 $s[l]$ 的出现次数加 $1$，并使得 $l$ 向右移动一个单位进行下一次枚举。否则，后序的 $l$ 也将不会有合法的 $r$，此时我们可以直接跳出循环。对于所有合法的 $[l,r)$，取 $r-l$ 的最小值做为答案。
 
 **代码**
 
-```python
+```Python
 class Solution:
     def balancedString(self, s: str) -> int:
         cnt = Counter(s)
@@ -44,7 +46,7 @@ class Solution:
         return res
 ```
 
-```cpp
+```C++
 class Solution {
 public:
     int idx(const char& c) {
@@ -86,7 +88,7 @@ public:
 };
 ```
 
-```java
+```Java
 class Solution {
     public int balancedString(String s) {
         int[] cnt = new int[26];
@@ -128,7 +130,7 @@ class Solution {
 }
 ```
 
-```csharp
+```CSharp
 public class Solution {
     public int BalancedString(string s) {
         int[] cnt = new int[26];
@@ -169,7 +171,7 @@ public class Solution {
 }
 ```
 
-```c
+```C
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 
 static inline int idx(const char c) {
@@ -197,7 +199,7 @@ int balancedString(char * s) {
     if (check(cnt, partial)) {
         return 0;
     }
-    
+
     for (int l = 0, r = 0; l < len; l++) {
         while (r < len && !check(cnt, partial)) {
             cnt[idx(s[r])]--;
@@ -213,7 +215,7 @@ int balancedString(char * s) {
 }
 ```
 
-```javascript
+```JavaScript
 var balancedString = function(s) {
     const cnt = new Array(26).fill(0);
     for (let i = 0; i < s.length; i++) {
@@ -253,7 +255,7 @@ const check = (cnt, partial) => {
 };
 ```
 
-```go
+```Go
 func balancedString(s string) int {
     cnt := map[byte]int{}
     for _, c := range s {
@@ -300,5 +302,5 @@ func min(a, b int) int {
 
 **复杂度分析**
 
--   时间复杂度：$O(n)$，其中 $n$ 为 $s$ 的长度。
--   空间复杂度：$O(|\Sigma|)$，其中 $|\Sigma|$ 表示字符集大小，在本题中 $|\Sigma|=26$。
+- 时间复杂度：$O(n)$，其中 $n$ 为 $s$ 的长度。
+- 空间复杂度：$O(\vert \sum \vert )$，其中 $\vert \sum \vert $ 表示字符集大小，在本题中 $\vert \sum \vert =26$。
