@@ -1,0 +1,560 @@
+### [两种方法：枚举 / 倒序贪心 + 0-1 背包（Python/Java/C++/Go）](https://leetcode.cn/problems/next-greater-numerically-balanced-number/solutions/3814255/liang-chong-fang-fa-mei-ju-dao-xu-tan-xi-164n/)
+
+#### 方法一：枚举
+
+设 $n$ 的十进制长度为 $m$。
+
+对于本题的数据范围，一定存在十进制长为 $m+1$ 的数值平衡数。
+
+例如 $n=999$，答案为 $1333$。
+
+例如 $n=999999$，答案为 $1224444$。
+
+对于本题的数据范围，$m+1$ 一定可以分解为 $[1,9]$ 中的不同元素之和。
+
+所以枚举 $O(n)$ 次就能找到答案。
+
+```Python
+class Solution:
+    def nextBeautifulNumber(self, n: int) -> int:
+        while True:
+            n += 1
+            cnt = Counter(str(n))
+            if all(int(d) == c for d, c in cnt.items()):
+                return n
+```
+
+```Java
+class Solution {
+    public int nextBeautifulNumber(int n) {
+        next:
+        while (true) {
+            n++;
+
+            int[] cnt = new int[10];
+            for (int x = n; x > 0; x /= 10) {
+                cnt[x % 10]++;
+            }
+
+            for (int x = n; x > 0; x /= 10) {
+                if (cnt[x % 10] != x % 10) {
+                    continue next;
+                }
+            }
+
+            return n;
+        }
+    }
+}
+```
+
+```C++
+class Solution {
+public:
+    int nextBeautifulNumber(int n) {
+        while (true) {
+            n++;
+
+            int cnt[10]{};
+            for (int x = n; x > 0; x /= 10) {
+                cnt[x % 10]++;
+            }
+
+            bool ok = true;
+            for (int x = n; x > 0; x /= 10) {
+                if (cnt[x % 10] != x % 10) {
+                    ok = false;
+                    break;
+                }
+            }
+            if (ok) {
+                return n;
+            }
+        }
+    }
+};
+```
+
+```Go
+func nextBeautifulNumber(n int) int {
+next:
+    for {
+        n++
+        cnt := [10]int{}
+        for x := n; x > 0; x /= 10 {
+            cnt[x%10]++
+        }
+        for x := n; x > 0; x /= 10 {
+            if cnt[x%10] != x%10 {
+                continue next
+            }
+        }
+        return n
+    }
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$O(n\log n)$ 或 $O(n(D+\log n))$，其中 $D=10$。枚举 $O(n)$ 个数，每个数需要 $O(\log n)$ 的时间判断是否为数值平衡数。
+- 空间复杂度：$O(\log n)$ 或 $O(D)$。
+
+#### 方法二：倒序贪心
+
+如果数据范围扩大到 $n\le 1018$，上面的做法就超时了。
+
+下面介绍一个更快的做法，对于更大的数据范围也能瞬间得出结果，且可以扩展到其他情况，例如值域改成小写字母 $a$ 到 $z$。
+
+请先完成更简单的 [3720\. 大于目标字符串的最小字典序排列](https://leetcode.cn/problems/lexicographically-smallest-permutation-greater-than-target/)，[我的题解](https://leetcode.cn/problems/lexicographically-smallest-permutation-greater-than-target/solutions/3809944/dao-xu-tan-xin-pythonjavacgo-by-endlessc-fdf5/)。
+
+本题用同样的方法解决。
+
+先把 $n$ 转成十进制字符串 $s$。为简化代码，在 $s$ 前面加一个前导零。设 $s$（补前导零后）的长度为 $m$。
+
+倒着遍历 $s$，设 $d=s[i]$，尝试把 $s[i]$ 增大为 $d+1,d+2,\dots ,9$。那么：
+
+1. 对于下标在 $[1,i]$ 中的数字，不能存在数字 $x$ 的出现次数超过 $x$ 的情况。换句话说，设 $cnt[x]$ 是数字 $x$ 在 $s$ 的 $[1,i]$ 中的出现次数，不能出现 $cnt[x]>x$ 的情况。
+2. 剩余位置 $[i+1,m-1]$ 可以随便填，我们需要补满 $0<cnt[x]<x$ 的数字 $x$，把 $x$ 的出现次数变成 $x$。
+3. 补满数字后，如果还有剩余位置没有填数字，那么从剩余的满足 $cnt[x]=0$ 的非零数字中，选择一个字典序最小的序列，使得序列的和恰好等于剩余位置的个数。这是恰好装满型 [0-1 背包](https://leetcode.cn/link/?target=https%3A%2F%2Fwww.bilibili.com%2Fvideo%2FBV16Y411v7Y6%2F)。算完 $DP$ 后，如何得到具体方案？类似 [1449\. 数位成本和为目标值的最大数字](https://leetcode.cn/problems/form-largest-integer-with-digits-that-add-up-to-target/)，见 [我的题解](https://leetcode.cn/problems/form-largest-integer-with-digits-that-add-up-to-target/solutions/3814358/wan-quan-bei-bao-shu-chu-ju-ti-fang-an-p-i29o/)。
+4. 把第二步和第三步的数字从小到大排序，填在 $[i+1,m-1]$ 中。
+
+```Python
+class Solution:
+    # 从 a 中选一个字典序最小的、元素和等于 target 的子序列
+    # a 已经从小到大排序
+    # 无解返回 None
+    def zeroOneKnapsack(self, a: List[int], target: int) -> Optional[List[int]]:
+        n = len(a)
+        f = [[False] * (target + 1) for _ in range(n + 1)]
+        f[n][0] = True
+
+        # 倒着 DP，这样后面可以正着（从小到大）选
+        for i in range(n - 1, -1, -1):
+            v = a[i]
+            for j in range(target + 1):
+                if j < v:
+                    f[i][j] = f[i + 1][j]
+                else:
+                    f[i][j] = f[i + 1][j] or f[i + 1][j - v]
+
+        if not f[0][target]:
+            return None
+
+        ans = []
+        j = target
+        for i, v in enumerate(a):
+            if j >= v and f[i + 1][j - v]:
+                ans.append(v)
+                j -= v
+        return ans
+
+    def nextBeautifulNumber(self, n: int) -> int:
+        s = "0" + str(n)  # 补一个前导零，方便处理答案十进制串比 n 的十进制串长的情况
+        s = list(map(int, s))  # 避免在后续循环中反复调用 int
+        m = len(s)
+
+        MX = 10
+        cnt = [0] * MX
+        for i in range(1, m):
+            cnt[s[i]] += 1
+
+        # 从右往左尝试
+        for i in range(m - 1, -1, -1):
+            if i > 0:
+                cnt[s[i]] -= 1  # 撤销
+
+            # 增大 s[i] 为 j
+            for j in range(s[i] + 1, MX):
+                cnt[j] += 1
+
+                # 后面 [i+1, m-1] 需要补满 0 < cnt[k] < k 的数字 k，剩余数位可以随便填
+                free = m - 1 - i  # 统计可以随便填的数位个数
+                for k, c in enumerate(cnt):
+                    if k < c:  # 不合法
+                        free = -1
+                        break
+                    if c > 0:
+                        free -= k - c
+                if free < 0:  # 不合法，继续枚举
+                    cnt[j] -= 1
+                    continue
+
+                # 对于可以随便填的数位，计算字典序最小的填法
+                a = [k for k in range(1, MX) if cnt[k] == 0]
+                missing = self.zeroOneKnapsack(a, free)
+                if missing is None:  # 无解，继续枚举
+                    cnt[j] -= 1
+                    continue
+
+                for v in missing:
+                    cnt[v] = -v  # 用负数表示可以随便填的数
+
+                s[i] = j
+                del s[i + 1:]
+                for k, c in enumerate(cnt):
+                    s += [k] * (k - c if c > 0 else -c)
+                return int(''.join(map(str, s)))
+
+        return -1  # 无解（本题不会发生，但为了可扩展性保留）
+```
+
+```Java
+class Solution {
+    public int nextBeautifulNumber(int n) {
+        // 补一个前导零，方便处理答案十进制串比 n 的十进制串长的情况
+        char[] s = ("0" + n).toCharArray();
+        int m = s.length;
+
+        final int MX = 10;
+        int[] cnt = new int[MX];
+        for (int i = 1; i < m; i++) {
+            cnt[s[i] - '0']++;
+        }
+
+        // 从右往左尝试
+        for (int i = m - 1; i >= 0; i--) {
+            if (i > 0) {
+                cnt[s[i] - '0']--; // 撤销
+            }
+
+            // 增大 s[i] 为 j
+            for (int j = s[i] - '0' + 1; j < MX; j++) {
+                cnt[j]++;
+
+                // 后面 [i+1, m-1] 需要补满 0 < cnt[k] < k 的数字 k，剩余数位可以随便填
+                int free = m - 1 - i; // 统计可以随便填的数位个数
+                for (int k = 0; k < MX; k++) {
+                    int c = cnt[k];
+                    if (k < c) { // 不合法
+                        free = -1;
+                        break;
+                    }
+                    if (c > 0) {
+                        free -= k - c;
+                    }
+                }
+                if (free < 0) { // 不合法，继续枚举
+                    cnt[j]--;
+                    continue;
+                }
+
+                // 对于可以随便填的数位，计算字典序最小的填法
+                List<Integer> a = new ArrayList<>();
+                for (int k = 1; k < MX; k++) {
+                    if (cnt[k] == 0) {
+                        a.add(k);
+                    }
+                }
+                List<Integer> missing = zeroOneKnapsack(a, free);
+                if (missing == null) { // 无解，继续枚举
+                    cnt[j]--;
+                    continue;
+                }
+
+                for (int v : missing) {
+                    cnt[v] = -v; // 用负数表示可以随便填的数
+                }
+
+                StringBuilder ans = new StringBuilder("0" + n);
+                ans.setCharAt(i, (char) ('0' + j));
+                ans.setLength(i + 1);
+                for (int k = 1; k < MX; k++) {
+                    int c = cnt[k];
+                    ans.repeat('0' + k, c > 0 ? k - c : -c);
+                }
+                return Integer.parseInt(ans.toString());
+            }
+        }
+        return -1; // 无解（本题不会发生，但为了可扩展性保留）
+    }
+
+    // 从 a 中选一个字典序最小的、元素和等于 target 的子序列
+    // a 已经从小到大排序
+    // 无解返回 null
+    private List<Integer> zeroOneKnapsack(List<Integer> a, int target) {
+        int n = a.size();
+        boolean[][] f = new boolean[n + 1][target + 1];
+        f[n][0] = true;
+
+        // 倒着 DP，这样后面可以正着（从小到大）选
+        for (int i = n - 1; i >= 0; i--) {
+            int v = a.get(i);
+            for (int j = 0; j <= target; j++) {
+                if (j < v) {
+                    f[i][j] = f[i + 1][j];
+                } else {
+                    f[i][j] = f[i + 1][j] || f[i + 1][j - v];
+                }
+            }
+        }
+
+        if (!f[0][target]) {
+            return null;
+        }
+
+        List<Integer> ans = new ArrayList<>();
+        int j = target;
+        for (int i = 0; i < n; i++) {
+            int v = a.get(i);
+            if (j >= v && f[i + 1][j - v]) {
+                ans.add(v);
+                j -= v;
+            }
+        }
+        return ans;
+    }
+}
+```
+
+```C++
+class Solution {
+    // 从 a 中选一个字典序最小的、元素和等于 target 的子序列
+    // a 已经从小到大排序
+    // 无解返回 {} 和 false
+    pair<vector<int>, bool> zeroOneKnapsack(vector<int>& a, int target) {
+        int n = a.size();
+        vector f(n + 1, vector<int8_t>(target + 1));
+        f[n][0] = true;
+
+        // 倒着 DP，这样后面可以正着（从小到大）选
+        for (int i = n - 1; i >= 0; i--) {
+            int v = a[i];
+            for (int j = 0; j <= target; j++) {
+                if (j < v) {
+                    f[i][j] = f[i + 1][j];
+                } else {
+                    f[i][j] = f[i + 1][j] || f[i + 1][j - v];
+                }
+            }
+        }
+
+        if (!f[0][target]) {
+            return {};
+        }
+
+        vector<int> ans;
+        int j = target;
+        for (int i = 0; i < n; i++) {
+            int v = a[i];
+            if (j >= v && f[i + 1][j - v]) {
+                ans.push_back(v);
+                j -= v;
+            }
+        }
+        return {ans, true};
+    }
+
+public:
+    int nextBeautifulNumber(int n) {
+        // 补一个前导零，方便处理答案十进制串比 n 的十进制串长的情况
+        string s = "0" + to_string(n);
+        int m = s.size();
+
+        constexpr int MX = 10;
+        int cnt[MX]{};
+        for (int i = 1; i < m; i++) {
+            cnt[s[i] - '0']++;
+        }
+
+        // 从右往左尝试
+        for (int i = m - 1; i >= 0; i--) {
+            if (i > 0) {
+                cnt[s[i] - '0']--; // 撤销
+            }
+
+            // 增大 s[i] 为 j
+            for (int j = s[i] - '0' + 1; j < MX; j++) {
+                cnt[j]++;
+
+                // 后面 [i+1, m-1] 需要补满 0 < cnt[k] < k 的数字 k，剩余数位可以随便填
+                int free = m - 1 - i; // 统计可以随便填的数位个数
+                for (int k = 0; k < MX; k++) {
+                    int c = cnt[k];
+                    if (k < c) { // 不合法
+                        free = -1;
+                        break;
+                    }
+                    if (c > 0) {
+                        free -= k - c;
+                    }
+                }
+                if (free < 0) { // 不合法，继续枚举
+                    cnt[j]--;
+                    continue;
+                }
+
+                // 对于可以随便填的数位，计算字典序最小的填法
+                vector<int> a;
+                for (int k = 1; k < MX; k++) {
+                    if (cnt[k] == 0) {
+                        a.push_back(k);
+                    }
+                }
+                auto [missing, ok] = zeroOneKnapsack(a, free);
+                if (!ok) { // 无解，继续枚举
+                    cnt[j]--;
+                    continue;
+                }
+
+                for (int v : missing) {
+                    cnt[v] = -v; // 用负数表示可以随便填的数
+                }
+
+                s[i] = '0' + j;
+                s.resize(i + 1);
+                for (int k = 1; k < MX; k++) {
+                    int c = cnt[k];
+                    c = c > 0 ? k - c : -c;
+                    s += string(c, '0' + k);
+                }
+                return stoi(s);
+            }
+        }
+        return -1; // 无解（本题不会发生，但为了可扩展性保留）
+    }
+};
+```
+
+```Go
+// 从 a 中选一个字典序最小的、元素和等于 target 的子序列
+// a 已经从小到大排序
+// 无解返回 nil
+func zeroOneKnapsack(a []int, target int) []int {
+    n := len(a)
+    f := make([][]bool, n+1)
+    for i := range f {
+        f[i] = make([]bool, target+1)
+    }
+    f[n][0] = true
+
+    // 倒着 DP，这样后面可以正着（从小到大）选
+    for i := n - 1; i >= 0; i-- {
+        v := a[i]
+        for j := range f[i] {
+            if j < v {
+                f[i][j] = f[i+1][j]
+            } else {
+                f[i][j] = f[i+1][j] || f[i+1][j-v]
+            }
+        }
+    }
+
+    if !f[0][target] {
+        return nil
+    }
+
+    ans := []int{}
+    j := target
+    for i, v := range a {
+        if j >= v && f[i+1][j-v] {
+            ans = append(ans, v)
+            j -= v
+        }
+    }
+    return ans
+}
+
+func nextBeautifulNumber(n int) int {
+    // 补一个前导零，方便处理答案十进制比 n 的十进制长的情况
+    s := "0" + strconv.Itoa(n)
+    m := len(s)
+
+    const mx = 10
+    cnt := make([]int, mx)
+    for i := 1; i < m; i++ {
+        cnt[s[i]-'0']++
+    }
+
+    // 从右往左尝试
+    for i := m - 1; i >= 0; i-- {
+        if i > 0 {
+            cnt[s[i]-'0']-- // 撤销
+        }
+
+        // 增大 s[i] 为 j
+        for j := s[i] - '0' + 1; j < mx; j++ {
+            cnt[j]++
+
+            // 后面 [i+1, m-1] 需要补满 0 < cnt[k] < k 的数字 k，剩余数位可以随便填
+            free := m - 1 - i // 统计可以随便填的数位个数
+            for k, c := range cnt {
+                if k < c { // 不合法
+                    free = -1
+                    break
+                }
+                if c > 0 {
+                    free -= k - c
+                }
+            }
+            if free < 0 { // 不合法，继续枚举
+                cnt[j]--
+                continue
+            }
+
+            // 对于可以随便填的数位，计算字典序最小的填法
+            a := []int{}
+            for k := 1; k < mx; k++ {
+                if cnt[k] == 0 {
+                    a = append(a, k)
+                }
+            }
+            missing := zeroOneKnapsack(a, free)
+            if missing == nil { // 无解，继续枚举
+                cnt[j]--
+                continue
+            }
+
+            for _, v := range missing {
+                cnt[v] = -v // 用负数表示可以随便填的数
+            }
+
+            t := []byte(s[:i+1])
+            t[i] = '0' + byte(j)
+            for k, c := range cnt {
+                if c > 0 {
+                    c = k - c
+                } else {
+                    c = -c
+                }
+                d := []byte{'0' + byte(k)}
+                t = append(t, bytes.Repeat(d, c)...)
+            }
+            ans, _ := strconv.Atoi(string(t))
+            return ans
+        }
+    }
+    return -1 // 无解（本题不会发生，但为了可扩展性保留）
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$O(D^2\log^2n)$，其中 $D=10$，$\log n$ 是 $n$ 的十进制长度。枚举 $O(D\log n)$ 种把 $s[i]$ 增大的情况，每次需要 $O(D\log n)$ 的时间计算 $0-1$ 背包。
+- 空间复杂度：$O(D\log n)$。
+
+#### 相似题目
+
+- [3720\. 大于目标字符串的最小字典序排列](https://leetcode.cn/problems/lexicographically-smallest-permutation-greater-than-target/) 1958
+- [3646\. 下一个特殊回文数](https://leetcode.cn/problems/next-special-palindrome-number/) 2445
+- [3348\. 最小可整除数位乘积 II](https://leetcode.cn/problems/smallest-divisible-digit-product-ii/) 3101
+
+#### 专题训练
+
+见下面贪心题单的「**§3.1 字典序最小/最大**」。
+
+#### 分类题单
+
+[如何科学刷题？](https://leetcode.cn/circle/discuss/RvFUtj/)
+
+1. [滑动窗口与双指针（定长/不定长/单序列/双序列/三指针/分组循环）](https://leetcode.cn/circle/discuss/0viNMK/)
+2. [二分算法（二分答案/最小化最大值/最大化最小值/第K小）](https://leetcode.cn/circle/discuss/SqopEo/)
+3. [单调栈（基础/矩形面积/贡献法/最小字典序）](https://leetcode.cn/circle/discuss/9oZFK9/)
+4. [网格图（DFS/BFS/综合应用）](https://leetcode.cn/circle/discuss/YiXPXW/)
+5. [位运算（基础/性质/拆位/试填/恒等式/思维）](https://leetcode.cn/circle/discuss/dHn9Vk/)
+6. [图论算法（DFS/BFS/拓扑排序/基环树/最短路/最小生成树/网络流）](https://leetcode.cn/circle/discuss/01LUak/)
+7. [动态规划（入门/背包/划分/状态机/区间/状压/数位/数据结构优化/树形/博弈/概率期望）](https://leetcode.cn/circle/discuss/tXLS3i/)
+8. [常用数据结构（前缀和/差分/栈/队列/堆/字典树/并查集/树状数组/线段树）](https://leetcode.cn/circle/discuss/mOr1u6/)
+9. [数学算法（数论/组合/概率期望/博弈/计算几何/随机算法）](https://leetcode.cn/circle/discuss/IYT3ss/)
+10. [贪心与思维（基本贪心策略/反悔/区间/字典序/数学/思维/脑筋急转弯/构造）](https://leetcode.cn/circle/discuss/g6KTKL/)
+11. [链表、树与回溯（前后指针/快慢指针/DFS/BFS/直径/LCA）](https://leetcode.cn/circle/discuss/K0n2gO/)
+12. [字符串（KMP/Z函数/Manacher/字符串哈希/AC自动机/后缀数组/子序列自动机）](https://leetcode.cn/circle/discuss/SJFwQI/)

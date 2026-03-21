@@ -9,11 +9,11 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using TestXXXX = LeetCode.QuestionBank.Question0307.Test0307;
+using TestXXXX = LeetCode.QuestionBank.Question0076.Test0076;
 using UtilsXXXX = LeetCode.QuestionBank.Question0233.Utils0233;
 // using TestXXXX = LeetCode.LCP.LCP0068.Test0068;
 // using TestXXXX = LeetCode.LCR.LCR0111.Test0111;
-// using TestXXXX = LeetCode.Interview.Interview0807.Test0807;
+// using TestXXXX = LeetCode.Interview.Interview1010.Test1010;
 
 namespace LeetCode
 {
@@ -124,6 +124,7 @@ namespace LeetCode
             //const double epsilon = 1e-5;                              // 0.00001
             //const int MOD = (int)1e9 + 7;                             // 1000000007, 10^9 + 7
             //const int MOD = (int)1e9 + 9;                             // 1000000009, 10^9 + 9
+
             //string question = "1234", testcase = "08", arg = "nums";
             //string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"QuestionBank\Question{question}\TestCases\TestCase{question}");
@@ -139,6 +140,33 @@ namespace LeetCode
             //arg = Utils.Str2NumArray_2d<int>(File.ReadAllText($"{path}_{testcase}_{arg}.txt"));
             //string raw = "[[0,1],[1,2]]";
             //Console.WriteLine(Utils.TestCase2CSharpDeclare(raw, Utils.TestCaseType.array_2d));
+
+            /*
+             * using _NumArray = LeetCode.QuestionBank.Question0307.NumArray
+             * 
+             * Interface0307 solution;
+             * string[] opts; int[][] args; int n;
+             * int result; string[] answer;
+             * int id = 0, id1;
+             * 
+             * Console.WriteLine();
+             * id++; id1 = 1;
+             * opts = ["NumArray", "update", "update", "update", "sumRange", "update", "sumRange", "update", "sumRange", "sumRange", "update"];
+             * args = [[7, 2, 7, 2, 0], [4, 6], [0, 2], [0, 9], [4, 4], [3, 8], [0, 4], [4, 1], [0, 3], [0, 4], [0, 4]];
+             * answer = ["null", "null", "null", "null", "6", "null", "32", "null", "26", "27", "null"];
+             * n = opts.Length;
+             * solution = new _NumArray(args[0]);
+             * for (int i = 1; i < n; i++) switch (opts[i])
+             *     {
+             *         case "update": solution.Update(args[i][0], args[i][1]); break;
+             *         case "sumRange":
+             *             result = solution.SumRange(args[i][0], args[i][1]);
+             *             Console.WriteLine($"{id,2}-{id1++,2}: {(result == Convert.ToInt32(answer[i])) + ",",-6} result: {result}, answer: {answer[i]}");
+             *             break;
+             *         default: break;
+             *     }
+             */
+
             //               0xAAAAAAAA      10101010101010101010101010101010
             //const int M1 = 0x55555555;  // 01010101010101010101010101010101
             //const int M2 = 0x33333333;  // 00110011001100110011001100110011
