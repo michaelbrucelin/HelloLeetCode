@@ -46,8 +46,7 @@ namespace LeetCode.QuestionBank.Question1886
         private bool Compare(int[][] arr1, int[][] arr2)
         {
             int n = arr1.Length;
-            for (int r = 0; r < n; r++) for (int c = 0; c < n; c++)
-                    if (arr1[r][c] != arr2[r][c]) return false;
+            for (int r = 0; r < n; r++) for (int c = 0; c < n; c++) if (arr1[r][c] != arr2[r][c]) return false;
 
             return true;
         }

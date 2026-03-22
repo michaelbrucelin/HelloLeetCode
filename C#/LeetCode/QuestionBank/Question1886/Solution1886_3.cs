@@ -19,26 +19,22 @@ namespace LeetCode.QuestionBank.Question1886
         public bool FindRotation(int[][] mat, int[][] target)
         {
             int n = mat.Length;
-            for (int r = 0; r < n; r++) for (int c = 0; c < n; c++)
-                    if (mat[r][c] != target[r][c]) goto One;
+            for (int r = 0; r < n; r++) for (int c = 0; c < n; c++) if (mat[r][c] != target[r][c]) goto One;
             return true;
 
-            One:
-            for (int r = 0; r < n; r++) for (int c = 0; c < n; c++)
-                    if (mat[n - c - 1][r] != target[r][c]) goto Two;
+        One:
+            for (int r = 0; r < n; r++) for (int c = 0; c < n; c++) if (mat[n - c - 1][r] != target[r][c]) goto Two;
             return true;
 
-            Two:
-            for (int r = 0; r < n; r++) for (int c = 0; c < n; c++)
-                    if (mat[n - r - 1][n - c - 1] != target[r][c]) goto Three;
+        Two:
+            for (int r = 0; r < n; r++) for (int c = 0; c < n; c++) if (mat[n - r - 1][n - c - 1] != target[r][c]) goto Three;
             return true;
 
-            Three:
-            for (int r = 0; r < n; r++) for (int c = 0; c < n; c++)
-                    if (mat[c][n - r - 1] != target[r][c]) goto End;
+        Three:
+            for (int r = 0; r < n; r++) for (int c = 0; c < n; c++) if (mat[c][n - r - 1] != target[r][c]) goto End;
             return true;
 
-            End:
+        End:
             return false;
         }
 
@@ -64,7 +60,7 @@ namespace LeetCode.QuestionBank.Question1886
                         if (mat[pos.r][pos.c] != target[r][c]) goto False;
                     }
                 return true;
-                False:;
+            False:;
             }
 
             return false;

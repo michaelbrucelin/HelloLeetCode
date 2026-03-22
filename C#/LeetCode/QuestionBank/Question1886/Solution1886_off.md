@@ -1,20 +1,22 @@
-#### [·½·¨Ò»£ºÄ£ÄâÂÖ×ª²Ù×÷](https://leetcode.cn/problems/determine-whether-matrix-can-be-obtained-by-rotation/solutions/815371/pan-duan-ju-zhen-jing-lun-zhuan-hou-shi-qa9d0/)
+### [åˆ¤æ–­çŸ©é˜µç»è½®è½¬åæ˜¯å¦ä¸€è‡´](https://leetcode.cn/problems/determine-whether-matrix-can-be-obtained-by-rotation/solutions/815371/pan-duan-ju-zhen-jing-lun-zhuan-hou-shi-qa9d0/)
 
-**ÌáÊ¾ $1$**
+#### æ–¹æ³•ä¸€ï¼šæ¨¡æ‹Ÿè½®è½¬æ“ä½œ
 
-½«Ò»¸ö¾ØÕó $90$ ¶ÈË³Ê±ÕëĞı×ª $4$ ´Î£¬Ğı×ªºóµÄ¾ØÕóÓë±¾ÉíÒ»ÖÂ¡£
+**æç¤º 1**
 
-**Ë¼Â·ÓëËã·¨**
+å°†ä¸€ä¸ªçŸ©é˜µ $90$ åº¦é¡ºæ—¶é’ˆæ—‹è½¬ $4$ æ¬¡ï¼Œæ—‹è½¬åçš„çŸ©é˜µä¸æœ¬èº«ä¸€è‡´ã€‚
 
-¸ù¾İ **ÌáÊ¾ $1$**£¬ÎÒÃÇ¿ÉÒÔÄ£Äâ $4$ ´Î½« $mat$ $90$ ¶ÈË³Ê±ÕëĞı×ªµÄ²Ù×÷£¬²¢ÔÚÃ¿´ÎĞı×ª²Ù×÷ºóÓë $target$ ±È½Ï¡£
+**æ€è·¯ä¸ç®—æ³•**
 
-¶ÔÓÚĞı×ª²Ù×÷£¬¿ÉÒÔ½¨Á¢¶îÍâÊı×éÊµÏÖ£¬Ò²¿ÉÒÔÔ­µØĞı×ª¡£²»Í¬·½·¨µÄ¾ßÌåÏ¸½ÚÓëÏà¹ØÍÆµ¼¶ÁÕß¿ÉÒÔ²Î¿¼[¡¸48. Ğı×ªÍ¼Ïñ¡¹µÄÌâ½â](https://leetcode-cn.com/problems/rotate-image/solution/xuan-zhuan-tu-xiang-by-leetcode-solution-vu3m/)¡£
+æ ¹æ® **æç¤º 1**ï¼Œæˆ‘ä»¬å¯ä»¥æ¨¡æ‹Ÿ $4$ æ¬¡å°† $mat 90$ åº¦é¡ºæ—¶é’ˆæ—‹è½¬çš„æ“ä½œï¼Œå¹¶åœ¨æ¯æ¬¡æ—‹è½¬æ“ä½œåä¸ $target$ æ¯”è¾ƒã€‚
 
-±¾ÎÄÖĞ£¬ÎÒÃÇ²ÉÓÃÔ­µØĞı×ªµÄ·½Ê½£¨¼´ÉÏÎÄÌâ½âÁ´½ÓÖĞµÄ **·½·¨¶ş**£©ÊµÏÖĞı×ª²Ù×÷¡£
+å¯¹äºæ—‹è½¬æ“ä½œï¼Œå¯ä»¥å»ºç«‹é¢å¤–æ•°ç»„å®ç°ï¼Œä¹Ÿå¯ä»¥åŸåœ°æ—‹è½¬ã€‚ä¸åŒæ–¹æ³•çš„å…·ä½“ç»†èŠ‚ä¸ç›¸å…³æ¨å¯¼è¯»è€…å¯ä»¥å‚è€ƒ[ã€Œ48. æ—‹è½¬å›¾åƒã€çš„é¢˜è§£](https://leetcode-cn.com/problems/rotate-image/solution/xuan-zhuan-tu-xiang-by-leetcode-solution-vu3m/)ã€‚
 
-**´úÂë**
+æœ¬æ–‡ä¸­ï¼Œæˆ‘ä»¬é‡‡ç”¨åŸåœ°æ—‹è½¬çš„æ–¹å¼ï¼ˆå³ä¸Šæ–‡é¢˜è§£é“¾æ¥ä¸­çš„ **æ–¹æ³•äºŒ**ï¼‰å®ç°æ—‹è½¬æ“ä½œã€‚
 
-```cpp
+**ä»£ç **
+
+```C++
 class Solution {
 public:
     int temp;
@@ -22,9 +24,9 @@ public:
 
     bool findRotation(vector<vector<int>>& mat, vector<vector<int>>& target) {
         int n = mat.size();
-        // ×î¶àĞı×ª 4 ´Î
+        // æœ€å¤šæ—‹è½¬ 4 æ¬¡
         for (int k = 0; k < 4; ++k) {
-            // Ğı×ª²Ù×÷
+            // æ—‹è½¬æ“ä½œ
             for (int i = 0; i < n / 2; ++i) {
                 for (int j = 0; j < (n + 1) / 2; ++j) {
                     temp = mat[i][j];
@@ -34,34 +36,273 @@ public:
                     mat[j][n-1-i] = temp;
                 }
             }
-            
+
             if (mat == target) {
                 return true;
             }
         }
-        return false;    
+        return false;
     }
 };
 ```
 
-```python
+```Python
 class Solution:
     def findRotation(self, mat: List[List[int]], target: List[List[int]]) -> bool:
         n = len(mat)
-        # ×î¶àĞı×ª 4 ´Î
+        # æœ€å¤šæ—‹è½¬ 4 æ¬¡
         for k in range(4):
-            # Ğı×ª²Ù×÷
+            # æ—‹è½¬æ“ä½œ
             for i in range(n // 2):
                 for j in range((n + 1) // 2):
                     mat[i][j], mat[n-1-j][i], mat[n-1-i][n-1-j], mat[j][n-1-i] \
                         = mat[n-1-j][i], mat[n-1-i][n-1-j], mat[j][n-1-i], mat[i][j]
-            
+
             if mat == target:
                 return True
         return False
 ```
 
-**¸´ÔÓ¶È·ÖÎö**
+```Java
+class Solution {
+    public boolean findRotation(int[][] mat, int[][] target) {
+        int n = mat.length;
+        // æœ€å¤šæ—‹è½¬ 4 æ¬¡
+        for (int k = 0; k < 4; k++) {
+            // æ—‹è½¬æ“ä½œ
+            for (int i = 0; i < n / 2; i++) {
+                for (int j = 0; j < (n + 1) / 2; j++) {
+                    int temp = mat[i][j];
+                    mat[i][j] = mat[n-1-j][i];
+                    mat[n-1-j][i] = mat[n-1-i][n-1-j];
+                    mat[n-1-i][n-1-j] = mat[j][n-1-i];
+                    mat[j][n-1-i] = temp;
+                }
+            }
 
--   Ê±¼ä¸´ÔÓ¶È£º$O(n^2)$£¬ÆäÖĞ $n$ Îª $mat$ µÄ±ß³¤¡£ÎÒÃÇ×î¶à½øĞĞ $4$ ´ÎĞı×ªÓë±È½Ï²Ù×÷£¬Ã¿´ÎĞı×ª²Ù×÷µÄÊ±¼ä¸´ÔÓ¶ÈÎª $O(n^2)$£¬Ã¿´Î±È½Ï²Ù×÷µÄÊ±¼ä¸´ÔÓ¶ÈÎª $O(n^2)$¡£
--   ¿Õ¼ä¸´ÔÓ¶È£º$O(1)$¡£
+            if (isEqual(mat, target)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isEqual(int[][] mat, int[][] target) {
+        int n = mat.length;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (mat[i][j] != target[i][j]) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+}
+```
+
+```CSharp
+public class Solution {
+    public bool FindRotation(int[][] mat, int[][] target) {
+        int n = mat.Length;
+        // æœ€å¤šæ—‹è½¬ 4 æ¬¡
+        for (int k = 0; k < 4; k++) {
+            // æ—‹è½¬æ“ä½œ
+            for (int i = 0; i < n / 2; i++) {
+                for (int j = 0; j < (n + 1) / 2; j++) {
+                    int temp = mat[i][j];
+                    mat[i][j] = mat[n-1-j][i];
+                    mat[n-1-j][i] = mat[n-1-i][n-1-j];
+                    mat[n-1-i][n-1-j] = mat[j][n-1-i];
+                    mat[j][n-1-i] = temp;
+                }
+            }
+
+            if (IsEqual(mat, target)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private bool IsEqual(int[][] mat, int[][] target) {
+        int n = mat.Length;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (mat[i][j] != target[i][j]) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+}
+```
+
+```Go
+func findRotation(mat [][]int, target [][]int) bool {
+    n := len(mat)
+    // æœ€å¤šæ—‹è½¬ 4 æ¬¡
+    for k := 0; k < 4; k++ {
+        // æ—‹è½¬æ“ä½œ
+        for i := 0; i < n/2; i++ {
+            for j := 0; j < (n+1)/2; j++ {
+                mat[i][j], mat[n-1-j][i], mat[n-1-i][n-1-j], mat[j][n-1-i] =
+                    mat[n-1-j][i], mat[n-1-i][n-1-j], mat[j][n-1-i], mat[i][j]
+            }
+        }
+
+        if isEqual(mat, target) {
+            return true
+        }
+    }
+    return false
+}
+
+func isEqual(mat, target [][]int) bool {
+    n := len(mat)
+    for i := 0; i < n; i++ {
+        for j := 0; j < n; j++ {
+            if mat[i][j] != target[i][j] {
+                return false
+            }
+        }
+    }
+    return true
+}
+```
+
+```C
+bool isEqual(int** mat, int** target, int n) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if (mat[i][j] != target[i][j]) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+bool findRotation(int** mat, int matSize, int* matColSize, int** target, int targetSize, int* targetColSize) {
+    int n = matSize;
+
+    // æœ€å¤šæ—‹è½¬ 4 æ¬¡
+    for (int k = 0; k < 4; k++) {
+        // æ—‹è½¬æ“ä½œ
+        for (int i = 0; i < n / 2; i++) {
+            for (int j = 0; j < (n + 1) / 2; j++) {
+                int temp = mat[i][j];
+                mat[i][j] = mat[n-1-j][i];
+                mat[n-1-j][i] = mat[n-1-i][n-1-j];
+                mat[n-1-i][n-1-j] = mat[j][n-1-i];
+                mat[j][n-1-i] = temp;
+            }
+        }
+
+        if (isEqual(mat, target, n)) {
+            return true;
+        }
+    }
+    return false;
+}
+```
+
+```JavaScript
+var findRotation = function(mat, target) {
+    const n = mat.length;
+    // æœ€å¤šæ—‹è½¬ 4 æ¬¡
+    for (let k = 0; k < 4; k++) {
+        // æ—‹è½¬æ“ä½œ
+        for (let i = 0; i < Math.floor(n / 2); i++) {
+            for (let j = 0; j < Math.floor((n + 1) / 2); j++) {
+                [mat[i][j], mat[n-1-j][i], mat[n-1-i][n-1-j], mat[j][n-1-i]] =
+                    [mat[n-1-j][i], mat[n-1-i][n-1-j], mat[j][n-1-i], mat[i][j]]
+            }
+        }
+
+        if (isEqual(mat, target)) {
+            return true;
+        }
+    }
+    return false;
+};
+
+function isEqual(mat, target) {
+    const n = mat.length;
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
+            if (mat[i][j] !== target[i][j]) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+```
+
+```TypeScript
+function findRotation(mat: number[][], target: number[][]): boolean {
+    const n = mat.length;
+    // æœ€å¤šæ—‹è½¬ 4 æ¬¡
+    for (let k = 0; k < 4; k++) {
+        // æ—‹è½¬æ“ä½œ
+        for (let i = 0; i < Math.floor(n / 2); i++) {
+            for (let j = 0; j < Math.floor((n + 1) / 2); j++) {
+                [mat[i][j], mat[n-1-j][i], mat[n-1-i][n-1-j], mat[j][n-1-i]] =
+                    [mat[n-1-j][i], mat[n-1-i][n-1-j], mat[j][n-1-i], mat[i][j]]
+            }
+        }
+
+        if (isEqual(mat, target)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function isEqual(mat: number[][], target: number[][]): boolean {
+    const n = mat.length;
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
+            if (mat[i][j] !== target[i][j]) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+```
+
+```Rust
+impl Solution {
+    pub fn find_rotation(mat: Vec<Vec<i32>>, target: Vec<Vec<i32>>) -> bool {
+        let n = mat.len();
+        let mut mat = mat;
+
+        // æœ€å¤šæ—‹è½¬ 4 æ¬¡
+        for _ in 0..4 {
+            // æ—‹è½¬æ“ä½œ
+            for i in 0..n/2 {
+                for j in 0..(n+1)/2 {
+                    let temp = mat[i][j];
+                    mat[i][j] = mat[n-1-j][i];
+                    mat[n-1-j][i] = mat[n-1-i][n-1-j];
+                    mat[n-1-i][n-1-j] = mat[j][n-1-i];
+                    mat[j][n-1-i] = temp;
+                }
+            }
+
+            if mat == target {
+                return true;
+            }
+        }
+        false
+    }
+}
+```
+
+**å¤æ‚åº¦åˆ†æ**
+
+- æ—¶é—´å¤æ‚åº¦ï¼š$O(n^2)$ï¼Œå…¶ä¸­ $n$ ä¸º $mat$ çš„è¾¹é•¿ã€‚æˆ‘ä»¬æœ€å¤šè¿›è¡Œ $4$ æ¬¡æ—‹è½¬ä¸æ¯”è¾ƒæ“ä½œï¼Œæ¯æ¬¡æ—‹è½¬æ“ä½œçš„æ—¶é—´å¤æ‚åº¦ä¸º $O(n^2)$ï¼Œæ¯æ¬¡æ¯”è¾ƒæ“ä½œçš„æ—¶é—´å¤æ‚åº¦ä¸º $O(n^2)$ã€‚
+- ç©ºé—´å¤æ‚åº¦ï¼š$O(1)$ã€‚
