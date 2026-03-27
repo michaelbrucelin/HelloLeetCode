@@ -8,6 +8,12 @@ namespace LeetCode.QuestionBank.Question2946
 {
     public class Solution2946 : Interface2946
     {
+        /// <summary>
+        /// 模拟
+        /// </summary>
+        /// <param name="mat"></param>
+        /// <param name="k"></param>
+        /// <returns></returns>
         public bool AreSimilar(int[][] mat, int k)
         {
             int rcnt = mat.Length, ccnt = mat[0].Length;
