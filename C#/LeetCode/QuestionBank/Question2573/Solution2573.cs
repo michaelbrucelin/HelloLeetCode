@@ -16,7 +16,7 @@ namespace LeetCode.QuestionBank.Question2573
         ///     而C#中没有指针，那就用数组代替指针
         /// 2. 如果lcp[i][j] == 0, 继续找lcp[i+1][j]
         /// 
-        /// 先不写了，上面的用数组代替指针，现在由别的想法了，如果用并查集，将相等的位置分为一组呢？
+        /// 先不写了，上面的用数组代替指针，现在有别的想法了，如果用并查集，将相等的位置分为一组呢？
         /// </summary>
         /// <param name="lcp"></param>
         /// <returns></returns>
