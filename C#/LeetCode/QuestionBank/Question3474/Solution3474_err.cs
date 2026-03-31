@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question3474
 {
-    public class Solution3474 : Interface3474
+    public class Solution3474_err : Interface3474
     {
         /// <summary>
         /// 贪心 + 构造
@@ -17,7 +17,7 @@ namespace LeetCode.QuestionBank.Question3474
         ///         第1个位置填充'a'，不同，后面全部填充'a'，相同，继续处理第2个位置
         ///         第2个位置 ...
         ///         如果到最后一个位置都没有产生不同，最后一个位置改为'b'
-        ///     这个贪心又没有证明，直觉上还是不对，先写出来试试...贪心好难
+        ///     这个贪心又没有证明，直觉上还是不对（应该加上回溯的），先写出来试试...贪心好难
         /// 
         /// 可以通过KMP的思想优化速度，这里先不写了
         /// </summary>

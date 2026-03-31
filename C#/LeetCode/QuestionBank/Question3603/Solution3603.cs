@@ -16,7 +16,7 @@ namespace LeetCode.QuestionBank.Question3603
         /// <param name="n"></param>
         /// <param name="waitCost"></param>
         /// <returns></returns>
-        public long MinCost(int m, int n, int[][] waitCost)
+        public long MinCost3(int m, int n, int[][] waitCost)
         {
             long[][] dp = new long[m][];
             for (int i = 0; i < m; i++)
@@ -35,17 +35,15 @@ namespace LeetCode.QuestionBank.Question3603
 
         /// <summary>
         /// 逻辑同MinCost()，滚动数组
-        /// 
-        /// 错了，参考测试用例04，没看出哪里错了（配置为溢出会抛异常，但是没有抛异常），先不管了
         /// </summary>
         /// <param name="m"></param>
         /// <param name="n"></param>
         /// <param name="waitCost"></param>
         /// <returns></returns>
-        public long MinCost2(int m, int n, int[][] waitCost)
+        public long MinCost(int m, int n, int[][] waitCost)
         {
             long[] dp = new long[n], _dp = new long[n];
-            Array.Fill(_dp, int.MaxValue, 1, n - 1);
+            Array.Fill(_dp, long.MaxValue, 1, n - 1);
             for (int i = 0; i < m; i++)
             {
                 dp[0] = _dp[0] + (i + 1) + waitCost[i][0];
