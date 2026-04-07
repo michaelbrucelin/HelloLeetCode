@@ -20,7 +20,7 @@ namespace LeetCode.QuestionBank.Question0874
             HashSet<(int x, int y)> set = new HashSet<(int x, int y)>();
             for (int i = 0; i < obstacles.Length; i++) set.Add((obstacles[i][0], obstacles[i][1]));
 
-            (int x, int y)[] dirs = new (int x, int y)[] { (0, 1), (1, 0), (0, -1), (-1, 0) };
+            (int x, int y)[] dirs = [(0, 1), (1, 0), (0, -1), (-1, 0)];
             (int x, int y) pos = (0, 0), dir; int dir_id = 0;
             for (int i = 0; i < commands.Length; i++)
             {

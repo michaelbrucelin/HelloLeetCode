@@ -4,15 +4,15 @@
 
 **思路与算法**
 
-题目给出一个在点 $(0, 0)$ ，并面向北方的机器人。现在有一个大小为 $n$ 的命令数组 $commands$ 来操作机器人的移动，和一个大小为 $m$ 的障碍物数组 $obstacles$。现在我们通过 $commands$ 来模拟机器人的移动，并用一个哈希表来存储每一个障碍物放置点。当机器人的指令为向前移动时，我们尝试往前移动对应的次数——若往前一个单位不为障碍物放置点（即不在哈希表中），则机器人向前移动一个单位，否则机器人保持原位不变。
+题目给出一个在点 $(0,0)$，并面向北方的机器人。现在有一个大小为 $n$ 的命令数组 $commands$ 来操作机器人的移动，和一个大小为 $m$ 的障碍物数组 $obstacles$。现在我们通过 $commands$ 来模拟机器人的移动，并用一个哈希表来存储每一个障碍物放置点。当机器人的指令为向前移动时，我们尝试往前移动对应的次数——若往前一个单位不为障碍物放置点（即不在哈希表中），则机器人向前移动一个单位，否则机器人保持原位不变。
 
 在机器人移动的过程中记录从原点到机器人所有经过的整数路径点的最大欧式距离的平方即为最后的答案。
 
-在代码实现的过程中，对于机器人转向和向前移动的操作，我们可以用一个方向数组 $dirs = \{[-1, 0], [0, 1], [1, 0], [0, -1]\}$ 来现实。若当前机器人的坐标为 $(x, y)$，当前方向的标号为 $d$，则往前移动一单位的操作为 $x = x + dirs[d][0]$，$y = y + dirs[i][1]$。向左转的操作为 $d = (d + 3) \mod 4$，向右转的操作为 $d = (d + 1) \mod 4$。
+在代码实现的过程中，对于机器人转向和向前移动的操作，我们可以用一个方向数组 $dirs={[-1,0],[0,1],[1,0],[0,-1]}$ 来现实。若当前机器人的坐标为 $(x,y)$，当前方向的标号为 $d$，则往前移动一单位的操作为 $x=x+dirs[d][0]$，$y=y+dirs[i][1]$。向左转的操作为 $d=(d+3)\bmod 4$，向右转的操作为 $d=(d+1)\bmod 4$。
 
 **代码**
 
-```python
+```Python
 class Solution:
     def robotSim(self, commands: List[int], obstacles: List[List[int]]) -> int:
         dirs = [[-1, 0], [0, 1], [1, 0], [0, -1]]
@@ -32,7 +32,7 @@ class Solution:
         return res
 ```
 
-```java
+```Java
 class Solution {
     public int robotSim(int[] commands, int[][] obstacles) {
         int[][] dirs = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
@@ -65,7 +65,7 @@ class Solution {
 }
 ```
 
-```csharp
+```CSharp
 public class Solution {
     public int RobotSim(int[] commands, int[][] obstacles) {
         int[][] dirs = {new int[]{-1, 0}, new int[]{0, 1}, new int[]{1, 0}, new int[]{0, -1}};
@@ -98,7 +98,7 @@ public class Solution {
 }
 ```
 
-```cpp
+```C++
 class Solution {
 public:
     int robotSim(vector<int>& commands, vector<vector<int>>& obstacles) {
@@ -132,7 +132,7 @@ public:
 };
 ```
 
-```go
+```Go
 func robotSim(commands []int, obstacles [][]int) int {
     dirs := [][]int{{-1, 0}, {0, 1}, {1, 0}, {0, -1}}
     px, py, d := 0, 0, 1
@@ -170,7 +170,7 @@ func max(a, b int) int {
 }
 ```
 
-```javascript
+```JavaScript
 var robotSim = function(commands, obstacles) {
     const dirs = [[-1, 0], [0, 1], [1, 0], [0, -1]];
     let px = 0, py = 0, d = 1;
@@ -198,11 +198,11 @@ var robotSim = function(commands, obstacles) {
 }
 ```
 
-```c
+```C
 typedef struct {
     int key;
     UT_hash_handle hh;
-} HashItem; 
+} HashItem;
 
 HashItem *hashFindItem(HashItem **obj, int key) {
     HashItem *pEntry = NULL;
@@ -223,7 +223,7 @@ bool hashAddItem(HashItem **obj, int key) {
 void hashFree(HashItem **obj) {
     HashItem *curr = NULL, *tmp = NULL;
     HASH_ITER(hh, *obj, curr, tmp) {
-        HASH_DEL(*obj, curr);  
+        HASH_DEL(*obj, curr);
         free(curr);
     }
 }
@@ -260,7 +260,82 @@ int robotSim(int* commands, int commandsSize, int** obstacles, int obstaclesSize
 }
 ```
 
+```TypeScript
+function robotSim(commands: number[], obstacles: number[][]): number {
+    const dirs: [number, number][] = [[-1, 0], [0, 1], [1, 0], [0, -1]];
+    let px = 0, py = 0, d = 1;
+    const set = new Set<number>();
+
+    for (const obstacle of obstacles) {
+        set.add(obstacle[0] * 60001 + obstacle[1]);
+    }
+
+    let res = 0;
+    for (const c of commands) {
+        if (c < 0) {
+            d += c === -1 ? 1 : 3;
+            d %= 4;
+        } else {
+            for (let i = 0; i < c; i++) {
+                const nx = px + dirs[d][0];
+                const ny = py + dirs[d][1];
+                if (set.has(nx * 60001 + ny)) {
+                    break;
+                }
+
+                px = nx;
+                py = ny;
+                res = Math.max(res, px * px + py * py);
+            }
+        }
+    }
+
+    return res;
+}
+```
+
+```Rust
+use std::collections::HashSet;
+
+impl Solution {
+    pub fn robot_sim(commands: Vec<i32>, obstacles: Vec<Vec<i32>>) -> i32 {
+        let dirs: [(i32, i32); 4] = [(0, 1), (1, 0), (0, -1), (-1, 0)];
+        let (mut x, mut y) = (0, 0);
+        let mut dir = 0;
+
+        let mut obstacle_set: HashSet<i32> = HashSet::new();
+        for obstacle in obstacles {
+            obstacle_set.insert(obstacle[0] * 60001 + obstacle[1]);
+        }
+
+        let mut max_distance = 0;
+
+        for &cmd in &commands {
+            if cmd == -1 {
+                dir = (dir + 1) % 4;
+            } else if cmd == -2 {
+                dir = (dir + 3) % 4;
+            } else {
+                for _ in 0..cmd {
+                    let nx = x + dirs[dir].0;
+                    let ny = y + dirs[dir].1;
+                    if obstacle_set.contains(&(nx * 60001 + ny)) {
+                        break;
+                    }
+
+                    x = nx;
+                    y = ny;
+                    max_distance = max_distance.max(x * x + y * y);
+                }
+            }
+        }
+
+        max_distance
+    }
+}
+```
+
 **复杂度分析**
 
--   时间复杂度：$O(C \times n + m)$，其中 $n$ 为数组 $commands$ 的大小，$C$ 为每次可以向前的步数最大值，在该题目中 $C = 9$，$m$ 为数组 $obstacles$ 的大小。时间开销主要为模拟机器人移动和哈希表存储每一个障碍物的坐标的开销。
--   空间复杂度：$O(m)$，其中 $m$ 为数组 $obstacles$ 的大小，主要为哈希表存储 $obstacles$ 的空间开销。
+- 时间复杂度：$O(C\times n+m)$，其中 $n$ 为数组 $commands$ 的大小，$C$ 为每次可以向前的步数最大值，在该题目中 $C=9$，$m$ 为数组 $obstacles$ 的大小。时间开销主要为模拟机器人移动和哈希表存储每一个障碍物的坐标的开销。
+- 空间复杂度：$O(m)$，其中 $m$ 为数组 $obstacles$ 的大小，主要为哈希表存储 $obstacles$ 的空间开销。

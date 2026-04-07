@@ -28,7 +28,7 @@ namespace LeetCode.QuestionBank.Question0874
             foreach (int key in obs_x.Keys) obs_x[key].Sort();
             foreach (int key in obs_y.Keys) obs_y[key].Sort();
 
-            (int x, int y)[] dirs = new (int x, int y)[] { (0, 1), (1, 0), (0, -1), (-1, 0) };
+            (int x, int y)[] dirs = [(0, 1), (1, 0), (0, -1), (-1, 0)];
             (int x, int y) pos = (0, 0), next, dir; int dir_id = 0;
             (bool found, int pos) found;
             for (int i = 0; i < commands.Length; i++)
