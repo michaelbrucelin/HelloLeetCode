@@ -1,6 +1,6 @@
-### [区间乘法查询后的异或 $II](https://leetcode.cn/problems/xor-after-range-multiplication-queries-ii/solutions/3941260/qu-jian-cheng-fa-cha-xun-hou-de-yi-huo-i-wifp/)$
+### [区间乘法查询后的异或 II](https://leetcode.cn/problems/xor-after-range-multiplication-queries-ii/solutions/3941260/qu-jian-cheng-fa-cha-xun-hou-de-yi-huo-i-wifp/)
 
-#### 方法一：根号分治 $+$ 差分
+#### 方法一：根号分治 + 差分
 
 **思路与算法**
 
