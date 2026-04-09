@@ -9,10 +9,10 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using TestXXXX = LeetCode.QuestionBank.Question3805.Test3805;
 using UtilsXXXX = LeetCode.QuestionBank.Question0233.Utils0233;
+// using TestXXXX = LeetCode.QuestionBank.Question3805.Test3805;
 // using TestXXXX = LeetCode.LCP.LCP0068.Test0068;
-// using TestXXXX = LeetCode.LCR.LCR0111.Test0111;
+using TestXXXX = LeetCode.LCR.LCR0117.Test0117;
 // using TestXXXX = LeetCode.Interview.Interview1010.Test1010;
 
 namespace LeetCode
@@ -128,8 +128,9 @@ namespace LeetCode
             //string question = "1234", testcase = "08", arg = "nums";
             //string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"QuestionBank\Question{question}\TestCases\TestCase{question}");
-            //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"Interview\Interview{question}\TestCases\TestCase{question}");
             //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"LCP\LCP{question}\TestCases\TestCase{question}");
+            //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"LCR\LCR{question}\TestCases\TestCase{question}");
+            //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"Interview\Interview{question}\TestCases\TestCase{question}");
             //arg = File.ReadAllText($"{path}_{testcase}_{arg}.txt");
             //arg = File.ReadAllText($"{path}_{testcase}_{arg}.txt")[1..^1];
             //arg = Utils.Str2StrArray(File.ReadAllText($"{path}_{testcase}_{arg}.txt"));
