@@ -1,0 +1,199 @@
+### [按照相同元素分组 / 记录上上一次的出现位置（Python/Java/C++/Go）](https://leetcode.cn/problems/minimum-distance-between-three-equal-elements-ii/solutions/3827051/an-zhao-xiang-tong-yuan-su-fen-zu-python-ok8n/)
+
+把 $i,j,k$ 画在一维数轴上，$\vert i-j\vert +\vert j-k\vert +\vert k-i\vert $ 的几何意义是这三个下标中的最左最右下标绝对差的两倍。设最左最右的下标分别为 $i$ 和 $k$，那么三元组的距离为 $2(k-i)$。
+
+为了让 $2(k-i)$ 尽量小，按照相同元素分组，枚举同一组中的连续三个下标分别作为 $i,j,k$。
+
+[本题视频讲解](https://leetcode.cn/link/?target=https%3A%2F%2Fwww.bilibili.com%2Fvideo%2FBV1oskQBLEsY%2F)，欢迎点赞关注~
+
+#### 优化前
+
+```Python
+class Solution:
+    def minimumDistance(self, nums: List[int]) -> int:
+        pos = defaultdict(list)
+        for i, x in enumerate(nums):
+            pos[x].append(i)
+
+        ans = inf
+        for p in pos.values():
+            for i in range(2, len(p)):
+                ans = min(ans, (p[i] - p[i - 2]) * 2)
+
+        return -1 if ans == inf else ans
+```
+
+```Java
+class Solution {
+    public int minimumDistance(int[] nums) {
+        Map<Integer, List<Integer>> pos = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            pos.computeIfAbsent(nums[i], _ -> new ArrayList<>()).add(i);
+        }
+
+        int ans = Integer.MAX_VALUE;
+        for (List<Integer> p : pos.values()) {
+            for (int i = 2; i < p.size(); i++) {
+                ans = Math.min(ans, (p.get(i) - p.get(i - 2)) * 2);
+            }
+        }
+
+        return ans == Integer.MAX_VALUE ? -1 : ans;
+    }
+}
+```
+
+```C++
+class Solution {
+public:
+    int minimumDistance(vector<int>& nums) {
+        unordered_map<int, vector<int>> pos;
+        for (int i = 0; i < nums.size(); i++) {
+            pos[nums[i]].push_back(i);
+        }
+
+        int ans = INT_MAX;
+        for (auto& [_, p] : pos) {
+            for (int i = 2; i < p.size(); i++) {
+                ans = min(ans, (p[i] - p[i - 2]) * 2);
+            }
+        }
+
+        return ans == INT_MAX ? -1 : ans;
+    }
+};
+```
+
+```Go
+func minimumDistance(nums []int) int {
+    pos := map[int][]int{}
+    for i, x := range nums {
+        pos[x] = append(pos[x], i)
+    }
+
+    ans := math.MaxInt
+    for _, p := range pos {
+        for i := 2; i < len(p); i++ {
+            ans = min(ans, (p[i]-p[i-2])*2)
+        }
+    }
+
+    if ans == math.MaxInt {
+        return -1
+    }
+    return ans
+}
+```
+
+#### 优化
+
+针对本题：
+
+1. 由于 $nums[i]$ 的范围是 $[1,n]$，哈希表可以换成更轻量的数组。
+2. 由于只关心最近的三个位置，所以只需要知道 $x=nums[i]$ 上一次出现的位置 $last[x]$ 和上上一次出现的位置 $last2[x]$。
+3. 此外，不需要每次循环都计算一次乘二，乘二可以放在返回答案的时候计算。
+
+```Python
+class Solution:
+    def minimumDistance(self, nums: List[int]) -> int:
+        n = len(nums)
+        last = [-inf] * (n + 1)
+        last2 = [-inf] * (n + 1)
+
+        ans = n
+        for i, x in enumerate(nums):
+            ans = min(ans, i - last2[x])
+            last2[x] = last[x]
+            last[x] = i
+
+        return -1 if ans == n else ans * 2
+```
+
+```Java
+class Solution {
+    public int minimumDistance(int[] nums) {
+        int n = nums.length;
+        int[] last = new int[n + 1];
+        int[] last2 = new int[n + 1];
+        Arrays.fill(last, -n);
+        Arrays.fill(last2, -n); // i-(-n) >= n，不会把 ans 变小
+
+        int ans = n;
+        for (int i = 0; i < n; i++) {
+            int x = nums[i];
+            ans = Math.min(ans, i - last2[x]);
+            last2[x] = last[x];
+            last[x] = i;
+        }
+
+        return ans == n ? -1 : ans * 2;
+    }
+}
+```
+
+```C++
+class Solution {
+public:
+    int minimumDistance(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> last(n + 1, -n);
+        vector<int> last2(n + 1, -n); // i-(-n) >= n，不会把 ans 变小
+
+        int ans = n;
+        for (int i = 0; i < n; i++) {
+            int x = nums[i];
+            ans = min(ans, i - last2[x]);
+            last2[x] = last[x];
+            last[x] = i;
+        }
+
+        return ans == n ? -1 : ans * 2;
+    }
+};
+```
+
+```Go
+func minimumDistance(nums []int) int {
+    n := len(nums)
+    last := make([]int, n+1)
+    last2 := make([]int, n+1)
+    for i := range last {
+        last[i] = -n
+        last2[i] = -n // i-(-n) >= n，不会把 ans 变小
+    }
+
+    ans := n
+    for i, x := range nums {
+        ans = min(ans, i-last2[x])
+        last2[x] = last[x]
+        last[x] = i
+    }
+
+    if ans == n {
+        return -1
+    }
+    return ans * 2
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$O(n)$，其中 $n$ 是 $nums$ 的长度。
+- 空间复杂度：$O(n)$。
+
+#### 分类题单
+
+[如何科学刷题？](https://leetcode.cn/circle/discuss/RvFUtj/)
+
+1. [滑动窗口与双指针（定长/不定长/单序列/双序列/三指针/分组循环）](https://leetcode.cn/circle/discuss/0viNMK/)
+2. [二分算法（二分答案/最小化最大值/最大化最小值/第K小）](https://leetcode.cn/circle/discuss/SqopEo/)
+3. [单调栈（基础/矩形面积/贡献法/最小字典序）](https://leetcode.cn/circle/discuss/9oZFK9/)
+4. [网格图（DFS/BFS/综合应用）](https://leetcode.cn/circle/discuss/YiXPXW/)
+5. [位运算（基础/性质/拆位/试填/恒等式/思维）](https://leetcode.cn/circle/discuss/dHn9Vk/)
+6. [图论算法（DFS/BFS/拓扑排序/基环树/最短路/最小生成树/网络流）](https://leetcode.cn/circle/discuss/01LUak/)
+7. [动态规划（入门/背包/划分/状态机/区间/状压/数位/数据结构优化/树形/博弈/概率期望）](https://leetcode.cn/circle/discuss/tXLS3i/)
+8. [常用数据结构（前缀和/差分/栈/队列/堆/字典树/并查集/树状数组/线段树）](https://leetcode.cn/circle/discuss/mOr1u6/)
+9. [数学算法（数论/组合/概率期望/博弈/计算几何/随机算法）](https://leetcode.cn/circle/discuss/IYT3ss/)
+10. [贪心与思维（基本贪心策略/反悔/区间/字典序/数学/思维/脑筋急转弯/构造）](https://leetcode.cn/circle/discuss/g6KTKL/)
+11. [链表、树与回溯（前后指针/快慢指针/DFS/BFS/直径/LCA）](https://leetcode.cn/circle/discuss/K0n2gO/)
+12. [字符串（KMP/Z函数/Manacher/字符串哈希/AC自动机/后缀数组/子序列自动机）](https://leetcode.cn/circle/discuss/SJFwQI/)
