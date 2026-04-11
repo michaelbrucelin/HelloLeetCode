@@ -1,0 +1,283 @@
+### [脑筋急转弯+定长滑动窗口（Python/Java/C++/Go/JS/Rust）](https://leetcode.cn/problems/maximum-number-of-occurrences-of-a-substring/solutions/3747384/nao-jin-ji-zhuan-wan-ding-chang-hua-dong-0hol/?envType=problem-list-v2&envId=ySsxoJfz)
+
+#### 思路
+
+子串越短，包含的不同字母个数越少，越能满足 $\le maxLetters$ 的要求。
+
+子串越短，子串在 $s$ 中的出现次数也越多。
+
+结合上面两个性质，我们只需考虑长度**恰好**等于 $minSize$ 的子串（$maxSize$ 是多余的）。
+
+这可以用 [定长滑动窗口](https://leetcode.cn/problems/maximum-number-of-vowels-in-a-substring-of-given-length/solutions/2809359/tao-lu-jiao-ni-jie-jue-ding-chang-hua-ch-fzfo/) 解决。
+
+#### 细节
+
+题目保证 $minSize\le 26$，这很小，可以直接用哈希表统计子串出现次数。（如果不保证 $minSize\le 26$，需要用字典树加速。）
+
+统计不同字母的数目可以用哈希表。
+
+也可以用数组，效率更高：
+
+- 当字母进入窗口时，增加字母的出现次数。如果增加之前，这个字母的出现次数等于 $0$，那么不同字母的数目加一。
+- 当字母离开窗口时，减少字母的出现次数。如果减少之后，这个字母的出现次数等于 $0$，那么不同字母的数目减一。
+
+```Python
+class Solution:
+    def maxFreq(self, s: str, maxLetters: int, minSize: int, _) -> int:
+        str_cnt = defaultdict(int)
+        char_cnt = defaultdict(int)
+
+        for i, ch in enumerate(s):
+            # 1. 进入窗口
+            char_cnt[ch] += 1
+
+            left = i - minSize + 1
+            if left < 0:  # 窗口大小不足 minSize
+                continue
+
+            # 2. 更新统计量
+            if len(char_cnt) <= maxLetters:
+                str_cnt[s[left: i + 1]] += 1
+
+            # 3. 离开窗口，为下一个循环做准备
+            out = s[left]
+            char_cnt[out] -= 1
+            if char_cnt[out] == 0:
+                del char_cnt[out]
+
+        return max(str_cnt.values(), default=0)
+```
+
+```Java
+class Solution {
+    public int maxFreq(String S, int maxLetters, int minSize, int maxSize) {
+        char[] s = S.toCharArray();
+        Map<String, Integer> strCnt = new HashMap<>();
+        int[] charCnt = new int[26];
+        int kinds = 0;
+        int ans = 0;
+
+        for (int i = 0; i < s.length; i++) {
+            // 1. 进入窗口
+            int in = s[i] - 'a';
+            if (charCnt[in] == 0) {
+                kinds++;
+            }
+            charCnt[in]++;
+
+            int left = i - minSize + 1;
+            if (left < 0) { // 窗口大小不足 minSize
+                continue;
+            }
+
+            // 2. 更新统计量
+            if (kinds <= maxLetters) {
+                String subStr = S.substring(left, left + minSize);
+                int cnt = strCnt.merge(subStr, 1, Integer::sum); // cnt = ++strCnt[subStr];
+                ans = Math.max(ans, cnt);
+            }
+
+            // 3. 离开窗口，为下一个循环做准备
+            int out = s[left] - 'a';
+            charCnt[out]--;
+            if (charCnt[out] == 0) {
+                kinds--;
+            }
+        }
+
+        return ans;
+    }
+}
+```
+
+```C++
+class Solution {
+public:
+    int maxFreq(string s, int maxLetters, int minSize, int) {
+        unordered_map<string, int> str_cnt;
+        int char_cnt[26]{};
+        int kinds = 0;
+        int ans = 0;
+
+        for (int i = 0; i < s.size(); i++) {
+            // 1. 进入窗口
+            int in = s[i] - 'a';
+            if (char_cnt[in] == 0) {
+                kinds++;
+            }
+            char_cnt[in]++;
+
+            int left = i - minSize + 1;
+            if (left < 0) { // 窗口大小不足 minSize
+                continue;
+            }
+
+            // 2. 更新统计量
+            if (kinds <= maxLetters) {
+                int cnt = ++str_cnt[s.substr(left, minSize)];
+                ans = max(ans, cnt);
+            }
+
+            // 3. 离开窗口，为下一个循环做准备
+            int out = s[left] - 'a';
+            char_cnt[out]--;
+            if (char_cnt[out] == 0) {
+                kinds--;
+            }
+        }
+
+        return ans;
+    }
+};
+```
+
+```Go
+func maxFreq(s string, maxLetters, minSize, _ int) (ans int) {
+	strCnt := map[string]int{}
+	charCnt := [26]int{}
+	kinds := 0
+
+	for i, b := range s {
+		// 1. 进入窗口
+		if charCnt[b-'a'] == 0 {
+			kinds++
+		}
+		charCnt[b-'a']++
+
+		left := i - minSize + 1
+		if left < 0 { // 窗口大小不足 minSize
+			continue
+		}
+
+		// 2. 更新统计量
+		if kinds <= maxLetters {
+			strCnt[s[left:i+1]]++
+		}
+
+		// 3. 离开窗口，为下一个循环做准备
+		out := s[left]
+		charCnt[out-'a']--
+		if charCnt[out-'a'] == 0 {
+			kinds--
+		}
+	}
+
+	for _, cnt := range strCnt {
+		ans = max(ans, cnt)
+	}
+	return
+}
+```
+
+```JavaScript
+var maxFreq = function(s, maxLetters, minSize, _) {
+    const ordA = 'a'.charCodeAt(0)
+    const strCnt = new Map();
+    const charCnt = Array(26).fill(0);
+    let kinds = 0;
+    let ans = 0;
+
+    for (let i = 0; i < s.length; i++) {
+        // 1. 进入窗口
+        const inChar = s[i].charCodeAt(0) - ordA;
+        if (charCnt[inChar] === 0) {
+            kinds++;
+        }
+        charCnt[inChar]++;
+
+        const left = i - minSize + 1;
+        if (left < 0) { // 窗口大小不足 minSize
+            continue;
+        }
+
+        // 2. 更新统计量
+        if (kinds <= maxLetters) {
+            const sub = s.slice(left, left + minSize);
+            const cnt = (strCnt.get(sub) ?? 0) + 1;
+            strCnt.set(sub, cnt);
+            ans = Math.max(ans, cnt);
+        }
+
+        // 3. 离开窗口，为下一个循环做准备
+        const outChar = s[left].charCodeAt(0) - ordA;
+        charCnt[outChar]--;
+        if (charCnt[outChar] === 0) {
+            kinds--;
+        }
+    }
+
+    return ans;
+};
+```
+
+```Rust
+use std::collections::HashMap;
+
+impl Solution {
+    pub fn max_freq(s: String, max_letters: i32, min_size: i32, _: i32) -> i32 {
+        let s = s.as_bytes();
+        let n = s.len();
+        let min_size = min_size as usize;
+        let mut str_cnt = HashMap::new();
+        let mut char_cnt = [0; 26];
+        let mut kinds = 0;
+        let mut ans = 0;
+
+        for (i, &in_char) in s.iter().enumerate() {
+            // 1. 进入窗口
+            let in_char = (in_char - b'a') as usize;
+            if char_cnt[in_char] == 0 {
+                kinds += 1;
+            }
+            char_cnt[in_char] += 1;
+
+            if i + 1 < min_size { // 窗口大小不足 min_size
+                continue;
+            }
+            let left = i + 1 - min_size;
+
+            // 2. 更新统计量
+            if kinds <= max_letters {
+                let e = str_cnt.entry(&s[left..left + min_size]).or_insert(0);
+                *e += 1;
+                ans = ans.max(*e);
+            }
+
+            // 3. 离开窗口，为下一个循环做准备
+            let out_char = (s[left] - b'a') as usize;
+            char_cnt[out_char] -= 1;
+            if char_cnt[out_char] == 0 {
+                kinds -= 1;
+            }
+        }
+
+        ans
+    }
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$O((n-minSize)\cdot minSize)$，其中 $n$ 是 $s$ 的长度。
+- 空间复杂度：$O((n-minSize)\cdot minSize)$。
+
+#### 专题训练
+
+见下面滑动窗口题单的「**一、定长滑动窗口**」。
+
+#### 分类题单
+
+[如何科学刷题？](https://leetcode.cn/circle/discuss/RvFUtj/)
+
+1. [滑动窗口与双指针（定长/不定长/单序列/双序列/三指针/分组循环）](https://leetcode.cn/circle/discuss/0viNMK/)
+2. [二分算法（二分答案/最小化最大值/最大化最小值/第K小）](https://leetcode.cn/circle/discuss/SqopEo/)
+3. [单调栈（基础/矩形面积/贡献法/最小字典序）](https://leetcode.cn/circle/discuss/9oZFK9/)
+4. [网格图（DFS/BFS/综合应用）](https://leetcode.cn/circle/discuss/YiXPXW/)
+5. [位运算（基础/性质/拆位/试填/恒等式/思维）](https://leetcode.cn/circle/discuss/dHn9Vk/)
+6. [图论算法（DFS/BFS/拓扑排序/基环树/最短路/最小生成树/网络流）](https://leetcode.cn/circle/discuss/01LUak/)
+7. [动态规划（入门/背包/划分/状态机/区间/状压/数位/数据结构优化/树形/博弈/概率期望）](https://leetcode.cn/circle/discuss/tXLS3i/)
+8. [常用数据结构（前缀和/差分/栈/队列/堆/字典树/并查集/树状数组/线段树）](https://leetcode.cn/circle/discuss/mOr1u6/)
+9. [数学算法（数论/组合/概率期望/博弈/计算几何/随机算法）](https://leetcode.cn/circle/discuss/IYT3ss/)
+10. [贪心与思维（基本贪心策略/反悔/区间/字典序/数学/思维/脑筋急转弯/构造）](https://leetcode.cn/circle/discuss/g6KTKL/)
+11. [链表、二叉树与回溯（前后指针/快慢指针/DFS/BFS/直径/LCA/一般树）](https://leetcode.cn/circle/discuss/K0n2gO/)
+12. [字符串（KMP/Z函数/Manacher/字符串哈希/AC自动机/后缀数组/子序列自动机）](https://leetcode.cn/circle/discuss/SJFwQI/)
