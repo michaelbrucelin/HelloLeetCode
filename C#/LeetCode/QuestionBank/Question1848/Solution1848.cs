@@ -26,5 +26,21 @@ namespace LeetCode.QuestionBank.Question1848
 
             return result;
         }
+
+        public int GetMinDistance2(int[] nums, int target, int start)
+        {
+            int limit = Math.Min(start, nums.Length - start - 1);
+            for (int offset = 0; offset <= limit; offset++)
+            {
+                if (nums[start - offset] == target || nums[start + offset] == target) return offset;
+            }
+
+            int p = start - limit, len = nums.Length;
+            while (--p >= 0) if (nums[p] == target) return start - p;
+            p = start + limit;
+            while (++p < len) if (nums[p] == target) return p - start;
+
+            return -1;
+        }
     }
 }

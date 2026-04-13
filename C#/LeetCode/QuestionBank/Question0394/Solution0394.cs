@@ -21,17 +21,25 @@ namespace LeetCode.QuestionBank.Question0394
             {
                 StringBuilder result = new StringBuilder();
 
-                int p = l,time;
+                int p = l, _l, _r;
                 while (p <= r)
                 {
                     if (char.IsAsciiDigit(s[p]))
                     {
-                        time = s[p] & 15;
+                        int time = s[p] & 15, lcnt = 1;
                         while (char.IsAsciiDigit(s[++p])) time = time * 10 + (s[p] & 15);
+                        _l = p + 1;
+                        while (lcnt != 0) { if (s[++p] == '[') lcnt++; else if (s[p] == ']') lcnt--; }
+                        _r = p - 1;
+                        string s_dv = dv(_l, _r);
+                        for (int i = 0; i < time; i++) result.Append(s_dv);
+                        p++;
                     }
-                    else  // if (char.IsAsciiLower(s[p]))
-                    { 
-                    
+                    else  // if (char.IsAsciiLetterLower(s[p]))
+                    {
+                        _l = p;
+                        while (++p <= r && char.IsAsciiLetterLower(s[p])) ;
+                        result.Append(s[_l..p]);
                     }
                 }
 
