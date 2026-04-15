@@ -8,6 +8,6 @@ namespace LeetCode.QuestionBank.Question2515
 {
     public interface Interface2515
     {
-        public int ClosetTarget(string[] words, string target, int startIndex);
+        public int ClosestTarget(string[] words, string target, int startIndex);
     }
 }
