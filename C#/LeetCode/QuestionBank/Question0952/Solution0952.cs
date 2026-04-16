@@ -25,7 +25,11 @@ namespace LeetCode.QuestionBank.Question0952
             for (int i = 0, num, cnt = primes.Count; i < len; i++)
             {
                 num = nums[i];
-                for (int j = 0; j < cnt && num > primes[j]; j++) if (num % primes[j] == 0) union(num, primes[j]);
+                for (int j = 0; j < cnt && num >= primes[j]; j++) if (num % primes[j] == 0)
+                    {
+                        union(nums[i], primes[j]);
+                        while (num % primes[j] == 0) num /= primes[j];
+                    }
             }
 
             int[] cnts = new int[max + 1];

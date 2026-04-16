@@ -26,7 +26,11 @@ namespace LeetCode.QuestionBank.Question0952
             {
                 num = nums[i];
                 if (!uf.ContainsKey(num)) { uf.Add(num, num); rank.Add(num, 0); }
-                for (int j = 0; j < cnt && num > primes[j]; j++) if (num % primes[j] == 0) union(num, primes[j]);
+                for (int j = 0; j < cnt && num >= primes[j]; j++) if (num % primes[j] == 0)
+                    {
+                        union(nums[i], primes[j]);
+                        while (num % primes[j] == 0) num /= primes[j];
+                    }
             }
 
             int[] cnts = new int[max + 1];
