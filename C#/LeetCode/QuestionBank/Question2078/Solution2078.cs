@@ -24,18 +24,15 @@ namespace LeetCode.QuestionBank.Question2078
         public int MaxDistance(int[] colors)
         {
             int result = -1, len = colors.Length;
-            int[] visited = new int[101];  // 题目保证了最多101种颜色
+            int[] visited = new int[101];          // 题目限定最多101种颜色
             for (int i = 0; i < len; i++)
             {
                 if (len - 1 - i <= result) break;
                 if (visited[colors[i]] != 0) continue;
-                for (int j = len - 1; j > i; j--)
-                {
-                    if (colors[j] != colors[i])
+                for (int j = len - 1; j > i; j--) if (colors[j] != colors[i])
                     {
                         result = Math.Max(result, j - i); break;
                     }
-                }
                 visited[colors[i]] = 1;
             }
 
