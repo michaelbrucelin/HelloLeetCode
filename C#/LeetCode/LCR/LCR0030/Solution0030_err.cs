@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.LCR.LCR0030
 {
-    public class Solution0030
+    public class Solution0030_err
     {
     }
 
@@ -15,6 +15,8 @@ namespace LeetCode.LCR.LCR0030
     /// 
     /// 提交提示错误，参考测试用例02
     /// 看输出的结果，GetRandom()的结果分布及其不均匀，但是实在看不出代码（忽略时间复杂度）有什么问题，先不管了
+    /// 
+    /// 想明白为什么错了，经典错误，再次印证要先有数学证明才可以，解释见Solution0030_err.md
     /// </summary>
     public class RandomizedSet : Interface0030
     {
