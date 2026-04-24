@@ -26,15 +26,27 @@ namespace LeetCode.QuestionBank.Question2467
             Stack<int> stack = new Stack<int>();
             backtrack(0);                         // 找出bob的路径
 
-            int result = 0, cnt, node;
-            Queue<int> queue = new Queue<int>(); queue.Enqueue(0);
+            int result = int.MinValue, cnt, node, score, _score, pbob = -1; bool isleaf;
+            Queue<(int, int)> queue = new Queue<(int, int)>(); queue.Enqueue((0, 0));
             Array.Fill(visited, false);
             while ((cnt = queue.Count) > 0)
             {
+                if (stack.Count > 0) pbob = stack.Pop();
+                amount[pbob] >>= 1;
                 for (int i = 0; i < cnt; i++)
                 {
-                    if (visited[node = queue.Dequeue()]) continue;
+                    (node, score) = queue.Dequeue();
+                    visited[node] = true;
+                    _score = score + amount[node];
+                    isleaf = true;
+                    foreach (int next in graph[node]) if (!visited[next])
+                        {
+                            queue.Enqueue((next, _score));
+                            isleaf = false;
+                        }
+                    if (isleaf) result = Math.Max(result, _score);
                 }
+                amount[pbob] = 0;
             }
 
             return result;
@@ -44,11 +56,8 @@ namespace LeetCode.QuestionBank.Question2467
                 if (visited[node]) return false;
                 stack.Push(node); visited[node] = true;
                 if (node == bob) return true;
-                foreach (int next in graph[node])
-                {
-                    if (backtrack(next)) return true;
-                    stack.Pop();
-                }
+                foreach (int next in graph[node]) if (backtrack(next)) return true;
+                stack.Pop();
 
                 return false;
             }
