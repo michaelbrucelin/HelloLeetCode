@@ -149,7 +149,19 @@ namespace LeetCode.Utilses
             // raw = raw.Replace(" ", "").Replace("\"", "");
             if (raw.Length == 0) return [];
 
-            return raw[3..^3].Split("\"],[\"").Select(x => x.Length == 0 ? [] : x.Split("\",\"").ToList()).ToList();
+            return [.. raw[3..^3].Split("\"],[\"").Select(x => x.Length == 0 ? [] : x.Split("\",\"").ToList())];
+        }
+
+        /// <summary>
+        /// 将以字符串形式给出的二维字符串列表转成二维字符串列表
+        /// </summary>
+        /// <param name="raw"></param>
+        /// <returns></returns>
+        public static IList<IList<string>> Str2StrIList_2d(string raw)
+        {
+            if (raw.Length == 0) return [];
+
+            return [.. raw[3..^3].Split("\"],[\"").Select(x => x.Length == 0 ? [] : (IList<string>)[.. x.Split("\",\"")])];
         }
 
         /// <summary>
