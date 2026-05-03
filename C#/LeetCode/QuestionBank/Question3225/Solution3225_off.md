@@ -16,14 +16,14 @@
 
 - 当前状态 $dp[i]$ 定义了第 $i$ 列和第 $i-1$ 列的染色情况，相当于我们已经固定了 $dp[i-1]$ 状态中的 $h_{curr}$，因此我们可以枚举 $dp[i-1]$ 状态的 $h_{prev}$，即枚举 $i-2$ 列的染色情况，这样因为我们相当于得到了三个相邻列的染色信息，从而推导出新的状态的最大得分。
 - 当 $h_{curr}\le h_{prev}$ 时，说当前列的黑色元素比前一列低，此时从前一个状态推过来时需要加上本列新增的得分，如下图蓝色区域所示：
-  ![](./assets/img/Solution3225_01.png)
+  ![](./assets/img/Solution3225_off_01.png)
 - 当 $h_{curr}>h_{prev}$ 时，说明当前列的黑色元素比前一列高，此时根据前一个状态的 $h_{prev}$ 取值（设为 $k$），存在以下三种情况：
   - 情况一：$k$ 小于 $h_{prev}$，需要补充 $h_{curr}$ 新覆盖的蓝色部分的得分，如下图所示：
-    ![](./assets/img/Solution3225_02.png)
+    ![](./assets/img/Solution3225_off_02.png)
   - 情况二：$k$ 大于 $h_{prev}$ 但是小于 $h_{curr}$，此时我们仍然需要补充上 $h_{curr}$ 新覆盖的蓝色区域部分的得分，只是不需要计算之前已经覆盖的黄色区域部分，如下图所示：
-    ![](./assets/img/Solution3225_03.png)
+    ![](./assets/img/Solution3225_off_03.png)
   - 情况三：$k$ 大于 $h_{curr}$，此时 $h_{curr}$ 不能贡献新的得分，直接使用旧状态转移，如下图所示：
-    ![](./assets/img/Solution3225_03.png)
+    ![](./assets/img/Solution3225_off_04.png)
 
 最终我们得到的状态转移方程如下：
 

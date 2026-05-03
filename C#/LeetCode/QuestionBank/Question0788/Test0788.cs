@@ -10,12 +10,32 @@ namespace LeetCode.QuestionBank.Question0788
     {
         public void Test()
         {
-            Interface0788 solution = new Solution0788_2();
+            Interface0788 solution = new Solution0788_3();
             int n;
             int result, answer;
             int id = 0;
 
-            n = 10; answer = 4;
+            // 1. 
+            n = 10;
+            answer = 4;
+            result = solution.RotatedDigits(n);
+            Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
+
+            // 2. 
+            n = 1;
+            answer = 0;
+            result = solution.RotatedDigits(n);
+            Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
+
+            // 3. 
+            n = 2;
+            answer = 1;
+            result = solution.RotatedDigits(n);
+            Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
+
+            // 4. 
+            n = 857;
+            answer = 247;
             result = solution.RotatedDigits(n);
             Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
         }
