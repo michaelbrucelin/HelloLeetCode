@@ -10,7 +10,7 @@ namespace LeetCode.QuestionBank.Question2553
     {
         public int[] SeparateDigits(int[] nums)
         {
-            List<int> result = new List<int>();
+            List<int> result = [];
             for (int i = nums.Length - 1, num; i >= 0; i--)
             {
                 num = nums[i];
@@ -23,7 +23,7 @@ namespace LeetCode.QuestionBank.Question2553
             }
             result.Reverse();
 
-            return result.ToArray();
+            return [.. result];
         }
     }
 }
