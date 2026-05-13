@@ -1,0 +1,319 @@
+### [差分数组（Python/Java/C++/Go）](https://leetcode.cn/problems/minimum-moves-to-make-array-complementary/solutions/3965634/chai-fen-shu-zu-pythonjavacgo-by-endless-efiv/)
+
+题目说，可以把 $nums$ 中的任意元素变成 $[1,limit]$ 中的整数，所以 $nums[i]+nums[n-1-i]$ 可以变成 $[2,limit\cdot 2]$ 中的整数。
+
+如果写个二重循环，先枚举 $nums[i]+nums[n-1-i]$ 都变成 $2,3,4,\dots ,limit\cdot 2$，再遍历 $nums$，计算操作次数，那么时间复杂度为 $O(n\cdot limit)$，太慢了。
+
+定义 $a[k]$ 表示 $nums[i]+nums[n-1-i]$ 都变成 $k$ 所需的操作次数。
+
+横看成岭侧成峰，单看 $(nums[i],nums[n-1-i])$，这对元素会如何影响数组 $a$？哪些 $a[k]$ 需要增加 $1$，哪些 $a[k]$ 需要增加 2？
+
+设 $x=nums[i]$，$y=nums[n-1-i]$。
+
+- 如果 $x$ 和 $y$ 都不修改，那么 $a[x+y]$ 不变。
+- 如果只修改 $y$，那么 $x+y$ 可以是 $[x+1,x+limit]$ 中的整数；如果只修改 $x$，那么 $x+y$ 可以是 $[y+1,y+limit]$ 中的整数。这两个区间的并集为 $[min(x,y)+1,max(x,y)+limit]$。这个区间内的整数 $k$，除了 $k=x+y$ 时 $a[x+y]$ 不变，其余 $a[k]$ 都增加 $1$，表示当 $k$ 在这个区间内时，把 $x+y$ 变成 $k$ 只需操作 $1$ 次。
+- 其余在 $[2,min(x,y)]\cup [max(x,y)+limit+1,limit\cdot 2]$ 中的 $k$，把 $a[k]$ 都增加 $2$，表示当 $k$ 在这个区间内时，把 $x+y$ 变成 $k$ 需要操作 $2$ 次。
+
+这里用到了**区间增加同一个数**的操作，这可以用差分数组实现，[原理讲解](https://leetcode.cn/problems/car-pooling/solution/suan-fa-xiao-ke-tang-chai-fen-shu-zu-fu-9d4ra/)。
+
+计算差分数组的前缀和，就得到了数组 $a$。
+
+答案为 $\mathop{min}\limits_{k=2}^{limit\cdot 2}a[k]$。
+
+> 注：题目保证 $n$ 是偶数。
+
+##### 优化前
+
+```Python
+class Solution:
+    def minMoves(self, nums: List[int], limit: int) -> int:
+        n = len(nums)
+        diff = [0] * (limit * 2 + 2)
+
+        for i in range(n // 2):
+            x = nums[i]
+            y = nums[-1 - i]
+            l = min(x, y) + 1
+            r = max(x, y) + limit
+
+            # [2, l-1] += 2
+            diff[2] += 2
+            diff[l] -= 2
+
+            # [l, r] += 1
+            diff[l] += 1
+            diff[r + 1] -= 1
+
+            # x+y 实际操作 0 次，从 [l, r] 中去掉
+            # [x+y, x+y] -= 1
+            diff[x + y] -= 1
+            diff[x + y + 1] += 1
+
+            # [r+1, limit*2] += 2
+            diff[r + 1] += 2
+            # limit*2+1 不在 [2, limit*2] 中，可以省略
+
+        ans = inf
+        sum_d = 0
+        for d in diff[2 : limit * 2 + 1]:
+            sum_d += d
+            ans = min(ans, sum_d)
+        return ans
+```
+
+```Java
+class Solution {
+    public int minMoves(int[] nums, int limit) {
+        int n = nums.length;
+        int[] diff = new int[limit * 2 + 2];
+
+        for (int i = 0; i < n / 2; i++) {
+            int x = nums[i];
+            int y = nums[n - 1 - i];
+            int l = Math.min(x, y) + 1;
+            int r = Math.max(x, y) + limit;
+
+            // [2, l-1] += 2
+            diff[2] += 2;
+            diff[l] -= 2;
+
+            // [l, r] += 1
+            diff[l]++;
+            diff[r + 1]--;
+
+            // x+y 实际操作 0 次，从 [l, r] 中去掉
+            // [x+y, x+y] -= 1
+            diff[x + y]--;
+            diff[x + y + 1]++;
+
+            // [r+1, limit*2] += 2
+            diff[r + 1] += 2;
+            // limit*2+1 不在 [2, limit*2] 中，可以省略
+        }
+
+        int ans = Integer.MAX_VALUE;
+        int sum = 0;
+        for (int i = 2; i <= limit * 2; i++) {
+            sum += diff[i];
+            ans = Math.min(ans, sum);
+        }
+        return ans;
+    }
+}
+```
+
+```C++
+class Solution {
+public:
+    int minMoves(vector<int>& nums, int limit) {
+        int n = nums.size();
+        vector<int> diff(limit * 2 + 2);
+
+        for (int i = 0; i < n / 2; i++) {
+            int x = nums[i];
+            int y = nums[n - 1 - i];
+            int l = min(x, y) + 1;
+            int r = max(x, y) + limit;
+
+            // [2, l-1] += 2
+            diff[2] += 2;
+            diff[l] -= 2;
+
+            // [l, r] += 1
+            diff[l]++;
+            diff[r + 1]--;
+
+            // x+y 实际操作 0 次，从 [l, r] 中去掉
+            // [x+y, x+y] -= 1
+            diff[x + y]--;
+            diff[x + y + 1]++;
+
+            // [r+1, limit*2] += 2
+            diff[r + 1] += 2;
+            // limit*2+1 不在 [2, limit*2] 中，可以省略
+        }
+
+        int ans = INT_MAX;
+        int sum = 0;
+        for (int i = 2; i <= limit * 2; i++) {
+            sum += diff[i];
+            ans = min(ans, sum);
+        }
+        return ans;
+    }
+};
+```
+
+```Go
+func minMoves(nums []int, limit int) int {
+    n := len(nums)
+    diff := make([]int, limit*2+2)
+    for i, x := range nums[:n/2] {
+        y := nums[n-1-i]
+        l := min(x, y) + 1
+        r := max(x, y) + limit
+
+        // [2, l-1] += 2
+        diff[2] += 2
+        diff[l] -= 2
+
+        // [l, r] += 1
+        diff[l]++
+        diff[r+1]--
+
+        // x+y 实际操作 0 次，从 [l, r] 中去掉
+        // [x+y, x+y] -= 1
+        diff[x+y]--
+        diff[x+y+1]++
+
+        // [r+1, limit*2] += 2
+        diff[r+1] += 2
+        // limit*2+1 不在 [2, limit*2] 中，可以省略
+    }
+
+    ans := math.MaxInt
+    sum := 0
+    for _, d := range diff[2 : limit*2+1] {
+        sum += d
+        ans = min(ans, sum)
+    }
+    return ans
+}
+```
+
+##### 优化
+
+- `diff[2] += 2` 执行了 $\dfrac{n}{2}$ 次，相当于 $diff[2]$ 整体增加了 $n$。也可以初始化 $sum=n$。
+- `diff[l] -= 2` 和 `diff[l] += 1` 合并为 `diff[l] -= 1`。
+- `diff[r+1] -= 1` 和 `diff[r+1] += 2` 合并为 `diff[r+1] += 1`。
+
+```Python
+class Solution:
+    def minMoves(self, nums: List[int], limit: int) -> int:
+        n = len(nums)
+        diff = [0] * (limit * 2 + 2)
+
+        for i in range(n // 2):
+            x = nums[i]
+            y = nums[n - 1 - i]
+            l = min(x, y) + 1
+            r = max(x, y) + limit
+            diff[l] -= 1
+            diff[x + y] -= 1
+            diff[x + y + 1] += 1
+            diff[r + 1] += 1
+
+        ans = inf
+        sum_d = n
+        for d in diff[2 : limit * 2 + 1]:
+            sum_d += d
+            ans = min(ans, sum_d)
+        return ans
+```
+
+```Java
+class Solution {
+    public int minMoves(int[] nums, int limit) {
+        int n = nums.length;
+        int[] diff = new int[limit * 2 + 2];
+
+        for (int i = 0; i < n / 2; i++) {
+            int x = nums[i];
+            int y = nums[n - 1 - i];
+            int l = Math.min(x, y) + 1;
+            int r = Math.max(x, y) + limit;
+            diff[l]--;
+            diff[x + y]--;
+            diff[x + y + 1]++;
+            diff[r + 1]++;
+        }
+
+        int ans = Integer.MAX_VALUE;
+        int sum = n;
+        for (int i = 2; i <= limit * 2; i++) {
+            sum += diff[i];
+            ans = Math.min(ans, sum);
+        }
+        return ans;
+    }
+}
+```
+
+```C++
+class Solution {
+public:
+    int minMoves(vector<int>& nums, int limit) {
+        int n = nums.size();
+        vector<int> diff(limit * 2 + 2);
+
+        for (int i = 0; i < n / 2; i++) {
+            int x = nums[i];
+            int y = nums[n - 1 - i];
+            int l = min(x, y) + 1;
+            int r = max(x, y) + limit;
+            diff[l]--;
+            diff[x + y]--;
+            diff[x + y + 1]++;
+            diff[r + 1]++;
+        }
+
+        int ans = INT_MAX;
+        int sum = n;
+        for (int i = 2; i <= limit * 2; i++) {
+            sum += diff[i];
+            ans = min(ans, sum);
+        }
+        return ans;
+    }
+};
+```
+
+```Go
+func minMoves(nums []int, limit int) int {
+    n := len(nums)
+    diff := make([]int, limit*2+2)
+    for i, x := range nums[:n/2] {
+        y := nums[n-1-i]
+        l := min(x, y) + 1
+        r := max(x, y) + limit
+        diff[l]--
+        diff[x+y]--
+        diff[x+y+1]++
+        diff[r+1]++
+    }
+
+    ans := math.MaxInt
+    sum := n
+    for _, d := range diff[2 : limit*2+1] {
+        sum += d
+        ans = min(ans, sum)
+    }
+    return ans
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$O(n+limit)$，其中 $n$ 是 $nums$ 的长度。
+- 空间复杂度：$O(limit)$。
+
+#### 专题训练
+
+见下面差分题单的「**§2.1 一维差分**」。
+
+#### 分类题单
+
+[如何科学刷题？](https://leetcode.cn/circle/discuss/RvFUtj/)
+
+1. [滑动窗口与双指针（定长/不定长/单序列/双序列/三指针/分组循环）](https://leetcode.cn/circle/discuss/0viNMK/)
+2. [二分算法（二分答案/最小化最大值/最大化最小值/第K小）](https://leetcode.cn/circle/discuss/SqopEo/)
+3. [单调栈（基础/矩形面积/贡献法/最小字典序）](https://leetcode.cn/circle/discuss/9oZFK9/)
+4. [网格图（DFS/BFS/综合应用）](https://leetcode.cn/circle/discuss/YiXPXW/)
+5. [位运算（基础/性质/拆位/试填/恒等式/思维）](https://leetcode.cn/circle/discuss/dHn9Vk/)
+6. [图论算法（DFS/BFS/拓扑排序/基环树/最短路/最小生成树/网络流）](https://leetcode.cn/circle/discuss/01LUak/)
+7. [动态规划（入门/背包/划分/状态机/区间/状压/数位/数据结构优化/树形/博弈/概率期望）](https://leetcode.cn/circle/discuss/tXLS3i/)
+8. [常用数据结构（前缀和/差分/栈/队列/堆/字典树/并查集/树状数组/线段树）](https://leetcode.cn/circle/discuss/mOr1u6/)
+9. [数学算法（数论/组合/概率期望/博弈/计算几何/随机算法）](https://leetcode.cn/circle/discuss/IYT3ss/)
+10. [贪心与思维（基本贪心策略/反悔/区间/字典序/数学/思维/脑筋急转弯/构造）](https://leetcode.cn/circle/discuss/g6KTKL/)
+11. [链表、树与回溯（前后指针/快慢指针/DFS/BFS/直径/LCA）](https://leetcode.cn/circle/discuss/K0n2gO/)
+12. [字符串（KMP/Z函数/Manacher/字符串哈希/AC自动机/后缀数组/子序列自动机）](https://leetcode.cn/circle/discuss/SJFwQI/)
