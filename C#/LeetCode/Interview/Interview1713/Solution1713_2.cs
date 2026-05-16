@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace LeetCode.Interview.Interview1713
 {
-    public class Solution1713 : Interface1713
+    public class Solution1713_2 : Interface1713
     {
         /// <summary>
-        ///  Trie + 回溯 + DFS + 记忆化搜索
-        ///  1. 将dictionary中的词汇放到Trie中，注意如果词汇长度大于sentence的长度，丢弃
-        ///  2. 找出sentence中所有词汇的区间
-        ///  3. 基于2的结果DFS+记忆化搜索可以找出结果
+        /// Trie + 回溯 + DP
+        /// 逻辑同Solution1713，将DPF+记忆化搜索改为DP
         /// </summary>
         /// <param name="dictionary"></param>
         /// <param name="sentence"></param>
@@ -35,25 +33,14 @@ namespace LeetCode.Interview.Interview1713
                 }
             }
 
-            int[] memory = new int[len];
-            Array.Fill(memory, -1);
-            return dfs(0);
-
-            int dfs(int start)
-            {
-                if (start == len) return 0;
-                if (memory[start] != -1) return memory[start];
-
-                int result = len;
-                for (int end = start, _result; end < len; end++)
+            int[] dp = new int[len + 1];
+            Array.Fill(dp, int.MaxValue); dp[0] = 0;
+            for (int j = 0; j < len; j++) for (int i = j; i >= 0; i--)
                 {
-                    _result = dfs(end + 1);
-                    result = Math.Min(result, _result + (spans[start, end] ? 0 : end - start + 1));
+                    dp[j + 1] = Math.Min(dp[j + 1], dp[i] + (spans[i, j] ? 0 : j - i + 1));
                 }
 
-                memory[start] = result;
-                return result;
-            }
+            return dp[^1];
         }
 
         public class Trie

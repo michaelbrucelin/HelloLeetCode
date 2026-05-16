@@ -294,6 +294,7 @@ Interview/Interview1712/
 Interview/Interview1713/
  Interface1713.cs
  Solution1713.cs
+ Solution1713_2.cs
 Interview/Interview1714/
  Interface1714.cs
  Solution1714.cs
@@ -497,6 +498,11 @@ LCR/LCR0041/
 LCR/LCR0042/
  Interface0042.cs
  Solution0042.cs
+LCR/LCR0044/
+ Interface0044.cs
+ Solution0044.cs
+ Solution0044_2.cs
+ TreeNode.cs
 LCR/LCR0045/
  Interface0045.cs
  Solution0045.cs
@@ -8599,6 +8605,7 @@ QuestionBank/
   Interface3643.cs
   Solution3643.cs
   Solution3643_2.cs
+ Question3649/Interface3649.cs
  Question3650/
   Interface3650.cs
   Solution3650.cs
