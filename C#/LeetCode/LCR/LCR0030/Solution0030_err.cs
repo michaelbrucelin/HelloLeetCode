@@ -18,9 +18,9 @@ namespace LeetCode.LCR.LCR0030
     /// 
     /// 想明白为什么错了，经典错误，再次印证要先有数学证明才可以，解释见Solution0030_err.md
     /// </summary>
-    public class RandomizedSet : Interface0030
+    public class RandomizedSet_err : Interface0030
     {
-        public RandomizedSet()
+        public RandomizedSet_err()
         {
             set = new HashSet<int>();
             minpq = new PriorityQueue<int, double>();

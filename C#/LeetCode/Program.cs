@@ -10,9 +10,9 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using UtilsXXXX = LeetCode.QuestionBank.Question0233.Utils0233;
-using TestXXXX = LeetCode.QuestionBank.Question1674.Test1674;
+using TestXXXX = LeetCode.QuestionBank.Question1345.Test1345;
 // using TestXXXX = LeetCode.LCP.LCP0068.Test0068;
-// using TestXXXX = LeetCode.LCR.LCR0117.Test0117;
+// using TestXXXX = LeetCode.LCR.LCR0017.Test0017;
 // using TestXXXX = LeetCode.Interview.Interview0508.Test0508;
 
 namespace LeetCode
