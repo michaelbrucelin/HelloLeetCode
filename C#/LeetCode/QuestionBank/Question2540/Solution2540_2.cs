@@ -17,6 +17,8 @@ namespace LeetCode.QuestionBank.Question2540
         /// <returns></returns>
         public int GetCommon(int[] nums1, int[] nums2)
         {
+            if (nums1[0] > nums2[^1] || nums2[0] > nums1[^1]) return -1;
+
             int p1 = 0, p2 = 0, len1 = nums1.Length, len2 = nums2.Length;
             while (p1 < len1 && p2 < len2)
             {
