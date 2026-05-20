@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LeetCode.QuestionBank.Question3917
+{
+    public class Solution3917 : Interface3917
+    {
+        /// <summary>
+        /// 暴力枚举
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+        public int[] CountOppositeParity(int[] nums)
+        {
+            int len = nums.Length;
+            int[] result = new int[len];
+            for (int i = 0; i < len; i++) for (int j = i + 1; j < len; j++)
+                {
+                    if (((nums[j] ^ nums[i]) & 1) == 1) result[i]++;
+                }
+
+            return result;
+        }
+    }
+}
