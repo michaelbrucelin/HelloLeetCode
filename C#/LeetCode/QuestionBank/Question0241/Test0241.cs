@@ -11,7 +11,7 @@ namespace LeetCode.QuestionBank.Question0241
     {
         public void Test()
         {
-            Interface0241 solution = new Solution0241();
+            Interface0241 solution = new Solution0241_err();
             string expression;
             IList<int> result, answer;
             int id = 0;

@@ -10,7 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using UtilsXXXX = LeetCode.QuestionBank.Question0233.Utils0233;
-using TestXXXX = LeetCode.QuestionBank.Question0033.Test0033;
+using TestXXXX = LeetCode.QuestionBank.Question0241.Test0241;
 // using TestXXXX = LeetCode.LCP.LCP0068.Test0068;
 // using TestXXXX = LeetCode.LCR.LCR0017.Test0017;
 // using TestXXXX = LeetCode.Interview.Interview0508.Test0508;
@@ -124,6 +124,8 @@ namespace LeetCode
             //const double epsilon = 1e-5;                              // 0.00001
             //const int MOD = (int)1e9 + 7;                             // 1000000007, 10^9 + 7
             //const int MOD = (int)1e9 + 9;                             // 1000000009, 10^9 + 9
+            //const int vowel = 1065233;                                // 100000100000100010001
+            //static readonly int[] vowel = [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0];
 
             //string question = "1234", testcase = "08", arg = "nums";
             //string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
