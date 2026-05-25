@@ -14,14 +14,14 @@ namespace LeetCode.QuestionBank.Question3120
             foreach (char c in word) cnt[(c >> 5) & 1] |= 1 << (c & 31);
 
             return BitCount(cnt[0] & cnt[1]);
-        }
 
-        private int BitCount(int u)
-        {
-            int result = 0;
-            while (u > 0) { result++; u &= u - 1; }
+            int BitCount(int u)
+            {
+                int result = 0;
+                while (u > 0) { result++; u &= u - 1; }
 
-            return result;
+                return result;
+            }
         }
     }
 }
