@@ -83,6 +83,123 @@ class Solution:
         return True   # 成功摧毁所有小行星
 ```
 
+```java
+class Solution {
+    public boolean asteroidsDestroyed(int mass, int[] asteroids) {
+        Arrays.sort(asteroids);   // 按照质量升序排序
+        long currentMass = mass;  // 防止整数溢出
+        for (int asteroid : asteroids) {
+            // 按顺序遍历小行星，尝试摧毁并更新质量或者返回结果
+            if (currentMass < asteroid) {
+                return false;
+            }
+            currentMass += asteroid;
+        }
+        return true;   // 成功摧毁所有小行星
+    }
+}
+```
+
+```csharp
+public class Solution {
+    public bool AsteroidsDestroyed(int mass, int[] asteroids) {
+        Array.Sort(asteroids);   // 按照质量升序排序
+        long currentMass = mass;  // 防止整数溢出
+        foreach (int asteroid in asteroids) {
+            // 按顺序遍历小行星，尝试摧毁并更新质量或者返回结果
+            if (currentMass < asteroid) {
+                return false;
+            }
+            currentMass += asteroid;
+        }
+        return true;   // 成功摧毁所有小行星
+    }
+}
+```
+
+```go
+func asteroidsDestroyed(mass int, asteroids []int) bool {
+    sort.Ints(asteroids)   // 按照质量升序排序
+    currentMass := int64(mass)  // 防止整数溢出
+    for _, asteroid := range asteroids {
+        // 按顺序遍历小行星，尝试摧毁并更新质量或者返回结果
+        if currentMass < int64(asteroid) {
+            return false
+        }
+        currentMass += int64(asteroid)
+    }
+    return true   // 成功摧毁所有小行星
+}
+```
+
+```c
+// 比较函数，用于排序
+int cmp(const void* a, const void* b) {
+    return *(int*)a - *(int*)b;
+}
+
+bool asteroidsDestroyed(int mass, int* asteroids, int asteroidsSize) {
+    qsort(asteroids, asteroidsSize, sizeof(int), cmp);   // 按照质量升序排序
+    long long currentMass = mass;  // 防止整数溢出
+    for (int i = 0; i < asteroidsSize; i++) {
+        // 按顺序遍历小行星，尝试摧毁并更新质量或者返回结果
+        if (currentMass < asteroids[i]) {
+            return false;
+        }
+        currentMass += asteroids[i];
+    }
+    return true;   // 成功摧毁所有小行星
+}
+```
+
+```javascript
+var asteroidsDestroyed = function(mass, asteroids) {
+    asteroids.sort((a, b) => a - b);   // 按照质量升序排序
+    let currentMass = mass;  // JavaScript 数字可以安全处理大整数
+    for (const asteroid of asteroids) {
+        // 按顺序遍历小行星，尝试摧毁并更新质量或者返回结果
+        if (currentMass < asteroid) {
+            return false;
+        }
+        currentMass += asteroid;
+    }
+    return true;   // 成功摧毁所有小行星
+};
+```
+
+```typescript
+function asteroidsDestroyed(mass: number, asteroids: number[]): boolean {
+    asteroids.sort((a, b) => a - b);   // 按照质量升序排序
+    let currentMass: number = mass;  // TypeScript 数字可以安全处理大整数
+    for (const asteroid of asteroids) {
+        // 按顺序遍历小行星，尝试摧毁并更新质量或者返回结果
+        if (currentMass < asteroid) {
+            return false;
+        }
+        currentMass += asteroid;
+    }
+    return true;   // 成功摧毁所有小行星
+}
+```
+
+```rust
+impl Solution {
+    pub fn asteroids_destroyed(mass: i32, asteroids: Vec<i32>) -> bool {
+        let mut asteroids = asteroids;
+        asteroids.sort();   // 按照质量升序排序
+        let mut current_mass = mass as i64;  // 防止整数溢出
+        for asteroid in asteroids {
+            // 按顺序遍历小行星，尝试摧毁并更新质量或者返回结果
+            if current_mass < asteroid as i64 {
+                return false;
+            }
+            current_mass += asteroid as i64;
+        }
+        true   // 成功摧毁所有小行星
+    }
+}
+```
+
 **复杂度分析**
 
 - 时间复杂度：$O(n)$，其中 $n$ 为数组 $asteroids$ 的长度。对数组 $asteroids$ 排序的时间复杂度为 $O(n\log n)$，判断是否可以摧毁全部小行星的时间复杂度为 $O(n)$。
