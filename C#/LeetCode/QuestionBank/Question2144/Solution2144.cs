@@ -15,11 +15,10 @@ namespace LeetCode.QuestionBank.Question2144
         /// <returns></returns>
         public int MinimumCost(int[] cost)
         {
-            Array.Sort(cost, (i1, i2) => i2 - i1);
+            Array.Sort(cost, (x, y) => y - x);
 
             int result = 0;
-            for (int i = 0; i < cost.Length; i++)
-                if (i % 3 != 2) result += cost[i];
+            for (int i = 0, len = cost.Length; i < len; i++) if (i % 3 != 2) result += cost[i];
 
             return result;
         }
@@ -31,14 +30,25 @@ namespace LeetCode.QuestionBank.Question2144
         /// <returns></returns>
         public int MinimumCost2(int[] cost)
         {
-            Array.Sort(cost, (i1, i2) => i2 - i1);
+            Array.Sort(cost, (x, y) => y - x);
 
-            int result = 0, state = 2;
-            for (int i = 0; i < cost.Length; i++)
+            int result = 0, state = 2, len = cost.Length;
+            for (int i = 0; i < len; i++)
             {
                 state = state switch { 2 => 0, 0 => 1, 1 => 2, _ => -1 };
                 if (state != 2) result += cost[i];
             }
+
+            return result;
+        }
+
+        public int MinimumCost3(int[] cost)
+        {
+            Array.Sort(cost, (x, y) => y - x);
+            int[] map = [1, 2, 0];
+
+            int result = 0, state = 2, len = cost.Length;
+            for (int i = 0; i < len; i++) if ((state = map[state]) != 2) result += cost[i];
 
             return result;
         }
