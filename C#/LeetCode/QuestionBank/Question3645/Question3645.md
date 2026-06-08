@@ -1,93 +1,65 @@
-### [3465\. 查找具有有效序列号的产品](https://leetcode.cn/problems/find-products-with-valid-serial-numbers/)
+### [3645\. 最优激活顺序得到的最大总和](https://leetcode.cn/problems/maximum-total-from-optimal-activation-order/)
 
-难度：简单
+难度：中等
 
-**SQL Schema**
+给你两个长度为 `n` 的整数数组 `value` 和 `limit`。
 
-```sql
-CREATE TABLE If not exists products (
-    product_id INT,
-    product_name VARCHAR(255),
-    description VARCHAR(255)
-)
+初始时，所有元素都是 **非活跃** 的。你可以按任意顺序激活它们。
 
-Truncate table products
-insert into products (product_id, product_name, description) values ('1', 'Widget A', 'This is a sample product with SN1234-5678')
-insert into products (product_id, product_name, description) values ('2', 'Widget B', 'A product with serial SN9876-1234 in the description')
-insert into products (product_id, product_name, description) values ('3', 'Widget C', 'Product SN1234-56789 is available now')
-insert into products (product_id, product_name, description) values ('4', 'Widget D', 'No serial number here')
-insert into products (product_id, product_name, description) values ('5', 'Widget E', 'Check out SN4321-8765 in this description')
-```
+- 要激活一个非活跃元素 `i`，**当前** 活跃元素的数量必须 **严格小于** `limit[i]`。
+- 当你激活元素 `i` 时，它的 `value[i]` 会被加到 **总和** 中（即所有进行过激活操作的元素 `value[i]` 之和）。
+- 每次激活后，如果 **当前** 活跃元素的数量变为 `x`，那么 **所有** 满足 `limit[j] <= x` 的元素 `j` 都会永久变为非活跃状态，即使它们已经处于活跃状态。
 
-**Pandas Schema**
+返回通过最优选择激活顺序可以获得的 **最大总和**。
 
-```python
-data = [[1, 'Widget A', 'This is a sample product with SN1234-5678'], [2, 'Widget B', 'A product with serial SN9876-1234 in the description'], [3, 'Widget C', 'Product SN1234-56789 is available now'], [4, 'Widget D', 'No serial number here'], [5, 'Widget E', 'Check out SN4321-8765 in this description']]
-products = pd.DataFrame(columns=['product_id', 'product_name', 'description']).astype({'product_id': 'int32', 'product_name': 'string', 'description': 'string'})
-```
+**示例 1:**
 
-> 表：`products`
+> **输入:** value = [3,5,8], limit = [2,1,3]
+> **输出:** 16
+> **解释:**
+> 一个最优的激活顺序是:
 >
-> ```c
-> +--------------+------------+
-> | Column Name  | Type       |
-> +--------------+------------+
-> | product_id   | int        |
-> | product_name | varchar    |
-> | description  | varchar    |
-> +--------------+------------+
-> ```
+> | 步骤 | 激活的 `i` | `value[i]` | 激活 `i` 前的活跃数 | 激活 `i` 后的活跃数 | 变为非活跃的 `j` | 非活跃元素 | 总和 |
+> | --- | --- | --- | --- | --- | --- | --- | --- |
+> | 1 | 1 | 5 | 0 | 1 | `j = 1` 因为 `limit[1] = 1` | [1] | 5 |
+> | 2 | 0 | 3 | 0 | 1 | - | [1] | 8 |
+> | 3 | 2 | 8 | 1 | 2 | `j = 0` 因为 `limit[0] = 2` | [0, 1] | 16 |
 >
-> (product_id) 是这张表的唯一主键。
-> 这张表的每一行表示一个产品的唯一 ID，名字和描述。
+> 因此，可能的最大总和是 16。
 
-编写一个解决方案来找到所有描述中 **包含一个有效序列号** 模式的产品。一个有效序列号符合下述规则：
+**示例 2:**
 
-- 以 **SN** 字母开头（区分大小写）。
-- 后面有恰好 `4` 位数字。
-- 接着是一个短横（-）， 短横后面还有另一组 `4` **位数字**
-- 序列号必须在描述内（可能不在描述的开头）
+> **输入:** value = [4,2,6], limit = [1,1,1]
+> **输出:** 6
+> **解释:**
+>
+> 一个最优的激活顺序是:
+>
+> | 步骤 | 激活的 `i` | `value[i]` | 激活 `i` 前的活跃数 | 激活 `i` 后的活跃数 | 变为非活跃的 `j` | 非活跃元素 | 总和 |
+> | --- | --- | --- | --- | --- | --- | --- | --- |
+> | 1 | 2 | 6 | 0 | 1 | `j = 0, 1, 2` 因为 `limit[j] = 1` | [0, 1, 2] | 6 |
+>
+> 因此，可能的最大总和是 6。
 
-返回结果表以 `product_id` **升序** 排序。
+**示例 3:**
 
-结果格式如下所示。
+> **输入:** value = [4,1,5,2], limit = [3,3,2,3]
+> **输出:** 12
+> **解释:**
+>
+> 一个最优的激活顺序是:
+>
+> | 步骤 | 激活的 `i` | `value[i]` | 激活 `i` 前的活跃数 | 激活 `i` 后的活跃数 | 变为非活跃的 `j` | 非活跃元素 | 总和 |
+> | --- | --- | --- | --- | --- | --- | --- | --- |
+> | 1 | 2 | 5 | 0 | 1 | - | [ ] | 5 |
+> | 2 | 0 | 4 | 1 | 2 | `j = 2` 因为 `limit[2] = 2` | [2] | 9 |
+> | 3 | 1 | 1 | 1 | 2 | - | [2] | 10 |
+> | 4 | 3 | 2 | 2 | 3 | `j = 0, 1, 3` 因为 `limit[j] = 3` | [0, 1, 2, 3] | 12 |
+>
+> 因此，可能的最大总和是 12。
 
-> **示例：**
->
-> **输入：**
->
-> products 表：
->
-> ```c
-> +------------+--------------+------------------------------------------------------+
-> | product_id | product_name | description                                          |
-> +------------+--------------+------------------------------------------------------+
-> | 1          | Widget A     | This is a sample product with SN1234-5678            |
-> | 2          | Widget B     | A product with serial SN9876-1234 in the description |
-> | 3          | Widget C     | Product SN1234-56789 is available now                |
-> | 4          | Widget D     | No serial number here                                |
-> | 5          | Widget E     | Check out SN4321-8765 in this description            |
-> +------------+--------------+------------------------------------------------------+
-> ```
->
-> **输出：**
->
-> ```c
-> +------------+--------------+------------------------------------------------------+
-> | product_id | product_name | description                                          |
-> +------------+--------------+------------------------------------------------------+
-> | 1          | Widget A     | This is a sample product with SN1234-5678            |
-> | 2          | Widget B     | A product with serial SN9876-1234 in the description |
-> | 5          | Widget E     | Check out SN4321-8765 in this description            |
-> +------------+--------------+------------------------------------------------------+
-> ```
->
-> **解释：**
->
-> - **产品 1：**有效的序列号 SN1234-5678
-> - **产品 2：**有效的序列号 SN9876-1234
-> - **产品 3：**无效的序列号 SN1234-56789（短横后包含 5 位数字）
-> - **产品 4：**描述中没有序列号
-> - **产品 5：**有效的序列号 SN4321-8765
->
-> 结果表以 product_id 升序排序。
+**提示:**
+
+- <code>1 <= n == value.length == limit.length <= 10<sup>5</sup></code>
+- <code>1 <= value[i] <= 10<sup>5</sup></code>
+- `1 <= limit[i] <= n`

@@ -1,4 +1,4 @@
-### [根据给定数字划分数组](https://leetcode.cn/problems/partition-array-according-to-given-pivot/solutions/1249401/gen-ju-gei-ding-shu-zi-hua-fen-shu-zu-by-372i/?envType=problem-list-v2&envId=ySsxoJfz)
+### [根据给定数字划分数组](https://leetcode.cn/problems/partition-array-according-to-given-pivot/solutions/1249401/gen-ju-gei-ding-shu-zi-hua-fen-shu-zu-by-372i/)
 
 #### 方法一：双指针
 
@@ -60,6 +60,206 @@ class Solution:
             y -= 1
 
         return ans
+```
+
+```Java
+class Solution {
+    public int[] pivotArray(int[] nums, int pivot) {
+        int n = nums.length;
+        int[] ans = new int[n];
+        Arrays.fill(ans, pivot);
+        int left = 0, right = n - 1;
+        for (int i = 0; i < n; ++i) {
+            if (nums[i] < pivot) {
+                ans[left] = nums[i];
+                ++left;
+            } else if (nums[i] > pivot) {
+                ans[right] = nums[i];
+                --right;
+            }
+        }
+        reverse(ans, right + 1, n - 1);
+        return ans;
+    }
+
+    private void reverse(int[] arr, int start, int end) {
+        while (start < end) {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+    }
+}
+```
+
+```CSharp
+public class Solution {
+    public int[] PivotArray(int[] nums, int pivot) {
+        int n = nums.Length;
+        int[] ans = new int[n];
+        Array.Fill(ans, pivot);
+        int left = 0, right = n - 1;
+        for (int i = 0; i < n; ++i) {
+            if (nums[i] < pivot) {
+                ans[left] = nums[i];
+                ++left;
+            } else if (nums[i] > pivot) {
+                ans[right] = nums[i];
+                --right;
+            }
+        }
+        Array.Reverse(ans, right + 1, n - (right + 1));
+        return ans;
+    }
+}
+```
+
+```Go
+func pivotArray(nums []int, pivot int) []int {
+    n := len(nums)
+    ans := make([]int, n)
+    for i := range ans {
+        ans[i] = pivot
+    }
+    left, right := 0, n-1
+    for i := 0; i < n; i++ {
+        if nums[i] < pivot {
+            ans[left] = nums[i]
+            left++
+        } else if nums[i] > pivot {
+            ans[right] = nums[i]
+            right--
+        }
+    }
+    reverse(ans[right+1:])
+    return ans
+}
+
+func reverse(arr []int) {
+    for i, j := 0, len(arr)-1; i < j; i, j = i+1, j-1 {
+        arr[i], arr[j] = arr[j], arr[i]
+    }
+}
+```
+
+```C
+void reverse(int* arr, int start, int end) {
+    while (start < end) {
+        int temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
+        start++;
+        end--;
+    }
+}
+
+int* pivotArray(int* nums, int numsSize, int pivot, int* returnSize) {
+    *returnSize = numsSize;
+    int* ans = (int*)malloc(numsSize * sizeof(int));
+    for (int i = 0; i < numsSize; ++i) {
+        ans[i] = pivot;
+    }
+
+    int left = 0, right = numsSize - 1;
+    for (int i = 0; i < numsSize; ++i) {
+        if (nums[i] < pivot) {
+            ans[left] = nums[i];
+            ++left;
+        } else if (nums[i] > pivot) {
+            ans[right] = nums[i];
+            --right;
+        }
+    }
+    reverse(ans, right + 1, numsSize - 1);
+
+    return ans;
+}
+```
+
+```JavaScript
+var pivotArray = function(nums, pivot) {
+    const n = nums.length;
+    const ans = new Array(n).fill(pivot);
+    let left = 0, right = n - 1;
+
+    for (let i = 0; i < n; ++i) {
+        if (nums[i] < pivot) {
+            ans[left] = nums[i];
+            ++left;
+        } else if (nums[i] > pivot) {
+            ans[right] = nums[i];
+            --right;
+        }
+    }
+
+    reverse(ans, right + 1, n - 1);
+    return ans;
+};
+
+function reverse(arr, start, end) {
+    while (start < end) {
+        [arr[start], arr[end]] = [arr[end], arr[start]];
+        start++;
+        end--;
+    }
+}
+```
+
+```TypeScript
+function pivotArray(nums: number[], pivot: number): number[] {
+    const n = nums.length;
+    const ans: number[] = new Array(n).fill(pivot);
+    let left = 0, right = n - 1;
+
+    for (let i = 0; i < n; ++i) {
+        if (nums[i] < pivot) {
+            ans[left] = nums[i];
+            ++left;
+        } else if (nums[i] > pivot) {
+            ans[right] = nums[i];
+            --right;
+        }
+    }
+
+    reverse(ans, right + 1, n - 1);
+    return ans;
+}
+
+function reverse(arr: number[], start: number, end: number): void {
+    while (start < end) {
+        [arr[start], arr[end]] = [arr[end], arr[start]];
+        start++;
+        end--;
+    }
+}
+```
+
+```Rust
+impl Solution {
+    pub fn pivot_array(nums: Vec<i32>, pivot: i32) -> Vec<i32> {
+        let n = nums.len();
+        let mut ans = vec![pivot; n];
+        let mut left = 0;
+        let mut right = n - 1;
+
+        for i in 0..n {
+            if nums[i] < pivot {
+                ans[left] = nums[i];
+                left += 1;
+            } else if nums[i] > pivot {
+                ans[right] = nums[i];
+                if right > 0 {
+                    right -= 1;
+                }
+            }
+        }
+
+        ans[right + 1..].reverse();
+        ans
+    }
+}
 ```
 
 **复杂度分析**
