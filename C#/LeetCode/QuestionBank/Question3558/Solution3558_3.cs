@@ -1,19 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question3558
 {
-    public class Solution3558 : Interface3558
+    public class Solution3558_3 : Interface3558
     {
         /// <summary>
         /// 组合数学
-        /// 假设根到最深层有n条边，结果就是 C(n,1) + C(n,3) + C(n,5) + ...
-        /// 
-        /// 逻辑没问题，TLE，参考测试用例04, 05, 06，主要慢在了BigInteger的运算上
+        /// 逻辑与Solution3558_2完全一样，使用快速幂的方式优化速度
         /// </summary>
         /// <param name="edges"></param>
         /// <returns></returns>
@@ -39,14 +36,13 @@ namespace LeetCode.QuestionBank.Question3558
                 }
             }
 
-            // long result = cnt, _result = cnt;
-            // Int128 result = cnt, _result = cnt;
-            BigInteger result = cnt, _result = cnt;
+            long result = 1, pow = 2; cnt--;
             const int MOD = (int)1e9 + 7;
-            for (int i = 3; i <= cnt; i += 2)  // 计算C(n,i)
+            while (cnt > 0)
             {
-                _result = _result * (cnt - i + 2) * (cnt - i + 1) / (i - 1) / i;
-                result = (result + _result) % MOD;
+                if ((cnt & 1) != 0) result = result * pow % MOD;
+                pow = pow * pow % MOD;
+                cnt >>= 1;
             }
 
             return (int)result;

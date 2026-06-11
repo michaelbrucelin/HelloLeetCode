@@ -13,7 +13,7 @@ namespace LeetCode.QuestionBank.Question3558
     {
         public void Test()
         {
-            Interface3558 solution = new Solution3558();
+            Interface3558 solution = new Solution3558_3();
             int[][] edges;
             int result, answer;
             int id = 0;
@@ -49,6 +49,13 @@ namespace LeetCode.QuestionBank.Question3558
             testcase = "05";
             edges = Utils.Str2NumArray_2d<int>(File.ReadAllText($"{path}_{testcase}_{arg}.txt"));
             answer = 151930880;
+            result = solution.AssignEdgeWeights(edges);
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            // 6. 
+            testcase = "06";
+            edges = Utils.Str2NumArray_2d<int>(File.ReadAllText($"{path}_{testcase}_{arg}.txt"));
+            answer = 1;
             result = solution.AssignEdgeWeights(edges);
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
         }

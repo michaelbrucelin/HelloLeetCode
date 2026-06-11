@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question3558
 {
-    public class Solution3558 : Interface3558
+    public class Solution3558_2 : Interface3558
     {
         /// <summary>
         /// 组合数学
-        /// 假设根到最深层有n条边，结果就是 C(n,1) + C(n,3) + C(n,5) + ...
-        /// 
-        /// 逻辑没问题，TLE，参考测试用例04, 05, 06，主要慢在了BigInteger的运算上
+        /// 逻辑与Solution3558完全一样，注意到 C(n,1) + C(n,3) + C(n,5) + ... 有数学解，即 2^{n-1}
+        /// 不考虑数学解，换个角度想一下也可以，总共 n 条边，所有方案数即 2^n 个，其中奇数解与偶数解是配对的，所以奇数解的数量为 2^{n-1}
         /// </summary>
         /// <param name="edges"></param>
         /// <returns></returns>
@@ -39,17 +38,11 @@ namespace LeetCode.QuestionBank.Question3558
                 }
             }
 
-            // long result = cnt, _result = cnt;
-            // Int128 result = cnt, _result = cnt;
-            BigInteger result = cnt, _result = cnt;
+            int result = 1;
             const int MOD = (int)1e9 + 7;
-            for (int i = 3; i <= cnt; i += 2)  // 计算C(n,i)
-            {
-                _result = _result * (cnt - i + 2) * (cnt - i + 1) / (i - 1) / i;
-                result = (result + _result) % MOD;
-            }
+            for (int i = 1; i < cnt; i++) result = (result << 1) % MOD;
 
-            return (int)result;
+            return result;
         }
     }
 }
