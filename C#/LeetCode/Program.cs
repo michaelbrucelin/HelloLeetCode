@@ -9,10 +9,10 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using UtilsXXXX = LeetCode.QuestionBank.Question0233.Utils0233;
-using TestXXXX = LeetCode.QuestionBank.Question0853.Test0853;
+using UtilsXXXX = LeetCode.QuestionBank.Question1833.Utils1833;
+using TestXXXX = LeetCode.QuestionBank.Question1034.Test1034;
 // using TestXXXX = LeetCode.LCP.LCP0034.Test0034;
-// using TestXXXX = LeetCode.LCR.LCR0017.Test0017;
+// using TestXXXX = LeetCode.LCR.LCR0157.Test0157;
 // using TestXXXX = LeetCode.Interview.Interview0508.Test0508;
 
 namespace LeetCode
@@ -30,7 +30,7 @@ namespace LeetCode
             //test.Look4Rules();
             //test.VerifyRules();
             //UtilsXXXX utils = new();
-            //utils.Dial(10240);
+            //utils.Dial();
             //utils.DialInt();
             //utils.Debug();
 

@@ -16,9 +16,9 @@ namespace LeetCode.QuestionBank.Question1833
         /// <returns></returns>
         public int MaxIceCream(int[] costs, int coins)
         {
-            int result = 0, sum = 0, len = costs.Length;
-            PriorityQueue<int, int> minpq = new PriorityQueue<int, int>();
-            for (int i = 0; i < len; i++) minpq.Enqueue(costs[i], costs[i]);
+            int result = 0, sum = 0;
+            PriorityQueue<int, int> minpq = new PriorityQueue<int, int>(costs.Select(x => (x, x)));
+            // for (int i = 0; i < len; i++) minpq.Enqueue(costs[i], costs[i]);
             while (minpq.Count > 0)
             {
                 result++;

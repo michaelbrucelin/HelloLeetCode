@@ -10,6 +10,11 @@ namespace LeetCode.QuestionBank.Question1189
     {
         private static readonly int[] map = new int[] { 0, 1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 5, 2, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 };
 
+        /// <summary>
+        /// 计数
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
         public int MaxNumberOfBalloons(string text)
         {
             int[] freq = new int[6];
