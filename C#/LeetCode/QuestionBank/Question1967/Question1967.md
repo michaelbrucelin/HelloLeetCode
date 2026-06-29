@@ -10,7 +10,7 @@
 
 > **输入：** patterns = ["a","abc","bc","d"], word = "abc"
 > **输出：** 3
-> **解释：** 
+> **解释：**
 > - "a" 是 "<em> **a** </em>bc" 的子字符串。
 > - "abc" 是 "<em> **abc** </em>" 的子字符串。
 > - "bc" 是 "a<em> **bc** </em>" 的子字符串。
@@ -21,7 +21,7 @@
 
 > **输入：** patterns = ["a","b","c"], word = "aaaaabbbbb"
 > **输出：** 2
-> **解释：** 
+> **解释：**
 > - "a" 是 "a<em> **a** </em>aaabbbbb" 的子字符串。
 > - "b" 是 "aaaaabbbb<em> **b** </em>" 的子字符串。
 > - "c" 不是 "aaaaabbbbb" 的字符串。
