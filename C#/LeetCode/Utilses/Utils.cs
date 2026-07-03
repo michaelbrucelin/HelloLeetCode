@@ -53,6 +53,19 @@ namespace LeetCode.Utilses
         }
 
         /// <summary>
+        /// 将以字符串形式给出的bool数组转成bool数组
+        /// </summary>
+        /// <param name="raw"></param>
+        /// <returns></returns>
+        public static bool[] Str2BoolArray(string raw)
+        {
+            raw = raw.Replace(" ", "");
+            if (raw.Length == 0) return [];
+
+            return raw[1..^1].Split(',').Select(s => s.ToLower() == "true").ToArray();
+        }
+
+        /// <summary>
         /// 将以字符串形式给出的数字数组转成数字数组
         /// </summary>
         /// <typeparam name="T"></typeparam>

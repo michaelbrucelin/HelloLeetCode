@@ -10,7 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using UtilsXXXX = LeetCode.QuestionBank.Question1833.Utils1833;
-using TestXXXX = LeetCode.QuestionBank.Question3286.Test3286;
+using TestXXXX = LeetCode.QuestionBank.Question3620.Test3620;
 // using TestXXXX = LeetCode.LCP.LCP0034.Test0034;
 // using TestXXXX = LeetCode.LCR.LCR0157.Test0157;
 // using TestXXXX = LeetCode.Interview.Interview0508.Test0508;
@@ -134,13 +134,14 @@ namespace LeetCode
             //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"LCR\LCR{question}\TestCases\TestCase{question}");
             //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"Interview\Interview{question}\TestCases\TestCase{question}");
             //arg = File.ReadAllText($"{path}_{testcase}_{arg}.txt");
+            //arg = Utils.Str2BoolArray(File.ReadAllText($"{path}_{testcase}_{arg}.txt"));
+            //arg = Utils.Str2NumArray<int>(File.ReadAllText($"{path}_{testcase}_{arg}.txt"));
+            //arg = Utils.Str2NumArray_2d<int>(File.ReadAllText($"{path}_{testcase}_{arg}.txt"));
             //arg = File.ReadAllText($"{path}_{testcase}_{arg}.txt")[1..^1];
             //arg = Utils.Str2StrArray(File.ReadAllText($"{path}_{testcase}_{arg}.txt"));
             //arg = Utils.Str2StrList(File.ReadAllText($"{path}_{testcase}_{arg}.txt"));
             //arg = Utils.Str2StrArray_2d(File.ReadAllText($"{path}_{testcase}_{arg}.txt"));
             //arg = Utils.Str2StrList_2d(File.ReadAllText($"{path}_{testcase}_{arg}.txt"));
-            //arg = Utils.Str2NumArray<int>(File.ReadAllText($"{path}_{testcase}_{arg}.txt"));
-            //arg = Utils.Str2NumArray_2d<int>(File.ReadAllText($"{path}_{testcase}_{arg}.txt"));
             //string raw = "[[0,1],[1,2]]";
             //Console.WriteLine(Utils.TestCase2CSharpDeclare(raw, Utils.TestCaseType.array_2d));
 
