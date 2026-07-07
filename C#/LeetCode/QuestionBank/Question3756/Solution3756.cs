@@ -54,8 +54,7 @@ namespace LeetCode.QuestionBank.Question3756
                 l = queries[i][0]; r = queries[i][1];
                 if ((sum = sums[r + 1] - sums[l]) != 0)
                 {
-                    // num = (int)((0L + MOD + mods[r + 1] - (1L * mods[l] * mods10[lens[r + 1] - lens[l]])) % MOD);
-                    num = (int)((0L + mods[r + 1] + (1L * MOD * MOD - 1L * mods[l] * mods10[lens[r + 1] - lens[l]])) % MOD);
+                    num = (int)((0L + MOD + mods[r + 1] - (1L * mods[l] * mods10[lens[r + 1] - lens[l]] % MOD)) % MOD);
                     result[i] = (int)(num * sum % MOD);
                 }
             }
