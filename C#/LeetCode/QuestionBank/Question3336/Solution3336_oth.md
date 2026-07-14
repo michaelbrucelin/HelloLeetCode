@@ -59,7 +59,7 @@ $$dfs(i,j,k)=dfs(i-1,j,k)+dfs(i-1,GCD(j,x),k)+dfs(i-1,j,GCD(k,x))$$
 
 > $Python$ 用户可以无视上面这段，直接用 `@cache` 装饰器。
 
-[本题视频讲解](https://leetcode.cn/link/?target=https%3A%2F%2Fwww.bilibili.com%2Fvideo%2FBV1hn1MYhEtC%2F%3Ft%3D6m35s)，欢迎点赞关注\sim
+[本题视频讲解](https://leetcode.cn/link/?target=https%3A%2F%2Fwww.bilibili.com%2Fvideo%2FBV1hn1MYhEtC%2F%3Ft%3D6m35s)，欢迎点赞关注$\sim$
 
 ```Python
 class Solution:
