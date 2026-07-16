@@ -16,7 +16,14 @@ namespace LeetCode.QuestionBank.Question0650
         /// <returns></returns>
         public int MinSteps(int n)
         {
-            // if (n == 1) return 0;
+            if (n == 1) return 0;
+            if (n < 6) return n;
+
+            int x = n >> 1;
+            while (n % x != 0) x--;
+            if (x == 1) return n;
+
+            return MinSteps(x) + n / x;
         }
     }
 }
