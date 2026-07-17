@@ -10,8 +10,6 @@ namespace LeetCode.LCR.LCR0107
     {
         /// <summary>
         /// 多源BFS
-        /// 
-        /// 逻辑没问题，Quuestion0542提交通过了，但是这里提交失败，是网站的问题
         /// </summary>
         /// <param name="mat"></param>
         /// <returns></returns>
