@@ -8,6 +8,13 @@ namespace LeetCode.QuestionBank.Question1979
 {
     public class Solution1979_2
     {
+        /// <summary>
+        /// 更相减损术，出自《九章算术》
+        /// 优点：对于两个大整数，减法运算比取模（求余）运算更快
+        /// 缺点：如果两个整数相差较大，递归的层数太多，例如GetGCD2(1, 10000)，需要递归9999次
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
         public int FindGCD(int[] nums)
         {
             int min = nums[0], max = nums[0];
@@ -17,24 +24,16 @@ namespace LeetCode.QuestionBank.Question1979
             }
 
             return GetGCD(min, max);
-        }
 
-        /// <summary>
-        /// 计算两个整数的最大公约数
-        /// 使用更相减损术，出自《九章算术》
-        /// 优点：对于两个大整数，减法运算比取模（求余）运算更快
-        /// 缺点：如果两个整数相差较大，递归的层数太多，例如GetGCD2(1, 10000)，需要递归9999次
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <returns></returns>
-        private int GetGCD(int x, int y)
-        {
-            if (x == y) return x;
+            static int GetGCD(int x, int y)
+            {
+                if (x == y) return x;
 
-            int big = x > y ? x : y;
-            int small = x > y ? y : x;
-            return GetGCD(big - small, small);
+                int big = x > y ? x : y;
+                int small = x > y ? y : x;
+
+                return GetGCD(big - small, small);
+            }
         }
     }
 }
