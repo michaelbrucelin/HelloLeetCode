@@ -29,5 +29,27 @@ namespace LeetCode.QuestionBank.Question3517
 
             return new string(chars);
         }
+
+        /// <summary>
+        /// 逻辑同SmallestPalindrome()，只需要统计前一半的字符即可
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public string SmallestPalindrome2(string s)
+        {
+            int len = s.Length;
+            int[] cnts = new int[26];
+            for (int i = (len >> 1) - 1; i >= 0; i--) cnts[s[i] - 'a']++;
+            char[] chars = new char[len];
+            if ((len & 1) != 0) chars[len >> 1] = s[len >> 1];
+            for (int i = 0, j = len - 1, k = 0; i < j; i++, j--)
+            {
+                while (cnts[k] == 0) k++;
+                chars[i] = chars[j] = (char)('a' + k);
+                cnts[k]--;
+            }
+
+            return new string(chars);
+        }
     }
 }

@@ -10,7 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using UtilsXXXX = LeetCode.QuestionBank.Question0390.Utils0390;
-using TestXXXX = LeetCode.QuestionBank.Question2958.Test2958;
+using TestXXXX = LeetCode.QuestionBank.Question3518.Test3518;
 // using TestXXXX = LeetCode.LCP.LCP0034.Test0034;
 // using TestXXXX = LeetCode.LCR.LCR0157.Test0157;
 // using TestXXXX = LeetCode.Interview.Interview0508.Test0508;
@@ -127,7 +127,7 @@ namespace LeetCode
             //const int vowel = 1065233;                                // 100000100000100010001
             //static readonly int[] vowel = [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0];
 
-            //string question = "1234", testcase = "08", arg = "nums";
+            //string question = "1023", testcase = "08", arg = "nums";
             //string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"QuestionBank\Question{question}\TestCases\TestCase{question}");
             //path = Path.Combine(Directory.GetParent(path).Parent.Parent.FullName, @$"LCP\LCP{question}\TestCases\TestCase{question}");
