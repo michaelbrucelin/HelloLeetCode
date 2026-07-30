@@ -8,6 +8,11 @@ namespace LeetCode.QuestionBank.Question3014
 {
     public class Solution3014 : Interface3014
     {
+        /// <summary>
+        /// 贪心
+        /// </summary>
+        /// <param name="word"></param>
+        /// <returns></returns>
         public int MinimumPushes(string word)
         {
             int len = word.Length;

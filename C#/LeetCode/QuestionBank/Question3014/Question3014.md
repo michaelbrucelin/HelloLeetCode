@@ -16,36 +16,34 @@
 
 **示例 1：**
 
-![](./assets/img/Question3014_02.png)
-
+> ![](./assets/img/Question3014_02.png)
 > **输入：** word = "abcde"
 > **输出：** 5
 > **解释：** 图片中给出的重新映射方案的输入成本最小。
-> "a" -&gt; 在按键 2 上按一次
-> "b" -&gt; 在按键 3 上按一次
-> "c" -&gt; 在按键 4 上按一次
-> "d" -&gt; 在按键 5 上按一次
-> "e" -&gt; 在按键 6 上按一次
+> "a" &rightarrow; 在按键 2 上按一次
+> "b" &rightarrow; 在按键 3 上按一次
+> "c" &rightarrow; 在按键 4 上按一次
+> "d" &rightarrow; 在按键 5 上按一次
+> "e" &rightarrow; 在按键 6 上按一次
 > 总成本为 1 + 1 + 1 + 1 + 1 = 5 。
 > 可以证明不存在其他成本更低的映射方案。
 
 **示例 2：**
 
-![](./assets/img/Question3014_03.png)
-
+> ![](./assets/img/Question3014_03.png)
 > **输入：** word = "xycdefghij"
 > **输出：** 12
 > **解释：** 图片中给出的重新映射方案的输入成本最小。
-> "x" -&gt; 在按键 2 上按一次
-> "y" -&gt; 在按键 2 上按两次
-> "c" -&gt; 在按键 3 上按一次
-> "d" -&gt; 在按键 3 上按两次
-> "e" -&gt; 在按键 4 上按一次
-> "f" -&gt; 在按键 5 上按一次
-> "g" -&gt; 在按键 6 上按一次
-> "h" -&gt; 在按键 7 上按一次
-> "i" -&gt; 在按键 8 上按一次
-> "j" -&gt; 在按键 9 上按一次
+> "x" &rightarrow; 在按键 2 上按一次
+> "y" &rightarrow; 在按键 2 上按两次
+> "c" &rightarrow; 在按键 3 上按一次
+> "d" &rightarrow; 在按键 3 上按两次
+> "e" &rightarrow; 在按键 4 上按一次
+> "f" &rightarrow; 在按键 5 上按一次
+> "g" &rightarrow; 在按键 6 上按一次
+> "h" &rightarrow; 在按键 7 上按一次
+> "i" &rightarrow; 在按键 8 上按一次
+> "j" &rightarrow; 在按键 9 上按一次
 > 总成本为 1 + 2 + 1 + 2 + 1 + 1 + 1 + 1 + 1 + 1 = 12 。
 > 可以证明不存在其他成本更低的映射方案。
 
