@@ -1,0 +1,270 @@
+### [两种方法：计算最大回合数 / 分类讨论（Python/Java/C++/Go）](https://leetcode.cn/problems/stone-game-ix/solutions/1029063/guan-jian-zai-yu-qiu-chu-hui-he-shu-by-e-mcgv/)
+
+#### 前言
+
+本文介绍两种方法。
+
+- 方法一思维量小，但代码比方法二略多。
+- 方法二虽然讨论了大量情况，但得到了简洁的结论，代码也很短。
+
+设已移除的元素之和为 $S$。根据题意，如果当前玩家操作后 $S\bmod 3=0$，那么当前玩家输掉游戏。由于我们只关心 $S\bmod 3$ 的值，所以 $S$ 增加 $4$ 还是增加 $1$，在模 $3$ 意义下是一样的。一般地，$stones[i]$ 是 $x$ 还是 $x\bmod 3$，没有区别。
+
+于是问题得到简化。想一想，在 $stones$ 只包含 $0,1,2$ 的情况下，两人的策略是什么样的？
+
+#### 方法一：计算最大回合数
+
+第一回合 $Alice$ 不能移除 $0$，否则直接输掉游戏。因此第一回合 $Alice$ 只能移除 $1$ 或者 $2$。我们可以枚举这两种情况，如果其中一种可以让 $Alice$ 获胜就返回 $true$，否则返回 $false$。
+
+先思考 $stones$ 没有 $0$ 的情况。
+
+- 如果第一回合 $Alice$ 移除 $1$，那么第二回合 $Bob$ 必须移除 $1$（否则 $S=3$，输了）。继续，第三回合 $Alice$ 必须移除 $2$，现在 $S=4$，模 $3$ 的余数与第一回合是一样的，所以两人移除石子的序列是固定的，即 $1,1,2,1,2,1,2,\dots$
+- 如果第一回合 $Alice$ 移除 $2$，那么第二回合 $Bob$ 必须移除 $2$（否则 $S=3$，输了）。继续，第三回合 $Alice$ 必须移除 $1$，现在 $S=5$，模 $3$ 的余数与第一回合是一样的，所以两人移除石子的序列是固定的，即 $2,2,1,2,1,2,1,\dots$
+
+对于 $0$，由于不改变 $S\bmod 3$，所以不改变后续 $1$ 和 $2$ 的移除顺序，所以 $0$ 可以插在序列的任意非起始位置。
+
+两人为了不让自己输掉，必然会按照上述序列玩下去，直到没有石子，或某一方只能移除导致 $S\bmod 3=0$ 的石子。
+
+由于移除石子的序列是固定的，我们可以根据 $1$ 和 $2$ 的个数，$O(1)$ 求出序列的长度，再加上 $0$ 的个数，得到满足 $S\bmod 3\ne 0$ 的最大回合数 $rounds$。如果还有剩余石子（$rounds<n$）且 $rounds+1$ 回合轮到 $Bob$（rounds 是奇数），那么 $Alice$ 获胜。否则 $Bob$ 获胜。
+
+```Python
+class Solution:
+    def check(self, n: int, cnt: List[int]) -> bool:
+        if cnt[1] == 0:
+            return False
+        cnt[1] -= 1
+        # 第一回合 Alice 移除 1，后面两人交替移除 1 和 2，中途可以插入 cnt[0] 个 0
+        rounds = 1 + min(cnt[1], cnt[2]) * 2 + cnt[0]
+        if cnt[1] > cnt[2]: # 可以再移除一个 1
+            rounds += 1
+        return rounds < n and rounds % 2 > 0
+
+    def stoneGameIX(self, stones: List[int]) -> bool:
+        cnt = [0] * 3
+        for x in stones:
+            cnt[x % 3] += 1
+
+        n = len(stones)
+        # 小技巧：交换 cnt[1] 和 cnt[2] 再调用 check，相当于 Alice 第一回合移除了 2
+        return self.check(n, cnt[:]) or self.check(n, [cnt[0], cnt[2], cnt[1]])
+```
+
+```Java
+class Solution {
+    public boolean stoneGameIX(int[] stones) {
+        int[] cnt = new int[3];
+        for (int x : stones) {
+            cnt[x % 3]++;
+        }
+
+        int n = stones.length;
+        // 小技巧：交换 cnt[1] 和 cnt[2] 再调用 check，相当于 Alice 第一回合移除了 2
+        return check(n, cnt.clone()) || check(n, new int[]{cnt[0], cnt[2], cnt[1]});
+    }
+
+    private boolean check(int n, int[] cnt) {
+        if (cnt[1] == 0) {
+            return false;
+        }
+        cnt[1]--;
+        // 第一回合 Alice 移除 1，后面两人交替移除 1 和 2，中途可以插入 cnt[0] 个 0
+        int rounds = 1 + Math.min(cnt[1], cnt[2]) * 2 + cnt[0];
+        if (cnt[1] > cnt[2]) { // 可以再移除一个 1
+            rounds++;
+        }
+        return rounds < n && rounds % 2 > 0;
+    }
+}
+```
+
+```C++
+class Solution {
+private:
+    bool check(int n, int cnt[3]) {
+        if (cnt[1] == 0) {
+            return false;
+        }
+        cnt[1]--;
+        // 第一回合 Alice 移除 1，后面两人交替移除 1 和 2，中途可以插入 cnt[0] 个 0
+        int rounds = 1 + min(cnt[1], cnt[2]) * 2 + cnt[0];
+        if (cnt[1] > cnt[2]) { // 可以再移除一个 1
+            rounds++;
+        }
+        return rounds < n && rounds % 2 > 0;
+    }
+
+public:
+    bool stoneGameIX(vector<int>& stones) {
+        int cnt[3]{};
+        for (int x : stones) {
+            cnt[x % 3]++;
+        }
+
+        int n = stones.size();
+        // 小技巧：交换 cnt[1] 和 cnt[2] 再调用 check，相当于 Alice 第一回合移除了 2
+        int cnt2[3] = {cnt[0], cnt[2], cnt[1]};
+        return check(n, cnt) || check(n, cnt2);
+    }
+};
+```
+
+```Go
+func check(n int, cnt [3]int) bool {
+    if cnt[1] == 0 {
+        return false
+    }
+    cnt[1]--
+    // 第一回合 Alice 移除 1，后面两人交替移除 1 和 2，中途可以插入 cnt[0] 个 0
+    rounds := 1 + min(cnt[1], cnt[2])*2 + cnt[0]
+    if cnt[1] > cnt[2] { // 可以再移除一个 1
+        rounds++
+    }
+    return rounds < n && rounds%2 > 0
+}
+
+func stoneGameIX(stones []int) bool {
+    cnt := [3]int{}
+    for _, x := range stones {
+        cnt[x%3]++
+    }
+
+    n := len(stones)
+    // 小技巧：交换 cnt[1] 和 cnt[2] 再调用 check，相当于 Alice 第一回合移除了 2
+    return check(n, cnt) || check(n, [3]int{cnt[0], cnt[2], cnt[1]})
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$O(n)$，其中 $n$ 是 $stones$ 的长度。
+- 空间复杂度：$O(1)$。
+
+#### 方法二：分类讨论
+
+先思考 $stones$ 没有 $0$ 的情况。
+
+讨论 $stones$ 中的 $1$ 和 $2$ 的个数：
+
+- 如果只有 $1$。当 $n\le 2$ 时，可以移除所有石子，$Bob$ 获胜。当 $n\ge 3$ 时，第三回合 $Alice$ 移除石子后，总和为 $3$，Alice 输。所以 $Bob$ 必胜。
+- 如果只有 $2$。当 $n\le 2$ 时，可以移除所有石子，$Bob$ 获胜。当 $n\ge 3$ 时，第三回合 $Alice$ 移除石子后，总和为 $6$，Alice 输。所以 $Bob$ 必胜。
+- 如果 $1$ 和 $2$ 都有且 $1$ 的个数更少（或者相等），那么 $Alice$ 选择序列 $1,1,2,1,2,1,2,\dots$，由于 $1$ 比 $2$ 先消耗完，且在 $Bob$ 的回合移除的都是 $1$，所以若干回合后 $Bob$ 无法移除 $1$，只能移除 $2$，导致总和是 $3$ 的倍数，输掉游戏。所以 $Alice$ 必胜。
+- 如果 $1$ 和 $2$ 都有且 $2$ 的个数更少（或者相等），那么 $Alice$ 选择序列 $2,2,1,2,1,2,1,\dots$，由于 $2$ 比 $1$ 先消耗完，且在 $Bob$ 的回合移除的都是 $2$，所以若干回合后 $Bob$ 无法移除 $2$，只能移除 $1$，导致总和是 $3$ 的倍数，输掉游戏。所以 $Alice$ 必胜。
+
+**小结**：如果 $stones$ 没有 $0$，那么当且仅当 $stones$ 包含 $1$ 和 $2$ 的情况下 $Alice$ 必胜。
+
+然后讨论 $stones$ 有 $0$ 的情况。
+
+- 如果 $stones$ 只有 $0$，那么第一回合 $Alice$ 移除石子后，总和是 $3$ 的倍数，$Alice$ 输。所以 $Bob$ 必胜。
+- 如果 $stones$ 有偶数个 $0$。
+  - 对于前文 $Alice$ 必胜的情况，如果某个回合 $Bob$ 移除了 $0$，那么 $Alice$ 就跟着移除 $0$，所以不影响必胜结论。
+  - 对于前文 $Bob$ 必胜的情况，如果某个回合 $Alice$ 移除了 $0$，那么 $Bob$ 就跟着移除 $0$，所以不影响必胜结论。
+- 如果 $stones$ 有奇数个 $0$。
+  - 如果没有 $2$。
+    - 如果 $1$ 的个数为 $1$ 或者 $2$，那么可以移除所有石子，$Bob$ 获胜。
+    - 如果至少有 $3$ 个 $1$ 且第二回合 $Bob$ 移除 $0$，那么第三回合 $Alice$ 移除 $1$。后续两人交替移除完所有 $0$，最后轮到 $Bob$ 移除第三个 $1$，Bob 输。
+    - 如果至少有 $3$ 个 $1$ 且第二回合 $Bob$ 移除 $1$，那么第三回合 $Alice$ 移除 $0$。后续两人交替移除完所有 $0$，最后轮到 $Bob$ 移除第三个 $1$，Bob 输。
+  - 如果没有 $1$，同上，结论类似。
+  - 如果 $1$ 和 $2$ 都有。设 $cnt_1$ 和 $cnt_2$ 分别为 $1$ 和 $2$ 的个数。
+    - 如果 $Alice$ 仍然像前文那样操作，那么第二回合 $Bob$ 移除 $0$，**相当于交换了先后手**，最后 $Bob$ 必胜。
+    - 所以 $Alice$ 必须反过来。如果 $cnt_1<cnt_2$，那么 $Alice$ 选择序列 $2,2,1,2,1,2,1,\dots$ 如果第二回合 $Bob$ 移除 $0$，那么后续 $Bob$ 的回合移除的都是 $1$，所以若干回合后 $Bob$ 无法移除 $1$，只能移除 $2$，导致总和是 $3$ 的倍数，输掉游戏。所以 $Bob$ 肯定不能先移除 $0$，那么第三回合 $Alice$ 移除 $0$，即两人的序列为 $2,2,0,1,2,1,2,1,\dots$，在 $cnt_2-cnt_1\ge 3$ 的情况下，最终 $Bob$ 无法移除 $1$，只能移除 $2$，导致总和是 $3$ 的倍数，输掉游戏，$Alice$ 获胜。如果 $1\le cnt_2-cnt_1\le 2$，那么可以移除所有石子，$Bob$ 获胜。
+    - 如果 $cnt_1>cnt_2$，同上，结论类似。
+    - 如果 $cnt_1=cnt_2$，无论序列是 $2,2,0,1,2,1,2,1,\dots$ 还是 $1,1,0,2,1,2,1,2,\dots$，若干回合后 $Alice$ 无法移除相应数字，导致总和是 $3$ 的倍数，输掉游戏，$Bob$ 获胜。
+
+**综上所述**：
+
+- 如果 $stones$ 有偶数个 $0$（包括 $0$ 个 $0$），那么当且仅当 $stones$ 包含 $1$ 和 $2$ 的情况下 $Alice$ 必胜。
+- 如果 $stones$ 有奇数个 $0$，那么当且仅当 $\vert cnt_1-cnt_2\vert \ge 3$ 成立时 $Alice$ 必胜。
+
+> **注**：$\vert cnt_1-cnt_2\vert \ge 3$ 成立时，$stones$ 一定不全为 $0$，所以无需判断全为 $0$ 的情况。
+
+```Python
+class Solution:
+    def stoneGameIX(self, stones: List[int]) -> bool:
+        cnt = [0] * 3
+        for x in stones:
+            cnt[x % 3] += 1
+
+        if cnt[0] % 2 == 0:
+            return cnt[1] > 0 and cnt[2] > 0
+        return abs(cnt[1] - cnt[2]) > 2
+```
+
+```Java
+class Solution {
+    public boolean stoneGameIX(int[] stones) {
+        int[] cnt = new int[3];
+        for (int x : stones) {
+            cnt[x % 3]++;
+        }
+
+        if (cnt[0] % 2 == 0) {
+            return cnt[1] > 0 && cnt[2] > 0;
+        }
+        return Math.abs(cnt[1] - cnt[2]) > 2;
+    }
+}
+```
+
+```C++
+class Solution {
+public:
+    bool stoneGameIX(vector<int>& stones) {
+        int cnt[3]{};
+        for (int x : stones) {
+            cnt[x % 3]++;
+        }
+
+        if (cnt[0] % 2 == 0) {
+            return cnt[1] > 0 && cnt[2] > 0;
+        }
+        return abs(cnt[1] - cnt[2]) > 2;
+    }
+};
+```
+
+```Go
+func stoneGameIX(stones []int) bool {
+    cnt := [3]int{}
+    for _, x := range stones {
+        cnt[x%3]++
+    }
+
+    if cnt[0]%2 == 0 {
+        return cnt[1] > 0 && cnt[2] > 0
+    }
+    return abs(cnt[1]-cnt[2]) > 2
+}
+
+func abs(x int) int {
+    if x < 0 {
+        return -x
+    }
+    return x
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$O(n)$，其中 $n$ 是 $stones$ 的长度。
+- 空间复杂度：$O(1)$。
+
+#### 专题训练
+
+1. 数学题单的「**四、博弈论**」。
+2. 贪心与思维题单的「**§5.8 分类讨论**」
+
+#### 分类题单
+
+[如何科学刷题？](https://leetcode.cn/discuss/post/3141566/ru-he-ke-xue-shua-ti-by-endlesscheng-q3yd/)
+
+1. [滑动窗口与双指针（定长/不定长/单序列/双序列/三指针/分组循环）](https://leetcode.cn/discuss/post/3578981/ti-dan-hua-dong-chuang-kou-ding-chang-bu-rzz7/)
+2. [二分算法（二分答案/最小化最大值/最大化最小值/第K小）](https://leetcode.cn/discuss/post/3579164/ti-dan-er-fen-suan-fa-er-fen-da-an-zui-x-3rqn/)
+3. [单调栈（基础/矩形面积/贡献法/最小字典序）](https://leetcode.cn/discuss/post/3579480/ti-dan-dan-diao-zhan-ju-xing-xi-lie-zi-d-u4hk/)
+4. [网格图（DFS/BFS/综合应用）](https://leetcode.cn/discuss/post/3580195/fen-xiang-gun-ti-dan-wang-ge-tu-dfsbfszo-l3pa/)
+5. [位运算（基础/性质/拆位/试填/恒等式/思维）](https://leetcode.cn/discuss/post/3580371/fen-xiang-gun-ti-dan-wei-yun-suan-ji-chu-nth4/)
+6. [图论算法（DFS/BFS/拓扑排序/基环树/最短路/最小生成树/网络流）](https://leetcode.cn/discuss/post/3581143/fen-xiang-gun-ti-dan-tu-lun-suan-fa-dfsb-qyux/)
+7. [动态规划（入门/背包/划分/状态机/区间/状压/数位/数据结构优化/树形/博弈/概率期望）](https://leetcode.cn/discuss/post/3581838/fen-xiang-gun-ti-dan-dong-tai-gui-hua-ru-007o/)
+8. [常用数据结构（前缀和/差分/栈/队列/堆/字典树/并查集/树状数组/线段树）](https://leetcode.cn/discuss/post/3583665/fen-xiang-gun-ti-dan-chang-yong-shu-ju-j-bvmv/)
+9. [数学算法（数论/组合/概率期望/博弈/计算几何/随机算法）](https://leetcode.cn/discuss/post/3584388/fen-xiang-gun-ti-dan-shu-xue-suan-fa-shu-gcai/)
+10. [贪心与思维（基本贪心策略/反悔/区间/字典序/数学/思维/脑筋急转弯/构造）](https://leetcode.cn/discuss/post/3091107/fen-xiang-gun-ti-dan-tan-xin-ji-ben-tan-k58yb/)
+11. [链表、树与回溯（前后指针/快慢指针/DFS/BFS/直径/LCA）](https://leetcode.cn/discuss/post/3142882/fen-xiang-gun-ti-dan-lian-biao-er-cha-sh-6srp/)
+12. [字符串（KMP/Z函数/Manacher/字符串哈希/AC自动机/后缀数组/子序列自动机）](https://leetcode.cn/discuss/post/3144832/fen-xiang-gun-ti-dan-zi-fu-chuan-kmpzhan-ugt4/)
