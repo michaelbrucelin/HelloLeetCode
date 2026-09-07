@@ -1,4 +1,4 @@
-### [](https://leetcode.cn/problems/distinct-subsequences-ii/solution/bu-tong-by-capital-worker-vga3//#方法一：动态规划)方法一：动态规划
+### [方法一：动态规划](https://leetcode.cn/problems/distinct-subsequences-ii/solution/bu-tong-by-capital-worker-vga3//#方法一：动态规划)
 
 根据题意我们设`dp[i]`为前`i`个字符可以组成的不同的子序列，则有
 
