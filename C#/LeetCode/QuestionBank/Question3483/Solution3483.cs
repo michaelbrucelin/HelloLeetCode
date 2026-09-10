@@ -29,5 +29,27 @@ namespace LeetCode.QuestionBank.Question3483
 
             return set.Count;
         }
+
+        /// <summary>
+        /// 逻辑同TotalNumbers()，将hash改为数组
+        /// </summary>
+        /// <param name="digits"></param>
+        /// <returns></returns>
+        public int TotalNumbers2(int[] digits)
+        {
+            int result = 0, len = digits.Length, num;  // 题目限定长度小于等于10，直接枚举
+            bool[] set = new bool[1001];
+            for (int i = 0; i < len; i++) for (int j = i + 1; j < len; j++) for (int k = j + 1; k < len; k++)
+                    {
+                        num = digits[i] * 100 + digits[j] * 10 + digits[k]; if (num >= 100 && (num & 1) == 0 && !set[num]) { result++; set[num] = true; }
+                        num = digits[i] * 100 + digits[k] * 10 + digits[j]; if (num >= 100 && (num & 1) == 0 && !set[num]) { result++; set[num] = true; }
+                        num = digits[j] * 100 + digits[i] * 10 + digits[k]; if (num >= 100 && (num & 1) == 0 && !set[num]) { result++; set[num] = true; }
+                        num = digits[j] * 100 + digits[k] * 10 + digits[i]; if (num >= 100 && (num & 1) == 0 && !set[num]) { result++; set[num] = true; }
+                        num = digits[k] * 100 + digits[i] * 10 + digits[j]; if (num >= 100 && (num & 1) == 0 && !set[num]) { result++; set[num] = true; }
+                        num = digits[k] * 100 + digits[j] * 10 + digits[i]; if (num >= 100 && (num & 1) == 0 && !set[num]) { result++; set[num] = true; }
+                    }
+
+            return result;
+        }
     }
 }
