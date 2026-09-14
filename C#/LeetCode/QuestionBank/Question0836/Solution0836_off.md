@@ -1,37 +1,39 @@
-#### [·½·¨Ò»£º¼ì²éÎ»ÖÃ](https://leetcode.cn/problems/rectangle-overlap/solutions/154848/ju-xing-zhong-die-by-leetcode-solution/)
+### [çŸ©å½¢é‡å ](https://leetcode.cn/problems/rectangle-overlap/solutions/154848/ju-xing-zhong-die-by-leetcode-solution/)
 
-**Ë¼Â·**
+#### æ–¹æ³•ä¸€ï¼šæ£€æŸ¥ä½ç½®
 
-ÎÒÃÇ³¢ÊÔ·ÖÎöÔÚÊ²Ã´Çé¿öÏÂ£¬¾ØĞÎ `rec1` ºÍ `rec2` Ã»ÓĞÖØµş¡£
+**æ€è·¯**
 
-Èç¹û¾ØĞÎ `rec1` ºÍ `rec2` ÖĞÖÁÉÙÓĞÒ»¸ö¾ØĞÎµÄÃæ»ıÎª $0$£¬ÔòÒ»¶¨Ã»ÓĞÖØµş¡£
+æˆ‘ä»¬å°è¯•åˆ†æåœ¨ä»€ä¹ˆæƒ…å†µä¸‹ï¼ŒçŸ©å½¢ `rec1` å’Œ `rec2` æ²¡æœ‰é‡å ã€‚
 
-µ±¾ØĞÎ `rec1` ºÍ `rec2` µÄÃæ»ı¶¼´óÓÚ $0$ Ê±£¬Èç¹ûÎÒÃÇÔÚÆ½ÃæÖĞ·ÅÖÃÒ»¸ö¹Ì¶¨µÄ¾ØĞÎ `rec2`£¬ÄÇÃ´¾ØĞÎ `rec1` ±ØĞëÒª³öÏÖÔÚ `rec2` µÄ¡¸ËÄÖÜ¡¹£¬Ò²¾ÍÊÇËµ£¬¾ØĞÎ `rec1` ĞèÒªÂú×ãÒÔÏÂËÄÖÖÇé¿öÖĞµÄÖÁÉÙÒ»ÖÖ£º
+å¦‚æœçŸ©å½¢ `rec1` å’Œ `rec2` ä¸­è‡³å°‘æœ‰ä¸€ä¸ªçŸ©å½¢çš„é¢ç§¯ä¸º $0$ï¼Œåˆ™ä¸€å®šæ²¡æœ‰é‡å ã€‚
 
--   ¾ØĞÎ `rec1` ÔÚ¾ØĞÎ `rec2` µÄ×ó²à£»
--   ¾ØĞÎ `rec1` ÔÚ¾ØĞÎ `rec2` µÄÓÒ²à£»
--   ¾ØĞÎ `rec1` ÔÚ¾ØĞÎ `rec2` µÄÉÏ·½£»
--   ¾ØĞÎ `rec1` ÔÚ¾ØĞÎ `rec2` µÄÏÂ·½¡£
+å½“çŸ©å½¢ `rec1` å’Œ `rec2` çš„é¢ç§¯éƒ½å¤§äº $0$ æ—¶ï¼Œå¦‚æœæˆ‘ä»¬åœ¨å¹³é¢ä¸­æ”¾ç½®ä¸€ä¸ªå›ºå®šçš„çŸ©å½¢ `rec2`ï¼Œé‚£ä¹ˆçŸ©å½¢ `rec1` å¿…é¡»è¦å‡ºç°åœ¨ `rec2` çš„ã€Œå››å‘¨ã€ï¼Œä¹Ÿå°±æ˜¯è¯´ï¼ŒçŸ©å½¢ `rec1` éœ€è¦æ»¡è¶³ä»¥ä¸‹å››ç§æƒ…å†µä¸­çš„è‡³å°‘ä¸€ç§ï¼š
 
-ºÎÎª¡¸×ó²à¡¹£¿Èç¹û¾ØĞÎ `rec1` ÔÚ¾ØĞÎ `rec2` µÄ×ó²à£¬ÄÇ¾Í±íÊ¾ÎÒÃÇ¿ÉÒÔÕÒµ½Ò»ÌõÊúÖ±µÄÏß£¨¿ÉÒÔÓë¾ØĞÎµÄ±ßÖØºÏ£©£¬Ê¹µÃ¾ØĞÎ `rec1` ºÍ `rec2` ±»·ÖÔÚÕâÌõÊúÏßµÄÁ½²à¡£¶ÔÓÚ¡¸ÓÒ²à¡¹¡¢¡¸ÉÏ·½¡¹ÒÔ¼°¡¸ÏÂ·½¡¹£¬ËüÃÇµÄ¶¨ÒåÓë¡¸×ó²à¡¹ÊÇÀàËÆµÄ¡£
+- çŸ©å½¢ `rec1` åœ¨çŸ©å½¢ `rec2` çš„å·¦ä¾§ï¼›
+- çŸ©å½¢ `rec1` åœ¨çŸ©å½¢ `rec2` çš„å³ä¾§ï¼›
+- çŸ©å½¢ `rec1` åœ¨çŸ©å½¢ `rec2` çš„ä¸Šæ–¹ï¼›
+- çŸ©å½¢ `rec1` åœ¨çŸ©å½¢ `rec2` çš„ä¸‹æ–¹ã€‚
 
-**Ëã·¨**
+ä½•ä¸ºã€Œå·¦ä¾§ã€ï¼Ÿå¦‚æœçŸ©å½¢ `rec1` åœ¨çŸ©å½¢ `rec2` çš„å·¦ä¾§ï¼Œé‚£å°±è¡¨ç¤ºæˆ‘ä»¬å¯ä»¥æ‰¾åˆ°ä¸€æ¡ç«–ç›´çš„çº¿ï¼ˆå¯ä»¥ä¸çŸ©å½¢çš„è¾¹é‡åˆï¼‰ï¼Œä½¿å¾—çŸ©å½¢ `rec1` å’Œ `rec2` è¢«åˆ†åœ¨è¿™æ¡ç«–çº¿çš„ä¸¤ä¾§ã€‚å¯¹äºã€Œå³ä¾§ã€ã€ã€Œä¸Šæ–¹ã€ä»¥åŠã€Œä¸‹æ–¹ã€ï¼Œå®ƒä»¬çš„å®šä¹‰ä¸ã€Œå·¦ä¾§ã€æ˜¯ç±»ä¼¼çš„ã€‚
 
-Ê×ÏÈÅĞ¶Ï¾ØĞÎ `rec1` ºÍ `rec2` µÄÃæ»ıÊÇ·ñÎª $0$¡£
+**ç®—æ³•**
 
--   ¶ÔÓÚ¾ØĞÎ `rec1` ¶øÑÔ£¬ÆäÃæ»ıÎª $0$ µ±ÇÒ½öµ± `rec1[0] == rec1[2]` »ò `rec1[1] == rec1[3]`£»
--   ¶ÔÓÚ¾ØĞÎ `rec2` ¶øÑÔ£¬ÆäÃæ»ıÎª $0$ µ±ÇÒ½öµ± `rec2[0] == rec2[2]` »ò `rec2[1] == rec2[3]`¡£
+é¦–å…ˆåˆ¤æ–­çŸ©å½¢ `rec1` å’Œ `rec2` çš„é¢ç§¯æ˜¯å¦ä¸º $0$ã€‚
 
-Èç¹ûÖÁÉÙÓĞÒ»¸ö¾ØĞÎµÄÃæ»ıÎª $0$£¬ÔòÒ»¶¨Ã»ÓĞÖØµş¡£
+- å¯¹äºçŸ©å½¢ `rec1` è€Œè¨€ï¼Œå…¶é¢ç§¯ä¸º $0$ å½“ä¸”ä»…å½“ `rec1[0] == rec1[2]` æˆ– `rec1[1] == rec1[3]`ï¼›
+- å¯¹äºçŸ©å½¢ `rec2` è€Œè¨€ï¼Œå…¶é¢ç§¯ä¸º $0$ å½“ä¸”ä»…å½“ `rec2[0] == rec2[2]` æˆ– `rec2[1] == rec2[3]`ã€‚
 
-Èç¹û¾ØĞÎ `rec1` ºÍ `rec2` µÄÃæ»ı¶¼´óÓÚ $0$£¬Ôò¿¼ÂÇÁ½¸ö¾ØĞÎµÄÎ»ÖÃ¡£ÎÒÃÇ½«ÉÏÊöËÄÖÖÇé¿ö·­Òë³É´úÂë¡£¾ßÌåµØ£¬ÎÒÃÇÓÃ `(rec[0], rec[1])` ±íÊ¾¾ØĞÎµÄ×óÏÂ½Ç£¬`(rec[2], rec[3])` ±íÊ¾¾ØĞÎµÄÓÒÉÏ½Ç£¬ÓëÌâÄ¿ÃèÊöÒ»ÖÂ¡£¶ÔÓÚ¡¸×ó²à¡¹£¬¼´¾ØĞÎ `rec1` ÔÚ `x` ÖáÉÏµÄ×î´óÖµ²»ÄÜ´óÓÚ¾ØĞÎ `rec2` ÔÚ `x` ÖáÉÏ×îĞ¡Öµ¡£¶ÔÓÚ¡¸ÓÒ²à¡¹¡¢¡¸ÉÏ·½¡¹ÒÔ¼°¡¸ÏÂ·½¡¹Í¬Àí¡£Òò´ËÎÒÃÇ¿ÉÒÔ·­Òë³ÉÈçÏÂµÄ´úÂë£º
+å¦‚æœè‡³å°‘æœ‰ä¸€ä¸ªçŸ©å½¢çš„é¢ç§¯ä¸º $0$ï¼Œåˆ™ä¸€å®šæ²¡æœ‰é‡å ã€‚
 
--   ×ó²à£º`rec1[2] <= rec2[0]`£»
--   ÓÒ²à£º`rec1[0] >= rec2[2]`£»
--   ÉÏ·½£º`rec1[1] >= rec2[3]`£»
--   ÏÂ·½£º`rec1[3] <= rec2[1]`¡£
+å¦‚æœçŸ©å½¢ `rec1` å’Œ `rec2` çš„é¢ç§¯éƒ½å¤§äº $0$ï¼Œåˆ™è€ƒè™‘ä¸¤ä¸ªçŸ©å½¢çš„ä½ç½®ã€‚æˆ‘ä»¬å°†ä¸Šè¿°å››ç§æƒ…å†µç¿»è¯‘æˆä»£ç ã€‚å…·ä½“åœ°ï¼Œæˆ‘ä»¬ç”¨ `(rec[0], rec[1])` è¡¨ç¤ºçŸ©å½¢çš„å·¦ä¸‹è§’ï¼Œ`(rec[2], rec[3])` è¡¨ç¤ºçŸ©å½¢çš„å³ä¸Šè§’ï¼Œä¸é¢˜ç›®æè¿°ä¸€è‡´ã€‚å¯¹äºã€Œå·¦ä¾§ã€ï¼Œå³çŸ©å½¢ `rec1` åœ¨ `x` è½´ä¸Šçš„æœ€å¤§å€¼ä¸èƒ½å¤§äºçŸ©å½¢ `rec2` åœ¨ `x` è½´ä¸Šæœ€å°å€¼ã€‚å¯¹äºã€Œå³ä¾§ã€ã€ã€Œä¸Šæ–¹ã€ä»¥åŠã€Œä¸‹æ–¹ã€åŒç†ã€‚å› æ­¤æˆ‘ä»¬å¯ä»¥ç¿»è¯‘æˆå¦‚ä¸‹çš„ä»£ç ï¼š
 
-```java
+- å·¦ä¾§ï¼š`rec1[2] <= rec2[0]`ï¼›
+- å³ä¾§ï¼š`rec1[0] >= rec2[2]`ï¼›
+- ä¸Šæ–¹ï¼š`rec1[1] >= rec2[3]`ï¼›
+- ä¸‹æ–¹ï¼š`rec1[3] <= rec2[1]`ã€‚
+
+```Java
 class Solution {
     public boolean isRectangleOverlap(int[] rec1, int[] rec2) {
         if (rec1[0] == rec1[2] || rec1[1] == rec1[3] || rec2[0] == rec2[2] || rec2[1] == rec2[3]) {
@@ -45,7 +47,7 @@ class Solution {
 }
 ```
 
-```python
+```Python
 class Solution:
     def isRectangleOverlap(self, rec1: List[int], rec2: List[int]) -> bool:
         if rec1[0] == rec1[2] or rec1[1] == rec1[3] or rec2[0] == rec2[2] or rec2[1] == rec2[3]:
@@ -56,7 +58,7 @@ class Solution:
                     rec1[1] >= rec2[3])    # top
 ```
 
-```cpp
+```C++
 class Solution {
 public:
     bool isRectangleOverlap(vector<int>& rec1, vector<int>& rec2) {
@@ -71,7 +73,220 @@ public:
 };
 ```
 
-**¸´ÔÓ¶È·ÖÎö**
+```CSharp
+public class Solution
+{
+    public bool IsRectangleOverlap(int[] rec1, int[] rec2)
+    {
+        if (rec1[0] == rec1[2] || rec1[1] == rec1[3] ||
+            rec2[0] == rec2[2] || rec2[1] == rec2[3])
+        {
+            return false;
+        }
 
--   Ê±¼ä¸´ÔÓ¶È£º$O(1)$¡£
--   ¿Õ¼ä¸´ÔÓ¶È£º$O(1)$£¬²»ĞèÒª¶îÍâµÄ¿Õ¼ä¡£
+        return !(rec1[2] <= rec2[0] || // left
+                 rec1[3] <= rec2[1] || // bottom
+                 rec1[0] >= rec2[2] || // right
+                 rec1[1] >= rec2[3]);  // top
+    }
+}
+```
+
+```Go
+func isRectangleOverlap(rec1 []int, rec2 []int) bool {
+    if rec1[0] == rec1[2] || rec1[1] == rec1[3] ||
+        rec2[0] == rec2[2] || rec2[1] == rec2[3] {
+        return false
+    }
+
+    return !(rec1[2] <= rec2[0] || // left
+        rec1[3] <= rec2[1] || // bottom
+        rec1[0] >= rec2[2] || // right
+        rec1[1] >= rec2[3]) // top
+}
+```
+
+```C
+bool isRectangleOverlap(int* rec1, int rec1Size, int* rec2, int rec2Size) {
+    if (rec1[0] == rec1[2] ||
+        rec1[1] == rec1[3] ||
+        rec2[0] == rec2[2] ||
+        rec2[1] == rec2[3]) {
+        return false;
+    }
+
+    return !(rec1[2] <= rec2[0] ||  // left
+             rec1[3] <= rec2[1] ||  // bottom
+             rec1[0] >= rec2[2] ||  // right
+             rec1[1] >= rec2[3]);   // top
+}
+```
+
+```JavaScript
+var isRectangleOverlap = function(rec1, rec2) {
+    if (
+        rec1[0] === rec1[2] ||
+        rec1[1] === rec1[3] ||
+        rec2[0] === rec2[2] ||
+        rec2[1] === rec2[3]
+    ) {
+        return false;
+    }
+
+    return !(
+        rec1[2] <= rec2[0] || // left
+        rec1[3] <= rec2[1] || // bottom
+        rec1[0] >= rec2[2] || // right
+        rec1[1] >= rec2[3]    // top
+    );
+};
+```
+
+```TypeScript
+function isRectangleOverlap(rec1: number[], rec2: number[]): boolean {
+    if (
+        rec1[0] === rec1[2] ||
+        rec1[1] === rec1[3] ||
+        rec2[0] === rec2[2] ||
+        rec2[1] === rec2[3]
+    ) {
+        return false;
+    }
+
+    return !(
+        rec1[2] <= rec2[0] || // left
+        rec1[3] <= rec2[1] || // bottom
+        rec1[0] >= rec2[2] || // right
+        rec1[1] >= rec2[3]    // top
+    );
+}
+```
+
+```Rust
+impl Solution {
+    pub fn is_rectangle_overlap(rec1: Vec<i32>, rec2: Vec<i32>) -> bool {
+        if rec1[0] == rec1[2]
+            || rec1[1] == rec1[3]
+            || rec2[0] == rec2[2]
+            || rec2[1] == rec2[3]
+        {
+            return false;
+        }
+
+        !(rec1[2] <= rec2[0]  // left
+            || rec1[3] <= rec2[1] // bottom
+            || rec1[0] >= rec2[2] // right
+            || rec1[1] >= rec2[3]) // top
+    }
+}
+```
+
+**å¤æ‚åº¦åˆ†æ**
+
+- æ—¶é—´å¤æ‚åº¦ï¼š$O(1)$ã€‚
+- ç©ºé—´å¤æ‚åº¦ï¼š$O(1)$ï¼Œä¸éœ€è¦é¢å¤–çš„ç©ºé—´ã€‚
+
+#### æ–¹æ³•äºŒï¼šæ£€æŸ¥åŒºåŸŸ
+
+**æ€è·¯**
+
+å¦‚æœä¸¤ä¸ªçŸ©å½¢é‡å ï¼Œé‚£ä¹ˆå®ƒä»¬é‡å çš„åŒºåŸŸä¸€å®šä¹Ÿæ˜¯ä¸€ä¸ªçŸ©å½¢ï¼Œé‚£ä¹ˆè¿™ä»£è¡¨äº†ä¸¤ä¸ªçŸ©å½¢ä¸ $x$ è½´å¹³è¡Œçš„è¾¹ï¼ˆæ°´å¹³è¾¹ï¼‰æŠ•å½±åˆ° $x$ è½´ä¸Šæ—¶ä¼šæœ‰äº¤é›†ï¼Œä¸ $y$ è½´å¹³è¡Œçš„è¾¹ï¼ˆç«–ç›´è¾¹ï¼‰æŠ•å½±åˆ° $y$ è½´ä¸Šæ—¶ä¹Ÿä¼šæœ‰äº¤é›†ã€‚å› æ­¤ï¼Œæˆ‘ä»¬å¯ä»¥å°†é—®é¢˜çœ‹ä½œä¸€ç»´çº¿æ®µæ˜¯å¦æœ‰äº¤é›†çš„é—®é¢˜ã€‚
+
+**ç®—æ³•**
+
+çŸ©å½¢ `rec1` å’Œ `rec2` çš„æ°´å¹³è¾¹æŠ•å½±åˆ° $x$ è½´ä¸Šçš„çº¿æ®µåˆ†åˆ«ä¸º `(rec1[0], rec1[2])` å’Œ `(rec2[0], rec2[2])`ã€‚æ ¹æ®æ•°å­¦çŸ¥è¯†æˆ‘ä»¬å¯ä»¥çŸ¥é“ï¼Œå½“ `min(rec1[2], rec2[2]) > max(rec1[0], rec2[0])` æ—¶ï¼Œè¿™ä¸¤æ¡çº¿æ®µæœ‰äº¤é›†ã€‚å¯¹äºçŸ©å½¢ `rec1` å’Œ `rec2` çš„ç«–ç›´è¾¹æŠ•å½±åˆ° $y$ è½´ä¸Šçš„çº¿æ®µï¼ŒåŒç†å¯ä»¥å¾—åˆ°ï¼Œå½“ `min(rec1[3], rec2[3]) > max(rec1[1], rec2[1])` æ—¶ï¼Œè¿™ä¸¤æ¡çº¿æ®µæœ‰äº¤é›†ã€‚
+
+```Java
+class Solution {
+    public boolean isRectangleOverlap(int[] rec1, int[] rec2) {
+        return (Math.min(rec1[2], rec2[2]) > Math.max(rec1[0], rec2[0]) &&
+                Math.min(rec1[3], rec2[3]) > Math.max(rec1[1], rec2[1]));
+    }
+}
+```
+
+```Python
+class Solution:
+    def isRectangleOverlap(self, rec1: List[int], rec2: List[int]) -> bool:
+        return (
+            min(rec1[2], rec2[2]) > max(rec1[0], rec2[0]) and
+            min(rec1[3], rec2[3]) > max(rec1[1], rec2[1])
+        )
+```
+
+```C++
+class Solution {
+public:
+    bool isRectangleOverlap(vector<int>& rec1, vector<int>& rec2) {
+        return (min(rec1[2], rec2[2]) > max(rec1[0], rec2[0]) &&
+                min(rec1[3], rec2[3]) > max(rec1[1], rec2[1]));
+    }
+};
+```
+
+```CSharp
+public class Solution
+{
+    public bool IsRectangleOverlap(int[] rec1, int[] rec2)
+    {
+        return (
+            Math.Min(rec1[2], rec2[2]) > Math.Max(rec1[0], rec2[0]) &&
+            Math.Min(rec1[3], rec2[3]) > Math.Max(rec1[1], rec2[1])
+        );
+    }
+}
+```
+
+```Go
+func isRectangleOverlap(rec1 []int, rec2 []int) bool {
+	return min(rec1[2], rec2[2]) > max(rec1[0], rec2[0]) &&
+		min(rec1[3], rec2[3]) > max(rec1[1], rec2[1])
+}
+```
+
+```C
+int min(int a, int b) {
+    return a < b ? a : b;
+}
+
+int max(int a, int b) {
+    return a > b ? a : b;
+}
+
+bool isRectangleOverlap(int* rec1, int rec1Size, int* rec2, int rec2Size) {
+    return min(rec1[2], rec2[2]) > max(rec1[0], rec2[0]) &&
+           min(rec1[3], rec2[3]) > max(rec1[1], rec2[1]);
+}
+```
+
+```JavaScript
+var isRectangleOverlap = function(rec1, rec2) {
+    return (
+        Math.min(rec1[2], rec2[2]) > Math.max(rec1[0], rec2[0]) &&
+        Math.min(rec1[3], rec2[3]) > Math.max(rec1[1], rec2[1])
+    );
+};
+```
+
+```TypeScript
+function isRectangleOverlap(rec1: number[], rec2: number[]): boolean {
+    return (
+        Math.min(rec1[2], rec2[2]) > Math.max(rec1[0], rec2[0]) &&
+        Math.min(rec1[3], rec2[3]) > Math.max(rec1[1], rec2[1])
+    );
+}
+```
+
+```Rust
+impl Solution {
+    pub fn is_rectangle_overlap(rec1: Vec<i32>, rec2: Vec<i32>) -> bool {
+        std::cmp::min(rec1[2], rec2[2]) > std::cmp::max(rec1[0], rec2[0])
+            && std::cmp::min(rec1[3], rec2[3]) > std::cmp::max(rec1[1], rec2[1])
+    }
+}
+```
+
+**å¤æ‚åº¦åˆ†æ**
+
+- æ—¶é—´å¤æ‚åº¦ï¼š$O(1)$ã€‚
+- ç©ºé—´å¤æ‚åº¦ï¼š$O(1)$ï¼Œä¸éœ€è¦é¢å¤–çš„ç©ºé—´ã€‚
