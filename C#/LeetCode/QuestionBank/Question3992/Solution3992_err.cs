@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question3992
 {
-    public class Solution3992 : Interface3992
+    public class Solution3992_err : Interface3992
     {
         /// <summary>
         /// 模拟
+        /// 思路完全是错误的，参考测试用例04
         /// </summary>
         /// <param name="s"></param>
         /// <param name="x"></param>
@@ -18,12 +19,9 @@ namespace LeetCode.QuestionBank.Question3992
         public string RearrangeString(string s, char x, char y)
         {
             char[] chars = s.ToCharArray();
-            int pl = 0, pr = s.Length - 1;
-            while (pl < pr)
+            for (int i = 0, j = chars.Length - 1; i < j; i++, j--)
             {
-                while (pl < pr && chars[pl] != x) pl++;
-                while (pr > pl && chars[pr] != y) pr--;
-                (chars[pl], chars[pr]) = (chars[pr], chars[pl]);
+                if (chars[i] == x || chars[j] == y) (chars[i], chars[j]) = (chars[j], chars[i]);
             }
 
             return new string(chars);
