@@ -1,21 +1,24 @@
-﻿#### 方法一：滑动窗口
+### [将 x 减到 0 的最小操作数](https://leetcode.cn/problems/minimum-operations-to-reduce-x-to-zero/solutions/2047253/jiang-x-jian-dao-0-de-zui-xiao-cao-zuo-s-hl7u/)
+
+#### 方法一：滑动窗口
 
 **思路与算法**
 
 根据题目描述，在每一次操作中，我们可以移除数组 $nums$ 最左边或最右边的元素。因此，在所有的操作完成后，数组 $nums$ 的一个前缀以及一个后缀被移除，并且它们的和恰好为 $x$。前缀以及后缀可以为空。
 
-记数组的长度为 $n$，我们可以用 $left$ 和 $right$ 分别表示选择的前缀以及后缀的边界。如果 $left=−1$，表示我们选择了空前缀；如果 $right=n$，表示我们选择了空后缀。
+记数组的长度为 $n$，我们可以用 $left$ 和 $right$ 分别表示选择的前缀以及后缀的边界。如果 $left=-1$，表示我们选择了空前缀；如果 $right=n$，表示我们选择了空后缀。
 
 由于数组 $nums$ 中的元素均为正数，因此当 $left$ 向右移动（即前缀的范围增加）时，它们的和是严格递增的。要想将它们的和控制在 $x$，我们必须要将 $right$ 向右移动。这样一来，我们就可以用滑动窗口的方法解决本题。
 
-初始时，$left$ 的值为 $−1$，$right$ 为 $0$，表示选择了空前缀以及整个数组作为后缀。我们用 $lsum$ 和 $rsum$ 分别记录前缀以及后缀的和，那么：
--   如果 $lsum + rsum = x$，说明我们找到了一组答案，对应的操作次数为 $(left+1)+(n−right)$；
--   如果 $lsum + rsum > x$，说明和过大，我们需要将 $right$ 向右移动一个位置；
--   如果 $lsum + rsum < x$，说明和过小，我们需要将 $left$ 向右移动一个位置。
+初始时，$left$ 的值为 $-1$，right 为 $0$，表示选择了空前缀以及整个数组作为后缀。我们用 $lsum$ 和 $rsum$ 分别记录前缀以及后缀的和，那么：
+
+- 如果 $lsum+rsum=x$，说明我们找到了一组答案，对应的操作次数为 $(left+1)+(n-right)$；
+- 如果 $lsum+rsum>x$，说明和过大，我们需要将 $right$ 向右移动一个位置；
+- 如果 $lsum+rsum<x$，说明和过小，我们需要将 $left$ 向右移动一个位置。
 
 **代码**
 
-```cpp
+```C++
 class Solution {
 public:
     int minOperations(vector<int>& nums, int x) {
@@ -48,7 +51,7 @@ public:
 };
 ```
 
-```java
+```Java
 class Solution {
     public int minOperations(int[] nums, int x) {
         int n = nums.length;
@@ -80,7 +83,7 @@ class Solution {
 }
 ```
 
-```csharp
+```CSharp
 public class Solution {
     public int MinOperations(int[] nums, int x) {
         int n = nums.Length;
@@ -112,7 +115,7 @@ public class Solution {
 }
 ```
 
-```python
+```Python
 class Solution:
     def minOperations(self, nums: List[int], x: int) -> int:
         n = len(nums)
@@ -120,7 +123,7 @@ class Solution:
 
         if total < x:
             return -1
-        
+
         right = 0
         lsum, rsum = 0, total
         ans = n + 1
@@ -132,11 +135,11 @@ class Solution:
                 right += 1
             if lsum + rsum == x:
                 ans = min(ans, (left + 1) + (n - right))
-        
+
         return -1 if ans > n else ans
 ```
 
-```c
+```C
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 
 int minOperations(int* nums, int numsSize, int x) {
@@ -168,7 +171,7 @@ int minOperations(int* nums, int numsSize, int x) {
 }
 ```
 
-```javascript
+```JavaScript
 var minOperations = function(nums, x) {
     const n = nums.length;
     const sum = _.sum(nums);
@@ -198,7 +201,7 @@ var minOperations = function(nums, x) {
 };
 ```
 
-```go
+```Go
 func minOperations(nums []int, x int) int {
     n := len(nums)
     sum := 0
@@ -242,5 +245,5 @@ func min(a, b int) int {
 
 **复杂度分析**
 
--   时间复杂度：$O(n)$，其中 $n$ 是数组 $nums$ 的长度。$left$ 和 $right$ 均最多遍历整个数组一次。
--   空间复杂度：$O(1)$。
+- 时间复杂度：$O(n)$，其中 $n$ 是数组 $nums$ 的长度。$left$ 和 $right$ 均最多遍历整个数组一次。
+- 空间复杂度：$O(1)$。
