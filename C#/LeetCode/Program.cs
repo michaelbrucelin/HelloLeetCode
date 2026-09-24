@@ -10,7 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using UtilsXXXX = LeetCode.QuestionBank.Question0390.Utils0390;
-using TestXXXX = LeetCode.QuestionBank.Question1658.Test1658;
+using TestXXXX = LeetCode.QuestionBank.Question1425.Test1425;
 // using TestXXXX = LeetCode.LCP.LCP0034.Test0034;
 // using TestXXXX = LeetCode.LCR.LCR0109.Test0109;
 // using TestXXXX = LeetCode.Interview.Interview1626.Test1626;

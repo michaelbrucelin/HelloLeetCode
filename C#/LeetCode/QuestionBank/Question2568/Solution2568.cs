@@ -9,20 +9,18 @@ namespace LeetCode.QuestionBank.Question2568
     public class Solution2568 : Interface2568
     {
         /// <summary>
-        /// 枚举每一位
+        /// 脑筋急转弯
+        /// 结果一定是2的幂，即其二进制表达式中只有1个1，反证法很容易证明
         /// </summary>
         /// <param name="nums"></param>
         /// <returns></returns>
         public int MinImpossibleOR(int[] nums)
         {
-            int len = nums.Length;
-            bool[] bits = new bool[32];
-            for (int i = 0, num; i < len; i++)
-            {
-                num = nums[i];
-            }
+            int result = 1;
+            HashSet<int> set = [.. nums];
+            while (set.Contains(result)) result <<= 1;
 
-            throw new NotImplementedException();
+            return result;
         }
     }
 }
