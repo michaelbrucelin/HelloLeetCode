@@ -18,7 +18,17 @@ namespace LeetCode.QuestionBank.Question3309
             int[] move = new int[3];
             for (int i = 0; i < 3; i++) move[i] = GetHighestBitIndex(nums[i]);
 
-            throw new NotImplementedException();
+            int result = 0, _result;
+            int[][] order = [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]];
+            for (int i = 0; i < 6; i++)
+            {
+                _result = nums[order[i][2]];
+                _result += nums[order[i][1]] << move[order[i][2]];
+                _result += nums[order[i][0]] << (move[order[i][1]] + move[order[i][2]]);
+                result = Math.Max(result, _result);
+            }
+
+            return result;
 
             static int GetHighestBitIndex(int value)
             {
