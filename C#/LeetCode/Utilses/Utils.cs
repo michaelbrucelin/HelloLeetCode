@@ -263,6 +263,8 @@ namespace LeetCode.Utilses
         /// <returns></returns>
         public static bool CompareArray<T>(IList<T> list1, IList<T> list2, bool ignoreOrder = false) where T : IComparable<T>
         {
+            if (list1 == null && list2 == null) return true;
+            if (list1 == null || list2 == null) return false;
             if (list1.Count != list2.Count) return false;
 
             if (ignoreOrder)
