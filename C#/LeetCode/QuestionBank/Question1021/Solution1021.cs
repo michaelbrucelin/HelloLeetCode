@@ -17,26 +17,20 @@ namespace LeetCode.QuestionBank.Question1021
         public string RemoveOuterParentheses(string s)
         {
             StringBuilder result = new StringBuilder();
-            int pl = 0, pr, cnt = 0, len = s.Length;
-            while (pl < len)
-            {
-                cnt += ((s[pl] & 1) << 1) - 1;  // ( -> -1, ) -> 1
-                pr = pl + 1;
-                while (pr < len)
+            int pl = 0, pr = -1, cnt = 0, len = s.Length;
+            while (pl < len) while (++pr < len)
                 {
-                    cnt += ((s[pr] & 1) << 1) - 1;
+                    cnt += ((s[pr] & 1) << 1) - 1;  // (: -1, ): 1
                     if (cnt == 0)
                     {
-                        result.Append(s.Substring(pl + 1, pr - pl - 1));
+                        // result.Append(s.Substring(pl + 1, pr - pl - 1));
+                        // result.Append(s[(pl + 1)..pr]);
+                        // result.Append(s.AsSpan(pl + 1, pr - pl - 1));
+                        result.Append(s, pl + 1, pr - pl - 1);
                         pl = pr + 1;
                         break;
                     }
-                    else
-                    {
-                        pr++;
-                    }
                 }
-            }
 
             return result.ToString();
         }
