@@ -12,7 +12,7 @@
 
 $$\sum\limits_{i=0}^{n-1}nums[i]-min(nums)\times n$$
 
-其中 $n$ 为数组 $nums$ 的长度，min(nums)为数组 $nums$ 中元素的最小值。
+其中 $n$ 为数组 $nums$ 的长度，$min(nums)$为数组 $nums$ 中元素的最小值。
 
 在实现中，为避免溢出，我们可以逐个累加每个元素与数组中元素最小值的差，即计算
 

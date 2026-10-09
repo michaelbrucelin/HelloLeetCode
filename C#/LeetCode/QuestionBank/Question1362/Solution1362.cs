@@ -19,28 +19,17 @@ namespace LeetCode.QuestionBank.Question1362
         /// <returns></returns>
         public int[] ClosestDivisors(int num)
         {
-            int[] result = [1, num + 1];
+            int[] r1 = _ClosestDivisors(num + 1);
+            int[] r2 = _ClosestDivisors(num + 2);
 
-            int x, y, z, diff;
-            z = num + 1; x = (int)Math.Floor(Math.Sqrt(z)); y = (int)Math.Ceiling(Math.Sqrt(z));
-            if (x == y) return [x, y];
-            while (x > 1) switch (x * y - z)
-                {
-                    case > 0: x = Math.Min(x - 1, z / y); break;
-                    case < 0: y = Math.Max(y + 1, z / x); break;
-                    default: result = [x, y]; x = -1; break;
-                }
-            z = num + 2; x = (int)Math.Floor(Math.Sqrt(z)); y = (int)Math.Ceiling(Math.Sqrt(z));
-            if (x == y) return [x, y];
-            diff = result[1] - result[0];
-            while (y - x < diff) switch (x * y - z)
-                {
-                    case > 0: x = Math.Min(x - 1, z / y); break;
-                    case < 0: y = Math.Max(y + 1, z / x); break;
-                    default: result = [x, y]; x = -1; break;
-                }
+            return r1[1] - r1[0] <= r2[1] - r2[0] ? r1 : r2;
 
-            return result;
+            static int[] _ClosestDivisors(int num)
+            {
+                int x = (int)Math.Sqrt(num) + 1;
+                while (--x > 1) if (num % x == 0) return [x, num / x];
+                return [1, num];
+            }
         }
     }
 }

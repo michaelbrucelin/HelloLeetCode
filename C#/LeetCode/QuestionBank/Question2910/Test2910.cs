@@ -38,6 +38,18 @@ namespace LeetCode.QuestionBank.Question2910
             answer = 5;
             result = solution.MinGroupsForValidAssignment(balls);
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            // 5. 
+            balls = [1, 1, 2, 1, 1, 1, 3, 1, 2, 3];
+            answer = 4;
+            result = solution.MinGroupsForValidAssignment(balls);
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            // 6. 
+            balls = [1, 1, 1, 3, 3, 3, 1, 2, 1, 1, 1, 2, 1];
+            answer = 5;
+            result = solution.MinGroupsForValidAssignment(balls);
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
         }
     }
 }
