@@ -1,4 +1,4 @@
-### [O(n\log n) 线段树做法（Python/Java/C++/Go）](https://leetcode.cn/problems/subarrays-distinct-element-sum-of-squares-i/solutions/2502928/onlogn-xian-duan-shu-zuo-fa-pythonjavacg-pd8r/)
+### [$O(n\log n)$ 线段树做法（Python/Java/C++/Go）](https://leetcode.cn/problems/subarrays-distinct-element-sum-of-squares-i/solutions/2502928/onlogn-xian-duan-shu-zuo-fa-pythonjavacg-pd8r/)
 
 推荐先完成本题的简单版本：[2262\. 字符串的总引力](https://leetcode.cn/problems/total-appeal-of-a-string/)
 
@@ -34,14 +34,14 @@ $$(x+1)^2-x^2=2x+1$$
 
 - 如果 $a[i]$ 之前没有遇到过（例如 $a=[1,2,3,4]$），那么这些子数组的「不同计数」都会增加 $1$。根据提示 $2$，「不同计数的平方」之和的**增加量**为 $(x_0+x_1+x_2)\cdot 2+3$。
 - 如果 $a[i]$ 之前遇到过，设其上次出现的下标为 $j$，那么：
-    - 对于子数组 $a[0..i-1], a[1..i-1], a[2..i-1],\dots ,a[j..i-1]$，在其末尾添加 $a[i]$ 后，这些子数组的「不同计数」是不会变化的，因为 $a[i]$ 已经在 $a[j]$ 处出现过了。
-    - 对于子数组 $a[j+1..i-1], a[j+2..i-1],\dots ,a[i-1..i-1]$，由于不包含 $a[i]$，这些子数组的「不同计数」都会增加 $1$，「不同计数的平方」之和的**增加量**计算方式同上。
+  - 对于子数组 $a[0..i-1], a[1..i-1], a[2..i-1],\dots ,a[j..i-1]$，在其末尾添加 $a[i]$ 后，这些子数组的「不同计数」是不会变化的，因为 $a[i]$ 已经在 $a[j]$ 处出现过了。
+  - 对于子数组 $a[j+1..i-1], a[j+2..i-1],\dots ,a[i-1..i-1]$，由于不包含 $a[i]$，这些子数组的「不同计数」都会增加 $1$，「不同计数的平方」之和的**增加量**计算方式同上。
 - 别忘了 $a[i..i]$ 也是一个子数组，把它的「不同计数」加一。
 
 所以，我们需要一个这样的数据结构，用来维护子数组的「不同计数」：
 
 1. 定义 $f[k]$ 表示左端点为 $k$ 的子数组的「不同计数」，如果当前遍历到 $nums[i]$，那么 $f[k]$ 就对应着子数组 $a[k..i]$。
-2. 区间加一：例如 $a[1..3]$，a[2..3] 和 $a[3..3]$ 的「不同计数」都增加了 $1$，那么就把区间 $[1,3]$ 的「不同计数」加一。
+2. 区间加一：例如 $a[1..3]$，$a[2..3]$ 和 $a[3..3]$ 的「不同计数」都增加了 $1$，那么就把区间 $[1,3]$ 的「不同计数」加一。
 3. 询问区间元素和：为了计算出「不同计数的平方」之和的**增加量**，需要知道从 $f[k+1]$ 到 $f[i-1]$ 的「不同计数」。
 
 这可以用 $lazy$ 线段树实现，具体请看[【双周赛 98】](https://leetcode.cn/link/?target=https%3A%2F%2Fwww.bilibili.com%2Fvideo%2FBV15D4y1G7ms%2F)第四题的讲解。

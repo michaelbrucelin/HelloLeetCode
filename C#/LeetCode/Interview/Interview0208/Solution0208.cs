@@ -15,8 +15,11 @@ namespace LeetCode.Interview.Interview0208
         /// <returns></returns>
         public ListNode DetectCycle(ListNode head)
         {
-            //HashSet<ListNode>
-            throw new NotImplementedException();
+            HashSet<ListNode> set = [];
+            ListNode ptr = head;
+            while (ptr != null) if (set.Add(ptr)) ptr = ptr.next; else return ptr;
+
+            return null;
         }
     }
 }
