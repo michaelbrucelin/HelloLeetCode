@@ -1,0 +1,90 @@
+### [巧妙利用查询的特殊性](https://leetcode.cn/problems/sequentially-ordinal-rank-tracker/solutions/1152448/qiao-miao-li-yong-cha-xun-de-te-shu-xing-7eyg/?envType=problem-list-v2&envId=ySsxoJfz)
+
+为了高效插入数据，我们可以用平衡树来维护所有景点。
+
+注意到每次 `get` 后仅会将查询次数加一，我们可以用一个迭代器（指针）$cur$ 指向查询需要返回的元素，这样对于查询操作，每次查询结束后将 $cur$ 移至其下一个元素。
+
+对于添加操作，如果添加的景点排在 $cur$ 前面，那么为了保证 $cur$ 仍然指向第 $i$ 好的景点，我们将 $cur$ 移至其前一个元素，否则不移动 $cur$。
+
+代码实现时，可以在初始化时插入一个哨兵元素，从而简化判断逻辑。
+
+```C++
+class SORTracker {
+    set<pair<int, string>> s;
+    set<pair<int, string>>::iterator cur;
+
+public:
+    SORTracker() {
+        s.emplace(0, ""); // 哨兵
+        cur = s.begin();
+    }
+
+    void add(string name, int score) {
+        pair<int, string> p = {-score, name};
+        s.emplace(p);
+        if (p < *cur) --cur;
+    }
+
+    string get() {
+        return cur++->second;
+    }
+};
+```
+
+```Go
+type pair struct {
+    score int
+    name  string
+}
+
+func compare(x, y interface{}) int {
+    a, b := x.(pair), y.(pair)
+    if a.score > b.score || a.score == b.score && a.name < b.name {
+        return -1
+    }
+    return 1
+}
+
+type SORTracker struct {
+    *redblacktree.Tree
+    cur redblacktree.Iterator
+}
+
+func Constructor() SORTracker {
+    root := redblacktree.NewWith(compare)
+    root.Put(pair{}, nil) // 哨兵
+    return SORTracker{root, root.IteratorAt(root.Left())}
+}
+
+func (t *SORTracker) Add(name string, score int) {
+    p := pair{score, name}
+    t.Put(p, nil)
+    if compare(p, t.cur.Key()) < 0 {
+        t.cur.Prev() // 移动至前一个元素
+    }
+}
+
+func (t *SORTracker) Get() string {
+    name := t.cur.Key().(pair).name
+    t.cur.Next() // 移动至下一个元素
+    return name
+}
+```
+
+Python 用户可以直接用 `SortedList` 模拟。
+
+```Python
+from sortedcontainers import SortedList
+
+class SORTracker:
+    def __init__(self):
+        self.d = SortedList()
+        self.i = 0
+
+    def add(self, name: str, score: int) -> None:
+        self.d.add((-score, name))
+
+    def get(self) -> str:
+        self.i += 1
+        return self.d[self.i - 1][1]
+```
