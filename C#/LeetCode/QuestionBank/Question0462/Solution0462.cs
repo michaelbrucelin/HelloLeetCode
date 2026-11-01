@@ -10,13 +10,19 @@ namespace LeetCode.QuestionBank.Question0462
     {
         /// <summary>
         /// 数学
-        /// 假定数组长度为n，和为sum
+        /// 中位数
         /// </summary>
         /// <param name="nums"></param>
         /// <returns></returns>
         public int MinMoves2(int[] nums)
         {
-            throw new NotImplementedException();
+            Array.Sort(nums);
+
+            int result = 0, id = nums.Length >> 1, len = nums.Length, pivot = nums[id];
+            for (int i = 0; i < id; i++) result += pivot - nums[i];
+            for (int i = id + 1; i < len; i++) result += nums[i] - pivot;
+
+            return result;
         }
     }
 }
