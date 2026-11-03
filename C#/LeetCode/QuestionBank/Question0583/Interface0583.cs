@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LeetCode.QuestionBank.Question0583
+{
+    public interface Interface0583
+    {
+        public int MinDistance(string word1, string word2);
+    }
+}
