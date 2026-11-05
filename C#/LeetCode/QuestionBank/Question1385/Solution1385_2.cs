@@ -36,30 +36,30 @@ namespace LeetCode.QuestionBank.Question1385
                 else
                 {
                     int id = BinarySearch(arr2, L);
-                    if (arr2[id] > R) result++;  // 这里的id一定不会数组越界，不需要判断越界
+                    if (arr2[id] > R) result++;      // 这里的id一定不会数组越界，不需要判断越界
                 }
             }
 
             return result;
-        }
 
-        private int BinarySearch(int[] arr, int target)
-        {
-            int result = arr.Length, low = 0, high = arr.Length - 1, mid;
-            while (low <= high)
+            static int BinarySearch(int[] arr, int target)
             {
-                mid = low + ((high - low) >> 1);
-                if (arr[mid] >= target)
+                int result = arr.Length, low = 0, high = arr.Length - 1, mid;
+                while (low <= high)
                 {
-                    result = mid; high = mid - 1;
+                    mid = low + ((high - low) >> 1);
+                    if (arr[mid] >= target)
+                    {
+                        result = mid; high = mid - 1;
+                    }
+                    else
+                    {
+                        low = mid + 1;
+                    }
                 }
-                else
-                {
-                    low = mid + 1;
-                }
-            }
 
-            return result;
+                return result;
+            }
         }
     }
 }
