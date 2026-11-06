@@ -1,4 +1,4 @@
-### [连续中值]{https://leetcode.cn/problems/continuous-median-lcci/solutions/1718020/lian-xu-zhong-zhi-by-leetcode-solution-q07m/?envType=problem-list-v2&envId=04xjKEs9}
+### [连续中值](https://leetcode.cn/problems/continuous-median-lcci/solutions/1718020/lian-xu-zhong-zhi-by-leetcode-solution-q07m/?envType=problem-list-v2&envId=04xjKEs9)
 
 #### 方法一：优先队列
 
