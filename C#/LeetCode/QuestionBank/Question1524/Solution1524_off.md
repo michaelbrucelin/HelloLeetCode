@@ -1,6 +1,6 @@
-### [和为奇数的子数组数目](https://leetcode.cn/problems/number-of-sub-arrays-with-odd-sum/solutions/357914/he-wei-qi-shu-de-zi-shu-zu-shu-mu-by-leetcode-solu/?envType=problem-list-v2&envId=ySsxoJfz)
+### [和为奇数的子数组数目](https://leetcode.cn/problems/number-of-sub-arrays-with-odd-sum/solutions/357914/he-wei-qi-shu-de-zi-shu-zu-shu-mu-by-leetcode-solu/)
 
-#### 方法一：前缀和 $+$ 数学
+#### 方法一：前缀和 + 数学
 
 这道题要求返回和为奇数的子数组数目。为了快速计算任意子数组的和，可以通过维护前缀和的方式。这道题只需要知道每个子数组的和的奇偶性，不需要知道子数组的和的具体值，因此不需要维护每一个前缀和，只需要维护奇数前缀和的数量与偶数前缀和的数量。
 
@@ -77,6 +77,167 @@ class Solution:
                 odd += 1
 
         return subarrays % MODULO
+```
+
+```Java
+class Solution {
+    public int numOfSubarrays(int[] arr) {
+        final int MODULO = 1_000_000_007;
+        int odd = 0, even = 1;
+        int subarrays = 0;
+        int total = 0;
+
+        for (int x : arr) {
+            total += x;
+            if (total % 2 == 0) {
+                subarrays = (subarrays + odd) % MODULO;
+                even++;
+            } else {
+                subarrays = (subarrays + even) % MODULO;
+                odd++;
+            }
+        }
+
+        return subarrays % MODULO;
+    }
+}
+```
+
+```CSharp
+public class Solution {
+    public int NumOfSubarrays(int[] arr) {
+        const int MODULO = 1_000_000_007;
+        int odd = 0, even = 1;
+        int subarrays = 0;
+        int total = 0;
+
+        foreach (int x in arr) {
+            total += x;
+            if (total % 2 == 0) {
+                subarrays = (subarrays + odd) % MODULO;
+                even++;
+            } else {
+                subarrays = (subarrays + even) % MODULO;
+                odd++;
+            }
+        }
+
+        return subarrays % MODULO;
+    }
+}
+```
+
+```Go
+func numOfSubarrays(arr []int) int {
+    const MODULO = 1000000007
+    odd, even := 0, 1
+    subarrays := 0
+    total := 0
+
+    for _, x := range arr {
+        total += x
+        if total % 2 == 0 {
+            subarrays = (subarrays + odd) % MODULO
+            even++
+        } else {
+            subarrays = (subarrays + even) % MODULO
+            odd++
+        }
+    }
+
+    return subarrays % MODULO
+}
+```
+
+```C
+int numOfSubarrays(int* arr, int arrSize) {
+    const int MODULO = 1000000007;
+    int odd = 0, even = 1;
+    int subarrays = 0;
+    int total = 0;
+
+    for (int i = 0; i < arrSize; i++) {
+        total += arr[i];
+        if (total % 2 == 0) {
+            subarrays = (subarrays + odd) % MODULO;
+            even++;
+        } else {
+            subarrays = (subarrays + even) % MODULO;
+            odd++;
+        }
+    }
+
+    return subarrays % MODULO;
+}
+```
+
+```JavaScript
+var numOfSubarrays = function(arr) {
+    const MODULO = 1000000007;
+    let odd = 0, even = 1;
+    let subarrays = 0;
+    let total = 0;
+
+    for (const x of arr) {
+        total += x;
+        if (total % 2 === 0) {
+            subarrays = (subarrays + odd) % MODULO;
+            even++;
+        } else {
+            subarrays = (subarrays + even) % MODULO;
+            odd++;
+        }
+    }
+
+    return subarrays % MODULO;
+};
+```
+
+```TypeScript
+function numOfSubarrays(arr: number[]): number {
+    const MODULO = 1000000007;
+    let odd = 0, even = 1;
+    let subarrays = 0;
+    let total = 0;
+
+    for (const x of arr) {
+        total += x;
+        if (total % 2 === 0) {
+            subarrays = (subarrays + odd) % MODULO;
+            even++;
+        } else {
+            subarrays = (subarrays + even) % MODULO;
+            odd++;
+        }
+    }
+
+    return subarrays % MODULO;
+}
+```
+
+```Rust
+impl Solution {
+    pub fn num_of_subarrays(arr: Vec<i32>) -> i32 {
+        const MODULO: i32 = 1_000_000_007;
+        let mut odd = 0;
+        let mut even = 1;
+        let mut subarrays = 0;
+        let mut total = 0;
+
+        for &x in arr.iter() {
+            total += x;
+            if total % 2 == 0 {
+                subarrays = (subarrays + odd) % MODULO;
+                even += 1;
+            } else {
+                subarrays = (subarrays + even) % MODULO;
+                odd += 1;
+            }
+        }
+
+        subarrays % MODULO
+    }
+}
 ```
 
 **复杂度分析**
